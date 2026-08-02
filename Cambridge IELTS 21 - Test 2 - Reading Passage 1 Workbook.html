@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 2 — Reading Passage 1 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 2</span>
+  <span class="sep">›</span><span>Reading Passage 1</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 1</div>
+  <h1>Cambridge IELTS 21 — Test 2 — Reading Passage 1</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage asks <strong>whether animals dream</strong>. It explains REM and non-REM sleep in humans, then reviews evidence from rats, pigeons, whales and dolphins, and octopuses (Heidi and Costello). It ends by noting how hard it is to know what an animal’s inner dream experience is really like.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>table/summary completion</strong>, find the animal in the passage first, then read around it for the exact word. For <strong>True/False/Not Given</strong>, watch for strong words like "never" or "now possible" — the passage often says the opposite or says nothing.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">alternate</span></td><td><span class="pos">v.</span></td><td>to change repeatedly between two things</td><td class="zh">交替</td><td>"The two sleep types <em>alternate</em> all night."</td><td class="note">+ between</td></tr><tr><td><span class="word">twitch</span></td><td><span class="pos">v.</span></td><td>to make small, quick movements</td><td class="zh">抽动</td><td>"Muscles <em>twitch</em> slightly in REM sleep."</td><td class="note">Physical verb</td></tr><tr><td><span class="word">paralysed</span></td><td><span class="pos">adj.</span></td><td>unable to move</td><td class="zh">麻痹的</td><td>"Muscles are largely <em>paralysed</em> so we don’t hurt ourselves."</td><td class="note">US: paralyzed</td></tr><tr><td><span class="word">vivid</span></td><td><span class="pos">adj.</span></td><td>very clear and detailed</td><td class="zh">生动的</td><td>"REM sleep has the most <em>vivid</em> dreams."</td><td class="note">Answer word (Q5)</td></tr><tr><td><span class="word">mammals</span></td><td><span class="pos">n.</span></td><td>warm-blooded animals that feed young with milk</td><td class="zh">哺乳动物</td><td>"Other <em>mammals</em> may also dream."</td><td class="note">Biology term</td></tr><tr><td><span class="word">maze</span></td><td><span class="pos">n.</span></td><td>a complex system of paths</td><td class="zh">迷宫</td><td>"Rats ran through a <em>maze</em>."</td><td class="note">Story detail</td></tr><tr><td><span class="word">intriguingly</span></td><td><span class="pos">adv.</span></td><td>in a fascinating way</td><td class="zh">耐人寻味地</td><td>"<em>Intriguingly</em>, visual regions were active."</td><td class="note">Sentence adverb</td></tr><tr><td><span class="word">universal</span></td><td><span class="pos">adj.</span></td><td>true for everyone/everything</td><td class="zh">普遍的</td><td>"Dreaming is unlikely to be <em>universal</em>."</td><td class="note">+ in</td></tr><tr><td><span class="word">vulnerable</span></td><td><span class="pos">adj.</span></td><td>easily harmed</td><td class="zh">脆弱的</td><td>"Animals are more <em>vulnerable</em> to temperature in REM sleep."</td><td class="note">+ to</td></tr><tr><td><span class="word">integrate</span></td><td><span class="pos">v.</span></td><td>to combine into a whole</td><td class="zh">整合</td><td>"Dreams help <em>integrate</em> memories into storage."</td><td class="note">+ into</td></tr><tr><td><span class="word">interpret</span></td><td><span class="pos">v.</span></td><td>to explain the meaning of</td><td class="zh">解读</td><td>"We are quick to <em>interpret</em> a sleeping dog’s movements."</td><td class="note">+ as</td></tr><tr><td><span class="word">pursue</span></td><td><span class="pos">v.</span></td><td>to chase or follow</td><td class="zh">追逐</td><td>"Heidi seemed to be <em>pursuing</em> a crab."</td><td class="note">= chase</td></tr><tr><td><span class="word">predator</span></td><td><span class="pos">n.</span></td><td>an animal that hunts others</td><td class="zh">捕食者</td><td>"Costello acted as if attacked by a <em>predator</em>."</td><td class="note">Ecology term</td></tr><tr><td><span class="word">dominant</span></td><td><span class="pos">adj.</span></td><td>most important or powerful</td><td class="zh">主导的</td><td>"Vision is the <em>dominant</em> sense for humans."</td><td class="note">+ sense</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">in contrast</span></td><td>showing a difference</td><td class="zh">相比之下</td></tr><tr><td><span class="phrase">there is some evidence that</span></td><td>it is partly shown that</td><td class="zh">有证据表明</td></tr><tr><td><span class="phrase">that said</span></td><td>despite that</td><td class="zh">话虽如此</td></tr><tr><td><span class="phrase">let alone</span></td><td>and certainly not</td><td class="zh">更不用说</td></tr><tr><td><span class="phrase">come along with</span></td><td>to happen together with</td><td class="zh">伴随</td></tr><tr><td><span class="phrase">on their own terms</span></td><td>in their own way</td><td class="zh">按其自身方式</td></tr><tr><td><span class="phrase">shed light on</span></td><td>to help explain</td><td class="zh">阐明</td></tr><tr><td><span class="phrase">rely on</span></td><td>to depend on</td><td class="zh">依赖</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"During this stage our eyes move, even though our eyelids are closed."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">our eyes move</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">even though our eyelids are closed (concession)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"even though" = although. It concedes a surprising contrast (eyes move but eyelids shut).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In REM sleep the eyes move around although the eyelids stay shut.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在这个阶段，即使眼睑闭着，我们的眼睛也会转动。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">They found the patterns were very similar and concluded that …</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">that the sleeping rats were dreaming about going through the maze (noun clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two reporting verbs ("found", "concluded") each take a that-clause (the second "that" is written).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The brain patterns matched, so researchers decided the rats were dreaming about the maze.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">他们发现脑波非常相似，于是得出结论：睡着的老鼠正梦见自己穿过迷宫。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These include whales and dolphins</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">which do not shut down their entire brain … but only half of it (relative clause) + "keeping the rest awake" (participle)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"which" adds extra information. "not … but …" contrasts whole vs. half. "keeping …" is a participle of result.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Whales and dolphins only put half their brain to sleep and keep the other half awake.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">其中包括鲸鱼和海豚，它们睡觉时不会让整个大脑休眠，而只休眠一半，另一半保持清醒。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"We are quick to interpret the twitching limbs and quiet barks of sleeping dogs, but the truth is that we don’t know if there is an internal experience of chasing rabbits that comes along with that."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We are quick to interpret the twitching limbs and quiet barks of sleeping dogs</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">but … we don’t know if there is an internal experience … that comes along with that</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"but" contrasts our quick assumption with the honest doubt. "if" introduces an indirect question; "that comes along with" is a relative clause.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">We rush to explain a sleeping dog’s movements, but we really can’t tell whether it actually feels it is chasing rabbits.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们很快就去解读睡狗抽动的四肢和轻声吠叫，但事实是，我们并不知道是否真有"追兔子"的内在体验伴随其中。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"And if this is the case, it is possible that better understanding of these purposes might shed light on the true purpose of our own dreams."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it is possible that … might shed light on the true purpose of our own dreams</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">if this is the case (conditional)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"if this is the case" = if that is true. "might shed light on" = might help explain (tentative modal).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If that is true, understanding why animals dream could help explain why we dream too.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果情况如此，那么更好地理解这些目的，或许能揭示我们自己做梦的真正目的。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Linking Words</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the linking word/phrase that fits the logic.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“Our eyes move, ______ ______ our eyelids are closed.” (concession, 2 words) <input type="text" class="blank" data-answer="even though" placeholder="______" style="width:130px"><span class="feedback" id="fb1"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“______ ______, dreaming is unlikely to be universal.” (despite the previous point, 2 words) <input type="text" class="blank" data-answer="that said" placeholder="______" style="width:120px"><span class="feedback" id="fb2"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“We can’t imagine a rat’s world, ______ ______ its dreams.” (and certainly not, 2 words) <input type="text" class="blank" data-answer="let alone" placeholder="______" style="width:120px"><span class="feedback" id="fb3"></span> </label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Table Completion</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with ONE word from the passage.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>Pigeons showed activity in brain parts that process <input type="text" class="blank" data-answer="visual" placeholder="______" style="width:130px"><span class="feedback" id="fb4"></span> information.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Whales and dolphins keep <input type="text" class="blank" data-answer="half" placeholder="______" style="width:110px"><span class="feedback" id="fb5"></span> their brain awake when sleeping.</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>They avoid REM sleep because it affects sensitivity to <input type="text" class="blank" data-answer="temperature" placeholder="______" style="width:150px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Non-REM dreams are less <input type="text" class="blank" data-answer="vivid" placeholder="______" style="width:110px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word for each meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“very clear and detailed” = <input type="text" class="blank" data-answer="vivid" placeholder="______" style="width:110px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“to chase or follow” = <input type="text" class="blank" data-answer="pursue" placeholder="______" style="width:110px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“easily harmed” = <input type="text" class="blank" data-answer="vulnerable" placeholder="______" style="width:120px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“an animal that hunts others” = <input type="text" class="blank" data-answer="predator" placeholder="______" style="width:120px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Follow how the writer builds and limits the argument about animal dreams.</div>
+<div class="card"><p><strong>Contrast</strong></p>The writer repeatedly contrasts REM vs non-REM sleep, and mammals vs non-mammals. Signal words: <em>in contrast, but, however, that said</em>. Whales/dolphins are a key contrast case (no REM sleep).</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Because REM sleep leaves animals more <em>vulnerable to temperature</em>, whales and dolphins avoid it. Because dreams <em>replay events</em>, they help <em>integrate memories</em>. Trace each because → so.</div>
+<div class="card"><p><strong>Evidence &amp; Example</strong></p>Each claim is supported by a study or example: rats in a maze, pigeons’ visual brain regions, the octopuses Heidi and Costello. Learn to separate the <em>claim</em> from the <em>example</em>.</div>
+<div class="card"><p><strong>Hedging / Uncertainty</strong></p>The writer is careful: "may also dream", "unlikely to be universal", "we don’t know", "it is possible". These hedges are essential for choosing NOT GIVEN over TRUE/FALSE.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>True / False / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Decide TRUE / FALSE / NOT GIVEN, then check against the notes in the Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>Dreaming about past experiences helps create lasting memories.</label></div><div class="ex-item"><span class="ex-num">2.</span><label>It is now possible to tell what type of dream a dog is having.</label></div><div class="ex-item"><span class="ex-num">3.</span><label>While asleep, Costello reacted as if it was hunting.</label></div><div class="ex-item"><span class="ex-num">4.</span><label>We may soon share the dreams of other human beings.</label></div></div>
+<div class="card"><p><strong>Table Completion (ONE word)</strong></p><p style="color:var(--muted);font-size:.85rem;">Complete from the passage; answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>Pigeons showed activity in brain regions that process <strong>______</strong> information.</label></div><div class="ex-item"><span class="ex-num">2.</span><label>Whales and dolphins keep <strong>______</strong> of the brain awake while sleeping.</label></div><div class="ex-item"><span class="ex-num">3.</span><label>They avoid REM sleep as it affects sensitivity to <strong>______</strong>.</label></div></div>
+<div class="card"><p><strong>Locating Detail</strong></p>Use proper nouns as anchors: <em>rats</em> (maze study), <em>pigeons</em> (visual regions), <em>Heidi</em> (octopus that seemed to chase a crab), <em>Costello</em> (octopus nightmare), <em>David Scheel</em> (the researcher).</div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">The most vivid dreams happen during…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. non-REM sleep</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. REM sleep</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. deep sleep only</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Researchers concluded sleeping rats were dreaming about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. finding food</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. going through a maze</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. other rats</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Pigeon REM activity was high in brain regions that process…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. sound</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. visual information</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. smell</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Whales and dolphins sleep by shutting down…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. the whole brain</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. only half the brain</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. no part of the brain</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">They may avoid REM sleep because it increases vulnerability to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. predators</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. temperature extremes</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. noise</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Dreaming is thought to help with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. forming memories</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. growing muscles</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. digestion</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The octopus Costello behaved as if it was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. hunting a crab</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. being attacked</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. sleeping deeply</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Scheel argues that, besides behaviour, researchers also need…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. brain imaging</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. more octopuses</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. longer films</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">"Vivid" dreams are…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. very clear and detailed</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. very short</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. forgotten quickly</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The writer’s overall tone about knowing animals’ dreams is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. certain</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. cautious/uncertain</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. dismissive</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q1–13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">rats</div><div class="answer-note">similar awake/asleep patterns indicated dreaming.</div></div></div><div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">visual</div><div class="answer-note">pigeons’ visual brain regions.</div></div></div><div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">half</div><div class="answer-note">whales/dolphins keep half the brain awake.</div></div></div><div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">temperature</div><div class="answer-note">REM affects sensitivity to temperature.</div></div></div><div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">vivid</div><div class="answer-note">non-REM dreams are less vivid.</div></div></div><div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">TRUE</div><div class="answer-note">replaying events helps integrate memories.</div></div></div><div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">FALSE</div><div class="answer-note">"we don’t know" what dream a dog has.</div></div></div><div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no info on the documentary influencing other research.</div></div></div><div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">FALSE</div><div class="answer-note">Costello acted as if attacked, not hunting.</div></div></div><div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">TRUE</div><div class="answer-note">Scheel says brain imaging is needed → more research.</div></div></div><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">FALSE</div><div class="answer-note">"we will never" share dreams.</div></div></div><div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">spiders use vibrations, but "hearing" is not discussed.</div></div></div><div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no claim that interest has "increased greatly".</div></div></div></div><div class="answer-section"><h3>Skills — TFNG &amp; Table</h3><div class="answer-item"><span class="answer-num">TFNG 1</span><div><div class="answer-val">TRUE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 2</span><div><div class="answer-val">FALSE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 3</span><div><div class="answer-val">FALSE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 4</span><div><div class="answer-val">FALSE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Table 1</span><div><div class="answer-val">visual</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Table 2</span><div><div class="answer-val">half</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Table 3</span><div><div class="answer-val">temperature</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">even though / that said / let alone</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">visual, half, temperature, vivid</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">vivid, pursue, vulnerable, predator</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

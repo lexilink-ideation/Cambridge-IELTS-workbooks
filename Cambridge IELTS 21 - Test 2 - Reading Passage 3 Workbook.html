@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 2 — Reading Passage 3 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 2</span>
+  <span class="sep">›</span><span>Reading Passage 3</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 3</div>
+  <h1>Cambridge IELTS 21 — Test 2 — Reading Passage 3</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage criticises <strong>"AI solutionism"</strong> — the belief that machine learning can solve every problem. It argues that politicians overestimate AI, that the public sector lacks the data and skills to use it, that AI faces security risks, and it gives real failures (IBM Watson for Oncology and sentencing algorithms) to show that <strong>AI is not the answer to everything</strong>.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 3 mixes MCQ, summary-from-a-word-list, and <strong>YES/NO/NOT GIVEN</strong> about the writer’s claims. Y/N/NG is about the <em>writer’s opinion</em>: choose NO only if the writer clearly disagrees, and NOT GIVEN if the writer gives no opinion on that exact point.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">hysteria</span></td><td><span class="pos">n.</span></td><td>extreme, uncontrolled excitement or fear</td><td class="zh">歇斯底里</td><td>"<em>Hysteria</em> about AI is everywhere."</td><td class="note">Negative tone word</td></tr><tr><td><span class="word">sensationalist</span></td><td><span class="pos">adj.</span></td><td>trying to shock or excite, not inform</td><td class="zh">耸人听闻的</td><td>"<em>Sensationalist</em> news about AI."</td><td class="note">Media criticism</td></tr><tr><td><span class="word">infiltrate</span></td><td><span class="pos">v.</span></td><td>to enter and spread through something</td><td class="zh">渗透</td><td>"AI has <em>infiltrated</em> every aspect of society."</td><td class="note">+ into</td></tr><tr><td><span class="word">jeopardise</span></td><td><span class="pos">v.</span></td><td>to put at risk</td><td class="zh">危及</td><td>"This mindset <em>jeopardises</em> the value of AI."</td><td class="note">US: jeopardize</td></tr><tr><td><span class="word">disregard</span></td><td><span class="pos">v.</span></td><td>to ignore / not consider</td><td class="zh">无视</td><td>"…by <em>disregarding</em> AI safety principles."</td><td class="note">= ignore</td></tr><tr><td><span class="word">utopian</span></td><td><span class="pos">adj.</span></td><td>imagining a perfect world</td><td class="zh">乌托邦式的</td><td>"A <em>utopian</em> belief in an algorithmic saviour."</td><td class="note">Opposite: dystopian</td></tr><tr><td><span class="word">burgeoning</span></td><td><span class="pos">adj.</span></td><td>growing quickly</td><td class="zh">迅速发展的</td><td>"The <em>burgeoning</em> machine-learning sector."</td><td class="note">= rapidly expanding</td></tr><tr><td><span class="word">deploy</span></td><td><span class="pos">v.</span></td><td>to put into use</td><td class="zh">部署</td><td>"…the complexity of <em>deploying</em> ML systems."</td><td class="note">+ in the real world</td></tr><tr><td><span class="word">bureaucracy</span></td><td><span class="pos">n.</span></td><td>complex official rules and procedures</td><td class="zh">官僚体系</td><td>"Data is buried in <em>bureaucracy</em>."</td><td class="note">Spelling: bur-eau-cracy</td></tr><tr><td><span class="word">reap the benefits</span></td><td><span class="pos">phr.</span></td><td>to gain the advantages</td><td class="zh">获得好处</td><td>"…to fully <em>reap the benefits</em> of AI."</td><td class="note">Fixed phrase</td></tr><tr><td><span class="word">susceptible</span></td><td><span class="pos">adj.</span></td><td>easily affected or harmed</td><td class="zh">易受影响的</td><td>"AI is <em>susceptible</em> to adversarial attacks."</td><td class="note">+ to</td></tr><tr><td><span class="word">adversarial</span></td><td><span class="pos">adj.</span></td><td>involving opposition or attack</td><td class="zh">对抗性的</td><td>"An <em>adversarial</em> attack targets another AI."</td><td class="note">Technical term</td></tr><tr><td><span class="word">overlooked</span></td><td><span class="pos">adj.</span></td><td>not noticed or considered</td><td class="zh">被忽视的</td><td>"AI security is often <em>overlooked</em>."</td><td class="note">= ignored</td></tr><tr><td><span class="word">amplify</span></td><td><span class="pos">v.</span></td><td>to make larger or stronger</td><td class="zh">放大</td><td>"The system <em>amplified</em> racial discrimination."</td><td class="note">= magnify</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">no shortage of</span></td><td>plenty of</td><td class="zh">不缺</td></tr><tr><td><span class="phrase">open up opportunities</span></td><td>to create new possibilities</td><td class="zh">开辟机会</td></tr><tr><td><span class="phrase">make its way from … to …</span></td><td>to spread from one place to another</td><td class="zh">从…传到…</td></tr><tr><td><span class="phrase">fail to realise</span></td><td>to not understand</td><td class="zh">未能意识到</td></tr><tr><td><span class="phrase">more often than not</span></td><td>usually</td><td class="zh">往往</td></tr><tr><td><span class="phrase">above all</span></td><td>most importantly</td><td class="zh">最重要的是</td></tr><tr><td><span class="phrase">take the lead</span></td><td>to be in charge / go first</td><td class="zh">带头</td></tr><tr><td><span class="phrase">for the sake of</span></td><td>only for the purpose of</td><td class="zh">仅仅为了</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"While it is undeniable that AI has opened up a wealth of promising opportunities, it has also led to the emergence of a mindset that can be best described as ‘AI solutionism’."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it has also led to the emergence of a mindset … ‘AI solutionism’</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">While it is undeniable that AI has opened up a wealth of promising opportunities (concession)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"While … undeniable that" concedes a point before the "but"-idea. "that can be best described as" is a relative clause.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Yes, AI has created many opportunities — but it has also produced the "AI solutionism" mindset.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">虽然不可否认人工智能带来了大量有前景的机会，但它也催生了一种最好称之为"人工智能万能论"的心态。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"This is the philosophy that, given enough data, machine learning algorithms can solve all of humanity’s problems."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This is the philosophy</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">that … machine learning algorithms can solve all of humanity’s problems (noun clause) + "given enough data" (conditional phrase)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"that …" defines the philosophy. "given enough data" = if there is enough data (reduced conditional).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">It is the belief that, with enough data, AI can solve every human problem.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这是一种理念：只要有足够的数据，机器学习算法就能解决人类的一切问题。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"But what many politicians do not understand is that simply adding a neural network to a problem will not automatically mean that you’ll find a solution."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">what many politicians do not understand is that …</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">that simply adding a neural network … will not automatically mean that you’ll find a solution</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A "what"-clause is the subject. Two nested "that"-clauses report the point. "simply adding …" is a gerund subject inside.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Many politicians don’t realise that just adding a neural network won’t automatically solve a problem.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但许多政客不明白：仅仅给一个问题加上神经网络，并不自动意味着你就能找到解决方案。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"This means that a malicious AI can target another AI to make it behave in a certain way, such as forcing it to make wrong predictions."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">a malicious AI can target another AI</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">to make it behave in a certain way … (infinitive of purpose) + "such as forcing it to make wrong predictions" (example)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"to make it behave" states purpose. "such as …ing" introduces an example.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A harmful AI can attack another AI to control how it acts — for example, making it predict wrongly.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这意味着恶意的人工智能可以针对另一个人工智能，使其以特定方式行事，例如迫使它做出错误预测。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Using AI simply for the sake of AI may not always be productive or useful</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">and not every issue is best addressed by applying machine intelligence to it (coordinated clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Gerund subject "Using AI …". "for the sake of" = only for the purpose of. Passive "is best addressed".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Using AI just to use AI is not always helpful, and not every problem is best solved with AI.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">仅仅为了使用人工智能而使用它，未必总是有成效或有用；并非每个问题都最适合用机器智能来解决。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Concession &amp; Condition</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the linking word that fits.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“______ it is undeniable that AI helps, it also causes problems.” (concession) <input type="text" class="blank" data-answer="while" placeholder="______" style="width:110px"><span class="feedback" id="fb1"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“______ enough data, algorithms are said to solve everything.” (= if there is) <input type="text" class="blank" data-answer="given" placeholder="______" style="width:110px"><span class="feedback" id="fb2"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“Use AI ______ the sake of AI” — the missing word is <input type="text" class="blank" data-answer="for" placeholder="______" style="width:90px"><span class="feedback" id="fb3"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Summary (word list idea)</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with a word that fits the meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>Public bodies lack the right data <input type="text" class="blank" data-answer="framework" placeholder="______" style="width:130px"><span class="feedback" id="fb4"></span> / infrastructure.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Each person needs special permission, i.e. <input type="text" class="blank" data-answer="confidentiality" placeholder="______" style="width:150px"><span class="feedback" id="fb5"></span> clearance.</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Few employees have the technical <input type="text" class="blank" data-answer="skills" placeholder="______" style="width:110px"><span class="feedback" id="fb6"></span> needed.</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Doctors had little faith in the programme’s <input type="text" class="blank" data-answer="reliability" placeholder="______" style="width:130px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word for each meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“to put at risk” = <input type="text" class="blank" data-answer="jeopardise" placeholder="______" style="width:120px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“growing quickly” = <input type="text" class="blank" data-answer="burgeoning" placeholder="______" style="width:120px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“to make larger or stronger” = <input type="text" class="blank" data-answer="amplify" placeholder="______" style="width:110px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“easily affected or harmed” = <input type="text" class="blank" data-answer="susceptible" placeholder="______" style="width:130px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">This is an argument text — follow the writer’s reasoning and stance.</div>
+<div class="card"><p><strong>Claim &amp; Counter-claim</strong></p>The writer sets a popular claim (AI will solve everything) against a counter-claim (it won’t). Signal words: <em>But, in fact, however, still</em>. The whole passage argues the counter-claim.</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>AI solutionism → disregards safety principles + sets unrealistic expectations → <em>jeopardises</em> the value of AI. Poor data + few skilled staff → the public sector can’t use AI well.</div>
+<div class="card"><p><strong>Example → Conclusion</strong></p>Two failures (IBM Watson for Oncology; US sentencing algorithms) lead to the conclusion: "there is no AI solution for everything." Separate the examples from the general point.</div>
+<div class="card"><p><strong>Writer’s Stance</strong></p>The writer is <em>sceptical</em> of hype and <em>supportive</em> of critics like Russell and Brooks. For YES/NO/NOT GIVEN, agreeing with a critic = the writer’s view.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>Multiple Choice</strong></p><p style="color:var(--muted);font-size:.85rem;">Answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">27.</span><label>Paragraph 1 mainly <strong>describes a public perception of AI</strong>. → <strong>B</strong></label></div><div class="ex-item"><span class="ex-num">28.</span><label>On AI solutionism, the writer <strong>points out a risk</strong>. → <strong>A</strong></label></div><div class="ex-item"><span class="ex-num">40.</span><label>Best subtitle: <strong>Why AI may not be the answer to our problems</strong>. → <strong>B</strong></label></div></div>
+<div class="card"><p><strong>Summary from a Word List (A–I)</strong></p><p style="color:var(--muted);font-size:.85rem;">Choose the best word; see Answer Key.</p><div class="ex-item"><span class="ex-num">31.</span><label>Public bodies lack the data <strong>______</strong> (framework).</label></div><div class="ex-item"><span class="ex-num">33.</span><label>Few staff have the <strong>______</strong> (skills).</label></div><div class="ex-item"><span class="ex-num">34.</span><label>Doctors doubted the programme’s <strong>______</strong> (reliability).</label></div><div class="ex-item"><span class="ex-num">35.</span><label>Algorithms magnified existing <strong>______</strong> (prejudices).</label></div></div>
+<div class="card"><p><strong>Yes / No / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Does it agree with the writer? See Answer Key.</p><div class="ex-item"><span class="ex-num">36.</span><label>Stuart Russell’s proposals are impractical. → <strong>NO</strong> (the writer supports him)</label></div><div class="ex-item"><span class="ex-num">38.</span><label>AI protection is always considered when systems are set up. → <strong>NO</strong> ("often overlooked")</label></div><div class="ex-item"><span class="ex-num">39.</span><label>We must explore people’s concerns about AI use. → <strong>YES</strong></label></div></div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">"AI solutionism" is the belief that AI can…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. solve all human problems</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. never be trusted</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. replace the internet</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'A')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">"Sensationalist" news is designed to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. inform calmly</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. shock or excite</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. stay neutral</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The writer says AI solutionism actually … the value of machine intelligence.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. increases</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. jeopardises</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. ignores nothing about</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">A big problem in the public sector is a lack of suitable…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. data infrastructure</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. offices</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. electricity</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">"Burgeoning" means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. shrinking</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. growing quickly</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. failing</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">An "adversarial attack" is when one AI…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. helps another AI</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. targets another AI to misbehave</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. shuts itself down</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">IBM Watson for Oncology was abandoned mainly because experts…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. found it too cheap</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. found it hard to trust</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. loved it too much</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">US sentencing algorithms were dropped because they…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. were too slow</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. amplified racial discrimination</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. cost too much</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The writer’s attitude to AI hype is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. enthusiastic</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. sceptical</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. indifferent</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The best subtitle for the passage is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. How to make the most of AI</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Why AI may not be the answer to our problems</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Why governments should never use AI</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q27–40)</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">B</div><div class="answer-note">para 1 describes a public perception of AI.</div></div></div><div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">para 2 points out a risk of AI solutionism.</div></div></div><div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">C</div><div class="answer-note">politicians are unaware of the challenges of implementing national AI initiatives.</div></div></div><div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">F</div><div class="answer-note">neural networks won’t automatically promote equality/fairness.</div></div></div><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">G</div><div class="answer-note">the necessary data framework.</div></div></div><div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">H</div><div class="answer-note">each person needs confidentiality clearance/permission.</div></div></div><div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">C</div><div class="answer-note">few staff have the skills.</div></div></div><div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">A</div><div class="answer-note">experts doubted its reliability.</div></div></div><div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">D</div><div class="answer-note">algorithms magnified existing prejudices.</div></div></div><div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">NO</div><div class="answer-note">the writer supports Russell — his proposals are not impractical.</div></div></div><div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no comment on unfair criticism of Brooks.</div></div></div><div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">NO</div><div class="answer-note">AI security is "often overlooked", not always considered.</div></div></div><div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">YES</div><div class="answer-note">we must discuss distrust/concerns about ML.</div></div></div><div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">B</div><div class="answer-note">"Why AI may not be the answer to our problems".</div></div></div></div><div class="answer-section"><h3>Skills — MCQ / Summary / Y-N-NG</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">G (framework)</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">C (skills)</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">A (reliability)</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">D (prejudices)</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">NO</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">NO</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">YES</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">while / given / for</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">framework, confidentiality, skills, reliability</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">jeopardise, burgeoning, amplify, susceptible</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 2 — Reading Passage 2 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 2</span>
+  <span class="sep">›</span><span>Reading Passage 2</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 2</div>
+  <h1>Cambridge IELTS 21 — Test 2 — Reading Passage 2</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage describes <strong>Mapungubwe</strong>, an early southern African kingdom that flourished between the 11th and 13th centuries. It covers its farming and cattle wealth, its layout and burials, its long-distance <strong>trade</strong> (glass beads from India, gold and ivory), its pottery and gold artefacts, and its eventual <strong>decline</strong>.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 2 uses <strong>paragraph-matching (A–G)</strong>, a "choose TWO" question, and summary completion. For paragraph matching, the ideas are paraphrased and appear in <em>any</em> order — scan for the specific detail, not matching words.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">flourish</span></td><td><span class="pos">v.</span></td><td>to grow and be successful</td><td class="zh">繁荣</td><td>"The kingdom <em>flourished</em> for two centuries."</td><td class="note">= thrive / prosper</td></tr><tr><td><span class="word">plateau</span></td><td><span class="pos">n.</span></td><td>a large area of high, flat land</td><td class="zh">高原</td><td>"A sandstone <em>plateau</em> was easily defended."</td><td class="note">Geography noun</td></tr><tr><td><span class="word">surplus</span></td><td><span class="pos">n.</span></td><td>an amount more than is needed</td><td class="zh">剩余</td><td>"A food <em>surplus</em> could be traded."</td><td class="note">+ of</td></tr><tr><td><span class="word">herding</span></td><td><span class="pos">n.</span></td><td>the keeping and moving of animals</td><td class="zh">放牧</td><td>"Cattle <em>herding</em> brought food and power."</td><td class="note">From verb "herd"</td></tr><tr><td><span class="word">cultivation</span></td><td><span class="pos">n.</span></td><td>the growing of crops</td><td class="zh">种植</td><td>"Cotton <em>cultivation</em> and weaving developed."</td><td class="note">+ of</td></tr><tr><td><span class="word">enclosure</span></td><td><span class="pos">n.</span></td><td>an area surrounded by a wall/fence</td><td class="zh">围地</td><td>"The king lived in a stone <em>enclosure</em>."</td><td class="note">+ of</td></tr><tr><td><span class="word">predate</span></td><td><span class="pos">v.</span></td><td>to exist earlier than</td><td class="zh">早于</td><td>"The settlement <em>predates</em> the hilltop structures."</td><td class="note">= come before</td></tr><tr><td><span class="word">demarcated</span></td><td><span class="pos">adj.</span></td><td>clearly marked off</td><td class="zh">划定的</td><td>"Kings were buried in a <em>demarcated</em> area."</td><td class="note">= set apart</td></tr><tr><td><span class="word">ivory</span></td><td><span class="pos">n.</span></td><td>the hard white material of tusks</td><td class="zh">象牙</td><td>"<em>Ivory</em> tusks were accumulated for trade."</td><td class="note">Trade good</td></tr><tr><td><span class="word">monopolise</span></td><td><span class="pos">v.</span></td><td>to control something completely</td><td class="zh">垄断</td><td>"Rulers sought to <em>monopolise</em> trade links."</td><td class="note">US: monopolize</td></tr><tr><td><span class="word">lucrative</span></td><td><span class="pos">adj.</span></td><td>producing a lot of money</td><td class="zh">利润丰厚的</td><td>"<em>Lucrative</em> interregional connections."</td><td class="note">= profitable</td></tr><tr><td><span class="word">prosperity</span></td><td><span class="pos">n.</span></td><td>the state of being wealthy</td><td class="zh">繁荣</td><td>"Pottery indicates the <em>prosperity</em> of society."</td><td class="note">Answer word (Q22)</td></tr><tr><td><span class="word">figurines</span></td><td><span class="pos">n.</span></td><td>small carved or moulded figures</td><td class="zh">小雕像</td><td>"Animal <em>figurines</em> were found."</td><td class="note">Archaeology term</td></tr><tr><td><span class="word">intrinsic</span></td><td><span class="pos">adj.</span></td><td>belonging naturally; essential</td><td class="zh">固有的</td><td>"Gold had an <em>intrinsic</em> value of its own."</td><td class="note">+ value</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at its heart</span></td><td>at its centre</td><td class="zh">在其核心</td></tr><tr><td><span class="phrase">due to</span></td><td>because of</td><td class="zh">由于</td></tr><tr><td><span class="phrase">at its peak</span></td><td>at its highest point</td><td class="zh">在其鼎盛期</td></tr><tr><td><span class="phrase">dotted around</span></td><td>spread here and there</td><td class="zh">零星分布</td></tr><tr><td><span class="phrase">act as</span></td><td>to function as</td><td class="zh">充当</td></tr><tr><td><span class="phrase">benefit from</span></td><td>to gain advantage from</td><td class="zh">受益于</td></tr><tr><td><span class="phrase">as opposed to</span></td><td>in contrast to</td><td class="zh">而非</td></tr><tr><td><span class="phrase">placed too much stress on</span></td><td>put too much pressure on</td><td class="zh">给…过大压力</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"The area controlled by the rulers of Mapungubwe had at its heart a large sandstone plateau, which was easily defended due to its inaccessibility."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The area … had at its heart a large sandstone plateau</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">which was easily defended due to its inaccessibility (relative clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"controlled by the rulers" is a reduced relative describing "area". "which" adds information; "due to" = because of.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">At the centre of the kingdom was a big sandstone plateau that was hard to reach and so easy to defend.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">马蓬古布韦统治者所控制的地区，其核心是一大片砂岩高原，因难以到达而易于防守。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Archaeology has revealed extensive layers of bones and manure, which indicate that from the 9th century CE there were large cattle herds, the traditional source of political power in southern African communities."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Archaeology has revealed extensive layers of bones and manure</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">which indicate that … there were large cattle herds (relative) + "the traditional source of political power" (appositive)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"which indicate that …" comments on the finds. The final phrase is an appositive renaming "cattle herds".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Digs found deep layers of bones and dung, showing there were big cattle herds from the 9th century — and cattle meant political power.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">考古发现了大量骨骼和粪便层，表明自公元9世纪起便有大群牛，而牛正是南部非洲社会传统的政治权力来源。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"The presence of glass beads, almost certainly from India, indicate there was trade of some sort with other states on the coast who, in turn, traded with merchants travelling from India by sea."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The presence of glass beads … indicate there was trade … with other states on the coast</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">who, in turn, traded with merchants travelling from India by sea (relative clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"almost certainly from India" is a parenthetical. "who … in turn" shows a chain of trade. "travelling …" is a participle.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Glass beads (very likely Indian) show Mapungubwe traded with coastal states, which themselves traded with Indian sea merchants.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">玻璃珠（几乎可以肯定来自印度）的存在表明，它与沿海各邦有某种贸易，而这些沿海邦又与从印度经海路而来的商人贸易。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"The kingdom of Mapungubwe was already in decline by the late 13th century, probably because overpopulation placed too much stress on local resources, a situation that may have been brought to a crisis point by a series of droughts."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The kingdom of Mapungubwe was already in decline by the late 13th century</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">because overpopulation placed too much stress on local resources … (reason) + "a situation that may have been brought to a crisis point by … droughts" (relative)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"because" gives the cause. "a situation that …" is an appositive + relative clause explaining the result. "may have been" = past possibility.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">By the late 1200s the kingdom was declining, probably because too many people strained resources — a problem droughts may have pushed to crisis.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">到13世纪末，马蓬古布韦王国已经衰落，很可能是因为人口过多给当地资源造成过大压力，而一连串干旱可能把这一局面推向危机。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"A type of decoration, found nowhere else except Great Zimbabwe, involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A type of decoration … involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">found nowhere else except Great Zimbabwe (reduced relative)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"found nowhere else …" = which was found nowhere else. Two gerund phrases ("crafting …", "carving …") name the technique.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">This decoration — seen only here and at Great Zimbabwe — meant shaping gold into small rectangles and carving patterns on them.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">一种除大津巴布韦外别处未见的装饰工艺，是将黄金加工成小长方形薄片，并在其上雕刻几何图案。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Relative Clauses</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the relative pronoun (which/who) that fits.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“a plateau, ______ was easily defended” → <input type="text" class="blank" data-answer="which" placeholder="______" style="width:110px"><span class="feedback" id="fb1"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“other states on the coast ______ traded with merchants” → <input type="text" class="blank" data-answer="who" placeholder="______" style="width:110px"><span class="feedback" id="fb2"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“a situation ______ may have been brought to crisis” → <input type="text" class="blank" data-answer="which" placeholder="______" style="width:110px"><span class="feedback" id="fb3"></span> </label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Summary Completion</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with ONE word from the passage.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>The amount of professional pottery indicates the community’s <input type="text" class="blank" data-answer="prosperity" placeholder="______" style="width:130px"><span class="feedback" id="fb4"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Finds include ceramic discs and <input type="text" class="blank" data-answer="whistles" placeholder="______" style="width:120px"><span class="feedback" id="fb5"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>There are figures of people with stretched <input type="text" class="blank" data-answer="bodies" placeholder="______" style="width:110px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The figures may have honoured <input type="text" class="blank" data-answer="ancestors" placeholder="______" style="width:120px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word for each meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“to grow and be successful” = <input type="text" class="blank" data-answer="flourish" placeholder="______" style="width:110px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“producing a lot of money” = <input type="text" class="blank" data-answer="lucrative" placeholder="______" style="width:120px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“more than is needed” = <input type="text" class="blank" data-answer="surplus" placeholder="______" style="width:110px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“to control completely” = <input type="text" class="blank" data-answer="monopolise" placeholder="______" style="width:130px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Track how wealth, trade and power connect in the argument.</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Cattle herds and farming → a food <em>surplus</em> → goods to trade → stronger political power. And later: overpopulation + droughts → stress on resources → <em>decline</em>. Follow each chain.</div>
+<div class="card"><p><strong>Evidence (archaeology → conclusion)</strong></p>The writer moves from find to inference: bones/manure → large herds; spindle whorls → weaving; glass beads → trade with India; large-scale pottery → professional potters.</div>
+<div class="card"><p><strong>Comparison</strong></p>Gold decoration was "found nowhere else except Great Zimbabwe" — a comparison linking the two kingdoms. Comparisons like this often appear in matching and TWO-letter questions.</div>
+<div class="card"><p><strong>Chronology</strong></p>Dates structure the passage: 9th c. (cattle) → 10th c. (cotton) → 11th c. (hilltop) → mid-13th c. (peak, 5,000 people) → late 13th c. (decline). Use dates to locate answers fast.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the question types used with this passage.</div>
+<div class="card"><p><strong>Which Paragraph Contains … (A–G)</strong></p><p style="color:var(--muted);font-size:.85rem;">Match each idea to a paragraph; answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">14.</span><label>uncertainty about the purpose of certain objects → paragraph <strong>___</strong></label></div><div class="ex-item"><span class="ex-num">15.</span><label>a climatic factor that worsened the kingdom’s problems → paragraph <strong>___</strong></label></div><div class="ex-item"><span class="ex-num">17.</span><label>people who brought goods by ship → paragraph <strong>___</strong></label></div><div class="ex-item"><span class="ex-num">18.</span><label>an estimate of the community’s size → paragraph <strong>___</strong></label></div></div>
+<div class="card"><p><strong>Choose TWO (Q20–21)</strong></p><p style="color:var(--muted);font-size:.85rem;">Which TWO statements about gold are mentioned? See Answer Key.</p><div class="ex-item"><span class="ex-num">B.</span><label>Gold items were placed close to where kings were buried. → <strong>correct</strong></label></div><div class="ex-item"><span class="ex-num">D.</span><label>The gold-decoration method was also used in another kingdom. → <strong>correct</strong></label></div><div class="ex-item"><span class="ex-num">C.</span><label>The most valuable item was a gold sceptre. → <strong>not stated</strong> (only "may have been")</label></div></div>
+<div class="card"><p><strong>Summary Completion (ONE word)</strong></p><p style="color:var(--muted);font-size:.85rem;">Answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">22.</span><label>Professional pottery shows the community’s <strong>______</strong>.</label></div><div class="ex-item"><span class="ex-num">25.</span><label>Figures may have been offerings to <strong>______</strong>.</label></div></div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">"Flourished" means the kingdom…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. declined</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. grew and thrived</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. stayed the same</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The plateau was easy to defend because of its…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. high walls</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. inaccessibility</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. large army</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The traditional source of political power was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. gold</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. cattle herds</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. pottery</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Glass beads found at the site almost certainly came from…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. India</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Egypt</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. China</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">A food "surplus" is an amount that is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. too little</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. more than needed</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. exactly enough</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">At its peak the community had about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. 500 people</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. 5,000 people</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. 50,000 people</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The gold decoration technique was also found only at…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Great Zimbabwe</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. India</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Kosala</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">"Lucrative" trade connections were…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. dangerous</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. very profitable</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. short-lived</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The kingdom declined probably because of overpopulation and…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. war</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. a series of droughts</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. disease</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Gold at Mapungubwe is significant as the first sign that gold had…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. no value</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. an intrinsic value of its own</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. only currency value</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q14–26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">E</div><div class="answer-note">uncertainty about the purpose of figurines ("precise function is not known").</div></div></div><div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">G</div><div class="answer-note">droughts (a climatic factor) worsened the decline.</div></div></div><div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">C</div><div class="answer-note">grander residences of the king’s male relatives.</div></div></div><div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div><div class="answer-note">merchants travelling from India by sea.</div></div></div><div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">B</div><div class="answer-note">population at its peak was around 5,000.</div></div></div><div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">A</div><div class="answer-note">a surplus that could be traded for needed goods.</div></div></div><div class="answer-item"><span class="answer-num">20 &amp; 21</span><div><div class="answer-val">B, D (either order)</div><div class="answer-note">gold placed near royal burials &amp; the decoration method shared with Great Zimbabwe.</div></div></div><div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">prosperity</div><div class="answer-note">pottery indicates the society’s prosperity.</div></div></div><div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">whistles</div><div class="answer-note">ceramic discs and whistles.</div></div></div><div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">bodies</div><div class="answer-note">figures with elongated bodies.</div></div></div><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">ancestors</div><div class="answer-note">offerings to ancestors.</div></div></div><div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">jewellery</div><div class="answer-note">small jewellery items of copper.</div></div></div></div><div class="answer-section"><h3>Skills — Matching / Summary</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">E</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">G</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q20–21</span><div><div class="answer-val">B, D</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">prosperity</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">ancestors</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">which / who / which</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">prosperity, whistles, bodies, ancestors</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">flourish, lucrative, surplus, monopolise</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>
