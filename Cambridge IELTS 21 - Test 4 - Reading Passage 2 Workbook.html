@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 4 — Reading Passage 2 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 4</span>
+  <span class="sep">›</span><span>Reading Passage 2</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 2</div>
+  <h1>Cambridge IELTS 21 — Test 4 — Reading Passage 2</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage reports research led by Professor Ianthi Tsimpli into why <strong>multilingual children in India</strong> do not gain the benefits seen elsewhere. It links low learning outcomes to being taught in an unfamiliar language (often English), and argues children learn best in a language they know — while noting a surprising finding about children from slum backgrounds.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 2 uses <strong>summary completion from a word list</strong>, <strong>YES/NO/NOT GIVEN</strong>, and MCQ. For the word list, match meaning (a paraphrase), not just a similar word. For Y/N/NG, choose NO only when the writer clearly disagrees.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">bustling</span></td><td><span class="pos">adj.</span></td><td>full of busy activity</td><td class="zh">熙攘的</td><td>"The <em>bustling</em> streets of Delhi."</td><td class="note">= lively / busy</td></tr><tr><td><span class="word">teem with</span></td><td><span class="pos">v.</span></td><td>to be full of</td><td class="zh">充满</td><td>"The streets <em>teem with</em> life."</td><td class="note">+ with</td></tr><tr><td><span class="word">multitude</span></td><td><span class="pos">n.</span></td><td>a very large number</td><td class="zh">大量</td><td>"A <em>multitude</em> of languages."</td><td class="note">a multitude of</td></tr><tr><td><span class="word">dominant</span></td><td><span class="pos">adj.</span></td><td>most common or powerful</td><td class="zh">主导的</td><td>"Hindi is the <em>dominant</em> language in Delhi."</td><td class="note">+ language</td></tr><tr><td><span class="word">multilingualism</span></td><td><span class="pos">n.</span></td><td>the use of several languages</td><td class="zh">多语现象</td><td>"India, where <em>multilingualism</em> is common."</td><td class="note">Topic term</td></tr><tr><td><span class="word">overriding</span></td><td><span class="pos">adj.</span></td><td>most important</td><td class="zh">首要的</td><td>"The <em>overriding</em> aim of the project."</td><td class="note">= main / primary</td></tr><tr><td><span class="word">outcome</span></td><td><span class="pos">n.</span></td><td>a result</td><td class="zh">结果</td><td>"Low learning <em>outcomes</em>."</td><td class="note">+ of</td></tr><tr><td><span class="word">disproportionately</span></td><td><span class="pos">adv.</span></td><td>to an unfairly large degree</td><td class="zh">不成比例地</td><td>"…<em>disproportionately</em> affecting girls."</td><td class="note">Formal adverb</td></tr><tr><td><span class="word">medium of instruction</span></td><td><span class="pos">n.</span></td><td>the language used to teach</td><td class="zh">教学媒介语</td><td>"English as the <em>medium of instruction</em>."</td><td class="note">Education phrase</td></tr><tr><td><span class="word">preliminary</span></td><td><span class="pos">adj.</span></td><td>early; not final</td><td class="zh">初步的</td><td>"The findings are at a <em>preliminary</em> stage."</td><td class="note">= early</td></tr><tr><td><span class="word">exposure</span></td><td><span class="pos">n.</span></td><td>the experience of encountering something</td><td class="zh">接触</td><td>"Little <em>exposure</em> to English."</td><td class="note">+ to</td></tr><tr><td><span class="word">uniformity</span></td><td><span class="pos">n.</span></td><td>being all the same</td><td class="zh">一致；千篇一律</td><td>"Too much <em>uniformity</em> in teaching."</td><td class="note">Opposite: variety</td></tr><tr><td><span class="word">unanticipated</span></td><td><span class="pos">adj.</span></td><td>not expected</td><td class="zh">未预料的</td><td>"An <em>unanticipated</em> finding."</td><td class="note">= unexpected</td></tr><tr><td><span class="word">deprivation</span></td><td><span class="pos">n.</span></td><td>lack of basic things</td><td class="zh">匮乏</td><td>"The challenging context of <em>deprivation</em>."</td><td class="note">= hardship</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">go about their daily lives</span></td><td>to do their everyday activities</td><td class="zh">过日常生活</td></tr><tr><td><span class="phrase">in the hope of</span></td><td>wanting / expecting</td><td class="zh">希望</td></tr><tr><td><span class="phrase">let alone</span></td><td>and certainly not</td><td class="zh">更不用说</td></tr><tr><td><span class="phrase">drop out of school</span></td><td>to leave school early</td><td class="zh">辍学</td></tr><tr><td><span class="phrase">hold back</span></td><td>to prevent progress</td><td class="zh">阻碍</td></tr><tr><td><span class="phrase">lag behind</span></td><td>to fall behind others</td><td class="zh">落后</td></tr><tr><td><span class="phrase">be down to</span></td><td>to be caused by</td><td class="zh">归因于</td></tr><tr><td><span class="phrase">bridge … with …</span></td><td>to connect two things</td><td class="zh">衔接</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"Stop to listen and, above the din of rickshaws and buses, you’ll hear a multitude of languages, as more than 20 million people go about their daily lives."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">you’ll hear a multitude of languages</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">as more than 20 million people go about their daily lives (reason/time)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"Stop to listen and …" is an imperative + result. "above the din of …" = louder than the noise of. "as" = while.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If you stop and listen over the traffic noise, you’ll hear many languages while millions go about their day.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">停下来倾听，在人力车和公交车的喧嚣之上，你会听到多种语言，与此同时两千多万人正过着他们的日常生活。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"She explains that low educational achievement can lead to many of these students dropping out of school — a problem disproportionately affecting female students."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">low educational achievement can lead to many of these students dropping out of school</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">a problem disproportionately affecting female students (appositive)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"lead to somebody doing" = cause them to do. The dash adds an appositive commenting on the problem.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Poor results can make many students leave school early — and this happens far more to girls.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">她解释说，学业成绩差会导致许多学生辍学——这一问题对女生的影响尤为严重。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Tsimpli and her team have found that the medium of instruction used in schools, especially English, may hold back those children who have little familiarity with, or exposure to, the language before starting school."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Tsimpli and her team have found that the medium of instruction … may hold back those children</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">who have little familiarity with, or exposure to, the language before starting school (relative clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"found that …" reports a finding. "who …" describes the children. "familiarity with / exposure to" both take objects.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The team found that teaching in English can hold back children who barely knew the language before school.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">茨姆普利及其团队发现，学校采用的教学语言（尤其是英语）可能会拖累那些入学前对该语言几乎不熟悉、也很少接触的孩子。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"An unanticipated finding has been that children from slum backgrounds do not seem to lag behind children from other urban poor backgrounds — and in some cases outperform them."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">An unanticipated finding has been that children from slum backgrounds do not seem to lag behind …</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">and in some cases outperform them (coordinated clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"finding has been that …" reports the result. "do not lag behind" = are not worse; "outperform" = do better.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Surprisingly, slum children are not behind other poor urban children — and sometimes do better.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">一个未曾预料的发现是：来自贫民窟背景的孩子似乎并不落后于其他城市贫困背景的孩子——有时甚至表现更好。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"The trick may be to bridge school skills with life skills and make use of the richness of a child’s life experience to help them learn in the most effective ways possible."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The trick may be to bridge school skills with life skills and make use of the richness of a child’s life experience</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">to help them learn in the most effective ways possible (infinitive of purpose)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"The trick may be to …" proposes a solution. "bridge A with B" = connect them. "to help …" states the purpose.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The key may be to connect school skills with life skills, using a child’s real experience to help them learn best.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">诀窍或许在于把学校技能与生活技能衔接起来，并利用孩子丰富的生活经验，帮助他们以最有效的方式学习。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Linking Words</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the word/phrase that fits the logic.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“22 languages, ______ ______ hundreds of regional ones” (and certainly not, 2 words) <input type="text" class="blank" data-answer="let alone" placeholder="______" style="width:120px"><span class="feedback" id="fb1"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“taught in English ______ they barely know it” (although) <input type="text" class="blank" data-answer="although" placeholder="______" style="width:120px"><span class="feedback" id="fb2"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“the finding may be ______ ______ their life experience” (caused by, 2 words) <input type="text" class="blank" data-answer="down to" placeholder="______" style="width:110px"><span class="feedback" id="fb3"></span> </label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Summary (word list)</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with a word that fits the meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>Delhi has a very dense <input type="text" class="blank" data-answer="population" placeholder="______" style="width:130px"><span class="feedback" id="fb4"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The main aim, or primary <input type="text" class="blank" data-answer="objective" placeholder="______" style="width:120px"><span class="feedback" id="fb5"></span> , is to find out why.</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>They come seeking better employment <input type="text" class="blank" data-answer="opportunities" placeholder="______" style="width:150px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Slum children do not <input type="text" class="blank" data-answer="lag" placeholder="______" style="width:110px"><span class="feedback" id="fb7"></span> behind others.</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word for each meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“most important” = <input type="text" class="blank" data-answer="overriding" placeholder="______" style="width:120px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“the language used to teach” (1 word) = <input type="text" class="blank" data-answer="medium" placeholder="______" style="width:110px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“being all the same” = <input type="text" class="blank" data-answer="uniformity" placeholder="______" style="width:120px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“not expected” = <input type="text" class="blank" data-answer="unanticipated" placeholder="______" style="width:130px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Follow the research argument from problem to recommendation.</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Being taught in an unfamiliar language (often English) → low learning outcomes → dropping out (especially girls). The proposed cause is the language of instruction, not the children’s ability.</div>
+<div class="card"><p><strong>Contrast</strong></p>Europe vs India: multilingual children in Europe gain benefits that many Indian children do not. The passage asks why this difference exists.</div>
+<div class="card"><p><strong>Unexpected Finding</strong></p>Against expectations, slum children do NOT lag behind other urban poor children and sometimes outperform them — possibly because they mature faster and use numeracy for daily survival.</div>
+<div class="card"><p><strong>Recommendation</strong></p>Tsimpli recommends starting in a language children are comfortable in; English can be taught as a subject rather than as the medium of instruction. Note the stance for Y/N/NG questions.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>Summary from a Word List (A–J)</strong></p><p style="color:var(--muted);font-size:.85rem;">Choose the best word; see Answer Key.</p><div class="ex-item"><span class="ex-num">14.</span><label>Delhi has a <strong>______</strong> (dense population).</label></div><div class="ex-item"><span class="ex-num">15.</span><label>Many people are <strong>______</strong> (new immigrants).</label></div><div class="ex-item"><span class="ex-num">17.</span><label>They seek improved <strong>______</strong> (employment opportunities).</label></div><div class="ex-item"><span class="ex-num">18.</span><label>The <strong>______</strong> (primary objective) of the research.</label></div></div>
+<div class="card"><p><strong>Yes / No / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Does it agree with the writer’s claims? See Answer Key.</p><div class="ex-item"><span class="ex-num">22.</span><label>The team wanted to know if poor performance is linked to being taught in an unfamiliar language. → <strong>YES</strong></label></div><div class="ex-item"><span class="ex-num">23.</span><label>They decided NOT to investigate teaching methods. → <strong>NO</strong> (they will look at teaching practices)</label></div></div>
+<div class="card"><p><strong>Multiple Choice</strong></p><p style="color:var(--muted);font-size:.85rem;">See Answer Key.</p><div class="ex-item"><span class="ex-num">24.</span><label>About primary schools: poor children may be <strong>disadvantaged further by being taught in English</strong>. → <strong>C</strong></label></div><div class="ex-item"><span class="ex-num">25.</span><label>"That ship has sailed" = it is <strong>too late to remove English completely</strong>. → <strong>D</strong></label></div></div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Hindi is described as the … language in Delhi.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. dominant</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. forbidden</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. rare</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'A')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The research is led by Professor Ianthi Tsimpli of … University.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Delhi</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Cambridge</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Oxford</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">"Multitude of languages" means a … of languages.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. large number</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. small number</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. shortage</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Low educational achievement can lead to students…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. dropping out</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. moving abroad</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. changing subject</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">This problem affects … students disproportionately.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. male</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. female</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. older</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Being taught in English may … children unfamiliar with it.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. help</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. hold back</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. excite</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">A surprising finding is that slum children do not … other urban poor children.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. lag behind</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. look like</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. live near</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Tsimpli recommends children start learning in a language they…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. are comfortable in</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. have never heard</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. find hardest</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">"That ship has sailed" suggests it is too late to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. remove English completely</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. build new schools</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. test the children</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The writer’s overall message is that low outcomes are…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. inevitable for poor children</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. linked to the language of instruction</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. due to laziness</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q14–26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">I — dense population</div><div class="answer-note">Delhi has a dense population.</div></div></div><div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">J — new immigrants</div><div class="answer-note">many are recent arrivals.</div></div></div><div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">H — nearby district</div><div class="answer-note">from a nearby district or far away.</div></div></div><div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">B — employment opportunities</div><div class="answer-note">they seek better jobs.</div></div></div><div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">E — primary objective</div><div class="answer-note">the overriding aim of the project.</div></div></div><div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">F — similar advantages</div><div class="answer-note">benefits like those in Europe.</div></div></div><div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no clear claim comparing literacy vs numeracy performance.</div></div></div><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no mention of problems convincing female students to take part.</div></div></div><div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">YES</div><div class="answer-note">they investigate the link between performance and unfamiliar language.</div></div></div><div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">NO</div><div class="answer-note">they WILL examine teaching practices.</div></div></div><div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">C</div><div class="answer-note">poor children may be disadvantaged by English instruction.</div></div></div><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">D</div><div class="answer-note">"that ship has sailed" = too late to remove English completely.</div></div></div><div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">D</div><div class="answer-note">slum children’s literacy/numeracy is not lower than other urban poor children.</div></div></div></div><div class="answer-section"><h3>Skills — Summary / Y-N-NG / MCQ</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">I</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">J</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">E</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">YES</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">NO</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">C</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">D</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">let alone / although / down to</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">population, objective, opportunities, lag</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">overriding, medium, uniformity, unanticipated</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>
