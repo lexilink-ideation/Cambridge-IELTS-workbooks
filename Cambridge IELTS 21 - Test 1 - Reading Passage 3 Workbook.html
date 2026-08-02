@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 1 — Reading Passage 3 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 1</span>
+  <span class="sep">›</span><span>Reading Passage 3</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 3</div>
+  <h1>Cambridge IELTS 21 — Test 1 — Reading Passage 3</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This is a <strong>book review</strong> of Ulbe Bosma’s <em>The World of Sugar</em>, a global history of sugar. It discusses cane and beet sugar, changing trade in Britain, the labour used to grow sugar, the influence of sugar corporations on politics, the industrial processes involved, and the modern rise in consumption and its harm to health.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 3 is the hardest, with abstract argument and <strong>YES/NO/NOT GIVEN</strong> about the writer’s views. Distinguish the <em>reviewer’s opinion</em> from what the <em>book</em> reports. For MCQ about a paragraph, read the whole paragraph before choosing.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">subsidise</span></td><td><span class="pos">v.</span></td><td>to support with government money</td><td class="zh">补贴</td><td>"Beet sugar has been heavily <em>subsidised</em>."</td><td class="note">US spelling: subsidize</td></tr><tr><td><span class="word">livelihood</span></td><td><span class="pos">n.</span></td><td>a way of earning money to live</td><td class="zh">生计</td><td>"Low prices threaten producers’ <em>livelihood</em>."</td><td class="note">= means of living</td></tr><tr><td><span class="word">abolition</span></td><td><span class="pos">n.</span></td><td>the official ending of something</td><td class="zh">废除</td><td>"After the <em>abolition</em> of slavery, trade shifted."</td><td class="note">+ of</td></tr><tr><td><span class="word">plantation</span></td><td><span class="pos">n.</span></td><td>a large estate growing one crop</td><td class="zh">种植园</td><td>"Sugar came from colonial <em>plantations</em>."</td><td class="note">Historical term</td></tr><tr><td><span class="word">labour-intensive</span></td><td><span class="pos">adj.</span></td><td>needing a lot of human work</td><td class="zh">劳动密集型</td><td>"Growing cane with rice was <em>labour-intensive</em>."</td><td class="note">Hyphenated</td></tr><tr><td><span class="word">dynasty</span></td><td><span class="pos">n.</span></td><td>a powerful family lasting many years</td><td class="zh">王朝；世家</td><td>"Sugar <em>dynasties</em> influenced politics."</td><td class="note">Figurative use here</td></tr><tr><td><span class="word">bourgeoisie</span></td><td><span class="pos">n.</span></td><td>the wealthy business/middle class</td><td class="zh">资产阶级</td><td>"A powerful sugar <em>bourgeoisie</em> shaped policy."</td><td class="note">French-origin term</td></tr><tr><td><span class="word">trade barriers</span></td><td><span class="pos">n.</span></td><td>rules that limit imports/exports</td><td class="zh">贸易壁垒</td><td>"Their interests were protected by <em>trade barriers</em>."</td><td class="note">Economics phrase</td></tr><tr><td><span class="word">extraction</span></td><td><span class="pos">n.</span></td><td>the process of removing something</td><td class="zh">提取</td><td>"Sugar production involved <em>extraction</em> of sucrose."</td><td class="note">+ of</td></tr><tr><td><span class="word">refinement</span></td><td><span class="pos">n.</span></td><td>the process of making something pure</td><td class="zh">提炼</td><td>"Separating sugar is called <em>refinement</em>."</td><td class="note">Process noun</td></tr><tr><td><span class="word">energy-intensive</span></td><td><span class="pos">adj.</span></td><td>using a large amount of energy</td><td class="zh">高能耗的</td><td>"Sugar production was <em>energy-intensive</em>."</td><td class="note">Hyphenated adjective</td></tr><tr><td><span class="word">diffusion</span></td><td><span class="pos">n.</span></td><td>the spread of something</td><td class="zh">传播</td><td>"Rapid <em>diffusion</em> of ideas across countries."</td><td class="note">= spreading</td></tr><tr><td><span class="word">ubiquitous</span></td><td><span class="pos">adj.</span></td><td>found everywhere</td><td class="zh">无处不在的</td><td>"Sugar became a <em>ubiquitous</em> chemical."</td><td class="note">High-level adjective</td></tr><tr><td><span class="word">obstruction</span></td><td><span class="pos">n.</span></td><td>the act of deliberately blocking something</td><td class="zh">阻挠</td><td>"The industry’s <em>obstruction</em> delayed sugar taxes."</td><td class="note">+ from / to</td></tr><tr><td><span class="word">obesity</span></td><td><span class="pos">n.</span></td><td>the condition of being very overweight</td><td class="zh">肥胖</td><td>"Corn syrup is a leading cause of <em>obesity</em>."</td><td class="note">Health noun</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">give a sense of</span></td><td>to provide an impression of</td><td class="zh">让人体会到</td></tr><tr><td><span class="phrase">contrary to popular belief</span></td><td>differently from what people think</td><td class="zh">与普遍看法相反</td></tr><tr><td><span class="phrase">play a major role in</span></td><td>to be very important in</td><td class="zh">起重要作用</td></tr><tr><td><span class="phrase">come off worse</span></td><td>to end up in a worse position</td><td class="zh">处于下风</td></tr><tr><td><span class="phrase">close to</span></td><td>near to</td><td class="zh">靠近</td></tr><tr><td><span class="phrase">in accordance with</span></td><td>following / matching</td><td class="zh">按照</td></tr><tr><td><span class="phrase">in the face of</span></td><td>despite; when confronted by</td><td class="zh">面对</td></tr><tr><td><span class="phrase">depend on … to make a living</span></td><td>to rely on for income</td><td class="zh">靠…谋生</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"Following the abolition of slavery in the British Empire, cane sugar was imported to Britain from places which retained the practice, such as Cuba and Brazil."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">cane sugar was imported to Britain</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">which retained the practice, such as Cuba and Brazil (relative clause) + "Following the abolition …" (participial time phrase)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"Following …" = after. "which retained the practice" describes "places". Passive: "was imported".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">After Britain ended slavery, it still bought cane sugar from countries like Cuba and Brazil that had NOT ended it.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">大英帝国废除奴隶制后，英国仍从古巴、巴西等仍保留该做法的地方进口蔗糖。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">cane sugar production was never just restricted to large, dedicated plantations</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">owned by rich men (reduced relative = which were owned by rich men)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"Contrary to popular belief" flags a misconception. "owned by …" is a reduced relative clause.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Unlike what many think, cane sugar was not only grown on big plantations belonging to wealthy men.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与普遍看法相反，蔗糖生产从来不只限于富人拥有的大型专用种植园。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"In the face of appalling obstruction from the sugar industry to attempts to reduce consumption, some countries have been forced to tax sugar in order to bring that about."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">some countries have been forced to tax sugar</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">In the face of appalling obstruction … (adverbial) + in order to bring that about (purpose)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"In the face of" = despite. "in order to bring that about" states the purpose (= to reduce consumption).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Even though the sugar industry fought hard against cutting consumption, some countries had to tax sugar to achieve it.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">面对糖业对减少消费的强烈阻挠，一些国家不得不对糖征税以实现这一目标。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"High-fructose corn syrup made from maize using an enzymatic process invented in Japan in the 1960s has a similar number of calories to table sugar but is far cheaper to produce."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">High-fructose corn syrup … has a similar number of calories to table sugar but is far cheaper to produce</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">made from maize using an enzymatic process invented in Japan in the 1960s (two reduced relatives)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Long subject with stacked reduced relatives ("made …", "invented …"). "but" contrasts calories vs. cost.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Corn syrup, made from maize by a Japanese method from the 1960s, has about the same calories as sugar but costs much less to make.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">高果糖玉米糖浆用玉米经日本1960年代发明的酶法制成，热量与食糖相近，但生产成本低得多。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Bosma avoids outbursts of emotion, celebratory or critical, even if they might have made his analysis of the multiple tragedies involving sugar all the more powerful."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Bosma avoids outbursts of emotion</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">even if they might have made his analysis … all the more powerful (concession)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"even if" = although possibly. "all the more" = even more. "celebratory or critical" describes the emotions.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Bosma stays calm and unemotional, although showing feeling might have made his account of sugar’s tragedies even stronger.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">博斯玛避免情绪化的表达（无论褒贬），尽管那样也许会让他对糖的种种悲剧的分析更有力。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Reduced Relatives</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the full relative pronoun (which/who) that has been left out.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“plantations ___ owned by rich men” → plantations <input type="text" class="blank" data-answer="which" placeholder="______" style="width:110px"><span class="feedback" id="fb1"></span> were owned by rich men.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“a process ___ invented in Japan” → a process <input type="text" class="blank" data-answer="which" placeholder="______" style="width:110px"><span class="feedback" id="fb2"></span> was invented in Japan.</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“places ___ retained the practice” → here the pronoun is kept: <input type="text" class="blank" data-answer="which" placeholder="______" style="width:110px"><span class="feedback" id="fb3"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with a word from the passage.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>Government money that supports an industry is a <input type="text" class="blank" data-answer="subsidy" placeholder="______" style="width:120px"><span class="feedback" id="fb4"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>A way of earning money to live is a <input type="text" class="blank" data-answer="livelihood" placeholder="______" style="width:130px"><span class="feedback" id="fb5"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Found everywhere = <input type="text" class="blank" data-answer="ubiquitous" placeholder="______" style="width:130px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The official ending of slavery is its <input type="text" class="blank" data-answer="abolition" placeholder="______" style="width:120px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Linking Logic</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the linking phrase that signals the meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“______ popular belief, cane wasn’t only grown on big plantations.” (correcting a myth) <input type="text" class="blank" data-answer="contrary to" placeholder="______" style="width:150px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“______ the face of obstruction, countries taxed sugar.” (despite) <input type="text" class="blank" data-answer="in" placeholder="______" style="width:90px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“Bosma avoids emotion ______ it might have been more powerful.” (although possibly) <input type="text" class="blank" data-answer="even if" placeholder="______" style="width:110px"><span class="feedback" id="fb10"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Passage 3 is built from argument and evaluation — follow the reasoning.</div>
+<div class="card"><p><strong>Contrast &amp; Correction</strong></p>“Contrary to popular belief …” signals the writer correcting a common myth (cane sugar was NOT only from big plantations). Watch for these to answer “what is the writer doing?” questions.</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Beet sugar is <em>subsidised</em> → sold at artificially low prices → <em>threatens</em> the livelihood of cane producers. And rising consumption → more harm to teeth and weight. Trace each chain.</div>
+<div class="card"><p><strong>Chronology</strong></p>Britain’s sugar sources change over time: own colonies → Cuba/Brazil after abolition → beet from Europe (late 1800s) → national beet industry (1900s). Time order underlies the Q28 answer.</div>
+<div class="card"><p><strong>Writer’s Stance</strong></p>The review is warm about the book (“wonderfully rich”, “a model of global history”) while its overall message is that sugar is harmful and unnecessary. Separate praise of the <em>book</em> from claims about <em>sugar</em> for YES/NO/NOT GIVEN.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>Multiple Choice (paragraph focus)</strong></p><p style="color:var(--muted);font-size:.85rem;">Answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">27.</span><label>Paragraph 1 suggests beet sugar has been made more internationally <strong>competitive</strong> (through subsidy). → <strong>B</strong></label></div><div class="ex-item"><span class="ex-num">28.</span><label>On Britain, the reviewer stresses how the <strong>sources used changed over time</strong>. → <strong>A</strong></label></div><div class="ex-item"><span class="ex-num">29.</span><label>In paragraph 3 the reviewer is <strong>correcting a misconception</strong> about growing cane. → <strong>C</strong></label></div><div class="ex-item"><span class="ex-num">30.</span><label>The book’s overall message: sugar is <strong>harmful and unnecessary</strong>. → <strong>A</strong></label></div></div>
+<div class="card"><p><strong>Yes / No / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Does the statement agree with the writer’s views? See Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>The book would be stronger if Bosma had shown more emotion. (writer’s view) → <strong>YES</strong></label></div><div class="ex-item"><span class="ex-num">2.</span><label>High-fructose corn syrup tastes better than sugar. → <strong>NOT GIVEN</strong></label></div><div class="ex-item"><span class="ex-num">3.</span><label>Poor countries benefited most from the sugar trade. → <strong>NO</strong> (they “came off worse”)</label></div></div>
+<div class="card"><p><strong>Vocabulary Matching</strong></p>Match “found everywhere” → <em>ubiquitous</em>; “deliberate blocking” → <em>obstruction</em>; “support with public money” → <em>subsidise</em>; “way of earning a living” → <em>livelihood</em>.</div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">"Subsidise" an industry means to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. tax it heavily</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. support it with government money</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. ban it</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Beet sugar’s low prices "threaten the livelihood" of cane producers — livelihood means their…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. health</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. way of earning a living</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. free time</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">"Contrary to popular belief" signals that the writer is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. agreeing with everyone</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. correcting a common idea</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. giving an example</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">In Java, sugar cane was grown together with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. rice</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. wheat</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. coffee</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">"Ubiquitous" means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. rare</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. found everywhere</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. expensive</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Some countries tax sugar in order to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. increase consumption</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. reduce consumption</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. help farmers</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">High-fructose corn syrup is compared to table sugar as having similar calories but being…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. cheaper to produce</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. sweeter</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. healthier</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">In the struggle to control the industry, it was usually the … that came off worse.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. rich corporations</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. poor countries</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. European farmers</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The reviewer’s opinion of Bosma’s book is that it is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. weak and biased</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. wonderfully rich</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. too emotional</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The overall message the reviewer draws is that sugar is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. essential to life</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. harmful and unnecessary</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. always cheap</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q27–40)</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">B</div><div class="answer-note">Para 1: beet sugar made competitive through heavy subsidy.</div></div></div><div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">Para 2: how the sources Britain used changed over time.</div></div></div><div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">C</div><div class="answer-note">Para 3: correcting a misconception about growing cane.</div></div></div><div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">A</div><div class="answer-note">Final para: sugar is harmful and unnecessary.</div></div></div><div class="answer-item"><span class="answer-num">31–36</span><div><div class="answer-val">matching (labour, continuity, capitalists, processes, spread, health)</div><div class="answer-note">follow the paragraph topics.</div></div></div><div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">YES</div><div class="answer-note">the writer implies emotion might have made the analysis "all the more powerful".</div></div></div><div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no comparison of taste is made.</div></div></div><div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">NO</div><div class="answer-note">poor countries "came off worse" — they did not benefit most.</div></div></div><div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">YES</div><div class="answer-note">many of the poorest still "depend on it to make a living".</div></div></div></div><div class="answer-section"><h3>Skills — MCQ &amp; Y/N/NG</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">C</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Y/N/NG 1</span><div><div class="answer-val">YES</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Y/N/NG 2</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Y/N/NG 3</span><div><div class="answer-val">NO</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">which (all three)</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">subsidy, livelihood, ubiquitous, abolition</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">contrary to / in / even if</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

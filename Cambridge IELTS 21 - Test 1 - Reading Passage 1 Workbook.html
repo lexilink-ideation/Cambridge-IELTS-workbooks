@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 1 — Reading Passage 1 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 1</span>
+  <span class="sep">›</span><span>Reading Passage 1</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 1</div>
+  <h1>Cambridge IELTS 21 — Test 1 — Reading Passage 1</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage tells the story of <strong>Gwendoline and Margaret Davies</strong>, two wealthy Welsh sisters who, between 1908 and 1924, built one of Britain’s largest collections of French Impressionist paintings. It describes their background, how their collecting developed, the effect of the First World War, and the cultural legacy they left to the National Museum Wales.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 1 is usually the most straightforward. For <strong>note/summary completion</strong>, copy the exact word from the text. For <strong>True/False/Not Given</strong>, choose FALSE only if the text <em>contradicts</em> the statement, and NOT GIVEN if the text simply says nothing about it.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">amass</span></td><td><span class="pos">v.</span></td><td>to gather a large amount of something</td><td class="zh">积累</td><td>"They <em>amassed</em> a huge art collection."</td><td class="note">Formal synonym of "collect / build up"</td></tr><tr><td><span class="word">inheritance</span></td><td><span class="pos">n.</span></td><td>money or property received from someone who died</td><td class="zh">遗产</td><td>"She came into her <em>inheritance</em> in 1907."</td><td class="note">Key for Q about wealth</td></tr><tr><td><span class="word">philanthropic</span></td><td><span class="pos">adj.</span></td><td>giving money to help others</td><td class="zh">慈善的</td><td>"They used their wealth for <em>philanthropic</em> purposes."</td><td class="note">Glossed in the passage</td></tr><tr><td><span class="word">upbringing</span></td><td><span class="pos">n.</span></td><td>the way a child is raised</td><td class="zh">教养</td><td>"Their religious <em>upbringing</em> shaped their values."</td><td class="note">Links to childhood influence</td></tr><tr><td><span class="word">governess</span></td><td><span class="pos">n.</span></td><td>a woman employed to teach children at home</td><td class="zh">家庭女教师</td><td>"Their <em>governess</em> took them to galleries."</td><td class="note">Older word for private tutor</td></tr><tr><td><span class="word">coincide</span></td><td><span class="pos">v.</span></td><td>to happen at the same time</td><td class="zh">同时发生</td><td>"Purchases <em>coincided</em> with their inheritance."</td><td class="note">+ with</td></tr><tr><td><span class="word">retain</span></td><td><span class="pos">v.</span></td><td>to keep</td><td class="zh">保留</td><td>"They <em>retained</em> an active role in choosing art."</td><td class="note">= keep / maintain</td></tr><tr><td><span class="word">preference</span></td><td><span class="pos">n.</span></td><td>a liking for one thing over another</td><td class="zh">偏好</td><td>"Their journals reveal a <em>preference</em> for Old Masters."</td><td class="note">+ for</td></tr><tr><td><span class="word">humanitarian</span></td><td><span class="pos">adj.</span></td><td>concerned with reducing human suffering</td><td class="zh">人道主义的</td><td>"A <em>humanitarian</em> act to help artists."</td><td class="note">Positive attitude word</td></tr><tr><td><span class="word">tedious</span></td><td><span class="pos">adj.</span></td><td>boring and tiring</td><td class="zh">乏味的</td><td>"The canteen work was <em>tedious</em>."</td><td class="note">= dull / wearisome</td></tr><tr><td><span class="word">distressing</span></td><td><span class="pos">adj.</span></td><td>causing worry or sadness</td><td class="zh">令人痛苦的</td><td>"It was <em>distressing</em> work."</td><td class="note">Negative feeling</td></tr><tr><td><span class="word">acquire</span></td><td><span class="pos">v.</span></td><td>to get or obtain</td><td class="zh">获得</td><td>"She <em>acquired</em> two works by Cézanne."</td><td class="note">Formal for "buy / get"</td></tr><tr><td><span class="word">pioneer</span></td><td><span class="pos">n.</span></td><td>one of the first to do something</td><td class="zh">先驱</td><td>"They were unlikely <em>pioneer</em> collectors."</td><td class="note">+ of / in</td></tr><tr><td><span class="word">upheaval</span></td><td><span class="pos">n.</span></td><td>a big, often difficult, change</td><td class="zh">剧变</td><td>"The war caused social <em>upheaval</em>."</td><td class="note">= disruption</td></tr><tr><td><span class="word">legacy</span></td><td><span class="pos">n.</span></td><td>something left behind for the future</td><td class="zh">遗产；遗留</td><td>"They created a lasting cultural <em>legacy</em>."</td><td class="note">Often "leave a legacy"</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">come into an inheritance</span></td><td>to receive money after a relative dies</td><td class="zh">继承遗产</td></tr><tr><td><span class="phrase">geared toward</span></td><td>designed/aimed at a purpose</td><td class="zh">旨在</td></tr><tr><td><span class="phrase">take advice from</span></td><td>to ask and follow others’ guidance</td><td class="zh">听取…的建议</td></tr><tr><td><span class="phrase">have a hand in</span></td><td>to be partly responsible for</td><td class="zh">参与其中</td></tr><tr><td><span class="phrase">take a new direction</span></td><td>to change to a new course</td><td class="zh">转向新方向</td></tr><tr><td><span class="phrase">play a part in</span></td><td>to be one of the causes of</td><td class="zh">起作用</td></tr><tr><td><span class="phrase">be obliged to</span></td><td>to feel forced/required to</td><td class="zh">不得不</td></tr><tr><td><span class="phrase">a lasting legacy</span></td><td>something valuable that continues</td><td class="zh">持久的遗产</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"In 1907, when Gwendoline came into her inheritance (Margaret would follow in 1909), the sisters were said to be the wealthiest unmarried women in Britain."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the sisters were said to be the wealthiest unmarried women in Britain</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">when Gwendoline came into her inheritance — plus the bracketed aside "(Margaret would follow in 1909)"</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A "when" time-clause + a parenthetical remark inside brackets. "were said to be" = people said they were.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">When Gwendoline got her inheritance in 1907 (and Margaret in 1909), the two sisters were probably the richest single women in Britain.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">1907年格温多琳继承遗产时（玛格丽特于1909年继承），据说姐妹俩是英国最富有的未婚女性。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"While it was long assumed that these men were largely responsible for the nature of the sisters’ collection, it has recently been accepted that Gwendoline and Margaret retained a far more active role in the process."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it has recently been accepted that … retained a far more active role</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">While it was long assumed that these men were largely responsible …</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"While" here means "although" (contrast). Two "that"-clauses report beliefs. Passive: "it was assumed / it has been accepted".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People used to think the male advisers shaped the collection, but now we know the sisters themselves made the key choices.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">虽然长期以来人们认为这些男性主导了收藏，但近来人们认可姐妹俩其实发挥了更主动的作用。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"By the early 1920s, Gwendoline felt increasingly uncomfortable buying art works when faced with the poverty and social upheaval created by the First World War."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Gwendoline felt increasingly uncomfortable buying art works</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">when faced with the poverty and social upheaval created by the First World War</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"created by …" is a reduced relative clause (= which had been created by). "when faced with" = when she was faced with.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In the early 1920s the poverty and disruption caused by the war made Gwendoline feel bad about spending money on art.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">到20世纪20年代初，面对一战造成的贫困和社会动荡，格温多琳越来越不愿购买艺术品。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"The sisters collected French Impressionist paintings at a time when such art was routinely ignored by individuals and institutions alike."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The sisters collected French Impressionist paintings</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">at a time when such art was routinely ignored by individuals and institutions alike</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"when" introduces a relative clause describing "a time". "alike" = both, equally. Passive "was ignored".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">They collected this art during a period when both ordinary people and museums usually took no notice of it.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">姐妹俩收藏法国印象派画作时，个人与机构普遍都对这类艺术视而不见。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Although they relied on a trusted circle of advisers, they made frequent trips to London and Paris, and also regularly had paintings sent to their home for consideration."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">they made frequent trips to London and Paris, and … had paintings sent to their home</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">Although they relied on a trusted circle of advisers</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"Although" = concession. "had paintings sent" = causative have (they arranged for paintings to be sent).</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Even though they trusted their advisers, the sisters still travelled a lot themselves and had art brought home to look at.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">尽管她们依靠一群可信的顾问，但仍常去伦敦和巴黎，也经常让人把画送到家中供她们考虑。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Work through each drill, then press <strong>Check All Answers</strong>. These build the grammar you need to read long sentences quickly.</div>
+<div class="exercise-block"><h3>Drill 1 — Clause Identification</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the single word that begins the subordinate clause.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“While it was long assumed …” — the linking word showing contrast is <input type="text" class="blank" data-answer="while" placeholder="______" style="width:110px"><span class="feedback" id="fb1"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“… when Gwendoline came into her inheritance” — the word starting the time clause is <input type="text" class="blank" data-answer="when" placeholder="______" style="width:110px"><span class="feedback" id="fb2"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“Although they relied on advisers …” — the concession word is <input type="text" class="blank" data-answer="although" placeholder="______" style="width:120px"><span class="feedback" id="fb3"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Vocabulary in Context</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with a word from the passage.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>Money received from a relative who died is an <input type="text" class="blank" data-answer="inheritance" placeholder="______" style="width:150px"><span class="feedback" id="fb4"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>To gather a large collection is to <input type="text" class="blank" data-answer="amass" placeholder="______" style="width:120px"><span class="feedback" id="fb5"></span> it.</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Giving money to help others is described as <input type="text" class="blank" data-answer="philanthropic" placeholder="______" style="width:150px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Something valuable left for the future is a <input type="text" class="blank" data-answer="legacy" placeholder="______" style="width:120px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Paraphrase Matching</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word that matches the meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“to get / obtain” = <input type="text" class="blank" data-answer="acquire" placeholder="______" style="width:120px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“to keep” = <input type="text" class="blank" data-answer="retain" placeholder="______" style="width:120px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“boring and tiring” = <input type="text" class="blank" data-answer="tedious" placeholder="______" style="width:120px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“a big difficult change” = <input type="text" class="blank" data-answer="upheaval" placeholder="______" style="width:130px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Academic passages are built from logical relationships. Learn to spot the signals.</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Their religious upbringing <em>gave them</em> a sense of social responsibility, so they <em>chose to use</em> their inheritance for charity. Signal words: <em>gave them, so, chose to</em>. Cause = upbringing; effect = philanthropic choices.</div>
+<div class="card"><p><strong>Contrast</strong></p>“<em>While</em> the sisters were wealthy in relative terms, their income was nothing compared to American collectors.” The contrast (<em>while / compared to</em>) explains why they could not buy expensive Old Masters at first.</div>
+<div class="card"><p><strong>Chronology (time order)</strong></p>The passage moves through dates: 1907–09 (inheritance) → 1908 (first purchases) → 1912 (first Impressionists) → 1914–18 (war) → early 1920s (Gwendoline stops) → 1951 & 1963 (donations). Tracking dates helps you locate answers fast.</div>
+<div class="card"><p><strong>Author’s Attitude</strong></p>The writer calls the sisters “unlikely pioneer collectors” and praises their “lasting and meaningful cultural legacy”. The tone is <em>admiring / positive</em>, useful for YES/NO or attitude questions.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>True / False / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Decide TRUE / FALSE / NOT GIVEN, then check against the notes in the Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>The Davies sisters’ childhood influenced how they used their wealth.</label></div><div class="ex-item"><span class="ex-num">2.</span><label>The Corot paintings were bought from a gallery in France.</label></div><div class="ex-item"><span class="ex-num">3.</span><label>Hugh Blaker opposed the sisters buying French Impressionist art.</label></div><div class="ex-item"><span class="ex-num">4.</span><label>The sisters bought Impressionist art when few others were doing so.</label></div></div>
+<div class="card"><p><strong>Note Completion (ONE word)</strong></p><p style="color:var(--muted);font-size:.85rem;">Complete the notes from the passage; answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>Their grandfather made his fortune in shipping and <strong>______</strong>.</label></div><div class="ex-item"><span class="ex-num">2.</span><label>The first Impressionist paintings they bought showed scenes in <strong>______</strong>.</label></div><div class="ex-item"><span class="ex-num">3.</span><label>During the war both sisters worked in a <strong>______</strong> for soldiers in France.</label></div></div>
+<div class="card"><p><strong>Locating Information</strong></p>Scan for the year <em>1912</em> to find their first Impressionist purchase (Monet, scenes of Venice). Scan for <em>Cézanne</em> to find the works shipped to Bath. Dates and proper nouns are the fastest “anchors” for scanning.</div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">"Amass a collection" means to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. sell it</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. gather a large amount</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. lose it</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">An "inheritance" is money that…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. you earn from work</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. you receive when a relative dies</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. you borrow</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">"Philanthropic" purposes are concerned with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. making profit</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. helping others</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. collecting art</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">In "While the sisters were wealthy … their income was nothing compared to Morgan", the word "while" signals…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. time</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. contrast</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. cause</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">The sisters’ first Impressionist purchases (1912) were scenes of…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. London</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Venice</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Paris</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">During the First World War the sisters worked in a…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. hospital</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. canteen for soldiers</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. gallery</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">"Retained a far more active role" means the sisters…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. kept an important part in decisions</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. gave up control</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. were rarely involved</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The overall attitude of the writer toward the sisters is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. admiring</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. critical</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. neutral/uninterested</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">"A lasting legacy" is something that…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. is quickly forgotten</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. continues into the future</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. costs a lot</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The collection was finally given to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. a private buyer</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. the National Museum Wales</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. an American collector</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q1–13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">mining</div><div class="answer-note">grandfather’s wealth from shipping and mining industries.</div></div></div><div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">education</div><div class="answer-note">their education was designed to interest them in art.</div></div></div><div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">notes</div><div class="answer-note">they made extensive notes in galleries.</div></div></div><div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">journals</div><div class="answer-note">their journals reveal a preference for Old Masters.</div></div></div><div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">Venice</div><div class="answer-note">first Impressionist works were scenes of Venice by Monet.</div></div></div><div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">canteen</div><div class="answer-note">they volunteered at a canteen for troops in France.</div></div></div><div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">friends</div><div class="answer-note">"didn’t make friends with artists or gallery owners".</div></div></div><div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">TRUE</div><div class="answer-note">upbringing gave them a sense of social responsibility → shaped how they used wealth.</div></div></div><div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no information on where the Corot paintings were bought.</div></div></div><div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">FALSE</div><div class="answer-note">Hugh Blaker "had a hand in the decision" — he did not oppose it.</div></div></div><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">nothing about how popular the Bath exhibition was.</div></div></div><div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">TRUE</div><div class="answer-note">she felt "increasingly uncomfortable buying art works".</div></div></div><div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">TRUE</div><div class="answer-note">"such art was routinely ignored" at that time.</div></div></div></div><div class="answer-section"><h3>Skills — Note Completion</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">mining</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">Venice</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">canteen</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">while / when / although</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">inheritance, amass, philanthropic, legacy</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">acquire, retain, tedious, upheaval</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>
