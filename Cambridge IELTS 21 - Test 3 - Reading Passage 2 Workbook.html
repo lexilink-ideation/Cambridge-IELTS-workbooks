@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge IELTS 21 — Test 3 — Reading Passage 2 | Practice Workbook</title>
+<style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+<nav class="top-nav">
+  <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+  <span class="sep">›</span><span>Cambridge IELTS 21</span>
+  <span class="sep">›</span><span>Test 3</span>
+  <span class="sep">›</span><span>Reading Passage 2</span>
+</nav>
+<header class="unit-header">
+  <div class="unit-badge">Reading Passage 2</div>
+  <h1>Cambridge IELTS 21 — Test 3 — Reading Passage 2</h1>
+  <h2>Practice Workbook</h2>
+</header>
+<div class="tab-nav-wrap"><nav class="tab-nav" role="tablist">
+<button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+<button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+<button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+<button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button>
+<button class="tab-btn" onclick="showTab('drills', this)" role="tab">✏️ Drills</button>
+<button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button>
+<button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button>
+<button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+<button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+</nav></div>
+<main class="main-content">
+<section class="tab-panel active" id="tab-overview">
+<h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This passage looks at the transport problems of <strong>Dar es Salaam</strong>, one of Africa’s fastest-growing cities. It describes the traffic and informal settlements, explains why the city chose a <strong>bus rapid transit (BRT)</strong> system called DART instead of a metro, reports the problems it still faces, and outlines the plans to expand it.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 2 mixes <strong>True/False/Not Given</strong> with note completion. For T/F/NG, watch for comparisons and claims the text does not actually make ("more rapidly than predicted", "consulted"). For notes, the answer is ONE exact word from the passage.</div>
+</section>
+
+<section class="tab-panel" id="tab-vocab">
+<h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">eightfold</span></td><td><span class="pos">adj/adv.</span></td><td>eight times as much</td><td class="zh">八倍</td><td>"Its population has increased <em>eightfold</em> since 1980."</td><td class="note">Number word</td></tr><tr><td><span class="word">swell</span></td><td><span class="pos">v.</span></td><td>to grow larger in number</td><td class="zh">膨胀</td><td>"The population <em>swells</em> by half a million a year."</td><td class="note">= increase</td></tr><tr><td><span class="word">megacity</span></td><td><span class="pos">n.</span></td><td>a city of over 10 million people</td><td class="zh">超大城市</td><td>"It will become a <em>megacity</em> within seven years."</td><td class="note">Urban term</td></tr><tr><td><span class="word">informal settlement</span></td><td><span class="pos">n.</span></td><td>unplanned housing area</td><td class="zh">非正规居住区</td><td>"Most people live in <em>informal settlements</em>."</td><td class="note">Urban planning term</td></tr><tr><td><span class="word">intersection</span></td><td><span class="pos">n.</span></td><td>a place where roads cross</td><td class="zh">十字路口</td><td>"Cars queue at a key <em>intersection</em>."</td><td class="note">= junction</td></tr><tr><td><span class="word">arterial road</span></td><td><span class="pos">n.</span></td><td>a major road into a city</td><td class="zh">主干道</td><td>"The city relies on four <em>arterial roads</em>."</td><td class="note">Transport term</td></tr><tr><td><span class="word">periphery</span></td><td><span class="pos">n.</span></td><td>the outer edge</td><td class="zh">边缘</td><td>"Expansion happens on the <em>periphery</em>."</td><td class="note">= outskirts</td></tr><tr><td><span class="word">legacy</span></td><td><span class="pos">n.</span></td><td>something left from the past</td><td class="zh">遗留</td><td>"Its road layout is a colonial <em>legacy</em>."</td><td class="note">+ of</td></tr><tr><td><span class="word">boarding</span></td><td><span class="pos">n.</span></td><td>getting onto a vehicle</td><td class="zh">上车</td><td>"Fares are paid before <em>boarding</em>."</td><td class="note">Answer word (Q20)</td></tr><tr><td><span class="word">step-free</span></td><td><span class="pos">adj.</span></td><td>with no steps; accessible</td><td class="zh">无台阶的</td><td>"The buses are <em>step-free</em>."</td><td class="note">Accessibility term</td></tr><tr><td><span class="word">capacity</span></td><td><span class="pos">n.</span></td><td>the maximum amount possible</td><td class="zh">容量</td><td>"It carries half the expected <em>capacity</em>."</td><td class="note">+ of</td></tr><tr><td><span class="word">depot</span></td><td><span class="pos">n.</span></td><td>a place where vehicles are kept</td><td class="zh">车站；停车场</td><td>"A flood hit the main <em>depot</em>."</td><td class="note">Transport noun</td></tr><tr><td><span class="word">imminently</span></td><td><span class="pos">adv.</span></td><td>very soon</td><td class="zh">即将</td><td>"Construction is due to start <em>imminently</em>."</td><td class="note">= very soon</td></tr><tr><td><span class="word">stakeholders</span></td><td><span class="pos">n.</span></td><td>people with an interest in a project</td><td class="zh">利益相关者</td><td>"BRT lets local <em>stakeholders</em> get involved."</td><td class="note">Business term</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-phrases">
+<h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">get around</span></td><td>to travel about a place</td><td class="zh">四处出行</td></tr><tr><td><span class="phrase">rely on</span></td><td>to depend on</td><td class="zh">依赖</td></tr><tr><td><span class="phrase">cater for</span></td><td>to provide for the needs of</td><td class="zh">满足…需求</td></tr><tr><td><span class="phrase">pin one’s hopes on</span></td><td>to depend on for success</td><td class="zh">寄希望于</td></tr><tr><td><span class="phrase">an alternative to</span></td><td>a different option from</td><td class="zh">…的替代</td></tr><tr><td><span class="phrase">cut … by two-thirds</span></td><td>to reduce by two-thirds</td><td class="zh">减少三分之二</td></tr><tr><td><span class="phrase">within a short walk of</span></td><td>close enough to walk to</td><td class="zh">步行可达</td></tr><tr><td><span class="phrase">best hope of</span></td><td>the most likely way to</td><td class="zh">最大希望</td></tr></tbody></table></div>
+</section>
+
+<section class="tab-panel" id="tab-sentences">
+<h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"Today, four out of five of its people live in single-storey informal settlements on the spreading edges of the city, where the journey to and from the centre regularly takes over two hours."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">four out of five of its people live in single-storey informal settlements</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">where the journey to and from the centre regularly takes over two hours (relative clause)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"where" introduces a relative clause about the settlements. "four out of five" = 80%.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">80% of people live in unplanned single-storey housing on the city’s edges, where commuting takes over two hours.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如今，五分之四的居民住在城市不断扩张的边缘的单层非正规住区，往返市中心通常要花两个多小时。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Dar es Salaam’s reliance on four arterial roads into the city is a legacy of the colonial government that planned the city at the start of the 20th century to cater for a population of 35,000."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Dar es Salaam’s reliance on four arterial roads … is a legacy of the colonial government</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">that planned the city … to cater for a population of 35,000 (relative + infinitive of purpose)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"that planned the city" describes the government. "to cater for" states the purpose.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The city depends on just four main roads — a leftover from colonial planners who designed it for only 35,000 people.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">达累斯萨拉姆对四条进城主干道的依赖，是20世纪初为容纳3.5万人口而规划城市的殖民政府所留下的遗产。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"It has chosen a less exciting but cheaper and more achievable method: the bus."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">It has chosen a … method: the bus</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">(the colon introduces the specific method)</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A three-part adjective contrast: "less exciting but cheaper and more achievable". The colon names the choice.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The city picked a duller but cheaper and more realistic option — buses.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">它选择了一种不那么令人兴奋、却更便宜、更可行的方法：公共汽车。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"A shortage of buses after a serious flood at the main depot during the rainy season means the system is carrying 200,000 people a day — half the expected capacity."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A shortage of buses … means the system is carrying 200,000 people a day</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">after a serious flood at the main depot during the rainy season (time/cause phrase) + appositive "half the expected capacity"</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Long noun-phrase subject. "means" links cause to effect. The dash adds an appositive figure.</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because a flood damaged the depot, there are too few buses, so only 200,000 people a day travel — half of what was planned.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">雨季主车场遭遇严重洪水后车辆短缺，意味着该系统每天只运送20万人——仅为预期运力的一半。</span></div></div></div><div class="sentence-card"><div class="sentence-original">"Bus rapid transit allows existing stakeholders to get involved."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Bus rapid transit allows existing stakeholders to get involved</span></div><div class="sb-row"><span class="sb-label">Subordinate / Relative Clause</span><span class="sb-value">(simple sentence — "allow somebody to do")</span></div><div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">"allow somebody to do something" = make it possible for them. Contrast with a metro firm that "parachutes in".</span></div><div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A BRT system lets local people and companies already there take part.</span></div><div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">快速公交让当地已有的利益相关者能够参与进来。</span></div></div></div>
+</section>
+
+<section class="tab-panel" id="tab-drills">
+<h2 class="section-title">✏️ Sentence Drills</h2>
+<div class="highlight">Complete each drill, then press <strong>Check All Answers</strong>.</div>
+<div class="exercise-block"><h3>Drill 1 — Relative Clauses</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the relative word (where/that) that fits.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“settlements … ______ the journey takes over two hours” → <input type="text" class="blank" data-answer="where" placeholder="______" style="width:110px"><span class="feedback" id="fb1"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“the colonial government ______ planned the city” → <input type="text" class="blank" data-answer="that" placeholder="______" style="width:110px"><span class="feedback" id="fb2"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“the narrow side streets ______ make up the metropolis” → <input type="text" class="blank" data-answer="that" placeholder="______" style="width:110px"><span class="feedback" id="fb3"></span> </label></div>
+</div>
+<div class="exercise-block"><h3>Drill 2 — Note Completion</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete with ONE word from the passage.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>The BRT buses use designated bus <input type="text" class="blank" data-answer="lanes" placeholder="______" style="width:110px"><span class="feedback" id="fb4"></span> to cut delays.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Passengers pay fares before <input type="text" class="blank" data-answer="boarding" placeholder="______" style="width:110px"><span class="feedback" id="fb5"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The step-free buses are accessible to people using <input type="text" class="blank" data-answer="wheelchairs" placeholder="______" style="width:130px"><span class="feedback" id="fb6"></span> .</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Drivers often refuse to use air conditioning to save <input type="text" class="blank" data-answer="fuel" placeholder="______" style="width:110px"><span class="feedback" id="fb7"></span> .</label></div>
+</div>
+<div class="exercise-block"><h3>Drill 3 — Vocabulary</h3>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the passage word for each meaning.</p>
+<div class="ex-item"><span class="ex-num">1.</span><label>“the outer edge of the city” = <input type="text" class="blank" data-answer="periphery" placeholder="______" style="width:120px"><span class="feedback" id="fb8"></span> </label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>“a place where vehicles are kept” = <input type="text" class="blank" data-answer="depot" placeholder="______" style="width:110px"><span class="feedback" id="fb9"></span> </label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>“very soon” = <input type="text" class="blank" data-answer="imminently" placeholder="______" style="width:120px"><span class="feedback" id="fb10"></span> </label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>“eight times as much” = <input type="text" class="blank" data-answer="eightfold" placeholder="______" style="width:120px"><span class="feedback" id="fb11"></span> </label></div>
+</div>
+<button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+</section>
+
+<section class="tab-panel" id="tab-logic">
+<h2 class="section-title">🧠 Reading Logic Training</h2>
+<div class="highlight">Follow the problem–solution structure of the passage.</div>
+<div class="card"><p><strong>Problem &amp; Solution</strong></p>Problem: huge growth, traffic, informal sprawl, four overloaded roads. Solution: the DART bus rapid transit system. Signal: "But Dar es Salaam is pinning its hopes on a solution…".</div>
+<div class="card"><p><strong>Cause &amp; Effect</strong></p>Growth (young people arriving) → sprawl on the periphery → long commutes. Flood at the depot → bus shortage → half capacity → long queues. Trace each chain.</div>
+<div class="card"><p><strong>Comparison</strong></p>The passage contrasts BRT with a metro: cheaper, more achievable, and lets local stakeholders take part rather than an international firm "parachuting in". Comparisons often power the T/F/NG answers.</div>
+<div class="card"><p><strong>Writer’s Stance</strong></p>The tone is broadly optimistic about BRT ("transformational", "best hope of ever being connected") while honestly reporting its current problems.</div>
+</section>
+
+<section class="tab-panel" id="tab-skills">
+<h2 class="section-title">🎯 Question-Type Skill Practice</h2>
+<div class="highlight">Practise the exact question types used with this passage.</div>
+<div class="card"><p><strong>True / False / Not Given</strong></p><p style="color:var(--muted);font-size:.85rem;">Decide TRUE / FALSE / NOT GIVEN, then check against the notes in the Answer Key.</p><div class="ex-item"><span class="ex-num">1.</span><label>The population is rising more rapidly than previously predicted.</label></div><div class="ex-item"><span class="ex-num">2.</span><label>Most residents live in high-rise blocks on the edge of the city.</label></div><div class="ex-item"><span class="ex-num">3.</span><label>Residents were consulted about the suburban rail line.</label></div><div class="ex-item"><span class="ex-num">4.</span><label>Most present residential development is unplanned.</label></div></div>
+<div class="card"><p><strong>Note Completion (ONE word)</strong></p><p style="color:var(--muted);font-size:.85rem;">Complete from the passage; answers in the Answer Key.</p><div class="ex-item"><span class="ex-num">19.</span><label>The buses use designated <strong>______</strong> to cut delays.</label></div><div class="ex-item"><span class="ex-num">20.</span><label>Passengers pay fares before <strong>______</strong>.</label></div><div class="ex-item"><span class="ex-num">23.</span><label>A <strong>______</strong> at the depot caused a shortage of buses.</label></div></div>
+<div class="card"><p><strong>Locating Detail</strong></p>Anchor on names and numbers: <em>Paulas George</em> (cut his journey by two-thirds), <em>Chris Kost</em>/<em>ITDP</em> (future phases), <em>200,000</em> (half capacity), the phases <em>Morogoro / Nyerere / Kilwa / Bagamoyo</em> roads.</div>
+</section>
+
+<section class="tab-panel" id="tab-quiz">
+<h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question. Click <strong>Check</strong> to see if you are right.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Dar es Salaam is one of Africa’s fastest-growing…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. ports</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. cities</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. farms</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div><div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Most residents live in single-storey…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. informal settlements</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. high-rise flats</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. suburbs</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div><div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The city’s reliance on four main roads is a legacy of the…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. colonial government</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. current mayor</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. UN</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div><div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Instead of a metro, Dar es Salaam chose a … system.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. tram</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. bus rapid transit</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. ferry</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div><div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">DART buses run in lanes separated from other traffic to reduce…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. pollution</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. stoppages</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. fares</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div><div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Passengers pay their fares before…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. boarding</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. arriving</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. leaving</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div><div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The buses are "step-free", making them accessible to people using…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. wheelchairs</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. bicycles</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. cars</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div><div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">A flood at the depot caused a shortage of…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. fuel</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. buses</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. drivers</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div><div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">A benefit of BRT over a metro is that it lets local … get involved.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. stakeholders</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. tourists</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. banks</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div><div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The writer’s overall view of the BRT system is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. broadly positive</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. strongly negative</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. uninterested</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-answers">
+<h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Original Test Answers (Q14–26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">projections given, but not "faster than predicted".</div></div></div><div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">FALSE</div><div class="answer-note">residents live in single-storey settlements, not high-rise blocks.</div></div></div><div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">no mention of consulting residents about the rail line.</div></div></div><div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">TRUE</div><div class="answer-note">"nearly all takes place informally without any agreed strategy".</div></div></div><div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">FALSE</div><div class="answer-note">unlike many cities, it did NOT choose a metro.</div></div></div><div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">lanes</div><div class="answer-note">buses use designated bus lanes.</div></div></div><div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">boarding</div><div class="answer-note">fares paid before boarding.</div></div></div><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">wheelchairs</div><div class="answer-note">step-free access for wheelchairs.</div></div></div><div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">fuel</div><div class="answer-note">drivers refuse AC to save fuel.</div></div></div><div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">flood</div><div class="answer-note">a flood at the depot caused a bus shortage.</div></div></div><div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">smartcards</div><div class="answer-note">smartcards can’t be used.</div></div></div><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">gates</div><div class="answer-note">staff at the gates tear tickets.</div></div></div><div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">queues</div><div class="answer-note">queues are considerable at peak times.</div></div></div></div><div class="answer-section"><h3>Skills — TFNG &amp; Notes</h3><div class="answer-item"><span class="answer-num">TFNG 1</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 2</span><div><div class="answer-val">FALSE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 3</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">TFNG 4</span><div><div class="answer-val">TRUE</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Note 19</span><div><div class="answer-val">lanes</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Note 20</span><div><div class="answer-val">boarding</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Note 23</span><div><div class="answer-val">flood</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Drills</h3><div class="answer-item"><span class="answer-num">D1</span><div><div class="answer-val">where / that / that</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D2</span><div><div class="answer-val">lanes, boarding, wheelchairs, fuel</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">D3</span><div><div class="answer-val">periphery, depot, imminently, eightfold</div><div class="answer-note"></div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div><div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A</div><div class="answer-note"></div></div></div></div></div>
+</section>
+</main>
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>
