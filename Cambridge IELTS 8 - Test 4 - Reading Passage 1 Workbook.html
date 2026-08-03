@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 4 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 8 — Test 4 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Passage Overview</h2>
+      <div class="card"><p>This passage, <em>‘Land of the Rising Sun’</em>, examines why Japanese pupils do better in maths than pupils in England and Wales. It describes lower-secondary schools, the role of the central authority <strong>Monbusho</strong> (textbooks and national curriculum), the typical lesson pattern (including pupils <strong>marking their own homework</strong>), how schools support slower learners (individual help and ‘Juku’ tuition), and the <strong>attitudes</strong> — hard work and accuracy — behind the success.</p></div>
+      <div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>section-heading matching</strong>, read the first and last sentences of each section to catch its main idea. For <strong>Yes/No/Not Given</strong>, base each answer on the writer’s claims — choose <em>Not Given</em> when the text simply does not say (e.g. comparing private and state schools).</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">attainment</span></td><td><span class="pos">n.</span></td><td>a level of achievement</td><td class="zh">成绩；造诣</td><td>"better average mathematical <em>attainment</em>"</td><td class="note">Key comparison word (Japan vs England).</td></tr>
+            <tr><td><span class="word">compulsory</span></td><td><span class="pos">adj.</span></td><td>required by rules; obligatory</td><td class="zh">义务的；必修的</td><td>"free <em>compulsory</em> education up to the age of 15"</td><td class="note">Maths is compulsory throughout school.</td></tr>
+            <tr><td><span class="word">unstreamed</span></td><td><span class="pos">adj.</span></td><td>not divided by ability</td><td class="zh">不分等级的</td><td>"Classes are large … and are <em>unstreamed</em>."</td><td class="note">Mixed-ability classes.</td></tr>
+            <tr><td><span class="word">curriculum</span></td><td><span class="pos">n.</span></td><td>the subjects taught in a course</td><td class="zh">课程</td><td>"the highly centralised national <em>curriculum</em>"</td><td class="note">Set by Monbusho (Section C).</td></tr>
+            <tr><td><span class="word">elaborate</span></td><td><span class="pos">v.</span></td><td>explain in more detail</td><td class="zh">详细说明</td><td>"the teachers comment, correct or <em>elaborate</em> as necessary"</td><td class="note">Part of the lesson pattern.</td></tr>
+            <tr><td><span class="word">homogeneity</span></td><td><span class="pos">n.</span></td><td>being all of the same kind</td><td class="zh">同质性</td><td>"the relative <em>homogeneity</em> of the class"</td><td class="note">Why worksheets are unnecessary.</td></tr>
+            <tr><td><span class="word">foster</span></td><td><span class="pos">v.</span></td><td>encourage the development of</td><td class="zh">培养</td><td>"carefully <em>fostered</em> class identity"</td><td class="note">Class loyalty makes pupils help each other.</td></tr>
+            <tr><td><span class="word">tuition</span></td><td><span class="pos">n.</span></td><td>teaching, often in small groups</td><td class="zh">辅导；教学</td><td>"‘Juku’ (private evening <em>tuition</em>)"</td><td class="note">Extra help for slower learners (Q12).</td></tr>
+            <tr><td><span class="word">accuracy</span></td><td><span class="pos">n.</span></td><td>being exact and correct</td><td class="zh">准确性</td><td>"a focus on <em>accuracy</em>"</td><td class="note">Emphasised in Japanese maths (Q13).</td></tr>
+            <tr><td><span class="word">counterpart</span></td><td><span class="pos">n.</span></td><td>a person/thing with the same role</td><td class="zh">对应者</td><td>"than amongst their Japanese <em>counterparts</em>"</td><td class="note">Used in Q6 comparison.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">in terms of</span></td><td>with regard to</td><td class="zh">在…方面</td></tr>
+            <tr><td><span class="phrase">set back from</span></td><td>positioned away from</td><td class="zh">远离…而建</td></tr>
+            <tr><td><span class="phrase">let off steam</span></td><td>release energy / relax</td><td class="zh">释放精力</td></tr>
+            <tr><td><span class="phrase">in theory / in practice</span></td><td>ideally / in reality</td><td class="zh">理论上/实际上</td></tr>
+            <tr><td><span class="phrase">keep up with</span></td><td>stay level with</td><td class="zh">跟上</td></tr>
+            <tr><td><span class="phrase">play a part in</span></td><td>help / contribute to</td><td class="zh">在…中起作用</td></tr>
+            <tr><td><span class="phrase">along the lines of</span></td><td>similar to (the idea that)</td><td class="zh">大致是…的意思</td></tr>
+            <tr><td><span class="phrase">by heart</span></td><td>from memory</td><td class="zh">凭记忆</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">🔍 Complex Sentence Analysis</h2>
+      <div class="sentence-card">
+        <div class="sentence-original">"Not only did Japanese pupils at age 13 have better scores of average attainment, but there was also a larger proportion of ‘low’ attainers in England."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Japanese pupils … have better scores … but there was also a larger proportion of ‘low’ attainers in England</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Not only did … but … also … (paired correlative with inversion)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘Not only did X …, but … also …’ links two findings; note the inversion after ‘Not only’.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Japanese 13-year-olds scored higher, and England also had more low-scoring pupils.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">不仅日本13岁学生的平均成绩更高，而且英格兰的“低分”学生比例也更大。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"Pupils mark their own homework: this is an important principle in Japanese schooling as it enables pupils to see where and why they made a mistake."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Pupils mark their own homework … it enables pupils to see where and why they made a mistake</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">as it enables pupils to see … (adverbial clause of reason)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The colon introduces an explanation; ‘as’ = because; ‘enables … to’ = makes it possible.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Students mark their own work so they can understand their mistakes.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">学生自己批改作业：这是日本教育的一个重要原则，因为它能让学生看到自己在哪里、为什么犯了错误。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"The impression is that the logical nature of the textbooks, combined with the relative homogeneity of the class, renders work sheets unnecessary."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The impression is that … renders work sheets unnecessary</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">that the logical nature of the textbooks, combined with the relative homogeneity of the class (noun clause with inserted phrase)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘renders X unnecessary’ = makes X not needed; ‘combined with’ adds a second cause.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because the textbooks are logical and the class is similar in level, worksheets are not needed.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">人们的印象是：教科书逻辑严密，加上班级水平相对一致，使得练习纸变得没有必要。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"The view of repetitively boring lessons and learning the facts by heart, which is sometimes quoted in relation to Japanese classes, may be unfair and unjustified."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The view of repetitively boring lessons and learning the facts by heart … may be unfair and unjustified</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">which is sometimes quoted in relation to Japanese classes (non-defining relative clause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The ‘which’ clause adds information between commas; ‘may be’ hedges the claim.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The idea that Japanese lessons are boring rote-learning is possibly unfair and wrong.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">有时人们把日本课堂描述为枯燥重复、死记硬背，这种看法可能并不公平、也没有根据。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">✏️ Sentence Drills</h2>
+      <div class="highlight">This passage compares maths education in Japan and England. Practise combining, reducing and paraphrasing so you can match headings and answer Yes/No/Not Given quickly.</div>
+      <div class="exercise-block">
+        <h3>Drill 1 — Combine into one sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair with the linker in brackets.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>Pupils mark their own homework. They can see where they went wrong. <em>(so that)</em> → <em>Pupils mark their own homework so that they can see where they went wrong.</em></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>Classes are large and mixed-ability. They stay together for all maths lessons. <em>(although)</em></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>Textbooks are logical and comprehensive. Worksheets are rarely needed. <em>(therefore)</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 2 — Paraphrase the sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p>
+      <div class="ex-item"><span class="ex-num">4.</span><label>"a 10-minute break, which gives the pupils a chance to let off steam" → <em>a short break so pupils can release energy.</em></label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>"the emphasis is on hard work coupled with a focus on accuracy" → <em>working hard and getting answers exactly right are stressed.</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 3 — Reduce the relative clause</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each relative clause to a phrase.</p>
+      <div class="ex-item"><span class="ex-num">6.</span><label>"textbooks which are supplied by Monbusho" → <em>textbooks supplied by Monbusho</em></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>"pupils who are struggling with a topic" → <em>pupils struggling with a topic</em></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🧠 Reading Logic Training</h2>
+      <div class="card">
+        <p><strong>Comparison / Contrast</strong> — Japan vs England &amp; Wales: similar spending on education, but Japan has higher, more consistent maths attainment and fewer low attainers. Signal: <em>better … than, larger proportion, whereas</em>.</p>
+        <p><strong>Cause &amp; Effect</strong> — Self-marked homework <em>lets</em> pupils learn from mistakes; strong class identity <em>makes</em> pupils help each other; valued education <em>leads to</em> hard work and accuracy.</p>
+        <p><strong>Process / Sequence</strong> — A maths lesson follows a fixed pattern: homework on the board → teacher comments → topic explained slowly → class questions → individual work → teacher circulates.</p>
+        <p><strong>Attitude</strong> — The Japanese view — ‘if you work hard enough you can do almost anything’ — plus supportive classes and no in-class competition, explains the success (Section F).</p>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Matching Section Headings (Q1–5)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each section to its main idea (Section A example = iv).</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>Section B: schools, class size, neighbourhood intake → <strong>vii Background to middle-years education in Japan</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>Section C: textbooks &amp; the national curriculum → <strong>i The influence of Monbusho</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>Section D: the fixed pattern of a lesson → <strong>v The typical format of a maths lesson</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>Section E: individual help for strugglers, Juku → <strong>ii Helping less successful students</strong></label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>Section F: attitudes, hard work, accuracy → <strong>viii The key to Japanese successes in maths education</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Yes / No / Not Given (Q6–9)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">YES = agrees with the writer; NO = contradicts; NOT GIVEN = view unknown.</p>
+      <div class="ex-item"><span class="ex-num">6.</span><label>Wider range of achievement among English pupils than Japanese → <strong>YES</strong></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>% of GNP on education generally reflects maths attainment → <strong>NO</strong> (similar spend, different results)</label></div>
+      <div class="ex-item"><span class="ex-num">8.</span><label>Private schools are more modern/spacious than state schools → <strong>NOT GIVEN</strong></label></div>
+      <div class="ex-item"><span class="ex-num">9.</span><label>Teachers mark homework in Japanese schools → <strong>NO</strong> (pupils mark their own)</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Multiple Choice (Q10–13)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Choose the option supported by the text.</p>
+      <div class="ex-item"><span class="ex-num">10.</span><label>Maths textbooks are → <strong>B well organised and adapted to pupils’ needs</strong></label></div>
+      <div class="ex-item"><span class="ex-num">11.</span><label>When a new topic is introduced → <strong>C it is carefully and patiently explained</strong></label></div>
+      <div class="ex-item"><span class="ex-num">12.</span><label>Students with difficulties → <strong>A get appropriate supplementary tuition</strong></label></div>
+      <div class="ex-item"><span class="ex-num">13.</span><label>High success is mainly due to → <strong>C much effort and an emphasis on correct answers</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">Compared with England and Wales, Japan has…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. lower maths attainment</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. higher and more consistent maths attainment</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the same attainment</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. far higher spending</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">Which pupils mark the maths homework?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. the teachers</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. the pupils themselves</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. other pupils</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. parents</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">The central authority that approves textbooks and the curriculum is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Juku</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Monbusho</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. the city council</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. the schools</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Is the range of achievement wider among English pupils than Japanese?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. YES</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. NO</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. only at age 13</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">Does spending (% of GNP) generally reflect maths attainment?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. YES</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. NO</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. only in Japan</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">Are private schools said to be more modern than state schools?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. YES</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. NO</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. the opposite</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Japanese maths textbooks are…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. cheap to buy</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. well organised and adapted to pupils’ needs</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. used with TV programmes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. unpopular with teachers</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">When a new topic is introduced, it is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. answered on the board by students</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. left to the textbook</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. carefully and patiently explained</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. taught with extra worksheets</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">How do schools help students who struggle?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. appropriate supplementary tuition</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. copying from others</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. forcing them to explain</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. moving them to another class</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Success in maths is mainly attributed to…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. it being compulsory</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. working without help</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. much effort and emphasis on correct answers</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. repetitive rote learning</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Official Test Answers 1–13</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">vii</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">i</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">v</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">ii</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">viii</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">YES</div></div></div>
+          <div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">NO</div></div></div>
+          <div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+          <div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">NO</div></div></div>
+          <div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">A</div></div></div>
+          <div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">C</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — higher and more consistent maths attainment</div><div class="answer-note">Section A.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — the pupils themselves</div><div class="answer-note">Section D → Q9 = NO to ‘teachers mark it’.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — Monbusho</div><div class="answer-note">Section C → heading i.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — YES</div><div class="answer-note">Q6 = YES.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — NO</div><div class="answer-note">Q7 = NO: similar spend, different results.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C — NOT GIVEN</div><div class="answer-note">Q8 = NOT GIVEN.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — well organised and adapted to pupils’ needs</div><div class="answer-note">Q10 = B.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C — carefully and patiently explained</div><div class="answer-note">Q11 = C.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A — appropriate supplementary tuition</div><div class="answer-note">Q12 = A (individual help, Juku).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C — much effort and emphasis on correct answers</div><div class="answer-note">Q13 = C.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 4 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 8 — Test 4 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Passage Overview</h2>
+      <div class="card"><p>This passage, <em>‘Biological control of pests’</em>, argues that heavy use of synthetic pesticides is <strong>counter-productive</strong>: it kills useful organisms and breeds chemical-resistant ‘superbugs’ (the ‘treadmill syndrome’). Using Central-American cotton as an example, it then presents <strong>biological control</strong> — using natural enemies of pests — as a low-cost, safe alternative, and gives several successful cases from the CIBC and partner laboratories.</p></div>
+      <div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>matching sentence endings</strong>, first find each named agent or pest in the text, then read the sentence around it to choose the ending. For <strong>Yes/No/Not Given</strong>, watch for claims the writer never makes (e.g. whether disease pests respond <em>faster</em> than crop pests) — that is <em>Not Given</em>.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">synthetic</span></td><td><span class="pos">adj.</span></td><td>made by chemical processes; artificial</td><td class="zh">合成的</td><td>"the reckless use of <em>synthetic</em> chemicals"</td><td class="note">Contrast with natural bio-control.</td></tr>
+            <tr><td><span class="word">counter-productive</span></td><td><span class="pos">adj.</span></td><td>having the opposite effect to that intended</td><td class="zh">适得其反的</td><td>"is proving to be <em>counter-productive</em>"</td><td class="note">Main claim about pesticides.</td></tr>
+            <tr><td><span class="word">resistant</span></td><td><span class="pos">adj.</span></td><td>not affected by something</td><td class="zh">有抗性的</td><td>"chemical-<em>resistant</em>, highly lethal superbugs"</td><td class="note">Pests that survive pesticides.</td></tr>
+            <tr><td><span class="word">immune</span></td><td><span class="pos">adj.</span></td><td>not able to be harmed by</td><td class="zh">免疫的</td><td>"about 100 species … have become <em>immune</em> to … insecticides"</td><td class="note">= resistant (Q15).</td></tr>
+            <tr><td><span class="word">in check</span></td><td><span class="pos">phr.</span></td><td>under control</td><td class="zh">受控制</td><td>"keep the growth of the pest population <em>in check</em>"</td><td class="note">Useful organisms limit pests.</td></tr>
+            <tr><td><span class="word">proliferation</span></td><td><span class="pos">n.</span></td><td>rapid increase in number</td><td class="zh">激增；扩散</td><td>"the sudden <em>proliferation</em> of … chemical-resistant pests"</td><td class="note">Drove more spraying.</td></tr>
+            <tr><td><span class="word">indiscriminate</span></td><td><span class="pos">adj.</span></td><td>done without care or selection</td><td class="zh">不加区分的</td><td>"the perils from <em>indiscriminate</em> applications of pesticides"</td><td class="note">Careless spraying is harmful.</td></tr>
+            <tr><td><span class="word">predator</span></td><td><span class="pos">n.</span></td><td>an animal that hunts others</td><td class="zh">捕食者</td><td>"setting natural <em>predators</em> against parasites"</td><td class="note">Used in biological control.</td></tr>
+            <tr><td><span class="word">eradication</span></td><td><span class="pos">n.</span></td><td>complete removal/destruction</td><td class="zh">根除</td><td>"a weevil for the <em>eradication</em> of water hyacinth"</td><td class="note">Goal of some bio-control (Q25).</td></tr>
+            <tr><td><span class="word">perpetual</span></td><td><span class="pos">adj.</span></td><td>continuing for a long time</td><td class="zh">持久的</td><td>"a relatively low-cost, <em>perpetual</em> control system"</td><td class="note">Advantage of bio-control.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">pose a threat to</span></td><td>be dangerous to</td><td class="zh">对…构成威胁</td></tr>
+            <tr><td><span class="phrase">wipe out</span></td><td>destroy completely</td><td class="zh">消灭</td></tr>
+            <tr><td><span class="phrase">bring about</span></td><td>cause to happen</td><td class="zh">引起</td></tr>
+            <tr><td><span class="phrase">take to</span></td><td>start doing/using eagerly</td><td class="zh">开始热衷于</td></tr>
+            <tr><td><span class="phrase">boost (crop) yield</span></td><td>increase output</td><td class="zh">提高产量</td></tr>
+            <tr><td><span class="phrase">push to the wall</span></td><td>force into a desperate position</td><td class="zh">逼入绝境</td></tr>
+            <tr><td><span class="phrase">in contrast to</span></td><td>compared with</td><td class="zh">与…相反</td></tr>
+            <tr><td><span class="phrase">press into service</span></td><td>put to use</td><td class="zh">投入使用</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">🔍 Complex Sentence Analysis</h2>
+      <div class="sentence-card">
+        <div class="sentence-original">"One glaring disadvantage of pesticides’ application is that, while destroying harmful pests, they also wipe out many useful non-targeted organisms."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">One glaring disadvantage … is that … they also wipe out many useful non-targeted organisms</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">while destroying harmful pests (reduced adverbial clause: while they destroy…)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘the disadvantage is that …’ introduces the point; ‘while …’ = at the same time as.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A big problem with pesticides is that, as they kill pests, they also kill helpful creatures.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">使用杀虫剂的一个明显缺点是：在消灭有害害虫的同时，它们也杀死了许多有益的非目标生物。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"Because of their tremendous breeding potential and genetic diversity, many pests are known to withstand synthetic chemicals and bear offspring with a built-in resistance to pesticides."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">many pests are known to withstand synthetic chemicals and bear offspring with a built-in resistance</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Because of their tremendous breeding potential and genetic diversity (adverbial of cause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘Because of + noun’ gives the cause; ‘withstand’ = survive; ‘bear offspring’ = produce young.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Thanks to fast breeding and genetic variety, many pests survive chemicals and have resistant young.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于繁殖能力极强、遗传多样性高，许多害虫能够抵抗合成化学品，并产下天生就对杀虫剂有抗性的后代。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"In the face of the escalating perils from indiscriminate applications of pesticides, a more effective and ecologically sound strategy of biological control is fast gaining popularity."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">a more effective and ecologically sound strategy of biological control is fast gaining popularity</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">In the face of the escalating perils from indiscriminate applications of pesticides (prepositional phrase)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘In the face of …’ = because of / when confronted with; the main clause states the trend.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">As careless pesticide use grows more dangerous, biological control is becoming more popular.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">面对滥用杀虫剂带来的日益加剧的危险，一种更有效、更符合生态的生物防治策略正迅速流行起来。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"The advantage of biological control, in contrast to other methods, is that it provides a relatively low-cost, perpetual control system with a minimum of detrimental side-effects."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The advantage of biological control … is that it provides a relatively low-cost, perpetual control system</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">in contrast to other methods (inserted contrast) / with a minimum of detrimental side-effects (added phrase)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘The advantage … is that …’ defines the benefit; ‘in contrast to’ sets up a comparison.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Unlike other methods, biological control is cheap, lasting and does little harm.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与其他方法相比，生物防治的优势在于：它提供了一种成本相对低廉、可持续的控制系统，且有害副作用极小。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">✏️ Sentence Drills</h2>
+      <div class="highlight">This passage argues against over-using pesticides and for biological control, with many examples. Practise reducing clauses and matching examples to the right endings.</div>
+      <div class="exercise-block">
+        <h3>Drill 1 — Reduce the clause</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each underlined clause to a phrase.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>"pests which are resistant to a wide range of chemicals" → <em>pests resistant to a wide range of chemicals</em></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>"a weevil that is native to Mexico" → <em>a weevil native to Mexico</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 2 — Paraphrase for the questions</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match the passage wording to the question idea.</p>
+      <div class="ex-item"><span class="ex-num">3.</span><label>‘pesticides also wipe out many useful non-targeted organisms’ → pesticides cause an <strong>imbalance</strong> in ecologies (Q14)</label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>‘50% of the financial outlay … was accounted for by pesticides’ → pesticides <strong>cost 50%</strong> of spending (Q17)</label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>‘When handled by experts, bio-control is safe’ → bio-control is safe <strong>under certain conditions</strong> (Q21)</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 3 — Match example to target</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Link each biological agent to the pest/weed it controls.</p>
+      <div class="ex-item"><span class="ex-num">6.</span><label>Neodumetia sangawani → controlled the <strong>Rhodes grass-scale insect</strong></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>Argentinian weevil → may wipe out <strong>water hyacinth</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🧠 Reading Logic Training</h2>
+      <div class="card">
+        <p><strong>Cause &amp; Effect</strong> — Reckless pesticide use <em>kills</em> useful organisms → the ‘treadmill syndrome’ → resistant ‘superbugs’ that <em>need</em> ever more spraying.</p>
+        <p><strong>Problem / Solution</strong> — Problem: chemical-resistant pests and health risks. Solution: biological control — using natural enemies — which is low-cost, self-dispersing and safe in expert hands.</p>
+        <p><strong>Example / Evidence</strong> — Central-American cotton (spraying rose from 8 to 70 times a season) shows the problem; CIBC’s weevils and predators show biological control working.</p>
+        <p><strong>Contrast</strong> — Chemicals give short-term gains but long-term harm; bio-control gives a ‘relatively low-cost, perpetual control system with minimal detrimental side-effects’.</p>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Multiple Choice (Q14–17)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Choose the option supported by the text.</p>
+      <div class="ex-item"><span class="ex-num">14.</span><label>Pesticides have contributed to → <strong>B an imbalance in many ecologies</strong></label></div>
+      <div class="ex-item"><span class="ex-num">15.</span><label>The FAO counted 300+ pests which → <strong>A no longer respond to most pesticides</strong></label></div>
+      <div class="ex-item"><span class="ex-num">16.</span><label>Central-American cotton farmers used pesticides → <strong>D to harvest more cotton per crop</strong></label></div>
+      <div class="ex-item"><span class="ex-num">17.</span><label>By the mid-1960s pesticides → <strong>D cost 50% of total crop spending</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Yes / No / Not Given (Q18–21)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Judge against the writer’s claims.</p>
+      <div class="ex-item"><span class="ex-num">18.</span><label>Disease pests respond faster to pesticides than crop pests → <strong>NOT GIVEN</strong></label></div>
+      <div class="ex-item"><span class="ex-num">19.</span><label>Some pests are now born with innate immunity → <strong>YES</strong></label></div>
+      <div class="ex-item"><span class="ex-num">20.</span><label>Bio-control uses synthetic chemicals to change pests’ genes → <strong>NO</strong> (it uses natural enemies)</label></div>
+      <div class="ex-item"><span class="ex-num">21.</span><label>Bio-control is free from danger under certain circumstances → <strong>YES</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Matching Sentence Endings (Q22–26)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with the correct ending (A–I).</p>
+      <div class="ex-item"><span class="ex-num">22.</span><label>Disapene scale insects feed on → <strong>D fruit trees</strong></label></div>
+      <div class="ex-item"><span class="ex-num">23.</span><label>Neodumetia sangawani ate → <strong>H grass-scale insects</strong></label></div>
+      <div class="ex-item"><span class="ex-num">24.</span><label>Leaf-mining hispides blighted → <strong>C coconut trees</strong></label></div>
+      <div class="ex-item"><span class="ex-num">25.</span><label>An Argentinian weevil may wipe out → <strong>E water hyacinth</strong></label></div>
+      <div class="ex-item"><span class="ex-num">26.</span><label>Salvinia molesta plagues → <strong>B rice fields</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">The writer’s main argument is that heavy pesticide use is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. essential</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. counter-productive</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. cheap</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. harmless</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">The use of pesticides has contributed to…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. new ways of classifying ecologies</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. an imbalance in many ecologies</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. preventing disasters</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. more farmable land</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">The FAO found 300+ agricultural pests that…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. no longer respond to most pesticides</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. are easily controlled</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. spread disease in crops</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. help bio-control</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Why did Central-American cotton farmers start using pesticides?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. government adverts</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. new pests appeared</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. climate change</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. to harvest more cotton</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">By the mid-1960s, pesticides for cotton…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. wiped out 50% of pests</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. destroyed 50% of crops</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. caused a 50% rise in pests</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. cost 50% of total crop spending</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'D')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">Are some pests now born with innate immunity to pesticides?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. YES</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. NO</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. only in cotton</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Does biological control use synthetic chemicals to alter pests’ genes?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. YES</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. NO</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. sometimes</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">Disapene scale insects feed on…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. forage grass</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. rice fields</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. coconut trees</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. fruit trees</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">Neodumetia sangawani was used to control…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. water hyacinth</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. grass-scale insects</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. parthenium weed</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. fruit-tree pests</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Salvinia molesta (‘African Payal’) plagues…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. coconut trees</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. rice fields</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. water hyacinth</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. forage grass</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Official Test Answers 14–26</h3>
+          <div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">A</div></div></div>
+          <div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">D</div></div></div>
+          <div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div></div></div>
+          <div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+          <div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">YES</div></div></div>
+          <div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">NO</div></div></div>
+          <div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">YES</div></div></div>
+          <div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">D</div><div class="answer-note">fruit trees</div></div></div>
+          <div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">H</div><div class="answer-note">grass-scale insects</div></div></div>
+          <div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">C</div><div class="answer-note">coconut trees</div></div></div>
+          <div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">E</div><div class="answer-note">water hyacinth</div></div></div>
+          <div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">B</div><div class="answer-note">rice fields</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — counter-productive</div><div class="answer-note">Opening paragraph.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — an imbalance in many ecologies</div><div class="answer-note">Q14 = B.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A — no longer respond to most pesticides</div><div class="answer-note">Q15 = A (resistance).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">D — to harvest more cotton</div><div class="answer-note">Q16 = D (boost yield).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">D — cost 50% of total crop spending</div><div class="answer-note">Q17 = D.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">A — YES</div><div class="answer-note">Q19 = YES.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — NO</div><div class="answer-note">Q20 = NO: it uses natural enemies.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">D — fruit trees</div><div class="answer-note">Q22 = D.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — grass-scale insects</div><div class="answer-note">Q23 = H (grass-scale insects).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — rice fields</div><div class="answer-note">Q26 = B: Kerala rice fields.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>
