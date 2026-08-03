@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 3 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 8 — Test 3 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Passage Overview</h2>
+      <div class="card"><p>This passage, <em>‘The Nature of Genius’</em>, examines how we think about geniuses and gifted people. It traces the word ‘genius’ from Roman times, lists common <strong>myths</strong> about giftedness, questions 19th-century studies for lacking <strong>objectivity</strong>, and argues that geniuses stand at the top of a <strong>continuum</strong> of human ability — superior in degree but not fundamentally different from the rest of us — and often pay a high personal price for their achievements.</p></div>
+      <div class="highlight">💡 <strong>Reading strategy tip:</strong> Keep separating <strong>reported popular beliefs</strong> from the <strong>writer’s own opinion</strong>. For ‘which beliefs are reported’, scan the myth list in paragraph 2. For True/False/Not Given, base every answer on the text — choose <em>Not Given</em> when the writer expresses no view (e.g. whether being a genius is ‘worth’ it).</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">prodigy</span></td><td><span class="pos">n.</span></td><td>a young person with great talent</td><td class="zh">神童</td><td>"There has always been an interest in geniuses and <em>prodigies</em>."</td><td class="note">Central topic word.</td></tr>
+            <tr><td><span class="word">ambivalent</span></td><td><span class="pos">adj.</span></td><td>having mixed feelings</td><td class="zh">矛盾的</td><td>"attitudes are <em>ambivalent</em> towards them"</td><td class="note">We both envy and mistrust the gifted.</td></tr>
+            <tr><td><span class="word">giftedness</span></td><td><span class="pos">n.</span></td><td>the state of having great talent</td><td class="zh">天赋</td><td>"the mythology of <em>giftedness</em>"</td><td class="note">Abstract noun from ‘gifted’.</td></tr>
+            <tr><td><span class="word">eccentric</span></td><td><span class="pos">adj.</span></td><td>unusual; strange in behaviour</td><td class="zh">古怪的</td><td>"that gifted people are <em>eccentric</em>"</td><td class="note">One of the myths listed.</td></tr>
+            <tr><td><span class="word">denigration</span></td><td><span class="pos">n.</span></td><td>unfair criticism; belittling</td><td class="zh">贬低</td><td>"‘intellectual’ is a term of <em>denigration</em>"</td><td class="note">Shows negative attitude to intellect.</td></tr>
+            <tr><td><span class="word">norm-referenced</span></td><td><span class="pos">adj.</span></td><td>compared against a typical standard</td><td class="zh">常模参照的</td><td>"they are not what we would today call <em>norm-referenced</em>"</td><td class="note">Why 19th-c. studies were flawed (Q19).</td></tr>
+            <tr><td><span class="word">objective</span></td><td><span class="pos">adj.</span></td><td>not influenced by feelings; fair</td><td class="zh">客观的</td><td>"studies … on a more <em>objective</em> … basis"</td><td class="note">20th-c. studies more objective (Q20).</td></tr>
+            <tr><td><span class="word">continuum</span></td><td><span class="pos">n.</span></td><td>a continuous range</td><td class="zh">连续统一体</td><td>"the <em>continuum</em> of human abilities"</td><td class="note">Geniuses at the top end.</td></tr>
+            <tr><td><span class="word">mundane</span></td><td><span class="pos">adj.</span></td><td>ordinary; dull</td><td class="zh">平凡的</td><td>"reaches back through the <em>mundane</em> and mediocre"</td><td class="note">Contrast with genius.</td></tr>
+            <tr><td><span class="word">perseverance</span></td><td><span class="pos">n.</span></td><td>continued effort despite difficulty</td><td class="zh">毅力</td><td>"the price they may have paid in terms of <em>perseverance</em>"</td><td class="note">Part of the ‘price’ of genius (Q25).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">look to (something)</span></td><td>rely on/expect from</td><td class="zh">指望；求助于</td></tr>
+            <tr><td><span class="phrase">burn out</span></td><td>become exhausted from overwork</td><td class="zh">burn out（燃尽/耗竭）</td></tr>
+            <tr><td><span class="phrase">a thin line between</span></td><td>very little difference between</td><td class="zh">一线之隔</td></tr>
+            <tr><td><span class="phrase">take into account</span></td><td>consider</td><td class="zh">考虑到</td></tr>
+            <tr><td><span class="phrase">for the most part</span></td><td>mostly</td><td class="zh">大体上</td></tr>
+            <tr><td><span class="phrase">stand out</span></td><td>be clearly noticeable</td><td class="zh">突出</td></tr>
+            <tr><td><span class="phrase">vice versa</span></td><td>the other way round</td><td class="zh">反之亦然</td></tr>
+            <tr><td><span class="phrase">make one’s way to the top</span></td><td>succeed / reach the highest level</td><td class="zh">登上顶峰</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">🔍 Complex Sentence Analysis</h2>
+      <div class="sentence-card">
+        <div class="sentence-original">"In the mythology of giftedness, it is popularly believed that if people are talented in one area, they must be defective in another."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it is popularly believed that …</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">if people are talented in one area, they must be defective in another (conditional noun clause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘it is believed that …’ reports an opinion; the ‘if …’ clause is the belief’s content.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A common myth says that a talent in one area means a weakness in another.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在关于天赋的迷思中，人们普遍认为：如果一个人在某方面有才华，就一定在另一方面有缺陷。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"Two of the most significant aspects of these studies are the frequency with which early teaching had beneficial effects but caused great difficulties of adjustment later in their lives."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Two of the most significant aspects … are the frequency with which early teaching had beneficial effects but caused great difficulties</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">with which early teaching had … but caused … (relative clause with ‘but’ contrast)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘the frequency with which …’ = how often …; ‘but’ links a good and a bad effect.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Often early teaching helped the children develop but later made it hard for them to adjust.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这些研究最重要的两个方面是：早期教育常常带来益处，却也在他们后来的生活中造成很大的适应困难。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"Genius is a term we apply to those whom we recognise for their outstanding achievements and who stand near the end of the continuum of human abilities."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Genius is a term we apply to those</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">whom we recognise for their outstanding achievements / who stand near the end of the continuum (two relative clauses)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘whom’ (object) and ‘who’ (subject) both describe ‘those’; parallel relative clauses.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">We call people ‘geniuses’ when they achieve outstandingly and sit at the top of human ability.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">“天才”是我们用来称呼那些因杰出成就而被认可、并处于人类能力连续统一体末端的人的词。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"We may envy their achievements and fame, but we should also recognise the price they may have paid in terms of perseverance, single-mindedness and dedication."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We may envy their achievements and fame, but we should also recognise the price they may have paid</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">(that) they may have paid in terms of … (relative clause, ‘that’ omitted)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">‘may envy … but should also recognise …’ balances two ideas; ‘in terms of’ = measured by.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">We might be jealous of geniuses, yet we should see the sacrifices they made to succeed.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们也许羡慕他们的成就与名声，但也应认识到他们在毅力、专注和奉献方面所付出的代价。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">✏️ Sentence Drills</h2>
+      <div class="highlight">This is an argumentative essay full of long sentences and reported beliefs. Practise separating the writer’s view from popular myths, and paraphrasing for True/False/Not Given.</div>
+      <div class="exercise-block">
+        <h3>Drill 1 — Myth or writer’s view?</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide whether each statement is a popular BELIEF reported by the writer or the writer’s own VIEW.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>‘Genius runs in families.’ → <em>reported popular belief (myth)</em></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>‘Gifted children are not different from the rest of humanity, save in degree.’ → <em>the writer’s own view</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 2 — Paraphrase the sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p>
+      <div class="ex-item"><span class="ex-num">3.</span><label>"We envy the gifted and mistrust them." → <em>We are jealous of talented people and do not fully trust them.</em></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>"‘intellectual’ is a term of denigration" → <em>calling someone an ‘intellectual’ can be an insult.</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 3 — Reduce / translate</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Reduce the clause or translate to Chinese.</p>
+      <div class="ex-item"><span class="ex-num">5.</span><label>"the peaks which stand out through the mist of history" → <em>the peaks standing out through the mist of history</em></label></div>
+      <div class="ex-item"><span class="ex-num">6.</span><label>"The true genius is a mind of large general powers, accidentally determined to some particular direction." → <em>真正的天才拥有强大的综合能力，只是偶然被导向某个特定方向。</em></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🧠 Reading Logic Training</h2>
+      <div class="card">
+        <p><strong>Reported beliefs vs the writer’s view</strong> — Paragraph 2 lists popular <em>myths</em> about giftedness; the writer does not endorse them. Distinguishing report from opinion answers Q14–18 and several T/F/NG items.</p>
+        <p><strong>Cause &amp; Effect</strong> — Early encouragement <em>helped</em> intellectual development <em>but caused</em> difficulties of adjustment later. Note the double effect.</p>
+        <p><strong>Comparison</strong> — Geniuses are ‘the peaks’ near the end of a <em>continuum</em> of human ability; they are superior in degree, not fundamentally different in kind.</p>
+        <p><strong>Concession</strong> — The writer concedes we may envy geniuses’ fame, but stresses the <em>price</em> they pay — perseverance, dedication, restrictions on personal life.</p>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Which beliefs are reported? (Q14–18, choose FIVE)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Find the five popular beliefs the writer actually mentions.</p>
+      <div class="ex-item"><span class="ex-num">B.</span><label>The talents of geniuses are soon exhausted → ‘prodigies burn too brightly too soon and burn out’ ✓</label></div>
+      <div class="ex-item"><span class="ex-num">C.</span><label>Gifted people should use their gifts → ‘people with gifts have a responsibility to use them’ ✓</label></div>
+      <div class="ex-item"><span class="ex-num">F.</span><label>Genius is inherited → ‘genius runs in families’ ✓</label></div>
+      <div class="ex-item"><span class="ex-num">H.</span><label>People never appreciate true genius → ‘genius goes unrecognised and unrewarded’ ✓</label></div>
+      <div class="ex-item"><span class="ex-num">J.</span><label>Gifted people develop greatness through difficulties → ‘adversity makes men wise’ ✓</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — True / False / Not Given (Q19–26)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Judge only what the passage states.</p>
+      <div class="ex-item"><span class="ex-num">19.</span><label>19th-c. studies ignored the uniqueness of upbringing → <strong>TRUE</strong> (not ‘norm-referenced’)</label></div>
+      <div class="ex-item"><span class="ex-num">20.</span><label>19th-c. studies lacked objectivity and scientific rigour → <strong>TRUE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">21.</span><label>A true genius has general powers excellent in any area → <strong>FALSE</strong> (writer doubts the ‘general’)</label></div>
+      <div class="ex-item"><span class="ex-num">22.</span><label>Ordinary skills are in essence the same as prodigies’ → <strong>TRUE</strong> (‘their minds are not different from our own’)</label></div>
+      <div class="ex-item"><span class="ex-num">23.</span><label>Easy acceptance of great ideas fails to lessen their significance → <strong>TRUE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">24.</span><label>Giftedness deserves scientific research to retain all talent → <strong>NOT GIVEN</strong></label></div>
+      <div class="ex-item"><span class="ex-num">25.</span><label>Geniuses often pay a high price → <strong>TRUE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">26.</span><label>Being a genius is worth the high personal cost → <strong>NOT GIVEN</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">The word ‘genius’ originally comes from…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Greek astronomy</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the early Roman cult of a family divinity</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. medieval science</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. modern genetics</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">The writer says our attitudes to the gifted are…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. entirely positive</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. ambivalent (mixed)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. indifferent</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. entirely hostile</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">Which of these is a popular belief REPORTED by the writer?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. geniuses are natural leaders</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. genius runs in families</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. a genius appears once a generation</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. genius will always reveal itself</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Why were 19th-century studies of genius flawed?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. too few cases</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. not ‘norm-referenced’ / lacked objectivity</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. only about women</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. too modern</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">Does the writer agree a true genius has general powers excellent in ANY area?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. yes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. no — the writer doubts the ‘general’</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. not discussed</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. only for scientists</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">According to the writer, the minds of prodigies are…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. completely different from ours</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. not fundamentally different from our own</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. impossible to study</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. identical to ours</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">That great ideas become common knowledge…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. proves they were unimportant</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. does not lessen their significance</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. means anyone could have found them</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. is not mentioned</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">Is being a genius said to be ‘worth’ the high personal cost?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. yes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. no</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. only for artists</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">Geniuses are described as ‘peaks’ at the end of a…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. mountain range</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. continuum of human abilities</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. family tree</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. school system</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">The writer concludes that gifted people differ from the rest of humanity mainly in…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. the kind of brain they have</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. the degree to which they develop their abilities</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. their family background</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. their IQ scores</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Official Test Answers 14–26</h3>
+          <div class="answer-item"><span class="answer-num">14–18</span><div><div class="answer-val">B, C, F, H, J</div><div class="answer-note">in any order (popular beliefs reported)</div></div></div>
+          <div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">FALSE</div></div></div>
+          <div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+          <div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — the early Roman cult of a family divinity</div><div class="answer-note">Paragraph 1: Latin ‘gens’ (family).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — ambivalent (mixed)</div><div class="answer-note">‘We envy the gifted and mistrust them.’</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — genius runs in families</div><div class="answer-note">Q14–18 include F (inherited).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B — not ‘norm-referenced’ / lacked objectivity</div><div class="answer-note">Q19–20: TRUE, TRUE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — no — the writer doubts the ‘general’</div><div class="answer-note">Q21 = FALSE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — not fundamentally different from our own</div><div class="answer-note">Q22 = TRUE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — does not lessen their significance</div><div class="answer-note">Q23 = TRUE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C — NOT GIVEN</div><div class="answer-note">Q26 = NOT GIVEN.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — continuum of human abilities</div><div class="answer-note">Metaphor in paragraph 4.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — the degree to which they develop their abilities</div><div class="answer-note">Final paragraph.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>
