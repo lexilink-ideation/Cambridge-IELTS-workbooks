@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 2 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 8 — Test 2 — Listening Part 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Quick Review</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Practice</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">🔄 Paraphrase</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🎧 Dictation</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Quick Review</h2>
+      <div class="card"><p>In a seminar, biologist <strong>Grant Freeman</strong> from the Australian Quarantine Service explains his research on the <strong>Asian Honey Bee</strong> and the risk it poses to Australia's native bees. He describes the mites the Asian bees carry, the value of native bees to agriculture, and a clever detection method using the diet of a bird — the <strong>Rainbow Bee Eater</strong>. There are multiple-choice questions and a summary to complete.</p></div>
+      <div class="highlight">💡 <strong>Listening strategy tip:</strong> Part 3 discussions often move fast between speakers. For the <strong>summary completion</strong> (ONE WORD ONLY), predict the type of word first, then listen for the paraphrase. Watch for the speaker <strong>correcting or ranking</strong> ideas ('not as such … but …', 'much more reliable than …').</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">quarantine</span></td><td>isolation to stop disease spreading</td><td class="zh">检疫；隔离</td><td>"the Australian <em>Quarantine</em> Service"</td><td class="note">Regulates food/goods entering Australia.</td></tr>
+            <tr><td><span class="word">pest</span></td><td>an insect/animal that causes harm</td><td class="zh">害虫</td><td>"prevent insect <em>pests</em> from being introduced"</td><td class="note">Reason for the research.</td></tr>
+            <tr><td><span class="word">eradicate</span></td><td>remove/destroy completely</td><td class="zh">根除</td><td>"We discovered a few … and <em>eradicated</em> them."</td><td class="note">= wipe out (Q21 context).</td></tr>
+            <tr><td><span class="word">mite</span></td><td>a tiny parasitic creature</td><td class="zh">螨虫</td><td>"they are infested with <em>mites</em>"</td><td class="note">Damage native bees (Q22).</td></tr>
+            <tr><td><span class="word">infested</span></td><td>filled with something harmful</td><td class="zh">遭侵扰的</td><td>"<em>infested</em> with mites"</td><td class="note">Collocation: infested with.</td></tr>
+            <tr><td><span class="word">pollinate</span></td><td>carry pollen so plants make seeds</td><td class="zh">授粉</td><td>"too big to <em>pollinate</em> many native flowers"</td><td class="note">Native bees pollinate crops (worth $1.2bn).</td></tr>
+            <tr><td><span class="word">allergic reaction</span></td><td>a harmful bodily response</td><td class="zh">过敏反应</td><td>"it can produce an <em>allergic reaction</em> in some people"</td><td class="note">Extra danger of Asian bees.</td></tr>
+            <tr><td><span class="word">pellet</span></td><td>a small ball of waste material</td><td class="zh">食团；小球</td><td>"they bring up … a <em>pellet</em> … they cough up"</td><td class="note">Bee Eater coughs up bits of skeleton.</td></tr>
+            <tr><td><span class="word">skeleton</span></td><td>the hard structure of a body</td><td class="zh">骨骼</td><td>"insects have their <em>skeletons</em> outside their bodies"</td><td class="note">Wings/skeleton found in pellets.</td></tr>
+            <tr><td><span class="word">reliable</span></td><td>able to be trusted; accurate</td><td class="zh">可靠的</td><td>"much more <em>reliable</em> than trying to find live ones"</td><td class="note">Answer Q30: reliable/accurate.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">have a part to play</span></td><td>have a role</td><td class="zh">发挥作用</td></tr>
+            <tr><td><span class="phrase">wipe out</span></td><td>destroy completely</td><td class="zh">消灭</td></tr>
+            <tr><td><span class="phrase">die out</span></td><td>disappear / become extinct</td><td class="zh">灭绝</td></tr>
+            <tr><td><span class="phrase">under control</span></td><td>being managed/limited</td><td class="zh">受控制</td></tr>
+            <tr><td><span class="phrase">go about (it)</span></td><td>start to deal with a task</td><td class="zh">着手做</td></tr>
+            <tr><td><span class="phrase">track down</span></td><td>search for and find</td><td class="zh">追踪找到</td></tr>
+            <tr><td><span class="phrase">bring up / cough up</span></td><td>produce from the throat</td><td class="zh">咳出；反刍</td></tr>
+            <tr><td><span class="phrase">as long as</span></td><td>provided that</td><td class="zh">只要</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">✏️ Listening Detail Practice</h2>
+      <div class="exercise-block">
+        <h3>Exercise 1 — Fill in the Blank</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the summary about detecting Asian honey bees. Use ONE WORD ONLY.</p>
+        <div class="ex-item">
+          <span class="ex-num">1.</span>
+          <label>Rainbow Bee Eaters eat only <input type="text" class="blank" id="b1" data-answer="insects" placeholder="______"> (Q25).<span class="feedback" id="fb1"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">2.</span>
+          <label>Researchers go to the locations the birds use for <input type="text" class="blank" id="b2" data-answer="feeding" placeholder="______"> (Q26).<span class="feedback" id="fb2"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">3.</span>
+          <label>They take the pellets to a <input type="text" class="blank" id="b3" data-answer="laboratory" placeholder="______"> for analysis (Q27).<span class="feedback" id="fb3"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">4.</span>
+          <label>To soften the hard pellets, they add <input type="text" class="blank" id="b4" data-answer="water" placeholder="______"> (Q28).<span class="feedback" id="fb4"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">5.</span>
+          <label>In the pellets they look for the <input type="text" class="blank" id="b5" data-answer="wings" placeholder="______"> of Asian bees (Q29).<span class="feedback" id="fb5"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">6.</span>
+          <label>This method is more <input type="text" class="blank" id="b6" data-answer="reliable" placeholder="______"> than searching for live bees (Q30).<span class="feedback" id="fb6"></span></label>
+        </div>
+        <button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button>
+        <button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 2 — Cause &amp; Consequence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each cause to its consequence in the talk.</p>
+      <div class="ex-item"><span class="ex-num">a.</span><label>Asian bees carry mites → they could <strong>wipe out native bees</strong></label></div>
+      <div class="ex-item"><span class="ex-num">b.</span><label>Native bees pollinate crops → worth <strong>$1.2 billion a year</strong></label></div>
+      <div class="ex-item"><span class="ex-num">c.</span><label>Bee Eaters eat insects → their pellets <strong>reveal what insects are around</strong></label></div>
+      <div class="ex-item"><span class="ex-num">d.</span><label>Analyse pellets → find <strong>Asian bee wings</strong> (or not)</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 3 — Spelling Challenge</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Science vocabulary. Write the full spelling.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>quar _ nt _ ne → <strong>quarantine</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>poll _ nate → <strong>pollinate</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>er _ dic _ te → <strong>eradicate</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>lab _ rat _ ry → <strong>laboratory</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">🔄 Paraphrase Training</h2>
+      <div class="highlight">In IELTS the <strong>question words are almost never the words you hear or read</strong>. Recognising paraphrase is the key skill. Study each example, then write your own sentence.</div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 1</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q21: Where have Asian honey bees been found in the past?</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"We discovered a few of them in <em>Queensland</em> once and eradicated them."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'in the past' points to Queensland (A), not the states they now watch.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 2</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q22: A problem with Asian honey bees is that they …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"they are infested with <em>mites</em> … which can seriously damage our own home-grown bees."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'carry parasites' = infested with mites → answer B.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 3</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q24: If Asian bees got into Australia …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"We could lose a lot of money because … native bees' pollination … is worth 1.2 billion dollars a year."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'the country's economy would be affected' = lose a lot of money → answer A.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 4</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q30: The benefit of this research is that the result is more …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"a good result and much more <em>reliable</em> than trying to find live ones."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Comparative signals the answer: reliable/accurate.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🎧 Mini Dictation</h2>
+      <p class="card" style="color:var(--muted);font-size:.88rem;">Play or read each chunk aloud, then type it exactly. Watch spelling, plurals and numbers.</p>
+      <div class="dictation-item"><span class="di-num">1.</span><em>Phrase: the quarantine service regulates all food brought into Australia</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">2.</span><em>Phrase: they are infested with mites</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">3.</span><em>Phrase: too big to pollinate many of our native flowers</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">4.</span><em>Phrase: worth one point two billion dollars a year</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">5.</span><em>Phrase: we track down the Bee Eaters and find their feeding spots</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">6.</span><em>Phrase: we add water to moisten them and make them softer</em><input type="text" placeholder="Type the phrase here…"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">Grant Freeman works for the…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. university biology lab</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Australian Quarantine Service</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. honey industry</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. farmers&#x27; union</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">Where in Australia have Asian honey bees been found in the past?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Queensland</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. New South Wales</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. several states</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Victoria</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">The main problem with Asian honey bees is that they…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. attack native bees directly</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. carry parasites (mites)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. damage crops</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. make no honey</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">What point is made about Australian (native) bees?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. their honey varies in quality</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. they are too small to pollinate</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. they are sold to customers abroad</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. they carry disease</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">If Asian bees entered Australia, Grant says…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. the economy would be affected</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. allergy research would benefit</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. some agriculture would benefit</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. nothing would change</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">What do Rainbow Bee Eaters eat?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. seeds</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. only insects</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. fish</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. fruit</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Where do researchers collect the pellets?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. in the laboratory</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. at the birds&#x27; feeding spots</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. in beehives</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. on crops</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">How are the hard pellets softened for analysis?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. by heating</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. by adding water</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. by freezing</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. by cutting</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">What exactly do researchers look for in the pellets?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. bee wings</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. honey</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. pollen</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. eggs</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Why is this method better than looking for live bees?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. it is cheaper</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. it is more reliable/accurate</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. it is faster only</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. it needs no lab</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Exercise 1 — Fill in the Blank</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">insects</div><div class="answer-note">Bee Eaters eat only insects (Q25).</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">feeding</div><div class="answer-note">Locations used for feeding (Q26).</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">laboratory</div><div class="answer-note">Where pellets are analysed (Q27).</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">water</div><div class="answer-note">Added to soften pellets (Q28).</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">wings</div><div class="answer-note">Asian bee wings sought (Q29).</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">reliable</div><div class="answer-note">More reliable than finding live bees (Q30).</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Official Test Answers 21–30</h3>
+          <div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">A</div></div></div>
+          <div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">A</div></div></div>
+          <div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">insects</div></div></div>
+          <div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">feeding / eating</div></div></div>
+          <div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">laboratory</div></div></div>
+          <div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">water</div></div></div>
+          <div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">wings</div></div></div>
+          <div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">reliable / accurate</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — Australian Quarantine Service</div><div class="answer-note">Introduced by the professor.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A — Queensland</div><div class="answer-note">Q21: found in Queensland and eradicated.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — carry parasites (mites)</div><div class="answer-note">Q22: infested with mites.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C — they are sold to customers abroad</div><div class="answer-note">Q23: native queen bees are exported.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">A — the economy would be affected</div><div class="answer-note">Q24: could lose a lot of money ($1.2bn pollination).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — only insects</div><div class="answer-note">Q25: &#x27;as long as they&#x27;re insects.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — at the birds&#x27; feeding spots</div><div class="answer-note">Q26: favourite feeding spots.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B — by adding water</div><div class="answer-note">Q28: add water to moisten them.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A — bee wings</div><div class="answer-note">Q29: Asian bee wings.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — it is more reliable/accurate</div><div class="answer-note">Q30: &#x27;much more reliable.&#x27;</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

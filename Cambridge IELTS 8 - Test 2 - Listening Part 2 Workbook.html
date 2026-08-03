@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 2 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 8 — Test 2 — Listening Part 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Quick Review</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Practice</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">🔄 Paraphrase</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🎧 Dictation</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Quick Review</h2>
+      <div class="card"><p>A guide welcomes visitors to <strong>Green Vale Agricultural Park</strong>, which has just opened. Using a wall plan, the speaker points out where each area is (rare breeds, grazing, forest, fish farms, market garden, and more), then explains opening times, how to get around, the animals kept, the purpose of the <strong>Rare Breeds</strong> section, seasonal events, and the shop. This Part 2 combines a <strong>map/plan-labelling</strong> task with multiple-choice questions.</p></div>
+      <div class="highlight">💡 <strong>Listening strategy tip:</strong> For the <strong>plan-labelling</strong> task, orient yourself first: find 'YOU ARE HERE' and the compass (north/east/south). Then track <strong>direction words</strong> — 'next to', 'moving east', 'south of', 'in the middle', 'to the east of those'. For the multiple-choice items, listen for the answer that is <em>stated</em>, not just a word you recognise.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">agricultural</span></td><td>relating to farming</td><td class="zh">农业的</td><td>"Welcome to Green Vale <em>Agricultural</em> Park."</td><td class="note">Topic adjective; noun = agriculture.</td></tr>
+            <tr><td><span class="word">remit (n.)</span></td><td>an official area of responsibility</td><td class="zh">职责范围</td><td>"Our <em>remit</em> is to give educational opportunities."</td><td class="note">Signals the park&#x27;s main purpose (Q11).</td></tr>
+            <tr><td><span class="word">rare breed</span></td><td>an uncommon type of farm animal</td><td class="zh">稀有品种</td><td>"the <em>Rare Breeds</em> section"</td><td class="note">Kept to widen the gene pool (Q18).</td></tr>
+            <tr><td><span class="word">grazing</span></td><td>eating grass in a field</td><td class="zh">放牧</td><td>"the large <em>grazing</em> area for the rare breeds"</td><td class="note">Area on the plan.</td></tr>
+            <tr><td><span class="word">marsh</span></td><td>low, wet land</td><td class="zh">沼泽</td><td>"the <em>marsh</em> area … attracts many migrant birds"</td><td class="note">Feature near the fish farms.</td></tr>
+            <tr><td><span class="word">poultry</span></td><td>farm birds kept for eggs/meat</td><td class="zh">家禽</td><td>"hens and other kinds of <em>poultry</em>"</td><td class="note">Rare Breeds includes goats, sheep, hens (Q17).</td></tr>
+            <tr><td><span class="word">gene pool</span></td><td>the range of genes in a population</td><td class="zh">基因库</td><td>"to broaden the <em>gene pool</em> for agricultural development"</td><td class="note">Real purpose of Rare Breeds (Q18).</td></tr>
+            <tr><td><span class="word">blossom (n.)</span></td><td>flowers on a fruit tree</td><td class="zh">花；开花</td><td>"fruit trees will be in full <em>blossom</em>"</td><td class="note">A May event (Q19).</td></tr>
+            <tr><td><span class="word">tram</span></td><td>a rail vehicle for passengers</td><td class="zh">有轨电车</td><td>"our electric <em>tram</em>, powered from solar cells"</td><td class="note">One way to move around (Q16).</td></tr>
+            <tr><td><span class="word">orchard</span></td><td>an area planted with fruit trees</td><td class="zh">果园</td><td>"the final section … is the <em>orchard</em>"</td><td class="note">Near the Reception block.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">be amongst (the first)</span></td><td>be one of a group</td><td class="zh">属于…之中</td></tr>
+            <tr><td><span class="phrase">out of bounds</span></td><td>not allowed to be entered</td><td class="zh">禁止入内</td></tr>
+            <tr><td><span class="phrase">environmentally friendly</span></td><td>not harmful to nature</td><td class="zh">环保的</td></tr>
+            <tr><td><span class="phrase">on foot</span></td><td>walking</td><td class="zh">步行</td></tr>
+            <tr><td><span class="phrase">lose sight of</span></td><td>forget / stop focusing on</td><td class="zh">忽视</td></tr>
+            <tr><td><span class="phrase">all year round</span></td><td>throughout the year</td><td class="zh">全年</td></tr>
+            <tr><td><span class="phrase">consult (the board)</span></td><td>look at for information</td><td class="zh">查阅</td></tr>
+            <tr><td><span class="phrase">browse round</span></td><td>look casually around (a shop)</td><td class="zh">随意浏览</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">✏️ Listening Detail Practice</h2>
+      <div class="exercise-block">
+        <h3>Exercise 1 — Fill in the Blank</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each fact about the park. Use NO MORE THAN TWO WORDS.</p>
+        <div class="ex-item">
+          <span class="ex-num">1.</span>
+          <label>The largest section, in the east of the park, is the <input type="text" class="blank" id="b1" data-answer="Forest" placeholder="______"> Area (Q12).<span class="feedback" id="fb1"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">2.</span>
+          <label>The two small rectangles where fish are reared are the <input type="text" class="blank" id="b2" data-answer="Fish Farm" placeholder="______"> s (Q13).<span class="feedback" id="fb2"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">3.</span>
+          <label>In the south-eastern corner is the <input type="text" class="blank" id="b3" data-answer="Market Garden" placeholder="______"> area (Q14).<span class="feedback" id="fb3"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">4.</span>
+          <label>Cars are banned; visitors use bicycles, walking or an electric <input type="text" class="blank" id="b4" data-answer="tram" placeholder="______"> .<span class="feedback" id="fb4"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">5.</span>
+          <label>The Rare Breeds section keeps goats, sheep and <input type="text" class="blank" id="b5" data-answer="hens" placeholder="______"> .<span class="feedback" id="fb5"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">6.</span>
+          <label>The shop sells books on wildlife and the history of <input type="text" class="blank" id="b6" data-answer="farming" placeholder="______"> .<span class="feedback" id="fb6"></span></label>
+        </div>
+        <button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button>
+        <button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 2 — Follow the Directions (Plan)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Use the compass and &#x27;YOU ARE HERE&#x27; to place each area.</p>
+      <div class="ex-item"><span class="ex-num">a.</span><label>Out of Reception, first area on the path → <strong>Rare Breeds</strong></label></div>
+      <div class="ex-item"><span class="ex-num">b.</span><label>Moving east, largest section → <strong>Forest Area</strong> (Q12)</label></div>
+      <div class="ex-item"><span class="ex-num">c.</span><label>Two rectangles by the lake → <strong>Fish Farms</strong> (Q13)</label></div>
+      <div class="ex-item"><span class="ex-num">d.</span><label>South-eastern corner, beyond the marsh → <strong>Market Garden</strong> (Q14)</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 3 — Spelling Challenge</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Park vocabulary. Write the full spelling.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>agri _ ult _ ral → <strong>agricultural</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>p _ ultry → <strong>poultry</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>bl _ ss _ m → <strong>blossom</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>orch _ rd → <strong>orchard</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">🔄 Paraphrase Training</h2>
+      <div class="highlight">In IELTS the <strong>question words are almost never the words you hear or read</strong>. Recognising paraphrase is the key skill. Study each example, then write your own sentence.</div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 1</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q11: the MAIN purposes of the park are …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"Our remit is to give <em>educational</em> opportunities … as well as to offer <em>research</em> sites for … scientists."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'research and education' → answer B (not entertainment).</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 2</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q15: When are the experimental areas closed?</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"can be visited … for <em>almost all the year</em> … when certain areas are being used for … experiments … temporarily out of bounds."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Closed only briefly → 'a short time every year' (C).</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 3</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q18: main purpose of the Rare Breeds Section …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"not as such to preserve rare animals but to maintain the <em>diversity of breeds</em> to broaden the gene pool."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'keep a variety of breeds' = maintain diversity → answer B, not 'save unusual animals'.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 4</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q19: What can you see at present?</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"John Havers, our expert fly fisherman, is <em>currently giving displays</em> on the lake."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'at the present time' → a demonstration of fishing (C); blossom/geese are May events.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🎧 Mini Dictation</h2>
+      <p class="card" style="color:var(--muted);font-size:.88rem;">Play or read each chunk aloud, then type it exactly. Watch spelling, plurals and numbers.</p>
+      <div class="dictation-item"><span class="di-num">1.</span><em>Phrase: you are amongst our first visitors</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">2.</span><em>Phrase: as you walk out of the main door into the park</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">3.</span><em>Phrase: cars are banned in the park</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">4.</span><em>Phrase: powered from solar cells</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">5.</span><em>Phrase: to broaden the gene pool</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">6.</span><em>Phrase: the fruit trees will be in full blossom</em><input type="text" placeholder="Type the phrase here…"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">According to the speaker, the main purposes of the park are…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. education and entertainment</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. research and education</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. research and entertainment</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. farming and tourism</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">Where is the largest section of the park?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. the marsh</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. the Forest Area (east)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. the lake</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. the market garden</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">What are the two small rectangles by the lake?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. fish farms</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. crop areas</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. car parks</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. toilets</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">When are the experimental areas closed to the public?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. all year round</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. almost all the year</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. a short time every year</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. never</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">How can visitors move around the park?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. by tram, walking or bicycle</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. by solar car or bicycle</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. by bicycle, walking or bus</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. by private car</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">Which animals are currently kept in the Rare Breeds section?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. hens and horses</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. goats and cows</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. goats and hens (and sheep)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. cows and horses</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">What is the MAIN purpose of the Rare Breeds Section?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. to save unusual animals</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. to keep a variety of breeds (gene pool)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. to educate the public</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. to sell animals</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">What can you see in the park at the present time?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. the arrival of wild birds</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. fruit tree blossom</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. a demonstration of fishing</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. newborn lambs</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">The shop contains books about wildlife and…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. animals only</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. local traditions</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. the history of farming</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. the park&#x27;s staff</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Why are cars banned in the park?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. there is no road</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. to be environmentally friendly</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. it is too small</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. for safety only</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Exercise 1 — Fill in the Blank</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">Forest</div><div class="answer-note">Largest, eastern section (Q12).</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">Fish Farm</div><div class="answer-note">Two rectangles by the lake (Q13).</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">Market Garden</div><div class="answer-note">South-eastern corner (Q14).</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">tram</div><div class="answer-note">Solar-powered electric tram (Q16).</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">hens</div><div class="answer-note">With goats and sheep (Q17).</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">farming</div><div class="answer-note">Books in the shop (Q20).</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Official Test Answers 11–20</h3>
+          <div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">(the) Forest</div></div></div>
+          <div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">Fish Farm(s)</div></div></div>
+          <div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">Market Garden</div></div></div>
+          <div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">A</div></div></div>
+          <div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">A</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — research and education</div><div class="answer-note">Q11: &#x27;educational opportunities … research sites.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — the Forest Area (east)</div><div class="answer-note">Q12: Forest Area, moving east.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A — fish farms</div><div class="answer-note">Q13: Fish Farms rearing fish for sale.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C — a short time every year</div><div class="answer-note">Q15: only temporarily during controlled experiments.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">A — by tram, walking or bicycle</div><div class="answer-note">Q16: bicycles, on foot, or electric tram; cars banned.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C — goats and hens (and sheep)</div><div class="answer-note">Q17: goats, sheep, hens; cows/horses not yet.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — to keep a variety of breeds (gene pool)</div><div class="answer-note">Q18: maintain diversity / broaden the gene pool.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C — a demonstration of fishing</div><div class="answer-note">Q19: fly-fishing displays now; blossom/geese are in May.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — the history of farming</div><div class="answer-note">Q20: wildlife and the history of farming.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — to be environmentally friendly</div><div class="answer-note">All transport is &#x27;environmentally friendly&#x27;.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

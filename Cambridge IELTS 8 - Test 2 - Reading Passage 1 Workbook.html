@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 2 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 8 — Test 2 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Passage Overview</h2>
+      <div class="card"><p>This passage explains how flat <strong>sheet glass</strong> is made, focusing on the <strong>float process</strong> invented by Alistair Pilkington. It compares earlier methods (spinning and the ribbon process) with the float process, in which molten glass is floated on a bed of <strong>molten tin</strong> to give perfectly flat surfaces. It then covers the difficult early years of production and how modern float plants achieve near-optical quality with automated inspection.</p></div>
+      <div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>table and diagram completion</strong>, follow the passage's own words and stay within the word limit (NO MORE THAN TWO WORDS). For <strong>True/False/Not Given</strong>, judge only what the text says — 'Not Given' means you cannot find it confirmed <em>or</em> denied, even if it sounds likely.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">molten</span></td><td><span class="pos">adj.</span></td><td>melted into liquid by heat</td><td class="zh">熔化的</td><td>"a <em>molten</em> mass that hardens when cooled"</td><td class="note">Key process word: molten glass/tin.</td></tr>
+            <tr><td><span class="word">unblemished</span></td><td><span class="pos">adj.</span></td><td>perfect; without any marks</td><td class="zh">无瑕的</td><td>"it stayed perfectly <em>unblemished</em>"</td><td class="note">Answer Q2; &#x27;fire finish&#x27;.</td></tr>
+            <tr><td><span class="word">labour-intensive</span></td><td><span class="pos">adj.</span></td><td>needing a lot of workers</td><td class="zh">劳动密集的</td><td>"the process … was <em>labour intensive</em>"</td><td class="note">Answer Q3; disadvantage of spinning.</td></tr>
+            <tr><td><span class="word">continuous</span></td><td><span class="pos">adj.</span></td><td>without stopping</td><td class="zh">连续的</td><td>"a method of making it <em>continuously</em>"</td><td class="note">Goal of the ribbon/float processes.</td></tr>
+            <tr><td><span class="word">roller</span></td><td><span class="pos">n.</span></td><td>a cylinder that presses/moves material</td><td class="zh">滚轴</td><td>"squeezing molten glass through two hot <em>rollers</em>"</td><td class="note">Rollers marked the glass (Q5/Q8).</td></tr>
+            <tr><td><span class="word">gravity</span></td><td><span class="pos">n.</span></td><td>the force pulling things down</td><td class="zh">重力</td><td>"the concept relied on <em>gravity</em>"</td><td class="note">Keeps the tin surface flat.</td></tr>
+            <tr><td><span class="word">surface tension</span></td><td><span class="pos">n.</span></td><td>force at a liquid&#x27;s surface</td><td class="zh">表面张力</td><td>"<em>surface tension</em> interactions between the glass and the tin"</td><td class="note">Sets the 6 mm thickness.</td></tr>
+            <tr><td><span class="word">marred</span></td><td><span class="pos">v.</span></td><td>spoiled; damaged the look of</td><td class="zh">损坏；瑕疵</td><td>"a ribbon frequently <em>marred</em> by inclusions and bubbles"</td><td class="note">= spoiled by faults.</td></tr>
+            <tr><td><span class="word">inclusion</span></td><td><span class="pos">n.</span></td><td>an unwanted particle inside glass</td><td class="zh">夹杂物</td><td>"marred by <em>inclusions</em> and bubbles"</td><td class="note">A defect inspection removes.</td></tr>
+            <tr><td><span class="word">simultaneously</span></td><td><span class="pos">adv.</span></td><td>at the same time</td><td class="zh">同时地</td><td>"several processes take place <em>simultaneously</em>"</td><td class="note">Melting/refining together.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">little more than</span></td><td>almost only; just</td><td class="zh">只不过是</td></tr>
+            <tr><td><span class="phrase">rely on</span></td><td>depend on</td><td class="zh">依赖</td></tr>
+            <tr><td><span class="phrase">eliminate the need for</span></td><td>remove the need for</td><td class="zh">省去…的必要</td></tr>
+            <tr><td><span class="phrase">by (fortunate) coincidence</span></td><td>by chance / luck</td><td class="zh">碰巧</td></tr>
+            <tr><td><span class="phrase">add up to</span></td><td>amount to; result in</td><td class="zh">总计；意味着</td></tr>
+            <tr><td><span class="phrase">give way to</span></td><td>be replaced by</td><td class="zh">让位于</td></tr>
+            <tr><td><span class="phrase">take place</span></td><td>happen</td><td class="zh">发生</td></tr>
+            <tr><td><span class="phrase">at every stage</span></td><td>throughout the process</td><td class="zh">在每个阶段</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">🔍 Complex Sentence Analysis</h2>
+      <div class="sentence-card">
+        <div class="sentence-original">"Glass, which has been made since the time of the Mesopotamians and Egyptians, is little more than a mixture of sand, soda ash and lime."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Glass … is little more than a mixture of sand, soda ash and lime</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">which has been made since the time of the Mesopotamians and Egyptians (non-defining relative clause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The 'which' clause adds extra info between commas; 'little more than' = basically just.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Glass, made since ancient times, is basically just sand, soda ash and lime.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">玻璃自美索不达米亚人和埃及人时代起就已被制造，其实只不过是沙子、纯碱和石灰的混合物。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"This allowed glass of virtually any thickness to be made non-stop, but the rollers would leave both sides of the glass marked."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This allowed glass … to be made non-stop … but the rollers would leave both sides … marked</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">(no subordinate clause) — two independent clauses joined by 'but' (contrast)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'allowed X to be made' = made X possible; 'but' introduces the drawback.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The ribbon method could make any thickness continuously, but it left marks on both sides.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这使几乎任何厚度的玻璃都能不停地生产，但滚轴会在玻璃两面留下痕迹。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"If the glass were kept hot enough, it would flow over the molten tin until the top surface was also flat, horizontal and perfectly parallel to the bottom surface."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it would flow over the molten tin until the top surface was … flat … parallel to the bottom surface</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">If the glass were kept hot enough (second conditional) / until … (time clause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'If … were … , it would …' is a conditional; 'until' shows the end point.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Kept hot, the glass spreads over the tin until its top is as flat as its bottom.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">只要玻璃保持足够高温，它就会在熔锡上流动，直到上表面也变得平整、水平并与下表面完全平行。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"Inspection technology allows more than 100 million measurements a second to be made across the ribbon, locating flaws the unaided eye would be unable to see."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Inspection technology allows more than 100 million measurements a second to be made</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">locating flaws (that) the unaided eye would be unable to see (participle + reduced relative clause)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'-ing' participle 'locating' shows a result; the relative pronoun 'that' is omitted.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The technology takes millions of measurements per second and finds faults people cannot see.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">检测技术每秒可在玻璃带上进行超过一亿次测量，找出肉眼无法看见的瑕疵。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">✏️ Sentence Drills</h2>
+      <div class="highlight">This passage is a process/description text full of cause-and-result links. Practise combining, reducing and paraphrasing so you can fill tables and judge True/False/Not Given.</div>
+      <div class="exercise-block">
+        <h3>Drill 1 — Combine into one sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair with the linker in brackets.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>The rollers marked both sides of the glass. The glass then had to be ground and polished. <em>(so)</em> → <em>The rollers marked both sides of the glass, so it then had to be ground and polished.</em></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>The surface of molten tin is perfectly flat. The underside of the glass is also flat. <em>(because)</em></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>The glass cooled to 604°C. It became too hard to mark. <em>(once)</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 2 — Paraphrase the sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p>
+      <div class="ex-item"><span class="ex-num">4.</span><label>"the process took a long time and was labour intensive" → <em>it was slow and needed a lot of workers.</em></label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>"By fortunate coincidence, 60 per cent of the market was for six-millimetre glass." → <em>Luckily, most demand was for 6 mm glass — the thickness the process made naturally.</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 3 — Reduce the relative clause</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each relative clause to a phrase.</p>
+      <div class="ex-item"><span class="ex-num">6.</span><label>"stresses that are formed during cooling" → <em>stresses formed during cooling</em></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>"a bed of metal which is molten" → <em>a bed of molten metal</em></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🧠 Reading Logic Training</h2>
+      <div class="card">
+        <p><strong>Cause &amp; Effect</strong> — Pouring glass onto <em>flat</em> molten tin <em>results in</em> a flat underside; keeping it hot makes the top flat too. Signal: <em>consequently, because, so that</em>.</p>
+        <p><strong>Problem / Solution</strong> — Problem: rollers marked the glass and wasted ~20%. Solution: float it on molten tin — no rollers, no marking.</p>
+        <p><strong>Chronology</strong> — 1952 idea → 1953 pilot plant → 1955 full-scale plant → 14 months of loss → 1959 success → today's plants. Dates anchor the True/False/Not Given items.</p>
+        <p><strong>Comparison / Contrast</strong> — Spinning gave an unblemished 'fire finish' but was slow; the ribbon process was continuous but wasteful; the float process is both continuous and clean.</p>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Table &amp; Diagram Completion (Q1–8)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Use NO MORE THAN TWO WORDS from the passage. Match each gap to the exact wording.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>Early method (unblemished, slow) → <strong>spinning</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>Advantage of spinning: glass remained … → <strong>(perfectly) unblemished</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>Disadvantage of spinning: slow and … → <strong>labour-intensive</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>Ribbon could produce glass of varying … → <strong>thickness</strong></label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>Disadvantage of ribbon: glass was … → <strong>marked</strong></label></div>
+      <div class="ex-item"><span class="ex-num">6.</span><label>In the float bath, molten … is poured on … → <strong>(molten) glass</strong></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>… onto a bed of molten … → <strong>(molten) tin / metal</strong></label></div>
+      <div class="ex-item"><span class="ex-num">8.</span><label>Cooled glass is carried out by … → <strong>rollers</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — True / False / Not Given (Q9–13)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">TRUE = matches; FALSE = contradicts; NOT GIVEN = not stated.</p>
+      <div class="ex-item"><span class="ex-num">9.</span><label>The metal needed specific properties → <strong>TRUE</strong> (melting/boiling points; tin was best)</label></div>
+      <div class="ex-item"><span class="ex-num">10.</span><label>Pilkington invested his own money → <strong>NOT GIVEN</strong></label></div>
+      <div class="ex-item"><span class="ex-num">11.</span><label>The first full-scale plant was an instant success → <strong>FALSE</strong> (14 months of loss)</label></div>
+      <div class="ex-item"><span class="ex-num">12.</span><label>The process has since been improved → <strong>TRUE</strong> (range of thicknesses, near-optical quality)</label></div>
+      <div class="ex-item"><span class="ex-num">13.</span><label>Computers beat humans at detecting glass faults → <strong>TRUE</strong> ('flaws the unaided eye would be unable to see')</label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">Glass is basically a mixture of sand, soda ash and…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. tin</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. lime</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. water</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. carbon</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">The advantage of the spinning method was that the glass stayed…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. cheap</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. thick</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. unblemished</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. coloured</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">A drawback of the spinning method was that it was…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. dangerous</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. slow and labour-intensive</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. too fast</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. wasteful of tin</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">In the ribbon process, the rollers…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. cooled the glass</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. marked both sides of the glass</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. coloured the glass</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. cut the glass</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">Which metal did Pilkington use to float the glass?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. lead</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. copper</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. tin</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. iron</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">The float glass naturally settled to a thickness of…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. 3 mm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. 6 mm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. 10 mm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. 25 mm</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">The metal for the float process needed specific properties (melting/boiling points). This is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. TRUE</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. FALSE</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. irrelevant</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">Pilkington&#x27;s first full-scale plant was an instant commercial success. This is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. TRUE</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. FALSE</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. NOT GIVEN</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. partly true</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">Modern float plants make glass of…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. poor quality</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. near-optical quality</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. one thickness only</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. coloured glass only</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Automated inspection can find flaws that…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. are visible to all</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. the unaided eye cannot see</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. only appear later</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. do not matter</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Official Test Answers 1–13</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">spinning</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">(perfectly) unblemished</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">labour-intensive</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">thickness</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">marked</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">(molten) glass</div></div></div>
+          <div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">(molten) tin / metal</div></div></div>
+          <div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">rollers</div></div></div>
+          <div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+          <div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">FALSE</div></div></div>
+          <div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">TRUE</div></div></div>
+          <div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">TRUE</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — lime</div><div class="answer-note">Opening paragraph.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C — unblemished</div><div class="answer-note">Q2: perfectly unblemished, &#x27;fire finish&#x27;.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — slow and labour-intensive</div><div class="answer-note">Q3: labour-intensive.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B — marked both sides of the glass</div><div class="answer-note">Q5: glass was marked; ~20% ground away.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C — tin</div><div class="answer-note">Best melting/boiling points.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — 6 mm</div><div class="answer-note">Surface tension → 6 mm, matching most demand.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A — TRUE</div><div class="answer-note">Q9 TRUE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B — FALSE</div><div class="answer-note">Q11 FALSE: 14 months of loss.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — near-optical quality</div><div class="answer-note">Q12 TRUE: greatly improved.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — the unaided eye cannot see</div><div class="answer-note">Q13 TRUE.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>
