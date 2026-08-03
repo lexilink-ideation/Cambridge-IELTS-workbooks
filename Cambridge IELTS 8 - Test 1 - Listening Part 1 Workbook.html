@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 1 — Listening Part 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Listening Part 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 1</div>
+    <h1>Cambridge IELTS 8 — Test 1 — Listening Part 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Quick Review</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Practice</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">🔄 Paraphrase</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🎧 Dictation</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Quick Review</h2>
+      <div class="card"><p>Two friends, <strong>George</strong> and <strong>Nina</strong>, talk about a brochure George found in the library for a <strong>summer music festival</strong> of mostly Spanish music. They discuss which concerts to attend and then fill in a <strong>booking form</strong> — giving an address, postcode, phone number, and choosing tickets, prices and dates. This is a typical Part 1 everyday conversation with a form to complete.</p></div>
+      <div class="highlight">💡 <strong>Listening strategy tip:</strong> Part 1 answers come <em>in order</em>. Personal details (address, postcode, phone) are usually <strong>spelt out or read digit by digit</strong>, so write letters and numbers exactly as you hear them. Watch the word-limit instruction: here it is NO MORE THAN TWO WORDS AND/OR A NUMBER.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">brochure</span></td><td>a small booklet with information</td><td class="zh">宣传册</td><td>"He found a <em>brochure</em> from a summer festival."</td><td class="note">Often confused with &#x27;book&#x27; — a distractor in Q Example.</td></tr>
+            <tr><td><span class="word">festival</span></td><td>a series of special events/performances</td><td class="zh">音乐节；节日</td><td>"They booked tickets for the music <em>festival</em>."</td><td class="note">Topic word; spelling: festi-val.</td></tr>
+            <tr><td><span class="word">refreshments</span></td><td>light food and drinks</td><td class="zh">茶点；饮料</td><td>"The ticket price includes free <em>refreshments</em> in the garden."</td><td class="note">Paraphrase of &#x27;drinks&#x27; — key for Q6.</td></tr>
+            <tr><td><span class="word">postcode</span></td><td>code of letters and numbers for an address</td><td class="zh">邮政编码</td><td>"Our new <em>postcode</em> is WS6 2YH."</td><td class="note">Spelt out letter+number; write exactly (Q4).</td></tr>
+            <tr><td><span class="word">discount</span></td><td>money taken off the normal price</td><td class="zh">折扣</td><td>"Students get a 50% <em>discount</em> on everything."</td><td class="note">&#x27;50% discount&#x27; = &#x27;half price&#x27; (Q10).</td></tr>
+            <tr><td><span class="word">senior citizen</span></td><td>an older / retired person</td><td class="zh">老年人</td><td>"Children, students and <em>senior citizens</em> pay less."</td><td class="note">Listed with children &amp; students as a group.</td></tr>
+            <tr><td><span class="word">bargain</span></td><td>something cheap; good value</td><td class="zh">便宜货；划算</td><td>"It sounds like a <em>bargain</em> to me!"</td><td class="note">Signals a good deal; positive attitude.</td></tr>
+            <tr><td><span class="word">keen</span></td><td>very interested / enthusiastic</td><td class="zh">热衷的</td><td>"I'm feeling quite <em>keen</em> now."</td><td class="note">&#x27;keen on&#x27; + noun/-ing = want to do.</td></tr>
+            <tr><td><span class="word">persuade</span></td><td>make someone want to do something</td><td class="zh">说服</td><td>"Something on the form might <em>persuade</em> me."</td><td class="note">Signals a change of decision.</td></tr>
+            <tr><td><span class="word">instrumental</span></td><td>music played by instruments (no singing)</td><td class="zh">器乐的</td><td>"The <em>instrumental</em> group Guitarrini plays first."</td><td class="note">Contrast with &#x27;singer&#x27; / &#x27;vocal&#x27;.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">come across (sth)</span></td><td>find by chance</td><td class="zh">偶然发现</td></tr>
+            <tr><td><span class="phrase">fill in the form</span></td><td>complete the form with information</td><td class="zh">填表</td></tr>
+            <tr><td><span class="phrase">spoil ourselves</span></td><td>treat ourselves to something nice</td><td class="zh">犒劳自己</td></tr>
+            <tr><td><span class="phrase">in that case</span></td><td>if that is true / so</td><td class="zh">既然那样</td></tr>
+            <tr><td><span class="phrase">go without (food)</span></td><td>manage without having something</td><td class="zh">没有…也行；将就</td></tr>
+            <tr><td><span class="phrase">have a look (at)</span></td><td>look quickly / examine</td><td class="zh">看一看</td></tr>
+            <tr><td><span class="phrase">be bad at (numbers)</span></td><td>not skilled at something</td><td class="zh">不擅长</td></tr>
+            <tr><td><span class="phrase">book (two) tickets</span></td><td>reserve tickets in advance</td><td class="zh">订票</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">✏️ Listening Detail Practice</h2>
+      <div class="exercise-block">
+        <h3>Exercise 1 — Fill in the Blank</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence from the conversation. Use ONE or TWO words or a number.</p>
+        <div class="ex-item">
+          <span class="ex-num">1.</span>
+          <label>George's address is 48 <input type="text" class="blank" id="b1" data-answer="North Avenue" placeholder="______"> , Westsea.<span class="feedback" id="fb1"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">2.</span>
+          <label>The new postcode is <input type="text" class="blank" id="b2" data-answer="WS6 2YH" placeholder="______"> .<span class="feedback" id="fb2"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">3.</span>
+          <label>George's telephone number is <input type="text" class="blank" id="b3" data-answer="01674 553242" placeholder="______"> .<span class="feedback" id="fb3"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">4.</span>
+          <label>The £6 singer ticket includes free <input type="text" class="blank" id="b4" data-answer="drinks" placeholder="______"> in the garden.<span class="feedback" id="fb4"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">5.</span>
+          <label>On 23 June, a Spanish Dance & Guitar concert costs £10.50, and they need <input type="text" class="blank" id="b5" data-answer="4" placeholder="______"> tickets.<span class="feedback" id="fb5"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">6.</span>
+          <label>Children, students and senior citizens get a <input type="text" class="blank" id="b6" data-answer="50%" placeholder="______"> discount on everything.<span class="feedback" id="fb6"></span></label>
+        </div>
+        <button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button>
+        <button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 2 — Number &amp; Date Recognition</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Numbers, prices and dates are heard fast. Match what is said to the correct figure.</p>
+      <div class="ex-item"><span class="ex-num">a.</span><label>"seven pounds fifty" → £<strong>7.50</strong> (Guitarrini ticket)</label></div>
+      <div class="ex-item"><span class="ex-num">b.</span><label>"ten pounds fifty" → £<strong>10.50</strong> (dance &amp; guitar)</label></div>
+      <div class="ex-item"><span class="ex-num">c.</span><label>"oh one six seven four" → phone code <strong>01674</strong></label></div>
+      <div class="ex-item"><span class="ex-num">d.</span><label>"the seventeenth of June" → date <strong>17 June</strong> (singer)</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 3 — Spelling Challenge</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These festival words are often misspelled. Cover the answer and write them.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>br _ _ ch _ re → <strong>brochure</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>refr _ shm _ nts → <strong>refreshments</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>gui _ ar → <strong>guitar</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>disc _ _ nt → <strong>discount</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">🔄 Paraphrase Training</h2>
+      <div class="highlight">In IELTS the <strong>question words are almost never the words you hear or read</strong>. Recognising paraphrase is the key skill. Study each example, then write your own sentence.</div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 1</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">In the lobby of the library George saw …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"They had a <em>video</em> with all the highlights of the festival at a stand in the lobby."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'a video about the festival' = a video with highlights → answer C, not 'a display of instruments'.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 2</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">George wants to sit at the back so they can …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"If you sit at the back you can actually <em>hear the whole thing better</em>."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'hear clearly' = hear the whole thing better → answer B.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 3</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">The ticket price of £6 includes …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"Singer, ticket £6.00 <em>includes drinks in the garden</em>."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'free refreshments' = drinks (in the garden).</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 4</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Reduced price for certain groups …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"Children, Students and Senior Citizens get a <em>50% discount</em> on everything."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'50% discount' = half price for these groups → answer 50%.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🎧 Mini Dictation</h2>
+      <p class="card" style="color:var(--muted);font-size:.88rem;">Play or read each chunk aloud, then type it exactly. Watch spelling, plurals and numbers.</p>
+      <div class="dictation-item"><span class="di-num">1.</span><em>Phrase: I came across something really interesting</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">2.</span><em>Phrase: there aren&#x27;t any cheap seats — it&#x27;s all one price</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">3.</span><em>Phrase: forty-eight North Avenue, Westsea</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">4.</span><em>Phrase: the ticket price includes drinks in the garden</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">5.</span><em>Phrase: we&#x27;ll need to book four tickets</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">6.</span><em>Phrase: a fifty per cent discount on everything</em><input type="text" placeholder="Type the phrase here…"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">Where did George find the festival brochure?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. In a shop</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. In the library</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. On the internet</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. At a concert</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">What kind of music is the festival mainly about?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Jazz</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Classical piano</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Spanish music</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Pop</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">In the library lobby, George saw a…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. book</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. display of instruments</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. video about the festival</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. newspaper article</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Why does George prefer to sit at the back?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. to see well</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. to hear clearly</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. to pay less</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. to leave early</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">What is George&#x27;s postcode?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. WS6 2YH</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. WS5 2HY</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. WA6 2YH</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. WS6 2HY</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">What does the £6 singer ticket include free of charge?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. a programme</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. drinks / refreshments</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a CD</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. parking</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Why can&#x27;t George go to the pianist concert on 22 June?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. It is too expensive</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It is sold out</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It is his evening class night</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. He dislikes piano</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">How many tickets do they book for the Spanish Dance &amp; Guitar concert?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. 2</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. 3</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. 4</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. 5</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">The word &#x27;bargain&#x27; shows George thinks the ticket is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. too dear</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. very good value</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. boring</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. sold out</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Who gets a discount, according to the form?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. only students</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. only children</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. children, students and senior citizens</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. everyone</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Exercise 1 — Fill in the Blank</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">North Avenue</div><div class="answer-note">Address: 48 North Avenue, Westsea (Q3).</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">WS6 2YH</div><div class="answer-note">Postcode spelt out by Nina (Q4).</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">01674 553242</div><div class="answer-note">Telephone read digit by digit (Q5).</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">drinks / refreshments</div><div class="answer-note">Free with the £6 singer ticket (Q6).</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">4</div><div class="answer-note">Four tickets for 23 June concert (Q9).</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">50%</div><div class="answer-note">Discount for children/students/senior citizens (Q10).</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Official Test Answers 1–10</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">B</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">48 North Avenue</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">WS6 2YH</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">01674 553242</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">(free) drink(s)/refreshment(s)</div></div></div>
+          <div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">(the/a) pianist</div><div class="answer-note">evening class = distractor</div></div></div>
+          <div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">10.50</div></div></div>
+          <div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">4</div></div></div>
+          <div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">50%</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — In the library</div><div class="answer-note">&#x27;I went into the library … and I came across&#x27; a brochure.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C — Spanish music</div><div class="answer-note">&#x27;a brochure from a summer festival — mainly Spanish music.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C — video about the festival</div><div class="answer-note">Q1 answer: a video with the festival highlights.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B — to hear clearly</div><div class="answer-note">Q2: &#x27;you can actually hear the whole thing better.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">A — WS6 2YH</div><div class="answer-note">Q4 answer, spelt out by Nina.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — drinks / refreshments</div><div class="answer-note">Q6: &#x27;includes drinks in the garden.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C — It is his evening class night</div><div class="answer-note">&#x27;that&#x27;s my evening class night.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C — 4</div><div class="answer-note">Q9: George says &#x27;we&#x27;ll need to book four.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — very good value</div><div class="answer-note">&#x27;Sounds like a bargain&#x27; = cheap / good value.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C — children, students and senior citizens</div><div class="answer-note">Q10: these three groups get 50% off.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

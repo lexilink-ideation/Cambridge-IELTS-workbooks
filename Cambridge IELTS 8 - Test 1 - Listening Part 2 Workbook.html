@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 1 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 8 — Test 1 — Listening Part 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Quick Review</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Practice</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">🔄 Paraphrase</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🎧 Dictation</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Quick Review</h2>
+      <div class="card"><p>A museum representative gives a short talk to <strong>teachers</strong> about bringing <strong>school groups</strong> to the <strong>Dinosaur Museum</strong>. The speaker explains opening hours, where groups are met, how long a visit takes, what students may and may not bring inside, and which activities are available after the tour. It is a one-speaker (monologue) information talk.</p></div>
+      <div class="highlight">💡 <strong>Listening strategy tip:</strong> In Part 2 there is only one speaker, so you can't rely on a question-and-answer rhythm. Use the <strong>headings and question order</strong> to keep your place, and listen for <strong>signposting</strong> words like 'firstly', 'as far as … goes', 'finally'. Watch for 'do' vs 'don't' — the speaker often says what students may NOT bring.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">guided tour</span></td><td>a tour led by a guide who explains things</td><td class="zh">导览</td><td>"You can book a <em>guided tour</em> for your group."</td><td class="note">45 minutes of the visit (Q14).</td></tr>
+            <tr><td><span class="word">brief (v.)</span></td><td>give short instructions/information</td><td class="zh">简要介绍</td><td>"Guides will <em>brief</em> you in the car park."</td><td class="note">&#x27;brief you about&#x27; = tell you about (Q13).</td></tr>
+            <tr><td><span class="word">foyer</span></td><td>entrance hall of a building</td><td class="zh">门厅</td><td>"Students come into the museum <em>foyer</em>."</td><td class="note">Synonym: lobby / entrance.</td></tr>
+            <tr><td><span class="word">cloakroom</span></td><td>place to leave coats and bags</td><td class="zh">衣帽间</td><td>"Check in your backpacks at the <em>cloakroom</em>."</td><td class="note">British spelling; where bags are left.</td></tr>
+            <tr><td><span class="word">exhibit (n.)</span></td><td>an object on display</td><td class="zh">展品</td><td>"Some of the <em>exhibits</em> are fragile."</td><td class="note">Reason bags are banned inside.</td></tr>
+            <tr><td><span class="word">fragile</span></td><td>easily broken</td><td class="zh">易碎的</td><td>"The <em>fragile</em> exhibits could be knocked."</td><td class="note">Explains a rule.</td></tr>
+            <tr><td><span class="word">handout</span></td><td>a printed sheet given to people</td><td class="zh">讲义；宣传单</td><td>"We provide students with <em>handouts</em> with quizzes."</td><td class="note">Students need something to write with.</td></tr>
+            <tr><td><span class="word">documentary</span></td><td>a factual film about real things</td><td class="zh">纪录片</td><td>"Continuous screenings of short <em>documentaries</em> about dinosaurs."</td><td class="note">= &#x27;watch films&#x27; (Q19–20).</td></tr>
+            <tr><td><span class="word">interactive</span></td><td>involving active participation</td><td class="zh">互动的</td><td>"An activity room with <em>interactive</em> things."</td><td class="note">Room currently closed (distractor).</td></tr>
+            <tr><td><span class="word">backpack</span></td><td>a bag carried on the back</td><td class="zh">背包</td><td>"Check in your <em>backpacks</em> with books and lunch boxes."</td><td class="note">Must be left in the cloakroom.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Useful Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">check in (bags)</span></td><td>hand over bags for safekeeping</td><td class="zh">寄存</td></tr>
+            <tr><td><span class="phrase">in regard to</span></td><td>concerning / about</td><td class="zh">关于</td></tr>
+            <tr><td><span class="phrase">as far as … goes</span></td><td>concerning a particular topic</td><td class="zh">就…而言</td></tr>
+            <tr><td><span class="phrase">go missing</span></td><td>become lost</td><td class="zh">丢失；不见</td></tr>
+            <tr><td><span class="phrase">feel free to</span></td><td>you are welcome to</td><td class="zh">尽管…</td></tr>
+            <tr><td><span class="phrase">at present / at the moment</span></td><td>now; currently</td><td class="zh">目前</td></tr>
+            <tr><td><span class="phrase">allow (time) for</span></td><td>leave enough time for</td><td class="zh">留出时间</td></tr>
+            <tr><td><span class="phrase">be open to (the) air / open-air</span></td><td>outside, not enclosed</td><td class="zh">露天的</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">✏️ Listening Detail Practice</h2>
+      <div class="exercise-block">
+        <h3>Exercise 1 — Fill in the Blank</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each fact about the museum. Use NO MORE THAN TWO WORDS AND/OR A NUMBER.</p>
+        <div class="ex-item">
+          <span class="ex-num">1.</span>
+          <label>On Mondays the museum closes at <input type="text" class="blank" id="b1" data-answer="1.30" placeholder="______"> p.m.<span class="feedback" id="fb1"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">2.</span>
+          <label>The museum is closed only on <input type="text" class="blank" id="b2" data-answer="25 December" placeholder="______"> (Christmas Day).<span class="feedback" id="fb2"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">3.</span>
+          <label>School groups are met by guides in the <input type="text" class="blank" id="b3" data-answer="car park" placeholder="______"> .<span class="feedback" id="fb3"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">4.</span>
+          <label>The guided tour part of the visit lasts <input type="text" class="blank" id="b4" data-answer="45" placeholder="______"> minutes.<span class="feedback" id="fb4"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">5.</span>
+          <label>Students can eat their own lunch at the <input type="text" class="blank" id="b5" data-answer="tables" placeholder="______"> outside at the back.<span class="feedback" id="fb5"></span></label>
+        </div>
+        <div class="ex-item">
+          <span class="ex-num">6.</span>
+          <label>After the tour, students can watch short <input type="text" class="blank" id="b6" data-answer="documentaries" placeholder="______"> in the theatrette.<span class="feedback" id="fb6"></span></label>
+        </div>
+        <button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button>
+        <button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 2 — &#x27;Can&#x27; vs &#x27;Can&#x27;t&#x27; (Rules)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide whether each item is ALLOWED or NOT ALLOWED inside the museum.</p>
+      <div class="ex-item"><span class="ex-num">a.</span><label>cameras → <strong>ALLOWED</strong> (useful for project reports)</label></div>
+      <div class="ex-item"><span class="ex-num">b.</span><label>pens / something to write with → <strong>ALLOWED</strong> (for quizzes)</label></div>
+      <div class="ex-item"><span class="ex-num">c.</span><label>worksheets / handouts → <strong>ALLOWED</strong> (provided by museum)</label></div>
+      <div class="ex-item"><span class="ex-num">d.</span><label>food, drinks, bags, books → <strong>NOT ALLOWED</strong> inside</label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Exercise 3 — Spelling Challenge</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Museum vocabulary that is easy to misspell. Write the full word.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>cl _ akr _ om → <strong>cloakroom</strong></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>f _ y _ r → <strong>foyer</strong></label></div>
+      <div class="ex-item"><span class="ex-num">3.</span><label>doc _ ment _ ry → <strong>documentary</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>fr _ g _ le → <strong>fragile</strong></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">🔄 Paraphrase Training</h2>
+      <div class="highlight">In IELTS the <strong>question words are almost never the words you hear or read</strong>. Recognising paraphrase is the key skill. Study each example, then write your own sentence.</div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 1</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q13: School groups are met by tour guides in the …</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"We ask you to remain with your group <em>in the car park</em>. One or more of the tour guides will welcome you there."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'met by guides' = guides 'welcome you' — location is the car park.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 2</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q14: The visit includes ___ minutes for the guided tour.</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"15 minutes to get on and off the coach, <em>45 minutes for the guided tour</em> and 30 minutes for after-tour activities."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Filter the three numbers — only the tour figure (45) is asked for.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 3</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q16–18: Which THREE things can students have with them?</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"handouts with questions and quizzes … they'll need to bring something to <em>write with</em> … we do allow students to take <em>photographs</em>."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">worksheets + pens + cameras → C, F, G.</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+      <div class="para-card">
+        <div class="para-card-header">Paraphrase Example 4</div>
+        <div class="para-row"><span class="para-label">Question / prompt</span><span class="para-value">Q19–20: Which TWO activities can students do after the tour AT PRESENT?</span></div>
+        <div class="para-row"><span class="para-label">What you hear / read</span><span class="para-value">"screenings of short <em>documentaries</em> … the activity room … is <em>closed at the moment</em> … an IT centre where students have access to … dinosaur <em>games</em>."</span></div>
+        <div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">'at present' rules out the closed activity room → watch films (B) + computer games (E).</span></div>
+        <div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using the paraphrase…"></textarea></span></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🎧 Mini Dictation</h2>
+      <p class="card" style="color:var(--muted);font-size:.88rem;">Play or read each chunk aloud, then type it exactly. Watch spelling, plurals and numbers.</p>
+      <div class="dictation-item"><span class="di-num">1.</span><em>Phrase: we&#x27;re open every day of the week</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">2.</span><em>Phrase: remain with your group in the car park</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">3.</span><em>Phrase: allow a minimum of ninety minutes for the visit</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">4.</span><em>Phrase: check in their backpacks at the cloakroom</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">5.</span><em>Phrase: some of the exhibits are fragile</em><input type="text" placeholder="Type the phrase here…"></div>
+      <div class="dictation-item"><span class="di-num">6.</span><em>Phrase: continuous screenings of short documentaries</em><input type="text" placeholder="Type the phrase here…"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">Who is the audience for this talk?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. tourists</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. teachers</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. museum staff</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. scientists</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">At what time does the museum close on Mondays?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. 1.30 pm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. 8.00 pm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. 9.00 am</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. 5.30 pm</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">The only day the museum is closed all year is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 1 January</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 25 December</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. every Monday</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Sundays</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Where are school groups first met?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. in the foyer</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. in the café</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. in the car park</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. in the theatrette</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">A full visit needs a minimum of…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. 45 minutes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. 60 minutes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. 90 minutes</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. 120 minutes</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">Where can students eat their own packed lunch?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. in the cafés</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. in the foyer</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. at tables outside at the back</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. in the theatrette</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Which THREE items may students take into the museum?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. food, water, books</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. cameras, pens, worksheets</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. bags, books, food</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. drinks, bags, pens</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">Why must bags be left in the cloakroom?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. they are too heavy</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. things went missing before / exhibits are fragile</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. there is no room on the coach</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. it is the law</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">Why is the activity room NOT available now?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. it is being painted</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. it was damaged in a storm</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. it is too small</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. staff are on holiday</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Which TWO after-tour activities are possible at present?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. making models &amp; drawing</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. watching films &amp; computer games</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. hunting for eggs &amp; painting</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. building models &amp; films</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Exercise 1 — Fill in the Blank</h3>
+          <div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">1.30</div><div class="answer-note">Closing time on Mondays (Q11).</div></div></div>
+          <div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">25 December</div><div class="answer-note">Only annual closing day (Q12).</div></div></div>
+          <div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">car park</div><div class="answer-note">Where guides meet groups (Q13).</div></div></div>
+          <div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">45</div><div class="answer-note">Minutes for the guided tour (Q14).</div></div></div>
+          <div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">tables</div><div class="answer-note">Outside at the back for packed lunch (Q15).</div></div></div>
+          <div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">documentaries</div><div class="answer-note">Shown in the theatrette (Q19–20).</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Official Test Answers 11–20</h3>
+          <div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">1.30</div></div></div>
+          <div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">25 December / Christmas Day</div></div></div>
+          <div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">car-park / parking lot</div></div></div>
+          <div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">45</div></div></div>
+          <div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">(some) tables</div></div></div>
+          <div class="answer-item"><span class="answer-num">16–18</span><div><div class="answer-val">C, F, G</div><div class="answer-note">in any order: cameras, pens, worksheets</div></div></div>
+          <div class="answer-item"><span class="answer-num">19–20</span><div><div class="answer-val">B, E</div><div class="answer-note">in either order: watch films, play computer games</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — teachers</div><div class="answer-note">&#x27;thank you for asking me to your teachers&#x27; meeting.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A — 1.30 pm</div><div class="answer-note">Q11: closes at 1.30 pm on Mondays.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — 25 December</div><div class="answer-note">Q12: closed only on 25 December.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C — in the car park</div><div class="answer-note">Q13: guides welcome groups in the car park.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C — 90 minutes</div><div class="answer-note">&#x27;plan on allowing a minimum of 90 minutes.&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C — at tables outside at the back</div><div class="answer-note">Q15: tables outside at the back, in the open air.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B — cameras, pens, worksheets</div><div class="answer-note">Q16–18: cameras (C), pens (F), worksheets (G).</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B — things went missing before / exhibits are fragile</div><div class="answer-note">Past losses + fragile exhibits.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — it was damaged in a storm</div><div class="answer-note">Roof leaked in a bad storm — &#x27;at present&#x27; distractor.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — watching films &amp; computer games</div><div class="answer-note">Q19–20: documentaries (B) + IT-centre games (E).</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

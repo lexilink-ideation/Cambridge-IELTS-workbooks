@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 8 — Test 1 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 8</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 8 — Test 1 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button>
+      <button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button>
+      <button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button>
+      <button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button>
+      <button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button>
+      <button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button>
+      <button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button>
+      <button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <section class="tab-panel active" id="tab-overview">
+      <h2 class="section-title">📋 Passage Overview</h2>
+      <div class="card"><p>This passage explains the <strong>Air Traffic Control (ATC)</strong> system in the United States. It describes how a 1956 collision over the Grand Canyon led to the <strong>FAA</strong>, how ATC developed from flags and beacons to radar and radio, and how US airspace is organised — controlled vs uncontrolled airspace, the <strong>VFR/IFR</strong> flight rules for different weather, and the lettered <strong>airspace classes (A–F)</strong> around airports and at altitude.</p></div>
+      <div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>Matching Headings</strong>, cover the paragraph and ask 'what is the ONE main point?' before looking at the list. For <strong>True/False/Not Given</strong>, treat a statement as <em>Not Given</em> unless you can point to the exact place that confirms or contradicts it — don't use outside knowledge.</div>
+    </section>
+
+    <section class="tab-panel" id="tab-vocab">
+      <h2 class="section-title">📚 Vocabulary Review</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="word">congested</span></td><td><span class="pos">adj.</span></td><td>too full / overcrowded</td><td class="zh">拥挤的</td><td>"skies … becoming quite <em>congested</em>"</td><td class="note">Paraphrase: crowded, busy.</td></tr>
+            <tr><td><span class="word">rudimentary</span></td><td><span class="pos">adj.</span></td><td>basic; not fully developed</td><td class="zh">初步的；简陋的</td><td>"<em>Rudimentary</em> air traffic control existed…"</td><td class="note">Signals an early, simple stage.</td></tr>
+            <tr><td><span class="word">beacon</span></td><td><span class="pos">n.</span></td><td>a light/signal used for guidance</td><td class="zh">信标灯</td><td>"<em>beacons</em> and flashing lights … along routes"</td><td class="note">1920s method (Q22 trap).</td></tr>
+            <tr><td><span class="word">fortuitous</span></td><td><span class="pos">adj.</span></td><td>lucky; happening by chance</td><td class="zh">偶然幸运的</td><td>"this was <em>fortuitous</em>, for the advent of the jet engine…"</td><td class="note">= lucky coincidence (Para C).</td></tr>
+            <tr><td><span class="word">margin of error</span></td><td><span class="pos">n.</span></td><td>the room for making mistakes</td><td class="zh">误差余地</td><td>"reducing pilots’ <em>margin of error</em>"</td><td class="note">Fast jets = less room for error.</td></tr>
+            <tr><td><span class="word">meteorological</span></td><td><span class="pos">adj.</span></td><td>relating to weather</td><td class="zh">气象的</td><td>"In good <em>meteorological</em> conditions…"</td><td class="note">Links to VFR (Para F).</td></tr>
+            <tr><td><span class="word">altitude</span></td><td><span class="pos">n.</span></td><td>height above sea level</td><td class="zh">海拔；高度</td><td>"navigational information … to fly safely" by <em>altitude</em></td><td class="note">Airspace classes set by altitude (Q17).</td></tr>
+            <tr><td><span class="word">clearance</span></td><td><span class="pos">n.</span></td><td>official permission</td><td class="zh">许可；放行</td><td>"an explicit ATC <em>clearance</em> is required"</td><td class="note">Needed for Class B (Q26 area).</td></tr>
+            <tr><td><span class="word">turboprop</span></td><td><span class="pos">n.</span></td><td>a propeller aircraft driven by a turbine</td><td class="zh">涡轮螺旋桨飞机</td><td>"commercial <em>turboprop</em> aircraft" in Class E</td><td class="note">Contrast with heavy jets.</td></tr>
+            <tr><td><span class="word">designate</span></td><td><span class="pos">v.</span></td><td>officially name/assign</td><td class="zh">指定；标示</td><td>"Uncontrolled airspace is <em>designated</em> Class F."</td><td class="note">Paraphrase: labelled, called.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-phrases">
+      <h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2>
+      <div class="card" style="padding:0;overflow:hidden;">
+        <table class="phrase-table">
+          <thead>
+            <tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="phrase">result in</span></td><td>cause / lead to</td><td class="zh">导致</td></tr>
+            <tr><td><span class="phrase">in place</span></td><td>existing and operating</td><td class="zh">已就位；实施</td></tr>
+            <tr><td><span class="phrase">come into use</span></td><td>start to be used</td><td class="zh">开始使用</td></tr>
+            <tr><td><span class="phrase">take advantage of</span></td><td>make good use of</td><td class="zh">利用</td></tr>
+            <tr><td><span class="phrase">in the vicinity of</span></td><td>near</td><td class="zh">在…附近</td></tr>
+            <tr><td><span class="phrase">be bound by</span></td><td>be controlled/limited by</td><td class="zh">受…约束</td></tr>
+            <tr><td><span class="phrase">above and beyond</span></td><td>more than / in addition to</td><td class="zh">超出</td></tr>
+            <tr><td><span class="phrase">stem from</span></td><td>come/result from</td><td class="zh">源于</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-practice">
+      <h2 class="section-title">🔍 Complex Sentence Analysis</h2>
+      <div class="sentence-card">
+        <div class="sentence-original">"An accident that occurred in the skies over the Grand Canyon in 1956 resulted in the establishment of the Federal Aviation Administration."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">An accident … resulted in the establishment of the Federal Aviation Administration</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">that occurred in the skies over the Grand Canyon in 1956 (relative clause defining 'accident')</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'that' introduces a defining relative clause; 'resulted in' = caused.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A 1956 Grand Canyon crash caused the FAA to be created.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">1956年发生在大峡谷上空的一起事故促成了美国联邦航空管理局的成立。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"It was only after the creation of the FAA that full-scale regulation of America's airspace took place."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">full-scale regulation of America's airspace took place</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">It was only after the creation of the FAA that … (cleft sentence for emphasis)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'It was only after … that …' emphasises the timing; nothing happened until the FAA.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Full control of US airspace began only once the FAA existed.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">只有在联邦航空管理局成立之后，美国空域才开始得到全面管理。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"In this way, the recreational pilot who simply wishes to go flying can stay in uncontrolled airspace, while the pilot who wants protection can enter the controlled airspace."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the recreational pilot … can stay in uncontrolled airspace … while the pilot … can enter the controlled airspace</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">who simply wishes to go flying / who wants protection (two relative clauses); while = contrast</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two 'who' clauses define the two pilots; 'while' contrasts their choices.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Casual pilots can avoid the rules by staying in uncontrolled airspace; those wanting ATC help enter controlled airspace.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这样，只想随便飞行的休闲飞行员可以留在非管制空域，而想要保护的飞行员则可进入管制空域。</span></div>
+        </div>
+      </div>
+      <div class="sentence-card">
+        <div class="sentence-original">"The difference between Class E and A airspace is that in Class A, all operations are IFR, and pilots must be instrument-rated."</div>
+        <div class="sentence-breakdown">
+          <div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The difference … is that … all operations are IFR, and pilots must be instrument-rated</span></div>
+          <div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">that in Class A … (noun clause naming the difference)</span></div>
+          <div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'The difference … is that …' defines a contrast; 'must' = obligation.</span></div>
+          <div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In Class A airspace every flight must use instruments and the pilot must be qualified to do so.</span></div>
+          <div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">E类与A类空域的区别在于：在A类空域，所有飞行都必须按仪表飞行规则进行，飞行员必须持有仪表等级资质。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-paraphrase">
+      <h2 class="section-title">✏️ Sentence Drills</h2>
+      <div class="highlight">This passage is dense with definitions and classifications. Practise reducing clauses and paraphrasing so you can match headings and judge True/False/Not Given fast.</div>
+      <div class="exercise-block">
+        <h3>Drill 1 — Reduce the relative clause</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each underlined relative clause to a phrase.</p>
+      <div class="ex-item"><span class="ex-num">1.</span><label>"airspace which is below 5,490m and not near an airport" → <em>airspace below 5,490m and away from airports</em></label></div>
+      <div class="ex-item"><span class="ex-num">2.</span><label>"the pilot who wants the protection afforded by ATC" → <em>a pilot wanting ATC protection</em></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 2 — Paraphrase for T/F/NG</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match the statement to the passage meaning, then decide.</p>
+      <div class="ex-item"><span class="ex-num">3.</span><label>Statement: 'The FAA was created because of the jet engine.' Passage: FAA created after the 1956 Grand Canyon crash; the jet engine came later. → <strong>FALSE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">4.</span><label>Statement: 'ATC started only after 1956.' Passage: 'Rudimentary ATC existed well before the Grand Canyon disaster.' → <strong>FALSE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">5.</span><label>Statement: 'Beacons/flashing lights are still used by ATC today.' Passage: mentions them only in the 1920s; nothing about today. → <strong>NOT GIVEN</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Drill 3 — Translate the key sentence</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Render the idea in Chinese to check comprehension.</p>
+      <div class="ex-item"><span class="ex-num">6.</span><label>"In good conditions, flying is permitted under Visual Flight Rules." → <em>天气良好时，可按目视飞行规则飞行。</em></label></div>
+      <div class="ex-item"><span class="ex-num">7.</span><label>"To enter Class B airspace, an explicit ATC clearance is required." → <em>进入B类空域必须得到空管的明确许可。</em></label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-dictation">
+      <h2 class="section-title">🧠 Reading Logic Training</h2>
+      <div class="card">
+        <p><strong>Cause &amp; Effect</strong> — The 1956 Grand Canyon accident <em>resulted in</em> the establishment of the FAA; the jet engine <em>demanded</em> rules to keep fast planes separated. Signal: <em>resulted in, demanding, so, for</em>.</p>
+        <p><strong>Problem / Solution</strong> — Problem: crowded, fast-moving skies. Solution: nationwide controlled airspace, VFR/IFR rules, and lettered airspace classes.</p>
+        <p><strong>Classification</strong> — Airspace is sorted by letter: F (uncontrolled) · E (below 5,490m) · A (above 5,490m) · D/C/B (small→major airports). Understanding the system answers Q19 & the T/F/NG items.</p>
+        <p><strong>Contrast</strong> — VFR relies on <em>visual cues</em>; IFR relies on <em>instruments</em>. Class E allows both; Class A is IFR-only. Signal: <em>however, whereas, the difference … is</em>.</p>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — Matching Headings (Q14–19)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Choose the heading that fits each paragraph&#x27;s MAIN idea, not one detail.</p>
+      <div class="ex-item"><span class="ex-num">14.</span><label>Para A: the 1956 crash leads to the FAA → <strong>ii Aviation disaster prompts action</strong></label></div>
+      <div class="ex-item"><span class="ex-num">—</span><label>Para B (example): early manual ATC in the 1920s–30s → <strong>x First steps towards ATC</strong></label></div>
+      <div class="ex-item"><span class="ex-num">15.</span><label>Para C: 1940s radar + advent of the jet engine → <strong>iii Two coincidental developments</strong></label></div>
+      <div class="ex-item"><span class="ex-num">16.</span><label>Para D: 'many people think…' — a mistaken, incomplete picture → <strong>v An oversimplified view</strong></label></div>
+      <div class="ex-item"><span class="ex-num">17.</span><label>Para E: controlled airspace by height (365m, 215m…) → <strong>iv Setting altitude zones</strong></label></div>
+      <div class="ex-item"><span class="ex-num">18.</span><label>Para F: VFR vs IFR by weather → <strong>viii Setting rules to weather conditions</strong></label></div>
+      <div class="ex-item"><span class="ex-num">19.</span><label>Para G: Classes A–F → <strong>vii Defining airspace categories</strong></label></div>
+      </div>
+      <div class="exercise-block">
+        <h3>Skill — True / False / Not Given (Q20–26)</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">TRUE = matches; FALSE = contradicts; NOT GIVEN = not stated. Beware of extra claims.</p>
+      <div class="ex-item"><span class="ex-num">20.</span><label>FAA created because of the jet engine → <strong>FALSE</strong> (created after the 1956 crash)</label></div>
+      <div class="ex-item"><span class="ex-num">21.</span><label>ATC started after the 1956 crash → <strong>FALSE</strong> ('existed well before')</label></div>
+      <div class="ex-item"><span class="ex-num">22.</span><label>Beacons/flashing lights still used today → <strong>NOT GIVEN</strong></label></div>
+      <div class="ex-item"><span class="ex-num">23.</span><label>Radio communication improved during WWII → <strong>TRUE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">24.</span><label>Class F = below 365m and not near airports → <strong>TRUE</strong></label></div>
+      <div class="ex-item"><span class="ex-num">25.</span><label>All Class E aircraft must use IFR → <strong>FALSE</strong> (IFR-only is Class A)</label></div>
+      <div class="ex-item"><span class="ex-num">26.</span><label>A pilot entering Class C is over an average-sized city → <strong>TRUE</strong> (medium metropolitan airport)</label></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-quiz">
+      <h2 class="section-title">📝 Review Quiz</h2>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p>
+      <div class="quiz-item" id="qi-1">
+        <div class="q-label">Question 1</div>
+        <p class="q-text">The FAA was set up mainly because…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. the jet engine was invented</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. a 1956 crash over the Grand Canyon</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. radar was invented</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. pilots protested</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button>
+        <div class="q-result" id="qi-1-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-2">
+        <div class="q-label">Question 2</div>
+        <p class="q-text">Before the Grand Canyon disaster, ATC was…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. non-existent</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. already rudimentary (flags, lights, radio)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. fully computerised</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. banned</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button>
+        <div class="q-result" id="qi-2-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-3">
+        <div class="q-label">Question 3</div>
+        <p class="q-text">The best heading for Para A is…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. First steps towards ATC</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Aviation disaster prompts action</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Defining airspace categories</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. An oversimplified view</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button>
+        <div class="q-result" id="qi-3-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-4">
+        <div class="q-label">Question 4</div>
+        <p class="q-text">Para D (&#x27;many people think…&#x27;) is best titled…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. An oversimplified view</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Setting altitude zones</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Taking off safely</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Two coincidental developments</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button>
+        <div class="q-result" id="qi-4-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-5">
+        <div class="q-label">Question 5</div>
+        <p class="q-text">In good weather, pilots may fly under…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. IFR only</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Visual Flight Rules (VFR)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. no rules</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Class A rules</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button>
+        <div class="q-result" id="qi-5-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-6">
+        <div class="q-label">Question 6</div>
+        <p class="q-text">To fly IFR, a pilot must hold…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. only a basic licence</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. an instrument rating (above the basic licence)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a passport</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. nothing extra</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button>
+        <div class="q-result" id="qi-6-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-7">
+        <div class="q-label">Question 7</div>
+        <p class="q-text">Which class is UNCONTROLLED airspace?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Class A</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Class B</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Class E</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Class F</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button>
+        <div class="q-result" id="qi-7-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-8">
+        <div class="q-label">Question 8</div>
+        <p class="q-text">In which class are ALL operations IFR?</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Class A (above 5,490m)</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Class E</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Class F</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Class C</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button>
+        <div class="q-result" id="qi-8-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-9">
+        <div class="q-label">Question 9</div>
+        <p class="q-text">To enter Class B airspace a pilot needs…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. nothing</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. two-way radio only</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. explicit ATC clearance</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. a flag signal</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button>
+        <div class="q-result" id="qi-9-result"></div>
+      </div>
+      <div class="quiz-item" id="qi-10">
+        <div class="q-label">Question 10</div>
+        <p class="q-text">Entering Class C airspace, a pilot is flying over…</p>
+        <div class="q-options">
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. open sea</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. a small village</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. an average-sized city</label>
+          <label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. a mountain</label>
+        </div>
+        <button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button>
+        <div class="q-result" id="qi-10-result"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-answers">
+      <h2 class="section-title">✅ Answer Key</h2>
+      <div class="card">
+        <div class="answer-section">
+          <h3>Official Test Answers 14–26</h3>
+          <div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">ii</div></div></div>
+          <div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">iii</div></div></div>
+          <div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">v</div></div></div>
+          <div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">iv</div></div></div>
+          <div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">viii</div></div></div>
+          <div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">vii</div></div></div>
+          <div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">FALSE</div><div class="answer-note">FAA followed the 1956 crash, not the jet engine</div></div></div>
+          <div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">FALSE</div><div class="answer-note">&#x27;rudimentary ATC existed well before&#x27;</div></div></div>
+          <div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">present-day use of beacons not mentioned</div></div></div>
+          <div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">TRUE</div><div class="answer-note">radio improved during WWII</div></div></div>
+          <div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">TRUE</div><div class="answer-note">Class F = below 365m, not near airports</div></div></div>
+          <div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">FALSE</div><div class="answer-note">IFR-only applies to Class A, not E</div></div></div>
+          <div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">TRUE</div><div class="answer-note">Class C ≈ medium metropolitan airport</div></div></div>
+        </div>
+        <div class="answer-section">
+          <h3>Review Quiz</h3>
+          <div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — a 1956 crash over the Grand Canyon</div><div class="answer-note">Para A; Q20/Q21 basis.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — already rudimentary (flags, lights, radio)</div><div class="answer-note">&#x27;existed well before&#x27; → Q21 FALSE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B — Aviation disaster prompts action</div><div class="answer-note">Q14 = ii.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — An oversimplified view</div><div class="answer-note">Q16 = v.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — Visual Flight Rules (VFR)</div><div class="answer-note">Para F; VFR relies on visual cues.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — an instrument rating (above the basic licence)</div><div class="answer-note">Instrument rating required.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">D — Class F</div><div class="answer-note">Q24: Class F, below 365m, away from airports = TRUE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A — Class A (above 5,490m)</div><div class="answer-note">Q25: Class A only → &#x27;all Class E must use IFR&#x27; is FALSE.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — explicit ATC clearance</div><div class="answer-note">Class B = major airports; clearance required.</div></div></div>
+          <div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C — an average-sized city</div><div class="answer-note">Q26 TRUE: medium metropolitan airport.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>
