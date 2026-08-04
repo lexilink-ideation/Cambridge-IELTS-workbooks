@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 5 — Test 1 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 5</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 5 — Test 1 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage, <em>'Nature or Nurture?'</em>, describes Stanley Milgram's famous Yale obedience experiment. Volunteer 'teachers' were told to give increasing electric shocks to a 'pupil' (really an actor) for wrong answers. Although observers predicted almost no one would go to the top voltage, over 60% obeyed to the maximum. The writer weighs two explanations — a built-in genetic aggression instinct versus the power of the social/institutional setting — which is the core question of sociobiology.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> When a passage weighs <strong>two competing explanations</strong>, track which paragraph belongs to which side. Questions often ask you to attribute an idea to the correct theory (genetic vs social), so underline signal words like <em>alternative, in contrast, one explanation</em>.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">obedience</span></td><td><span class="pos">n.</span></td><td>doing what an authority tells you</td><td class="zh">服从</td><td>"the … <em>obedience</em> experiment"</td><td class="note">Central theme word.</td></tr>
+<tr><td><span class="word">subject</span></td><td><span class="pos">n.</span></td><td>a person taking part in an experiment</td><td class="zh">受试者</td><td>"tested 40 <em>subjects</em> from all walks of life"</td><td class="note">Research term, not 'topic'.</td></tr>
+<tr><td><span class="word">administer</span></td><td><span class="pos">v.</span></td><td>give or apply (a shock, treatment)</td><td class="zh">施加；实施</td><td>"a shock was to be <em>administered</em>"</td><td class="note">Formal for 'give'.</td></tr>
+<tr><td><span class="word">balk (at)</span></td><td><span class="pos">v.</span></td><td>be unwilling to do; hesitate</td><td class="zh">退缩；犹豫</td><td>"many … <em>balked</em> at administering the higher levels"</td><td class="note">Signals reluctance.</td></tr>
+<tr><td><span class="word">discrepancy</span></td><td><span class="pos">n.</span></td><td>a difference between two things</td><td class="zh">差异；不一致</td><td>"this vast <em>discrepancy</em> between … predict and … do"</td><td class="note">Key: predicted vs actual.</td></tr>
+<tr><td><span class="word">innate / built-in</span></td><td><span class="pos">adj.</span></td><td>existing from birth; natural</td><td class="zh">与生俱来的</td><td>"some sort of <em>built-in</em> … aggression instinct"</td><td class="note">Links to 'nature' side.</td></tr>
+<tr><td><span class="word">aggression</span></td><td><span class="pos">n.</span></td><td>angry or violent behaviour</td><td class="zh">攻击性</td><td>"a … <em>aggression</em> instinct"</td><td class="note">The 'nature' explanation.</td></tr>
+<tr><td><span class="word">benevolent</span></td><td><span class="pos">adj.</span></td><td>kind; intended to do good</td><td class="zh">仁慈的；善意的</td><td>"a larger context that is <em>benevolent</em>"</td><td class="note">Opposite: malevolent.</td></tr>
+<tr><td><span class="word">legitimacy</span></td><td><span class="pos">n.</span></td><td>the quality of being accepted/proper</td><td class="zh">正当性；合法性</td><td>"a strong claim to <em>legitimacy</em>"</td><td class="note">Why subjects trusted the lab.</td></tr>
+<tr><td><span class="word">elucidate</span></td><td><span class="pos">v.</span></td><td>make clear; explain</td><td class="zh">阐明</td><td>"sociobiology is concerned with <em>elucidating</em>"</td><td class="note">Formal = explain.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">from all walks of life</span></td><td>from many different backgrounds</td><td class="zh">各行各业</td></tr>
+<tr><td><span class="phrase">in the noble cause of</span></td><td>for the good/honourable purpose of</td><td class="zh">为了…的崇高事业</td></tr>
+<tr><td><span class="phrase">carry on with</span></td><td>continue</td><td class="zh">继续进行</td></tr>
+<tr><td><span class="phrase">account for</span></td><td>explain (a fact/result)</td><td class="zh">解释；说明</td></tr>
+<tr><td><span class="phrase">first inclination</span></td><td>initial tendency/reaction</td><td class="zh">最初的倾向</td></tr>
+<tr><td><span class="phrase">go so far as to</span></td><td>do something as extreme as</td><td class="zh">甚至…</td></tr>
+<tr><td><span class="phrase">an alternative to</span></td><td>a different option instead of</td><td class="zh">…的替代方案</td></tr>
+<tr><td><span class="phrase">sort out which … is more plausible</span></td><td>decide which is more believable</td><td class="zh">判断哪个更可信</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"Milgram told each volunteer that the experiment was in the noble cause of education, and was designed to test whether punishing pupils would have a positive effect on learning."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Milgram told each volunteer that the experiment was in the noble cause of education</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">and was designed to test whether punishing pupils would have a positive effect on learning (2nd 'that'-clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Reported speech with two parallel 'that'-clauses; 'whether' introduces an embedded question.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Milgram said the study was about improving education by seeing if punishment helps pupils learn.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">米尔格拉姆告诉每位志愿者，这项实验是为了教育这一崇高目的，用来测试惩罚学生是否对学习有正面作用。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"The supposed ‘pupil’ was in reality an actor hired by Milgram to simulate receiving the shocks."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The supposed 'pupil' was in reality an actor</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">hired by Milgram to simulate receiving the shocks (reduced relative + purpose infinitive)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'hired …' = 'who was hired'; 'to simulate' shows purpose.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The 'pupil' was really an actor paid to pretend he was being shocked.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">所谓的“学生”实际上是米尔格拉姆雇来假装受到电击的演员。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"How can we possibly account for this vast discrepancy between what calm, rational people predict and what pressured but cooperative ‘teachers’ actually do?"</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">How can we possibly account for this vast discrepancy</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">between what … people predict and what … 'teachers' actually do (two nominal 'what'-clauses)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A rhetorical question; 'between X and Y' compares prediction with reality.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Why is there such a big gap between what people think they'd do and what they really do?</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们究竟如何解释冷静理性的人所预测的与承受压力却顺从的“老师”所实际做的之间的巨大差异？</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"An action such as shocking a victim, which in isolation appears evil, acquires a completely different meaning when placed in this setting."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">An action such as shocking a victim … acquires a completely different meaning</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">which in isolation appears evil (non-defining relative); when placed in this setting (time/condition phrase)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Non-defining 'which' adds comment; 'when placed' = 'when it is placed'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Shocking someone seems evil on its own, but feels different inside a trusted scientific study.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">像电击受害者这样的行为，单独看似乎是邪恶的，但放在这种情境中就获得了完全不同的意义。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Academic reading is full of long sentences. Practise breaking them down, combining short ones, and paraphrasing. Try each drill, then check the Answer Key.</div><div class="exercise-block"><h3>Drill 1 — Combine into one complex sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair using the linker in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>The teacher-subjects balked at higher shocks. They turned to Milgram with complaints. <em>(and)</em> → <em>Many teacher-subjects balked at the higher shocks and turned to Milgram with complaints.</em></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Observers predicted almost no one would obey. Over 60% actually did. <em>(although)</em></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The pupil gave wrong answers. This brought on electric punishments. <em>(which)</em></label></div></div>
+<div class="exercise-block"><h3>Drill 2 — Paraphrase the sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p><div class="ex-item"><span class="ex-num">4.</span><label>"Over 60 per cent continued to obey up to the 450-volt limit." → <em>More than 6 in 10 kept obeying to the highest voltage.</em></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>"The psychological laboratory has a strong claim to legitimacy." → <em>People see the lab as a proper, trustworthy place.</em></label></div></div>
+<div class="exercise-block"><h3>Drill 3 — Identify the theory</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say whether each idea supports the 'nature' (genetic) or 'nurture' (social) explanation.</p><div class="ex-item"><span class="ex-num">6.</span><label>'a built-in animal aggression instinct' → <em>nature (genetic)</em></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'behaviour is a result of the social environment' → <em>nurture (social)</em></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Prediction vs Reality</strong> — Experts predicted only ~1 in 1,000 would give 450 volts; in fact <em>over 60%</em> did. This <em>discrepancy</em> is the puzzle the passage explores.</p>
+<p><strong>Two competing explanations</strong> — (1) <em>Nature</em>: an inherited aggression instinct. (2) <em>Nurture</em>: the trusted institutional setting. Signal: <em>An alternative to this notion is…</em></p>
+<p><strong>Cause &amp; Effect</strong> — The lab's <em>legitimacy</em> → subjects <em>trust</em> it → an evil act <em>acquires a different meaning</em> → they obey. Follow the chain of reasoning.</p>
+<p><strong>Author's stance</strong> — The writer stays balanced, presenting both sides and calling the choice 'the problem of modern sociobiology' rather than favouring one.</p></div><div class="exercise-block"><h3>Skill — Paragraph information matching (Q14–19)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Scan for the specific detail, not the general topic.</p><div class="ex-item"><span class="ex-num">•</span><label>the actual obedience results → paragraph reporting <strong>'over 60 per cent'</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>the genetic-instinct explanation → paragraph beginning <strong>'One's first inclination…'</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>the social-setting explanation → paragraph beginning <strong>'An alternative to this notion…'</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — Summary / short answer (Q20–22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Use words from the passage; keep grammar consistent.</p><div class="ex-item"><span class="ex-num">•</span><label>the 'pupil' was really an … → <strong>actor</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>shocks ranged from 15 volts up to … volts → <strong>450</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>predicted proportion giving the top shock → about <strong>one in 1,000</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — True / False / Not Given (Q23–26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Compare each claim carefully with the writer's words.</p><div class="ex-item"><span class="ex-num">•</span><label>In some countries obedience was even higher → <strong>TRUE</strong> (up to 85%)</label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>Milgram forced subjects physically to continue → <strong>FALSE</strong> (verbal prompts only)</label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>the writer says which theory is definitely correct → <strong>NOT GIVEN / FALSE</strong> (he leaves it open)</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Milgram's experiment tested people's willingness to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. learn new facts</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. obey instructions from an authority</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. teach children</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. resist punishment</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The 'pupil' receiving shocks was in fact…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a real student</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. another volunteer</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. an actor</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Milgram himself</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The shock switches ranged from 15 volts up to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 100 volts</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 220 volts</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. 300 volts</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. 450 volts</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Before the experiment, observers predicted that the proportion giving the top shock would be about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. one in 1,000</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. one in ten</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. half</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. two-thirds</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">The actual proportion who obeyed up to 450 volts was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. under 10%</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. over 60%</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. exactly 50%</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. 100%</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">In repetitions abroad, obedience reached as high as…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. 40%</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. 60%</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. 85%</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. 95%</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The 'nature' explanation says obedience comes from…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. an inherited aggression instinct</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. the trusted setting</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. fear of the actor</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. the reward money</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The 'nurture' explanation stresses the power of…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. genetics</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. the social/institutional situation</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. the pupil's cries</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. the voltage</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">According to Milgram, an evil-seeming act 'acquires a different meaning' when it is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. done quickly</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. done for money</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. placed in a legitimate scientific setting</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. done by an actor</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The central question of sociobiology here is the balance between…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. genetic programming and the environment</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. teaching and learning</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. reward and punishment</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. science and religion</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Cambridge IELTS 5</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">F</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">I</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">FALSE</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — obey an authority</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C — an actor</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">D — 450 volts</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — one in 1,000</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — over 60%</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C — 85%</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A — inherited aggression instinct</div><div class="answer-note">'nature'.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B — social/institutional situation</div><div class="answer-note">'nurture'.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — legitimate scientific setting</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A — genetic programming vs environment</div><div class="answer-note">Core of sociobiology.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

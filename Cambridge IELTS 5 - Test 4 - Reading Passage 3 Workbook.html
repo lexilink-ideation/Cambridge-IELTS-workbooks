@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 5 — Test 4 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 5</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 5 — Test 4 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage, <em>'The Effects of Light on Plant and Animal Species'</em>, explains how the length of daylight (the photoperiod) and light intensity control the behaviour and development of living things. It describes how plants use day length to time flowering, how animals use it to trigger breeding, migration and hibernation, and how artificial light can disrupt these natural cycles.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Biology passages define technical terms (photoperiod, phytochrome) and then give examples. Link each <strong>example</strong> back to the <strong>principle</strong> it illustrates — matching questions often test this link.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">photoperiod</span></td><td><span class="pos">n.</span></td><td>the length of daylight in a 24-hour day</td><td class="zh">光周期</td><td>"the <em>photoperiod</em> controls flowering"</td><td class="note">Key technical term.</td></tr>
+<tr><td><span class="word">intensity</span></td><td><span class="pos">n.</span></td><td>the strength of light</td><td class="zh">强度</td><td>"light <em>intensity</em> affects growth"</td><td class="note">Amount vs length of light.</td></tr>
+<tr><td><span class="word">trigger</span></td><td><span class="pos">v.</span></td><td>cause (a process) to start</td><td class="zh">触发</td><td>"day length can <em>trigger</em> breeding"</td><td class="note">Common cause verb.</td></tr>
+<tr><td><span class="word">dormant</span></td><td><span class="pos">adj.</span></td><td>inactive; resting</td><td class="zh">休眠的</td><td>"seeds remain <em>dormant</em> in winter"</td><td class="note">Opposite of active.</td></tr>
+<tr><td><span class="word">hibernation</span></td><td><span class="pos">n.</span></td><td>a long winter sleep in some animals</td><td class="zh">冬眠</td><td>"prepare for <em>hibernation</em>"</td><td class="note">Triggered by light.</td></tr>
+<tr><td><span class="word">migration</span></td><td><span class="pos">n.</span></td><td>seasonal movement of animals</td><td class="zh">迁徙</td><td>"birds begin their <em>migration</em>"</td><td class="note">Timed by day length.</td></tr>
+<tr><td><span class="word">stimulus</span></td><td><span class="pos">n.</span></td><td>something that causes a response</td><td class="zh">刺激</td><td>"light is a powerful <em>stimulus</em>"</td><td class="note">Plural: stimuli.</td></tr>
+<tr><td><span class="word">phytochrome</span></td><td><span class="pos">n.</span></td><td>a plant pigment that senses light</td><td class="zh">光敏色素</td><td>"<em>phytochrome</em> detects day length"</td><td class="note">How plants 'measure' light.</td></tr>
+<tr><td><span class="word">synchronise</span></td><td><span class="pos">v.</span></td><td>make happen at the same time</td><td class="zh">使同步</td><td>"to <em>synchronise</em> flowering"</td><td class="note">Timing with the seasons.</td></tr>
+<tr><td><span class="word">disrupt</span></td><td><span class="pos">v.</span></td><td>disturb; interrupt</td><td class="zh">扩乱</td><td>"artificial light can <em>disrupt</em> these cycles"</td><td class="note">Human impact.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">day length</span></td><td>the number of daylight hours</td><td class="zh">白昼长度</td></tr>
+<tr><td><span class="phrase">in response to</span></td><td>as a reaction to</td><td class="zh">作为对…的反应</td></tr>
+<tr><td><span class="phrase">bring about</span></td><td>cause</td><td class="zh">带来；引起</td></tr>
+<tr><td><span class="phrase">depend on</span></td><td>rely on / be determined by</td><td class="zh">取决于</td></tr>
+<tr><td><span class="phrase">in preparation for</span></td><td>getting ready for</td><td class="zh">为…做准备</td></tr>
+<tr><td><span class="phrase">a range of</span></td><td>a variety of</td><td class="zh">一系列</td></tr>
+<tr><td><span class="phrase">act as</span></td><td>function as</td><td class="zh">充当</td></tr>
+<tr><td><span class="phrase">throughout the year</span></td><td>during the whole year</td><td class="zh">全年</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"Many plants use the length of the day, rather than temperature, to decide when to flower."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Many plants use the length of the day … to decide when to flower</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">rather than temperature (contrast phrase); when to flower (embedded question)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'rather than' contrasts two cues; 'when to flower' is a noun phrase after 'decide'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Many plants time their flowering by day length, not by temperature.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">许多植物依靠白昼的长度（而不是温度）来决定何时开花。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Because day length changes in a regular way through the year, it is a reliable signal for timing life events."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it is a reliable signal for timing life events</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Because day length changes in a regular way through the year (cause clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Because …' gives the reason day length is dependable; 'for timing' = 'to time'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Day length changes predictably each year, so it is a trustworthy timing signal.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于白昼长度在一年中有规律地变化，它是安排生命活动时间的可靠信号。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"In animals, shortening days in autumn can trigger hibernation, while lengthening days in spring may start breeding."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">shortening days in autumn can trigger hibernation … lengthening days in spring may start breeding</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">while (contrast connector joining the two clauses)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'while' contrasts two seasonal effects; parallel structure (shortening/lengthening days).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Shorter autumn days can start hibernation, and longer spring days can start breeding.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在动物中，秋季变短的白昼会触发冬眠，而春季变长的白昼则可能启动繁殖。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Artificial lighting at night, which confuses these natural signals, can disrupt migration, breeding and flowering."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Artificial lighting at night … can disrupt migration, breeding and flowering</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">which confuses these natural signals (non-defining relative)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'which …' comments on artificial lighting; three parallel objects follow 'disrupt'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Night-time artificial light muddles nature's signals and can upset migration, breeding and flowering.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">夜间的人造光会扰乱这些自然信号，从而干扰迁徙、繁殖和开花。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Academic reading is full of long sentences. Practise breaking them down, combining short ones, and paraphrasing. Try each drill, then check the Answer Key.</div><div class="exercise-block"><h3>Drill 1 — Combine into one complex sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair using the linker in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Day length changes regularly. It is a reliable signal. <em>(because)</em> → <em>Because day length changes regularly, it is a reliable signal.</em></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Days shorten in autumn. Some animals begin hibernation. <em>(when)</em></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Artificial light confuses natural signals. It disrupts breeding. <em>(which)</em></label></div></div>
+<div class="exercise-block"><h3>Drill 2 — Paraphrase the sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p><div class="ex-item"><span class="ex-num">4.</span><label>"Plants use day length to decide when to flower." → <em>Plants time their flowering by how long the day is.</em></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>"Lengthening days in spring may start breeding." → <em>Longer spring days can begin the breeding season.</em></label></div></div>
+<div class="exercise-block"><h3>Drill 3 — Reduce the relative clause</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each relative clause to a phrase.</p><div class="ex-item"><span class="ex-num">6.</span><label>"lighting that confuses natural signals" → <em>lighting confusing natural signals</em></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>"a pigment that detects day length" → <em>a pigment detecting day length</em></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Definition + Example</strong> — <em>Photoperiod</em> = day length. Example: plants flower by day length; animals breed/hibernate by it. Match example to principle.</p>
+<p><strong>Cause &amp; Effect</strong> — Shortening days → hibernation; lengthening days → breeding/flowering. Direction of change matters.</p>
+<p><strong>Contrast (cue used)</strong> — Plants rely on day length <em>rather than</em> temperature. Note which signal is emphasised.</p>
+<p><strong>Human impact</strong> — <em>Artificial light</em> confuses these signals and <em>disrupts</em> natural cycles. Cause → disruption.</p></div><div class="exercise-block"><h3>Skill — Matching examples to principles (Q27–31)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Link each example to the idea it shows.</p><div class="ex-item"><span class="ex-num">•</span><label>birds beginning migration in spring → <strong>day length triggers behaviour</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>seeds staying dormant in winter → <strong>light/temperature control resting</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>flowering timed to the season → <strong>photoperiod controls plants</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — Summary completion (Q32–36)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Use words from the passage; watch the word limit.</p><div class="ex-item"><span class="ex-num">•</span><label>the length of daylight is called the … → <strong>photoperiod</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>plants sense light using … → <strong>phytochrome</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>shorter autumn days can trigger … → <strong>hibernation</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>artificial light can … natural cycles → <strong>disrupt</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — True / False / Not Given (Q37–40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Test each claim against the text.</p><div class="ex-item"><span class="ex-num">•</span><label>many plants time flowering by day length → <strong>TRUE</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>temperature is the only cue plants use → <strong>FALSE</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>artificial light benefits migrating birds → <strong>FALSE</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">The 'photoperiod' refers to the…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. temperature of the soil</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. length of daylight in a day</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. colour of light</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. amount of rainfall</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Many plants decide when to flower based mainly on…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. day length</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. temperature</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. rainfall</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. wind</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Day length is a reliable signal because it changes…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. randomly</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. only in cities</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. in a regular way each year</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. with the weather</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">In autumn, shortening days can trigger…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. flowering</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. breeding</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. germination</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. hibernation</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">In spring, lengthening days may start…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. breeding</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. hibernation</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. leaf fall</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. dormancy</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Plants detect day length using a pigment called…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. chlorophyll</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. phytochrome</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. melanin</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. keratin</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">'Dormant' seeds are best described as…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. growing fast</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. flowering</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. inactive/resting</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. dead</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Artificial light at night can … natural cycles.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. improve</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. shorten only</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. colour</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. disrupt</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Birds' seasonal movement is called…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. migration</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. hibernation</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. germination</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. pollination</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The passage's main point is that light, especially day length,…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. has no effect on life</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. controls the timing of many life events</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. only matters to plants</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. is unimportant in nature</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Cambridge IELTS 5</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">temperatures</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">day-neutral (plants)</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">food (resources)</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">insects / fertilization by insects</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">rainfall</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">sugarcane</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">classification</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — length of daylight</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A — day length</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C — regularly each year</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">D — hibernation</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">A — breeding</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — phytochrome</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C — inactive/resting</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">D — disrupt</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A — migration</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — controls timing of life events</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

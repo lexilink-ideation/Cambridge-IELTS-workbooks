@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 5 — Test 1 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 5</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 5 — Test 1 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage, <em>'Johnson's Dictionary'</em>, describes how Samuel Johnson produced the first authoritative dictionary of English, published in 1755. It explains the state of English before Johnson, earlier dictionaries (Cawdray's 1604 word-list), the link between dictionaries and the rising middle class, and the huge scale of Johnson's work — 40,000 words, 114,000 quotations, six assistants (two of whom died), and its status as an unrivalled landmark for over a century.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> For <strong>TRUE / FALSE / NOT GIVEN</strong> (Q8–13), test each statement against the text. <strong>FALSE</strong> means the passage says the opposite; <strong>NOT GIVEN</strong> means the passage is simply silent. Watch out for extra details the statement adds that the text never mentions.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">compile</span></td><td><span class="pos">v.</span></td><td>collect and put together (a book/list)</td><td class="zh">编纂</td><td>"a little book … <em>compiled</em> by Robert Cawdray"</td><td class="note">Key verb for making dictionaries.</td></tr>
+<tr><td><span class="word">scholarly</span></td><td><span class="pos">adj.</span></td><td>concerned with serious academic study</td><td class="zh">学术的</td><td>"tended to concentrate on ‘<em>scholarly</em>’ words"</td><td class="note">Contrast with everyday words.</td></tr>
+<tr><td><span class="word">circumscribe</span></td><td><span class="pos">v.</span></td><td>set limits to; define the boundaries of</td><td class="zh">限定；界定</td><td>"anxious to define and <em>circumscribe</em> the … worlds"</td><td class="note">Formal; = define/limit.</td></tr>
+<tr><td><span class="word">rickety</span></td><td><span class="pos">adj.</span></td><td>likely to break; not firm</td><td class="zh">摇晃的；不稳的</td><td>"stationed on a <em>rickety</em> chair"</td><td class="note">Descriptive detail of his workspace.</td></tr>
+<tr><td><span class="word">immense</span></td><td><span class="pos">adj.</span></td><td>extremely large</td><td class="zh">巨大的</td><td>"The work was <em>immense</em>"</td><td class="note">Paraphrase: enormous, huge.</td></tr>
+<tr><td><span class="word">synthesis</span></td><td><span class="pos">n.</span></td><td>combining parts into a whole</td><td class="zh">综合</td><td>"make his work one of heroic <em>synthesis</em>"</td><td class="note">He combined earlier dictionaries.</td></tr>
+<tr><td><span class="word">precedent</span></td><td><span class="pos">n.</span></td><td>an earlier case used as a guide</td><td class="zh">先例</td><td>"according to <em>precedent</em>"</td><td class="note">Legal metaphor for his method.</td></tr>
+<tr><td><span class="word">rival</span></td><td><span class="pos">v.</span></td><td>be as good as; compete with</td><td class="zh">匹敌；与…竞争</td><td>"was not seriously <em>rivalled</em> for over a century"</td><td class="note">Passive = nothing matched it.</td></tr>
+<tr><td><span class="word">vicissitude</span></td><td><span class="pos">n.</span></td><td>a change of fortune; difficulty</td><td class="zh">变迁；艰难</td><td>"After many <em>vicissitudes</em> the Dictionary was … published"</td><td class="note">Formal; signals struggle.</td></tr>
+<tr><td><span class="word">landmark</span></td><td><span class="pos">n.</span></td><td>a major turning point or achievement</td><td class="zh">里程碑</td><td>"recognised as a <em>landmark</em> throughout Europe"</td><td class="note">High praise word.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">concern about</span></td><td>worry about</td><td class="zh">对…的担忧</td></tr>
+<tr><td><span class="phrase">bring order to the chaos of</span></td><td>organise something disordered</td><td class="zh">使…有序</td></tr>
+<tr><td><span class="phrase">be associated with</span></td><td>be linked/connected with</td><td class="zh">与…有关</td></tr>
+<tr><td><span class="phrase">draw on</span></td><td>make use of (a resource)</td><td class="zh">利用；借鉴</td></tr>
+<tr><td><span class="phrase">work to a deadline</span></td><td>have a fixed completion date</td><td class="zh">赶截止日期</td></tr>
+<tr><td><span class="phrase">shades of meaning</span></td><td>small differences in meaning</td><td class="zh">细微含义差别</td></tr>
+<tr><td><span class="phrase">a perpetual monument of fame</span></td><td>a lasting record of glory</td><td class="zh">永久的荣誉丰碑</td></tr>
+<tr><td><span class="phrase">as a reward for</span></td><td>in return for (effort)</td><td class="zh">作为对…的回报</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"For the century before Johnson's Dictionary was published in 1755, there had been concern about the state of the English language."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">there had been concern about the state of the English language</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">For the century before Johnson's Dictionary was published in 1755 (fronted time phrase)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Past perfect ('had been') for a period leading up to a past point; the time phrase gives the century-long context.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">For 100 years before 1755, people worried about the condition of English.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在约翰逊的词典于1755年出版之前的一个世纪里，人们一直担忧英语的状况。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Beyond the practical need to make order out of chaos, the rise of dictionaries is associated with the rise of the English middle class."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the rise of dictionaries is associated with the rise of the English middle class</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Beyond the practical need to make order out of chaos (prepositional phrase = 'in addition to')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Beyond' here means 'apart from / in addition to'; 'is associated with' links two social trends.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">As well as being useful, dictionaries grew because the middle class was growing.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">除了整理混乱的实际需要之外，词典的兴起还与英国中产阶级的崛起有关。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Working to a deadline, he had to draw on the best of all previous dictionaries, and to make his work one of heroic synthesis."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">he had to draw on the best of all previous dictionaries … and to make his work one of heroic synthesis</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Working to a deadline (participle phrase = 'Because he was working to a deadline')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The -ing participle gives the reason; two parallel infinitives ('to draw on', 'to make') follow 'had'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because he had limited time, he used the best earlier dictionaries and combined them impressively.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于要赶截止日期，他不得不借鉴以往所有最好的词典，并将自己的作品打造成一次了不起的综合。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Unlike his predecessors, Johnson treated English very practically, as a living language, with many different shades of meaning."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Johnson treated English very practically, as a living language</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Unlike his predecessors (contrast phrase); with many different shades of meaning (added detail)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Unlike …' sets up a contrast with earlier writers; 'as a living language' shows how he saw English.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Different from earlier writers, Johnson saw English as a real, changing language full of subtle meanings.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与前人不同，约翰逊非常务实地把英语当作一门有许多细微含义的活语言来对待。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Academic reading is full of long sentences. Practise breaking them down, combining short ones, and paraphrasing. Try each drill, then check the Answer Key.</div><div class="exercise-block"><h3>Drill 1 — Combine into one complex sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair using the linker in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Johnson rented a garret. He took on six assistants. <em>(where)</em> → <em>Johnson rented a garret, where he took on six assistants.</em></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The work was immense. It filled about eighty large notebooks. <em>(so … that)</em></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Two assistants died. The Dictionary was still being prepared. <em>(while)</em></label></div></div>
+<div class="exercise-block"><h3>Drill 2 — Paraphrase the sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words (keep the meaning).</p><div class="ex-item"><span class="ex-num">4.</span><label>"His Dictionary was not seriously rivalled for over a century." → <em>For more than 100 years, no other dictionary was nearly as good.</em></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>"The rise of dictionaries is associated with the rise of the English middle class." → <em>Dictionaries became popular as the middle class grew.</em></label></div></div>
+<div class="exercise-block"><h3>Drill 3 — Reduce the relative clause</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each relative clause to a phrase.</p><div class="ex-item"><span class="ex-num">6.</span><label>"quotations that were drawn from English writing" → <em>quotations drawn from English writing</em></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>"the leading lexicographer, who was Italian" → <em>the leading Italian lexicographer</em></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Cause &amp; Effect</strong> — Because there was <em>no standard</em> way of writing English, there was a demand for a dictionary to bring order. Signal words: <em>led to, because, as a result</em>.</p>
+<p><strong>Contrast</strong> — Earlier dictionaries listed only <em>scholarly</em> words, <em>whereas</em> Johnson treated English as a living language with everyday meanings. Signal: <em>unlike, whereas, but</em>.</p>
+<p><strong>Chronology</strong> — Cawdray (1604) → 17th-century dictionaries → Johnson's contract (1746/1764) → publication (1755) → 'unrivalled for a century'. Dates anchor detail questions.</p>
+<p><strong>Author's attitude</strong> — The writer clearly <em>admires</em> Johnson ('heroic synthesis', 'landmark'). Positive evaluative language signals a favourable view.</p></div><div class="exercise-block"><h3>Skill — Multiple choice: THREE true statements (Q1–3)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Choose the THREE statements true of Johnson's Dictionary. Match each to a line in the text.</p><div class="ex-item"><span class="ex-num">B</span><label>“only … in general use for 200 years” → text: <strong>not seriously rivalled for over a century</strong> ✓</label></div>
+<div class="ex-item"><span class="ex-num">E</span><label>“there was a time limit” → text: <strong>working to a deadline</strong> ✓</label></div>
+<div class="ex-item"><span class="ex-num">G</span><label>“took into account subtleties of meaning” → text: <strong>many different shades of meaning</strong> ✓</label></div></div>
+<div class="exercise-block"><h3>Skill — Summary completion (Q4–7)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">NO MORE THAN TWO WORDS. Find the paraphrased noun in the passage.</p><div class="ex-item"><span class="ex-num">4.</span><label>he took on a number of … who stood at a long desk → <strong>assistants</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>did not have a … available to him → <strong>library</strong></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>his principal achievement was to bring … to English → <strong>order</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>as a reward, the king granted him a … → <strong>pension</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — True / False / Not Given (Q8–13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide TRUE, FALSE or NOT GIVEN. 'Not Given' = the text simply doesn't say.</p><div class="ex-item"><span class="ex-num">8.</span><label>middle classes → more demand for dictionaries → <strong>TRUE</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>more famous since his death → <strong>NOT GIVEN</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>had planned it for several years → <strong>NOT GIVEN</strong></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>set up an academy → <strong>FALSE</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>paid only on completion → <strong>FALSE</strong> (advance + later pension)</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>not all assistants survived to publication → <strong>TRUE</strong> (two died)</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Before Johnson's Dictionary, the main problem with English was that…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. it had too many words</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. there was no standard spelling or usage</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. no one wrote in English</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. it was only spoken by scholars</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The first English dictionary mentioned (1604) was compiled by…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Samuel Johnson</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. James Boswell</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Robert Cawdray</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. an Italian lexicographer</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Earlier dictionaries tended to focus on…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 'scholarly' or difficult words</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. everyday spoken words</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. foreign words</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. scientific terms</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Johnson wrote definitions of more than…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. 4,000 words</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. 14,000 words</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. 80,000 words</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. 40,000 words</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">He illustrated meanings with about 114,000…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. definitions</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. quotations</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. assistants</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. notebooks</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Unlike his predecessors, Johnson treated English as…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. a dead language</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. a foreign language</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a living language with many shades of meaning</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. a purely written language</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">How many assistants helped him, and what happened to two of them?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. six; two died during preparation</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. two; both survived</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. ten; none died</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. six; all survived</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The Dictionary was finally published in…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. 1746</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. 1755</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. 1604</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. 1775</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">After publication, the Dictionary was not seriously rivalled for…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. ten years</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. fifty years</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. over a century</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. two hundred years</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The writer's attitude towards Johnson is best described as…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. admiring</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. critical</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. indifferent</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. uncertain</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Cambridge IELTS 5</h3><div class="answer-item"><span class="answer-num">1–3</span><div><div class="answer-val">B, D, E</div><div class="answer-note">in any order</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">(copying) clerks</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">library</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">stability</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">pension</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">FALSE</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">TRUE</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — no standard spelling or usage</div><div class="answer-note">Opening paragraph.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C — Robert Cawdray</div><div class="answer-note">1604 'A Table Alphabeticall'.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A — 'scholarly' words</div><div class="answer-note">Early dictionaries' focus.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">D — 40,000 words</div><div class="answer-note">Scale of the work.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — quotations</div><div class="answer-note">114,000 quotations.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C — a living language</div><div class="answer-note">Contrast with predecessors.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A — six; two died</div><div class="answer-note">Detail on assistants.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B — 1755</div><div class="answer-note">Publication date.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — over a century</div><div class="answer-note">'not seriously rivalled'.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A — admiring</div><div class="answer-note">Evaluative language.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>

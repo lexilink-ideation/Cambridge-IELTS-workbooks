@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 5 — Test 1 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 5</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 5 — Test 1 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage, <em>'The Truth about the Environment'</em>, argues against widespread environmental pessimism. The writer claims natural resources have become more abundant, more food is produced per person, extinction rates are lower than predicted, and much pollution is exaggerated or temporary. He identifies four reasons why public perception is worse than reality — biased research funding, campaigning environmental groups, the media's appetite for bad news, and poor individual perception — and argues that adapting to global warming may be cheaper than drastically cutting emissions.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> This is an <strong>argument</strong> passage, so 'YES / NO / NOT GIVEN' asks about the <em>writer's claims</em>, not general facts. Ask: does the writer actually make this claim? Beware statements that sound reasonable but that the writer never argues.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">abundant</span></td><td><span class="pos">adj.</span></td><td>existing in large amounts; plentiful</td><td class="zh">丰富的</td><td>"resources have become more <em>abundant</em>, not less"</td><td class="note">Opposite of 'running out'.</td></tr>
+<tr><td><span class="word">transient</span></td><td><span class="pos">adj.</span></td><td>lasting only a short time</td><td class="zh">短暂的</td><td>"pollution … are <em>transient</em>"</td><td class="note">= temporary; contrasts 'permanent'.</td></tr>
+<tr><td><span class="word">exaggerate</span></td><td><span class="pos">v.</span></td><td>make something seem larger/worse than it is</td><td class="zh">夸大</td><td>"appear to have been <em>exaggerated</em>"</td><td class="note">Key claim word.</td></tr>
+<tr><td><span class="word">disjunction</span></td><td><span class="pos">n.</span></td><td>a lack of connection; a gap</td><td class="zh">脱节；不一致</td><td>"this <em>disjunction</em> between perception and reality"</td><td class="note">Gap: belief vs facts.</td></tr>
+<tr><td><span class="word">lopsidedness</span></td><td><span class="pos">n.</span></td><td>being unbalanced/uneven</td><td class="zh">不平衡</td><td>"the <em>lopsidedness</em> built into scientific research"</td><td class="note">First of four factors.</td></tr>
+<tr><td><span class="word">overstate</span></td><td><span class="pos">v.</span></td><td>say something is greater than it is</td><td class="zh">过分强调；夸大</td><td>"they sometimes <em>overstate</em> their case"</td><td class="note">Similar to exaggerate.</td></tr>
+<tr><td><span class="word">distortion</span></td><td><span class="pos">n.</span></td><td>a twisting of the truth</td><td class="zh">扭曲</td><td>"significant <em>distortions</em> of perception"</td><td class="note">Effect of media bias.</td></tr>
+<tr><td><span class="word">emissions</span></td><td><span class="pos">n.</span></td><td>gases released into the air</td><td class="zh">排放物</td><td>"carbon dioxide <em>emissions</em>"</td><td class="note">Central to global-warming section.</td></tr>
+<tr><td><span class="word">adaptation</span></td><td><span class="pos">n.</span></td><td>adjusting to new conditions</td><td class="zh">适应</td><td>"the costs of <em>adaptation</em> to the increased temperatures"</td><td class="note">Cheaper than cutting emissions.</td></tr>
+<tr><td><span class="word">drastic</span></td><td><span class="pos">adj.</span></td><td>extreme and sudden</td><td class="zh">激烈的；极端的</td><td>"something <em>drastic</em> needs to be done"</td><td class="note">Author questions this.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">a hit-list of fears</span></td><td>a set of main worries</td><td class="zh">一系列担忧</td></tr>
+<tr><td><span class="phrase">a quick look at the facts</span></td><td>a brief examination of the evidence</td><td class="zh">简单看看事实</td></tr>
+<tr><td><span class="phrase">per head of population</span></td><td>for each person</td><td class="zh">人均</td></tr>
+<tr><td><span class="phrase">keep the money rolling in</span></td><td>keep receiving funding/income</td><td class="zh">让资金源源不断</td></tr>
+<tr><td><span class="phrase">run out of</span></td><td>have none left</td><td class="zh">用完；耗尽</td></tr>
+<tr><td><span class="phrase">something drastic needs to be done</span></td><td>extreme action is required</td><td class="zh">需要采取极端行动</td></tr>
+<tr><td><span class="phrase">far more expensive to … than to …</span></td><td>much costlier to do X than Y</td><td class="zh">做X比做Y贵得多</td></tr>
+<tr><td><span class="phrase">buy the world … years</span></td><td>delay a problem by … years</td><td class="zh">为世界争取…年时间</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">"For many environmentalists, the world seems to be getting worse … that natural resources are running out; that the population is ever growing, leaving less to eat."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the world seems to be getting worse</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">that natural resources are running out; that the population is ever growing … (list of 'that'-clauses = the fears)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A colon/semicolon list of noun clauses spells out the 'hit-list of fears'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Environmentalists list several fears: resources running out, population rising, less food.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在许多环保主义者看来，世界似乎在变糟：自然资源正在枯竭，人口不断增长，可供食用的越来越少。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Most forms of environmental pollution either appear to have been exaggerated, or are transient — associated with the early phases of industrialisation."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Most forms of environmental pollution … appear to have been exaggerated, or are transient</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">associated with the early phases of industrialisation (reduced relative explaining 'transient')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'either … or …' offers two claims; the dash adds explanation.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Most pollution is either overstated or only temporary, tied to early industrial stages.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">大多数环境污染要么似乎被夸大了，要么是短暂的——与工业化早期阶段相关。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Understandably, perhaps, they sometimes overstate their case … seen as altruistic, even if an impartial view might suggest they are doing more harm than good."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">they sometimes overstate their case</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">even if an impartial view … might suggest they are doing more harm than good (concessive 'even if' clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'even if' concedes a point; 'more harm than good' is a fixed comparison.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Green groups may exaggerate; a neutral look might show their actions can do harm.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">或许可以理解，他们有时会夸大其词——即使客观来看，他们的做法弊大于利。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">"Economic analyses clearly show it will be far more expensive to cut carbon dioxide emissions radically than to pay the costs of adaptation to the increased temperatures."</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Economic analyses clearly show (that) it will be far more expensive to cut emissions … than to pay the costs of adaptation</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">to the increased temperatures (prepositional phrase modifying 'adaptation')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'it … to cut … than to pay …' compares two costed options with 'more … than'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Studies show that sharply cutting CO2 costs much more than simply adapting to warmer temperatures.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">经济分析清楚地表明，大幅削减二氧化碳排放的代价，远高于为适应升温所付出的代价。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Academic reading is full of long sentences. Practise breaking them down, combining short ones, and paraphrasing. Try each drill, then check the Answer Key.</div><div class="exercise-block"><h3>Drill 1 — Combine into one complex sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join each pair using the linker in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Green groups need media attention. They sometimes overstate their case. <em>(so)</em> → <em>Green groups need media attention, so they sometimes overstate their case.</em></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>El Niño caused about $4bn of damage. It also brought about $19bn of benefits. <em>(but)</em></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The public prefers bad news. This can distort perception. <em>(which)</em></label></div></div>
+<div class="exercise-block"><h3>Drill 2 — Paraphrase the sentence</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each idea in simpler words.</p><div class="ex-item"><span class="ex-num">4.</span><label>"Resources have become more abundant, not less so." → <em>There are now more resources, not fewer.</em></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>"Cutting emissions merely buys the world six years." → <em>Reducing emissions only delays the problem by six years.</em></label></div></div>
+<div class="exercise-block"><h3>Drill 3 — Match the factor</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each cause of false perception to a factor (1–4).</p><div class="ex-item"><span class="ex-num">6.</span><label>funding goes to problem areas → <em>Factor 1: lopsided research</em></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>media give the public the bad news it wants → <em>Factor 3: the media</em></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Claim + Evidence</strong> — The writer states the world is <em>not</em> getting worse, then gives four supporting facts (resources, food, extinction ~0.7%, pollution). Each fact answers a specific fear.</p>
+<p><strong>Contrast (perception vs reality)</strong> — Opinion polls say standards are <em>declining</em>, but the facts suggest otherwise. This gap is explained by four factors. Signal: <em>Yet, however, but</em>.</p>
+<p><strong>Cost–benefit reasoning</strong> — El Niño: $4bn damage <em>but</em> $19bn benefit; cutting CO2 is <em>far more expensive</em> than adapting. Numbers drive the argument.</p>
+<p><strong>Author's attitude</strong> — Sceptical of environmental alarm; he thinks the 'response' to warming may be a bigger problem than the warming itself.</p></div><div class="exercise-block"><h3>Skill — Yes / No / Not Given (Q27–32)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ask: does the WRITER make this claim?</p><div class="ex-item"><span class="ex-num">•</span><label>resources are more abundant than in 1972 → <strong>YES</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>green groups always act selfishly → <strong>NOT GIVEN</strong> (he says 'even if', not always)</label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>the media deliberately invent bad news → <strong>NO</strong> (they give what the public wants)</label></div></div>
+<div class="exercise-block"><h3>Skill — Matching the four factors (Q33–37)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Attribute each idea to the correct factor.</p><div class="ex-item"><span class="ex-num">•</span><label>research funds go to problem areas → <strong>lopsided science</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>groups must 'keep the money rolling in' → <strong>environmental groups</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>public more curious about bad news → <strong>the media</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>worry about running out of landfill space → <strong>poor individual perception</strong></label></div></div>
+<div class="exercise-block"><h3>Skill — Global-warming detail (Q38–40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the numbers carefully.</p><div class="ex-item"><span class="ex-num">•</span><label>predicted temperature rise this century → <strong>2–3°C</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>total cost of warming → <strong>US$5,000 billion</strong></label></div>
+<div class="ex-item"><span class="ex-num">•</span><label>cutting emissions 'buys the world' → <strong>six years</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">The writer's overall position is that environmental fears are…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. fully justified</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. often exaggerated</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. impossible to judge</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. increasing correctly</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Since 'The Limits to Growth' (1972), natural resources have become…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. more abundant</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. much scarcer</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. completely used up</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. unchanged</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The proportion of species expected to disappear in 50 years is about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 25–50%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 10%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. 0.7%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. 5%</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Food produced per person is now…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. higher than at any time in history</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. at a record low</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. the same as in 1972</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. falling sharply</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How many factors does the writer give for the gap between perception and reality?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. one</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. two</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. three</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. four</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'D')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Environmental groups sometimes overstate their case in order to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. confuse scientists</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. get noticed and keep funding</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. please the government</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. reduce pollution</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The El Niño example shows that its overall effect was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. purely harmful</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. exactly neutral</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. more beneficial than harmful in cash terms</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. impossible to measure</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The writer says the best estimate for temperature rise this century is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. 2–3°C</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. 6–7°C</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. less than 1°C</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. 10°C</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">According to the economic analyses, adapting to warming is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. more expensive than cutting emissions</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. cheaper than radically cutting emissions</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. the same cost</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. impossible</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The writer suggests the bigger danger may be…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. rising sea levels</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. running out of food</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. an inappropriate response to warming</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. the loss of species</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Cambridge IELTS 5</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">YES</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">NO</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">YES</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">NO</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">I</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — often exaggerated</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A — more abundant</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C — 0.7%</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — highest in history</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">D — four</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — get noticed / keep funding</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C — more beneficial in cash terms</div><div class="answer-note">$19bn vs $4bn.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A — 2–3°C</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — cheaper than cutting emissions</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C — an inappropriate response</div><div class="answer-note">Writer's key warning.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  
+  </script>
+
+</body>
+</html>
