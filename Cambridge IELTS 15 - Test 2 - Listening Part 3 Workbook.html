@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 15 — Test 2 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 15</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 15 — Test 2 — Listening Part 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two students, <strong>Cathy</strong> and <strong>Graham</strong>, plan a <strong>display</strong> about the novelist <strong>Charles Dickens</strong>. They decide who the display is for (Q21–22), why they chose Dickens (Q23–24), and then match a <strong>social topic</strong> (poverty, education, crime, etc.) to each of six of his novels (Q25–30).</p></div><div class="highlight">💡 <strong>Listening tip:</strong> 'Choose TWO' means both speakers must agree. In the matching task the six novels are said in order, but the topics are reworded — listen for the theme each novel is said to <em>illustrate</em>, and cross off used letters.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">display</span></td><td><span class="pos">n.</span></td><td>an arrangement of items for people to look at</td><td class="zh">展览 / 陈列</td><td>'our <em>display</em> about Dickens'</td><td class="note">The project they are planning.</td></tr>
+<tr><td><span class="word">novelist</span></td><td><span class="pos">n.</span></td><td>a writer of novels</td><td class="zh">小说家</td><td>'the <em>novelist</em> Charles Dickens'</td><td class="note">The subject of the display.</td></tr>
+<tr><td><span class="word">publication</span></td><td><span class="pos">n.</span></td><td>a book, article, etc. that has been published</td><td class="zh">出版物</td><td>'he used his <em>publications</em> to draw attention'</td><td class="note">Q23–24 — a reason for choosing Dickens.</td></tr>
+<tr><td><span class="word">draw attention to</span></td><td><span class="pos">v. phr.</span></td><td>make people notice something</td><td class="zh">使人关注</td><td>'<em>draw attention to</em> social problems'</td><td class="note">Key reason (Q23/24 = B).</td></tr>
+<tr><td><span class="word">reputation</span></td><td><span class="pos">n.</span></td><td>the opinion people have of someone</td><td class="zh">名声 / 声誉</td><td>'his <em>reputation</em> has changed in recent times'</td><td class="note">A distractor option.</td></tr>
+<tr><td><span class="word">illustrate</span></td><td><span class="pos">v.</span></td><td>to show or make clear with an example</td><td class="zh">说明 / 举例说明</td><td>'which topic does each novel <em>illustrate</em>?'</td><td class="note">Frames the Q25–30 matching.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">be intended for</span></td><td>be aimed at a particular group</td><td class="zh">面向 / 为…而设</td></tr>
+<tr><td><span class="phrase">inspire others to</span></td><td>encourage others to</td><td class="zh">激励他人去</td></tr>
+<tr><td><span class="phrase">be consulted on</span></td><td>be asked for advice about</td><td class="zh">被就…征询意见</td></tr>
+<tr><td><span class="phrase">in recent times</span></td><td>during the last period</td><td class="zh">近来</td></tr>
+<tr><td><span class="phrase">well-known</span></td><td>familiar to many people</td><td class="zh">著名的</td></tr>
+<tr><td><span class="phrase">focus on</span></td><td>give attention to</td><td class="zh">聚焦于</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Choose TWO (Q21–24)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Both speakers must agree.</p><div class="ex-item"><span class="ex-num">21–22.</span><label>the display is primarily intended for → <strong>B and D</strong> (local residents; potential new students)</label></div>
+<div class="ex-item"><span class="ex-num">23–24.</span><label>reasons for choosing Dickens → <strong>B and C</strong> (drew attention to social problems; novels well-known now)</label></div></div>
+<div class="exercise-block"><h3>B — Novel → topic, Q25–27</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each novel to the topic it illustrates (A–H).</p><div class="ex-item"><span class="ex-num">25.</span><label>The Pickwick Papers → <strong>G medicine</strong></label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>Oliver Twist → <strong>B education</strong></label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label>Nicholas Nickleby → <strong>D entertainment</strong></label></div></div>
+<div class="exercise-block"><h3>C — Novel → topic, Q28–30</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Keep crossing off used letters.</p><div class="ex-item"><span class="ex-num">28.</span><label>Martin Chuzzlewit → <strong>C Dickens's travels</strong></label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>Bleak House → <strong>H a woman's life</strong></label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>Little Dorrit → <strong>F wealth</strong></label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">Options and topics are reworded. Match the meaning, not the words.</div><div class="para-card"><div class="para-card-header">A reason for choosing Dickens</div><div class="para-row"><div class="para-label">Option</div><div class="para-value">B — used his publications to draw attention to social problems</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'through his books he made readers aware of injustice and hardship'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">'made readers aware of injustice' = drew attention to social problems → B</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">The intended audience</div><div class="para-row"><div class="para-label">Option</div><div class="para-value">D — potential new students</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'it would be great for people thinking of applying here'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">'people thinking of applying' = potential new students → D</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">A novel's topic</div><div class="para-row"><div class="para-label">Option (novel)</div><div class="para-value">Oliver Twist → B education</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'it really shows what schooling was like for poor children'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">'what schooling was like' = education → B</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write each chunk. Listen for agreement and reworded topics.</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">the display is meant for local residents</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">and for potential new students too</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">he drew attention to social problems</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">his novels are still well-known now</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">Oliver Twist is about education</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">Nicholas Nickleby illustrates entertainment</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">Bleak House shows a woman's life</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">Little Dorrit is really about wealth</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">The display is primarily intended for local residents and…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. teaching staff</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. English students</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. other departments</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. potential new students</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'D')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">One reason for choosing Dickens is that he…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. gave speeches</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. drew attention to social problems</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. was consulted on issues</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. changed his reputation</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The other reason is that his novels are…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. short</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. cheap</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. well-known now</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. translated</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">The Pickwick Papers is matched with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. medicine</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. poverty</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. crime</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. wealth</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Oliver Twist illustrates…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. travels</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. education</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. medicine</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. wealth</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Nicholas Nickleby illustrates…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. poverty</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. crime</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. medicine</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. entertainment</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Martin Chuzzlewit is matched with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. education</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. wealth</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Dickens's travels</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. medicine</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Bleak House is matched with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. a woman's life</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. crime</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. poverty</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. entertainment</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Little Dorrit is matched with…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. medicine</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. education</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. travels</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. wealth</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'D')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">To 'draw attention to' something is to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. hide it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. make people notice it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. sell it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. forget it</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Questions 21–24 · Choose TWO</h3><div class="answer-item"><span class="answer-num">21&22</span><div><div class="answer-val">B, D</div><div class="answer-note">Local residents; potential new students (either order).</div></div></div>
+<div class="answer-item"><span class="answer-num">23&24</span><div><div class="answer-val">B, C</div><div class="answer-note">Drew attention to social problems; novels well-known now (either order).</div></div></div></div><div class="answer-section"><h3>Questions 25–30 · Novel → topic</h3><div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">G</div><div class="answer-note">The Pickwick Papers — medicine.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">B</div><div class="answer-note">Oliver Twist — education.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">D</div><div class="answer-note">Nicholas Nickleby — entertainment.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">C</div><div class="answer-note">Martin Chuzzlewit — Dickens's travels.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">H</div><div class="answer-note">Bleak House — a woman's life.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">F</div><div class="answer-note">Little Dorrit — wealth.</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 15 — Test 2 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 15</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 15 — Test 2 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Having a laugh.</strong> The passage reports psychological research on <strong>humour and laughter</strong>: how laughter develops in babies and exists in some animals, how 'laugh tracks' were invented, how listeners worldwide can tell friends from strangers by their laughter, how laughter signals social status, and how humour can actually make people <strong>persist longer</strong> at boring tasks. Question types: multiple choice (Q27–31), summary with a word list (Q32–36) and YES/NO/NOT GIVEN (Q37–40).</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For YES/NO/NOT GIVEN, you are testing the <em>writer's claims</em>. NO needs a clear contradiction; NOT GIVEN means the claim is simply not made. For the word-list summary, decide the part of speech first, then choose from the box.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">universal</span></td><td><span class="pos">adj.</span></td><td>found everywhere / among all people</td><td class="zh">普遍的</td><td>'laughter is <em>universal</em> across all human cultures'</td><td class="note">Key claim in the first paragraph (Q27).</td></tr>
+<tr><td><span class="word">adaptation</span></td><td><span class="pos">n.</span></td><td>a feature that helps a species survive</td><td class="zh">适应特征</td><td>'an important <em>adaptation</em> for social communication'</td><td class="note">Why laughter may have evolved.</td></tr>
+<tr><td><span class="word">consistent</span></td><td><span class="pos">adj.</span></td><td>staying the same; in agreement</td><td class="zh">一致的 / 稳定的</td><td>'the results were remarkably <em>consistent</em>'</td><td class="note">The Santa Cruz cross-cultural finding (Q29).</td></tr>
+<tr><td><span class="word">hierarchy</span></td><td><span class="pos">n.</span></td><td>a system ranking people by status</td><td class="zh">等级 / 层级</td><td>'complex human social <em>hierarchies</em>'</td><td class="note">Frames the San Diego status study.</td></tr>
+<tr><td><span class="word">dominant</span></td><td><span class="pos">adj.</span></td><td>more powerful; controlling</td><td class="zh">支配的 / 强势的</td><td>'high-status individuals produced more <em>dominant</em> laughs'</td><td class="note">Contrasted with 'submissive'.</td></tr>
+<tr><td><span class="word">energising</span></td><td><span class="pos">adj.</span></td><td>giving energy and motivation</td><td class="zh">令人振奋的 / 提神的</td><td>'humour is … more importantly, <em>energising</em>'</td><td class="note">The conclusion of the task-performance study (Q40).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">in response to</span></td><td>as a reaction to</td><td class="zh">作为对…的回应</td></tr>
+<tr><td><span class="phrase">point to … as</span></td><td>identify something as</td><td class="zh">把…视为</td></tr>
+<tr><td><span class="phrase">pick up on</span></td><td>notice something subtle</td><td class="zh">注意到 / 领会</td></tr>
+<tr><td><span class="phrase">serve as codes to</span></td><td>act as signals of</td><td class="zh">作为…的信号</td></tr>
+<tr><td><span class="phrase">relative to</span></td><td>in comparison with</td><td class="zh">相对于</td></tr>
+<tr><td><span class="phrase">facilitate social relationships</span></td><td>help social relationships form</td><td class="zh">促进社会关系</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Humans start developing a sense of humour as early as six weeks old, when babies begin to laugh and smile in response to stimuli.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Humans start developing a sense of humour as early as six weeks old</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'when babies begin to laugh and smile in response to stimuli' = time/relative clause modifying 'six weeks old'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Main clause + a 'when' clause adding the circumstance.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People begin to develop humour by about six weeks, when babies laugh and smile at things around them.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">人类早在六周大时就开始发展幽默感,那时婴儿会对刺激作出发笑和微笑的反应。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">These were intended to help people at home feel like they were in a social situation, such as a crowded theatre.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These were intended to help people at home feel like they were in a social situation</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'such as a crowded theatre' = example phrase; 'like they were in a social situation' = manner clause after 'feel'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Passive main verb 'were intended' + infinitive 'to help … feel' + example phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Laugh tracks were meant to make home viewers feel as if they were in a crowd, like a busy theatre.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这些(笑声轨)旨在让家中的观众感觉自己身处一种社交场合,比如拥挤的剧院。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">A team led by Christopher Oveis found that high-status individuals had different laughs from low-status individuals, and that strangers' judgements of an individual's social status were influenced by the quality of their laughter.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A team … found that … and that …</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'led by Christopher Oveis' = reduced relative clause; two parallel 'that' noun clauses report the two findings</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Reporting verb 'found' + two coordinated that-clauses ('that … and that …').</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Oveis's team found that high- and low-status people laugh differently, and that strangers judge status from how someone laughs.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由克里斯托弗·奥维斯带领的团队发现,高地位者与低地位者的笑声不同,而且陌生人对一个人社会地位的判断会受到其笑声特质的影响。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Although humour has been found to help relieve stress and facilitate social relationships, the traditional view of task performance implies that individuals should avoid things that may distract them from task goals.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the traditional view of task performance implies that individuals should avoid things …</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Although humour has been found to help relieve stress and facilitate social relationships' = concession clause; 'that may distract them from task goals' = relative clause defining 'things'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Concession ('Although…') + main clause with a reporting verb and a relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Even though humour reduces stress and helps relationships, the old view says people should avoid distractions from their goals.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">尽管幽默被发现有助于缓解压力、促进社会关系,但关于任务表现的传统观点却认为,人们应避免那些可能使其偏离任务目标的事物。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Use the sentences above to practise concession, reporting clauses and paraphrasing.</div><div class="exercise-block"><h3>A — Identify the structure</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Concession, time, or reported finding?</p><div class="ex-item"><span class="ex-num">1.</span><label>'Although humour has been found to help relieve stress…' signals → <strong>concession/contrast</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'found that … and that …' introduces → <strong>two reported findings</strong>.</label></div></div>
+<div class="exercise-block"><h3>B — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">3.</span><label>'laughter is universal across all human cultures' → <strong>everyone in every culture laughs</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'humour is … energising' → <strong>humour gives people energy/motivation</strong>.</label></div></div>
+<div class="exercise-block"><h3>C — YES / NO / NOT GIVEN cues</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide what the writer actually claims.</p><div class="ex-item"><span class="ex-num">5.</span><label>'The study proves laughter evolved for language' → check: the writer does not claim this → <strong>NOT GIVEN</strong> style.</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'Humour always harms task performance' → the passage contradicts this → <strong>NO</strong> style.</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Study-by-study structure.</strong> Passage 3 moves through separate studies (laugh tracks, Santa Cruz, San Diego, Australian National University). Each MCQ targets one study — locate the right one before choosing.</p>
+<p><strong>Emphasis words.</strong> The first paragraph 'emphasises' laughter's value to research. MCQ 27 tests exactly what is stressed, so weigh 'provide … rich resources for studying human psychology' against the distractors.</p>
+<p><strong>Claim testing (YES/NO/NG).</strong> The final questions test the writer's position on humour and performance. Read the concluding paragraph carefully: humour is called 'not only enjoyable but … energising'.</p></div><div class="exercise-block"><h3>Q27–31 · Multiple choice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each question to its study.</p><div class="ex-item"><span class="ex-num">27.</span><label>in paragraph 1 the writer emphasises laughter's → value to scientific research (<strong>C</strong>).</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>about Charley Douglass → he thought home viewers needed cueing to laugh (<strong>A</strong>).</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>what makes the Santa Cruz study significant → similar results across many cultures (<strong>B</strong>).</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>what happened in the San Diego study → participants exchanged roles (<strong>B</strong>).</label></div>
+<div class="ex-item"><span class="ex-num">31.</span><label>the fifth-paragraph result suggests → high-status people can always be identified by their laugh (<strong>D</strong>).</label></div></div>
+<div class="exercise-block"><h3>Q32–36 · Summary (word list A–H)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide the part of speech, then choose.</p><div class="ex-item"><span class="ex-num">32.</span><label>each video generated a different kind of ___ → <strong>F</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>those who watched the ___ persisted longer → <strong>H</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>a task deliberately made ___ → <strong>C</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>they made twice as many ___ → <strong>D</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">36.</span><label>results were ___ in a second study → <strong>E</strong>.</label></div></div>
+<div class="exercise-block"><h3>Q37–40 · YES / NO / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Test the writer's claims.</p><div class="ex-item"><span class="ex-num">37.</span><label>(a claim the writer never makes) → <strong>NOT GIVEN</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>(a claim the writer supports) → <strong>YES</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>(a claim the writer contradicts) → <strong>NO</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">40.</span><label>(another claim the writer contradicts) → <strong>NO</strong>.</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the passage, humans begin developing humour at about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. one year</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. six months</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. six weeks</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. birth</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">In paragraph 1 the writer mainly emphasises laughter's…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. impact on language</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. role in culture</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. value to scientific research</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. presence in animals</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Charley Douglass invented recorded…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. laugh tracks</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. music tracks</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. adverts</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. cameras</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">In the Santa Cruz study, listeners guessed friend-or-stranger correctly about…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. 90% of the time</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. 60% of the time</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. 30% of the time</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. never</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What made the Santa Cruz study significant?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. types of laughter</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. similar results across many cultures</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. the disciplines involved</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. the equipment</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">The San Diego study looked at laughter and social…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. distance</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. memory</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. language</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. status</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">High-status individuals produced more ___ laughs.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. dominant</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. submissive</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. quiet</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. nervous</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">In the ANU study, people who watched the funny video…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. gave up quickly</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. persisted longer at the task</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. made fewer attempts</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. became upset</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The researchers conclude that humour is enjoyable and, more importantly,…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. distracting</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. tiring</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. energising</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. harmless</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">'Universal' most nearly means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. found everywhere</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. modern</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. rare</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. scientific</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Questions 27–31 · Multiple choice</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">D</div></div></div></div><div class="answer-section"><h3>Questions 32–36 · Summary (word list)</h3><div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">F</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">H</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">E</div></div></div></div><div class="answer-section"><h3>Questions 37–40 · YES / NO / NOT GIVEN</h3><div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">YES</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">NO</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">NO</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

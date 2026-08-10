@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 15 — Test 4 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 15</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 15 — Test 4 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Environmental practices of big businesses.</strong> The writer argues that companies may maximise short-term profit by harming the environment, and that big businesses can in turn pressure their suppliers. Using the example of BSE and a fast-food company, he claims the <strong>public</strong> ultimately holds the power — by rewarding good behaviour and punishing bad — so <strong>changes in public attitudes</strong> are essential for change. Question types: summary with a word list (Q27–31), multiple choice (Q32–34) and YES/NO/NOT GIVEN (Q35–40).</p></div><div class="highlight">💡 <strong>Reading tip:</strong> This is an argument, so YES/NO/NOT GIVEN tests the <em>writer's opinion</em>. NO = the writer would disagree; NOT GIVEN = he never expresses a view. For the word-list summary, match both meaning and grammar.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">maximize</span></td><td><span class="pos">v.</span></td><td>to make as large as possible</td><td class="zh">使…最大化</td><td>'<em>maximize</em> the amount of money it makes'</td><td class="note">The core tension of the passage.</td></tr>
+<tr><td><span class="word">quota</span></td><td><span class="pos">n.</span></td><td>an official limit on an amount allowed</td><td class="zh">配额 / 限额</td><td>'a fishery without <em>quotas</em>'</td><td class="note">An example of weak regulation.</td></tr>
+<tr><td><span class="word">supplier</span></td><td><span class="pos">n.</span></td><td>a company that provides goods to another</td><td class="zh">供应商</td><td>'exert pressure on any <em>suppliers</em>'</td><td class="note">Central to the BSE example.</td></tr>
+<tr><td><span class="word">comply</span></td><td><span class="pos">v.</span></td><td>to obey a rule or request</td><td class="zh">遵守 / 服从</td><td>'the meat industry <em>complied</em> within weeks'</td><td class="note">Shows the power of public pressure.</td></tr>
+<tr><td><span class="word">regulation</span></td><td><span class="pos">n.</span></td><td>an official rule made by a government</td><td class="zh">法规 / 监管</td><td>'government <em>regulation</em> has arisen'</td><td class="note">Why moral principles must be enforced.</td></tr>
+<tr><td><span class="word">empowering</span></td><td><span class="pos">adj.</span></td><td>making someone feel more in control</td><td class="zh">赋予力量的</td><td>'the conclusion is <em>empowering</em> and hopeful'</td><td class="note">The writer's own attitude (Q35/40).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at least in the short term</span></td><td>for a limited early period</td><td class="zh">至少在短期内</td></tr>
+<tr><td><span class="phrase">exert pressure on</span></td><td>apply strong influence to</td><td class="zh">对…施加压力</td></tr>
+<tr><td><span class="phrase">in accordance with</span></td><td>following / obeying</td><td class="zh">依照 / 符合</td></tr>
+<tr><td><span class="phrase">the ultimate responsibility</span></td><td>the final, overall responsibility</td><td class="zh">最终责任</td></tr>
+<tr><td><span class="phrase">make things difficult for</span></td><td>create problems for</td><td class="zh">给…制造困难</td></tr>
+<tr><td><span class="phrase">be essential for</span></td><td>be necessary for</td><td class="zh">对…至关重要</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Depending on the circumstances, a business may maximize the amount of money it makes, at least in the short term, by damaging the environment and hurting people.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">a business may maximize the amount of money it makes</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Depending on the circumstances' = condition phrase; 'it makes' = contact relative clause; 'by damaging the environment and hurting people' = means phrase</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Front condition phrase + main clause + a 'by + -ing' means phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In some situations a business can make the most money, at least for a while, by harming the environment and people.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">视情况而定,企业至少在短期内可能通过破坏环境、损害他人来使其利润最大化。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">But for five years the meat packers refused to follow these, claiming that they would be too expensive to obey.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the meat packers refused to follow these</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'for five years' = time phrase; 'claiming that they would be too expensive to obey' = participle phrase with an embedded that-clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Main clause + an '-ing' participle phrase reporting their reason.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">For five years the meat packers wouldn't obey the new rules, saying they were too costly.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但在五年间,肉类加工商拒绝执行这些规定,声称遵守它们代价太高。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">However, when a major fast-food company then made the same demands after customer purchases of its hamburgers plummeted, the meat industry complied within weeks.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the meat industry complied within weeks</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'when a major fast-food company then made the same demands' = time clause; 'after customer purchases of its hamburgers plummeted' = time clause inside it</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two nested time clauses ('when… after…') + main clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">But when a big fast-food chain demanded the same after its burger sales crashed, the meat industry obeyed within weeks.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而,当一家大型快餐公司在其汉堡销量暴跌后提出同样要求时,肉类行业在几周内就照办了。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">I predict that in the future, just as in the past, changes in public attitudes will be essential for changes in businesses' environmental practices.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">I predict that … changes in public attitudes will be essential for changes in businesses' environmental practices</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that … will be essential …' = noun clause; 'just as in the past' = comparison phrase</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Reporting verb 'predict' + that-clause + an inserted 'just as…' comparison.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">I predict that, as before, shifts in public attitudes will be essential to change how businesses treat the environment.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我预测,未来正如过去一样,公众态度的转变将是企业环境行为改变的关键。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Use the sentences above to practise means phrases, time clauses and reporting clauses.</div><div class="exercise-block"><h3>A — Identify the structure</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Means phrase, time clause, or reported view?</p><div class="ex-item"><span class="ex-num">1.</span><label>'by damaging the environment and hurting people' is a → <strong>means phrase (by + -ing)</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'when a major fast-food company then made the same demands' is a → <strong>time clause</strong>.</label></div></div>
+<div class="exercise-block"><h3>B — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">3.</span><label>'exert powerful pressure on suppliers' → <strong>strongly influence the companies that supply them</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'changes in public attitudes will be essential' → <strong>the public's views must change first</strong>.</label></div></div>
+<div class="exercise-block"><h3>C — Summary word form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match meaning and grammar to the word list.</p><div class="ex-item"><span class="ex-num">5.</span><label>'a business may harm the environment to ___ profit' (verb) → <strong>maximize</strong> (Q-area).</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'the ___ has the ultimate responsibility' (noun) → <strong>public</strong> (Q-area).</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Claim → example → conclusion.</strong> The writer states a claim (businesses may profit by harming), gives the BSE/fast-food example, and draws a conclusion (the public is ultimately responsible). Tracking this shape answers the summary and MCQs.</p>
+<p><strong>Cause and effect.</strong> Public concern → government rules → industry refuses → fast-food chain demands (after sales fall) → industry complies. Q32–34 test who has power and why.</p>
+<p><strong>Writer's stance (YES/NO/NG).</strong> The final paragraphs make the writer's opinion explicit ('empowering and hopeful', 'the public must accept higher prices'). Match statements to what he actually claims.</p></div><div class="exercise-block"><h3>Q27–31 · Summary (word list A–J)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match meaning and grammar.</p><div class="ex-item"><span class="ex-num">27.</span><label>→ <strong>D</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>→ <strong>E</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>→ <strong>F</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>→ <strong>H</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">31.</span><label>→ <strong>B</strong>.</label></div></div>
+<div class="exercise-block"><h3>Q32–34 · Multiple choice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Who has power, and why.</p><div class="ex-item"><span class="ex-num">32.</span><label>the point of the BSE example → <strong>C</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>how big businesses affect suppliers → <strong>D</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>the writer's view of government regulation → <strong>B</strong>.</label></div></div>
+<div class="exercise-block"><h3>Q35–40 · YES / NO / NOT GIVEN + MC</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Test the writer's claims.</p><div class="ex-item"><span class="ex-num">35.</span><label>(a claim the writer supports) → <strong>YES</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">36.</span><label>(a claim the writer never makes) → <strong>NOT GIVEN</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">37.</span><label>(a claim the writer would reject) → <strong>NO</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>(a claim the writer supports) → <strong>YES</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>(a claim the writer never makes) → <strong>NOT GIVEN</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">40.</span><label>the writer's overall attitude → <strong>D</strong>.</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the writer, a business may maximise profit (short term) by…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. paying high wages</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. obeying every rule</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. damaging the environment and hurting people</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. lowering prices</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">In the BSE example, who first refused to change practices?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. the meat packers</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. the fast-food company</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. the government</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. the public</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What finally made the meat industry comply within weeks?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. a new law</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. a court case</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. higher wages</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. a fast-food company's demand after sales fell</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">The public's task, the writer says, is to identify which ___ are sensitive to pressure.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. governments</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. links in the supply chain</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. countries</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. scientists</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Where does the writer place ultimate responsibility?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. with the public</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. with governments</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. with scientists</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. with farmers</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">The writer says the public must accept ___ for sound environmental practices.</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. fewer choices</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. more rules</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. higher prices</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. longer waits</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why does the writer say government regulation has arisen?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. to raise taxes</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. because moral principles need to be enforced</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. to help exporters</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. to protect businesses</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The writer finds his conclusion…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. disappointing</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. frightening</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. confusing</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. empowering and hopeful</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">He predicts future change in businesses depends on changes in…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. public attitudes</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. the weather</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. technology</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. company size</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">'Comply' most nearly means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. refuse</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. complain</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. obey</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. delay</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Questions 27–31 · Summary (word list)</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">F</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">H</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">B</div></div></div></div><div class="answer-section"><h3>Questions 32–34 · Multiple choice</h3><div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">B</div></div></div></div><div class="answer-section"><h3>Questions 35–40 · YES/NO/NOT GIVEN + MC</h3><div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">YES</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NO</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">YES</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">NOT GIVEN</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

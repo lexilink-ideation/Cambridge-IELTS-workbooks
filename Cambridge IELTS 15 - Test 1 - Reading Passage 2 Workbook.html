@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 15 — Test 1 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 15</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 15 — Test 1 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Driverless cars.</strong> The passage examines the rise of automated vehicles: the different <em>levels</em> of automation (from driver assistance to full self-driving), the claimed benefits — fewer accidents (since most are caused by <strong>human error</strong>), less congestion, and new <strong>car-sharing</strong> models that could cut private <strong>ownership</strong> — and the uncertainty over how total <strong>mileage</strong> might change. Question types include paragraph matching (Q14–18), summary completion (Q19–22) and multiple choice — choose TWO (Q23–26).</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For 'which paragraph contains…' matching, scan for the specific detail, not the topic — the same theme can appear in several paragraphs. For summary completion, predict the part of speech before you search.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">autonomous</span></td><td><span class="pos">adj.</span></td><td>able to operate without human control</td><td class="zh">自主的 / 自动的</td><td>'fully <em>autonomous</em> vehicles need no driver'</td><td class="note">A synonym for 'driverless' throughout the passage.</td></tr>
+<tr><td><span class="word">congestion</span></td><td><span class="pos">n.</span></td><td>overcrowding of roads with traffic</td><td class="zh">交通拥堵</td><td>'automation could reduce road <em>congestion</em>'</td><td class="note">One of the claimed benefits.</td></tr>
+<tr><td><span class="word">human error</span></td><td><span class="pos">n. phr.</span></td><td>a mistake made by a person</td><td class="zh">人为失误</td><td>'most accidents are caused by <em>human error</em>'</td><td class="note">Q19 answer — the cause of most crashes.</td></tr>
+<tr><td><span class="word">mileage</span></td><td><span class="pos">n.</span></td><td>the total distance travelled by a vehicle</td><td class="zh">行驶里程</td><td>'the effect on total <em>mileage</em> is uncertain'</td><td class="note">Q22 answer — how far cars are driven.</td></tr>
+<tr><td><span class="word">ownership</span></td><td><span class="pos">n.</span></td><td>the state of owning something</td><td class="zh">所有权 / 拥有</td><td>'a decline in private car <em>ownership</em>'</td><td class="note">Q21 answer — fewer people owning cars.</td></tr>
+<tr><td><span class="word">infrastructure</span></td><td><span class="pos">n.</span></td><td>the basic systems a place needs (roads, signals, etc.)</td><td class="zh">基础设施</td><td>'new <em>infrastructure</em> may be required'</td><td class="note">Common academic word in transport texts.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">a shift towards</span></td><td>a gradual change in the direction of</td><td class="zh">朝…的转变</td></tr>
+<tr><td><span class="phrase">give way to</span></td><td>be replaced by</td><td class="zh">让位于 / 被…取代</td></tr>
+<tr><td><span class="phrase">in the long term</span></td><td>over a long period of time</td><td class="zh">从长远来看</td></tr>
+<tr><td><span class="phrase">account for</span></td><td>form a particular part of a total</td><td class="zh">占(比例)</td></tr>
+<tr><td><span class="phrase">as a result of</span></td><td>because of</td><td class="zh">由于…的结果</td></tr>
+<tr><td><span class="phrase">it remains to be seen</span></td><td>it is not yet known</td><td class="zh">尚待观察</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Although fully driverless cars are not yet common on public roads, many vehicles already include features, such as automatic braking, that take over part of the driving task.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">many vehicles already include features … that take over part of the driving task</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Although fully driverless cars are not yet common' = concession clause; 'such as automatic braking' = example; 'that take over…' = relative clause defining 'features'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Concession ('Although…') + main clause containing an example phrase and a relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Even though full self-driving cars are rare, many cars already do part of the driving, like braking by themselves.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">虽然全自动驾驶汽车在公路上还不常见,但许多车辆已经具备诸如自动刹车之类、能接管部分驾驶任务的功能。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Because the great majority of road accidents are caused by human error, supporters argue that removing the driver could dramatically improve safety.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">supporters argue that removing the driver could dramatically improve safety</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Because the great majority of road accidents are caused by human error' = reason clause; 'that removing the driver could…' = noun clause (what supporters argue)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Front reason clause + reporting verb 'argue' + that-clause with a gerund subject ('removing').</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Since people cause most crashes, supporters say taking the driver away could make roads much safer.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于绝大多数交通事故都是人为失误造成的,支持者认为去掉司机可以大大提高安全性。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">If people are able to summon a shared vehicle whenever they need one, private ownership may decline, but it is unclear whether the total distance driven will rise or fall.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">private ownership may decline, but it is unclear whether …</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'If people are able to summon a shared vehicle…' = conditional clause; 'whether the total distance driven will rise or fall' = noun clause after 'unclear'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Conditional 'if' clause + two independent clauses joined by 'but', the second holding a whether-clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If people can call a shared car anytime, fewer may own cars — but nobody knows if total driving will go up or down.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果人们随时都能召唤一辆共享车辆,私家车拥有量可能下降,但行驶总里程是升还是降尚不清楚。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Engineers caution that widespread automation will demand not only reliable technology but also new rules and, in some cases, changes to the roads themselves.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Engineers caution that widespread automation will demand …</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that widespread automation will demand not only … but also …' = noun clause with a 'not only … but also' structure</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Reporting verb 'caution' + that-clause using correlative conjunctions 'not only … but also'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Engineers warn that mass automation needs reliable tech, new rules, and sometimes changes to the roads.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">工程师警告说,大规模自动化不仅需要可靠的技术,还需要新的规则,有时甚至需要改造道路本身。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Use the sentences above to practise clause work and paraphrasing.</div><div class="exercise-block"><h3>A — Concession & reason</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the linking word and its job.</p><div class="ex-item"><span class="ex-num">1.</span><label>'Although fully driverless cars are not yet common…' — 'Although' signals → <strong>concession/contrast</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'Because the great majority of road accidents…' — 'Because' signals → <strong>reason/cause</strong>.</label></div></div>
+<div class="exercise-block"><h3>B — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">3.</span><label>'caused by human error' → <strong>the result of people's mistakes</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'private ownership may decline' → <strong>fewer people may own their own car</strong>.</label></div></div>
+<div class="exercise-block"><h3>C — Summary word form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Predict the part of speech, then match the answer.</p><div class="ex-item"><span class="ex-num">5.</span><label>'most accidents result from ___' (noun) → <strong>human error</strong> (Q19).</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'a possible fall in car ___' (noun) → <strong>ownership</strong> (Q21).</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Claim and counter-claim.</strong> The passage balances benefits (safety, less congestion) against uncertainties (mileage, cost, rules). For 'choose TWO' questions, look for the points the writer clearly endorses, not every point mentioned.</p>
+<p><strong>Cause and effect.</strong> Human error → accidents → automation could cut them; shared vehicles → less ownership → uncertain effect on mileage. Tracking these chains answers the summary (Q19–22).</p>
+<p><strong>Contrast signposts.</strong> Words like 'although', 'but', 'however' and 'it remains to be seen' mark where the writer qualifies a claim — exactly where NOT GIVEN-style traps and 'choose TWO' distractors live.</p></div><div class="exercise-block"><h3>Q14–18 · Paragraph matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Scan for the specific detail, not the general theme.</p><div class="ex-item"><span class="ex-num">14.</span><label>a reference to features that already perform part of the driving → paragraph <strong>C</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>an explanation of why safety could improve → paragraph <strong>B</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>a point about uncertainty over future distances driven → paragraph <strong>E</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>a mention of changes needed to roads or rules → paragraph <strong>G</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>a description of shared-vehicle models → paragraph <strong>D</strong>.</label></div></div>
+<div class="exercise-block"><h3>Q19–22 · Summary completion</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One phrase per gap, taken from the passage.</p><div class="ex-item"><span class="ex-num">19.</span><label>most accidents are caused by → <strong>human error</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>new models are based on → <strong>car-sharing</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">21.</span><label>these could reduce private car → <strong>ownership</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>the effect on total ___ is uncertain → <strong>mileage</strong>.</label></div></div>
+<div class="exercise-block"><h3>Q23–26 · Multiple choice (choose TWO)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Both answers score; order does not matter.</p><div class="ex-item"><span class="ex-num">23–24.</span><label>two clearly stated benefits of automation → <strong>C and D</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">25–26.</span><label>two clearly stated concerns or requirements → <strong>A and E</strong>.</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">'Autonomous' is closest in meaning to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. electric</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. self-governing / driverless</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. shared</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. expensive</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">According to supporters, most road accidents are caused by…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. bad weather</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. poor roads</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. human error</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. fast cars</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Automatic braking is given as an example of a feature that…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. takes over part of the driving task</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. replaces the engine</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. shares the car</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. reduces mileage</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Car-sharing schemes could lead to a fall in private car…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. speed</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. safety</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. mileage</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. ownership</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does the passage say about total distance driven?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. it will certainly fall</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. it is uncertain whether it will rise or fall</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. it will stay the same</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. it will double</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Engineers say automation will also require new…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. rules and road changes</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. fuels</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. drivers</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. factories</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">'Congestion' refers to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. pollution</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. noise</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. overcrowded traffic</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. accidents</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The claimed safety benefit depends on removing the…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. engine</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. brakes</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. road</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. driver</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">'It remains to be seen' signals that something is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. proven</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. not yet known</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. impossible</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. dangerous</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">A 'shift towards' automation means a…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. gradual change towards it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. ban on it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. return from it</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. cost of it</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Questions 14–18 · Paragraph matching</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">G</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">D</div></div></div></div><div class="answer-section"><h3>Questions 19–22 · Summary</h3><div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">human error</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">car-sharing</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">ownership</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">mileage</div></div></div></div><div class="answer-section"><h3>Questions 23–26 · Choose TWO</h3><div class="answer-item"><span class="answer-num">23&24</span><div><div class="answer-val">C, D</div><div class="answer-note">Two stated benefits (either order).</div></div></div>
+<div class="answer-item"><span class="answer-num">25&26</span><div><div class="answer-val">A, E</div><div class="answer-note">Two stated concerns/requirements (either order).</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>
