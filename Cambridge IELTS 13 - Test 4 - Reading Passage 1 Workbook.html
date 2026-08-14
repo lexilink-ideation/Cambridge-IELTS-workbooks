@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 13 — Test 4 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 13</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 13 — Test 4 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Cutty Sark: the fastest sailing ship of all time.</strong> A narrative history of the last surviving tea clipper, built in 1869. The passage covers her odd name from a Robert Burns poem, the contract that ruined her builders, the lost race against <em>Thermopylae</em>, the threat from steam ships and the Suez Canal, her great years in the Australian wool trade under Captain Woodget, and her rescue and preservation at Greenwich.</p></div><div class="highlight">💡 <strong>Reading tip:</strong> Q1–8 are <strong>TRUE/FALSE/NOT GIVEN</strong> and follow the passage in order — a great chance to work sequentially. Q9–13 are <strong>sentence completion</strong>, ONE WORD ONLY, from the second half of the passage. Dates are your anchors here: 1869, 1870, 1872, 1878, 1880, 1922, 1923, 1954, 2007, 2014.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">clipper</span></td><td><span class="pos">n.</span></td><td>a fast three-masted sailing ship</td><td class="zh">快速帆船 / 飞剪船</td><td>'The fastest commercial sailing vessels of all time were <em>clippers</em>'</td><td class="note">The passage's central term.</td></tr>
+<tr><td><span class="word">propulsion</span></td><td><span class="pos">n.</span></td><td>the force that moves a vehicle forward</td><td class="zh">推进（力）</td><td>'steam <em>propulsion</em> was replacing sail'</td><td class="note">Technical but common in transport texts.</td></tr>
+<tr><td><span class="word">intact</span></td><td><span class="pos">adj.</span></td><td>complete and undamaged</td><td class="zh">完好无损的</td><td>'only one has survived more or less <em>intact</em>'</td><td class="note">Explains Cutty Sark's importance.</td></tr>
+<tr><td><span class="word">figurehead</span></td><td><span class="pos">n.</span></td><td>a carved figure at the front of a ship</td><td class="zh">船首雕像</td><td>'The witch is depicted in Cutty Sark's <em>figurehead</em>'</td><td class="note">Defined in the passage itself.</td></tr>
+<tr><td><span class="word">maiden voyage</span></td><td><span class="pos">n. phr.</span></td><td>a ship's first journey</td><td class="zh">处女航 / 首航</td><td>'On her <em>maiden voyage</em>, in 1870'</td><td class="note">Standard shipping collocation.</td></tr>
+<tr><td><span class="word">laden</span></td><td><span class="pos">adj.</span></td><td>heavily loaded</td><td class="zh">满载的</td><td>'She returned <em>laden</em> with tea'</td><td class="note">Literary past participle of 'lade'.</td></tr>
+<tr><td><span class="word">live up to expectations</span></td><td><span class="pos">v. phr.</span></td><td>to be as good as hoped</td><td class="zh">不负期望</td><td>'Cutty Sark never <em>lived up to the high expectations</em> of her owner'</td><td class="note">Signals disappointment.</td></tr>
+<tr><td><span class="word">rudder</span></td><td><span class="pos">n.</span></td><td>the flat part used to steer a ship</td><td class="zh">舵</td><td>'her <em>rudder</em> was severely damaged in stormy seas'</td><td class="note"><strong>Key to Q5.</strong></td></tr>
+<tr><td><span class="word">daunting</span></td><td><span class="pos">adj.</span></td><td>frightening because difficult</td><td class="zh">令人望而生畏的</td><td>'the <em>daunting</em> task of repairing the rudder at sea'</td><td class="note">Strong adjective worth learning.</td></tr>
+<tr><td><span class="word">cargo capacity</span></td><td><span class="pos">n. phr.</span></td><td>how much goods a ship can carry</td><td class="zh">载货量</td><td>'their speed and <em>cargo capacity</em> increased'</td><td class="note">Why steam ships won.</td></tr>
+<tr><td><span class="word">prestigious</span></td><td><span class="pos">adj.</span></td><td>bringing respect and status</td><td class="zh">有声望的</td><td>'the much less <em>prestigious</em> work of carrying any cargo'</td><td class="note">Contrast with the tea trade.</td></tr>
+<tr><td><span class="word">incompetent</span></td><td><span class="pos">adj.</span></td><td>not good enough at the job</td><td class="zh">无能的</td><td>'an <em>incompetent</em> drunkard who stole the crew's wages'</td><td class="note">Vivid narrative detail.</td></tr>
+<tr><td><span class="word">suspend from service</span></td><td><span class="pos">v. phr.</span></td><td>to remove from duty temporarily</td><td class="zh">停职</td><td>'He was <em>suspended from service</em>'</td><td class="note">Formal employment phrase.</td></tr>
+<tr><td><span class="word">turnaround</span></td><td><span class="pos">n.</span></td><td>a change from bad to good</td><td class="zh">转机 / 好转</td><td>'This marked a <em>turnaround</em>'</td><td class="note"><strong>Signals the wool-trade era.</strong></td></tr>
+<tr><td><span class="word">navigator</span></td><td><span class="pos">n.</span></td><td>someone who plans and directs a ship's course</td><td class="zh">航海家 / 导航员</td><td>'an excellent <em>navigator</em>'</td><td class="note"><strong>Q10 answer.</strong></td></tr>
+<tr><td><span class="word">trade winds</span></td><td><span class="pos">n. phr.</span></td><td>steady winds used by sailing ships</td><td class="zh">信风</td><td>'depended on the strong <em>trade winds</em> of the southern hemisphere'</td><td class="note">Why Woodget sailed far south.</td></tr>
+<tr><td><span class="word">gamble</span></td><td><span class="pos">n.</span></td><td>a risky decision</td><td class="zh">冒险 / 赌博</td><td>'His <em>gamble</em> paid off'</td><td class="note"><strong>Key to Q8.</strong></td></tr>
+<tr><td><span class="word">life expectancy</span></td><td><span class="pos">n. phr.</span></td><td>how long something is expected to last</td><td class="zh">预期寿命 / 使用年限</td><td>'Cutty Sark approached the end of her <em>life expectancy</em>'</td><td class="note">Applied here to a ship.</td></tr>
+<tr><td><span class="word">miscellaneous</span></td><td><span class="pos">adj.</span></td><td>of many different kinds</td><td class="zh">各种各样的</td><td>'she again carried <em>miscellaneous</em> cargoes'</td><td class="note">Formal synonym of 'various'.</td></tr>
+<tr><td><span class="word">gale</span></td><td><span class="pos">n.</span></td><td>a very strong wind</td><td class="zh">大风 / 强风</td><td>'Badly damaged in a <em>gale</em> in 1922'</td><td class="note"><strong>Q11 answer.</strong></td></tr>
+<tr><td><span class="word">dry dock</span></td><td><span class="pos">n. phr.</span></td><td>a dock emptied of water for repairs or display</td><td class="zh">干船坞</td><td>'transferred to <em>dry dock</em> at Greenwich'</td><td class="note">Where she sits today.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">dominate world trade</span></td><td>to control most of world trade</td><td class="zh">主导世界贸易</td></tr>
+<tr><td><span class="phrase">carry out construction</span></td><td>to build something</td><td class="zh">进行建造</td></tr>
+<tr><td><span class="phrase">put sb in a strong position</span></td><td>to give someone an advantage</td><td class="zh">使某人处于有利地位</td></tr>
+<tr><td><span class="phrase">be forced out of business</span></td><td>to be made to close down</td><td class="zh">被迫倒闭</td></tr>
+<tr><td><span class="phrase">set sail from</span></td><td>to begin a sea journey from</td><td class="zh">从……起航</td></tr>
+<tr><td><span class="phrase">gain a lead of</span></td><td>to move ahead by</td><td class="zh">领先……</td></tr>
+<tr><td><span class="phrase">pose a threat to sth</span></td><td>to be dangerous for</td><td class="zh">对……构成威胁</td></tr>
+<tr><td><span class="phrase">have a serious impact</span></td><td>to affect greatly</td><td class="zh">产生严重影响</td></tr>
+<tr><td><span class="phrase">take on work</span></td><td>to accept a job</td><td class="zh">承接工作</td></tr>
+<tr><td><span class="phrase">get the best out of sb/sth</span></td><td>to obtain the best performance</td><td class="zh">让……发挥最佳水平</td></tr>
+<tr><td><span class="phrase">pay off</span></td><td>to prove successful</td><td class="zh">得到回报 / 奏效</td></tr>
+<tr><td><span class="phrase">without success</span></td><td>unsuccessfully</td><td class="zh">没有成功</td></tr>
+<tr><td><span class="phrase">go on public display</span></td><td>to be shown to the public</td><td class="zh">公开展出</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">From the 1840s until 1869, when the Suez Canal opened and steam propulsion was replacing sail, clippers dominated world trade.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">clippers dominated world trade</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>when the Suez Canal opened and steam propulsion was replacing sail</em> — a non-defining relative clause of time modifying '1869'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A long <strong>time adverbial fronted before the main clause</strong>, with a relative clause embedded inside it. Find the comma after 'sail' and the main clause begins.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Clippers ruled world trade from the 1840s to 1869, the year the Suez Canal opened.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">从19世纪40年代直到1869年——那一年苏伊士运河开通、蒸汽动力正取代风帆——飞剪船主导了世界贸易。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">To carry out construction, Willis chose a new shipbuilding firm, Scott & Linton, and ensured that the contract with them put him in a very strong position.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Willis chose a new shipbuilding firm … and ensured that the contract … put him in a very strong position</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>To carry out construction</em> (purpose infinitive) + <em>that the contract with them put him in a very strong position</em> (noun clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Fronted infinitive of purpose</strong>. Note the appositive 'a new shipbuilding firm, Scott &amp; Linton' — the comma pair marks it as extra identifying information.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Willis picked a new shipbuilder and made sure the contract favoured him.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">为进行建造，威利斯选择了一家新的造船公司斯科特与林顿，并确保与他们签订的合同使自己处于非常有利的地位。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Crossing the Indian Ocean, Cutty Sark gained a lead of over 400 miles, but then her rudder was severely damaged in stormy seas, making her impossible to steer.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Cutty Sark gained a lead of over 400 miles, but … her rudder was severely damaged</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>Crossing the Indian Ocean</em> (fronted participle) + <em>making her impossible to steer</em> (result participle)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Two participle clauses framing the sentence</strong> — one giving the setting, one giving the consequence. The passive 'was damaged' hides the agent (the storm).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She led by 400 miles across the Indian Ocean until a storm broke her rudder and left her unsteerable.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">横渡印度洋时，卡蒂萨克号领先了400多英里，但随后其船舵在风暴海域严重受损，使其无法操舵。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">While steam ships could make use of the quick, direct route between the Mediterranean and the Red Sea, the canal was of no use to sailing ships, which needed the much stronger winds of the oceans, and so had to sail a far greater distance.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the canal was of no use to sailing ships</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>While steam ships could make use of the quick, direct route</em> (contrast clause) + <em>which needed the much stronger winds… and so had to sail a far greater distance</em> (relative)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>While</strong> = 'whereas'. <em>be of no use to</em> is a formal alternative to 'be useless for'. This sentence explains Q6 and Q7 together.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Steam ships used the canal; sailing ships needed ocean winds and had to go the long way round.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">蒸汽船能利用地中海与红海之间快捷的直达航线，而运河对帆船毫无用处——帆船需要海洋上强得多的风力，因此不得不航行远得多的距离。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">In 1880, violence aboard the ship led ultimately to the replacement of the captain with an incompetent drunkard who stole the crew's wages.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">violence aboard the ship led ultimately to the replacement of the captain</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>who stole the crew's wages</em> — a defining relative clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>lead to + noun phrase</strong> is the standard cause-and-effect pattern. Notice the heavy nominalisation: 'the replacement of the captain with…' rather than 'the captain was replaced by…'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">After violence on board in 1880, a useless, drunken captain took over and stole the crew's pay.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">1880年，船上的暴力事件最终导致船长被一个偷走船员工资的无能酒鬼所取代。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">As a sailing ship, Cutty Sark depended on the strong trade winds of the southern hemisphere, and Woodget took her further south than any previous captain, bringing her dangerously close to icebergs off the southern tip of South America.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Cutty Sark depended on the strong trade winds … and Woodget took her further south than any previous captain</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>As a sailing ship</em> (reason phrase) + <em>bringing her dangerously close to icebergs</em> (result participle)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>As</strong> here means 'being' / 'in her capacity as'. The comparative <em>further south than any previous captain</em> is a superlative in disguise. The result participle supplies the answer to Q8.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because she was a sailing ship she needed southern winds, so Woodget sailed dangerously far south, near icebergs.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">作为一艘帆船，卡蒂萨克号依赖南半球强劲的信风，伍德盖特把她驶得比以往任何船长都更靠南，使其危险地接近南美洲南端附近的冰山。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Narrative history uses participles and passives heavily. Write full answers before checking.</div><div class="exercise-block"><h3>A — Sentence combining</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join using the structure in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Cutty Sark crossed the Indian Ocean. She gained a 400-mile lead. (<em>fronted participle</em>)</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Her rudder was damaged. She could not be steered. (<em>result participle</em>)</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Steam ships could use the canal. Sailing ships could not. (<em>While…</em>)</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Woodget sailed far south. She came close to icebergs. (<em>bringing…</em>)</label></div></div>
+<div class="exercise-block"><h3>B — Clause identification</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the underlined element.</p><div class="ex-item"><span class="ex-num">5.</span><label>'until 1869, <u>when the Suez Canal opened</u>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'<u>making her impossible to steer</u>'</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'an incompetent drunkard <u>who stole the crew's wages</u>'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'<u>As a sailing ship</u>, Cutty Sark depended on the strong trade winds' — what does <em>As</em> mean here?</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrasing</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">9.</span><label>'Cutty Sark never lived up to the high expectations of her owner'</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'the much less prestigious work of carrying any cargo between any two ports'</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'His gamble paid off'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'she approached the end of her life expectancy'</label></div></div>
+<div class="exercise-block"><h3>D — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Reduce each full clause.</p><div class="ex-item"><span class="ex-num">13.</span><label>'three-masted ships which were built to transport goods' →</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>'a retired sea captain who owned a training vessel' →</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>'the carving of a woman which is typically at the front of old sailing ships' →</label></div></div>
+<div class="exercise-block"><h3>E — Translation 翻译练习</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Translate, then compare with the passage.</p><div class="ex-item"><span class="ex-num">16.</span><label>建造的飞剪船很多，但只有一艘大体完好地保存了下来。</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>苏伊士运河的开通把英国与中国之间的航程缩短了大约两个月。</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>如今卡蒂萨克号每年吸引二十五万名参观者。</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Chronological narrative (时间叙事):</strong> The whole passage runs on dates. 1869 built and Suez opens → 1870 maiden voyage → 1872 the lost race → 1878 dropped by tea traders → 1880 violence and a new captain → 1890s decline and sale → 1922 gale → 1923 returned to Falmouth → 1954 Greenwich → 2007 and 2014 fires. Marking these on your first read makes the sentence-completion questions almost automatic.</p>
+<p><strong>Cause and effect (因果):</strong> Several tight chains. Steam ships gain speed and capacity + the Suez Canal opens → clippers lose the tea trade → Cutty Sark takes low-status cargo work. And: Woodget sails further south → stronger winds → fastest wool ship for ten years, but also → dangerous proximity to icebergs. Signal words: <em>as a result of, had a serious impact, led ultimately to, and so, though</em>.</p>
+<p><strong>Expectation versus outcome (预期与结果):</strong> The passage repeatedly sets up a hope and then defeats it. 'Cutty Sark was designed to make the journey more quickly than any other ship' → 'However, Cutty Sark never lived up to the high expectations of her owner'. She gains a 400-mile lead → arrives a week <em>after</em> Thermopylae. This is exactly the trap in Q5, which many students mark TRUE.</p>
+<p><strong>Contrast between technologies (技术对比):</strong> Sail versus steam is the passage's underlying opposition. Steam: quick direct canal route, growing cargo capacity, two months faster. Sail: needs 'the much stronger winds of the oceans', so must travel 'a far greater distance'. Note that the passage says the canal was <em>of no use</em> to sailing ships — it never says steam ships stopped using the ocean route, which is why Q7 is NOT GIVEN.</p>
+<p><strong>Reversal of fortune (命运转折):</strong> 'This marked a turnaround and the beginning of the most successful period in Cutty Sark's working life.' The word <em>turnaround</em> is the hinge of the passage — everything before it is decline, everything after it is (briefly) triumph. Q9's answer, <em>wool</em>, sits immediately after this hinge.</p>
+<p><strong>Author's stance (作者态度):</strong> Affectionate but factual, and quietly amused in places — 'In legend, and in Burns's poem, witches cannot cross water, so this was a rather strange choice of name for a ship.' The evaluative words are mostly reserved for people: <em>excellent navigator, incompetent drunkard, determined</em>. Facts about the ship itself are given plainly, which is why nearly all of Q1–8 can be settled from a single sentence.</p></div><div class="exercise-block"><h3>F — Locating information</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph contains each idea?</p><div class="ex-item"><span class="ex-num">1.</span><label>the origin of the ship's name</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>the race against Thermopylae</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>the effect of the Suez Canal</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Dowman's attempts to buy the ship</label></div></div>
+<div class="exercise-block"><h3>G — TRUE / FALSE / NOT GIVEN (Q1–Q8)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Work in order — the answers follow the passage.</p><div class="ex-item"><span class="ex-num">5.</span><label>Q1: clippers were originally intended as passenger ships → <strong>FALSE</strong> ('built to transport goods… although some also took passengers')</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q2: named after a character in a poem → <strong>FALSE</strong> (a 'cutty sark' is the nightdress, not the character Nannie)</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q3: the contract favoured Willis → <strong>TRUE</strong> ('put him in a very strong position')</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q4: Willis wanted the fastest tea clipper → <strong>TRUE</strong> ('designed to make the journey more quickly than any other ship')</label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Q5: she beat Thermopylae despite the damage → <strong>FALSE</strong> ('reached London a week after Thermopylae')</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Q6: the canal let steam ships beat clippers on the Britain–China run → <strong>TRUE</strong> ('reduced the journey time… by approximately two months')</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Q7: steam ships sometimes used the ocean route → <strong>NOT GIVEN</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Q8: Woodget risked hitting an iceberg → <strong>TRUE</strong> ('dangerously close to icebergs')</label></div></div>
+<div class="exercise-block"><h3>H — Sentence completion (Q9–Q13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD ONLY. Check the grammar of each gap.</p><div class="ex-item"><span class="ex-num">13.</span><label>after 1880 the main cargo was __________ → <strong>wool</strong></label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>as a captain and __________ Woodget was very skilled → <strong>navigator</strong></label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Ferreira went to Falmouth to repair damage caused by a __________ → <strong>gale</strong></label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>between 1923 and 1954 she was used for __________ → <strong>training</strong></label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>twice damaged by __________ in the 21st century → <strong>fire</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What were clippers primarily built to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. carry passengers</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. transport goods</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. fight at sea</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. explore new coasts</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What is a 'cutty sark' in old Scottish?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a witch</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. a farmer</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. a fast boat</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. a short nightdress</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'D')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What happened to Scott & Linton?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. they built two ships</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. they merged with a rival</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. they were forced out of business</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. they refused the contract</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">How long did the return journey from China take on her maiden voyage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. four months</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. two months</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. twelve weeks</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. one year</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What went wrong in the 1872 race?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. the sails tore</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. the rudder was damaged</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. the crew mutinied</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. she ran aground</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why was the Suez Canal useless to sailing ships?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. it was too narrow</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. the tolls were high</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. it was often closed</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. they needed the stronger ocean winds</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did the Suez Canal do to the Britain–China journey time for steam ships?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. added two weeks</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. halved it exactly</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. cut it by about two months</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. left it unchanged</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What marked the turnaround in Cutty Sark's fortunes?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. a new captain and the Australian wool trade</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. a refit in Scotland</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. the return to the tea trade</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. the sale to Portugal</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why did Woodget sail so far south?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. to avoid pirates</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. to catch the strong trade winds</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. to shorten the distance</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. to see icebergs</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What was the ship renamed under Portuguese ownership?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Thermopylae</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Nannie</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Ferreira</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Falmouth</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What did Dowman use the ship for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. cargo</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. a restaurant</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. a museum only</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. training</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">How many visitors does Cutty Sark attract each year?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. a quarter of a million</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. fifty thousand</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. one million</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. two million</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Test 4, Reading Passage 1</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">FALSE</div><div class="answer-note">clippers were 'built to transport goods'; passengers were secondary</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">FALSE</div><div class="answer-note">'cutty sark' is the garment, not the character's name</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">TRUE</div><div class="answer-note">the contract 'put him in a very strong position'</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">TRUE</div><div class="answer-note">'designed to make the journey more quickly than any other ship'</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">FALSE</div><div class="answer-note">she 'reached London a week after Thermopylae'</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">TRUE</div><div class="answer-note">steam ships cut the journey by about two months</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">the passage never says steam ships used the ocean route</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">TRUE</div><div class="answer-note">'bringing her dangerously close to icebergs'</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">wool</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">navigator</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">gale</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">training</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">fire</div></div></div></div><div class="answer-section"><h3>Sentence Drills</h3><div class="answer-item"><span class="answer-num">A1</span><div><div class="answer-val">Crossing the Indian Ocean, Cutty Sark gained a lead of over 400 miles.</div></div></div>
+<div class="answer-item"><span class="answer-num">A2</span><div><div class="answer-val">Her rudder was severely damaged, making her impossible to steer.</div></div></div>
+<div class="answer-item"><span class="answer-num">A3</span><div><div class="answer-val">While steam ships could use the canal, it was of no use to sailing ships.</div></div></div>
+<div class="answer-item"><span class="answer-num">A4</span><div><div class="answer-val">Woodget took her further south, bringing her dangerously close to icebergs.</div></div></div>
+<div class="answer-item"><span class="answer-num">B5</span><div><div class="answer-val">non-defining relative clause of time</div></div></div>
+<div class="answer-item"><span class="answer-num">B6</span><div><div class="answer-val">participle clause of result</div></div></div>
+<div class="answer-item"><span class="answer-num">B7</span><div><div class="answer-val">defining relative clause</div></div></div>
+<div class="answer-item"><span class="answer-num">B8</span><div><div class="answer-val">'As' means 'being' / 'in her capacity as' (reason, not comparison)</div></div></div>
+<div class="answer-item"><span class="answer-num">C9</span><div><div class="answer-val">she was never as fast or successful as her owner had hoped</div></div></div>
+<div class="answer-item"><span class="answer-num">C10</span><div><div class="answer-val">the far less respected job of taking any goods between any ports</div></div></div>
+<div class="answer-item"><span class="answer-num">C11</span><div><div class="answer-val">his risky decision turned out well</div></div></div>
+<div class="answer-item"><span class="answer-num">C12</span><div><div class="answer-val">she was nearing the end of her useful working life</div></div></div></div><div class="answer-section"><h3>Question-type Skill Practice</h3><div class="answer-item"><span class="answer-num">F1</span><div><div class="answer-val">paragraph 3</div></div></div>
+<div class="answer-item"><span class="answer-num">F2</span><div><div class="answer-val">paragraph 5</div></div></div>
+<div class="answer-item"><span class="answer-num">F3</span><div><div class="answer-val">paragraph 6</div></div></div>
+<div class="answer-item"><span class="answer-num">F4</span><div><div class="answer-val">paragraph 10</div></div></div>
+<div class="answer-item"><span class="answer-num">G</span><div><div class="answer-val">FALSE, FALSE, TRUE, TRUE, FALSE, TRUE, NOT GIVEN, TRUE</div></div></div>
+<div class="answer-item"><span class="answer-num">H</span><div><div class="answer-val">wool / navigator / gale / training / fire</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — transport goods</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">D — a short nightdress</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C — forced out of business</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — four months</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — the rudder</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">D — they needed ocean winds</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C — about two months</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A — new captain and wool trade</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — the trade winds</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C — Ferreira</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">D — training</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A — a quarter of a million</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 13 — Test 4 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 13</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 13 — Test 4 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Book review: <em>The Happiness Industry</em> by William Davies.</strong> A sharply critical review of 'positive psychology'. The reviewer attacks its advocates as ignorant of philosophy, traces the idea back to <strong>Jeremy Bentham</strong> (and his many inventions), explains Bentham's two ways of measuring happiness, and follows the line through <strong>J B Watson</strong>'s behaviourism to today's government 'behaviour change' units.</p></div><div class="highlight">💡 <strong>Reading tip:</strong> This is an <strong>opinion piece</strong>, so Q35–40 are YES/NO/NOT GIVEN — you must separate the <em>reviewer's</em> view from Davies's, Layard's, Bentham's and Watson's. Underline the reviewer's own evaluative words: <em>astonishingly crude, simple-minded, oblivious, illiterate, rich, lucid, arresting, always a threat</em>.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">self-evidently</span></td><td><span class="pos">adv.</span></td><td>obviously; without needing proof</td><td class="zh">不言自明地</td><td>'Happiness is the ultimate goal because it is <em>self-evidently</em> good'</td><td class="note">Layard's claim, which the reviewer attacks.</td></tr>
+<tr><td><span class="word">pronouncement</span></td><td><span class="pos">n.</span></td><td>a formal public statement</td><td class="zh">声明 / 断言</td><td>'This <em>pronouncement</em> by Richard Layard'</td><td class="note">Slightly mocking word choice.</td></tr>
+<tr><td><span class="word">advocate</span></td><td><span class="pos">n.</span></td><td>a public supporter of an idea</td><td class="zh">倡导者</td><td>'an economist and <em>advocate</em> of positive psychology'</td><td class="note">Used for Layard and others.</td></tr>
+<tr><td><span class="word">collective well-being</span></td><td><span class="pos">n. phr.</span></td><td>the happiness of society as a whole</td><td class="zh">集体福祉</td><td>'a state of <em>collective well-being</em>'</td><td class="note">The goal being questioned.</td></tr>
+<tr><td><span class="word">crude</span></td><td><span class="pos">adj.</span></td><td>simple and unrefined</td><td class="zh">粗糙的 / 粗浅的</td><td>'an astonishingly <em>crude</em> and simple-minded way of thinking'</td><td class="note"><strong>Key to Q27 — the reviewer's tone.</strong></td></tr>
+<tr><td><span class="word">oblivious to sth</span></td><td><span class="pos">adj.</span></td><td>completely unaware of</td><td class="zh">毫无察觉的</td><td>'<em>oblivious to</em> the vast philosophical literature'</td><td class="note"><strong>Key to Q27.</strong></td></tr>
+<tr><td><span class="word">illiterate in sth</span></td><td><span class="pos">adj.</span></td><td>having no knowledge of a field</td><td class="zh">对……一无所知的</td><td>'<em>illiterate in</em> the history of ideas'</td><td class="note">Strong, deliberate insult.</td></tr>
+<tr><td><span class="word">self-realisation</span></td><td><span class="pos">n.</span></td><td>fulfilling one's potential</td><td class="zh">自我实现</td><td>'Aristotle may have identified happiness with <em>self-realisation</em>'</td><td class="note"><strong>Key to Q28.</strong></td></tr>
+<tr><td><span class="word">reconcile A with B</span></td><td><span class="pos">v.</span></td><td>to make two things fit together</td><td class="zh">调和 / 使一致</td><td>'struggled to <em>reconcile</em> the pursuit of happiness with other human values'</td><td class="note">Shows the complexity Bentham dismissed.</td></tr>
+<tr><td><span class="word">metaphysics</span></td><td><span class="pos">n.</span></td><td>abstract philosophy about the nature of reality</td><td class="zh">形而上学</td><td>'for Bentham all this was mere <em>metaphysics</em> or fiction'</td><td class="note">Bentham's dismissal.</td></tr>
+<tr><td><span class="word">outmoded</span></td><td><span class="pos">adj.</span></td><td>old-fashioned; no longer useful</td><td class="zh">过时的</td><td>'rejecting as <em>outmoded</em> and irrelevant… ethical reflection'</td><td class="note">The reviewer's ironic report.</td></tr>
+<tr><td><span class="word">lucid</span></td><td><span class="pos">adj.</span></td><td>clear and easy to understand</td><td class="zh">清晰的 / 明晰的</td><td>'this rich, <em>lucid</em> and arresting book'</td><td class="note"><strong>The reviewer's praise for Davies.</strong></td></tr>
+<tr><td><span class="word">arresting</span></td><td><span class="pos">adj.</span></td><td>striking; holding your attention</td><td class="zh">引人注目的</td><td>'rich, lucid and <em>arresting</em>'</td><td class="note">Positive evaluation.</td></tr>
+<tr><td><span class="word">solitary confinement</span></td><td><span class="pos">n. phr.</span></td><td>imprisonment alone, away from others</td><td class="zh">单独监禁</td><td>'prisoners would be kept in <em>solitary confinement</em>'</td><td class="note">The Panopticon design.</td></tr>
+<tr><td><span class="word">unforgeable</span></td><td><span class="pos">adj.</span></td><td>impossible to copy fraudulently</td><td class="zh">无法伪造的</td><td>'a printing device that could produce <em>unforgeable</em> banknotes'</td><td class="note"><strong>Q31 — security.</strong></td></tr>
+<tr><td><span class="word">provisions</span></td><td><span class="pos">n. pl.</span></td><td>supplies of food</td><td class="zh">食物储备</td><td>'to keep <em>provisions</em> such as meat, fish, fruit and vegetables fresh'</td><td class="note"><strong>Q32 — preservation.</strong></td></tr>
+<tr><td><span class="word">quantify</span></td><td><span class="pos">v.</span></td><td>to measure as a number</td><td class="zh">量化</td><td>'it might be <em>quantified</em> by measuring the human pulse rate'</td><td class="note"><strong>Key to Q34.</strong></td></tr>
+<tr><td><span class="word">entangling</span></td><td><span class="pos">n.</span></td><td>the act of mixing two things closely together</td><td class="zh">纠缠 / 交织</td><td>'the <em>entangling</em> of psychological research and capitalism'</td><td class="note"><strong>Key to Q29.</strong></td></tr>
+<tr><td><span class="word">integral to sth</span></td><td><span class="pos">adj.</span></td><td>an essential part of</td><td class="zh">不可或缺的</td><td>'has become <em>integral</em> to capitalism'</td><td class="note">Davies's central claim.</td></tr>
+<tr><td><span class="word">malady</span></td><td><span class="pos">n.</span></td><td>an illness or disorder</td><td class="zh">疾病 / 弊病</td><td>'economic problems are being redefined and treated as psychological <em>maladies</em>'</td><td class="note"><strong>Key to Q35.</strong></td></tr>
+<tr><td><span class="word">reductive</span></td><td><span class="pos">adj.</span></td><td>oversimplifying something complex</td><td class="zh">还原论的 / 简化的</td><td>'Watson's <em>reductive</em> model is now widely applied'</td><td class="note">The reviewer's judgement.</td></tr>
+<tr><td><span class="word">public purse</span></td><td><span class="pos">n. phr.</span></td><td>government money</td><td class="zh">公共财政</td><td>'at minimum cost to the <em>public purse</em>'</td><td class="note">Formal British phrase.</td></tr>
+<tr><td><span class="word">intellectual pedigree</span></td><td><span class="pos">n. phr.</span></td><td>the history of an idea's origins</td><td class="zh">思想谱系</td><td>'whatever its <em>intellectual pedigree</em>'</td><td class="note">Final-paragraph concession.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">give no further external reason</span></td><td>to have no justification beyond itself</td><td class="zh">无法给出更多外在理由</td></tr>
+<tr><td><span class="phrase">show the way</span></td><td>to indicate how to proceed</td><td class="zh">指明道路</td></tr>
+<tr><td><span class="phrase">for that very reason</span></td><td>precisely because of that</td><td class="zh">正因如此</td></tr>
+<tr><td><span class="phrase">write as if…</span></td><td>to write as though something were true</td><td class="zh">写得好像……</td></tr>
+<tr><td><span class="phrase">be responsible for sth</span></td><td>to be the cause of</td><td class="zh">对……负责 / 造成</td></tr>
+<tr><td><span class="phrase">follow in sb's tracks</span></td><td>to continue in someone's path</td><td class="zh">步某人后尘</td></tr>
+<tr><td><span class="phrase">to date</span></td><td>up to now</td><td class="zh">迄今为止</td></tr>
+<tr><td><span class="phrase">place sth in a historical framework</span></td><td>to set something in its history</td><td class="zh">把……置于历史框架中</td></tr>
+<tr><td><span class="phrase">be very nearly adopted</span></td><td>to almost be put into practice</td><td class="zh">差点被采纳</td></tr>
+<tr><td><span class="phrase">set the stage for sth</span></td><td>to prepare the conditions for</td><td class="zh">为……奠定基础</td></tr>
+<tr><td><span class="phrase">have no factual basis</span></td><td>to be unsupported by evidence</td><td class="zh">没有事实依据</td></tr>
+<tr><td><span class="phrase">be confined to sth</span></td><td>to be limited to</td><td class="zh">局限于</td></tr>
+<tr><td><span class="phrase">a threat to human freedom</span></td><td>something dangerous for liberty</td><td class="zh">对人类自由的威胁</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Those who think in this way are oblivious to the vast philosophical literature in which the meaning and value of happiness have been explored and questioned, and write as if nothing of any importance had been thought on the subject until it came to their attention.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Those … are oblivious to the vast philosophical literature … and write as if nothing … had been thought</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>who think in this way</em> (relative) + <em>in which the meaning and value of happiness have been explored</em> (relative with preposition) + <em>as if nothing of any importance had been thought…</em> (unreal comparison)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>as if + past perfect</strong> signals that the reviewer regards the belief as false. The formal <em>in which</em> replaces 'that… in'. This sentence answers Q27.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">They ignore centuries of philosophy about happiness and write as if nobody had thought about it before them.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">以这种方式思考的人，对探讨并质疑幸福之意义与价值的浩瀚哲学文献一无所知，并且写起文章来仿佛在此话题引起他们注意之前，从未有过任何重要的思考。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The Greek philosopher Aristotle may have identified happiness with self-realisation in the 4th century BC, and thinkers throughout the ages may have struggled to reconcile the pursuit of happiness with other human values, but for Bentham all this was mere metaphysics or fiction.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">but for Bentham all this was mere metaphysics or fiction</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">two parallel concessive clauses with <em>may have + past participle</em>, joined by <em>and</em>, before the contrastive main clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>may have + past participle</strong> here is concessive ('it is true that they did'), not speculative. The structure is 'X may have…, and Y may have…, <strong>but</strong>…'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Aristotle and later thinkers took happiness seriously and found it complicated; Bentham dismissed all that as fantasy.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">希腊哲学家亚里士多德或许在公元前4世纪就把幸福等同于自我实现，历代思想家也或许一直努力调和对幸福的追求与其他人类价值，但对边沁而言，这一切不过是形而上学或虚构。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">One of the virtues of this rich, lucid and arresting book is that it places the current cult of happiness in a well-defined historical framework.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">One of the virtues … is that it places the current cult of happiness in a well-defined historical framework</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>that it places…</em> — a noun clause acting as the complement</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>One of the + plural noun + singular verb</strong> ('One of the virtues <em>is</em>'). A very common error point. Note the three-adjective praise, marking the reviewer's own opinion.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A strength of Davies's excellent book is that it puts today's happiness craze in historical context.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这本内容丰富、条理清晰而引人入胜的书的优点之一，是它把当下的幸福崇拜置于一个界定清晰的历史框架之中。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Viewing happiness as a complex of pleasurable sensations, he suggested that it might be quantified by measuring the human pulse rate.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">he suggested that it might be quantified by measuring the human pulse rate</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>Viewing happiness as a complex of pleasurable sensations</em> — a fronted participle clause giving the premise</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Fronted participle expressing the reason or basis</strong> for the main clause. <em>by + -ing</em> gives the method. The subject of the participle must be 'he' — a rule students often break.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because he saw happiness as physical pleasure, Bentham thought a pulse rate could measure it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于把幸福视为一系列愉悦感受的集合，他提出或许可以通过测量人的脉搏来对其加以量化。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">When he became president of the American Psychological Association in 1915, he 'had never even studied a single human being': his research had been confined to experiments on white rats.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">he 'had never even studied a single human being'</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>When he became president… in 1915</em> (time clause) + the colon introduces the explanation</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Past perfect</strong> for what was already true at that past moment. The <strong>colon</strong> introduces evidence, and the quotation marks show the reviewer is citing Davies.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">By 1915 Watson led American psychology, yet had only ever experimented on white rats.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">当他在1915年成为美国心理学会主席时，他“甚至从未研究过任何一个人”：他的研究一直局限于对白鼠的实验。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">But whatever its intellectual pedigree, the idea that governments should be responsible for promoting happiness is always a threat to human freedom.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the idea … is always a threat to human freedom</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>whatever its intellectual pedigree</em> (concessive) + <em>that governments should be responsible for promoting happiness</em> (appositive noun clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>whatever + noun</strong> is a compact concession ('no matter what its history is'). The word <em>always</em> makes this the reviewer's strongest and most absolute claim — the source of Q40.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">However respectable its origins, making governments responsible for our happiness always endangers freedom.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但无论其思想渊源如何，认为政府应当负责促进幸福的观念，始终是对人类自由的威胁。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Review writing mixes reporting and judging. These drills train you to separate the two.</div><div class="exercise-block"><h3>A — Sentence combining</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join using the structure in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Aristotle saw happiness as self-realisation. Bentham dismissed such ideas. (<em>may have… but…</em>)</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Bentham saw happiness as pleasurable sensation. He proposed measuring the pulse. (<em>fronted participle</em>)</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Watson became APA president in 1915. He had never studied a human being. (<em>When…</em> + colon)</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The idea has a long history. It still threatens freedom. (<em>whatever…</em>)</label></div></div>
+<div class="exercise-block"><h3>B — Clause identification</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the underlined element.</p><div class="ex-item"><span class="ex-num">5.</span><label>'the vast philosophical literature <u>in which the meaning and value of happiness have been explored</u>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'write <u>as if nothing of any importance had been thought on the subject</u>'</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'<u>Viewing happiness as a complex of pleasurable sensations</u>, he suggested…'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'the idea <u>that governments should be responsible for promoting happiness</u>'</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrasing</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">9.</span><label>'an astonishingly crude and simple-minded way of thinking'</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'illiterate in the history of ideas'</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'set the stage for the entangling of psychological research and capitalism'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'at minimum cost to the public purse'</label></div></div>
+<div class="exercise-block"><h3>D — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Reduce each full clause.</p><div class="ex-item"><span class="ex-num">13.</span><label>'a supposed science which not only identifies what makes people happy' →</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>'a prison which was to be known as a Panopticon' →</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>'research which had been confined to experiments on white rats' →</label></div></div>
+<div class="exercise-block"><h3>E — Translation 翻译练习</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Translate, then compare with the passage.</p><div class="ex-item"><span class="ex-num">16.</span><label>如果幸福要被当作一门科学，就必须能够被测量。</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>边沁更倾向于后一种衡量方式。</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>现代工业社会似乎需要不断增长的幸福来激励人们劳动。</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Attack on a position (对立场的批判):</strong> The review opens by quoting Layard at length and then demolishes him: 'It is an astonishingly crude and simple-minded way of thinking, and <strong>for that very reason</strong> increasingly popular.' Note the sting in 'for that very reason' — crudeness explains the popularity. Recognising where the quotation ends and the reviewer's judgement begins is the single most important reading skill for this passage.</p>
+<p><strong>Intellectual genealogy (思想谱系):</strong> The passage traces a line: Bentham (pleasure and absence of pain, measurable) → the money measure → Watson's behaviourism → modern management, advertising and the British 'Behaviour Insights Team'. Each link is a step from philosophy towards control. This chain is the reviewer's real argument, and it is what makes the final sentence about freedom land.</p>
+<p><strong>Contrast between thinkers (思想家的对比):</strong> Aristotle identified happiness with <em>self-realisation</em>; Bentham reduced it to <em>pleasure and the absence of pain</em>. The reviewer invokes Aristotle precisely to show that happiness might be more than pleasure — which is exactly what Q28 asks. Note that the reviewer never says Aristotle was right; he says Bentham dismissed too much.</p>
+<p><strong>Balanced evaluation of the book (对书的平衡评价):</strong> Although the review is hostile to positive psychology, it praises Davies: 'One of the virtues of this rich, lucid and arresting book…', 'We learn much that is interesting about how economic problems are being redefined and treated as psychological maladies.' Q35 tests this praise. There is also a small criticism — 'Surprisingly, Davies does not discuss the fact that Bentham meant his Panopticon… also as an instrument of control'.</p>
+<p><strong>Undermining by biographical detail (以传记细节削弱对方):</strong> The reviewer's most damaging move against Watson is a single fact: when he became president of the APA in 1915 he 'had never even studied a single human being'. The point is not that Watson was unqualified but that a model with 'no factual basis' now shapes government policy. Q37 tests exactly this — the answer is NO.</p>
+<p><strong>Author's attitude (作者态度):</strong> Consistently critical, sometimes sarcastic, and explicit at the end. The last paragraph makes two claims: (1) industrial societies <em>appear to need</em> ever-increasing happiness to motivate labour — hedged; (2) government responsibility for happiness is <em>always</em> a threat to freedom — absolute. Q39 rests on the first, Q40 on the second, and the difference in hedging is why one is YES and the other NO.</p></div><div class="exercise-block"><h3>F — Multiple choice (Q27–Q29)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Attribute each idea to the right person first.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q27: the reviewer's attitude to positive psychologists → <strong>D</strong> ignorant of the ideas they should consider ('oblivious… illiterate in the history of ideas')</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Careful: they <em>follow</em> Bentham without knowing him, so A and B are wrong</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q28: Aristotle is mentioned to suggest happiness → <strong>A</strong> may not be just pleasure and the absence of pain</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q29: linking price to happiness mattered because → <strong>B</strong> it connected work/business and psychology ('set the stage for the entangling of psychological research and capitalism')</label></div></div>
+<div class="exercise-block"><h3>G — Summary with a word list (Q30–Q34)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Seven options, five gaps — two are unused.</p><div class="ex-item"><span class="ex-num">5.</span><label>technology to improve __________ for government departments → <strong>F</strong> communication ('conversation tubes')</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>a new way of printing banknotes to increase __________ → <strong>B</strong> security (unforgeable notes)</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>a method for the __________ of food → <strong>G</strong> preservation (the 'frigidarium')</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>a prison allowing the __________ of prisoners at all times → <strong>E</strong> observation (the Panopticon)</label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>he investigated possibilities for its __________ → <strong>A</strong> measurement (pulse rate or money)</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Unused: C implementation and D profits</label></div></div>
+<div class="exercise-block"><h3>H — YES / NO / NOT GIVEN (Q35–Q40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These test the REVIEWER's claims only.</p><div class="ex-item"><span class="ex-num">11.</span><label>Q35: a strength is the discussion of psychology and economics → <strong>YES</strong> ('We learn much that is interesting…')</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Q36: some emotions are harder to measure than others → <strong>NOT GIVEN</strong> (never compared)</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Q37: Watson's ideas were supported by pre-1915 research on humans → <strong>NO</strong> ('had never even studied a single human being')</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>Q38: Watson's ideas were most influential outside America → <strong>NOT GIVEN</strong> (Britain is an example, not a comparison)</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Q39: the need for happiness is linked to industrialisation → <strong>YES</strong> ('Modern industrial societies appear to need…')</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>Q40: government should aim to increase happiness → <strong>NO</strong> ('always a threat to human freedom')</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Who made the opening pronouncement about happiness?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. William Davies</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Richard Layard</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Jeremy Bentham</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. J B Watson</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What is the reviewer's opinion of positive psychology's advocates?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. they are original thinkers</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. they misread Bentham</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. they are too cautious</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. they are ignorant of relevant ideas</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'D')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">How did Aristotle identify happiness?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. with self-realisation</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. with pleasure</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. with wealth</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. with duty</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What did Bentham think the human good consisted of?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. virtue and duty</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. knowledge</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. pleasure and the absence of pain</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. social harmony</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does the reviewer say about Davies's book?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. it is confusing</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. it is rich, lucid and arresting</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. it is too short</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. it ignores Bentham</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What did Bentham propose to the Home Office in the 1790s?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. a new prison</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. a food store</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a banknote press</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. 'conversation tubes' linking departments</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What was the 'frigidarium' designed to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. keep food fresh</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. cool prisons</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. store banknotes</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. measure pulse rates</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What was the key feature of the Panopticon?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. underground cells</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. shared dormitories</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. prisoners always visible to guards</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. no guards at all</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Which measure of happiness did Bentham prefer?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. pulse rate</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. money</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. surveys</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. facial expression</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What had Watson's research been confined to before 1915?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. children</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. students</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. prisoners</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. white rats</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'D')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is the British 'Behaviour Insights Team' meant to study?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. how to encourage socially desirable living cheaply</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. brain chemistry</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. school curricula</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. advertising law</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the reviewer's final claim?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. happiness cannot be measured</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Bentham was right</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. government responsibility for happiness threatens freedom</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. positive psychology will soon fade</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Test 4, Reading Passage 3</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">F</div><div class="answer-note">communication — 'conversation tubes'</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">B</div><div class="answer-note">security — unforgeable banknotes</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">G</div><div class="answer-note">preservation — the 'frigidarium'</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">E</div><div class="answer-note">observation — the Panopticon</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">A</div><div class="answer-note">measurement — pulse rate or money</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">YES</div><div class="answer-note">'We learn much that is interesting…'</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">emotions are never compared for ease of measurement</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NO</div><div class="answer-note">Watson 'had never even studied a single human being'</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Britain is given as an example, not a comparison</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">YES</div><div class="answer-note">'Modern industrial societies appear to need…'</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">NO</div><div class="answer-note">'always a threat to human freedom'</div></div></div></div><div class="answer-section"><h3>Sentence Drills</h3><div class="answer-item"><span class="answer-num">A1</span><div><div class="answer-val">Aristotle may have identified happiness with self-realisation, but for Bentham this was mere metaphysics.</div></div></div>
+<div class="answer-item"><span class="answer-num">A2</span><div><div class="answer-val">Viewing happiness as pleasurable sensation, he suggested measuring the pulse rate.</div></div></div>
+<div class="answer-item"><span class="answer-num">A3</span><div><div class="answer-val">When he became APA president in 1915, he had never studied a single human being: his research had been confined to white rats.</div></div></div>
+<div class="answer-item"><span class="answer-num">A4</span><div><div class="answer-val">Whatever its intellectual pedigree, the idea is always a threat to human freedom.</div></div></div>
+<div class="answer-item"><span class="answer-num">B5</span><div><div class="answer-val">relative clause with a fronted preposition ('in which')</div></div></div>
+<div class="answer-item"><span class="answer-num">B6</span><div><div class="answer-val">unreal comparison clause ('as if' + past perfect)</div></div></div>
+<div class="answer-item"><span class="answer-num">B7</span><div><div class="answer-val">fronted participle clause giving the basis/reason</div></div></div>
+<div class="answer-item"><span class="answer-num">B8</span><div><div class="answer-val">appositive noun clause explaining 'the idea'</div></div></div>
+<div class="answer-item"><span class="answer-num">C9</span><div><div class="answer-val">a shockingly simple and unsophisticated way of thinking</div></div></div>
+<div class="answer-item"><span class="answer-num">C10</span><div><div class="answer-val">knowing nothing about the history of philosophy</div></div></div>
+<div class="answer-item"><span class="answer-num">C11</span><div><div class="answer-val">prepared the way for psychology and business to become closely intertwined</div></div></div>
+<div class="answer-item"><span class="answer-num">C12</span><div><div class="answer-val">spending as little public money as possible</div></div></div></div><div class="answer-section"><h3>Question-type Skill Practice</h3><div class="answer-item"><span class="answer-num">F</span><div><div class="answer-val">27=D, 28=A, 29=B</div></div></div>
+<div class="answer-item"><span class="answer-num">G</span><div><div class="answer-val">30=F, 31=B, 32=G, 33=E, 34=A (C and D unused)</div></div></div>
+<div class="answer-item"><span class="answer-num">H</span><div><div class="answer-val">35=YES, 36=NOT GIVEN, 37=NO, 38=NOT GIVEN, 39=YES, 40=NO</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B — Richard Layard</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">D — ignorant of relevant ideas</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A — self-realisation</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C — pleasure and absence of pain</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B — rich, lucid and arresting</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">D — conversation tubes</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A — keep food fresh</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C — always visible to guards</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B — money</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">D — white rats</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">A — cheap encouragement of desirable behaviour</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C — a threat to freedom</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

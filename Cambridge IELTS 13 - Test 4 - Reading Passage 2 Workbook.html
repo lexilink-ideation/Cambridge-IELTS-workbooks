@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 13 — Test 4 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 13</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 13 — Test 4 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Saving the soil.</strong> Seven sections (A–G) on why more than a third of the world's soil is endangered. The passage explains what healthy soil does (food, antibiotics, carbon storage, flood prevention), why agriculture and synthetic fertilisers degrade it, <strong>Pius Floris</strong>'s microbial cocktail, the UN <strong>Global Soil Map</strong>, and <strong>Pamela Chasek</strong>'s 'zero net land degradation' goal.</p></div><div class="highlight">💡 <strong>Reading tip:</strong> Q14–17 is a summary (ONE WORD ONLY), Q18–21 matches sentence beginnings to endings, and Q22–26 asks which section contains information. Note that some sections here run over two paragraphs — the letters mark <em>sections</em>, not paragraphs, so read to the next letter before deciding.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">endangered</span></td><td><span class="pos">adj.</span></td><td>at risk of being lost or destroyed</td><td class="zh">濒危的</td><td>'More than a third of the world's soil is <em>endangered</em>'</td><td class="note">Opening claim.</td></tr>
+<tr><td><span class="word">degradation</span></td><td><span class="pos">n.</span></td><td>damage that reduces quality</td><td class="zh">退化 / 恶化</td><td>'the <em>degradation</em> of the world's soil'</td><td class="note">The key term throughout.</td></tr>
+<tr><td><span class="word">sustain</span></td><td><span class="pos">v.</span></td><td>to support and keep alive</td><td class="zh">维持 / 支撑</td><td>'<em>sustains</em> human life in other more surprising ways'</td><td class="note">Sets up the antibiotics point.</td></tr>
+<tr><td><span class="word">microorganism</span></td><td><span class="pos">n.</span></td><td>a living thing too small to see</td><td class="zh">微生物</td><td>'other <em>microorganisms</em> such as viruses and fungi'</td><td class="note"><strong>Central to the whole argument.</strong></td></tr>
+<tr><td><span class="word">decompose</span></td><td><span class="pos">v.</span></td><td>to break down and rot</td><td class="zh">分解 / 腐烂</td><td>'living amid <em>decomposing</em> plants and various minerals'</td><td class="note"><strong>Q14 — minerals.</strong></td></tr>
+<tr><td><span class="word">antibiotic-resistant</span></td><td><span class="pos">adj.</span></td><td>not killed by antibiotics</td><td class="zh">抗生素耐药的</td><td>'our best hope in the fight against <em>antibiotic-resistant</em> bacteria'</td><td class="note">A striking modern argument.</td></tr>
+<tr><td><span class="word">ally</span></td><td><span class="pos">n.</span></td><td>something that helps you against a threat</td><td class="zh">盟友</td><td>'Soil is also an <em>ally</em> against climate change'</td><td class="note">Metaphorical use.</td></tr>
+<tr><td><span class="word">lock in</span></td><td><span class="pos">phr. v.</span></td><td>to trap and hold something</td><td class="zh">锁住 / 固定</td><td>'they <em>lock in</em> their carbon content'</td><td class="note"><strong>Q15 — carbon.</strong></td></tr>
+<tr><td><span class="word">infrastructure</span></td><td><span class="pos">n.</span></td><td>roads, bridges and public systems</td><td class="zh">基础设施</td><td>'damage to buildings, roads and bridges'</td><td class="note"><strong>Q16 — water.</strong></td></tr>
+<tr><td><span class="word">fertile</span></td><td><span class="pos">adj.</span></td><td>able to produce good crops</td><td class="zh">肥沃的</td><td>'the soil gradually becomes less <em>fertile</em>'</td><td class="note">Result of not returning nutrients.</td></tr>
+<tr><td><span class="word">uncultivated</span></td><td><span class="pos">adj.</span></td><td>not used for growing crops</td><td class="zh">未耕作的 / 休耕的</td><td>'leaving fields <em>uncultivated</em> for a season'</td><td class="note">A traditional solution.</td></tr>
+<tr><td><span class="word">synthetic fertiliser</span></td><td><span class="pos">n. phr.</span></td><td>chemically manufactured plant food</td><td class="zh">合成肥料</td><td>'putting this <em>synthetic fertiliser</em> on their fields ever since'</td><td class="note">The Haber-Bosch consequence.</td></tr>
+<tr><td><span class="word">indiscriminate</span></td><td><span class="pos">adj.</span></td><td>done without care or selection</td><td class="zh">不加选择的 / 滥用的</td><td>'<em>indiscriminate</em> use of fertilisers hurts the soil itself'</td><td class="note"><strong>Key to Q19.</strong></td></tr>
+<tr><td><span class="word">acidic</span></td><td><span class="pos">adj.</span></td><td>containing too much acid</td><td class="zh">酸性的</td><td>'turning it <em>acidic</em> and salty'</td><td class="note">One damage effect.</td></tr>
+<tr><td><span class="word">nourish</span></td><td><span class="pos">v.</span></td><td>to feed and keep healthy</td><td class="zh">滋养</td><td>'degrading the soil they are supposed to <em>nourish</em>'</td><td class="note">Note the irony in 'supposed to'.</td></tr>
+<tr><td><span class="word">flourish</span></td><td><span class="pos">v.</span></td><td>to grow well and strongly</td><td class="zh">茁壮生长</td><td>'the best way to ensure his trees <em>flourished</em>'</td><td class="note"><strong>Key to Q22 (motivation).</strong></td></tr>
+<tr><td><span class="word">humus</span></td><td><span class="pos">n.</span></td><td>soil formed from dead plant material</td><td class="zh">腐殖质</td><td>'a cocktail of beneficial bacteria, fungi and <em>humus</em>'</td><td class="note">Defined in a footnote.</td></tr>
+<tr><td><span class="word">pierce</span></td><td><span class="pos">v.</span></td><td>to make a hole through</td><td class="zh">刺穿 / 穿透</td><td>'roots strong enough to <em>pierce</em> dirt as hard as rock'</td><td class="note">Evidence Floris's mix works.</td></tr>
+<tr><td><span class="word">control plot</span></td><td><span class="pos">n. phr.</span></td><td>the untreated area used for comparison</td><td class="zh">对照小区</td><td>'The few plants that grew in the <em>control plots</em>'</td><td class="note">Standard experimental term.</td></tr>
+<tr><td><span class="word">benchmark</span></td><td><span class="pos">n.</span></td><td>a standard used for comparison</td><td class="zh">基准 / 标杆</td><td>'a future <em>benchmark</em> of quality'</td><td class="note">The final open question.</td></tr>
+<tr><td><span class="word">on the brink</span></td><td><span class="pos">phr.</span></td><td>very close to disaster</td><td class="zh">濒临 / 在边缘</td><td>'For soils <em>on the brink</em>, that may be too late'</td><td class="note">Vivid closing phrase.</td></tr>
+<tr><td><span class="word">agitate for sth</span></td><td><span class="pos">v.</span></td><td>to campaign publicly for</td><td class="zh">呼吁 / 鼓动争取</td><td>'Several researchers are <em>agitating for</em> the immediate creation of protected zones'</td><td class="note"><strong>Key to Q25.</strong></td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at risk</span></td><td>in danger</td><td class="zh">处于风险中</td></tr>
+<tr><td><span class="phrase">slow the decline</span></td><td>to make something get worse more slowly</td><td class="zh">减缓下降</td></tr>
+<tr><td><span class="phrase">point out that…</span></td><td>to draw attention to the fact that</td><td class="zh">指出</td></tr>
+<tr><td><span class="phrase">get around a problem</span></td><td>to find a way past a difficulty</td><td class="zh">绕过难题</td></tr>
+<tr><td><span class="phrase">be run on commercial lines</span></td><td>to be managed like a business</td><td class="zh">按商业方式运作</td></tr>
+<tr><td><span class="phrase">it has become clear that…</span></td><td>people now realise that</td><td class="zh">现在已清楚</td></tr>
+<tr><td><span class="phrase">wasn't such a bright idea</span></td><td>was not as good an idea as it seemed</td><td class="zh">并不是个好主意</td></tr>
+<tr><td><span class="phrase">start out doing sth</span></td><td>to begin one's career doing</td><td class="zh">起初从事</td></tr>
+<tr><td><span class="phrase">come to realise that…</span></td><td>to gradually understand</td><td class="zh">逐渐意识到</td></tr>
+<tr><td><span class="phrase">take care of sth</span></td><td>to look after</td><td class="zh">照料</td></tr>
+<tr><td><span class="phrase">bring sth home to sb</span></td><td>to make someone fully understand</td><td class="zh">让某人切实明白</td></tr>
+<tr><td><span class="phrase">and vice versa</span></td><td>and the other way round</td><td class="zh">反之亦然</td></tr>
+<tr><td><span class="phrase">take action now</span></td><td>to act immediately</td><td class="zh">立即行动</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">A single gram of healthy soil might contain 100 million bacteria, as well as other microorganisms such as viruses and fungi, living amid decomposing plants and various minerals.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A single gram of healthy soil might contain 100 million bacteria</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>as well as other microorganisms such as viruses and fungi</em> (addition) + <em>living amid decomposing plants and various minerals</em> (participle clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>as well as</strong> adds without changing the verb agreement. The final participle clause modifies the microorganisms, not the soil — and it contains the answer to Q14.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">One gram of good soil holds a hundred million bacteria plus viruses and fungi, among rotting plants and minerals.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">一克健康的土壤可能含有一亿个细菌，以及病毒和真菌等其他微生物，它们生活在正在分解的植物和各种矿物质之间。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Soil is also an ally against climate change: as microorganisms within soil digest dead animals and plants, they lock in their carbon content, holding three times the amount of carbon as does the entire atmosphere.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Soil is also an ally against climate change</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>as microorganisms… digest dead animals and plants</em> (time/reason clause) + <em>holding three times the amount of carbon…</em> (participle) + <em>as does the entire atmosphere</em> (comparative with inversion)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The <strong>colon</strong> introduces the explanation. Note the inversion in <em>as does the entire atmosphere</em> — formal written English for 'as the entire atmosphere does'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Soil fights climate change: its microbes trap carbon, holding three times as much as the air.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">土壤也是应对气候变化的盟友：当土壤中的微生物分解死去的动植物时，它们把其中的碳固定下来，其储碳量是整个大气层的三倍。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Humans tend not to return unused parts of harvested crops directly to the soil to enrich it, meaning that the soil gradually becomes less fertile.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Humans tend not to return unused parts of harvested crops directly to the soil</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>to enrich it</em> (purpose infinitive) + <em>meaning that the soil gradually becomes less fertile</em> (result participle)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>tend not to do</strong> — note the position of 'not'. The participle <em>meaning that…</em> is a compact way of saying 'and this means that…'. This sentence is the source of Q18.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">We usually don't put leftover crop material back in the soil, so the soil slowly loses fertility.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">人类通常不会把收获作物中未用的部分直接返回土壤以增加肥力，这意味着土壤会逐渐变得不那么肥沃。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">More recently, we have found that indiscriminate use of fertilisers hurts the soil itself, turning it acidic and salty, and degrading the soil they are supposed to nourish.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">we have found that indiscriminate use of fertilisers hurts the soil itself</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>turning it acidic and salty</em> and <em>degrading the soil they are supposed to nourish</em> — two parallel result participles</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Two coordinated participle clauses</strong> both describing the consequence. The relative in 'the soil (that) they are supposed to nourish' has its pronoun omitted.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Overusing fertiliser makes soil acidic and salty, damaging the very soil it should feed.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">最近我们发现，不加节制地使用化肥会伤害土壤本身，使其变得酸化和盐碱化，并使本应被滋养的土壤退化。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">When they applied Floris's mix to the desert-like test plots, a good crop of plants emerged that were not just healthy at the surface, but had roots strong enough to pierce dirt as hard as rock.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">a good crop of plants emerged</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>When they applied Floris's mix…</em> (time clause) + <em>that were not just healthy at the surface, but had roots strong enough…</em> (relative clause separated from its noun)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The <strong>relative clause is separated from 'plants' by the verb 'emerged'</strong> — a structure that regularly confuses readers. <em>not just… but…</em> links two properties.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">On desert-like plots his mix produced healthy plants with roots that could break through rock-hard soil.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">当他们把弗洛里斯的混合物施用于沙漠般的试验地块时，长出了一批优质植物：它们不仅表面健康，其根系还强壮到足以穿透坚硬如石的泥土。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Like the idea of carbon neutrality, it is an easily understood target that can help shape expectations and encourage action.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it is an easily understood target</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>Like the idea of carbon neutrality</em> (comparison phrase) + <em>that can help shape expectations and encourage action</em> (relative clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Like + noun phrase</strong> for comparison (not 'as'). This sentence answers Q21, since 'shape expectations and encourage action' maps onto making governments more aware.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Like carbon neutrality, 'zero net land degradation' is simple enough to change what people expect and do.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与碳中和的理念一样，它是一个容易理解的目标，能够帮助塑造预期并促成行动。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Environmental science writing is dense with participles of result. Work carefully.</div><div class="exercise-block"><h3>A — Sentence combining</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join using the structure in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>We don't return crop waste to the soil. The soil becomes less fertile. (<em>meaning that…</em>)</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Fertilisers are used indiscriminately. They make soil acidic and salty. (<em>result participle</em>)</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Microbes digest dead plants. They lock in carbon. (<em>as…</em>)</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Carbon neutrality is easy to understand. So is zero net land degradation. (<em>Like…</em>)</label></div></div>
+<div class="exercise-block"><h3>B — Clause identification</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the underlined element.</p><div class="ex-item"><span class="ex-num">5.</span><label>'microorganisms <u>living amid decomposing plants and various minerals</u>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'holding three times the amount of carbon <u>as does the entire atmosphere</u>' — what feature is shown?</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'a good crop of plants emerged <u>that were not just healthy at the surface</u>'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'the soil <u>they are supposed to nourish</u>' — what has been omitted?</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrasing</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in your own words.</p><div class="ex-item"><span class="ex-num">9.</span><label>'if we don't slow the decline, all farmable soil could be gone in 60 years'</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'these practices became inconvenient as populations grew'</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'Most scientists don't speak language that policy-makers can understand, and vice versa'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'Several researchers are agitating for the immediate creation of protected zones'</label></div></div>
+<div class="exercise-block"><h3>D — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Reduce each full clause.</p><div class="ex-item"><span class="ex-num">13.</span><label>'microorganisms which live amid decomposing plants' →</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>'soils which have been destroyed by years of fertiliser overuse' →</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>'a map which is linked to a database' →</label></div></div>
+<div class="exercise-block"><h3>E — Translation 翻译练习</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Translate, then compare with the passage.</p><div class="ex-item"><span class="ex-num">16.</span><label>土壤生产了我们95%的食物。</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>一旦这种情况发生，土壤可能需要数千年才能恢复。</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>目前还没有国际公认的土壤分类体系。</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Problem–consequence–solution (问题—后果—对策):</strong> The passage's overall shape. Sections A–B state the problem and why soil matters; C–D explain the causes (agriculture, then fertilisers); E–G offer partial solutions (Floris's cocktail, the Global Soil Map, Chasek's goal, protected zones). Each solution is introduced and then qualified — 'However, measures like this are not enough', 'But this is only a first step'.</p>
+<p><strong>Argument by accumulation (累积论证):</strong> Section B builds the case for soil's importance by stacking functions: grows food (95%) → source of nearly all antibiotics → possible weapon against resistant bacteria → stores three times the atmosphere's carbon → prevents floods (£233 million a year in UK damage). Notice how each function is bigger or less obvious than the last. Q14–16 simply pick three items out of this list.</p>
+<p><strong>Natural cycle versus human interruption (自然循环与人为中断):</strong> 'In the wild, when plants grow they remove nutrients from the soil, but then when the plants die and decay these nutrients are returned directly to the soil.' Then: 'Humans tend not to return unused parts of harvested crops…'. This contrast is the heart of Q18 and Q23 — the wild cycle is the explanation of how soil stayed healthy before farming.</p>
+<p><strong>Solution that becomes a problem (对策变成新问题):</strong> The Haber-Bosch process 'came as a solution' in the early 20th century — 'But over the past few decades, it has become clear this wasn't such a bright idea.' Chemical fertilisers release nitrous oxide, wash nitrogen into rivers, and turn soil acidic and salty. The ironic closing phrase — 'degrading the soil they are supposed to nourish' — is what Q19 tests.</p>
+<p><strong>Experimental evidence (实验证据):</strong> The Valladolid test follows the standard comparison structure: treated plots produce healthy plants with rock-piercing roots; 'The few plants that grew in the <strong>control plots</strong>, fed with traditional fertilisers, were small and weak.' Whenever a passage mentions a control group, expect a question about the contrast (here, Q20).</p>
+<p><strong>Communication as an obstacle (沟通障碍):</strong> Section G identifies a non-scientific problem: 'Most scientists don't speak language that policy-makers can understand, and vice versa.' Chasek's answer is a simple, memorable target modelled on carbon neutrality. The reasoning is that clarity itself causes action — which is why Q21's ending is about helping governments become more aware.</p></div><div class="exercise-block"><h3>F — Summary completion (Q14–Q17)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD ONLY from the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>plant remains and __________ → <strong>minerals</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>its function in storing __________ affects the climate → <strong>carbon</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>it prevents property damage because it holds __________ → <strong>water</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>the main factor contributing to degradation is the __________ carried out by humans → <strong>agriculture</strong></label></div></div>
+<div class="exercise-block"><h3>G — Sentence endings (Q18–Q21)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the stem, predict the meaning, then match.</p><div class="ex-item"><span class="ex-num">5.</span><label>Q18: nutrients in unused parts of harvested crops → <strong>C</strong> may not be put back into the soil</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q19: synthetic fertilisers from the Haber-Bosch process → <strong>E</strong> may damage different aspects of the environment</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q20: adding Floris's mixture to the soil → <strong>A</strong> may improve the number and quality of plants</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q21: the idea of zero net soil degradation → <strong>D</strong> may help governments be more aware</label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Endings B and F are never used — B describes the Global Soil Map, F is a general distractor</label></div></div>
+<div class="exercise-block"><h3>H — Which section contains…? (Q22–Q26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Letters may repeat; sections may run over two paragraphs.</p><div class="ex-item"><span class="ex-num">10.</span><label>Q22: one person's motivation for a soil-improvement project → <strong>E</strong> (Floris wanted his trees to flourish)</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Q23: how soil stayed healthy before farming → <strong>C</strong> ('In the wild… nutrients are returned directly')</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Q24: different ways of collecting information → <strong>F</strong> (field surveys, drones, satellites, lab analyses)</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Q25: keeping some soils safe in the near future → <strong>G</strong> (protected zones for endangered soils)</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>Q26: why an overview is difficult → <strong>F</strong> ('there is no agreed international system for classifying soil')</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How much of the world's soil is endangered?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. a tenth</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. a quarter</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. more than a third</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. two thirds</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">How soon could all farmable soil be gone if the decline is not slowed?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. 30 years</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. 60 years</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. 100 years</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. 200 years</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What percentage of our food does soil grow?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 60%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 75%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. 85%</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. 95%</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">How much carbon does soil hold compared with the atmosphere?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. three times as much</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. the same</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. half as much</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. ten times as much</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What is the real danger described in section C?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. soil will vanish completely</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. soil will become too wet</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. the microorganisms will be lost</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. soil will be built on</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How did farmers traditionally protect soil fertility?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. adding lime</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. varying crops and leaving fields uncultivated</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. burning stubble</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. deep ploughing</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did the Haber-Bosch process make possible?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. crop rotation</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. irrigation</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. soil mapping</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. manufacturing ammonium nitrate fertiliser</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What harm do fertilisers do to the soil itself?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. they make it acidic and salty</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. they make it too soft</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. they attract pests</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. they reduce its temperature</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What did Pius Floris originally do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. farm wheat</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. teach chemistry</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. run a tree-care business</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. work for the UN</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What was notable about the plants grown with Floris's mix?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. they grew faster</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. their roots could pierce rock-hard dirt</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. they needed no water</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. they were larger fruits</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How many countries are working on the Global Soil Map?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. three</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. five</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. seven</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. nine</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What goal have Chasek and colleagues proposed?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. zero net land degradation</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. doubling fertiliser use</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. banning agriculture</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. carbon taxes on farms</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Test 4, Reading Passage 2</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">minerals</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">carbon</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">water</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">agriculture</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">C</div><div class="answer-note">nutrients may not be put back into the soil</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">E</div><div class="answer-note">synthetic fertilisers may damage the environment</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">A</div><div class="answer-note">Floris's mixture may improve plant number and quality</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">D</div><div class="answer-note">zero net degradation may raise government awareness</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">F</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">G</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">F</div></div></div></div><div class="answer-section"><h3>Sentence Drills</h3><div class="answer-item"><span class="answer-num">A1</span><div><div class="answer-val">Humans do not return crop waste to the soil, meaning that it gradually becomes less fertile.</div></div></div>
+<div class="answer-item"><span class="answer-num">A2</span><div><div class="answer-val">Indiscriminate use of fertilisers hurts the soil, turning it acidic and salty.</div></div></div>
+<div class="answer-item"><span class="answer-num">A3</span><div><div class="answer-val">As microorganisms digest dead plants and animals, they lock in their carbon.</div></div></div>
+<div class="answer-item"><span class="answer-num">A4</span><div><div class="answer-val">Like carbon neutrality, zero net land degradation is an easily understood target.</div></div></div>
+<div class="answer-item"><span class="answer-num">B5</span><div><div class="answer-val">participle clause (reduced relative)</div></div></div>
+<div class="answer-item"><span class="answer-num">B6</span><div><div class="answer-val">inversion in a comparative clause</div></div></div>
+<div class="answer-item"><span class="answer-num">B7</span><div><div class="answer-val">relative clause separated from its noun by the verb</div></div></div>
+<div class="answer-item"><span class="answer-num">B8</span><div><div class="answer-val">the relative pronoun 'that/which' has been omitted</div></div></div>
+<div class="answer-item"><span class="answer-num">C9</span><div><div class="answer-val">unless the loss is slowed, no farmable soil will be left in sixty years</div></div></div>
+<div class="answer-item"><span class="answer-num">C10</span><div><div class="answer-val">as the population rose, these methods became impractical</div></div></div>
+<div class="answer-item"><span class="answer-num">C11</span><div><div class="answer-val">scientists and policy-makers cannot understand each other's language</div></div></div>
+<div class="answer-item"><span class="answer-num">C12</span><div><div class="answer-val">some researchers are campaigning for protected areas to be set up at once</div></div></div></div><div class="answer-section"><h3>Question-type Skill Practice</h3><div class="answer-item"><span class="answer-num">F</span><div><div class="answer-val">minerals / carbon / water / agriculture</div></div></div>
+<div class="answer-item"><span class="answer-num">G</span><div><div class="answer-val">18=C, 19=E, 20=A, 21=D</div></div></div>
+<div class="answer-item"><span class="answer-num">H</span><div><div class="answer-val">22=E, 23=C, 24=F, 25=G, 26=F</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C — more than a third</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — 60 years</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">D — 95%</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — three times as much</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C — losing the microorganisms</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — crop variety and fallow fields</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">D — ammonium nitrate</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A — acidic and salty</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — tree care</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — rock-piercing roots</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">D — nine</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A — zero net land degradation</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>
