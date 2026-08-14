@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 2 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 11 — Test 2 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'What destroyed the civilisation of Easter Island?'</strong> sets out two opposing explanations. <strong>Jared Diamond</strong> argues the Rapanui wrecked their own environment and that the moai statues accelerated the collapse. <strong>Terry Hunt and Carl Lipo</strong> argue the islanders were skilled, sustainable farmers, that the moai were walked upright, and that rats and European diseases did the damage.</p><p>题型:段落小标题 Q14–20 + 摘要填空 Q21–24 + 选两个 Q25–26。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For matching headings, read the <em>first and last sentence</em> of each paragraph and ask 'what is this paragraph <em>for</em>?' Paragraph A presents rival theories (heading ii, an <em>undisputed answer</em> about who built them); paragraph C is about how the moai <em>made things worse</em> (heading viii).</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">remote</span></td><td><span class="pos">adj.</span></td><td>far away from other places</td><td class="zh">偏远的</td><td>'After this <em>remote</em> Pacific island was settled'</td><td class="note">Central to Diamond's 'fragile island' argument.</td></tr>
+<tr><td><span class="word">definitively</span></td><td><span class="pos">adv.</span></td><td>in a way that settles the question</td><td class="zh">确凿地;最终地</td><td>'Modern science … has <em>definitively</em> proved the moai builders were Polynesians'</td><td class="note">Supports heading ii for paragraph A.</td></tr>
+<tr><td><span class="word">folklore</span></td><td><span class="pos">n.</span></td><td>the traditional stories and beliefs of a people</td><td class="zh">民间传说</td><td>'Local <em>folklore</em> maintains that the statues walked'</td><td class="note">Links paragraph A to heading iv for paragraph E.</td></tr>
+<tr><td><span class="word">sediment</span></td><td><span class="pos">n.</span></td><td>material that settles at the bottom of water</td><td class="zh">沉积物</td><td>'researchers found pollen preserved in lake <em>sediments</em>'</td><td class="note">Evidence for the lost palm forests.</td></tr>
+<tr><td><span class="word">lush</span></td><td><span class="pos">adj.</span></td><td>growing thickly and healthily</td><td class="zh">茂盛的</td><td>'the island had been covered in <em>lush</em> palm forests'</td><td class="note">Contrast with 'grassland, with only a few scrawny trees'.</td></tr>
+<tr><td><span class="word">scrawny</span></td><td><span class="pos">adj.</span></td><td>thin and weak-looking</td><td class="zh">瘦弱的;干瘪的</td><td>'Rapa Nui was grassland, with only a few <em>scrawny</em> trees'</td><td class="note">Sets up the mystery.</td></tr>
+<tr><td><span class="word">fragile</span></td><td><span class="pos">adj.</span></td><td>easily damaged</td><td class="zh">脆弱的</td><td>'They had unfortunately settled on an extremely <em>fragile</em> island'</td><td class="note">Diamond's explanation.</td></tr>
+<tr><td><span class="word">soil erosion</span></td><td><span class="pos">n. phr.</span></td><td>the washing away of topsoil</td><td class="zh">土壤侵蚀</td><td>'<em>Soil erosion</em> decreased their crop yields'</td><td class="note">Key to heading ix (diminishing food resources) for paragraph B.</td></tr>
+<tr><td><span class="word">chieftain</span></td><td><span class="pos">n.</span></td><td>the leader of a tribe</td><td class="zh">酋长;首领</td><td>'power displays by rival <em>chieftains</em>'</td><td class="note">Diamond's reading of the moai (Q24 = wood).</td></tr>
+<tr><td><span class="word">topple</span></td><td><span class="pos">v.</span></td><td>to make something fall over</td><td class="zh">推倒</td><td>'the islanders began <em>toppling</em> the moai'</td><td class="note">End of Diamond's story.</td></tr>
+<tr><td><span class="word">windbreak</span></td><td><span class="pos">n.</span></td><td>a barrier that protects from wind</td><td class="zh">防风墙;防风林</td><td>'They built thousands of circular stone <em>windbreaks</em>'</td><td class="note">Evidence for heading i in paragraph D.</td></tr>
+<tr><td><span class="word">steward</span></td><td><span class="pos">n.</span></td><td>a person who looks after something carefully</td><td class="zh">管理者;守护者</td><td>'careful <em>stewards</em> of the land'</td><td class="note">Hunt and Lipo's conclusion, paragraph G.</td></tr>
+<tr><td><span class="word">decimate</span></td><td><span class="pos">v.</span></td><td>to destroy a large part of</td><td class="zh">大量毁灭</td><td>'slave traders <em>decimated</em> the population'</td><td class="note">Heading vii — destruction outside the inhabitants' control.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">go to heroic efforts to</span></td><td>try extremely hard to</td><td class="zh">不遗余力地</td></tr>
+<tr><td><span class="phrase">in short</span></td><td>to sum up briefly</td><td class="zh">简而言之</td></tr>
+<tr><td><span class="phrase">back up</span></td><td>support with evidence</td><td class="zh">支持;证实</td></tr>
+<tr><td><span class="phrase">be to blame</span></td><td>be responsible for something bad</td><td class="zh">应受责备</td></tr>
+<tr><td><span class="phrase">no doubt</span></td><td>almost certainly</td><td class="zh">毫无疑问</td></tr>
+<tr><td><span class="phrase">more or less stable</span></td><td>fairly steady</td><td class="zh">大体稳定</td></tr>
+<tr><td><span class="phrase">a worst-case scenario</span></td><td>the worst possible outcome</td><td class="zh">最坏的情况</td></tr>
+<tr><td><span class="phrase">rather than</span></td><td>instead of</td><td class="zh">而不是</td></tr>
+<tr><td><span class="phrase">whichever is the case</span></td><td>whatever the truth is</td><td class="zh">无论哪种情况属实</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">All the energy and resources that went into the moai — some of which are ten metres tall and weigh over 7,000 kilos — came from the island itself.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">All the energy and resources … came from the island itself</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that went into the moai' = defining relative clause; 'some of which are ten metres tall and weigh over 7,000 kilos' = non-defining relative with a quantifier</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'some of which' is the formal way to say 'some of them'. Note the dashes isolate the extra detail.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Everything used to make the statues — some 10 m tall and over 7,000 kg — came from the island.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">制作摩埃像所耗费的全部能量与资源——其中一些高达十米、重逾7000公斤——都来自岛上本身。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">When the islanders cleared the forests for firewood and farming, the forests didn't grow back.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the forests didn't grow back</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">When the islanders cleared the forests for firewood and farming (time clause functioning as a cause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A simple 'when'-clause carrying a causal meaning. Q21 ('farming') comes straight from it.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Once the islanders cut the forests for fuel and fields, the trees never returned.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">当岛民为取柴和耕作而清除森林后,森林再也没有长回来。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Diamond thinks they laid the moai on wooden sledges, hauled over log rails, but that required both a lot of wood and a lot of people.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Diamond thinks (that) they laid the moai on wooden sledges … but that required both a lot of wood and a lot of people</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'hauled over log rails' = reduced passive relative ('which were hauled')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'both A and B' balances the two costs. This sentence gives the answer to Q24.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Diamond believes they dragged the statues on wooden sledges over log rails, which needed lots of wood and workers.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">戴蒙德认为,他们把摩埃像放在木橇上,沿着圆木轨道拖行,但这既需要大量木材,也需要大量人力。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Archaeological finds of nuts from the extinct Easter Island palm show tiny grooves, made by the teeth of Polynesian rats.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Archaeological finds of nuts … show tiny grooves</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'from the extinct Easter Island palm' = prepositional modifier; 'made by the teeth of Polynesian rats' = reduced passive relative</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two modifiers stack after the subject; the main verb 'show' is easy to miss.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Nuts from the extinct palm have small marks left by rats' teeth.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">考古发现的已灭绝复活节岛棕榈的坚果上有细小凹槽,这是波利尼西亚鼠牙齿留下的。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">They would have prevented the reseeding of the slow-growing palm trees and thereby doomed Rapa Nui's forest, even without the settlers' campaign of deforestation.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">They would have prevented the reseeding … and thereby doomed Rapa Nui's forest</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'even without the settlers' campaign of deforestation' = concessive prepositional phrase</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'would have + past participle' = a hypothetical past result; 'thereby + -ing' shows consequence.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The rats alone would have stopped the palms reseeding and killed the forest, even if people had cut nothing.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">即使没有定居者的砍伐运动,老鼠也会阻止生长缓慢的棕榈重新播种,从而注定了复活节岛森林的消亡。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage is a debate. Practise identifying <em>whose</em> view each sentence expresses.</div><div class="exercise-block"><h3>A — Whose view is it?</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write D (Diamond) or H/L (Hunt and Lipo).</p><div class="ex-item"><span class="ex-num">1.</span><label>'the Rapanui people wrecked their own environment' → <strong>D</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'the prehistoric Rapanui were pioneers of sustainable farming' → <strong>H/L</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'the moai accelerated the self-destruction' → <strong>D</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'moai-building helped keep the peace between islanders' → <strong>H/L</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>'moving the moai required few people and no wood' → <strong>H/L</strong></label></div></div>
+<div class="exercise-block"><h3>B — Cause and effect chains</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete Diamond's chain of events.</p><div class="ex-item"><span class="ex-num">6.</span><label>clear forests for firewood and <strong>farming</strong> → forests do not grow back</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>trees become scarce → cannot build wooden <strong>canoes</strong> for fishing</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>no fishing → they ate <strong>birds</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>soil erosion → decreased <strong>crop yields</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>competition between chieftains → bigger statues → more <strong>wood</strong> and people needed</label></div></div>
+<div class="exercise-block"><h3>C — Reducing relative clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each clause.</p><div class="ex-item"><span class="ex-num">11.</span><label>'grooves which were made by the teeth of rats' → '<strong>grooves made by the teeth of rats</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'sledges which were hauled over log rails' → '<strong>sledges hauled over log rails</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">13.</span><label>最近的实验表明,只要18个人就能移动一尊1000公斤的复制品。 → <strong>Recent experiments indicate that as few as 18 people could manoeuvre a 1,000 kg moai replica.</strong></label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>欧洲人带来了岛民毫无免疫力的致命疾病。 → <strong>The Europeans introduced deadly diseases to which islanders had no immunity.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Two opposing views.</strong> The whole passage is built on a contrast: paragraphs B–C give Diamond; paragraphs D–F give Hunt and Lipo; paragraph G sums up their vision. Paragraph A sets up the question and gives one point that is now settled (who built the moai) — hence heading ii.</p>
+<p><strong>Evidence types.</strong> Pollen in lake sediments (B), archaeological excavations of windbreaks (D), experiments with a replica (E), tooth grooves on palm nuts (F). Each paragraph is defined by the <em>kind</em> of evidence it uses — that is the fastest route to the right heading.</p>
+<p><strong>Concession and refutation.</strong> 'Hunt and Lipo agree that Easter Island lost its lush forests … but they believe the islanders themselves weren't to blame.' Recognising 'agree … but' tells you paragraph D is a counter-argument, not a summary.</p>
+<p><strong>External vs. internal causes.</strong> Diamond blames the islanders (internal); Hunt and Lipo blame rats, European disease and slave traders (external). Heading vii ('Destruction outside the inhabitants' control') therefore belongs to paragraph F.</p>
+<p><strong>Author's balance.</strong> The writer never decides: 'Whichever is the case, there are surely some valuable lessons…'. That neutrality is why Q25–26 asks only where the two sides <em>disagree</em>.</p></div><div class="exercise-block"><h3>Q14–20 · Matching headings</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ask what each paragraph is FOR, not what it mentions.</p><div class="ex-item"><span class="ex-num">14.</span><label>Paragraph A → <strong>ii</strong> An undisputed answer to a question about the moai (science has 'definitively proved' the builders were Polynesian)</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Paragraph B → <strong>ix</strong> Diminishing food resources (no canoes → ate birds → soil erosion → lower crop yields)</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>Paragraph C → <strong>viii</strong> How the statues made a situation worse ('the moai accelerated the self-destruction')</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>Paragraph D → <strong>i</strong> Evidence of innovative environment management practices (stone windbreaks, volcanic rock to keep soil moist)</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>Paragraph E → <strong>iv</strong> A theory which supports a local belief ('archaeological evidence backs up Rapanui folklore' that the statues walked)</label></div>
+<div class="ex-item"><span class="ex-num">19.</span><label>Paragraph F → <strong>vii</strong> Destruction outside the inhabitants' control (rats, European diseases, slave traders)</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>Paragraph G → <strong>vi</strong> Two opposing views about the Rapanui people (ingenious stewards vs. reckless destroyers)</label></div></div>
+<div class="exercise-block"><h3>Q21–24 · Summary completion (ONE WORD ONLY)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This summary covers Diamond's view only — stay in paragraphs B and C.</p><div class="ex-item"><span class="ex-num">21.</span><label>cutting down trees for fuel and clearing land for ___ → <strong>farming</strong></label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>no longer able to build the ___ they needed to go fishing → <strong>canoes</strong></label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>they began using the island's ___ as a food source → <strong>birds</strong></label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>transporting the statues needed a great deal of ___ → <strong>wood</strong></label></div></div>
+<div class="exercise-block"><h3>Q25 &amp; 26 · Choose TWO letters</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Where do Hunt and Lipo disagree with Diamond? Answers B and C.</p><div class="ex-item"><span class="ex-num">25.</span><label><strong>B ✓</strong> how the moai were transported — walked upright vs. dragged on sledges</label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label><strong>C ✓</strong> the impact of the moai on Rapanui society — kept the peace vs. accelerated collapse</label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label><strong>A ✗</strong> the period when the moai were created — never disputed</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label><strong>D ✗</strong> how the moai were carved — both agree they were carved with stone tools</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label><strong>E ✗</strong> the origins of the people — 'definitively proved' Polynesian; no dispute</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is the local name for Easter Island?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Moai</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Rapanui</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Rapa Nui</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Polynesia</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">When did Dutch explorers land on the island?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. 1622</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. 1722</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. 1822</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. 1877</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Who did Thor Heyerdahl think built the moai?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. pre-Inca peoples from Peru</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. stranded extraterrestrials</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Polynesians</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Dutch settlers</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What evidence showed the island once had palm forests?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. carved wooden tools</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. old maps</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. tree stumps</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. pollen preserved in lake sediments</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">According to Diamond, why did the islanders eat birds?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Birds were a delicacy.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Fish had died out.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They could no longer build wooden canoes.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. The chieftains ordered it.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How does Diamond interpret the moai?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. as religious offerings</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. as power displays by rival chieftains</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. as navigation markers</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. as tombs</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did Hunt and Lipo find that the Rapanui built to protect crops?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. circular stone windbreaks</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. irrigation canals</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. terraced fields</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. greenhouses</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How many people could move a 1,000 kg moai replica?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. about 100</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. about 60</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. about 30</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. as few as 18</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What allowed handlers to rock the statues side to side?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. wooden rollers</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. a D-shaped base</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. greased log rails</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. stone wheels</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What proof do Hunt and Lipo give that rats ate palm nuts?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. rat bones in caves</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. oral histories</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. tiny grooves made by rats' teeth</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. pollen analysis</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">By 1877 the population had fallen to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. 111 people</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. 1,000 people</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. 550 people</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. 2,000 people</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the writer's own position?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Diamond is right.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Hunt and Lipo are right.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Both theories are wrong.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Either way, there are lessons for the world.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 2 — Answers (Q14–Q26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">ii</div><div class="answer-note">Science has 'definitively proved the moai builders were Polynesians'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">ix</div><div class="answer-note">No canoes → ate birds; soil erosion → lower crop yields.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">viii</div><div class="answer-note">'The moai, he thinks, accelerated the self-destruction'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">i</div><div class="answer-note">Stone windbreaks and broken volcanic rock to keep the soil moist.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">iv</div><div class="answer-note">'archaeological evidence backs up Rapanui folklore' that the statues walked.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">vii</div><div class="answer-note">Rats, European diseases and slave traders — causes beyond the islanders' control.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">vi</div><div class="answer-note">Peaceful, ingenious builders vs. reckless destroyers.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">farming</div><div class="answer-note">'cleared the forests for firewood and farming'.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">canoes</div><div class="answer-note">'they could no longer construct wooden canoes for fishing'.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">birds</div><div class="answer-note">'they ate birds'.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">wood</div><div class="answer-note">'that required both a lot of wood and a lot of people'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25 & 26</span><div><div class="answer-val">B and C (in either order)</div><div class="answer-note">They disagree about how the moai were transported and about the moai's impact on society.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

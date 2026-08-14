@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 1 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 11 — Test 1 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>The Falkirk Wheel</strong> in Scotland is the world's first and only rotating boat lift, opened in 2002. The passage explains why it was built (the two canals were 35 m apart in height), how it was designed and assembled, and — in detail — <strong>how a boat is actually lifted</strong>, using Archimedes' principle of displacement.</p><p>题型:TRUE/FALSE/NOT GIVEN Q14–19 + <strong>流程图标注</strong> Q20–26(ONE WORD ONLY)。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> The diagram questions (Q20–26) all come from <em>two</em> paragraphs near the end. Find the paragraph that describes the lifting process step by step, then read it slowly in order — the labels follow the same order as the text.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">rotating</span></td><td><span class="pos">adj.</span></td><td>turning around a central point</td><td class="zh">旋转的</td><td>'the world's first and only <em>rotating</em> boat lift'</td><td class="note">The defining feature of the Wheel.</td></tr>
+<tr><td><span class="word">navigability</span></td><td><span class="pos">n.</span></td><td>the ability of boats to travel along a waterway</td><td class="zh">通航性</td><td>'to restore <em>navigability</em> across Scotland'</td><td class="note">From 'navigate' + '-able' + '-ity'.</td></tr>
+<tr><td><span class="word">lock</span></td><td><span class="pos">n.</span></td><td>an enclosed section of canal where the water level can change</td><td class="zh">船闸</td><td>'a sequence of 11 <em>locks</em> … that stepped down'</td><td class="note">Q26 — the last 11 m are done by locks.</td></tr>
+<tr><td><span class="word">dismantle</span></td><td><span class="pos">v.</span></td><td>to take something apart</td><td class="zh">拆卸</td><td>'the structure was then <em>dismantled</em> and transported on 35 lorries'</td><td class="note">Q16 — it WAS first assembled at Butterley (TRUE).</td></tr>
+<tr><td><span class="word">robust</span></td><td><span class="pos">adj.</span></td><td>strong and able to resist stress</td><td class="zh">坚固的</td><td>'to make the structure more <em>robust</em>, the steel sections were bolted rather than welded'</td><td class="note">Q17 — bolting is described, but 'only boat lift with hand-bolted sections' is NOT GIVEN.</td></tr>
+<tr><td><span class="word">gondola</span></td><td><span class="pos">n.</span></td><td>a water-filled container that carries the boats</td><td class="zh">吊舱;载水舱</td><td>'Two diametrically opposed water-filled <em>gondolas</em>'</td><td class="note">Central to Q18 and the diagram.</td></tr>
+<tr><td><span class="word">displacement</span></td><td><span class="pos">n.</span></td><td>the pushing aside of water by a floating object</td><td class="zh">排水量;置换</td><td>'according to Archimedes' principle of <em>displacement</em>'</td><td class="note">Explains why the gondolas always weigh the same.</td></tr>
+<tr><td><span class="word">hydraulic</span></td><td><span class="pos">adj.</span></td><td>operated by liquid pressure</td><td class="zh">液压的</td><td>'Two <em>hydraulic</em> steel gates are raised'</td><td class="note">Q20 = gates; also 'hydraulic clamp' (Q21) and 'hydraulic motors'.</td></tr>
+<tr><td><span class="word">clamp</span></td><td><span class="pos">n.</span></td><td>a device that holds something firmly in place</td><td class="zh">夹具;卡钳</td><td>'A hydraulic <em>clamp</em>, which prevents the arms of the Wheel moving … is removed'</td><td class="note">Q21 answer.</td></tr>
+<tr><td><span class="word">cog</span></td><td><span class="pos">n.</span></td><td>a toothed wheel in a machine</td><td class="zh">齿轮</td><td>'Two eight-metre-wide <em>cogs</em> orbit a fixed inner cog'</td><td class="note">Q23 answer — they keep the gondolas level.</td></tr>
+<tr><td><span class="word">aqueduct</span></td><td><span class="pos">n.</span></td><td>a bridge that carries water</td><td class="zh">渡槽;高架水道</td><td>'the boat passes straight onto the <em>aqueduct</em>'</td><td class="note">Q24 answer.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">central to the project</span></td><td>the most important part of the project</td><td class="zh">是该项目的核心</td></tr>
+<tr><td><span class="phrase">lay in the fact that</span></td><td>was caused by the fact that</td><td class="zh">在于…这一事实</td></tr>
+<tr><td><span class="phrase">keen to create</span></td><td>very eager to create</td><td class="zh">热衷于打造</td></tr>
+<tr><td><span class="phrase">a fitting commemoration of</span></td><td>a suitable way of remembering</td><td class="zh">对…恰当的纪念</td></tr>
+<tr><td><span class="phrase">to an accuracy of just 10 mm</span></td><td>correct to within 10 millimetres</td><td class="zh">精度仅为10毫米</td></tr>
+<tr><td><span class="phrase">withstand immense stresses</span></td><td>resist very great forces</td><td class="zh">承受巨大的应力</td></tr>
+<tr><td><span class="phrase">seal the gondola off from</span></td><td>close the gondola so water cannot enter</td><td class="zh">把吊舱与…隔断</td></tr>
+<tr><td><span class="phrase">owing to the presence of</span></td><td>because of the existence of</td><td class="zh">由于…的存在</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">The major challenge of the project lay in the fact that the Forth & Clyde Canal is situated 35 metres below the level of the Union Canal.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The major challenge of the project lay in the fact</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">that the Forth & Clyde Canal is situated 35 metres below the level of the Union Canal (noun clause in apposition to 'the fact')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'the fact that…' introduces an appositive noun clause — a very common academic pattern.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The hardest part was that one canal is 35 metres lower than the other.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">该项目的主要挑战在于,福斯-克莱德运河比联合运河低35米。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Historically, the two canals had been joined near the town of Falkirk by a sequence of 11 locks — enclosed sections of canal in which the water level could be raised or lowered — that stepped down across a distance of 1.5 km.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the two canals had been joined … by a sequence of 11 locks</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'enclosed sections of canal in which the water level could be raised or lowered' = appositive definition; 'that stepped down across a distance of 1.5 km' = relative clause describing the locks</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Past perfect passive + a dash-bracketed definition + a relative clause. The dashes give you a free glossary.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In the past, 11 locks — small sections where the water goes up or down — linked the canals over 1.5 km.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">历史上,两条运河曾在福尔柯克镇附近由11座船闸相连——船闸是可以升降水位的封闭河段——它们在1.5公里的距离上逐级下降。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">These gondolas always weigh the same, whether or not they are carrying boats.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These gondolas always weigh the same</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">whether or not they are carrying boats (concessive clause of alternative condition)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'whether or not' = 'it does not matter if'. Directly tests Q18 (FALSE).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The gondolas weigh the same with or without a boat inside.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">无论是否载船,这些吊舱的重量始终相同。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">So when a boat enters a gondola, the amount of water leaving the gondola weighs exactly the same as the boat.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the amount of water leaving the gondola weighs exactly the same as the boat</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">when a boat enters a gondola (time clause); 'leaving the gondola' = reduced relative ('that leaves')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Time clause + reduced relative + comparative 'the same as'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">When a boat comes in, exactly its own weight of water flows out.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">因此当一艘船进入吊舱时,流出吊舱的水的重量恰好与该船相同。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The Wheel could not be constructed to elevate boats over the full 35-metre difference between the two canals, owing to the presence of the historically important Antonine Wall, which was built by the Romans in the second century AD.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The Wheel could not be constructed to elevate boats over the full 35-metre difference</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">owing to the presence of the … Antonine Wall (reason phrase); which was built by the Romans in the second century AD (non-defining relative clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'owing to' = 'because of' + noun; the non-defining relative adds extra information after a comma.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The Wheel could not lift boats the whole 35 metres because the ancient Antonine Wall was in the way.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于存在具有重要历史价值的安东尼长城(由罗马人于公元2世纪修建),该轮无法把船只提升到两条运河间35米的全部高差。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">These sentences are dense with definitions and reasons. Practise stripping them down to the core idea.</div><div class="exercise-block"><h3>A — Find the definition</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The passage often defines a technical word for you. Where?</p><div class="ex-item"><span class="ex-num">1.</span><label>'11 locks — <em>enclosed sections of canal in which the water level could be raised or lowered</em> —' → definition given between <strong>dashes</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'the hull <em>(the body of the ship)</em>' style → definition given in <strong>brackets</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'gondolas', 'each with a capacity of 360,000 litres' → definition given by an <strong>appositive phrase after a comma</strong></label></div></div>
+<div class="exercise-block"><h3>B — Cause and reason language</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each with a different connector.</p><div class="ex-item"><span class="ex-num">4.</span><label>'owing to the presence of the Antonine Wall' → '<strong>because the Antonine Wall was there</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>'This is because, according to Archimedes' principle…' → '<strong>The reason is Archimedes' principle…</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'so ensuring that the gondolas always remain level' → '<strong>which means the gondolas stay level</strong>'</label></div></div>
+<div class="exercise-block"><h3>C — Sentence combining</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Join the two sentences using a relative clause.</p><div class="ex-item"><span class="ex-num">7.</span><label>'A hydraulic clamp is removed. It prevents the arms of the Wheel moving.' → '<strong>A hydraulic clamp, which prevents the arms of the Wheel moving, is removed.</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'The Antonine Wall is historically important. It was built by the Romans.' → '<strong>The historically important Antonine Wall was built by the Romans.</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Number &amp; measurement reading</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each figure aloud in full English.</p><div class="ex-item"><span class="ex-num">9.</span><label>£84.8m → '<strong>eighty-four point eight million pounds</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>360,000 litres → '<strong>three hundred and sixty thousand litres</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>180° in five and a half minutes → '<strong>one hundred and eighty degrees in five and a half minutes</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>1/8 of a revolution per minute → '<strong>an eighth of a revolution per minute</strong>'</label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Chronology.</strong> The passage moves in time: 11 locks dismantled in 1933 → project launched 1994 → design chosen → assembled in Derbyshire → dismantled summer 2001 → opened 2002. Time markers make Q14–Q16 easy to locate.</p>
+<p><strong>Process description.</strong> The last three paragraphs are a step-by-step process: gates raised → water pumped out → clamp removed → motors rotate the axle → arms and gondolas turn → cogs keep gondolas level → boat exits onto the aqueduct → locks finish the climb. Diagram labels always follow process order.</p>
+<p><strong>Cause and effect.</strong> Displacement → gondolas always weigh the same → the Wheel stays balanced → very little power is needed (1.5 kWh, 'roughly the same as boiling eight small domestic kettles').</p>
+<p><strong>Comparison for the reader.</strong> The writer explains scale by comparison: 'like one giant toy building set', 'the same as boiling eight small kettles'. These comparisons are never the answer, but they help you keep reading fast.</p></div><div class="exercise-block"><h3>Q14–19 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Underline the key claim in the statement first.</p><div class="ex-item"><span class="ex-num">14.</span><label>The Wheel has linked the two canals for the first time in their history → <strong>FALSE</strong> (they had been joined by 11 locks until 1933)</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>There was some opposition to the design at first → <strong>NOT GIVEN</strong> (many ideas were submitted; no opposition is mentioned)</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>The Wheel was initially put together where its components were manufactured → <strong>TRUE</strong> ('constructed and assembled … at Butterley Engineering's Steelworks')</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>It is the only boat lift in the world with hand-bolted steel sections → <strong>NOT GIVEN</strong> (bolting by hand is described, but never claimed to be unique)</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>The weight of the gondolas varies with the size of boat → <strong>FALSE</strong> ('These gondolas always weigh the same')</label></div>
+<div class="ex-item"><span class="ex-num">19.</span><label>Construction took account of a nearby ancient monument → <strong>TRUE</strong> (the Antonine Wall limited the lift height)</label></div></div>
+<div class="exercise-block"><h3>Q20–26 · Diagram labelling (ONE WORD)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Follow the lifting process in order.</p><div class="ex-item"><span class="ex-num">20.</span><label>A pair of ___ are lifted in order to shut out water from the canal basin → <strong>gates</strong></label></div>
+<div class="ex-item"><span class="ex-num">21.</span><label>A ___ is taken out, enabling the Wheel to rotate → <strong>clamp</strong></label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>Hydraulic motors drive the central ___ → <strong>axle</strong></label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>A range of different-sized ___ ensures the boat keeps upright → <strong>cogs</strong></label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>Boat reaches top of Wheel, then moves directly onto ___ → <strong>aqueduct</strong></label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>Boat travels under Roman ___ → <strong>wall</strong></label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>Boat is raised the last 11 metres by a pair of ___ → <strong>locks</strong></label></div></div>
+<div class="exercise-block"><h3>Matching-features practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each number to what it measures.</p><div class="ex-item"><span class="ex-num">27.</span><label>35 metres → <strong>the height difference between the two canals</strong></label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>1,200 tonnes → <strong>the weight of steel assembled in Derbyshire</strong></label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>45,000 → <strong>the number of bolt holes</strong></label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>360,000 litres → <strong>the capacity of each gondola</strong></label></div>
+<div class="ex-item"><span class="ex-num">31.</span><label>24 metres → <strong>the height of the aqueduct above the canal basin</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">In which year did the Falkirk Wheel open?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. 1994</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. 2001</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. 2002</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. 1933</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What linked the two canals before 1933?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a tunnel</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. a sequence of 11 locks</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. an aqueduct</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. a railway</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Where were the Wheel's parts first assembled?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. in Falkirk</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. in Glasgow</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. on the canal bank</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. at Butterley Engineering's Steelworks in Derbyshire</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why were the steel sections bolted rather than welded?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. to make the structure more robust</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. to save money</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. to make it easier to paint</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. to reduce its weight</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why do the gondolas always weigh the same?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They are filled with concrete.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They carry only one boat each.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. A boat displaces its own weight in water.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They are weighed before each trip.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How long does the Wheel take to rotate 180°?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. one and a half minutes</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. five and a half minutes</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. eight minutes</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. half an hour</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The energy used per rotation is compared to…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. running a car for an hour</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. lighting a street for a night</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. heating a house for a day</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. boiling eight small domestic kettles</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What is removed before the Wheel can turn?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. a hydraulic clamp</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. the gondola gates</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. the central axle</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. the cogs</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What keeps the gondolas upright as the Wheel turns?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. water pressure</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. a simple gearing system of cogs</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. steel cables</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. the weight of the boats</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">How much of the 35-metre climb is done by the Wheel itself?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. all 35 metres</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. 11 metres</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. 24 metres</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. 1.5 metres</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why could the Wheel not lift boats the full 35 metres?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It would use too much power.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. The gondolas were too small.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. The canal was too narrow.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The Roman Antonine Wall was in the way.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">'Owing to' in academic writing means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. because of</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. in spite of</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. instead of</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. in addition to</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 2 — Answers (Q14–Q26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">FALSE</div><div class="answer-note">The canals had been joined by 11 locks until 1933.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Many ideas were submitted, but no opposition is mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">TRUE</div><div class="answer-note">'constructed and assembled … at Butterley Engineering's Steelworks'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Hand-bolting is described but never called unique.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">FALSE</div><div class="answer-note">'These gondolas always weigh the same, whether or not they are carrying boats'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">TRUE</div><div class="answer-note">The Antonine Wall limited how high the Wheel could lift boats.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">gates</div><div class="answer-note">'Two hydraulic steel gates are raised, so as to seal the gondola off'.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">clamp</div><div class="answer-note">'A hydraulic clamp … is removed, allowing the Wheel to turn'.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">axle</div><div class="answer-note">'ten hydraulic motors then begins to rotate the central axle'.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">cogs</div><div class="answer-note">'Two eight-metre-wide cogs orbit a fixed inner cog … so ensuring that the gondolas always remain level'.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">aqueduct</div><div class="answer-note">'the boat passes straight onto the aqueduct situated 24 metres above the canal basin'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">wall</div><div class="answer-note">'Boats travel under this wall via a tunnel' — the Antonine Wall.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">locks</div><div class="answer-note">'The remaining 11 metres … is achieved by means of a pair of locks'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Matching numbers</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">the height difference between the canals</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">the weight of steel assembled</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">the number of bolt holes</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">the capacity of each gondola</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">the height of the aqueduct</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">A</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

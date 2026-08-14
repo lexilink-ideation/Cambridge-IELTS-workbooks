@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 3 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 11 — Test 3 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'The Story of Silk'</strong> traces silk from the legend of <strong>Lei Tzu</strong> in about 3000 BC, through its use as a symbol of status and even as <strong>currency</strong>, along the <strong>Silk Road</strong>, into Byzantium, Spain and Italy, and finally to its nineteenth-century decline and China's return as the world's largest producer.</p><p>题型:笔记填空 Q1–9(ONE WORD ONLY)+ TRUE/FALSE/NOT GIVEN Q10–13。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> The notes in Q1–9 follow the passage in order and are grouped under two headings ('Early silk production in China' and 'Silk reaches rest of world'). Use the headings to jump to the right half of the text instead of re-reading from the top.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">cocoon</span></td><td><span class="pos">n.</span></td><td>the silky case a caterpillar makes around itself</td><td class="zh">茧</td><td>'produced from the <em>cocoons</em> … made by mulberry silkworms'</td><td class="note">Defined in the first sentence.</td></tr>
+<tr><td><span class="word">larva (pl. larvae)</span></td><td><span class="pos">n.</span></td><td>the young insect stage before adulthood</td><td class="zh">幼虫</td><td>'mulberry silkworm (insect <em>larvae</em>)'</td><td class="note">Bracketed definition = free glossary.</td></tr>
+<tr><td><span class="word">unravel</span></td><td><span class="pos">v.</span></td><td>to come apart into separate threads</td><td class="zh">散开;解开</td><td>'one of the cocoons … started to <em>unravel</em> into a fine thread'</td><td class="note">The legend of the discovery (Q1 = tea).</td></tr>
+<tr><td><span class="word">reel</span></td><td><span class="pos">n.</span></td><td>a device for winding thread</td><td class="zh">缫丝器;卷轴</td><td>'She also devised a special <em>reel</em> to draw the fibres from the cocoon'</td><td class="note">Q2 answer.</td></tr>
+<tr><td><span class="word">cultivation</span></td><td><span class="pos">n.</span></td><td>the growing of plants or animals for use</td><td class="zh">栽培;养殖</td><td>'silk <em>cultivation</em> has existed in China for several millennia'</td><td class="note">Formal word for farming.</td></tr>
+<tr><td><span class="word">entitled to</span></td><td><span class="pos">adj. phr.</span></td><td>having the right to</td><td class="zh">有权享有</td><td>'only royalty were <em>entitled to</em> have clothes made of silk'</td><td class="note">Q4 answer = royalty.</td></tr>
+<tr><td><span class="word">caste</span></td><td><span class="pos">n.</span></td><td>a social class you are born into</td><td class="zh">种姓;社会阶层</td><td>'even peasants, the lowest <em>caste</em>, were also entitled to wear silk'</td><td class="note">Shows the rules relaxed over time.</td></tr>
+<tr><td><span class="word">prized</span></td><td><span class="pos">adj.</span></td><td>highly valued</td><td class="zh">备受珍视的</td><td>'silk was so <em>prized</em> that it was also used as a unit of currency'</td><td class="note">Q5 answer = currency.</td></tr>
+<tr><td><span class="word">commodity</span></td><td><span class="pos">n.</span></td><td>a product that is bought and sold</td><td class="zh">商品</td><td>'named the Silk Road after its most precious <em>commodity</em>'</td><td class="note">Q10 — silk, not gold, was most valuable.</td></tr>
+<tr><td><span class="word">middleman</span></td><td><span class="pos">n.</span></td><td>a trader between producer and buyer</td><td class="zh">中间商</td><td>'goods were handled mostly by a series of <em>middlemen</em>'</td><td class="note">Q11 TRUE — few travelled the whole route.</td></tr>
+<tr><td><span class="word">monopoly</span></td><td><span class="pos">n.</span></td><td>exclusive control of a trade</td><td class="zh">垄断</td><td>'the weaving and trading of silk fabric was a strict imperial <em>monopoly</em>'</td><td class="note">Byzantines kept the secret.</td></tr>
+<tr><td><span class="word">smuggle</span></td><td><span class="pos">v.</span></td><td>to move goods secretly and illegally</td><td class="zh">走私</td><td>'monks … <em>smuggled</em> silkworm eggs to Constantinople'</td><td class="note">Q8 answer = monks.</td></tr>
+<tr><td><span class="word">stifle</span></td><td><span class="pos">v.</span></td><td>to prevent from developing</td><td class="zh">扼杀;抑制</td><td>'the two world wars … also <em>stifled</em> the European silk industry'</td><td class="note">One cause of decline.</td></tr>
+<tr><td><span class="word">recapture</span></td><td><span class="pos">v.</span></td><td>to win back</td><td class="zh">重新夺回</td><td>'China has gradually <em>recaptured</em> its position as the world's biggest producer'</td><td class="note">Relevant to Q13.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">legend has it that</span></td><td>the traditional story says that</td><td class="zh">传说…</td></tr>
+<tr><td><span class="phrase">it just so happened that</span></td><td>by chance</td><td class="zh">恰好;碰巧</td></tr>
+<tr><td><span class="phrase">be responsible for</span></td><td>be the cause of</td><td class="zh">造成;负责</td></tr>
+<tr><td><span class="phrase">grow into a symbol of status</span></td><td>become a mark of social position</td><td class="zh">成为地位的象征</td></tr>
+<tr><td><span class="phrase">the rules were gradually relaxed</span></td><td>the restrictions slowly became less strict</td><td class="zh">规定逐渐放宽</td></tr>
+<tr><td><span class="phrase">stretch over 6,000 kilometres</span></td><td>extend for more than 6,000 km</td><td class="zh">绵延6000多公里</td></tr>
+<tr><td><span class="phrase">see the downfall of</span></td><td>witness the collapse of</td><td class="zh">目睹…的衰落</td></tr>
+<tr><td><span class="phrase">practically the only major exporter</span></td><td>almost the sole big exporter</td><td class="zh">几乎是唯一的主要出口国</td></tr>
+<tr><td><span class="phrase">two thirds of that production</span></td><td>66% of the output</td><td class="zh">该产量的三分之二</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">It just so happened that while she was sipping some tea, one of the cocoons that she had collected landed in the hot tea and started to unravel into a fine thread.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">one of the cocoons … landed in the hot tea and started to unravel into a fine thread</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'It just so happened that…' = introductory device; 'while she was sipping some tea' = time clause; 'that she had collected' = defining relative clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Three layers: an empty 'it' opening, a past-continuous time clause, and a past-perfect relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">By chance, as she drank tea, one cocoon fell in and began to come apart into thread.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">恰巧在她啜饮茶水时,她采集的一只茧掉进热茶里,开始散开成一根细丝。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">She also devised a special reel to draw the fibres from the cocoon into a single thread so that they would be strong enough to be woven into fabric.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">She also devised a special reel</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'to draw the fibres … into a single thread' = purpose infinitive; 'so that they would be strong enough to be woven into fabric' = purpose clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two purposes stacked: an infinitive of purpose plus a 'so that' clause. Q2 comes from the object 'reel'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She invented a reel that pulled the fibres into one thread strong enough to weave.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">她还发明了一种特制的缫丝器,把茧上的纤维抽成一根丝线,使其足够结实以织成布料。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Sometime during the Han Dynasty (206 BC–220 AD), silk was so prized that it was also used as a unit of currency.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">silk was so prized that it was also used as a unit of currency</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'so + adjective + that + clause' = result structure; '(206 BC–220 AD)' = bracketed dates</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'so … that …' expresses degree and result — the classic pattern for showing importance.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">During the Han Dynasty silk was valued so highly that it served as money.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在汉朝(公元前206年—公元220年)的某个时期,丝绸备受珍视,甚至被用作一种货币单位。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">According to another legend, monks working for the Byzantine emperor Justinian smuggled silkworm eggs to Constantinople in 550 AD, concealed inside hollow bamboo walking canes.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">monks … smuggled silkworm eggs to Constantinople in 550 AD</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'working for the Byzantine emperor Justinian' = reduced relative ('who worked for'); 'concealed inside hollow bamboo walking canes' = reduced passive participle ('which were concealed')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two reduced clauses squeeze a lot of information around one short main clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In 550 AD, monks serving Emperor Justinian hid silkworm eggs in hollow walking sticks and took them to Constantinople.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">据另一个传说,为拜占庭皇帝查士丁尼效力的僧侣在公元550年把蚕卵藏在中空的竹制手杖里,偷偷带到君士坦丁堡。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Cheaper Japanese silk, trade in which was greatly facilitated by the opening of the Suez Canal, was one of the many factors driving the trend.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Cheaper Japanese silk … was one of the many factors driving the trend</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'trade in which was greatly facilitated by the opening of the Suez Canal' = non-defining relative clause with a preposition ('trade in which' = 'trade in this silk')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'preposition + which' is formal academic English. Note the long gap between subject and verb.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Cheap Japanese silk, easier to trade after the Suez Canal opened, was one cause of the decline.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">更廉价的日本生丝(其贸易因苏伊士运河的开通而大为便利)是推动这一趋势的众多因素之一。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage mixes narrative legend with economic history. Practise both storytelling and cause-effect language.</div><div class="exercise-block"><h3>A — Find the main clause</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ignore the reduced clauses and brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>'monks working for the Byzantine emperor Justinian smuggled silkworm eggs…' → main verb: <strong>smuggled</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'Cheaper Japanese silk, trade in which was greatly facilitated…, was one of the many factors' → main verb: <strong>was</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'Demand for this exotic fabric eventually created the lucrative trade route now known as the Silk Road' → main verb: <strong>created</strong></label></div></div>
+<div class="exercise-block"><h3>B — Reducing relative clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each full clause.</p><div class="ex-item"><span class="ex-num">4.</span><label>'monks who were working for the emperor' → '<strong>monks working for the emperor</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>'the trade route which is now known as the Silk Road' → '<strong>the trade route now known as the Silk Road</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'eggs which were concealed inside hollow canes' → '<strong>eggs concealed inside hollow canes</strong>'</label></div></div>
+<div class="exercise-block"><h3>C — 'so … that' result practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each sentence with 'so … that'.</p><div class="ex-item"><span class="ex-num">7.</span><label>'Silk was extremely valuable. It was used as money.' → '<strong>Silk was so valuable that it was used as money.</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'The route was very long. Few merchants travelled it all.' → '<strong>The route was so long that few merchants travelled all of it.</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">9.</span><label>官员的俸禄以丝绸支付,农民则用谷物和丝绸缴税。 → <strong>Government officials were paid their salary in silk, and farmers paid their taxes in grain and silk.</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>如今全球约有三分之二的丝绸产自中国。 → <strong>Almost two thirds of world silk production takes place in China.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Chronology.</strong> The passage runs 3000 BC → Han Dynasty → Byzantine Empire (330–1453 AD) → 550 AD → 7th century Arabs → 10th century Spain → 13th century Italy → 19th century decline → 20th century nylon → 1970s Japan → today China. Dates are the fastest way to locate any answer.</p>
+<p><strong>Legend vs. fact.</strong> The writer carefully separates story from evidence: 'Legend has it that…', 'One account of the story goes that…', 'According to another legend…', 'While it is unknown just how much of this is true, it is certainly known that…'. This hedging matters for T/F/NG.</p>
+<p><strong>Cause and effect.</strong> Demand for silk → created the Silk Road → brought gold, silver and wool east. Later: industrialisation + cheaper Japanese silk + the Suez Canal + manmade fibres + two world wars → the downfall of European silk.</p>
+<p><strong>Definition and example.</strong> 'Fishing lines, bowstrings, musical instruments and paper were all made using silk' — a list of examples supporting the general point that silk had many uses (Q6 = paper).</p>
+<p><strong>Comparison of value.</strong> The Silk Road was named after 'its most precious commodity, which was considered to be worth more than gold'. Q10 turns exactly on this comparison.</p></div><div class="exercise-block"><h3>Q1–9 · Note completion (ONE WORD ONLY)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Copy the exact word — no changes of form.</p><div class="ex-item"><span class="ex-num">1.</span><label>silkworm cocoon fell into emperor's wife's ___ → <strong>tea</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>emperor's wife invented a ___ to pull out silk fibres → <strong>reel</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Only ___ were allowed to produce silk → <strong>women</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Only ___ were allowed to wear silk → <strong>royalty</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Silk used as a form of ___ → <strong>currency</strong></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>evidence found of ___ made from silk around 168 AD → <strong>paper</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Merchants take silk westward and bring back ___ and precious metals → <strong>wool</strong></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>550 AD: ___ hide silkworm eggs in canes → <strong>monks</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>20th century: ___ and other manmade fibres cause decline → <strong>nylon</strong></label></div></div>
+<div class="exercise-block"><h3>Q10–13 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Compare the exact claim, not the general topic.</p><div class="ex-item"><span class="ex-num">10.</span><label>Gold was the most valuable material transported along the Silk Road → <strong>FALSE</strong> (silk 'was considered to be worth more than gold')</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Most tradesmen only went along certain sections of the Silk Road → <strong>TRUE</strong> ('Few merchants travelled the entire route')</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>The Byzantines spread the practice of silk production across the West → <strong>FALSE</strong> ('The Byzantines were as secretive as the Chinese'; it was the Arabs who spread it)</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Silk yarn makes up the majority of silk currently exported from China → <strong>NOT GIVEN</strong> (raw silk and silk yarn are both mentioned, but never compared)</label></div></div>
+<div class="exercise-block"><h3>Locating practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which part of the passage holds each idea?</p><div class="ex-item"><span class="ex-num">14.</span><label>Lei Tzu and the mulberry trees → <strong>paragraph 1</strong></label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>silk as salary and tax → <strong>paragraph 2</strong></label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>the route through Damascus → <strong>paragraph 3</strong></label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>Como in northern Italy → <strong>paragraph 5</strong></label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>Japan as the biggest producer until the 1970s → <strong>final paragraph</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Silk is produced from the cocoons of which insect?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. the honey bee</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the mulberry silkworm</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the spider</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. the moth of the oak tree</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">According to legend, who discovered silkworms?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. the Yellow Emperor</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Justinian</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Lei Tzu</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. a Byzantine monk</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Who was originally allowed to produce silk?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. only women</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. only royalty</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. only monks</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. only merchants</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">By which dynasty could even peasants wear silk?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. the Han</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. the Tang</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. the Ming</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. the Qing</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How did farmers pay their taxes during the Han Dynasty?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. in gold</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. in grain and silk</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. in labour</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. in wool</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How long was the Silk Road?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. over 1,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. over 3,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. over 6,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. over 10,000 km</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What was brought east along the Silk Road?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. gold, silver and wool</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. tea and spices</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. paper and ink</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. glass and ceramics</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How were silkworm eggs taken to Constantinople?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. in sealed jars</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. sewn into clothing</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. in a diplomatic gift</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. hidden in hollow bamboo canes</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Which was Europe's main silk-producing centre in the tenth century?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Venice</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Andalusia in southern Spain</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Como</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Sicily</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which invention is named as replacing silk in stockings and parachutes?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. polyester</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. rayon</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. nylon</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. cotton</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Until when did Japan remain the biggest producer of raw silk?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. the 1970s</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. the 1940s</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. the 1990s</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. the present day</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">'A strict imperial monopoly' means the trade was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. open to everyone</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. banned entirely</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. taxed heavily</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. controlled exclusively by the ruler</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 1 — Answers (Q1–Q13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">tea</div><div class="answer-note">'one of the cocoons … landed in the hot tea'.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">reel</div><div class="answer-note">'She also devised a special reel to draw the fibres from the cocoon'.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">women</div><div class="answer-note">'silkworm farming was solely restricted to women'.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">royalty</div><div class="answer-note">'only royalty were entitled to have clothes made of silk'.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">currency</div><div class="answer-note">'it was also used as a unit of currency'.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">paper</div><div class="answer-note">'The earliest indication of silk paper being used … around 168 AD'.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">wool</div><div class="answer-note">'bringing gold, silver and wool to the East'.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">monks</div><div class="answer-note">'monks working for the Byzantine emperor Justinian smuggled silkworm eggs'.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">nylon</div><div class="answer-note">'new manmade fibres, such as nylon, started to be used'.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">FALSE</div><div class="answer-note">Silk 'was considered to be worth more than gold'.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">TRUE</div><div class="answer-note">'Few merchants travelled the entire route; goods were handled mostly by a series of middlemen'.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">FALSE</div><div class="answer-note">'The Byzantines were as secretive as the Chinese'; the Arabs spread production.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Raw silk and silk yarn are mentioned but their proportions are never compared.</div></div></div></div><div class="answer-section"><h3>Skill practice — Locating</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">paragraph 1</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">paragraph 2</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">paragraph 3</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">paragraph 5</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">final paragraph</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

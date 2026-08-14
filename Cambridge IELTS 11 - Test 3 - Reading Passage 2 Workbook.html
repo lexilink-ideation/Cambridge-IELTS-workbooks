@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 3 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 11 — Test 3 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'Great Migrations'</strong> asks how biologists define animal migration. <strong>Hugh Dingle</strong> lists five characteristics; <strong>Joel Berger</strong> prefers a simpler, practical definition. The passage illustrates both with the <strong>arctic tern</strong>, <strong>zooplankton</strong> and <strong>aphids</strong>, then turns to the <strong>pronghorn</strong> and the human threat to its migration corridor.</p><p>题型:T/F/NG Q14–18 + 句子配对 Q19–22 + 摘要填空 Q23–26。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For Q19–22 (sentence endings), first decide the <em>grammar</em> of each ending — all five begin with a bare verb, so they must complete 'are likely to…' / 'are unlikely to…'. Then match the meaning. Wrong endings are usually true statements taken from the wrong part of the passage.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">inherited instinct</span></td><td><span class="pos">n. phr.</span></td><td>natural behaviour passed on genetically</td><td class="zh">遗传本能</td><td>'It suggests <em>inherited instinct</em>'</td><td class="note">Introduces Dingle's five features.</td></tr>
+<tr><td><span class="word">prolonged</span></td><td><span class="pos">adj.</span></td><td>continuing for a long time</td><td class="zh">持久的;长时间的</td><td>'<em>prolonged</em> movements that carry animals outside familiar habitats'</td><td class="note">Dingle's first characteristic.</td></tr>
+<tr><td><span class="word">linear</span></td><td><span class="pos">adj.</span></td><td>in a straight line</td><td class="zh">线性的;直线的</td><td>'they tend to be <em>linear</em>, not zigzaggy'</td><td class="note">Q19 answer G = follow a straight line.</td></tr>
+<tr><td><span class="word">overfeeding</span></td><td><span class="pos">n.</span></td><td>eating much more than usual</td><td class="zh">过量进食</td><td>'special behaviours concerning preparation (such as <em>overfeeding</em>)'</td><td class="note">Q20 answer C = eat more than needed.</td></tr>
+<tr><td><span class="word">attentiveness</span></td><td><span class="pos">n.</span></td><td>careful attention</td><td class="zh">专注</td><td>'migrating animals maintain an intense <em>attentiveness</em> to the greater mission'</td><td class="note">Q21 and Q22 both depend on this.</td></tr>
+<tr><td><span class="word">undeterred</span></td><td><span class="pos">adj.</span></td><td>not discouraged</td><td class="zh">不被吓退的</td><td>'<em>undeterred</em> by challenges that would turn other animals aside'</td><td class="note">Q21 answer A / Q22 answer E.</td></tr>
+<tr><td><span class="word">voraciously</span></td><td><span class="pos">adv.</span></td><td>very eagerly and greedily</td><td class="zh">贪婪地</td><td>'local gulls will dive <em>voraciously</em> for such handouts'</td><td class="note">Contrast with the tern (Q14 FALSE).</td></tr>
+<tr><td><span class="word">handout</span></td><td><span class="pos">n.</span></td><td>food or money given free</td><td class="zh">施舍;赠予物</td><td>'a nice smelly herring offered from a bird-watcher's boat'</td><td class="note">What the tern ignores.</td></tr>
+<tr><td><span class="word">undivided intent</span></td><td><span class="pos">n. phr.</span></td><td>complete, single-minded purpose</td><td class="zh">专一的意图</td><td>'its <em>undivided intent</em> is arrival'</td><td class="note">Defines the tern's behaviour.</td></tr>
+<tr><td><span class="word">zooplankton</span></td><td><span class="pos">n.</span></td><td>tiny floating animals in water</td><td class="zh">浮游动物</td><td>'daily vertical movements by <em>zooplankton</em>'</td><td class="note">An example of daily migration (option D).</td></tr>
+<tr><td><span class="word">deplete</span></td><td><span class="pos">v.</span></td><td>to use up the supply of</td><td class="zh">耗尽</td><td>'having <em>depleted</em> the young leaves on one food plant'</td><td class="note">The aphid example.</td></tr>
+<tr><td><span class="word">intricate</span></td><td><span class="pos">adj.</span></td><td>complicated and detailed</td><td class="zh">复杂精细的</td><td>'His definition is more <em>intricate</em> than Berger's'</td><td class="note">Q18 FALSE — Dingle wants what migrations share.</td></tr>
+<tr><td><span class="word">traverse</span></td><td><span class="pos">v.</span></td><td>to cross</td><td class="zh">穿越;横越</td><td>'Pronghorn … <em>traverse</em> high, open shoulders of land'</td><td class="note">Q23 = speed; option B.</td></tr>
+<tr><td><span class="word">bottleneck</span></td><td><span class="pos">n.</span></td><td>a narrow point that restricts movement</td><td class="zh">瓶颈;狭窄地段</td><td>'the severity of its constriction at three <em>bottlenecks</em>'</td><td class="note">Q25 answer.</td></tr>
+<tr><td><span class="word">corridor</span></td><td><span class="pos">n.</span></td><td>a protected route between habitats</td><td class="zh">走廊;通道</td><td>'a <em>corridor</em> of open ground only about 150 metres wide'</td><td class="note">Q26 answer.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at regular intervals</span></td><td>repeatedly, with equal gaps</td><td class="zh">定期地</td></tr>
+<tr><td><span class="phrase">apply to varying degrees</span></td><td>be true to different extents</td><td class="zh">在不同程度上适用</td></tr>
+<tr><td><span class="phrase">take no notice of</span></td><td>ignore</td><td class="zh">不予理会</td></tr>
+<tr><td><span class="phrase">be driven by</span></td><td>be motivated by</td><td class="zh">被…驱动</td></tr>
+<tr><td><span class="phrase">wait out the frozen months</span></td><td>survive through the winter</td><td class="zh">熬过冰封的月份</td></tr>
+<tr><td><span class="phrase">blown clear of snow</span></td><td>with the snow blown off it</td><td class="zh">被风吹去积雪的</td></tr>
+<tr><td><span class="phrase">choke off their passageway</span></td><td>block their route</td><td class="zh">阻断它们的通道</td></tr>
+<tr><td><span class="phrase">along with</span></td><td>together with</td><td class="zh">连同</td></tr>
+<tr><td><span class="phrase">a while longer</span></td><td>for some more time</td><td class="zh">再持续一段时间</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">It can loosely be described as travel that takes place at regular intervals — often in an annual cycle — that may involve many members of a species, and is rewarded only after a long journey.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">It can loosely be described as travel</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">three relative clauses describing 'travel': 'that takes place at regular intervals', 'that may involve many members of a species', 'and is rewarded only after a long journey'; '— often in an annual cycle —' = parenthetical</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A chain of relative clauses hanging off one noun. Read to the end before deciding the meaning.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Migration is roughly travel that happens regularly, often yearly, may involve many animals, and pays off only after a long trip.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">它可以宽泛地描述为定期(常为年度周期)发生的旅行,可能涉及一个物种的许多成员,而且只有在长途跋涉之后才会得到回报。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The arctic tern resists distraction because it is driven at that moment by an instinctive sense of something we humans find admirable: larger purpose.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The arctic tern resists distraction</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'because it is driven … by an instinctive sense of something' = reason clause; 'we humans find admirable' = contact relative clause (no 'that'); ': larger purpose' = colon explanation</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Note the missing relative pronoun: 'something (that) we humans find admirable'. The colon then names it.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The tern ignores food because instinct gives it a sense of a bigger goal.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">北极燕鸥之所以能抵御干扰,是因为此刻它被一种我们人类觉得可敬的本能所驱动:更宏大的目的。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Generally the reason for such seasonal back-and-forth movement is to seek resources that aren't available within a single area year-round.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the reason … is to seek resources</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that aren't available within a single area year-round' = defining relative clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'The reason for X is to + verb' — a clean cause-and-purpose pattern worth copying in Writing Task 2.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Animals move back and forth each season to find things they cannot get in one place all year.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">一般来说,这种季节性往返移动的原因,是为了寻找在单一区域内无法全年获得的资源。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">They allow for the fact that, for example, aphids will become sensitive to blue light (from the sky) when it's time for takeoff on their big journey, and sensitive to yellow light (reflected from tender young leaves) when it's appropriate to land.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">They allow for the fact</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that … aphids will become sensitive to blue light … and sensitive to yellow light …' = noun clause; two 'when'-clauses; two bracketed explanations</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'allow for the fact that' = 'take into account that'. Note the parallel 'sensitive to X when… and sensitive to Y when…'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">His five features explain why aphids react to blue light when taking off and to yellow light when landing.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这些特征考虑到了这样的事实:例如,当到了启程的时候,蚜虫会对(来自天空的)蓝光敏感;而当适合降落时,则对(从鲜嫩幼叶反射的)黄光敏感。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">At one of the bottlenecks, forested hills rise to form a V, leaving a corridor of open ground only about 150 metres wide, filled with private homes.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">forested hills rise to form a V</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'leaving a corridor of open ground only about 150 metres wide' = result participle; 'filled with private homes' = reduced passive relative</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A short main clause followed by two stacked participle phrases — the sentence pattern that carries Q26.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">At one bottleneck the wooded hills form a V, so only a 150-metre strip of open ground remains, and it is full of houses.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在其中一个瓶颈处,林木覆盖的山丘隆起形成一个V字形,只留下一条约150米宽的开阔通道,而那里布满了私人住宅。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage is definition-heavy. Practise separating a definition from the examples that illustrate it.</div><div class="exercise-block"><h3>A — Dingle's five characteristics</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete from memory.</p><div class="ex-item"><span class="ex-num">1.</span><label>prolonged movements outside <strong>familiar habitats</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>tend to be <strong>linear</strong>, not zigzaggy</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>special behaviours concerning <strong>preparation and arrival</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>demand special allocations of <strong>energy</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>intense <strong>attentiveness</strong> to the greater mission</label></div></div>
+<div class="exercise-block"><h3>B — Definition vs. example</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write D (definition) or E (example).</p><div class="ex-item"><span class="ex-num">6.</span><label>'travel that takes place at regular intervals' → <strong>D</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'an arctic tern, on its 20,000 km flight' → <strong>E</strong></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'movements from a seasonal home area away to another home area and back again' → <strong>D</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>'daily vertical movements by zooplankton' → <strong>E</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'aphids will become sensitive to blue light' → <strong>E</strong></label></div></div>
+<div class="exercise-block"><h3>C — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each clause.</p><div class="ex-item"><span class="ex-num">11.</span><label>'a corridor which is filled with private homes' → '<strong>a corridor filled with private homes</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'sagebrush which has been blown clear of snow' → '<strong>sagebrush blown clear of snow</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">13.</span><label>叉角羚依靠远距离视力和速度来躲避捕食者。 → <strong>Pronghorn depend on distance vision and speed to keep safe from predators.</strong></label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>保护科学家们如今努力保护的是迁徙行为,而不只是物种和栖息地。 → <strong>Conservation scientists are now working to preserve migrational behaviour, not just species and habitats.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Definition and refinement.</strong> The passage opens with a loose definition, refines it with Dingle's five characteristics, then contrasts it with Berger's simpler working definition. Q15 turns on the observation that definitions differ by field of study.</p>
+<p><strong>Illustration by contrast.</strong> The arctic tern ignores the herring; the local gulls dive for it. That single contrast demonstrates 'attentiveness to the greater mission' — and makes Q14 FALSE.</p>
+<p><strong>Example → principle.</strong> Zooplankton (daily, vertical) and aphids (one-way, never returning) both stretch the everyday idea of migration. The writer uses them to show why a broader definition is needed.</p>
+<p><strong>Problem → threat → response.</strong> The pronghorn section moves from description (route, bottlenecks) to threat (development choking the corridor) to response (protected migration corridor; limits of what agencies can do on private land).</p>
+<p><strong>Cause and effect with conditions.</strong> 'If they can't pass through each of the three during their spring migration, they can't reach their bounty of summer grazing; if they can't pass through again in autumn … they are likely to die.' Two parallel conditionals show how fragile the route is.</p></div><div class="exercise-block"><h3>Q14–18 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Locate first, then compare the exact claim.</p><div class="ex-item"><span class="ex-num">14.</span><label>Local gulls and migrating arctic terns behave the same way when offered food → <strong>FALSE</strong> (the gulls dive; the tern flies on)</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Experts' definitions of migration vary according to their area of study → <strong>TRUE</strong> ('biologists define it differently, depending in part on what sorts of animals they study')</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>Very few experts agree that aphid movement counts as migration → <strong>NOT GIVEN</strong> (no count of expert opinion is given)</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>Aphids' journeys are affected by changes in the light they perceive → <strong>TRUE</strong> (blue light for takeoff, yellow light for landing)</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>Dingle's aim is to distinguish between the migratory behaviours of different species → <strong>FALSE</strong> (his aim is to show what different migrations <em>share</em>)</label></div></div>
+<div class="exercise-block"><h3>Q19–22 · Complete the sentence (A–G)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Check grammar first, then meaning.</p><div class="ex-item"><span class="ex-num">19.</span><label>According to Dingle, migratory routes are likely to → <strong>G</strong> follow a straight line ('they tend to be linear, not zigzaggy')</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>To prepare for migration, animals are likely to → <strong>C</strong> eat more than they need for immediate purposes ('overfeeding'; 'birds will fatten themselves')</label></div>
+<div class="ex-item"><span class="ex-num">21.</span><label>During migration, animals are unlikely to → <strong>A</strong> be discouraged by difficulties ('undeterred by challenges')</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>Arctic terns illustrate migrating animals' ability to → <strong>E</strong> ignore distractions ('the arctic tern resists distraction')</label></div></div>
+<div class="exercise-block"><h3>Q23–26 · Summary completion (ONE WORD ONLY)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">All four answers come from the pronghorn paragraphs.</p><div class="ex-item"><span class="ex-num">23.</span><label>Pronghorns rely on their eyesight and ___ to avoid predators → <strong>speed</strong></label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>their winter home is on the ___ → <strong>plains</strong></label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>their route contains three ___ → <strong>bottlenecks</strong></label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>new homes in a narrow ___ of land → <strong>corridor / passageway</strong></label></div></div>
+<div class="exercise-block"><h3>Matching-features practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Who said or studied what?</p><div class="ex-item"><span class="ex-num">27.</span><label>identified five characteristics of migration → <strong>Hugh Dingle</strong></label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>prefers a simple, practical definition suited to large mammals → <strong>Joel Berger</strong></label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>works at the University of Montana → <strong>Joel Berger</strong></label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>is an evolutionary biologist who studies insects → <strong>Hugh Dingle</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How far does the arctic tern fly on the journey described?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. 2,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. 10,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. 20,000 km</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. 50,000 km</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What does the tern ignore on the way?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a herring offered from a boat</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. a warm island</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. a flock of gulls</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. a storm</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which is NOT one of Dingle's five characteristics?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. prolonged movements outside familiar habitats</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. special preparation such as overfeeding</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. special allocations of energy</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. travel only in family groups</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What does Joel Berger study?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. insects</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. the American pronghorn and other large mammals</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. seabirds</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. zooplankton</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why do zooplankton move upward at night?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. to escape cold water</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. to breed</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. to seek food</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. to follow currents</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What is unusual about aphid migration?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. It happens only once a year.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. It covers thousands of kilometres.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. It is done in large flocks.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. No individual aphid ever returns to where it started.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What do pronghorn eat during the winter?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. young leaves</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. sagebrush blown clear of snow</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. river grasses</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. tree bark</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Why do pronghorn cross high, open land?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. so they can see and run from predators</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. because it is warmer</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. to avoid rivers</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. because the grass is better</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">How wide is the corridor at one bottleneck?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. about 15 metres</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. about 50 metres</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. about 150 metres</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. about 1,500 metres</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What has a National Forest done for the pronghorn?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. banned all hunting</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. built a bridge</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. bought the private land</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. recognised the route as a protected migration corridor</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'D')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What limits the agencies' power?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. lack of scientific data</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. they cannot control private land at a bottleneck</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. public opposition</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. the pronghorn's speed</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the writer's final point about other migrating species?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Their challenges are even more complicated.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. They are already safe.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. They do not migrate far.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. They need no protection.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 2 — Answers (Q14–Q26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">FALSE</div><div class="answer-note">The gulls dive voraciously; the tern 'flies on'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">TRUE</div><div class="answer-note">'biologists define it differently, depending in part on what sorts of animals they study'.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">The passage never says how many experts agree.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">TRUE</div><div class="answer-note">Blue light signals takeoff; yellow light signals landing.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">FALSE</div><div class="answer-note">Dingle's definition 'focuses attention on what … migrations share'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">G</div><div class="answer-note">'they tend to be linear, not zigzaggy'.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">C</div><div class="answer-note">'special behaviours concerning preparation (such as overfeeding)'.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">A</div><div class="answer-note">'undeterred by challenges that would turn other animals aside'.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">E</div><div class="answer-note">'The arctic tern resists distraction'.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">speed</div><div class="answer-note">'dependent on distance vision and speed to keep safe from predators'.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">plains</div><div class="answer-note">'down onto the plains. Here they wait out the frozen months'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">bottlenecks</div><div class="answer-note">'the severity of its constriction at three bottlenecks'.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">corridor / passageway</div><div class="answer-note">'a corridor of open ground only about 150 metres wide, filled with private homes'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Matching researchers</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">Hugh Dingle</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">Joel Berger</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">Joel Berger</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">Hugh Dingle</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">A</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

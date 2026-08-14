@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 4 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 11 — Test 4 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'This Marvellous Invention'</strong> argues that <strong>language</strong> is humanity's greatest creation — except that it was never actually invented. Six paragraphs (A–F) explore this paradox: how thirty-odd sounds produce infinite meaning, why everybody can do it effortlessly, and how <strong>Turkish</strong> and <strong>Sumerian</strong> reveal the design that everyday use hides.</p><p>题型:段落小标题 Q27–32 + 词库摘要 Q33–36 + YES/NO/NOT GIVEN Q37–40。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For matching headings, read the first sentence and the last sentence of each paragraph. Paragraph B ends on 'This apparent paradox', which points straight to heading iv ('Apparently incompatible characteristics of language').</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">manifold</span></td><td><span class="pos">adj.</span></td><td>many and varied</td><td class="zh">多种多样的</td><td>'Of all mankind's <em>manifold</em> creations'</td><td class="note">Formal opening word.</td></tr>
+<tr><td><span class="word">take pride of place</span></td><td><span class="pos">v. phr.</span></td><td>to be the most important item</td><td class="zh">占据首要位置</td><td>'language must <em>take pride of place</em>'</td><td class="note">Paragraph A → heading vi.</td></tr>
+<tr><td><span class="word">pale in significance</span></td><td><span class="pos">v. phr.</span></td><td>to seem unimportant by comparison</td><td class="zh">相形见绌</td><td>'all other inventions <em>pale in significance</em>'</td><td class="note">Q34 answer G = fundamental.</td></tr>
+<tr><td><span class="word">unparalleled</span></td><td><span class="pos">adj.</span></td><td>greater than anything else</td><td class="zh">无与伦比的</td><td>'our ascent to <em>unparalleled</em> power over all other animals'</td><td class="note">Reinforces the claim in A.</td></tr>
+<tr><td><span class="word">sophistication</span></td><td><span class="pos">n.</span></td><td>complexity and refinement</td><td class="zh">精密;复杂</td><td>'a tool of extraordinary <em>sophistication</em>'</td><td class="note">Q35 answer B = complex.</td></tr>
+<tr><td><span class="word">ingenious</span></td><td><span class="pos">adj.</span></td><td>cleverly designed</td><td class="zh">巧妙的;精妙的</td><td>'based on an idea of <em>ingenious</em> simplicity'</td><td class="note">The paradox of B.</td></tr>
+<tr><td><span class="word">distil</span></td><td><span class="pos">v.</span></td><td>to express something in its purest form</td><td class="zh">提炼;浓缩</td><td>'the renowned French grammarians … <em>distilled</em> the essence of language'</td><td class="note">Port-Royal, 1660.</td></tr>
+<tr><td><span class="word">homage</span></td><td><span class="pos">n.</span></td><td>public respect and praise</td><td class="zh">敬意;致敬</td><td>'the <em>homage</em> to language's unique accomplishment'</td><td class="note">Q38 YES — they did it justice.</td></tr>
+<tr><td><span class="word">incongruity</span></td><td><span class="pos">n.</span></td><td>something that does not fit</td><td class="zh">不协调;矛盾之处</td><td>'conceals a simple yet critical <em>incongruity</em>'</td><td class="note">Sets up the paradox.</td></tr>
+<tr><td><span class="word">splutter</span></td><td><span class="pos">n.</span></td><td>a spitting, noisy sound</td><td class="zh">喷溅声;含糊声</td><td>'a few haphazard spits and <em>splutters</em>'</td><td class="note">Paragraph C's image of raw sounds.</td></tr>
+<tr><td><span class="word">interminable</span></td><td><span class="pos">adj.</span></td><td>seeming to have no end</td><td class="zh">无休止的</td><td>'sighing the <em>interminable</em> boredom of existence'</td><td class="note">The range of what language can do.</td></tr>
+<tr><td><span class="word">exertion</span></td><td><span class="pos">n.</span></td><td>physical or mental effort</td><td class="zh">努力;费力</td><td>'all apparently without the slightest <em>exertion</em>'</td><td class="note">Q36 answer F = easy.</td></tr>
+<tr><td><span class="word">deceptive</span></td><td><span class="pos">adj.</span></td><td>giving a false impression</td><td class="zh">具有欺骗性的</td><td>'it is precisely this <em>deceptive</em> ease'</td><td class="note">Language 'conceals art'.</td></tr>
+<tr><td><span class="word">estrangement</span></td><td><span class="pos">n.</span></td><td>the feeling of being made unfamiliar</td><td class="zh">疏离感;陌生化</td><td>'it is only the <em>estrangement</em> of foreign tongues'</td><td class="note">Paragraph E → heading i.</td></tr>
+<tr><td><span class="word">outlandish</span></td><td><span class="pos">adj.</span></td><td>strange and unfamiliar</td><td class="zh">古怪的;异域的</td><td>'with their many exotic and <em>outlandish</em> features'</td><td class="note">Supports heading i.</td></tr>
+<tr><td><span class="word">compactness</span></td><td><span class="pos">n.</span></td><td>the quality of being small and efficient</td><td class="zh">紧凑;简洁</td><td>'the thrifty <em>compactness</em> of its construction'</td><td class="note">Sumerian, paragraph F.</td></tr>
+<tr><td><span class="word">fine-tuned</span></td><td><span class="pos">adj.</span></td><td>adjusted with great precision</td><td class="zh">精细调校的</td><td>'The technology is so <em>fine-tuned</em>'</td><td class="note">Even a non-sound has a function → heading v.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">of all mankind's creations</span></td><td>among everything humans have made</td><td class="zh">在人类所有创造中</td></tr>
+<tr><td><span class="phrase">in its own right</span></td><td>considered by itself</td><td class="zh">就其本身而言</td></tr>
+<tr><td><span class="phrase">no one since has celebrated more eloquently</span></td><td>nobody has praised it better</td><td class="zh">此后无人更雄辩地赞颂过</td></tr>
+<tr><td><span class="phrase">there is just one flaw</span></td><td>only one thing is wrong</td><td class="zh">只有一个瑕疵</td></tr>
+<tr><td><span class="phrase">at the core of</span></td><td>at the centre of</td><td class="zh">是…的核心</td></tr>
+<tr><td><span class="phrase">how else could…?</span></td><td>in what other way could…?</td><td class="zh">不然还能怎样?</td></tr>
+<tr><td><span class="phrase">take for granted</span></td><td>not appreciate properly</td><td class="zh">视为理所当然</td></tr>
+<tr><td><span class="phrase">bring home the wonder of</span></td><td>make you fully realise how amazing</td><td class="zh">让人真切体会到…的奇妙</td></tr>
+<tr><td><span class="phrase">in case you were wondering</span></td><td>if you are curious</td><td class="zh">顺便说一句;免得你好奇</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Compared to language, all other inventions pale in significance, since everything we have ever achieved depends on language and originates from it.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">all other inventions pale in significance</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Compared to language' = reduced passive clause; 'since everything we have ever achieved depends on language and originates from it' = reason clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Compared to X, Y…' + 'since' reason clause. A compact way to make a strong claim.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Every other invention matters less, because all our achievements come from language.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与语言相比,所有其他发明都黯然失色,因为我们所取得的一切都依赖语言并源自语言。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Language is mankind's greatest invention — except, of course, that it was never invented.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Language is mankind's greatest invention</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'except, of course, that it was never invented' = exception clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The dash plus 'except that' delivers the paradox in a single stroke. This is the sentence heading iv describes.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Language is our greatest invention — but nobody invented it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">语言是人类最伟大的发明——当然,只不过它从未被发明过。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">But run them through the cogs and wheels of the language machine, let it arrange them in some very special orders, and there is nothing that these meaningless streams of air cannot do.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">there is nothing that these meaningless streams of air cannot do</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">two imperative clauses ('run them…', 'let it arrange them…') act as conditions joined by 'and'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Imperative + and + result is an informal conditional: 'If you run them through…, then there is nothing…'. Note the double negative for emphasis.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Put those sounds through the language machine in the right order and they can express anything.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但只要让它们经过语言机器的齿轮与转轮,让它按某些非常特殊的顺序排列它们,这些原本无意义的气流就无所不能。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Yet it is precisely this deceptive ease which makes language a victim of its own success, since in everyday life its triumphs are usually taken for granted.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it is precisely this deceptive ease which makes language a victim of its own success</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">cleft structure 'it is X which…'; 'since in everyday life its triumphs are usually taken for granted' = reason clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A cleft sentence for emphasis, plus a 'since' clause. Q36 comes from 'ease' here.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because language feels so easy, we stop noticing how remarkable it is.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而,正是这种具有欺骗性的轻松,使语言成为自身成功的受害者,因为在日常生活中,它的种种成就通常被视为理所当然。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">If you were to ask which bit in the Sumerian word corresponds to the pronoun 'it' in the English translation, then the answer would have to be nothing.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">then the answer would have to be nothing</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'If you were to ask which bit … corresponds to the pronoun it' = second conditional containing an embedded question</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'If you were to…' is a formal second conditional. The embedded question keeps statement word order ('which bit corresponds', not 'which bit does correspond').</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If you asked which part of the Sumerian word means 'it', the answer would be: no part at all.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果你要问苏美尔语单词中哪一部分对应英语译文里的代词“它”,那么答案只能是:没有任何部分。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage is argumentative and rhetorical. Practise recognising the writer's persuasive moves.</div><div class="exercise-block"><h3>A — Rhetorical moves</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the technique in each.</p><div class="ex-item"><span class="ex-num">1.</span><label>'Of all mankind's manifold creations, language must take pride of place.' → <strong>bold opening claim</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'How else could this instrument make so much out of barely three dozen measly morsels of sound?' → <strong>rhetorical question</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'from pre-modern foragers in the subtropical savannah, to post-modern philosophers in the suburban sprawl' → <strong>contrasting pair showing range</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'Language conceals art.' → <strong>short summarising sentence</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>'Who could possibly have come up with such a nifty contraption?' → <strong>closing rhetorical question restating the paradox</strong></label></div></div>
+<div class="exercise-block"><h3>B — Cleft and inverted structures</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in plain word order.</p><div class="ex-item"><span class="ex-num">6.</span><label>'it is precisely this deceptive ease which makes language a victim' → '<strong>this deceptive ease makes language a victim</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>'Often, it is only the estrangement of foreign tongues that brings home the wonder' → '<strong>only foreign languages make us see the wonder</strong>'</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in simpler English.</p><div class="ex-item"><span class="ex-num">8.</span><label>'pale in significance' → <strong>seem much less important</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>'without the slightest exertion' → <strong>with no effort at all</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'thrifty compactness of its construction' → <strong>economical, tightly built structure</strong></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'invested with a specific function' → <strong>given a particular job</strong></label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">12.</span><label>语言的车轮运转得如此顺畅,人们很少停下来思考其中的巧思。 → <strong>The wheels of language run so smoothly that one rarely bothers to stop and think about all the resourcefulness that went into making it tick.</strong></label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>苏美尔人发明了文字,从而使历史记录成为可能。 → <strong>The Sumerians invented writing and thus enabled the documentation of history.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Claim → paradox → evidence.</strong> A makes the claim (language is the greatest invention); B introduces the paradox (it was never invented); C–D show the machine at work and how effortlessly everyone uses it; E–F give foreign-language evidence of its hidden design.</p>
+<p><strong>Quotation as authority.</strong> The 1660 Port-Royal grammarians are quoted at length to establish that people have long admired language. The writer then turns their praise against itself by pointing out the 'flaw' in it.</p>
+<p><strong>Scale contrast.</strong> Twenty-five to thirty sounds → infinite expressions; 'three dozen measly morsels of sound' → 'unravelling the fundamental order of the universe'. This small-to-vast contrast is the engine of paragraph C (heading ii).</p>
+<p><strong>Universality.</strong> Paragraph D stresses that <em>everybody</em> can do it — foragers and philosophers alike, 'without the slightest exertion' — which is exactly heading vii.</p>
+<p><strong>Two exotic examples.</strong> Turkish shows extreme length; Sumerian shows extreme compactness, including a meaningful <em>absence</em> of sound. The pairing lets E take heading i and F take heading v.</p></div><div class="exercise-block"><h3>Q27–32 · Matching headings (i–vii)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ask what each paragraph is FOR.</p><div class="ex-item"><span class="ex-num">27.</span><label>Paragraph A → <strong>vi</strong> Why language is the most important invention of all</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>Paragraph B → <strong>iv</strong> Apparently incompatible characteristics of language (greatest invention, yet never invented)</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>Paragraph C → <strong>ii</strong> The way in which a few sounds are organised to convey a huge range of meaning</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>Paragraph D → <strong>vii</strong> The universal ability to use language</label></div>
+<div class="ex-item"><span class="ex-num">31.</span><label>Paragraph E → <strong>i</strong> Differences between languages highlight their impressiveness (the Turkish word)</label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>Paragraph F → <strong>v</strong> Even silence can be meaningful (the empty slot in the Sumerian word)</label></div></div>
+<div class="exercise-block"><h3>Q33–36 · Summary with a word list (A–G)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Check word class and collocation.</p><div class="ex-item"><span class="ex-num">33.</span><label>The wheel has had a major impact on ___ aspects of life → <strong>E material</strong> ('may have transformed our material existence')</label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>no impact has been as ___ as that of language → <strong>G fundamental</strong> ('all other inventions pale in significance')</label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>Language is very ___, yet composed of just a small number of sounds → <strong>B complex</strong> ('a tool of extraordinary sophistication')</label></div>
+<div class="ex-item"><span class="ex-num">36.</span><label>Language appears to be ___ to use → <strong>F easy</strong> ('without the slightest exertion'; 'this deceptive ease')</label></div></div>
+<div class="exercise-block"><h3>Q37–40 · YES / NO / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Does the WRITER agree, disagree, or not say?</p><div class="ex-item"><span class="ex-num">37.</span><label>Human beings might have achieved their present position without language → <strong>NO</strong> ('Without language, we could never have embarked on our ascent')</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>The Port-Royal grammarians did justice to the nature of language → <strong>YES</strong> ('no one since has celebrated more eloquently the magnitude of its achievement')</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>A complex idea can be explained more clearly in a sentence than in a single word → <strong>NOT GIVEN</strong> (the writer compares lengths, never clarity)</label></div>
+<div class="ex-item"><span class="ex-num">40.</span><label>The Sumerians were responsible for starting the recording of events → <strong>YES</strong> ('the people who invented writing and thus enabled the documentation of history')</label></div></div>
+<div class="exercise-block"><h3>Locating practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each detail?</p><div class="ex-item"><span class="ex-num">41.</span><label>the year 1660 → <strong>B</strong></label></div>
+<div class="ex-item"><span class="ex-num">42.</span><label>'p, f, b, v, t, d, k, g, sh, a, e' → <strong>C</strong></label></div>
+<div class="ex-item"><span class="ex-num">43.</span><label>'?ehirlili?tiremediklerimizdensiniz' → <strong>E</strong></label></div>
+<div class="ex-item"><span class="ex-num">44.</span><label>'munintuma'a' → <strong>F</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Which other inventions does the writer mention in paragraph A?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. fire, the wheel and writing</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the wheel, agriculture and sliced bread</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. printing and the internet</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. tools and clothing</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">How many sounds do the Port-Royal grammarians mention?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. about ten</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. about fifteen</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. twenty-five or thirty</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. about a hundred</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">In which year did the Port-Royal grammarians write?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 1660</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 1760</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. 1860</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. 1960</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What is the 'critical incongruity' the writer identifies?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Languages differ too much.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Sounds have no meaning.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Nobody can define language.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Language is our greatest invention, yet it was never invented.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How does the writer describe the raw sounds of speech?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. musical notes</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. a few haphazard spits and splutters</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. mathematical symbols</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. natural signals</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Who can set the 'language machine' in motion?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. only trained linguists</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. only adults</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. just about everybody</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. only literate people</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why is language 'a victim of its own success'?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Its triumphs are taken for granted.</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It changes too quickly.</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It has too many speakers.</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. It is badly taught.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does the Turkish example demonstrate?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. that Turkish is hard to learn</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. that Turkish has few sounds</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. that translation is impossible</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. that one word can express a whole English sentence</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">How long ago was Sumerian spoken?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. about 2,000 years</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. about 5,000 years</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. about 10,000 years</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. about 500 years</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What does 'munintuma'a' mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. 'we cannot make you a town-dweller'</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. 'the river is rising'</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. 'when he had made it suitable for her'</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. 'they wrote it down')</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is remarkable about the Sumerian word's middle slot?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Its emptiness carries meaning.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. It contains three sounds.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It is borrowed from another language.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. It cannot be pronounced.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">'Deceptive ease' means language is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. genuinely simple</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. difficult for everyone</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. easy only for children</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. harder than it seems, though it feels effortless</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 3 — Answers (Q27–Q40)</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">vi</div><div class="answer-note">'language must take pride of place … all other inventions pale in significance'.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">iv</div><div class="answer-note">'mankind's greatest invention — except … it was never invented. This apparent paradox…'</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">ii</div><div class="answer-note">'How else could this instrument make so much out of barely three dozen measly morsels of sound?'</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">vii</div><div class="answer-note">'The language machine allows just about everybody … without the slightest exertion'.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">i</div><div class="answer-note">'the estrangement of foreign tongues … brings home the wonder of language's design'.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">v</div><div class="answer-note">'even the absence of a sound has been enlisted to express something specific'.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">E (material)</div><div class="answer-note">'may have transformed our material existence'.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">G (fundamental)</div><div class="answer-note">'all other inventions pale in significance'.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">B (complex)</div><div class="answer-note">'a tool of extraordinary sophistication'.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">F (easy)</div><div class="answer-note">'all apparently without the slightest exertion'; 'this deceptive ease'.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NO</div><div class="answer-note">'Without language, we could never have embarked on our ascent to unparalleled power'.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">YES</div><div class="answer-note">'no one since has celebrated more eloquently the magnitude of its achievement'.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">The writer compares word length, never clarity of explanation.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">YES</div><div class="answer-note">'the people who invented writing and thus enabled the documentation of history'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Locating</h3><div class="answer-item"><span class="answer-num">41</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">42</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">43</span><div><div class="answer-val">E</div></div></div>
+<div class="answer-item"><span class="answer-num">44</span><div><div class="answer-val">F</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

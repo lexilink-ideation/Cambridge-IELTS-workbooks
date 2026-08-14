@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 4 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 11 — Test 4 — Reading Passage 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'An Introduction to Film Sound'</strong> argues that a film's sound track is as complex as its images. It covers the three ingredients — <strong>the human voice, sound effects and music</strong> — and examines <strong>dialogue</strong>, <strong>synchronous</strong> and <strong>asynchronous</strong> sound effects, and <strong>background music</strong>.</p><p>题型:四选一 Q14–18 + T/F/NG Q19–23 + 句子配对 Q24–26。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> The five multiple-choice questions each name a paragraph or an example ('In the first paragraph…', 'the writer refers to Humphrey Bogart…', 'the "click" of a door'). Go straight to that spot — you do not need to read the whole passage first.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">underestimate</span></td><td><span class="pos">v.</span></td><td>to think something is less important than it is</td><td class="zh">低估</td><td>'we really cannot afford to <em>underestimate</em> the importance of film sound'</td><td class="note">Q14 answer B.</td></tr>
+<tr><td><span class="word">sound track</span></td><td><span class="pos">n. phr.</span></td><td>all the recorded sound in a film</td><td class="zh">声轨;配音</td><td>'A meaningful <em>sound track</em> is often as complicated as the image on the screen'</td><td class="note">The topic.</td></tr>
+<tr><td><span class="word">emphasis (pl. emphases)</span></td><td><span class="pos">n.</span></td><td>special importance given to something</td><td class="zh">强调;重点</td><td>'mixed and balanced so as to produce the necessary <em>emphases</em>'</td><td class="note">How the three tracks work together (Q24 = C).</td></tr>
+<tr><td><span class="word">characterization</span></td><td><span class="pos">n.</span></td><td>the way a character is created</td><td class="zh">人物塑造</td><td>'Often with film <em>characterization</em> the audience perceives little or no difference between the character and the actor'</td><td class="note">Q15 answer A.</td></tr>
+<tr><td><span class="word">merge</span></td><td><span class="pos">v.</span></td><td>to combine into one</td><td class="zh">融合</td><td>'film personality and life personality seem to <em>merge</em>'</td><td class="note">The Bogart point.</td></tr>
+<tr><td><span class="word">physiognomy</span></td><td><span class="pos">n.</span></td><td>a person's facial features</td><td class="zh">相貌;面容</td><td>'When voice textures fit the performer's <em>physiognomy</em> and gestures'</td><td class="note">Q26 answer E.</td></tr>
+<tr><td><span class="word">banal</span></td><td><span class="pos">adj.</span></td><td>dull and unoriginal</td><td class="zh">平庸的;陈腐的</td><td>'little dialogue was evident, and most of it was <em>banal</em>'</td><td class="note">Q16 answer B — dull dialogue with a purpose.</td></tr>
+<tr><td><span class="word">intrinsic</span></td><td><span class="pos">adj.</span></td><td>belonging naturally to something</td><td class="zh">内在的;固有的</td><td>'of little <em>intrinsic</em> interest'</td><td class="note">Describes the dialogue in <em>2001</em>.</td></tr>
+<tr><td><span class="word">inadequacy</span></td><td><span class="pos">n.</span></td><td>the state of not being good enough</td><td class="zh">不足;不充分</td><td>'the <em>inadequacy</em> of human responses when compared with the magnificent technology'</td><td class="note">The point of the sparse dialogue.</td></tr>
+<tr><td><span class="word">breakneck speed</span></td><td><span class="pos">n. phr.</span></td><td>dangerously fast speed</td><td class="zh">极快的速度</td><td>'practically non-stop dialogue delivered at <em>breakneck speed</em>'</td><td class="note"><em>Bringing Up Baby</em>; Q17 answer D.</td></tr>
+<tr><td><span class="word">frenetic</span></td><td><span class="pos">adj.</span></td><td>fast and wildly energetic</td><td class="zh">狂乱的;快节奏的</td><td>'This film presents pure escapism — largely due to its <em>frenetic</em> dialogue'</td><td class="note">Supports Q17.</td></tr>
+<tr><td><span class="word">synchronous</span></td><td><span class="pos">adj.</span></td><td>matched in time with what is seen</td><td class="zh">同步的</td><td>'<em>Synchronous</em> sound effects are those sounds which are synchronized or matched with what is viewed'</td><td class="note">Defined in the passage.</td></tr>
+<tr><td><span class="word">ominous</span></td><td><span class="pos">adj.</span></td><td>suggesting that something bad will happen</td><td class="zh">不祥的</td><td>'an <em>ominous</em> action such as a burglary'</td><td class="note">Q18 answer C — the click is amplified.</td></tr>
+<tr><td><span class="word">nuance</span></td><td><span class="pos">n.</span></td><td>a very small difference in meaning or feeling</td><td class="zh">细微差别</td><td>'to provide an appropriate emotional <em>nuance</em>'</td><td class="note">Purpose of asynchronous effects.</td></tr>
+<tr><td><span class="word">ubiquitous</span></td><td><span class="pos">adj.</span></td><td>found everywhere</td><td class="zh">无处不在的</td><td>'background music … has become so <em>ubiquitous</em> as to be noticeable in its absence'</td><td class="note">Q19 TRUE.</td></tr>
+<tr><td><span class="word">dissonant</span></td><td><span class="pos">adj.</span></td><td>(of music) harsh and unharmonious</td><td class="zh">不和谐的</td><td>'<em>dissonant</em> music may be used to indicate an approaching menace'</td><td class="note">Q20 TRUE — music foreshadows.</td></tr>
+<tr><td><span class="word">salient</span></td><td><span class="pos">adj.</span></td><td>most noticeable or important</td><td class="zh">显著的</td><td>'to remind the audience of <em>salient</em> motifs or ideas'</td><td class="note">Q22 TRUE — music links scenes.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">cannot afford to</span></td><td>must not risk</td><td class="zh">不能承受;不可以</td></tr>
+<tr><td><span class="phrase">as much the responsibility of</span></td><td>equally the duty of</td><td class="zh">同样是…的责任</td></tr>
+<tr><td><span class="phrase">in this way</span></td><td>by doing this</td><td class="zh">通过这种方式</td></tr>
+<tr><td><span class="phrase">on the other hand</span></td><td>by contrast</td><td class="zh">另一方面</td></tr>
+<tr><td><span class="phrase">there is no time for</span></td><td>the audience cannot</td><td class="zh">没有时间去</td></tr>
+<tr><td><span class="phrase">be caught up in</span></td><td>become completely involved in</td><td class="zh">被卷入;沉浸于</td></tr>
+<tr><td><span class="phrase">call attention to</span></td><td>make people notice</td><td class="zh">使人注意到</td></tr>
+<tr><td><span class="phrase">foster an awareness of</span></td><td>develop understanding of</td><td class="zh">培养对…的认识</td></tr>
+<tr><td><span class="phrase">sprang to life</span></td><td>suddenly came into existence</td><td class="zh">突然诞生</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">A meaningful sound track is often as complicated as the image on the screen, and is ultimately just as much the responsibility of the director.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A meaningful sound track is often as complicated as the image … and is … just as much the responsibility of the director</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">two parallel comparative structures: 'as complicated as' and 'just as much … as'</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two 'as … as' comparisons share one subject. This sentence alone answers Q14.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The sound is as complex as the picture, and the director is equally responsible for it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">一条有意义的声轨往往与银幕上的画面同样复杂,而且归根结底同样是导演的责任。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">When voice textures fit the performer's physiognomy and gestures, a whole and very realistic persona emerges.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">a whole and very realistic persona emerges</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'When voice textures fit the performer's physiognomy and gestures' = time/condition clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'When' here means 'if / whenever'. Q26 is a direct paraphrase of this sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If the voice matches the face and the movements, the character feels completely real.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">当嗓音质感与演员的相貌和举止相契合时,一个完整而极为真实的人物形象便浮现出来。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">In this way the film-maker was able to portray what Thomas Sobchack and Vivian Sobchack call the 'inadequacy of human responses when compared with the magnificent technology created by man'.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the film-maker was able to portray what … Sobchack and … Sobchack call the 'inadequacy of human responses…'</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'what … call …' = nominal relative clause functioning as the object; 'when compared with…' = reduced passive clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'what X calls Y' packages a quotation as an object. Note the reduced clause 'when compared with'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">By using so little dialogue, the film showed how weak human reactions seem beside great technology.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">通过这种方式,电影制作者得以呈现索博查克夫妇所称的“与人类创造的宏伟技术相比,人类反应的不足”。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">However, if the 'click' of an opening door is part of an ominous action such as a burglary, the sound mixer may call attention to the 'click' with an increase in volume; this helps to engage the audience in a moment of suspense.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the sound mixer may call attention to the 'click' with an increase in volume; this helps to engage the audience</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'if the click … is part of an ominous action such as a burglary' = conditional clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Conditional + semicolon joining a consequence. Directly answers Q18.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If the click belongs to something threatening, the sound mixer makes it louder to build suspense.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而,如果开门的“咔嗒”声属于入室行窃这类不祥的动作,混音师可能会提高音量以引起注意,这有助于让观众进入悬念时刻。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">We need to foster an awareness of film sound as well as film space so as to truly appreciate an art form that sprang to life during the twentieth century — the modern film.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We need to foster an awareness of film sound as well as film space</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'so as to truly appreciate an art form' = purpose; 'that sprang to life during the twentieth century' = relative clause; '— the modern film' = dash apposition</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'so as to' = 'in order to'. The dash names the art form at the very end for emphasis.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">To appreciate modern film properly, we must notice its sound as well as its images.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们需要培养对电影声音以及电影空间的认识,才能真正欣赏这一在二十世纪诞生的艺术形式——现代电影。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage defines technical terms and then illustrates them. Practise the definition-example pattern.</div><div class="exercise-block"><h3>A — Define the term</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Give a one-line definition from the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label><strong>synchronous sound effects</strong> → sounds matched with what is viewed on screen</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label><strong>asynchronous sound effects</strong> → sounds with no visible source on screen</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label><strong>background music</strong> → music that adds emotion and rhythm, usually not meant to be noticed</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>the three ingredients of a sound track → <strong>the human voice, sound effects and music</strong></label></div></div>
+<div class="exercise-block"><h3>B — Match example to purpose</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Why does the writer mention each?</p><div class="ex-item"><span class="ex-num">5.</span><label>Humphrey Bogart → to show that <strong>actor and character seem to have the same personality</strong></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label><em>2001</em> → to show that <strong>little, banal dialogue can serve a purpose</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label><em>Bringing Up Baby</em> → to show that <strong>fast dialogue emphasises key elements of a film</strong></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>the ambulance siren → to show that <strong>asynchronous sound adds emotional nuance and realism</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>dissonant music → to show that <strong>music can foreshadow an unseen menace</strong></label></div></div>
+<div class="exercise-block"><h3>C — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each clause.</p><div class="ex-item"><span class="ex-num">10.</span><label>'sounds which are synchronized with what is viewed' → '<strong>sounds synchronized with what is viewed</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'when it is compared with the magnificent technology' → '<strong>when compared with the magnificent technology</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">12.</span><label>背景音乐常常预示情绪的转变。 → <strong>Background music often foreshadows a change in mood.</strong></label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>声音的效果往往非常微妙,只有我们的潜意识才会注意到。 → <strong>The effects of sound are often largely subtle and are noted by only our subconscious minds.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Classification.</strong> The passage announces its own structure in paragraph 1: three ingredients, then four topics (dialogue, synchronous effects, asynchronous effects, music). Every later paragraph fills one slot.</p>
+<p><strong>Definition → example → effect.</strong> Each type of sound is defined, illustrated ('For example, if the film portrays a character playing the piano…'), and then explained in terms of its effect on the audience.</p>
+<p><strong>Contrast between two films.</strong> <em>2001</em> (almost no dialogue) is set against <em>Bringing Up Baby</em> (non-stop dialogue). Both are used to make the same larger point: the <em>amount</em> of dialogue is a deliberate choice.</p>
+<p><strong>Conscious vs. subconscious.</strong> A recurring thread: 'the audience may only subconsciously note the expected sound'; 'Usually not meant to be noticeable'; 'noted by only our subconscious minds'. Q23 is FALSE because of this.</p>
+<p><strong>Convention vs. innovation.</strong> The last paragraph balances the expected ('acceleration of music during car chases', 'creaky doors in horror films') against the inventive ('sound is often brilliantly conceived').</p></div><div class="exercise-block"><h3>Q14–18 · Multiple choice (A–D)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Go to the named paragraph or example.</p><div class="ex-item"><span class="ex-num">14.</span><label>In the first paragraph the writer makes the point that → <strong>B</strong> it would be wrong to overlook the contribution of sound to the artistry of films</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Humphrey Bogart is mentioned to exemplify → <strong>A</strong> the importance of actor and character appearing to have similar personalities</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>In the third paragraph the writer suggests that → <strong>B</strong> film dialogue that appears dull may have a specific purpose</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>About <em>Bringing Up Baby</em> the writer suggests → <strong>D</strong> the nature of the dialogue emphasises key elements of the film</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>The 'click' of a door shows that realistic sounds → <strong>C</strong> may be modified in order to manipulate the audience's response</label></div></div>
+<div class="exercise-block"><h3>Q19–23 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">All five come from the paragraphs on background music.</p><div class="ex-item"><span class="ex-num">19.</span><label>Audiences are likely to be surprised if a film lacks background music → <strong>TRUE</strong> ('so ubiquitous as to be noticeable in its absence')</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>Background music may anticipate a development in a film → <strong>TRUE</strong> ('often foreshadows a change in mood')</label></div>
+<div class="ex-item"><span class="ex-num">21.</span><label>Background music has more effect on some people than on others → <strong>NOT GIVEN</strong> (individual differences are never discussed)</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>Background music may help the audience to make certain connections within the film → <strong>TRUE</strong> ('may aid viewer understanding by linking scenes')</label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>Audiences tend to be aware of how the background music is affecting them → <strong>FALSE</strong> ('noted by only our subconscious minds')</label></div></div>
+<div class="exercise-block"><h3>Q24–26 · Complete the sentence (A–E)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Check the grammar of each ending first.</p><div class="ex-item"><span class="ex-num">24.</span><label>The audience's response to different parts of a film can be controlled → <strong>C</strong> if voice, sound and music are combined appropriately</label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>The feelings and motivations of characters become clear → <strong>A</strong> when the audience listens to the dialogue</label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>A character seems to be a real person rather than an actor → <strong>E</strong> when the actor's appearance, voice and moves are consistent with each other</label></div></div>
+<div class="exercise-block"><h3>Locating practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph holds each idea?</p><div class="ex-item"><span class="ex-num">27.</span><label>the three essential ingredients → <strong>paragraph 1</strong></label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>the Sobchacks' quotation → <strong>the paragraph on 2001</strong></label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>the ambulance siren → <strong>the paragraph on asynchronous effects</strong></label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>creaky doors in horror films → <strong>final paragraph</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What are the three essential ingredients of a sound track?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. dialogue, silence and echo</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. voice, image and rhythm</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the human voice, sound effects and music</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. speech, song and noise</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Whose responsibility is the sound track, ultimately?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. the director's</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. the sound mixer's</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. the composer's</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. the actors'</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why does the audience often not distinguish actor from character?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Actors always play themselves.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. The texture of the voice supplies an element of character.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Films use documentary techniques.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Audiences do not read credits.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What was notable about the dialogue in '2001'?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It was poetic.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It was in many languages.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It was improvised.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. There was little of it and most was banal.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What effect does the dialogue in 'Bringing Up Baby' create?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. careful reflection</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. emotional depth</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. a whirlwind of activity and pure escapism</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. documentary realism</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What is a synchronous sound effect?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. a sound matched with what is seen</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. music added after filming</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a sound with no visible source</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. dialogue recorded separately</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What example of an asynchronous sound is given?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. a piano being played</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. an ambulance siren behind an arguing couple</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. a door clicking</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. footsteps on stairs</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does the ambulance siren add, besides emotion?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. humour</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. suspense</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. rhythm</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. realism by acknowledging the city setting</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What is background music usually meant to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. be noticed and admired</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. replace dialogue</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. add emotion and rhythm without being noticeable</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. identify the historical period</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">How can dissonant music be used?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. to indicate an approaching but unseen menace</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. to signal a happy ending</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. to introduce a new character</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. to mark a flashback</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How does a repeated musical theme help the audience?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It fills silence.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. It reminds them of salient motifs or ideas by linking scenes.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It shows the passage of time.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. It identifies the composer.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What does the writer say we need to develop?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. better cinema technology</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. louder sound systems</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. more film criticism</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. an awareness of film sound as well as film space</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 2 — Answers (Q14–Q26)</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">B</div><div class="answer-note">'we really cannot afford to underestimate the importance of film sound'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">A</div><div class="answer-note">'the audience perceives little or no difference between the character and the actor'.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div><div class="answer-note">In <em>2001</em> the banal dialogue served to show 'the inadequacy of human responses'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div><div class="answer-note">The frenetic dialogue underscores the dizzy quality of the character and the absurdity of the film.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">C</div><div class="answer-note">'the sound mixer may call attention to the click with an increase in volume'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">TRUE</div><div class="answer-note">'so ubiquitous as to be noticeable in its absence'.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">TRUE</div><div class="answer-note">'background music often foreshadows a change in mood'.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Differences between individual viewers are never discussed.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">TRUE</div><div class="answer-note">'Background music may aid viewer understanding by linking scenes'.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">FALSE</div><div class="answer-note">The effects 'are noted by only our subconscious minds'.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">C</div><div class="answer-note">'These three tracks must be mixed and balanced so as to produce the necessary emphases which in turn create desired effects'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">A</div><div class="answer-note">'dialogue serves to tell the story and expresses feelings and motivations of characters'.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">E</div><div class="answer-note">'When voice textures fit the performer's physiognomy and gestures, a whole and very realistic persona emerges'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Locating</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">paragraph 1</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">the paragraph on 2001</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">the paragraph on asynchronous effects</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">final paragraph</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

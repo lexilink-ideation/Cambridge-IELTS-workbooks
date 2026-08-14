@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 3 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 11 — Test 3 — Listening Part 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p><strong>Helen</strong> and <strong>Jeremy</strong> discuss their creative-writing project. Jeremy has written a story called <strong>'The Forest'</strong> and Helen has illustrated it. First they agree on <strong>changes to three drawings</strong> (Q21–26), then they divide up the <strong>written report</strong> between them (Q27–30).</p><p>前半是表格填空,后半是<strong>“谁来写”</strong>配对——注意 D 选项“两人都不写”。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> In Q27–30 the four options are A (Helen only), B (Jeremy only), C (both), D (neither). Option D is easy to miss — it appears when the pair realise a section is <em>not</em> part of the report at all. Listen for 'So it isn't going to be part of the report at all?'</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">atmosphere</span></td><td><span class="pos">n.</span></td><td>the mood or feeling of a place</td><td class="zh">氛围;气氛</td><td>'they really create the <em>atmosphere</em> I had in mind'</td><td class="note">Jeremy's praise for the drawings.</td></tr>
+<tr><td><span class="word">static</span></td><td><span class="pos">adj.</span></td><td>not moving; without action</td><td class="zh">静止的</td><td>'the drawing's a bit too <em>static</em>'</td><td class="note">Why the cave picture needs a figure (Q21–22).</td></tr>
+<tr><td><span class="word">have a go at</span></td><td><span class="pos">v. phr.</span></td><td>to attempt</td><td class="zh">试着做</td><td>'I'll <em>have a go at</em> that'</td><td class="note">Very common in spoken British English.</td></tr>
+<tr><td><span class="word">carnival procession</span></td><td><span class="pos">n. phr.</span></td><td>a parade with music and costumes</td><td class="zh">狂欢节游行</td><td>'you wanted them to be watching a <em>carnival procession</em>'</td><td class="note">Background to Q23–24.</td></tr>
+<tr><td><span class="word">tree trunk</span></td><td><span class="pos">n. phr.</span></td><td>the main stem of a tree</td><td class="zh">树干</td><td>'sitting on the tree <em>trunk</em> on the right of the picture'</td><td class="note">Where Malcolm sits.</td></tr>
+<tr><td><span class="word">be left out of</span></td><td><span class="pos">v. phr.</span></td><td>to be excluded from</td><td class="zh">被排除在外</td><td>'he's been <em>left out of</em> all the fun'</td><td class="note">The reason Malcolm is crying (Q24).</td></tr>
+<tr><td><span class="word">contrast with</span></td><td><span class="pos">v.</span></td><td>to be strikingly different from</td><td class="zh">与…形成对比</td><td>'that'll <em>contrast</em> nicely <em>with</em> the next picture'</td><td class="note">Crying now, laughing later.</td></tr>
+<tr><td><span class="word">stream out behind</span></td><td><span class="pos">v. phr.</span></td><td>to flow backwards in the wind</td><td class="zh">在身后飘扬</td><td>'They can be <em>streaming out behind</em> the people'</td><td class="note">How the scarves show speed (Q26).</td></tr>
+<tr><td><span class="word">illustrate</span></td><td><span class="pos">v.</span></td><td>to add pictures to a text</td><td class="zh">为…画插图</td><td>'I just need to finish <em>illustrating</em> it'</td><td class="note">The division of labour in the project.</td></tr>
+<tr><td><span class="word">draft</span></td><td><span class="pos">v.</span></td><td>to write a first version</td><td class="zh">起草</td><td>'How do you feel about <em>drafting</em> something?'</td><td class="note">Q27 — Helen drafts the planning section.</td></tr>
+<tr><td><span class="word">come up with</span></td><td><span class="pos">phr. v.</span></td><td>to think of / produce</td><td class="zh">想出</td><td>'how we <em>came up with</em> the ideas for our two stories'</td><td class="note">Q28 — both will write on this.</td></tr>
+<tr><td><span class="word">interpretation</span></td><td><span class="pos">n.</span></td><td>an explanation of what something means</td><td class="zh">诠释;解读</td><td>'our <em>interpretation</em> of the stories'</td><td class="note">Q29 — done later by the class, not in the report.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">work out where we are</span></td><td>check our progress</td><td class="zh">弄清楚我们的进度</td></tr>
+<tr><td><span class="phrase">I had in mind</span></td><td>I was imagining</td><td class="zh">我心里想的</td></tr>
+<tr><td><span class="phrase">go ahead</span></td><td>please continue</td><td class="zh">请说;请继续</td></tr>
+<tr><td><span class="phrase">what about putting in…?</span></td><td>how about adding…?</td><td class="zh">加上…怎么样?</td></tr>
+<tr><td><span class="phrase">I see what you mean</span></td><td>I understand your point</td><td class="zh">我明白你的意思</td></tr>
+<tr><td><span class="phrase">that's easy enough</span></td><td>that is not difficult</td><td class="zh">那不难</td></tr>
+<tr><td><span class="phrase">I'd be happier if you did it</span></td><td>I would prefer you to do it</td><td class="zh">你来做我更放心</td></tr>
+<tr><td><span class="phrase">go through it together</span></td><td>review it together</td><td class="zh">一起过一遍</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Drawing 1: the cave (Q21–Q22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD ONLY. A place surrounded by trees, plus a new animal.</p><div class="ex-item"><span class="ex-num">21.</span><label>A ___ surrounded by trees → <strong>cave</strong> (Q21)</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>Add Malcolm and a ___ noticing him → <strong>tiger</strong> ('it could be sitting under a tree washing itself') (Q22)</label></div></div>
+<div class="exercise-block"><h3>B — Drawing 2: the crowd (Q23–Q24)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">What the people are doing, and what Malcolm does.</p><div class="ex-item"><span class="ex-num">23.</span><label>People who are ___ outside the forest → <strong>dancing</strong> ('the drawing of the crowd of men and women dancing') (Q23)</label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>Add Malcolm sitting on a tree trunk and ___ → <strong>crying</strong> ('he's been left out of all the fun') (Q24)</label></div></div>
+<div class="exercise-block"><h3>C — Drawing 3: the skaters (Q25–Q26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">What the ice covers, and what each person gets.</p><div class="ex-item"><span class="ex-num">25.</span><label>Ice-skaters on ___ covered with ice → <strong>grass</strong> ('they're supposed to be skating on grass') (Q25)</label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>Add a ___ for each person → <strong>scarf</strong> (in addition to the wool hats) (Q26)</label></div></div>
+<div class="exercise-block"><h3>D — Who writes what (Q27–Q30)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">A = Helen only, B = Jeremy only, C = both, D = neither.</p><div class="ex-item"><span class="ex-num">27.</span><label>How they planned the project → <strong>A</strong> Helen only ('How do you feel about drafting something?')</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>How they had ideas for their stories → <strong>C</strong> both ('I've started writing something about that, so why don't you do the same')</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>An interpretation of their stories → <strong>D</strong> neither (the class will do it later in a discussion)</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>Comments on the illustrations → <strong>B</strong> Jeremy only (Helen: 'I'd be happier if you did it')</label></div></div>
+<div class="exercise-block"><h3>E — Prediction drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before listening, predict the word class for each table gap.</p><div class="ex-item"><span class="ex-num">31.</span><label>'A ___ surrounded by trees' → a <strong>place noun</strong></label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>'a ___ noticing him' → an <strong>animate noun</strong></label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>'People who are ___ outside the forest' → an <strong>-ing verb</strong></label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>'Malcolm sitting on a tree trunk and ___' → an <strong>-ing verb</strong></label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>'a ___ for each person' → a <strong>clothing noun</strong></label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">The table words are said almost directly — but the sentence around them is long. Practise picking out the noun.</div><div class="para-card"><div class="para-card-header">Q22 — the tiger</div><div class="para-row"><div class="para-label">Table note</div><div class="para-value">Add Malcolm and a ___ noticing him</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'What about putting in a tiger … it could be sitting under a tree washing itself' — 'the tiger stops … when it sees Malcolm walking past'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">'when it sees Malcolm' = 'noticing him' → <strong>tiger</strong></div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q24 — crying</div><div class="para-row"><div class="para-label">Table note</div><div class="para-value">Add Malcolm sitting on a tree trunk and ___</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'he's been left out of all the fun, so I'd like him to be crying'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">the reason comes first, the answer second — keep listening past 'so'</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q25 — grass</div><div class="para-row"><div class="para-label">Table note</div><div class="para-value">Ice-skaters on ___ covered with ice</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'they're supposed to be skating on grass, aren't they?' — 'That's right, and it's frozen over'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">'frozen over' = 'covered with ice' → <strong>grass</strong></div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q27 — planning section</div><div class="para-row"><div class="para-label">Question</div><div class="para-value">how they planned the project</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'you've had most of the good ideas so far. How do you feel about drafting something, then we can go through it together?'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">Helen drafts it alone; discussing it afterwards does not make it 'both' → <strong>A</strong></div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q29 — interpretation</div><div class="para-row"><div class="para-label">Question</div><div class="para-value">an interpretation of their stories</div></div><div class="para-row"><div class="para-label">What you hear</div><div class="para-value">'everyone in the class is going to read each other's stories and come up with their own interpretations, which we're going to discuss'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">it happens in class, not in the report → <strong>D (neither)</strong></div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Casual student-discussion chunks. Listen for the polite suggestion forms.</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">They really create the atmosphere I had in mind.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">The drawing's a bit too static, isn't it?</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">What about putting in a tiger?</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">He's been left out of all the fun, so I'd like him to be crying.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">They're supposed to be skating on grass, aren't they?</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">Maybe you could give each of them a scarf as well.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">How do you feel about drafting something?</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">I find it quite hard to write about. I'd be happier if you did it.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is the title of Jeremy's story?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. The Carnival</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. The Forest</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. The Cave</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. The Tiger</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What does Jeremy think of Helen's drawings overall?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. They are brilliant.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. They are too dark.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. They need redrawing.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. They are unfinished.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What is wrong with the cave drawing?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. It is too dark.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. It has no trees.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. It is too static.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. It is the wrong size.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What is the tiger doing when Malcolm passes?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. sleeping</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. hunting</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. drinking</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. washing itself under a tree</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why did Helen not draw the carnival procession?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. She ran out of time.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. She thought it would be too crowded.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Jeremy changed the story.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. She could not draw crowds.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Where will Malcolm sit in the crowd drawing?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. on a tree trunk on the right</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. in the middle of the crowd</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. on a rock on the left</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. in a tree</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What will Malcolm do in the following picture?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. run away</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. dance</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. laugh at the clowns</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. sleep</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What are the skaters wearing already?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. gloves</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. boots</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. coats</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. wool hats</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">How will the scarves suggest speed?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. by being bright colours</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. by streaming out behind the skaters</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. by being very long</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. by lying on the ice</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Who wrote the story and who did the illustrations?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Jeremy wrote 'The Forest'; Helen illustrated it.</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Helen wrote it; Jeremy illustrated it.</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Both wrote and both illustrated.</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. A third student illustrated it.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why does Jeremy write about the illustrations?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. He drew them.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Helen refused to help.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Helen finds it hard to write about drawing.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The tutor asked him to.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">'Have a go at that' means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. criticise it</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. refuse it</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. finish it quickly</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. try to do it</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 3 — Answers (Q21–Q30)</h3><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">cave</div><div class="answer-note">'I'm not sure about the drawing of the cave — it's got trees all around it'.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">tiger</div><div class="answer-note">'What about putting in a tiger … sitting under a tree washing itself'.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">dancing</div><div class="answer-note">'the drawing of the crowd of men and women dancing … just outside the forest'.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">crying</div><div class="answer-note">'he's been left out of all the fun, so I'd like him to be crying'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">grass</div><div class="answer-note">'they're supposed to be skating on grass … and it's frozen over'.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">scarf</div><div class="answer-note">'Maybe you could give each of them a scarf as well'.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">A (Helen only)</div><div class="answer-note">Jeremy asks Helen to draft the planning section.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">C (both)</div><div class="answer-note">Jeremy has started writing about it and asks Helen to do the same.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">D (neither)</div><div class="answer-note">Interpretations will be produced by the whole class and discussed.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">B (Jeremy only)</div><div class="answer-note">Helen: 'I'd be happier if you did it'.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

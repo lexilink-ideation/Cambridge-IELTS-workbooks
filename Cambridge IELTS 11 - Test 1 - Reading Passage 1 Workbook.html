@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 1 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 11 — Test 1 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'Crop-growing skyscrapers'</strong> asks how we will feed three billion extra people by 2050. It explains the idea of the <strong>vertical farm</strong> — a multi-storey building where crops grow in controlled conditions in the middle of a city — then lists the claimed <strong>advantages</strong> and the main <strong>drawback</strong> (artificial light). It ends by saying most experts think urban <strong>rooftops</strong> are more likely than skyscrapers.</p><p>题型:句子填空 Q1–7(NO MORE THAN TWO WORDS)+ TRUE/FALSE/NOT GIVEN Q8–13。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> Sentence completion answers appear <em>in passage order</em>, so Q1's answer is near the start and Q7's near the end. For T/F/NG, FALSE requires the passage to say the <em>opposite</em>; NOT GIVEN means the passage never discusses the point at all.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">conservative estimate</span></td><td><span class="pos">n. phr.</span></td><td>a deliberately low, cautious figure</td><td class="zh">保守估计</td><td>'Applying the most <em>conservative estimates</em> to current demographic trends'</td><td class="note">Signals the writer is understating, not exaggerating.</td></tr>
+<tr><td><span class="word">demographic</span></td><td><span class="pos">adj.</span></td><td>relating to population statistics</td><td class="zh">人口统计的</td><td>'current <em>demographic</em> trends'</td><td class="note">Common Academic Reading word.</td></tr>
+<tr><td><span class="word">lay waste</span></td><td><span class="pos">v. phr.</span></td><td>to destroy or ruin land</td><td class="zh">毁坏;荒废</td><td>'some 15% of that has been <em>laid waste</em> by poor management practices'</td><td class="note">Key to Q9 (TRUE — humans damaged food-producing land).</td></tr>
+<tr><td><span class="word">in vogue</span></td><td><span class="pos">idiom</span></td><td>fashionable; popular</td><td class="zh">流行的</td><td>'hothouse production of tomatoes … has been <em>in vogue</em> for some time'</td><td class="note">Q1 — the crop already grown indoors is <strong>tomatoes</strong>.</td></tr>
+<tr><td><span class="word">proponent</span></td><td><span class="pos">n.</span></td><td>a person who supports an idea</td><td class="zh">支持者;倡导者</td><td>'<em>proponents</em> claim, vertical farms offer the promise of urban renewal'</td><td class="note">Synonym of 'supporter' / 'advocate'.</td></tr>
+<tr><td><span class="word">despoil</span></td><td><span class="pos">v.</span></td><td>to spoil the natural beauty of a place</td><td class="zh">糟蹋;掠夺</td><td>'we <em>despoiled</em> most of the land we worked'</td><td class="note">Formal synonym of 'damage'.</td></tr>
+<tr><td><span class="word">verdant</span></td><td><span class="pos">adj.</span></td><td>green with plants</td><td class="zh">青翠的</td><td>'turning <em>verdant</em>, natural ecozones into semi-arid deserts'</td><td class="note">Contrast word: verdant ↔ semi-arid.</td></tr>
+<tr><td><span class="word">prohibitively expensive</span></td><td><span class="pos">adj. phr.</span></td><td>so expensive that it stops you</td><td class="zh">贵得让人无法承受</td><td>'Generating enough light could be <em>prohibitively expensive</em>'</td><td class="note">Supports the 'artificial light' drawback (Q5).</td></tr>
+<tr><td><span class="word">detrimental</span></td><td><span class="pos">adj.</span></td><td>harmful</td><td class="zh">有害的</td><td>'reduce the <em>detrimental</em> impact it would have on the environment'</td><td class="note">High-frequency Band-7 word.</td></tr>
+<tr><td><span class="word">aspiration</span></td><td><span class="pos">n.</span></td><td>a hope or ambition</td><td class="zh">愿望;抱负</td><td>'rather a future <em>aspiration</em> than a likelihood'</td><td class="note">Marks the writer's doubt.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">scale up this technology</span></td><td>make the technology much bigger</td><td class="zh">扩大这项技术的规模</td></tr>
+<tr><td><span class="phrase">cutting-edge technologies</span></td><td>the newest and most advanced technology</td><td class="zh">尖端技术</td></tr>
+<tr><td><span class="phrase">all year round</span></td><td>during every season</td><td class="zh">全年;一年到头</td></tr>
+<tr><td><span class="phrase">take their toll</span></td><td>cause serious damage</td><td class="zh">造成损失</td></tr>
+<tr><td><span class="phrase">return energy to the grid</span></td><td>send electricity back into the national supply</td><td class="zh">把能源送回电网</td></tr>
+<tr><td><span class="phrase">cut out the need for</span></td><td>remove the necessity of</td><td class="zh">省去…的必要</td></tr>
+<tr><td><span class="phrase">a major drawback</span></td><td>an important disadvantage</td><td class="zh">一个主要缺点</td></tr>
+<tr><td><span class="phrase">more often than not</span></td><td>usually</td><td class="zh">往往;多半</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">An estimated 10⁹ hectares of new land (about 20% larger than Brazil) will be needed to grow enough food to feed them, if traditional farming methods continue as they are practised today.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">An estimated 10⁹ hectares of new land will be needed</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">to grow enough food to feed them (purpose infinitive); if traditional farming methods continue as they are practised today (conditional clause); '(about 20% larger than Brazil)' = bracketed comparison</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Passive future 'will be needed' + purpose infinitive + first conditional 'if'-clause placed at the end.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If we farm the old way, we will need a huge area of new land — bigger than Brazil — to feed everyone.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果继续沿用今天的传统耕作方式,估计还需要约10亿公顷新土地(比巴西还大约20%)才能种出足够的粮食。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Situated in the heart of urban centres, they would drastically reduce the amount of transportation required to bring food to consumers.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">they would drastically reduce the amount of transportation</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Situated in the heart of urban centres (reduced participle clause = 'Because they would be situated…'); required to bring food to consumers (reduced relative = 'that is required')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two reduced clauses around one short main clause — very typical of IELTS Reading.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because they stand in city centres, far less transport would be needed to deliver food.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于坐落在城市中心,它们将大幅减少把食物运送给消费者所需的运输量。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Although the system would consume energy, it would return energy to the grid via methane generation from composting non-edible parts of plants.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">it would return energy to the grid</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Although the system would consume energy (concession clause); 'via methane generation from composting…' = prepositional phrase of method</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Although' sets up a concession: the disadvantage is admitted, then outweighed.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The system uses energy, but it also makes energy by turning plant waste into methane.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">虽然该系统会消耗能源,但它可以通过将植物不可食用部分堆肥产生甲烷,把能源送回电网。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Without it, those plants nearest the windows would be exposed to more sunlight and grow more quickly, reducing the efficiency of the system.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">those plants nearest the windows would be exposed to more sunlight and grow more quickly</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Without it (conditional prepositional phrase = 'If there were no artificial light'); reducing the efficiency of the system (result participle)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'Without + noun' replaces an if-clause; '-ing' at the end shows the <em>result</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If there were no artificial light, plants by the window would grow faster than the rest, so the system would work less well.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果没有人工照明,靠窗的植物会接受更多阳光、长得更快,从而降低整个系统的效率。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">While it is possible that much of our food will be grown in skyscrapers in future, most experts currently believe it is far more likely that we will simply use the space available on urban rooftops.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">most experts currently believe (that) it is far more likely that we will simply use the space available on urban rooftops</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">While it is possible that much of our food will be grown in skyscrapers in future (concession clause)</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'While' = 'although'; two embedded that-clauses; comparative 'far more likely'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Skyscraper farming may happen, but experts think rooftop farming is much more likely.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">虽然将来我们大部分食物有可能在摩天大楼中种植,但多数专家目前认为,更可能的是我们只会利用城市屋顶的空间。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Use the real sentences above. First find the skeleton (subject + verb), then rebuild the idea in your own words.</div><div class="exercise-block"><h3>A — Clause identification</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the type of the underlined clause.</p><div class="ex-item"><span class="ex-num">1.</span><label>'<em>if traditional farming methods continue as they are practised today</em>' → <strong>conditional (if) clause</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'<em>Situated in the heart of urban centres</em>' → <strong>reduced participle clause of reason</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'<em>Although the system would consume energy</em>' → <strong>concession clause</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'<em>reducing the efficiency of the system</em>' → <strong>participle clause of result</strong></label></div></div>
+<div class="exercise-block"><h3>B — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten the full clause into a participle phrase.</p><div class="ex-item"><span class="ex-num">5.</span><label>'the transportation that is required to bring food' → '<strong>the transportation required to bring food</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>'Because they are situated in city centres, they would reduce transport' → '<strong>Situated in city centres, they would reduce transport</strong>'</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each phrase in simpler English.</p><div class="ex-item"><span class="ex-num">7.</span><label>'has been in vogue for some time' → <strong>has been popular for a while</strong></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>'prohibitively expensive' → <strong>too expensive to be worth doing</strong></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>'take their toll each year' → <strong>cause serious damage every year</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'the detrimental impact' → <strong>the harmful effect</strong></label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each Chinese idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">11.</span><label>全球超过80%适合耕种的土地已被使用。 → <strong>Over 80% of the land suitable for raising crops is already in use.</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>所有作物都能在人工控制的最佳条件下全年生产。 → <strong>All crops could be produced all year round in artificially controlled, optimum growing conditions.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Problem → proposed solution → evaluation.</strong> Paragraphs 1–2 give the problem (population growth, damaged land); paragraphs 3–5 give the solution (vertical farms) and its advantages; paragraphs 6–8 evaluate it and prefer rooftops. Knowing this shape tells you roughly where each answer lives.</p>
+<p><strong>Claim vs. fact.</strong> Watch the reporting verbs: 'proponents <em>claim</em>', 'supporters <em>claim</em> many potential advantages', 'most experts currently <em>believe</em>'. These mark opinions, and they matter for T/F/NG (Q10, Q12).</p>
+<p><strong>Contrast signals.</strong> 'What is new is…', 'However', 'A major drawback… however', 'While it is possible…' — each of these turns the argument. Q5 and Q7 both sit immediately after a contrast marker.</p>
+<p><strong>Cause and effect chains.</strong> No artificial light → plants near windows get more sun → they grow faster → efficiency falls. IELTS often tests one link in such a chain rather than the whole chain.</p></div><div class="exercise-block"><h3>Q1–7 · Sentence completion (NO MORE THAN TWO WORDS)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Copy the exact words. Check that your answer fits the grammar of the sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label>Some food plants, including ___, are already grown indoors → <strong>tomatoes</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Vertical farms would be located in ___ → <strong>urban centres / centers</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Vertical farms could use methane from plants and animals to produce ___ → <strong>energy</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The consumption of ___ would be cut because agricultural vehicles would be unnecessary → <strong>fossil fuel</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The fact that vertical farms would need ___ light is a disadvantage → <strong>artificial</strong></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>One form of vertical farming involves planting in ___ which are not fixed → <strong>(stacked) trays</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The most probable development is that food will be grown on ___ in towns and cities → <strong>(urban) rooftops</strong></label></div></div>
+<div class="exercise-block"><h3>Q8–13 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide first WHERE the statement is discussed, then compare meanings word by word.</p><div class="ex-item"><span class="ex-num">8.</span><label>Methods for predicting the Earth's population have recently changed → <strong>NOT GIVEN</strong> (estimates are used, but no change in method is mentioned)</label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Human beings are responsible for some of the destruction to food-producing land → <strong>TRUE</strong> ('15% … laid waste by poor management practices')</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>The crops produced in vertical farms will depend on the season → <strong>FALSE</strong> ('crops would be produced all year round')</label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Some damage to food crops is caused by climate change → <strong>TRUE</strong> ('due to a rapidly changing climate … destroying millions of tons of valuable crops')</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Fertilisers will be needed for certain crops in vertical farms → <strong>FALSE</strong> ('eliminating the need for herbicides, pesticides and fertilisers')</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Vertical farming will make plants less likely to be affected by infectious diseases → <strong>TRUE</strong> ('greatly reduce the incidence of many infectious diseases')</label></div></div>
+<div class="exercise-block"><h3>Locating practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? (Answers in the key.)</p><div class="ex-item"><span class="ex-num">14.</span><label>the size of land needed by 2050 → <strong>paragraph 1</strong></label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>the list of claimed advantages → <strong>paragraph 4</strong></label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>the moving-tray system → <strong>paragraph 6</strong></label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>the writer's final judgement → <strong>final paragraph</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">By 2050, what proportion of people will live in urban centres?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. about 50%</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. about 60%</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. nearly 80%</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. over 90%</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What crop is given as an example of indoor growing that already exists?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. tomatoes</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. rice</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. wheat</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. potatoes</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">'In vogue' most nearly means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. expensive</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. fashionable</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. experimental</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. illegal</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why would vertical farms cut transport?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. They use electric lorries.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. They grow fewer crops.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. They export less food.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. They stand in the middle of cities.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which is NOT listed as an advantage of vertical farming?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. year-round production</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. no weather-related crop failures</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. cheaper artificial lighting</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. organic growing without pesticides</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What is described as a major drawback?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. the cost of land</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. the need for artificial light</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. a shortage of workers</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. public opposition</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">'Prohibitively expensive' means the cost is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. so high it prevents the plan</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. slightly above average</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. falling quickly</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. paid by the government</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How does the moving-tray system help plants?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. It waters them evenly.</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. It keeps them warm.</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. It protects them from pests.</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. It lets them all get enough sunlight.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What do most experts currently think is most likely?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. food grown in skyscrapers</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. food grown on urban rooftops</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. a return to traditional farming</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. food grown underground</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">'Laid waste by poor management practices' tells us the damage was…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. caused by storms</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. caused by disease</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. caused by people</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. impossible to avoid</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Q12 ('Fertilisers will be needed for certain crops') is FALSE because the passage says vertical farms would…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. eliminate the need for fertilisers</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. use only organic fertilisers</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. use fertilisers in winter only</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. import fertilisers</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which signal word introduces the writer's final, cautious judgement?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Therefore</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Moreover</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. For instance</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. While it is possible that…</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 1 — Answers (Q1–Q13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">tomatoes</div><div class="answer-note">'hothouse production of tomatoes and other produce'.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">urban centres / centers</div><div class="answer-note">'Situated in the heart of urban centres'.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">energy</div><div class="answer-note">'it would return energy to the grid via methane generation'.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">fossil fuel</div><div class="answer-note">'dramatically reduce fossil fuel use, by cutting out the need for tractors'.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">artificial</div><div class="answer-note">'the plants would require artificial light'.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">(stacked) trays</div><div class="answer-note">'grow plants in stacked trays that move on rails'.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">(urban) rooftops</div><div class="answer-note">'use the space available on urban rooftops'.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">No comparison of old and new prediction methods.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">TRUE</div><div class="answer-note">'some 15% of that has been laid waste by poor management practices'.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">FALSE</div><div class="answer-note">'crops would be produced all year round'.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">TRUE</div><div class="answer-note">'due to a rapidly changing climate … destroying millions of tons of valuable crops'.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">FALSE</div><div class="answer-note">'eliminating the need for herbicides, pesticides and fertilisers'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">TRUE</div><div class="answer-note">'greatly reduce the incidence of many infectious diseases'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Locating</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">paragraph 1</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">paragraph 4</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">paragraph 6</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">final paragraph</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

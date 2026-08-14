@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 2 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 11 — Test 2 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'Raising the Mary Rose'</strong> tells how a sixteenth-century English warship, sunk in the Solent in 1545, was rediscovered and finally lifted from the seabed in 1982. The passage is largely a <strong>chronology</strong> (1545 → 1836 → 1840 → 1965 → 1967 → 1971 → 1979 → 1982) followed by a detailed <strong>three-stage description</strong> of the lifting operation.</p><p>题型:T/F/NG Q1–4 + 事件配年份 Q5–8 + 示意图标注 Q9–13。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> For date-matching (Q5–8), do not read the whole passage — <em>scan for the numbers</em>. Every date in the List of Dates appears in the text, and the sentence containing it holds the answer.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">fleet</span></td><td><span class="pos">n.</span></td><td>a group of warships</td><td class="zh">舰队</td><td>'English and French <em>fleets</em> were engaged in a sea battle'</td><td class="note">Sets the scene, 19 July 1545.</td></tr>
+<tr><td><span class="word">vessel</span></td><td><span class="pos">n.</span></td><td>a ship or large boat</td><td class="zh">船只</td><td>'Among the English <em>vessels</em> was a warship'</td><td class="note">Formal synonym of 'ship'.</td></tr>
+<tr><td><span class="word">outdated</span></td><td><span class="pos">adj.</span></td><td>old-fashioned; no longer suitable</td><td class="zh">过时的</td><td>'some maintain that she was <em>outdated</em>, overladen and sailing too low'</td><td class="note">Part of the disputed cause of sinking (Q1 TRUE).</td></tr>
+<tr><td><span class="word">overladen</span></td><td><span class="pos">adj.</span></td><td>carrying too much weight</td><td class="zh">超载的</td><td>'outdated, <em>overladen</em> and sailing too low in the water'</td><td class="note">One of the competing explanations.</td></tr>
+<tr><td><span class="word">undisputed</span></td><td><span class="pos">adj.</span></td><td>that nobody argues about</td><td class="zh">无争议的</td><td>'What is <em>undisputed</em>, however, is that the Mary Rose sank'</td><td class="note">Contrast with 'accounts vary' (Q1).</td></tr>
+<tr><td><span class="word">hull</span></td><td><span class="pos">n.</span></td><td>the main body of a ship</td><td class="zh">船体</td><td>'The <em>hull</em> (the body of the ship) acted as a trap for sand and mud'</td><td class="note">Defined in brackets — free glossary.</td></tr>
+<tr><td><span class="word">starboard / port</span></td><td><span class="pos">n.</span></td><td>the right / left side of a ship</td><td class="zh">右舷/左舷</td><td>'lying on her <em>starboard</em> (right) side'</td><td class="note">Q3 TRUE — nearly all the starboard half survived.</td></tr>
+<tr><td><span class="word">erode</span></td><td><span class="pos">v.</span></td><td>to wear away gradually</td><td class="zh">侵蚀</td><td>'the exposed port side to be <em>eroded</em> by marine organisms'</td><td class="note">Contrast with the protected starboard side.</td></tr>
+<tr><td><span class="word">protrude</span></td><td><span class="pos">v.</span></td><td>to stick out</td><td class="zh">突出;伸出</td><td>'a timber <em>protruding</em> slightly from the seabed'</td><td class="note">How the fishermen's gear was caught (Q8, 1836).</td></tr>
+<tr><td><span class="word">intermittently</span></td><td><span class="pos">adv.</span></td><td>with pauses in between; not continuously</td><td class="zh">断断续续地</td><td>'Deane continued diving on the site <em>intermittently</em> until 1840'</td><td class="note">Q6 — one person's exploration stopped in 1840.</td></tr>
+<tr><td><span class="word">fade into obscurity</span></td><td><span class="pos">v. phr.</span></td><td>to be forgotten</td><td class="zh">湮没无闻</td><td>'The Mary Rose then <em>faded into obscurity</em> for another hundred years'</td><td class="note">Bridges 1840 to 1965.</td></tr>
+<tr><td><span class="word">salvage</span></td><td><span class="pos">v./n.</span></td><td>to rescue a ship or its cargo from the sea</td><td class="zh">打捞</td><td>'The decision whether or not to <em>salvage</em> the wreck'</td><td class="note">Key word for Q7 (1982 go-ahead).</td></tr>
+<tr><td><span class="word">cradle</span></td><td><span class="pos">n.</span></td><td>a frame that supports something being moved</td><td class="zh">托架;支架</td><td>'transferred underwater into the lifting <em>cradle</em>'</td><td class="note">Q12 answer.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">be engaged in</span></td><td>be taking part in</td><td class="zh">参与;交战</td></tr>
+<tr><td><span class="phrase">accounts vary</span></td><td>reports differ</td><td class="zh">说法不一</td></tr>
+<tr><td><span class="phrase">come to rest</span></td><td>stop moving and settle</td><td class="zh">停落;安置</td></tr>
+<tr><td><span class="phrase">act as a trap for</span></td><td>catch and hold</td><td class="zh">起到捕集…的作用</td></tr>
+<tr><td><span class="phrase">in conjunction with</span></td><td>together with</td><td class="zh">与…合作</td></tr>
+<tr><td><span class="phrase">prove unsatisfactory</span></td><td>turn out not to be good enough</td><td class="zh">证明不令人满意</td></tr>
+<tr><td><span class="phrase">a treasure trove of</span></td><td>a rich collection of</td><td class="zh">大量珍贵的…</td></tr>
+<tr><td><span class="phrase">give the go-ahead</span></td><td>give official permission to start</td><td class="zh">批准开始</td></tr>
+<tr><td><span class="phrase">clear of the seabed</span></td><td>no longer touching the seabed</td><td class="zh">离开海床</td></tr>
+<tr><td><span class="phrase">hold their breath</span></td><td>wait anxiously</td><td class="zh">屏息以待</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Accounts of what happened to the ship vary: while witnesses agree that she was not hit by the French, some maintain that she was outdated, overladen and sailing too low in the water, others that she was mishandled by undisciplined crew.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Accounts of what happened to the ship vary</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">while witnesses agree that she was not hit by the French (concession); 'some maintain that…, others (maintain) that…' = two contrasting reports with ellipsis</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Colon introduces the explanation; 'others that…' leaves out the repeated verb 'maintain'.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People disagree about why she sank: some blame the ship's condition, others the crew.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">关于这艘船遭遇的说法不一:目击者一致认为她并未被法军击中,但有人坚称她已过时、超载、吃水过低,另一些人则认为是缺乏纪律的船员操作不当。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The hull (the body of the ship) acted as a trap for the sand and mud carried by Solent currents.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The hull acted as a trap for the sand and mud</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'(the body of the ship)' = bracketed definition; 'carried by Solent currents' = reduced relative ('that was carried')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Brackets give a definition; a past participle reduces a passive relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The ship's body caught the sand and mud that the currents brought.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">船体(即船的主体)起到了捕集索伦特海峡水流所携带泥沙的作用。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">As a result, the starboard side filled rapidly, leaving the exposed port side to be eroded by marine organisms and mechanical degradation.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the starboard side filled rapidly</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'As a result' = result connector; 'leaving the exposed port side to be eroded…' = participle clause of consequence</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'leaving + object + to be + past participle' expresses an unintended consequence.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">So the right side filled with mud quickly, while the exposed left side was worn away.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">结果,右舷迅速被填满,而暴露在外的左舷则被海洋生物和机械作用侵蚀。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The problem of the hull being sucked back downwards into the mud was overcome by using 12 hydraulic jacks.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The problem … was overcome by using 12 hydraulic jacks</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'of the hull being sucked back downwards into the mud' = gerund phrase with its own subject ('the hull')</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'the problem of + noun + being + past participle' — a compressed passive gerund. Very common in technical writing.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Twelve hydraulic jacks stopped the hull from being pulled back down into the mud.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">船体被重新吸回泥中的问题,通过使用12个液压千斤顶得以解决。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">It was only when the hull was hanging freely from the lifting frame, clear of the seabed and the suction effect of the surrounding mud, that the salvage operation progressed to the second stage.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">the salvage operation progressed to the second stage</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'It was only when … that …' = cleft structure for emphasis; 'clear of the seabed and the suction effect…' = adjective phrase describing the hull</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Cleft sentence ('It was only when X that Y') puts strong emphasis on the condition.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Stage two began only after the hull hung free, away from the seabed and the mud's suction.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">只有当船体从起吊框架上自由悬挂、脱离海床和周围泥浆的吸力时,打捞作业才进入第二阶段。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">This passage rewards close reading of dates and of passive/technical structures.</div><div class="exercise-block"><h3>A — Date scanning</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say what happened in each year without looking back.</p><div class="ex-item"><span class="ex-num">1.</span><label>1545 → <strong>the Mary Rose sank in the Solent</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>1836 → <strong>fishermen's gear caught on the wreck — found by chance</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>1840 → <strong>Deane stopped diving on the site</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>1965 → <strong>McKee launched the 'Solent Ships' search</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>1967 → <strong>Edgerton's sonar revealed a large object</strong></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>1971 → <strong>part of the ship's frame was uncovered</strong></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>1979 → <strong>The Mary Rose Trust was formed</strong></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>1982 → <strong>the salvage was approved (January) and the hull lifted (11 October)</strong></label></div></div>
+<div class="exercise-block"><h3>B — Passive and gerund practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite each in the active voice.</p><div class="ex-item"><span class="ex-num">9.</span><label>'The problem was overcome by using 12 hydraulic jacks.' → '<strong>Twelve hydraulic jacks overcame the problem.</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'the hull was transferred underwater into the lifting cradle' → '<strong>They transferred the hull underwater into the lifting cradle.</strong>'</label></div></div>
+<div class="exercise-block"><h3>C — Reducing clauses</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Shorten each relative clause.</p><div class="ex-item"><span class="ex-num">11.</span><label>'the sand and mud that was carried by Solent currents' → '<strong>the sand and mud carried by Solent currents</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'a timber which was protruding slightly from the seabed' → '<strong>a timber protruding slightly from the seabed</strong>'</label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">13.</span><label>由于船下沉的方式,右舷几乎完整地保存了下来。 → <strong>Because of the way the ship sank, nearly all of the starboard half survived intact.</strong></label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>起吊框架被固定在起重机的吊钩上。 → <strong>The lifting frame was fixed to a hook attached to a crane.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Chronology.</strong> The passage is organised strictly by time. Each paragraph opens with a time marker: 'On 19 July 1545', 'During the seventeenth and eighteenth centuries', 'Then, on 16 June 1836', 'But in 1965', 'In 1967'. Use these as signposts.</p>
+<p><strong>Cause and effect.</strong> The ship sank on her starboard side → the hull trapped mud → the starboard side filled and was protected → the port side was exposed and eroded → nearly all the starboard half survived. Q3 tests one link in this chain.</p>
+<p><strong>Problem → solution (technical).</strong> Problem: the hull would be sucked back into the mud. Solution: 12 hydraulic jacks. Problem: the hull was an open shell. Solution: lift in three distinct stages. Diagram labels come from these solutions.</p>
+<p><strong>Contrast between 'agreed' and 'disputed'.</strong> 'Accounts vary … witnesses agree … some maintain … others … What is undisputed, however, is that…' Q1 depends entirely on recognising this contrast.</p>
+<p><strong>Process order.</strong> Stage 1: attach to lifting frame with bolts and wires, raise with jacks. Stage 2: crane lifts the frame; hull transferred into the lifting cradle via stabbing guides; air bags cushion it. Stage 3: lift the whole structure into the air.</p></div><div class="exercise-block"><h3>Q1–4 · TRUE / FALSE / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Find the sentence first, then compare the claims word by word.</p><div class="ex-item"><span class="ex-num">1.</span><label>There is some doubt about what caused the Mary Rose to sink → <strong>TRUE</strong> ('Accounts of what happened to the ship vary')</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The Mary Rose was the only ship to sink in the battle → <strong>NOT GIVEN</strong> (other ships' fates are never mentioned)</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Most of one side of the Mary Rose lay undamaged under the sea → <strong>TRUE</strong> ('nearly all of the starboard half survived intact')</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>McKee knew the wreck would contain many valuable objects → <strong>FALSE</strong> ('were as yet unaware that it also housed a treasure trove')</label></div></div>
+<div class="exercise-block"><h3>Q5–8 · Matching events to dates</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Scan for the numbers, then read one sentence either side.</p><div class="ex-item"><span class="ex-num">5.</span><label>A search for the Mary Rose was launched → <strong>C (1965)</strong> — McKee initiated 'Solent Ships'</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>One person's exploration of the site stopped → <strong>B (1840)</strong> — 'Deane continued diving … until 1840'</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>It was agreed that the hull should be raised → <strong>G (1982)</strong> — 'not given the go-ahead until January 1982'</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The site of the Mary Rose was found by chance → <strong>A (1836)</strong> — fishermen's equipment caught on an obstruction</label></div></div>
+<div class="exercise-block"><h3>Q9–13 · Diagram labelling (NO MORE THAN TWO WORDS)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Follow the two lifting stages in order.</p><div class="ex-item"><span class="ex-num">9.</span><label>The hull was attached to a ___ via bolts and wires → <strong>(lifting) frame</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>___ prevent the hull being sucked into the mud → <strong>hydraulic jacks</strong></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Legs are placed into ___ → <strong>stabbing guides</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Hull is lowered into ___ → <strong>(lifting) cradle</strong></label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>___ used as extra protection for the hull → <strong>air bags</strong></label></div></div>
+<div class="exercise-block"><h3>Locating practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea?</p><div class="ex-item"><span class="ex-num">14.</span><label>the reasons the ship may have sunk → <strong>paragraph 1</strong></label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>why the starboard side survived → <strong>paragraph 2</strong></label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>Edgerton's sonar → <strong>paragraph 5</strong></label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>the three-stage lift → <strong>final paragraph</strong></label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Where did the Mary Rose sink?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. the English Channel</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the Solent</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the North Sea</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. the Thames</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">How many men were lost with the ship?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. at least 100</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. at least 300</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. at least 500</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. at least 1,000</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What is agreed by all witnesses?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. She was not hit by the French.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. She was overladen.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. The crew were undisciplined.</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. She was too old.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why did the starboard side survive so well?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It was made of harder wood.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It faced away from the current.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It was raised in 1840.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. It filled rapidly with sand and mud.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What protected the site during the 1600s and 1700s?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. a wooden barrier</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. a layer of hard grey clay</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. seaweed</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. a sandbank</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How was the wreck rediscovered in 1836?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. by a naval survey</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. by an archaeologist</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. fishermen's gear caught on it</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. by a diving competition</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What technology did Harold Edgerton contribute?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. side-scan sonar</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. underwater cameras</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. hydraulic jacks</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. air bags</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Who was President of The Mary Rose Trust?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Alexander McKee</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Margaret Rule</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. John Deane</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Prince Charles</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why was the lift carried out in three stages?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. The crane was too small.</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. The remaining hull was an open shell.</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. The weather was poor.</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Funding arrived slowly.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What were the air bags for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. to float the hull</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. to seal the timbers</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. to cushion the delicate timber framework</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. to mark the site</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">On what date was the hull finally lifted clear of the water?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. 11 October 1982</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. 5 May 1971</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. 16 June 1836</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. 19 July 1545</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">'A treasure trove of beautifully preserved artefacts' means…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. a museum display</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. a list of items</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. a buried chest of gold</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. a rich collection of well-kept objects</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 1 — Answers (Q1–Q13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">TRUE</div><div class="answer-note">'Accounts of what happened to the ship vary'.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Other ships in the battle are never discussed.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">TRUE</div><div class="answer-note">'nearly all of the starboard half survived intact'.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">FALSE</div><div class="answer-note">McKee's team 'were as yet unaware that it also housed a treasure trove'.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">C (1965)</div><div class="answer-note">McKee initiated the 'Solent Ships' project.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">B (1840)</div><div class="answer-note">'Deane continued diving on the site intermittently until 1840'.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">G (1982)</div><div class="answer-note">'the operation was not given the go-ahead until January 1982'.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">A (1836)</div><div class="answer-note">Fishermen found their equipment caught on the wreck.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">(lifting) frame</div><div class="answer-note">'The hull was attached to a lifting frame via a network of bolts and lifting wires'.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">hydraulic jacks</div><div class="answer-note">'overcome by using 12 hydraulic jacks'.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">stabbing guides</div><div class="answer-note">'to locate the legs into the "stabbing guides" of the lifting cradle'.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">(lifting) cradle</div><div class="answer-note">'transferred underwater into the lifting cradle'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">air bags</div><div class="answer-note">'fitted with air bags to provide additional cushioning'.</div></div></div></div><div class="answer-section"><h3>Skill practice — Locating</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">paragraph 1</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">paragraph 2</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">paragraph 5</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">final paragraph</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

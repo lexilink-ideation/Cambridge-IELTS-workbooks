@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 11 — Test 2 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 11</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 11 — Test 2 — Reading Passage 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>'Neuroaesthetics'</strong> is a new field that uses brain science to study art. The passage reports six studies — Hawley-Dolan (famous artists vs. animal doodles), Pepperell (ambiguous images), Mondrian eye-tracking, Vartanian (altered compositions), Forsythe (visual intricacy and fractals) and mirror neurons and Pollock — before warning that art cannot be reduced to scientific laws.</p><p>题型:四选一 Q27–30 + 词库摘要 Q31–33 + YES/NO/NOT GIVEN Q34–39 + 副标题 Q40。</p></div><div class="highlight">💡 <strong>Reading tip:</strong> YES / NO / NOT GIVEN tests the <em>writer's views</em>, not facts. Q36 and Q37 are NO because the writer explicitly argues the opposite ('it would be foolish to reduce art appreciation to a set of scientific laws'). Look for the writer's own evaluative language: 'foolish', 'We shouldn't underestimate'.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">neuroaesthetics</span></td><td><span class="pos">n.</span></td><td>the scientific study of the brain's response to art</td><td class="zh">神经美学</td><td>'An emerging discipline called <em>neuroaesthetics</em>'</td><td class="note">The topic word; Q40 subtitle depends on it.</td></tr>
+<tr><td><span class="word">objectivity</span></td><td><span class="pos">n.</span></td><td>judging without personal feelings</td><td class="zh">客观性</td><td>'seeking to bring scientific <em>objectivity</em> to the study of art'</td><td class="note">Repeated in the summary (Q31–33).</td></tr>
+<tr><td><span class="word">amygdala</span></td><td><span class="pos">n.</span></td><td>the brain area linked with emotion</td><td class="zh">杏仁核</td><td>'seems to stimulate the brain's <em>amygdala</em>'</td><td class="note">Q31 answer C = emotions.</td></tr>
+<tr><td><span class="word">haphazard</span></td><td><span class="pos">adj.</span></td><td>without any plan or order</td><td class="zh">杂乱无章的</td><td>'Pollock's seemingly <em>haphazard</em> arrangements of splashed paint'</td><td class="note">'Seemingly' signals the writer doubts it.</td></tr>
+<tr><td><span class="word">sceptic</span></td><td><span class="pos">n.</span></td><td>a person who doubts a claim</td><td class="zh">怀疑者</td><td>'<em>Sceptics</em> believe that people claim to like such works simply because they are famous'</td><td class="note">The view the passage then tests.</td></tr>
+<tr><td><span class="word">doodle</span></td><td><span class="pos">n.</span></td><td>a rough, careless drawing</td><td class="zh">涂鸦</td><td>'the <em>doodles</em> of infants, chimps and elephants'</td><td class="note">Hawley-Dolan's comparison material.</td></tr>
+<tr><td><span class="word">acclaimed</span></td><td><span class="pos">adj.</span></td><td>publicly praised</td><td class="zh">广受赞誉的</td><td>'when they were actually seeing an <em>acclaimed</em> masterpiece'</td><td class="note">Q28 answer D.</td></tr>
+<tr><td><span class="word">ambiguous</span></td><td><span class="pos">adj.</span></td><td>open to more than one interpretation</td><td class="zh">模棱两可的</td><td>'creates <em>ambiguous</em> works that are neither entirely abstract nor clearly representational'</td><td class="note">Pepperell's art, Q29.</td></tr>
+<tr><td><span class="word">decipher</span></td><td><span class="pos">v.</span></td><td>to work out the meaning of</td><td class="zh">破译;解读</td><td>'the harder it is to <em>decipher</em> the meaning, the more rewarding'</td><td class="note">Q29 answer B.</td></tr>
+<tr><td><span class="word">meticulously</span></td><td><span class="pos">adv.</span></td><td>with great care and attention</td><td class="zh">一丝不苟地</td><td>'they are <em>meticulously</em> composed'</td><td class="note">Q30 answer A.</td></tr>
+<tr><td><span class="word">flit</span></td><td><span class="pos">v.</span></td><td>to move quickly and lightly</td><td class="zh">快速掠过</td><td>'they would <em>flit</em> across a piece more rapidly'</td><td class="note">Contrast with dwelling on certain places.</td></tr>
+<tr><td><span class="word">intricacy</span></td><td><span class="pos">n.</span></td><td>complicated detail</td><td class="zh">复杂精细</td><td>'analysed the visual <em>intricacy</em> of different pieces of art'</td><td class="note">Q32 answer B = complexity.</td></tr>
+<tr><td><span class="word">fractal</span></td><td><span class="pos">n.</span></td><td>a repeated pattern at different scales</td><td class="zh">分形</td><td>'<em>fractals</em> — repeated motifs recurring in different scales'</td><td class="note">Q33 answer H = images.</td></tr>
+<tr><td><span class="word">longevity</span></td><td><span class="pos">n.</span></td><td>long life; lasting a long time</td><td class="zh">长久;持久</td><td>'understand the <em>longevity</em> of some pieces of artwork'</td><td class="note">Why some works last.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">shed light on</span></td><td>help explain</td><td class="zh">阐明;揭示</td></tr>
+<tr><td><span class="phrase">follow the crowd</span></td><td>do what others do</td><td class="zh">随大流</td></tr>
+<tr><td><span class="phrase">respond to this debate by</span></td><td>react to the argument by</td><td class="zh">通过…回应这场争论</td></tr>
+<tr><td><span class="phrase">under scrutiny</span></td><td>being examined closely</td><td class="zh">受到审视</td></tr>
+<tr><td><span class="phrase">perceptual overload</span></td><td>too much for the senses to process</td><td class="zh">感知超载</td></tr>
+<tr><td><span class="phrase">down to</span></td><td>caused by (informal)</td><td class="zh">归因于</td></tr>
+<tr><td><span class="phrase">it's still early days</span></td><td>it is too soon to judge</td><td class="zh">还为时尚早</td></tr>
+<tr><td><span class="phrase">a taste of what is to come</span></td><td>a small sample of the future</td><td class="zh">未来的一点预示</td></tr>
+<tr><td><span class="phrase">reduce X to a set of laws</span></td><td>explain X only by rules</td><td class="zh">把X简化为一套法则</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">When asked to make simple perceptual decisions such as matching a shape to its rotated image, for example, people often choose a definitively wrong answer if they see others doing the same.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">people often choose a definitively wrong answer</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'When asked to make simple perceptual decisions…' = reduced passive time clause ('When they are asked'); 'if they see others doing the same' = conditional clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A reduced passive clause opens the sentence; note the subject 'people' only appears in the middle.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In simple shape tests, people copy others even when the answer is clearly wrong.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">例如,在被要求做出简单的知觉判断(如把一个形状与其旋转后的图像配对)时,如果看到别人这样选,人们往往会选择一个明显错误的答案。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">In each set of trials, volunteers generally preferred the work of renowned artists, even when they believed it was by an animal or a child.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">volunteers generally preferred the work of renowned artists</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'even when they believed it was by an animal or a child' = concessive time clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'even when' strengthens the concession — this single sentence answers Q28.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People still liked the famous artists' work, even when told an animal or child had painted it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在每一组试验中,志愿者普遍更喜欢知名艺术家的作品,即使他们以为那是动物或儿童画的。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The longer they took to answer these questions, the more highly they rated the piece under scrutiny, and the greater their neural activity.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">(triple correlative comparison)</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'The + comparative …, the + comparative …' structure, extended to three parts</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Correlative comparatives express proportional change: as one rises, so does the other.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The more time people needed, the more they liked the picture and the more brain activity they showed.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">他们回答这些问题所花的时间越长,对被审视作品的评价就越高,神经活动也越强。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">Mondrian's works are deceptively simple, but eye-tracking studies confirm that they are meticulously composed, and that simply rotating a piece radically changes the way we view it.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">eye-tracking studies confirm that they are meticulously composed, and that … rotating a piece radically changes the way we view it</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'Mondrian's works are deceptively simple, but…' = contrast; two parallel that-clauses</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'deceptively simple' = they look simple but are not. Two 'that'-clauses share one reporting verb.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Mondrian's paintings look simple but are carefully arranged; turning one round changes how we see it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">蒙德里安的作品看似简单,但眼动研究证实它们经过精心构图,而仅仅旋转一幅画就会彻底改变我们观看它的方式。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">While the fashions of the time might shape what is currently popular, works that are best adapted to our visual system may be the most likely to linger once the trends of previous generations have been forgotten.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">works … may be the most likely to linger</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'While the fashions of the time might shape what is currently popular' = concession; 'that are best adapted to our visual system' = defining relative; 'once the trends … have been forgotten' = time clause</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Concession + relative + time clause around one short main clause. Directly relevant to Q36.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Fashion decides what is popular now, but works that suit our eyes may last longest.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">尽管时代风尚可能决定当下什么流行,但最适应我们视觉系统的作品,在前几代人的潮流被遗忘之后,或许最有可能长久留存。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">Passage 3 is research reporting plus the writer's own opinion. Learn to separate the two.</div><div class="exercise-block"><h3>A — Fact or writer's view?</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write F (reported finding) or W (writer's own view).</p><div class="ex-item"><span class="ex-num">1.</span><label>'volunteers generally preferred the work of renowned artists' → <strong>F</strong></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>'It would be foolish to reduce art appreciation to a set of scientific laws.' → <strong>W</strong></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>'The hypothesis will need to be thoroughly tested, however.' → <strong>W</strong></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>'changing the composition reduced activation in those brain areas linked with meaning' → <strong>F</strong></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>'We shouldn't underestimate the importance of the style of a particular artist.' → <strong>W</strong></label></div></div>
+<div class="exercise-block"><h3>B — Correlative comparatives</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the pattern.</p><div class="ex-item"><span class="ex-num">6.</span><label><strong>The longer</strong> they took, <strong>the more highly</strong> they rated the piece.</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label><strong>Too little</strong> detail and the work is boring; <strong>too much</strong> results in perceptual overload.</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label><strong>The harder</strong> it is to decipher the meaning, <strong>the more rewarding</strong> the moment of recognition.</label></div></div>
+<div class="exercise-block"><h3>C — Paraphrase practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Rewrite in simpler English.</p><div class="ex-item"><span class="ex-num">9.</span><label>'deceptively simple' → <strong>they look simple but are not</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>'meticulously composed' → <strong>very carefully arranged</strong></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>'perceptual overload' → <strong>too much for the eye and brain to handle</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>'it's still early days for the field' → <strong>the field is very new</strong></label></div></div>
+<div class="exercise-block"><h3>D — Translation into English</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say each idea in English, then compare with the passage.</p><div class="ex-item"><span class="ex-num">13.</span><label>分形是在不同尺度上重复出现的图案,在自然界中很常见。 → <strong>Fractals are repeated motifs recurring in different scales, and are common throughout nature.</strong></label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>抽象艺术既是一种挑战,也给了我们自由去尝试不同的诠释。 → <strong>Abstract art offers both a challenge and the freedom to play with different interpretations.</strong></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Debate frame.</strong> The passage opens with a sceptical claim ('people claim to like such works simply because they are famous') and then tests it study by study. Every study is evidence <em>against</em> the sceptics.</p>
+<p><strong>Study → finding → implication.</strong> Each paragraph follows the same shape: who did it, what they did, what they found, what it suggests ('It seems that…', 'It would seem that…', 'It is possible that…'). Hedged verbs mark the implication, which is usually the MCQ answer.</p>
+<p><strong>Comparison as method.</strong> Four studies work by comparison: famous art vs. animal doodles; originals vs. rotated versions; originals vs. rearranged versions; too little vs. too much detail. Recognising the comparison tells you the finding instantly.</p>
+<p><strong>Analogy with nature.</strong> Fractals appear 'in the shapes of mountain peaks or the branches of trees' — the writer suggests our visual system evolved outdoors, so it processes such patterns easily. This is a hypothesis, not a proven fact (note 'It is possible that').</p>
+<p><strong>Final qualification.</strong> The last paragraph pulls back: neuroaesthetics is 'still early days', reducing art to laws would be 'foolish', and style, history and artistic environment still matter. Q37 and Q38 both come from here.</p></div><div class="exercise-block"><h3>Q27–30 · Multiple choice (A–D)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Find the paragraph first; the answer is a paraphrase of one sentence.</p><div class="ex-item"><span class="ex-num">27.</span><label>The shape-matching test illustrates → <strong>C</strong> our tendency to be influenced by the opinions of others</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>Hawley-Dolan's findings indicate that people → <strong>D</strong> have the ability to perceive the intention behind works of art</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>Pepperell's studies suggest that people → <strong>B</strong> find it satisfying to work out what a painting represents</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>The Mondrian experiments suggest the paintings → <strong>A</strong> are more carefully put together than they appear</label></div></div>
+<div class="exercise-block"><h3>Q31–33 · Summary with a word list (A–H)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Check the grammar of the gap before choosing.</p><div class="ex-item"><span class="ex-num">31.</span><label>Impressionist paintings have an impact on our ___ → <strong>C emotions</strong> (the amygdala 'plays a crucial role in our feelings')</label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>artists give works the precise degree of ___ → <strong>B complexity</strong> ('visual intricacy … too little and the work is boring')</label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>pleasing works contain repeated ___ found in nature → <strong>H images</strong> ('fractals — repeated motifs recurring in different scales')</label></div></div>
+<div class="exercise-block"><h3>Q34–39 · YES / NO / NOT GIVEN</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ask: does the WRITER agree, disagree, or not say?</p><div class="ex-item"><span class="ex-num">34.</span><label>Forsythe's findings contradicted previous beliefs on fractals → <strong>NOT GIVEN</strong> (no earlier beliefs are described)</label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>Ideas about mirror neurons and art need further verification → <strong>YES</strong> ('The hypothesis will need to be thoroughly tested')</label></div>
+<div class="ex-item"><span class="ex-num">36.</span><label>People's taste depends entirely on current trends → <strong>NO</strong> ('works best adapted to our visual system may be the most likely to linger')</label></div>
+<div class="ex-item"><span class="ex-num">37.</span><label>Scientists should define precise rules governing reactions to art → <strong>NO</strong> ('it would be foolish to reduce art appreciation to a set of scientific laws')</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>Art appreciation should consider the cultural context → <strong>YES</strong> ('We shouldn't underestimate … their place in history and the artistic environment of their time')</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>It is easier to find meaning in science than in art → <strong>NOT GIVEN</strong> (the writer says they are similar, not that one is easier)</label></div></div>
+<div class="exercise-block"><h3>Q40 · Choosing a subtitle</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">A subtitle must cover the WHOLE article, not one study.</p><div class="ex-item"><span class="ex-num">40.</span><label>Most appropriate subtitle → <strong>A</strong> Some scientific insights into how the brain responds to abstract art</label></div>
+<div class="ex-item"><span class="ex-num">41.</span><label>Why not B? The studies examine <em>viewers'</em> brains, not abstract artists' brains.</label></div>
+<div class="ex-item"><span class="ex-num">42.</span><label>Why not C? Representational art is mentioned only in passing; there is no systematic comparison.</label></div>
+<div class="ex-item"><span class="ex-num">43.</span><label>Why not D? The passage never claims research has changed public opinion.</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Which brain area do Impressionist paintings seem to stimulate?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. the hippocampus</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the amygdala</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the cerebellum</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. the visual cortex only</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What did sceptics believe about abstract art?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. It is technically difficult.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It has no market value.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. People like it only because it is famous.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. It cannot be studied scientifically.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What did Hawley-Dolan's volunteers compare?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. paintings from different centuries</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. photographs and paintings</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. original and copied works</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. famous abstract works and animals' or infants' doodles</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What happened when paintings were labelled incorrectly?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Volunteers still preferred the renowned artists' work.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Volunteers preferred the animal work.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Volunteers refused to choose.</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Volunteers guessed randomly.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What did Pepperell find about difficult images?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. People disliked them.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Longer thinking meant higher ratings and more neural activity.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. People looked at them very briefly.</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Only artists appreciated them.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What happened when Mondrian's paintings were rotated?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. People preferred them.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. People noticed no difference.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Eyes moved more rapidly and pleasure decreased.</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Brain activity increased.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did Vartanian change in the paintings he tested?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. the colours</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. the size</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. the frames</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. the position of objects within the frame</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">According to Forsythe, what happens with too much detail?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. perceptual overload</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. boredom</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. stronger emotion</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. faster recognition</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Where are fractals commonly found?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. only in modern art</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. throughout nature, e.g. mountain peaks and tree branches</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. only in mathematics</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. only in Pollock's paintings</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why might Pollock's work feel dynamic?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. because of its bright colours</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. because it is very large</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. because the brain may reconstruct the artist's actions</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. because it is famous</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What does the writer say about reducing art to scientific laws?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It is already being done.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. It is the aim of neuroaesthetics.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It is impossible to test.</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. It would be foolish.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">How does the writer compare abstract art with science?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Both involve decoding meaning and seeing the world anew.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Science is more objective and therefore superior.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Art is more useful to society.</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. They have nothing in common.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Passage 3 — Answers (Q27–Q40)</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">C</div><div class="answer-note">The shape test shows 'we certainly do have an inclination to follow the crowd'.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">D</div><div class="answer-note">'the viewer can sense the artist's vision in paintings, even if they can't explain why'.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">'the brain sees these images as puzzles, and the harder it is to decipher the meaning, the more rewarding'.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">A</div><div class="answer-note">'deceptively simple, but eye-tracking studies confirm that they are meticulously composed'.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">C (emotions)</div><div class="answer-note">The amygdala 'plays a crucial role in our feelings'.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">B (complexity)</div><div class="answer-note">Forsythe analysed 'visual intricacy' and 'a key level of detail'.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">H (images)</div><div class="answer-note">'fractals — repeated motifs recurring in different scales … common throughout nature'.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">No previous beliefs about fractals are described.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">YES</div><div class="answer-note">'The hypothesis will need to be thoroughly tested, however.'</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">NO</div><div class="answer-note">Works best adapted to our visual system 'may be the most likely to linger'.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NO</div><div class="answer-note">'It would, however, be foolish to reduce art appreciation to a set of scientific laws.'</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">YES</div><div class="answer-note">'We shouldn't underestimate the importance of the style of a particular artist, their place in history…'</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">The writer says art and science are similar, not that one is easier.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">A</div><div class="answer-note">The article surveys scientific insights into the brain's response to abstract art.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">A</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>
