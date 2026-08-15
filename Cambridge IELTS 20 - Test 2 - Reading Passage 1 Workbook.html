@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Reading Passage 1</h1>
+    <h2>Manatees &middot; Note Completion + True / False / Not Given (Q1&ndash;13)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage is a factual description of the <strong>manatee</strong>, or sea cow &mdash; a fully aquatic mammal in the group <em>Sirenia</em>. The first half is pure biology: how manatees differ from dugongs, why their short neck forces them to turn their whole body, what they eat, how their teeth and lips work, and how they breathe and control their buoyancy. The second half becomes a species-by-species survey (West Indian, African, Amazonian) and finishes with <strong>conservation status</strong>: hunting, fishing nets, plastic and boat strikes. Because the structure is so predictable, the hardest part is not understanding it &mdash; it is staying in the right paragraph.</p></div><div class="card"><p><strong>What the passage argues:</strong> That the manatee&rsquo;s whole body is shaped by a fully aquatic, plant-eating life &mdash; short neck, flippers instead of legs, endlessly replaced molars, hand-like lips, diaphragm-controlled buoyancy &mdash; and that all three species are now endangered, mainly because of <em>human</em> activity: hunting, fishing nets, plastic and boat strikes.</p><p><strong>段落结构 Structure:</strong> 第1段：海牛属于 Sirenia，与儒艮的异同（尾巴形状是关键）+ 三个物种名称。第2段：颈椎只有六块、需转身才能看两侧、鳍状肢、体表细毛感知震动。第3段：食性——海草为主，每天进食约八小时，非洲海牛为杂食。第4段：牙齿全是臼齿、不断替换；用嘴唇代替门齿抓食。第5段：呼吸与浮力——清醒时2&ndash;4分钟换气、睡眠时15&ndash;20分钟；靠横膈膜储气调节浮力。第6&ndash;8段：三个物种的体型与分布（西印度海牛及其两个亚种、非洲海牛、亚马逊海牛）。第9&ndash;10段：保护现状——IUCN 等级、历史捕杀、渔网与塑料、佛罗里达的船只撞击与限速法规。</p><p><strong>Task type:</strong> <strong>Q1&ndash;6 Note completion</strong> &mdash; <em>ONE WORD AND/OR A NUMBER from the passage</em>, so every answer must be copied, not invented. <strong>Q7&ndash;13 True / False / Not Given</strong> &mdash; statements follow the order of the second half of the passage.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Two tasks, two completely different reading speeds. For the <strong>note completion</strong> (Q1&ndash;6) the headings <em>Appearance / Movement / Feeding / Breathing</em> follow the passage in order, so read the notes first, decide the word type for each gap (a body part? a plant? a physical property?), then scan for the heading topic rather than for the gap words. For <strong>True / False / Not Given</strong> (Q7&ndash;13) slow right down and test one word at a time. Four of these seven items turn on a <em>single</em> risky word: &lsquo;variety&rsquo; (Q7), &lsquo;warmer&hellip;than&rsquo; (Q8), &lsquo;limited to coastal&rsquo; (Q9), &lsquo;only revealed many years later&rsquo; (Q10), &lsquo;increased significantly&rsquo; (Q12). If the passage never makes that exact claim &mdash; especially a comparison or a change over time &mdash; the answer is <strong>NOT GIVEN</strong>, no matter how reasonable the statement sounds.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q1 is about shape, not size</b> &mdash; dugongs and manatees are alike in &lsquo;size, colour and shape&rsquo; and both have flippers. The one difference given is the <em>tail</em>: broad and rounded versus fluked. Only one noun in that sentence answers &lsquo;differently shaped&rsquo;.</li><li><b>Q3 hairs vs skin</b> &mdash; the note already says &lsquo;on their skin&rsquo;, so &lsquo;skin&rsquo; cannot be the answer. The passage prints the plural: &lsquo;some <em>hairs</em> covering their bodies&rsquo;.</li><li><b>Q5 lips, not teeth</b> &mdash; the same paragraph is full of teeth (molars, incisors). But the note says &lsquo;<em>grasp and pull up</em> plants&rsquo;, and the passage says manatees have lips &lsquo;which function like a pair of hands&rsquo; <em>instead of</em> incisors.</li><li><b>Q8 is a comparison that is never made</b> &mdash; the passage says the Florida manatee takes refuge in warm water below 20&deg;C, but it never compares Florida and Antillean water temperatures. A comparison the writer does not make is <strong>NOT GIVEN</strong>.</li><li><b>Q10 and Q12 are about knowledge and trends, not facts</b> &mdash; the passage gives a figure for the 1935&ndash;54 killings (Q10) and a count of cases in 2009&ndash;2020 (Q12), but it says nothing about <em>when this was discovered</em> or whether the risk <em>rose</em>. Reporting a number is not reporting a change.</li><li><b>Numbers that are not answers</b> &mdash; six neck bones, seven, 15%, eight hours, 2&ndash;4 minutes, 10&ndash;12 hours, 15&ndash;20 minutes, 3.5 m, 500 kg, 2.5 m, 350 kg, 20&deg;C, 23&deg;C, 140,000, 1,800, 700, 20%, 40 years. Attach each figure to its noun before you use it.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">aquatic</span></td><td><span class="pos">adj.</span></td><td>living or happening in water</td><td class="zh">水生的；水中的</td><td>&ldquo;Manatees&hellip; are <em>aquatic</em> mammals.&rdquo;</td><td class="note">Appears three times (aquatic mammal, aquatic plant diet, aquatic habitats). It is the scanning word for Q7.</td></tr>
+<tr><td><span class="word">mammal</span></td><td><span class="pos">n.</span></td><td>an animal that feeds its young on milk and breathes air</td><td class="zh">哺乳动物</td><td>&ldquo;Manatees are fully aquatic, but as <em>mammals</em>, they need to come up to the surface to breathe.&rdquo;</td><td class="note">The word &lsquo;but&rsquo; here is the logical hinge of the whole breathing paragraph.</td></tr>
+<tr><td><span class="word">flexible</span></td><td><span class="pos">adj.</span></td><td>able to bend easily without breaking</td><td class="zh">灵活的；可弯曲的</td><td>&ldquo;&hellip;both have <em>flexible</em> flippers for forelimbs.&rdquo;</td><td class="note">A similarity between dugong and manatee, so it cannot be the difference asked for in Q1.</td></tr>
+<tr><td><span class="word">flipper</span></td><td><span class="pos">n.</span></td><td>a flat wide limb that a sea animal uses for swimming</td><td class="zh">鳍状肢；鳍足</td><td>&ldquo;&hellip;a manatee must turn its entire body, steering with its <em>flippers</em>.&rdquo;</td><td class="note"><strong>Answer to Q2.</strong> Keep the plural &mdash; the passage and the note both use it.</td></tr>
+<tr><td><span class="word">forelimb</span></td><td><span class="pos">n.</span></td><td>one of the two front legs or arms of an animal</td><td class="zh">前肢</td><td>&ldquo;&hellip;flexible flippers for <em>forelimbs</em>.&rdquo;</td><td class="note"><em>fore-</em> = front, as in forearm, forecast, foreground. The opposite here is &lsquo;back limbs&rsquo;.</td></tr>
+<tr><td><span class="word">fluked</span></td><td><span class="pos">adj.</span></td><td>having the flat triangular lobes of a whale&rsquo;s tail</td><td class="zh">（尾）分叉呈鲸尾状的</td><td>&ldquo;&hellip;whereas the dugong&rsquo;s is <em>fluked</em>, like that of a whale.&rdquo;</td><td class="note">You do not need to know this word &mdash; &lsquo;like that of a whale&rsquo; defines it for free. That sentence answers Q1.</td></tr>
+<tr><td><span class="word">propulsion</span></td><td><span class="pos">n.</span></td><td>the force that pushes something forward</td><td class="zh">推进（力）</td><td>&ldquo;&hellip;no back limbs, only a tail for <em>propulsion</em>.&rdquo;</td><td class="note">From the verb <em>propel</em>. Tells you the tail is the engine, the flippers are the steering.</td></tr>
+<tr><td><span class="word">pelvic</span></td><td><span class="pos">adj.</span></td><td>relating to the bones at the base of the spine that connect to the legs</td><td class="zh">骨盆的</td><td>&ldquo;They do have <em>pelvic</em> bones, however &mdash; a leftover from their evolution.&rdquo;</td><td class="note">A classic &lsquo;evolutionary leftover&rsquo; detail. IELTS often paraphrases it as &lsquo;a remnant / trace&rsquo;.</td></tr>
+<tr><td><span class="word">wrinkled</span></td><td><span class="pos">adj.</span></td><td>having many small folds or lines</td><td class="zh">有皱纹的；褶皱的</td><td>&ldquo;Like elephants, manatees have thick, <em>wrinkled</em> skin.&rdquo;</td><td class="note">Part of the elephant comparison, which the writer keeps to a single sentence &mdash; useful for locating Q3.</td></tr>
+<tr><td><span class="word">vibration</span></td><td><span class="pos">n.</span></td><td>a small, fast, repeated movement</td><td class="zh">振动</td><td>&ldquo;&hellip;which help them sense <em>vibrations</em> in the water around them.&rdquo;</td><td class="note"><strong>Key sentence for Q3.</strong> The hairs are the tool; the vibrations are what they detect.</td></tr>
+<tr><td><span class="word">graze</span></td><td><span class="pos">v.</span></td><td>to eat grass or low-growing plants slowly over a long period</td><td class="zh">啃食；吃草</td><td>&ldquo;Manatees spend about eight hours each day <em>grazing</em> and uprooting plants.&rdquo;</td><td class="note">Explains the nickname &lsquo;sea cow&rsquo;. Note the collocation <em>spend + time + doing</em>.</td></tr>
+<tr><td><span class="word">uproot</span></td><td><span class="pos">v.</span></td><td>to pull a plant out of the ground with its roots</td><td class="zh">连根拔起</td><td>&ldquo;&hellip;grazing and <em>uprooting</em> plants.&rdquo;</td><td class="note">The note in Q5 says &lsquo;grasp and <em>pull up</em> plants&rsquo; &mdash; that is a direct paraphrase of this verb.</td></tr>
+<tr><td><span class="word">omnivorous</span></td><td><span class="pos">adj.</span></td><td>eating both plants and animals</td><td class="zh">杂食的</td><td>&ldquo;African manatees are <em>omnivorous</em>&hellip;&rdquo;</td><td class="note">Learn the set: herbivore (plants) / carnivore (meat) / omnivore (both). Only the African species is omnivorous.</td></tr>
+<tr><td><span class="word">herbivore</span></td><td><span class="pos">n.</span></td><td>an animal that eats only plants</td><td class="zh">食草动物</td><td>&ldquo;West Indian and Amazonian manatees are both <em>herbivores</em>.&rdquo;</td><td class="note">The contrast with the African species is the kind of detail a NOT GIVEN item likes to distort.</td></tr>
+<tr><td><span class="word">molar</span></td><td><span class="pos">n.</span></td><td>a wide flat tooth at the back of the mouth used for grinding</td><td class="zh">臼齿；磨牙</td><td>&ldquo;Manatees&rsquo; teeth are all <em>molars</em> &mdash; flat, rounded teeth for grinding food.&rdquo;</td><td class="note">The dash gives a free definition. Contrast with <em>incisors</em>, the cutting teeth manatees lack.</td></tr>
+<tr><td><span class="word">abrasive</span></td><td><span class="pos">adj.</span></td><td>rough enough to rub a surface away</td><td class="zh">磨蚀的；粗糙的</td><td>&ldquo;Due to manatees&rsquo; <em>abrasive</em> aquatic plant diet, these teeth get worn down.&rdquo;</td><td class="note">&lsquo;Due to&rsquo; + abrasive = the cause of tooth loss. A cause-and-effect chain worth marking.</td></tr>
+<tr><td><span class="word">buoyancy</span></td><td><span class="pos">n.</span></td><td>the ability to float or to stay at a chosen depth in water</td><td class="zh">浮力</td><td>&ldquo;&hellip;manatees use their muscular diaphragm and breathing to adjust their <em>buoyancy</em>.&rdquo;</td><td class="note"><strong>Answer to Q6.</strong> The note says &lsquo;regulate the ___ of their bodies&rsquo;; &lsquo;regulate&rsquo; = &lsquo;adjust&rsquo;.</td></tr>
+<tr><td><span class="word">diaphragm</span></td><td><span class="pos">n.</span></td><td>the sheet of muscle below the lungs used in breathing</td><td class="zh">横膈膜</td><td>&ldquo;They may use <em>diaphragm</em> contractions to compress and store gas&hellip;&rdquo;</td><td class="note">Already printed in the note, so it is a locating word, not an answer. Spelling: dia-phragm.</td></tr>
+<tr><td><span class="word">compress</span></td><td><span class="pos">v.</span></td><td>to press something into a smaller space</td><td class="zh">压缩</td><td>&ldquo;&hellip;to <em>compress</em> and store gas in folds in their large intestine.&rdquo;</td><td class="note">Compress + store = the mechanism behind buoyancy control. This is the sentence Q6 is built on.</td></tr>
+<tr><td><span class="word">ambient</span></td><td><span class="pos">adj.</span></td><td>of the surrounding area or conditions</td><td class="zh">周围的；环境的</td><td>&ldquo;When the <em>ambient</em> water temperature drops below 20&deg;C&hellip;&rdquo;</td><td class="note">Ambient temperature = the temperature around the animal. This sentence is the trap zone for Q8.</td></tr>
+<tr><td><span class="word">take refuge</span></td><td><span class="pos">v. phr.</span></td><td>to go somewhere for shelter or safety</td><td class="zh">躲避；避难</td><td>&ldquo;&hellip;it <em>takes refuge</em> in naturally and artificially warmed water.&rdquo;</td><td class="note">Note &lsquo;naturally <em>and</em> artificially&rsquo; &mdash; both, not one or the other.</td></tr>
+<tr><td><span class="word">outfall</span></td><td><span class="pos">n.</span></td><td>the place where waste water flows out of a pipe or plant</td><td class="zh">排水口</td><td>&ldquo;&hellip;such as at the warm-water <em>outfalls</em> from powerplants.&rdquo;</td><td class="note">A vivid detail: the animals shelter in industrial warm water. Rarely the answer, often the distractor.</td></tr>
+<tr><td><span class="word">landlocked</span></td><td><span class="pos">adj.</span></td><td>surrounded by land, with no sea coast</td><td class="zh">内陆的；不临海的</td><td>&ldquo;&hellip;seen in <em>landlocked</em> countries such as Mali and Niger.&rdquo;</td><td class="note"><strong>Key to Q9.</strong> If manatees live in landlocked countries, their range is not limited to the coast.</td></tr>
+<tr><td><span class="word">heightened</span></td><td><span class="pos">adj.</span></td><td>increased; made greater</td><td class="zh">提高的；加剧的</td><td>&ldquo;All three manatee species are endangered or at a <em>heightened</em> risk of extinction.&rdquo;</td><td class="note">From <em>heighten</em>. Formal alternative to &lsquo;increased&rsquo; &mdash; common in environment passages.</td></tr>
+<tr><td><span class="word">vulnerable</span></td><td><span class="pos">adj.</span></td><td>easily harmed; (IUCN) at risk of becoming endangered</td><td class="zh">易危的；脆弱的</td><td>&ldquo;The African manatee and Amazonian manatee are both listed as <em>Vulnerable</em> by the IUCN.&rdquo;</td><td class="note">With a capital V it is an official IUCN category, one level below Endangered. Do not read it as ordinary English here.</td></tr>
+<tr><td><span class="word">incidental</span></td><td><span class="pos">adj.</span></td><td>happening as a minor and unplanned result of something else</td><td class="zh">附带的；非故意的</td><td>&ldquo;&hellip;decline has been tied to <em>incidental</em> capture in fishing nets.&rdquo;</td><td class="note">Incidental capture = the animal was not the target. The academic term is &lsquo;bycatch&rsquo;.</td></tr>
+<tr><td><span class="word">entanglement</span></td><td><span class="pos">n.</span></td><td>the state of being caught and unable to get free</td><td class="zh">缠绕；被困</td><td>&ldquo;A review of almost 1,800 cases of <em>entanglement</em> in fishing nets&hellip;&rdquo;</td><td class="note">Appears in Q12 word for word &mdash; but the question adds &lsquo;increased significantly&rsquo;, which the passage never says.</td></tr>
+<tr><td><span class="word">undergo</span></td><td><span class="pos">v.</span></td><td>to experience something, especially a change</td><td class="zh">经历；遭受</td><td>&ldquo;Both are also expected to <em>undergo</em> a decline of 20% over the next 40 years.&rdquo;</td><td class="note"><strong>Key to Q11.</strong> &lsquo;Are expected to undergo a decline&rsquo; = &lsquo;it is predicted that populations will fall&rsquo;.</td></tr>
+<tr><td><span class="word">boat strike</span></td><td><span class="pos">n. phr.</span></td><td>a collision between a boat and an animal</td><td class="zh">船只撞击</td><td>&ldquo;The chief cause of death in Florida manatees is <em>boat strikes</em>.&rdquo;</td><td class="note">Leads straight into Q13: the speed-limit laws are the response to this problem.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">also known as sea cows</span></td><td>having the alternative common name &lsquo;sea cows&rsquo;</td><td class="zh">又称海牛</td></tr>
+<tr><td><span class="phrase">belong to a group of animals called&hellip;</span></td><td>be classified in a particular group</td><td class="zh">属于&hellip;这一类动物</td></tr>
+<tr><td><span class="phrase">look quite alike</span></td><td>appear very similar</td><td class="zh">外形相当相似</td></tr>
+<tr><td><span class="phrase">similar in size, colour and shape</span></td><td>alike in three particular ways</td><td class="zh">在体型、颜色和形状上相似</td></tr>
+<tr><td><span class="phrase">a broad, rounded tail</span></td><td>a wide tail with a curved edge</td><td class="zh">宽而圆的尾巴</td></tr>
+<tr><td><span class="phrase">unlike most mammals</span></td><td>differently from nearly all other mammals</td><td class="zh">与大多数哺乳动物不同</td></tr>
+<tr><td><span class="phrase">move its head up and down, but not side to side</span></td><td>have vertical but not horizontal neck movement</td><td class="zh">头部只能上下而不能左右转动</td></tr>
+<tr><td><span class="phrase">turn its entire body</span></td><td>rotate the whole body rather than just the head</td><td class="zh">转动整个身体</td></tr>
+<tr><td><span class="phrase">a leftover from their evolution</span></td><td>a feature remaining from an earlier evolutionary stage</td><td class="zh">进化残留</td></tr>
+<tr><td><span class="phrase">share some visual similarities to</span></td><td>look alike in certain ways</td><td class="zh">在外观上有某些相似之处</td></tr>
+<tr><td><span class="phrase">sense vibrations in the water</span></td><td>detect small movements in the surrounding water</td><td class="zh">感知水中的振动</td></tr>
+<tr><td><span class="phrase">make up most of a manatee&rsquo;s diet</span></td><td>form the largest part of what it eats</td><td class="zh">构成海牛食物的大部分</td></tr>
+<tr><td><span class="phrase">up to 15% of their weight</span></td><td>a maximum of fifteen per cent of body weight</td><td class="zh">最多达体重的15%</td></tr>
+<tr><td><span class="phrase">get worn down</span></td><td>gradually be rubbed away by use</td><td class="zh">被磨损</td></tr>
+<tr><td><span class="phrase">function like a pair of hands</span></td><td>work in the same way as hands do</td><td class="zh">像一双手一样发挥作用</td></tr>
+<tr><td><span class="phrase">tear food away from the seafloor</span></td><td>pull plants off the bottom of the sea</td><td class="zh">把食物从海底扯下来</td></tr>
+<tr><td><span class="phrase">come up to the surface to breathe</span></td><td>rise to the top of the water for air</td><td class="zh">浮出水面呼吸</td></tr>
+<tr><td><span class="phrase">hold their breath</span></td><td>stop breathing deliberately for a period</td><td class="zh">屏住呼吸</td></tr>
+<tr><td><span class="phrase">adjust their buoyancy</span></td><td>control how much they float</td><td class="zh">调节浮力</td></tr>
+<tr><td><span class="phrase">move between fresh water and salt water</span></td><td>travel from rivers to the sea and back</td><td class="zh">在淡水与海水之间往返</td></tr>
+<tr><td><span class="phrase">take advantage of</span></td><td>make good use of</td><td class="zh">充分利用</td></tr>
+<tr><td><span class="phrase">be restricted to</span></td><td>be found only within a particular area</td><td class="zh">被限制在&hellip;范围内</td></tr>
+<tr><td><span class="phrase">drop below 20&deg;C</span></td><td>fall under twenty degrees Celsius</td><td class="zh">降到20摄氏度以下</td></tr>
+<tr><td><span class="phrase">take refuge in warmed water</span></td><td>shelter in water that has been heated</td><td class="zh">躲进温暖的水域</td></tr>
+<tr><td><span class="phrase">make use of rivers</span></td><td>live in and travel along rivers</td><td class="zh">利用河流</td></tr>
+<tr><td><span class="phrase">at a heightened risk of extinction</span></td><td>facing an increased danger of dying out</td><td class="zh">灭绝风险升高</td></tr>
+<tr><td><span class="phrase">be listed as Vulnerable by the IUCN</span></td><td>be officially classified in the IUCN Vulnerable category</td><td class="zh">被IUCN列为易危物种</td></tr>
+<tr><td><span class="phrase">it is estimated that&hellip;</span></td><td>experts calculate approximately that&hellip;</td><td class="zh">据估计&hellip;</td></tr>
+<tr><td><span class="phrase">be tied to</span></td><td>be linked to as a cause</td><td class="zh">与&hellip;有关联</td></tr>
+<tr><td><span class="phrase">incidental capture in fishing nets</span></td><td>being caught accidentally by fishing gear</td><td class="zh">被渔网误捕</td></tr>
+<tr><td><span class="phrase">be expected to undergo a decline</span></td><td>be predicted to fall in number</td><td class="zh">预计将出现下降</td></tr>
+<tr><td><span class="phrase">the chief cause of death</span></td><td>the main reason animals die</td><td class="zh">主要死因</td></tr>
+<tr><td><span class="phrase">limit boat speeds</span></td><td>set a legal maximum speed for boats</td><td class="zh">限制船速</td></tr>
+<tr><td><span class="phrase">more time to respond</span></td><td>a longer period in which to react</td><td class="zh">更多的反应时间</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;However, the manatee has a broad, rounded tail, whereas the dugong&rsquo;s is fluked, like that of a whale.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The manatee has a broad, rounded tail.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;whereas the dugong&rsquo;s is fluked&rsquo; = a clause of contrast; &lsquo;like that of a whale&rsquo; = a comparison phrase where <em>that</em> stands for <em>the tail</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>whereas</strong> always signals a difference between two things already mentioned. Note the two substitutions: <em>the dugong&rsquo;s</em> = the dugong&rsquo;s tail, and <em>that of a whale</em> = the tail of a whale. English avoids repeating the noun.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The manatee&rsquo;s tail is wide and round; the dugong&rsquo;s tail is split like a whale&rsquo;s.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而，海牛的尾巴宽而圆，而儒艮的尾巴则像鲸鱼那样呈分叉状。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;This short neck allows a manatee to move its head up and down, but not side to side.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This short neck allows a manatee to move its head.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;up and down, but not side to side&rsquo; = two adverbial phrases joined by a contrast.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Pattern: <strong>allow + object + to + verb</strong>. Notice how much information sits in the tiny word <em>but</em>: it converts a description of ability into a description of <em>limitation</em>, which is what the next sentence then explains.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because its neck is short, a manatee can nod but cannot look left or right.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这种短颈使海牛的头部可以上下移动，却无法左右转动。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Due to manatees&rsquo; abrasive aquatic plant diet, these teeth get worn down and they eventually fall out, so they continually grow new teeth that get pushed forward to replace the ones they lose.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These teeth get worn down and they eventually fall out. / They continually grow new teeth.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Due to&hellip; diet&rsquo; = cause; &lsquo;so&hellip;&rsquo; = result; &lsquo;that get pushed forward&hellip;&rsquo; = a defining relative clause describing the new teeth.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">One sentence, three logical steps: <strong>cause (due to) &rarr; effect (worn down, fall out) &rarr; consequence (so&hellip; grow new teeth)</strong>. &lsquo;The ones they lose&rsquo; uses <em>ones</em> to avoid repeating &lsquo;teeth&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Rough plants wear the teeth away until they drop out, so new teeth keep growing and moving forward to take their place.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">由于海牛以粗糙的水生植物为食，这些牙齿会被磨损并最终脱落，因此它们会不断长出新牙并向前推移，以替换掉落的牙齿。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;It moves between fresh water and salt water, taking advantage of coastal mangroves and coral reefs, rivers, lakes and inland lagoons.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">It moves between fresh water and salt water.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;taking advantage of&hellip;&rsquo; = a present-participle phrase adding how/what it does at the same time.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A reduced clause: the full form would be &lsquo;and it takes advantage of&hellip;&rsquo;. The list that follows is deliberately long &mdash; five habitat types &mdash; and that list is exactly what makes <strong>Question 7 TRUE</strong>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The West Indian manatee lives in both rivers and the sea, using mangroves, reefs, rivers, lakes and lagoons.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">它在淡水与海水之间往返，利用沿海的红树林与珊瑚礁、河流、湖泊以及内陆潟湖。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;The species also makes use of rivers, with the mammals seen in landlocked countries such as Mali and Niger.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The species also makes use of rivers.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;with the mammals seen in landlocked countries&hellip;&rsquo; = a <em>with</em> + noun + past participle structure giving supporting evidence.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The <strong>with + object + participle</strong> pattern is a compact way of attaching proof to a claim. Here it is the proof that kills Question 9: a landlocked country has no coast, so the African manatee&rsquo;s range is not &lsquo;limited to coastal waters&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">African manatees also live in rivers, and have been seen in inland countries like Mali and Niger.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">该物种也利用河流，人们曾在马里和尼日尔等内陆国家见到这种哺乳动物。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;However, laws in certain parts of Florida now limit boat speeds during winter, allowing slow-moving manatees more time to respond.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Laws in certain parts of Florida now limit boat speeds during winter.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;allowing slow-moving manatees more time to respond&rsquo; = a participle clause of result.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Three hedging details make <strong>Question 13 TRUE</strong> rather than overstated: <em>certain parts</em> (not all of Florida), <em>during winter</em> (not all year), and <em>allowing more time</em> (not preventing strikes). The question is worded just as carefully: &lsquo;<em>some</em> legislation&hellip; aims to <em>reduce the likelihood</em>&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In some parts of Florida, boats must go slowly in winter so that manatees have longer to get out of the way.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">不过，佛罗里达部分地区的法律现已限制冬季船速，使行动缓慢的海牛有更多时间作出反应。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;6)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The six exam gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY</strong>, copied exactly from the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>Manatees and dugongs look alike, but the shape of the <input type="text" class="blank" id="b1" data-answer="tail" placeholder="______"> is different.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>To look sideways a manatee turns its whole body, steering with its <input type="text" class="blank" id="b2" data-answer="flippers" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Manatees feel vibrations in the water using the <input type="text" class="blank" id="b3" data-answer="hairs" placeholder="______"> on their skin.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Most of a manatee&rsquo;s diet consists of <input type="text" class="blank" id="b4" data-answer="seagrasses" placeholder="______"> and other marine plants.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Manatees have no incisors, so they tear plants from the seafloor with their <input type="text" class="blank" id="b5" data-answer="lips" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Storing gas inside the body may let manatees adjust their <input type="text" class="blank" id="b6" data-answer="buoyancy" placeholder="______">.<span class="feedback" id="fb6"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Manatees are fully <input type="text" class="blank" id="b7" data-answer="aquatic" placeholder="______"> (= living entirely in water).<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The African manatee is <input type="text" class="blank" id="b8" data-answer="omnivorous" placeholder="______"> (= it eats both plants and animals).<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Their diet is <input type="text" class="blank" id="b9" data-answer="abrasive" placeholder="______"> (= rough enough to rub the teeth away).<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>They spend eight hours a day <input type="text" class="blank" id="b10" data-answer="grazing" placeholder="______"> (= slowly eating low plants).<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Mali and Niger are <input type="text" class="blank" id="b11" data-answer="landlocked" placeholder="______"> (= they have no sea coast).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Both West Indian subspecies are expected to <input type="text" class="blank" id="b12" data-answer="undergo" placeholder="______"> (= experience) a decline.<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Reading, the grammar of the sentence decides the form &mdash; the meaning alone is not enough.</p><div class="ex-item"><span class="ex-num">1.</span><label>Manatees use the tail for <input type="text" class="blank" id="b13" data-answer="propulsion" placeholder="______"> (PROPEL) and the flippers for steering.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>West Indian and Amazonian manatees are both <input type="text" class="blank" id="b14" data-answer="herbivores" placeholder="______"> (HERBIVOROUS).<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Their skin is thick and <input type="text" class="blank" id="b15" data-answer="wrinkled" placeholder="______"> (WRINKLE), like an elephant&rsquo;s.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The soil of the seafloor is disturbed when manatees <input type="text" class="blank" id="b16" data-answer="uproot" placeholder="______"> (UPROOTING) plants.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>All three species face a <input type="text" class="blank" id="b17" data-answer="heightened" placeholder="______"> (HEIGHTEN) risk of extinction.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The fertility of a population falls when deaths exceed <input type="text" class="blank" id="b18" data-answer="births" placeholder="______"> (BIRTH).<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never repeats the passage word for word. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;pull up plants&rdquo; &rarr; Passage: grazing and <input type="text" class="blank" id="b19" data-answer="uprooting" placeholder="______"> plants.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;regulate the buoyancy of their bodies&rdquo; &rarr; Passage: use breathing to <input type="text" class="blank" id="b20" data-answer="adjust" placeholder="______"> their buoyancy.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;a variety of different aquatic habitats&rdquo; &rarr; Passage: rivers, lakes and inland <input type="text" class="blank" id="b21" data-answer="lagoons" placeholder="______">.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;it is predicted that populations will fall&rdquo; &rarr; Passage: both are expected to undergo a <input type="text" class="blank" id="b22" data-answer="decline" placeholder="______"> of 20%.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;there is legislation in place&rdquo; &rarr; Passage: <input type="text" class="blank" id="b23" data-answer="laws" placeholder="______"> in certain parts of Florida.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;caught accidentally by fishing gear&rdquo; &rarr; Passage: <input type="text" class="blank" id="b24" data-answer="incidental" placeholder="______"> capture in fishing nets.<span class="feedback" id="fb24"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses: Contrast, Reduction and Reference</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to pack two ideas into one sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label>The manatee has a rounded tail, <input type="text" class="blank" id="b25" data-answer="whereas" placeholder="______"> the dugong&rsquo;s is fluked. (a conjunction of contrast)<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>&lsquo;the dugong&rsquo;s is fluked, like <input type="text" class="blank" id="b26" data-answer="that" placeholder="______"> of a whale&rsquo; &mdash; the pronoun standing for &lsquo;the tail&rsquo;.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&lsquo;It moves between fresh water and salt water, <input type="text" class="blank" id="b27" data-answer="taking" placeholder="______"> advantage of coastal mangroves&rsquo; (reduce &lsquo;and it takes&rsquo; to a participle).<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;laws now limit boat speeds, <input type="text" class="blank" id="b28" data-answer="allowing" placeholder="______"> manatees more time to respond&rsquo; (a participle clause of result).<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label><input type="text" class="blank" id="b29" data-answer="due" placeholder="______"> to their abrasive diet, manatee teeth are worn down. (a two-word cause phrase &mdash; write the first word)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>&lsquo;new teeth <input type="text" class="blank" id="b30" data-answer="that" placeholder="______"> get pushed forward&rsquo; &mdash; the relative pronoun introducing a defining clause.<span class="feedback" id="fb30"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that matches the Chinese. One word per gap &mdash; every answer comes from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>水生哺乳动物 &rarr; <input type="text" class="blank" id="b31" data-answer="aquatic" placeholder="______"> mammals<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>感知水中的振动 &rarr; sense <input type="text" class="blank" id="b32" data-answer="vibrations" placeholder="______"> in the water<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>调节浮力 &rarr; adjust their <input type="text" class="blank" id="b33" data-answer="buoyancy" placeholder="______"><span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>内陆国家 &rarr; <input type="text" class="blank" id="b34" data-answer="landlocked" placeholder="______"> countries<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>灭绝风险 &rarr; the risk of <input type="text" class="blank" id="b35" data-answer="extinction" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>主要死因 &rarr; the chief cause of <input type="text" class="blank" id="b36" data-answer="death" placeholder="______"><span class="feedback" id="fb36"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Contrast &mdash; &lsquo;whereas&rsquo;, &lsquo;however&rsquo; and &lsquo;unlike&rsquo; carry the answers</strong></p><p>This passage builds almost every fact by comparison. &ldquo;Dugongs and manatees look quite alike&hellip; <em>However</em>, the manatee has a broad, rounded tail, <em>whereas</em> the dugong&rsquo;s is fluked&rdquo; gives you <strong>Q1</strong>; &ldquo;<em>Unlike</em> most mammals, manatees have only six bones in their neck&rdquo; opens the movement paragraph. Train yourself to stop at these three words: the sentence after them is where the specific, testable fact lives.</p></div>
+<div class="card"><p><strong>Cause &amp; effect &mdash; a chain that runs through one sentence</strong></p><p>&ldquo;<em>Due to</em> manatees&rsquo; abrasive aquatic plant diet, these teeth get worn down and they eventually fall out, <em>so</em> they continually grow new teeth.&rdquo; Rough food &rarr; worn teeth &rarr; teeth lost &rarr; constant replacement. IELTS loves to test the middle of such a chain, so mark both the cause marker (<em>due to</em>) and the result marker (<em>so</em>) as you read.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the exact trap in Question 8</strong></p><p>The passage tells you the Florida manatee shelters in warm water when the ambient temperature drops below 20&deg;C, and separately that the Antillean manatee ranges from the Bahamas to Brazil. It never puts the two water temperatures side by side. A statement that ranks two things &mdash; <em>warmer than, larger than, more common than</em> &mdash; is <strong>NOT GIVEN</strong> unless the writer makes that ranking. Compare this with the Amazonian manatee, where a real comparison <em>is</em> made: &ldquo;the smallest species&rdquo;.</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;such as&rsquo; gives you a sample, and sometimes the answer</strong></p><p>&ldquo;&hellip;seen in landlocked countries <em>such as</em> Mali and Niger&rdquo; is not decoration: it is the evidence that makes <strong>Q9 FALSE</strong>. Similarly &ldquo;<em>such as</em> at the warm-water outfalls from powerplants&rdquo; shows what &lsquo;artificially warmed water&rsquo; means. Examples explain the general statement immediately before them &mdash; read them as definitions.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; free explanations inside commas and dashes</strong></p><p>&ldquo;Manatees, <em>also known as sea cows</em>, are aquatic mammals&hellip;&rdquo;; &ldquo;Manatees&rsquo; teeth are all molars &mdash; <em>flat, rounded teeth for grinding food</em>&rdquo;; &ldquo;the dugong&rsquo;s is fluked, <em>like that of a whale</em>&rdquo;. You do not need to know <em>molar</em> or <em>fluked</em> &mdash; the writer defines them for you. Never look up a word before checking whether the punctuation has already explained it.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; the shape of the final paragraph</strong></p><p>Problem: &ldquo;The chief cause of death in Florida manatees is boat strikes.&rdquo; Solution: &ldquo;<em>However</em>, laws in certain parts of Florida now limit boat speeds during winter, allowing slow-moving manatees more time to respond.&rdquo; That <em>However</em> flips the paragraph from bad news to a response, and the response is <strong>Q13</strong>. Whenever a problem is stated, expect a measure to follow, and expect a question about it.</p></div>
+<div class="card"><p><strong>Numbers and quantity &mdash; attach every figure to its noun</strong></p><p>Six neck bones (manatee) vs seven (humans, giraffes); 15% of body weight eaten daily; eight hours grazing; 2&ndash;4 minutes between breaths when awake vs 15&ndash;20 minutes when asleep; 3.5 m / 500 kg (West Indian and African) vs 2.5 m / 350 kg (Amazonian); below 20&deg;C vs above 23&deg;C; 140,000 killed 1935&ndash;54; 1,800 cases reviewed, at least 700 involving manatees; a 20% decline over 40 years. Write the noun next to the number in the margin &mdash; that habit alone protects Q11 and Q12.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s stance &mdash; neutral reporting with careful hedging</strong></p><p>The tone is scientific and cautious. Look at the hedges: &ldquo;<em>It&rsquo;s thought that</em> manatees use their muscular diaphragm&rdquo;, &ldquo;<em>They may</em> use diaphragm contractions&rdquo;, &ldquo;<em>It is estimated that</em> 140,000&hellip;&rdquo;, &ldquo;<em>are expected to</em> undergo a decline&rdquo;. The writer never claims certainty about mechanisms or the future. In a Yes/No/Not Given task, an option stating these as proven facts would be wrong for exactly that reason.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Note Completion (Q1&ndash;6): use the headings as a map</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD AND/OR A NUMBER <em>from the passage</em>. Predict the word type first, then scan for the heading topic, not for the gap.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q1 tail</b> (Appearance) &mdash; the note says &lsquo;a differently shaped ___&rsquo;. Everything else in that sentence is a <em>similarity</em>; the only difference given is broad and rounded versus fluked.</li><li><b>Q2 flippers</b> (Movement) &mdash; &lsquo;a manatee must turn its entire body, <em>steering with its flippers</em>&rsquo;. The note asks what helps them turn around. Keep the plural.</li><li><b>Q3 hairs</b> (Movement) &mdash; &lsquo;some <em>hairs</em> covering their bodies which help them sense vibrations&rsquo;. &lsquo;Skin&rsquo; is already printed in the note, so it is ruled out.</li><li><b>Q4 seagrasses</b> (Feeding) &mdash; &lsquo;<em>Seagrasses</em> and other marine plants make up most of a manatee&rsquo;s diet.&rsquo; The note&rsquo;s &lsquo;such as&rsquo; needs an example, and this is the only one named.</li><li><b>Q5 lips</b> (Feeding) &mdash; &lsquo;Instead of having incisors to grasp their food, manatees have <em>lips</em> which function like a pair of hands.&rsquo; The note&rsquo;s &lsquo;grasp and pull up&rsquo; matches &lsquo;grasp&hellip; tear food away&rsquo;.</li><li><b>Q6 buoyancy</b> (Breathing) &mdash; &lsquo;manatees use their muscular diaphragm and breathing to <em>adjust their buoyancy</em>&rsquo;. &lsquo;Regulate&rsquo; = &lsquo;adjust&rsquo;; the gap needs the property, not the muscle.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> read the completed note aloud. If it does not sound like grammatical English, your word is in the wrong form.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; TRUE / FALSE / NOT GIVEN (Q7&ndash;13): three questions, in order</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Ask them in this sequence: (1) Does the passage talk about this? (2) Does it say the same thing? (3) Does it say the opposite? No to (1) = NOT GIVEN, yes to (3) = FALSE.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>7. West Indian manatees live in a variety of habitats.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;mangroves and coral reefs, rivers, lakes and inland lagoons&rsquo; plus fresh <em>and</em> salt water. A list of five habitat types is exactly what &lsquo;a variety&rsquo; means.</li><li><b>8. The Florida manatee lives in warmer waters than the Antillean.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; temperature is given only for the Florida subspecies, and the two are never compared.</li><li><b>9. The African manatee&rsquo;s range is limited to coastal waters.</b> &rarr; <strong>FALSE</strong> &mdash; &lsquo;The species also makes use of rivers&hellip; seen in landlocked countries&rsquo;. &lsquo;Also&rsquo; contradicts &lsquo;limited to&rsquo;.</li><li><b>10. The scale of the losses was only revealed years later.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; the figure of 140,000 is given, but nothing at all is said about <em>when</em> or <em>how</em> it became known.</li><li><b>11. Populations are predicted to fall.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;Both are also expected to undergo a decline of 20% over the next 40 years.&rsquo; &lsquo;Expected to&rsquo; = &lsquo;it is predicted&rsquo;; &lsquo;next 40 years&rsquo; = &lsquo;the coming decades&rsquo;.</li><li><b>12. The risk increased significantly in 2009&ndash;2020.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; the review <em>counted</em> cases in that window; it never compares them with an earlier period.</li><li><b>13. Some legislation aims to reduce boat strikes.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;laws in certain parts of Florida now limit boat speeds during winter&rsquo;. &lsquo;Some&rsquo; matches &lsquo;certain parts&rsquo; perfectly.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> underline the single riskiest word in each statement &mdash; <em>variety, warmer than, limited to, only revealed, predicted, increased significantly, some</em>. That word, not the topic, decides the answer.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? Build the index once, then jump &mdash; never re-read from the top.</p><ul style="margin-left:18px;line-height:1.9;"><li>How manatees differ from dugongs &rarr; paragraph 1.</li><li>Why they cannot look sideways &rarr; paragraph 2 (six neck bones).</li><li>How they detect movement in the water &rarr; end of paragraph 2 (hairs).</li><li>How much they eat each day &rarr; paragraph 3 (15% of body weight, eight hours).</li><li>Why their teeth keep being replaced &rarr; paragraph 4 (abrasive diet).</li><li>How long they can stay under water &rarr; paragraph 5 (2&ndash;4 and 15&ndash;20 minutes).</li><li>Where each species lives &rarr; paragraphs 6&ndash;8, one species each.</li><li>IUCN categories and historical hunting &rarr; paragraph 9.</li><li>Fishing nets, plastic and boat strikes &rarr; the final paragraph.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in a species-by-species passage, write the species name beside each of the last few paragraphs during your skim. Q8 and Q9 then take seconds.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Complete each sentence with NO MORE THAN TWO WORDS AND/OR A NUMBER, then compare with the suggested answer.</p><ul style="margin-left:18px;line-height:1.9;"><li>Manatees have ______ bones in the neck, one fewer than humans. &rarr; <strong>six</strong></li><li>The pelvic bones are a leftover from the manatee&rsquo;s ______ from a four-legged animal. &rarr; <strong>evolution</strong></li><li>Manatees eat up to ______ of their body weight each day. &rarr; <strong>15%</strong></li><li>A sleeping adult manatee surfaces for air every ______ minutes. &rarr; <strong>15&ndash;20</strong></li><li>The Amazonian manatee prefers calm, shallow water above ______. &rarr; <strong>23&deg;C</strong></li><li>Amazonian manatee skin was used to make ______. &rarr; <strong>leather</strong></li></ul></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each paragraph to the heading that fits it best. A heading must cover the <em>whole</em> paragraph, never one striking detail.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Paragraph 2</b> &rarr; <em>A body built for water, not for land</em> &mdash; not &lsquo;Similar to elephants&rsquo;, which is only the last two sentences.</li><li><b>Paragraph 4</b> &rarr; <em>Teeth that are constantly replaced</em>.</li><li><b>Paragraph 5</b> &rarr; <em>Breathing and staying afloat</em> &mdash; not &lsquo;Sleeping habits&rsquo;, a detail inside it.</li><li><b>Paragraph 6</b> &rarr; <em>The most widely distributed species</em>.</li><li><b>Final paragraph</b> &rarr; <em>Human threats and one legal response</em>.</li></ul><p style="margin-top:10px;"><b>Watch out:</b> paragraphs 9 and 10 both discuss conservation status. The difference is <em>which species</em> and <em>which threat</em> &mdash; historical hunting versus modern nets, plastic and boats.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Yes / No / Not Given thinking (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These statements are about the writer&rsquo;s claims rather than plain facts. Decide before you read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>Scientists are certain how manatees control their buoyancy. &rarr; <strong>NO</strong> &mdash; the writer hedges twice: &lsquo;It&rsquo;s thought that&hellip;&rsquo; and &lsquo;They <em>may</em> use&hellip;&rsquo;.</li><li>Hunting is still legal somewhere in the African manatee&rsquo;s range. &rarr; <strong>NO</strong> &mdash; &lsquo;Manatee hunting is now illegal in <em>every</em> country the African species is found in.&rsquo;</li><li>Boat speed limits have already reduced manatee deaths. &rarr; <strong>NOT GIVEN</strong> &mdash; the laws exist and their purpose is stated, but no result is reported.</li><li>Amazonian manatees are the smallest of the three species. &rarr; <strong>YES</strong> &mdash; stated directly, and supported by 2.5 m / 350 kg against 3.5 m / 500 kg.</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What single feature is given to distinguish a manatee from a dugong?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. The colour of the skin.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. The shape of the tail.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. The number of flippers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. The overall body size.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why must a manatee turn its whole body to look to one side?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Its eyes point forwards only.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Its neck has six bones instead of seven, so it cannot turn side to side.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Its flippers block its view.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Its skin is too thick to bend.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What do the hairs on a manatee&rsquo;s body do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Keep it warm in cold water.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Protect it from boat strikes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Help it sense vibrations in the water.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Help it grip plants.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Which statement about manatee diets is correct?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. All three species are strict herbivores.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. African manatees also eat molluscs and fish.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Amazonian manatees are omnivorous.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Manatees eat 15% of their weight in seagrass every hour.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why is <em>lips</em> the answer for Q5 rather than <em>teeth</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Because manatees have no teeth at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Because the note asks what grasps and pulls up plants, and the lips do that instead of incisors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Because the molars are used only for breathing.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Because teeth is two words.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How often does a sleeping adult manatee come up for air?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Every 2&ndash;4 minutes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Every 10&ndash;12 minutes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Every 15&ndash;20 minutes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Every 40 minutes.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why is Question 7 (a variety of aquatic habitats) TRUE?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Because the West Indian manatee is the largest species.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Because it uses fresh and salt water, mangroves, reefs, rivers, lakes and lagoons.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Because it is found in landlocked countries.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Because it has two subspecies.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Question 8 compares the Florida and Antillean manatees&rsquo; water temperatures. Why is it NOT GIVEN?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Because the Antillean manatee is not mentioned.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Because the passage says the Antillean lives in warmer water.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Because a temperature is given only for the Florida subspecies and no comparison is made.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Because the Florida manatee lives in artificially warmed water only.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Which detail makes Question 9 FALSE?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. African manatees are listed as Vulnerable.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. They have been seen in landlocked countries such as Mali and Niger.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. They are about 3.5 metres long.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Hunting them is now illegal.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">The passage says at least 700 of about 1,800 reviewed cases involved manatees. What does this NOT tell us?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. That manatees appeared in many of the cases.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. That the cases fell between 2009 and 2020.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. That the cases were in US waters.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. That the risk to manatees rose during that period.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'D')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is the main cause of death among Florida manatees, and what has been done about it?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Hunting; it has been made illegal.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Boat strikes; some areas now limit boat speeds in winter.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Plastic consumption; nets have been banned.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Cold water; power stations release warm water.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which phrase best describes the writer&rsquo;s stance in this passage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Angry about government inaction.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Confident that manatee numbers will recover.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Neutral and factual, using hedges such as &lsquo;it&rsquo;s thought that&rsquo; and &lsquo;may&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Doubtful that manatees are really endangered.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1&ndash;13</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">tail</div><div class="answer-note">Paragraph 1: dugongs and manatees are alike in size, colour and shape, &lsquo;<em>However</em>, the manatee has a broad, rounded <em>tail</em>, whereas the dugong&rsquo;s is fluked&rsquo; &mdash; the one &lsquo;differently shaped&rsquo; feature.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">flippers</div><div class="answer-note">Paragraph 2: &lsquo;To see something on its left or its right, a manatee must turn its entire body, <em>steering with its flippers</em>.&rsquo; Plural, exactly as printed.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">hairs (hair)</div><div class="answer-note">Paragraph 2: &lsquo;They also have some <em>hairs</em> covering their bodies which help them sense vibrations in the water around them.&rsquo; &lsquo;Skin&rsquo; is already in the note, so it cannot be the answer. The passage prints the plural, so copying <em>hairs</em> is the safest response.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">seagrasses</div><div class="answer-note">Paragraph 3: &lsquo;<em>Seagrasses</em> and other marine plants make up most of a manatee&rsquo;s diet.&rsquo; The note asks for an example of &lsquo;aquatic vegetation&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">lips</div><div class="answer-note">Paragraph 4: &lsquo;Instead of having incisors to grasp their food, manatees have <em>lips</em> which function like a pair of hands to help tear food away from the seafloor.&rsquo; &lsquo;Grasp and pull up&rsquo; = grasp and tear away.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">buoyancy</div><div class="answer-note">Paragraph 5: &lsquo;It&rsquo;s thought that manatees use their muscular diaphragm and breathing to <em>adjust their buoyancy</em>.&rsquo; &lsquo;Regulate&rsquo; = &lsquo;adjust&rsquo;; the gap needs the property, not the muscle.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 6: the West Indian manatee &lsquo;moves between fresh water and salt water, taking advantage of coastal mangroves and coral reefs, rivers, lakes and inland lagoons&rsquo; &mdash; that list is &lsquo;a variety of different aquatic habitats&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 6 gives a temperature only for the Florida manatee (below 20&deg;C it takes refuge in warmed water). The Antillean manatee&rsquo;s water temperature is never mentioned, so the two are never compared.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 7: after describing the coastal range from Mauritania to Angola the writer adds &lsquo;The species <em>also</em> makes use of rivers, with the mammals seen in <em>landlocked</em> countries such as Mali and Niger&rsquo; &mdash; the direct opposite of &lsquo;limited to coastal waters&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 9 gives the estimate of 140,000 Amazonian manatees killed between 1935 and 1954, but says nothing about <em>when</em> or <em>how</em> the scale of that loss became known.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 10: &lsquo;Both are also <em>expected to undergo a decline of 20% over the next 40 years</em>.&rsquo; &lsquo;Expected to&rsquo; = &lsquo;it is predicted&rsquo;; 40 years = &lsquo;the coming decades&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 10 reports how many cases of entanglement and plastic consumption a 2009&ndash;2020 review <em>found</em>. It never compares this with an earlier period, so no increase is claimed.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 10: &lsquo;laws in <em>certain parts</em> of Florida now limit boat speeds during winter, allowing slow-moving manatees more time to respond&rsquo; &mdash; &lsquo;some legislation&rsquo; aimed at reducing boat strikes.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;6)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">tail</div><div class="answer-note">Manatees and dugongs look alike, but the shape of the</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">flippers</div><div class="answer-note">To look sideways a manatee turns its whole body, steering with its</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">hairs</div><div class="answer-note">Manatees feel vibrations in the water using the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">seagrasses</div><div class="answer-note">Most of a manatee&rsquo;s diet consists of</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">lips</div><div class="answer-note">Manatees have no incisors, so they tear plants from the seafloor with their</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">buoyancy</div><div class="answer-note">Storing gas inside the body may let manatees adjust their</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">aquatic</div><div class="answer-note">Manatees are fully</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">omnivorous</div><div class="answer-note">The African manatee is</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">abrasive</div><div class="answer-note">Their diet is</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">grazing</div><div class="answer-note">They spend eight hours a day</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">landlocked</div><div class="answer-note">Mali and Niger are</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">undergo</div><div class="answer-note">Both West Indian subspecies are expected to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">propulsion</div><div class="answer-note">Manatees use the tail for</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">herbivores</div><div class="answer-note">West Indian and Amazonian manatees are both</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">wrinkled</div><div class="answer-note">Their skin is thick and</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">uproot</div><div class="answer-note">The soil of the seafloor is disturbed when manatees</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">heightened</div><div class="answer-note">All three species face a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">births</div><div class="answer-note">The fertility of a population falls when deaths exceed</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">uprooting</div><div class="answer-note">Question: &ldquo;pull up plants&rdquo; &rarr; Passage: grazing and</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">adjust</div><div class="answer-note">Question: &ldquo;regulate the buoyancy of their bodies&rdquo; &rarr; Passage: use breathing to</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">lagoons</div><div class="answer-note">Question: &ldquo;a variety of different aquatic habitats&rdquo; &rarr; Passage: rivers, lakes and inland</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">decline</div><div class="answer-note">Question: &ldquo;it is predicted that populations will fall&rdquo; &rarr; Passage: both are expected to undergo a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">laws</div><div class="answer-note">Question: &ldquo;there is legislation in place&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">incidental</div><div class="answer-note">Question: &ldquo;caught accidentally by fishing gear&rdquo; &rarr; Passage:</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses: Contrast, Reduction and Reference</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">whereas</div><div class="answer-note">The manatee has a rounded tail,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">that</div><div class="answer-note">&lsquo;the dugong&rsquo;s is fluked, like</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">taking</div><div class="answer-note">&lsquo;It moves between fresh water and salt water,</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">allowing</div><div class="answer-note">&lsquo;laws now limit boat speeds,</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">due</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">that</div><div class="answer-note">&lsquo;new teeth</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">aquatic</div><div class="answer-note">水生哺乳动物 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">vibrations</div><div class="answer-note">感知水中的振动 &rarr; sense</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">buoyancy</div><div class="answer-note">调节浮力 &rarr; adjust their</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">landlocked</div><div class="answer-note">内陆国家 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">extinction</div><div class="answer-note">灭绝风险 &rarr; the risk of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">death</div><div class="answer-note">主要死因 &rarr; the chief cause of</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. The shape of the tail.</div><div class="answer-note">They are alike in size, colour and shape and both have flippers. &lsquo;<em>However</em>, the manatee has a broad, rounded tail, <em>whereas</em> the dugong&rsquo;s is fluked&rsquo; &mdash; Question 1.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Its neck has six bones instead of seven, so it cannot turn side to side.</div><div class="answer-note">&lsquo;This short neck allows a manatee to move its head up and down, but not side to side.&rsquo; The flippers then do the steering &mdash; Question 2.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. Help it sense vibrations in the water.</div><div class="answer-note">&lsquo;They also have some hairs covering their bodies which help them sense vibrations in the water around them&rsquo; &mdash; Question 3. Note that &lsquo;skin&rsquo; is already printed in the note.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. African manatees also eat molluscs and fish.</div><div class="answer-note">&lsquo;African manatees are omnivorous &mdash; studies have shown that molluscs and fish make up a small part of their diets.&rsquo; The West Indian and Amazonian species are the herbivores.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. Because the note asks what grasps and pulls up plants, and the lips do that instead of incisors.</div><div class="answer-note">&lsquo;<em>Instead of</em> having incisors to grasp their food, manatees have lips which function like a pair of hands to help tear food away from the seafloor.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. Every 15&ndash;20 minutes.</div><div class="answer-note">Adults sleep underwater for 10&ndash;12 <em>hours</em> a day but surface every 15&ndash;20 <em>minutes</em>. The 2&ndash;4 minute figure applies when they are awake.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. Because it uses fresh and salt water, mangroves, reefs, rivers, lakes and lagoons.</div><div class="answer-note">The list of five habitat types plus the movement between fresh and salt water is exactly what &lsquo;a variety of different aquatic habitats&rsquo; means. Option C describes the <em>African</em> manatee.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. Because a temperature is given only for the Florida subspecies and no comparison is made.</div><div class="answer-note">A comparison the writer never makes is always NOT GIVEN. Do not build the ranking yourself from geography.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. They have been seen in landlocked countries such as Mali and Niger.</div><div class="answer-note">A landlocked country has no coast, so the range is not &lsquo;limited to coastal waters&rsquo;. &lsquo;The species <em>also</em> makes use of rivers&rsquo; is the contradiction.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">D. That the risk to manatees rose during that period.</div><div class="answer-note">This is Question 12. Counting cases in a period is not the same as showing an <em>increase</em> across it &mdash; there is no earlier figure to compare with, so the answer is NOT GIVEN.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Boat strikes; some areas now limit boat speeds in winter.</div><div class="answer-note">Question 13. &lsquo;The chief cause of death in Florida manatees is boat strikes. However, laws in certain parts of Florida now limit boat speeds during winter.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. Neutral and factual, using hedges such as &lsquo;it&rsquo;s thought that&rsquo; and &lsquo;may&rsquo;.</div><div class="answer-note">The buoyancy mechanism is introduced with &lsquo;It&rsquo;s thought that&rsquo; and &lsquo;They <em>may</em> use&rsquo;, and the future decline with &lsquo;are expected to&rsquo;. The writer reports rather than argues.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

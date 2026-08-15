@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Listening Part 2</h1>
+    <h2>Bidcaster Archaeology Dig · Multiple Choice + Map Labelling (Q11–20)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A single speaker, <strong>Hayden</strong>, is a professional archaeologist welcoming visitors to a community excavation next to <strong>Bidcaster Castle</strong>. In the first half he tells the story of the dig &mdash; who started it, how a gold coin led to the discovery of a lost village, what has been found and what has not. In the second half he points at a site map and gives directions to four features. Questions 11&ndash;16 are <strong>3-option multiple choice</strong>; questions 17&ndash;20 are <strong>map labelling</strong> with letters <strong>A&ndash;G</strong>.</p></div><div class="card"><p><strong>Who is speaking?</strong> One speaker only: <b>Hayden</b>, a full-time archaeologist employed by the town council, giving an introductory talk to visitors on site. It is a monologue, so there is no second voice to correct or confirm anything &mdash; the corrections come from Hayden himself (&ldquo;we thought&hellip; but it turned out to be&hellip;&rdquo;).</p><p><strong>The situation 情境:</strong> 考古学家 Hayden 在 Bidcaster 城堡旁边的社区考古工地上，向参观者介绍这个项目：它是怎么开始的（一枚金币）、三个夏天挖出了什么、还没挖到什么，最后对着一张工地地图指出四个地点的位置（Q17–20）。</p><p><strong>Task type:</strong> Q11&ndash;16 multiple choice, <b>A / B / C</b> &mdash; choose the correct letter. Q17&ndash;20 <b>map labelling</b>, choose from <b>A&ndash;G</b>; there are seven letters but only four answers, so three letters are never used. Letters may not be used more than once.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> This section is really two different tests in one. For <strong>Q11&ndash;16</strong>, underline the few words in the stem that fix the <em>question focus</em> (<em>starting</em> the project, <em>still hoping</em> to find, <em>after</em> this summer). Hayden mentions all three options almost every time &mdash; two of them as background, one as the fact you actually need. For <strong>Q17&ndash;20</strong>, do not try to hold the map in your head. Put your pen on the <em>&ldquo;you are here&rdquo;</em> marker at the bottom and physically trace the route as he speaks. The four features are given in the order 17, 18, 19, 20, but he uses three <em>different</em> kinds of description: a walking route, a compass direction, and a &ldquo;biggest thing next to X&rdquo; size comparison. 地图题一定要用笔跟着走，不要在脑子里记。</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q11 &mdash; three organisations in one sentence.</b> The castle <em>owners</em> (A) lend their facilities, the town <em>council</em> (C) employs Hayden, but it was <b>NHA, a charity</b> that &ldquo;asked me to join the project&rdquo; and &ldquo;sets up projects like this up and down the country&rdquo; &rarr; <b>B</b>.</li><li><b>Q12 &mdash; two textbook methods are mentioned first.</b> Hayden says coins are <em>often</em> found with metal detectors (C) or where <em>rabbits</em> have dug tunnels (B). Those are general facts. The word <b>&ldquo;Here&rdquo;</b> switches him to this case: a rainstorm washed the earth away &rarr; <b>A</b>.</li><li><b>Q13 &mdash; the grass is a decoy.</b> Option B mentions structures &ldquo;visible in the grass&rdquo;, and the audio does say <em>grassy area</em> &mdash; but only as the <em>place shown on</em> the old maps and documents found &ldquo;just by chance&rdquo; in the library &rarr; <b>A</b> (a lucky discovery of old records).</li><li><b>Q14 &mdash; &ldquo;still hoping to find&rdquo; means NOT found yet.</b> Broken pots (A) and bone tools (B) have already been found; jewellery is what they are &ldquo;<em>still waiting to uncover</em>&rdquo; &rarr; <b>C</b>.</li><li><b>Q15 &mdash; a negative sentence.</b> &ldquo;<em>No</em> other houses or huts so far&rdquo; kills C; the &ldquo;ancient palace&rdquo; <em>turned out to be a modern wall</em>, which kills A. Only the &ldquo;borders of an ancient field system&rdquo; survives &rarr; <b>B</b>.</li><li><b>Q16 &mdash; the museum and the TV programme are both real, but neither is a plan.</b> The TV documentary has <em>already</em> been shown, and the museum idea &ldquo;we don&rsquo;t know that for sure yet&rdquo;. The confirmed plan is guided tours for school groups this autumn &rarr; <b>C</b>.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">archaeologist</span></td><td><span class="pos">n.</span></td><td>a person who studies history by digging up old objects and buildings</td><td class="zh">考古学家</td><td>&ldquo;I&rsquo;m one of the <em>archaeologists</em> investigating the site here at Bidcaster.&rdquo;</td><td class="note">Spelling trap: a-r-c-h-a-e-o-l-o-g-i-s-t. The verb is <em>excavate</em>, the place is a <em>site</em>, and the whole topic family will come back in Reading too.</td></tr>
+<tr><td><span class="word">site</span></td><td><span class="pos">n.</span></td><td>a piece of ground where something is built, dug or discovered</td><td class="zh">（考古）遗址；场地</td><td>&ldquo;There had been a village on this <em>site</em> centuries before the castle was built.&rdquo;</td><td class="note">Homophone alert: <em>site</em> / <em>sight</em> / <em>cite</em>. In this topic it is almost always <em>site</em>.</td></tr>
+<tr><td><span class="word">excavate</span></td><td><span class="pos">v.</span></td><td>to dig carefully in the ground to find historical objects</td><td class="zh">挖掘；发掘</td><td>&ldquo;One area we <em>excavated</em> in the first summer uncovered the site of a meeting hall.&rdquo;</td><td class="note">The noun <em>excavation area</em> is the landmark used to locate the meeting hall in <b>Q19</b>.</td></tr>
+<tr><td><span class="word">volunteer</span></td><td><span class="pos">n.</span></td><td>someone who works without being paid</td><td class="zh">志愿者</td><td>&ldquo;Most of the people digging here are <em>volunteers</em>.&rdquo;</td><td class="note">Signals &ldquo;community project&rdquo;. Contrast with Hayden, who is <em>full-time</em> and paid by the council &mdash; useful background for Q11.</td></tr>
+<tr><td><span class="word">charity</span></td><td><span class="pos">n.</span></td><td>an organisation that helps people or causes and does not exist to make money</td><td class="zh">慈善机构</td><td>&ldquo;I was asked to join the project by NHA, a <em>charity</em> which sets up projects like this.&rdquo;</td><td class="note"><strong>Answer to Q11 (B).</strong> Listen for the appositive comma: &ldquo;NHA<b>,</b> a charity<b>,</b>&hellip;&rdquo; &mdash; that comma is where the definition lives.</td></tr>
+<tr><td><span class="word">council</span></td><td><span class="pos">n.</span></td><td>the elected group that runs a town or local area</td><td class="zh">（地方）议会；市政府</td><td>&ldquo;I&rsquo;m a full-time archaeologist for the town <em>council</em>.&rdquo;</td><td class="note">Distractor for Q11: the council employs the speaker but did not <em>start</em> the project.</td></tr>
+<tr><td><span class="word">facilities</span></td><td><span class="pos">n. (pl.)</span></td><td>buildings, equipment or services provided for people to use</td><td class="zh">设施</td><td>&ldquo;The owners let us use their <em>facilities</em>.&rdquo;</td><td class="note">Another Q11 distractor. &ldquo;Let us use&rdquo; = permission, not responsibility.</td></tr>
+<tr><td><span class="word">metal detector</span></td><td><span class="pos">n.</span></td><td>a machine that beeps when it finds metal under the ground</td><td class="zh">金属探测器</td><td>&ldquo;Coins are often found by people using <em>metal detectors</em>.&rdquo;</td><td class="note">Mentioned as a <em>general</em> method (option C in Q12), not as what happened here.</td></tr>
+<tr><td><span class="word">bury / buried</span></td><td><span class="pos">v.</span></td><td>to put or cover something under the ground</td><td class="zh">埋；被埋在地下</td><td>&ldquo;&hellip;to look for things <em>buried</em> in the ground.&rdquo;</td><td class="note">Pronounced /&#712;beri/ &mdash; it sounds like <em>berry</em>, not like <em>bury</em> looks.</td></tr>
+<tr><td><span class="word">uncover</span></td><td><span class="pos">v.</span></td><td>to find something that was hidden or covered</td><td class="zh">发现；揭开</td><td>&ldquo;We&rsquo;re still waiting to <em>uncover</em> any such items.&rdquo;</td><td class="note">Paraphrase family for Q14: uncover / find / discover / come across. &ldquo;Still waiting to uncover&rdquo; = have NOT found.</td></tr>
+<tr><td><span class="word">rainstorm</span></td><td><span class="pos">n.</span></td><td>a period of very heavy rain</td><td class="zh">暴雨</td><td>&ldquo;A walker found it on the ground after a <em>rainstorm</em> washed away some of the earth.&rdquo;</td><td class="note"><strong>Answer to Q12 (A).</strong> On the paper it is &ldquo;heavy rain&rdquo;; in the audio it is &ldquo;a rainstorm&rdquo;. Same idea, different word.</td></tr>
+<tr><td><span class="word">remains</span></td><td><span class="pos">n. (pl.)</span></td><td>the parts of something old that are still left</td><td class="zh">遗迹；残骸</td><td>&ldquo;We found the <em>remains</em> of several buildings.&rdquo;</td><td class="note">Always plural in this meaning. It appears in option A of Q15 (&ldquo;the remains of a large palace&rdquo;) as a distractor.</td></tr>
+<tr><td><span class="word">ruined</span></td><td><span class="pos">adj.</span></td><td>badly damaged and no longer usable</td><td class="zh">成为废墟的</td><td>&ldquo;500-year-old drawings of <em>ruined</em> buildings on the grassy area.&rdquo;</td><td class="note">This phrase belongs to the <em>old documents</em> (Q13, option A), not to something anyone saw in the grass.</td></tr>
+<tr><td><span class="word">pottery / pots</span></td><td><span class="pos">n.</span></td><td>objects made of baked clay, such as bowls and jars</td><td class="zh">陶器</td><td>&ldquo;We found&hellip; more broken <em>pots</em> than you can count.&rdquo;</td><td class="note">Q14 option A says &ldquo;everyday pottery&rdquo; &mdash; already found, so it cannot be what they are <em>hoping</em> for.</td></tr>
+<tr><td><span class="word">brooch</span></td><td><span class="pos">n.</span></td><td>a piece of jewellery pinned to clothing</td><td class="zh">胸针</td><td>&ldquo;Normally you&rsquo;d expect to find <em>brooches</em> and other jewellery.&rdquo;</td><td class="note">Pronounced /br&#601;&#650;t&#643;/ &mdash; like &ldquo;broach&rdquo;. It is the concrete example that proves the answer to Q14 is <em>jewellery</em>.</td></tr>
+<tr><td><span class="word">jewellery</span></td><td><span class="pos">n.</span></td><td>rings, necklaces and similar decorative objects</td><td class="zh">首饰；珠宝</td><td>&ldquo;&hellip;brooches and other <em>jewellery</em>, but we&rsquo;re still waiting to uncover any such items.&rdquo;</td><td class="note"><strong>Answer to Q14 (C).</strong> Spelling: British <em>jewellery</em> / American <em>jewelry</em> &mdash; both accepted, but be consistent.</td></tr>
+<tr><td><span class="word">field system</span></td><td><span class="pos">n.</span></td><td>the pattern of ancient farm fields still visible in the land</td><td class="zh">古代田地系统</td><td>&ldquo;We can see the <em>borders</em> of an ancient <em>field system</em>.&rdquo;</td><td class="note"><strong>Answer to Q15 (B).</strong> &ldquo;Borders&rdquo; in the audio = &ldquo;outline&rdquo; on the question paper.</td></tr>
+<tr><td><span class="word">hut</span></td><td><span class="pos">n.</span></td><td>a small, simply built house</td><td class="zh">小屋；棚屋</td><td>&ldquo;No other houses or <em>huts</em> so far.&rdquo;</td><td class="note">Q15 option C. The word IS said &mdash; inside a negative. Hearing the word is not the same as hearing the answer.</td></tr>
+<tr><td><span class="word">foundations</span></td><td><span class="pos">n. (pl.)</span></td><td>the solid base built under a structure</td><td class="zh">地基</td><td>&ldquo;This year we&rsquo;ve identified the <em>foundations</em> of an ancient bridge.&rdquo;</td><td class="note"><strong>Q17.</strong> The bridge itself is gone &mdash; only the base is left, which is why the label is on the riverbank.</td></tr>
+<tr><td><span class="word">diver</span></td><td><span class="pos">n.</span></td><td>a person who swims underwater, often to search for something</td><td class="zh">潜水员</td><td>&ldquo;A team of <em>divers</em> are in the river searching for lost objects.&rdquo;</td><td class="note">Confirms that the Q17 answer is beside the <b>river</b> &mdash; a strong extra clue if you lose the route.</td></tr>
+<tr><td><span class="word">track</span></td><td><span class="pos">n.</span></td><td>a narrow rough path</td><td class="zh">小路；小径</td><td>&ldquo;You&rsquo;ll see a smaller <em>track</em> leading off to the right.&rdquo;</td><td class="note">Map-task vocabulary: <em>path</em> (main) vs <em>track</em> (smaller). The change of noun signals the turn.</td></tr>
+<tr><td><span class="word">bend</span></td><td><span class="pos">v.</span></td><td>to curve or turn (of a road or path)</td><td class="zh">（道路）转弯</td><td>&ldquo;Keep going till the path <em>bends</em> to the left.&rdquo;</td><td class="note">A bend is not a turning for <em>you</em> &mdash; the path curves, you keep walking. Candidates often turn left here by mistake.</td></tr>
+<tr><td><span class="word">rubbish pit</span></td><td><span class="pos">n.</span></td><td>a hole in the ground where waste was thrown</td><td class="zh">垃圾坑</td><td>&ldquo;This is very near the castle walls in the northwest corner of the site.&rdquo;</td><td class="note"><strong>Q18.</strong> Located by <em>compass direction</em> plus a landmark (the castle walls) &mdash; no walking route at all.</td></tr>
+<tr><td><span class="word">oyster</span></td><td><span class="pos">n.</span></td><td>a shellfish eaten as food</td><td class="zh">牡蛎；生蚝</td><td>&ldquo;We found <em>oyster</em> shells and fishbones.&rdquo;</td><td class="note">Food waste is the evidence that dates the pit to the castle kitchen, not to the village.</td></tr>
+<tr><td><span class="word">post hole</span></td><td><span class="pos">n.</span></td><td>a hole dug to hold an upright wooden post</td><td class="zh">柱洞</td><td>&ldquo;It had two rows of <em>post holes</em> deep enough to support a large roof.&rdquo;</td><td class="note">Explains <em>why</em> the meeting hall was important &mdash; big roof = big building = the largest structure (Q19).</td></tr>
+<tr><td><span class="word">structure</span></td><td><span class="pos">n.</span></td><td>a building or something that has been built</td><td class="zh">建筑物；结构</td><td>&ldquo;It&rsquo;s the largest <em>structure</em> in a central area of the site.&rdquo;</td><td class="note"><strong>Q19 key clue.</strong> &ldquo;Largest&rdquo; + &ldquo;central&rdquo; + &ldquo;next to the current excavation area&rdquo; &mdash; three checks in one sentence.</td></tr>
+<tr><td><span class="word">information board</span></td><td><span class="pos">n.</span></td><td>a sign that gives visitors facts about a place</td><td class="zh">信息牌；指示牌</td><td>&ldquo;You turn right at the first <em>information board</em> you come to.&rdquo;</td><td class="note"><strong>Q20 starting point.</strong> Map tasks nearly always use small printed icons like this as turning points.</td></tr>
+<tr><td><span class="word">guided tour</span></td><td><span class="pos">n.</span></td><td>a visit where someone shows you round and explains things</td><td class="zh">导览；有讲解的参观</td><td>&ldquo;We&rsquo;re putting on a series of <em>guided tours</em> for school groups this autumn.&rdquo;</td><td class="note"><strong>Answer to Q16 (C).</strong> &ldquo;Guided tours for school groups&rdquo; = &ldquo;organise school visits&rdquo;.</td></tr>
+<tr><td><span class="word">documentary</span></td><td><span class="pos">n.</span></td><td>a film or TV programme about real events</td><td class="zh">纪录片</td><td>&ldquo;Maybe you saw the TV <em>documentary</em> about our project.&rdquo;</td><td class="note">Q16 distractor B. The past tense &ldquo;you <em>saw</em>&rdquo; proves it has already happened, so it cannot be a plan.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">up and down the country</span></td><td>in many places all over the country</td><td class="zh">全国各地</td></tr>
+<tr><td><span class="phrase">let us use their facilities</span></td><td>give us permission to use their buildings and equipment</td><td class="zh">让我们使用他们的设施</td></tr>
+<tr><td><span class="phrase">how did we get to where we are today</span></td><td>what is the story behind our present situation</td><td class="zh">我们是怎么走到今天这一步的</td></tr>
+<tr><td><span class="phrase">buried in the ground</span></td><td>covered by soil, hidden under the surface</td><td class="zh">埋在地下</td></tr>
+<tr><td><span class="phrase">dig tunnels</span></td><td>make long holes under the ground (of animals)</td><td class="zh">打洞；挖地道</td></tr>
+<tr><td><span class="phrase">wash away the earth</span></td><td>remove soil by the force of water</td><td class="zh">把泥土冲走</td></tr>
+<tr><td><span class="phrase">hit the news</span></td><td>suddenly become a news story</td><td class="zh">上新闻；见报</td></tr>
+<tr><td><span class="phrase">just by chance</span></td><td>by luck, not by planning</td><td class="zh">碰巧；纯属偶然</td></tr>
+<tr><td><span class="phrase">be on to something</span></td><td>have found the first sign of an important discovery</td><td class="zh">有重大发现的线索</td></tr>
+<tr><td><span class="phrase">centuries before</span></td><td>hundreds of years earlier than</td><td class="zh">在……之前几百年</td></tr>
+<tr><td><span class="phrase">more&hellip; than you can count</span></td><td>a very large number of</td><td class="zh">多得数不清</td></tr>
+<tr><td><span class="phrase">still waiting to uncover</span></td><td>have not yet found</td><td class="zh">还没有挖到</td></tr>
+<tr><td><span class="phrase">be skilled at</span></td><td>be very good at doing something</td><td class="zh">擅长于</td></tr>
+<tr><td><span class="phrase">evidence of human activity</span></td><td>signs that people once lived or worked there</td><td class="zh">人类活动的证据</td></tr>
+<tr><td><span class="phrase">so far</span></td><td>up to now</td><td class="zh">到目前为止</td></tr>
+<tr><td><span class="phrase">it turned out to be</span></td><td>it was finally shown to be (something different)</td><td class="zh">结果原来是</td></tr>
+<tr><td><span class="phrase">in the meantime</span></td><td>during the period until then</td><td class="zh">在此期间</td></tr>
+<tr><td><span class="phrase">put on a series of&hellip;</span></td><td>organise and run a set of events</td><td class="zh">举办一系列……</td></tr>
+<tr><td><span class="phrase">we don&rsquo;t know that for sure yet</span></td><td>it is not confirmed</td><td class="zh">目前还不确定</td></tr>
+<tr><td><span class="phrase">keep to the paths</span></td><td>stay on the marked walkways</td><td class="zh">请勿离开步道</td></tr>
+<tr><td><span class="phrase">take the main path ahead of you</span></td><td>walk forward along the biggest path</td><td class="zh">沿着前面的主路走</td></tr>
+<tr><td><span class="phrase">keep going till&hellip;</span></td><td>continue walking until&hellip;</td><td class="zh">一直走到……为止</td></tr>
+<tr><td><span class="phrase">lead off to the right</span></td><td>branch away from the main path towards the right</td><td class="zh">向右岔出去</td></tr>
+<tr><td><span class="phrase">date to the time of&hellip;</span></td><td>come from the same period as&hellip;</td><td class="zh">可追溯到……时期</td></tr>
+<tr><td><span class="phrase">you&rsquo;ve gone too far</span></td><td>you have walked past it</td><td class="zh">你走过头了</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Key Facts from the Talk</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These sentences retell the content that the exam questions are built on. Write <strong>ONE WORD</strong> in each gap. Every word is said in the recording.</p><div class="ex-item"><span class="ex-num">1.</span><label>The project was set up by NHA, a national <input type="text" class="blank" id="b1" data-answer="charity" placeholder="______">, not by the council.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Hayden works full-time as an archaeologist for the town <input type="text" class="blank" id="b2" data-answer="council" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The castle owners let the team use their <input type="text" class="blank" id="b3" data-answer="facilities" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>A walker found the gold <input type="text" class="blank" id="b4" data-answer="coin" placeholder="______"> lying on the ground after a rainstorm.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Old maps and <input type="text" class="blank" id="b5" data-answer="documents" placeholder="______"> were found by chance in the library.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The team have found many broken pots but no <input type="text" class="blank" id="b6" data-answer="jewellery" placeholder="______"> yet.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Villagers made tools out of animal <input type="text" class="blank" id="b7" data-answer="bones" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Across the river the team can see the borders of an ancient <input type="text" class="blank" id="b8" data-answer="field" placeholder="______"> system.<span class="feedback" id="fb8"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Multiple Choice (Q11&ndash;16): write the letter</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the correct letter <strong>A</strong>, <strong>B</strong> or <strong>C</strong> for each exam question. Say to yourself <em>why</em> the other two are wrong before you type.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q11 Who was responsible for starting the community project? <input type="text" class="blank" id="b9" data-answer="B" placeholder="______"> (A owners / B a national charity / C the local council)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q12 How was the gold coin found? <input type="text" class="blank" id="b10" data-answer="A" placeholder="______"> (A rain removed soil / B rabbits dug / C a metal detector)<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q13 What led archaeologists to believe there was an ancient village? <input type="text" class="blank" id="b11" data-answer="A" placeholder="______"> (A lucky discovery of old records / B bases visible in the grass / C unusual stones)<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q14 What are the team still hoping to find? <input type="text" class="blank" id="b12" data-answer="C" placeholder="______"> (A pottery / B animal bones / C jewellery)<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q15 What was found on the other side of the river? <input type="text" class="blank" id="b13" data-answer="B" placeholder="______"> (A a palace / B the outline of fields / C small huts)<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q16 What will the team do after this summer&rsquo;s work ends? <input type="text" class="blank" id="b14" data-answer="C" placeholder="______"> (A a museum display / B a TV programme / C school visits)<span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Map Labelling &amp; Direction Language</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">First the four map answers (write the letter), then the direction words that carry them. In map tasks the <em>verbs</em> and <em>prepositions</em> are the answer, not the nouns.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q17 bridge foundations &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b15" data-answer="B" placeholder="______"><span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q18 rubbish pit &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b16" data-answer="A" placeholder="______"><span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q19 meeting hall &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b17" data-answer="G" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q20 fish pond &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b18" data-answer="E" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Take the main path ahead of you and keep going till the path <input type="text" class="blank" id="b19" data-answer="bends" placeholder="______"> to the left.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>You will see a smaller <input type="text" class="blank" id="b20" data-answer="track" placeholder="______"> leading off to the right.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The rubbish pit is in the <input type="text" class="blank" id="b21" data-answer="northwest" placeholder="______"> corner of the site, near the castle walls.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>For the fish pond, turn right at the first information <input type="text" class="blank" id="b22" data-answer="board" placeholder="______"> you come to.<span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS, or complete the spelling. Every word here is from this recording and every one is regularly misspelled.</p><div class="ex-item"><span class="ex-num">1.</span><label>The site is being investigated by a team of <input type="text" class="blank" id="b23" data-answer="archaeologists" placeholder="______"> (ARCHAEOLOGY).<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>One area they <input type="text" class="blank" id="b24" data-answer="excavated" placeholder="______"> (EXCAVATE) in the first summer held a meeting hall.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The old drawings showed <input type="text" class="blank" id="b25" data-answer="ruined" placeholder="______"> (RUIN) buildings beside the river.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Most of the people working on the dig are unpaid <input type="text" class="blank" id="b26" data-answer="volunteers" placeholder="______"> (VOLUNTEER).<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>j e w _ l l e r y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b27" data-answer="jewellery" placeholder="______"><span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>f o u n d _ t i o n s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b28" data-answer="foundations" placeholder="______"><span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>d o c u m _ n t a r y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b29" data-answer="documentary" placeholder="______"><span class="feedback" id="fb29"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what Hayden actually says; on the right is the wording on the question paper. Write the missing word.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;a rainstorm washed away some of the earth and sand&rdquo; &rarr; Paper: &ldquo;Heavy rain had removed some of the <input type="text" class="blank" id="b30" data-answer="soil" placeholder="______">.&rdquo;<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;the team found some old maps and documents&rdquo; &rarr; Paper: &ldquo;the discovery of old <input type="text" class="blank" id="b31" data-answer="records" placeholder="______">&rdquo;<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;just by chance&rdquo; &rarr; Paper: &ldquo;the <input type="text" class="blank" id="b32" data-answer="lucky" placeholder="______"> discovery&rdquo;<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;we&rsquo;re still waiting to uncover any such items&rdquo; &rarr; Paper: &ldquo;what the team are still <input type="text" class="blank" id="b33" data-answer="hoping" placeholder="______"> to find&rdquo;<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;we can see the borders of an ancient field system&rdquo; &rarr; Paper: &ldquo;the <input type="text" class="blank" id="b34" data-answer="outline" placeholder="______"> of fields&rdquo;<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;guided tours for school groups this autumn&rdquo; &rarr; Paper: &ldquo;start to organise school <input type="text" class="blank" id="b35" data-answer="visits" placeholder="______">&rdquo;<span class="feedback" id="fb35"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q11</span></td><td>Who was responsible for <b>starting</b> the community project?</td><td><b>ORGANISATION &mdash; who began it</b></td><td>Three bodies will all be named. Listen for a verb of <em>initiating</em>: set up / asked me to join / started. &ldquo;Let us use&rdquo; and &ldquo;I work for&rdquo; are not it.</td><td class="note">B &mdash; a national charity (NHA)</td></tr>
+<tr><td><span class="word">Q12</span></td><td><b>How</b> was the gold coin found?</td><td><b>METHOD / CAUSE</b></td><td>Two general methods come first (detectors, rabbits). Wait for the word <b>&ldquo;Here&rdquo;</b> &mdash; that is where this site&rsquo;s real story starts.</td><td class="note">A &mdash; heavy rain removed the soil</td></tr>
+<tr><td><span class="word">Q13</span></td><td>What <b>led</b> the archaeologists to believe there was an ancient village?</td><td><b>EVIDENCE / TRIGGER</b></td><td>Listen for a discovery verb plus a source: &ldquo;found&hellip; in our library&rdquo;. Beware the word <em>grassy</em>, which belongs to the maps, not to the eye.</td><td class="note">A &mdash; a lucky discovery of old records</td></tr>
+<tr><td><span class="word">Q14</span></td><td>What are the team <b>still hoping</b> to find?</td><td><b>OBJECT &mdash; NOT yet found</b></td><td>You need a negative or future signal: &ldquo;still waiting to&hellip;&rdquo;, &ldquo;we haven&rsquo;t yet&hellip;&rdquo;. Anything introduced with &ldquo;we found&rdquo; is wrong.</td><td class="note">C &mdash; pieces of jewellery</td></tr>
+<tr><td><span class="word">Q15</span></td><td>What was found on the <b>other side of the river</b>?</td><td><b>FEATURE IN THE LANDSCAPE</b></td><td>Listen for the location switch (&ldquo;on the other side of the river&rdquo;), then for what is ruled out: &ldquo;No other houses or huts&hellip; but&hellip;&rdquo;.</td><td class="note">B &mdash; the outline of fields</td></tr>
+<tr><td><span class="word">Q16</span></td><td>What do the team <b>plan to do after</b> work ends this summer?</td><td><b>FUTURE PLAN</b></td><td>Only future forms count: &ldquo;we&rsquo;re putting on&hellip; this autumn&rdquo;. Past (&ldquo;you saw the documentary&rdquo;) and uncertain (&ldquo;we don&rsquo;t know for sure&rdquo;) are traps.</td><td class="note">C &mdash; start to organise school visits</td></tr>
+<tr><td><span class="word">Q17</span></td><td>bridge foundations (map letter A&ndash;G)</td><td><b>ROUTE &mdash; a walking description</b></td><td>Full route from &ldquo;you are here&rdquo; at the bottom: main path &rarr; path bends left &rarr; smaller track off to the RIGHT &rarr; the river. Confirmation: the divers are there.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q18</span></td><td>rubbish pit (map letter A&ndash;G)</td><td><b>COMPASS DIRECTION + LANDMARK</b></td><td>No route at all this time: &ldquo;very near the castle walls in the <em>northwest</em> corner&rdquo;. Find the compass rose on the map first.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q19</span></td><td>meeting hall (map letter A&ndash;G)</td><td><b>SIZE + POSITION</b></td><td>Three filters: the <em>largest</em> structure, in a <em>central</em> area, <em>next to</em> the current excavation area.</td><td class="note">G</td></tr>
+<tr><td><span class="word">Q20</span></td><td>fish pond (map letter A&ndash;G)</td><td><b>ROUTE &mdash; with a warning</b></td><td>Turn right at the first information board &rarr; path into the trees &rarr; on your right <em>before</em> you come out of the trees. &ldquo;If you reach the river you&rsquo;ve gone too far&rdquo; = it is NOT on the bank.</td><td class="note">E</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Who was <b>responsible for starting</b> the community project?&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;I&rsquo;m a full-time archaeologist for the town council, but I was <b>asked to join the project by NHA, a charity</b> which <b>sets up projects like this</b> up and down the country.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">responsible for starting = sets up projects / asked me to join. &ldquo;I work for the council&rdquo; and &ldquo;the owners let us use their facilities&rdquo; are relationships, not origins.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence with &lsquo;set up&rsquo; about a club or project you know&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>How</b> was the gold coin found?&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Coins are <b>often</b> found by people using metal detectors&hellip; <b>Or</b> coins are uncovered when wild animals like rabbits have been digging tunnels. <b>Here</b>, a walker found it on the ground after a rainstorm washed away some of the earth and sand.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">General knowledge (&ldquo;often&rdquo;, &ldquo;or&rdquo;) &rarr; this case (&ldquo;Here&rdquo;). Rainstorm washed away earth = heavy rain removed soil.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;the rain removed the soil&rsquo; using &lsquo;washed away&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;What are the team <b>still hoping to find</b>?&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;We found the remains of several buildings and more broken pots than you can count. Normally you&rsquo;d expect to find brooches and other jewellery, but we&rsquo;re <b>still waiting to uncover</b> any such items.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">still hoping to find = still waiting to uncover = have NOT found. &ldquo;We found&rdquo; eliminates an option instead of choosing it.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;I&rsquo;m still waiting to&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;What was found on the other side of the river? &mdash; the <b>outline of fields</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>No</b> other houses or huts so far, <b>but</b> we can see the <b>borders of an ancient field system</b>. At one point we found a long wall and thought it was an ancient palace, but it <b>turned out to be a modern wall</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">outline = borders. Two options are destroyed by grammar: &ldquo;no&hellip; huts&rdquo; and &ldquo;turned out to be modern&rdquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;it turned out to be&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;What do the team <b>plan to do after</b> work ends this summer?&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;This summer&rsquo;s work will end soon&hellip; <b>In the meantime, we&rsquo;re putting on a series of guided tours for school groups this autumn.</b> Oh, and maybe you <b>saw</b> the TV documentary&hellip; the objects are going to the town&rsquo;s museum, but we <b>don&rsquo;t know that for sure yet</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">organise school visits = put on guided tours for school groups. Tense is the whole test: present continuous = plan; past = already done; &ldquo;not for sure&rdquo; = not a plan.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a future plan of yours using &lsquo;we&rsquo;re putting on&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q17 bridge foundations</b> &mdash; which letter?</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Take the <b>main path ahead of you</b>. Go straight on and <b>keep going till the path bends to the left</b>. You&rsquo;ll see a <b>smaller track leading off to the right</b>. Follow that to take you to the <b>river</b> where the divers are.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The path bends left by itself &mdash; YOU do not turn. Your only turn is right, onto the smaller track. End point = the riverbank.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Give directions from your home to the nearest shop using &lsquo;keep going till&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q19 meeting hall</b> and <b>Q20 fish pond</b> &mdash; which letters?</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Hall: &ldquo;the <b>largest structure in a central area</b> of the site <b>next to the current excavation area</b>.&rdquo; Pond: &ldquo;turn right at the <b>first information board</b>&hellip; into the trees. <b>Before you come out of the trees</b>, you&rsquo;ll see it on your right. If you reach the river, <b>you&rsquo;ve gone too far</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Descriptions (largest / central / next to) work like filters. &ldquo;You&rsquo;ve gone too far&rdquo; is a negative clue that rules out any letter on the riverbank.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe where something is in your room using &lsquo;next to&rsquo; and &lsquo;before you reach&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;most of the people digging here are volunteers&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;a charity which sets up projects like this up and down the country&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;a rainstorm washed away some of the earth and sand&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;just by chance the team found some old maps and documents&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;we&rsquo;re still waiting to uncover any such items&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;we can see the borders of an ancient field system&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;keep going till the path bends to the left&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;the largest structure in a central area of the site&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is Hayden&rsquo;s own job?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. He is a volunteer on the dig.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. He runs the national charity NHA.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. He is a full-time archaeologist for the town council.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. He owns Bidcaster Castle.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why does the recording mention metal detectors and rabbits?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. They are the two ways this particular coin was found.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. They are general ways coins are usually found, used here as distractors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. They damaged the site.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. They are what the team hope to use next summer.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Who first suggested there had been a village on the site?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Peter Swift, an amateur historian.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. The castle owners.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. A librarian.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. A team of divers.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What does &ldquo;we knew then we were on to something&rdquo; mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. They realised they had made a mistake.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. They realised they were close to an important discovery.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. They decided to stop digging.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. They needed more funding.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What have the villagers&rsquo; animal bones been used for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Making jewellery.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Making tools.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Building walls.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Feeding fish.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What happened to the &ldquo;ancient palace&rdquo; the team thought they had found?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. It is now in the museum.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. It turned out to be a modern wall.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. It was destroyed by the river.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. It was on the castle side of the river.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Which statement about the museum is true?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. The objects are definitely going to the town museum.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. A TV documentary suggested it, but the team are not sure yet.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. The museum has refused the objects.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. The museum is paying for the dig.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">On the way to the bridge foundations, what do you actually have to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Turn left where the path bends, then go straight.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Go straight, then take the smaller track that leads off to the right.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Turn right at the information board.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Cross the river and turn left.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">How is the rubbish pit located on the map?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. By a walking route from the current position.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. By a compass direction plus the castle walls.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. By its size compared with other features.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. By its distance from the river.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why does Hayden say the rubbish pit belongs to the castle, not the village?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. It contains oyster shells and fishbones thrown from the castle kitchen.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. It has two rows of post holes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. It is beside the river.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. It was found in the first summer.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which three clues identify the meeting hall on the map?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Largest structure / central area / next to the current excavation area.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Smallest structure / near the river / beside the trees.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Northwest corner / near the castle walls / oyster shells.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. On the far side of the river / next to the fields.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What does &ldquo;If you reach the river, you&rsquo;ve gone too far&rdquo; tell you about the fish pond?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. The fish pond is on the riverbank.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. The fish pond is between the information board and the river, inside the trees.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. The fish pond no longer exists.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. You must cross the river to see it.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 11–20</h3><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">B</div><div class="answer-note">&ldquo;I was asked to join the project by <em>NHA, a charity</em> which sets up projects like this up and down the country.&rdquo; The council employs him; the owners only lend facilities.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">A</div><div class="answer-note">&ldquo;<em>Here</em>, a walker found it on the ground after a <em>rainstorm washed away some of the earth and sand</em>.&rdquo; Detectors and rabbits are described as general methods only.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">A</div><div class="answer-note">&ldquo;<em>Just by chance</em>, the team found some <em>old maps and documents</em> in our library, which showed 500-year-old drawings of ruined buildings.&rdquo; by chance = lucky; maps and documents = old records.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">C</div><div class="answer-note">&ldquo;Normally you&rsquo;d expect to find brooches and other <em>jewellery</em>, but we&rsquo;re <em>still waiting to uncover</em> any such items.&rdquo; Pots and bone tools have already been found.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">B</div><div class="answer-note">&ldquo;No other houses or huts so far, but we can see the <em>borders of an ancient field system</em>.&rdquo; borders = outline. The &lsquo;palace&rsquo; turned out to be a modern wall.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">C</div><div class="answer-note">&ldquo;In the meantime, we&rsquo;re putting on a series of <em>guided tours for school groups this autumn</em>.&rdquo; The documentary has already been broadcast and the museum is not confirmed.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">B</div><div class="answer-note">Bridge foundations: &ldquo;take the main path ahead of you&hellip; keep going till the path bends to the left. You&rsquo;ll see a smaller <em>track leading off to the right</em>. Follow that to take you to the <em>river</em> where the divers are.&rdquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">A</div><div class="answer-note">Rubbish pit: &ldquo;very near the <em>castle walls in the northwest corner</em> of the site.&rdquo; Located by compass point, not by a route.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">G</div><div class="answer-note">Meeting hall: &ldquo;the <em>largest structure in a central area</em> of the site <em>next to the current excavation area</em>.&rdquo; Post holes deep enough for a large roof explain the size.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">E</div><div class="answer-note">Fish pond: &ldquo;turn right at the <em>first information board</em>&hellip; follow the path <em>into the trees</em>. <em>Before you come out of the trees</em>, you&rsquo;ll see it on your right. If you reach the river, you&rsquo;ve gone too far.&rdquo;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Key Facts from the Talk</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">charity</div><div class="answer-note">The project was set up by NHA, a national</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">council</div><div class="answer-note">Hayden works full-time as an archaeologist for the town</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">facilities</div><div class="answer-note">The castle owners let the team use their</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">coin</div><div class="answer-note">A walker found the gold</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">documents</div><div class="answer-note">Old maps and</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">jewellery</div><div class="answer-note">The team have found many broken pots but no</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">bones</div><div class="answer-note">Villagers made tools out of animal</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">field</div><div class="answer-note">Across the river the team can see the borders of an ancient</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Multiple Choice (Q11&ndash;16): write the letter</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">B</div><div class="answer-note">Q11 Who was responsible for starting the community project?</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">A</div><div class="answer-note">Q12 How was the gold coin found?</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">A</div><div class="answer-note">Q13 What led archaeologists to believe there was an ancient village?</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">C</div><div class="answer-note">Q14 What are the team still hoping to find?</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">B</div><div class="answer-note">Q15 What was found on the other side of the river?</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">C</div><div class="answer-note">Q16 What will the team do after this summer&rsquo;s work ends?</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Map Labelling &amp; Direction Language</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">B</div><div class="answer-note">Q17 bridge foundations  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">A</div><div class="answer-note">Q18 rubbish pit  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">G</div><div class="answer-note">Q19 meeting hall  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">E</div><div class="answer-note">Q20 fish pond  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">bends</div><div class="answer-note">Take the main path ahead of you and keep going till the path</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">track</div><div class="answer-note">You will see a smaller</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">northwest</div><div class="answer-note">The rubbish pit is in the</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">board</div><div class="answer-note">For the fish pond, turn right at the first information</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">archaeologists</div><div class="answer-note">The site is being investigated by a team of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">excavated</div><div class="answer-note">One area they</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">ruined</div><div class="answer-note">The old drawings showed</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">volunteers</div><div class="answer-note">Most of the people working on the dig are unpaid</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">jewellery</div><div class="answer-note">j e w _ l l e r y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">foundations</div><div class="answer-note">f o u n d _ t i o n s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">documentary</div><div class="answer-note">d o c u m _ n t a r y  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">soil</div><div class="answer-note">Audio: &ldquo;a rainstorm washed away some of the earth and sand&rdquo; &rarr; Paper: &ldquo;Heavy rain had removed some of the</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">records</div><div class="answer-note">Audio: &ldquo;the team found some old maps and documents&rdquo; &rarr; Paper: &ldquo;the discovery of old</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">lucky</div><div class="answer-note">Audio: &ldquo;just by chance&rdquo; &rarr; Paper: &ldquo;the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">hoping</div><div class="answer-note">Audio: &ldquo;we&rsquo;re still waiting to uncover any such items&rdquo; &rarr; Paper: &ldquo;what the team are still</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">outline</div><div class="answer-note">Audio: &ldquo;we can see the borders of an ancient field system&rdquo; &rarr; Paper: &ldquo;the</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">visits</div><div class="answer-note">Audio: &ldquo;guided tours for school groups this autumn&rdquo; &rarr; Paper: &ldquo;start to organise school</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B &mdash; a national charity (NHA) &mdash; ORGANISATION &mdash; who began it</div><div class="answer-note">Three bodies will all be named. Listen for a verb of <em>initiating</em>: set up / asked me to join / started. &ldquo;Let us use&rdquo; and &ldquo;I work for&rdquo; are not it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A &mdash; heavy rain removed the soil &mdash; METHOD / CAUSE</div><div class="answer-note">Two general methods come first (detectors, rabbits). Wait for the word <b>&ldquo;Here&rdquo;</b> &mdash; that is where this site&rsquo;s real story starts.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q13</span><div><div class="answer-val">A &mdash; a lucky discovery of old records &mdash; EVIDENCE / TRIGGER</div><div class="answer-note">Listen for a discovery verb plus a source: &ldquo;found&hellip; in our library&rdquo;. Beware the word <em>grassy</em>, which belongs to the maps, not to the eye.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q14</span><div><div class="answer-val">C &mdash; pieces of jewellery &mdash; OBJECT &mdash; NOT yet found</div><div class="answer-note">You need a negative or future signal: &ldquo;still waiting to&hellip;&rdquo;, &ldquo;we haven&rsquo;t yet&hellip;&rdquo;. Anything introduced with &ldquo;we found&rdquo; is wrong.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q15</span><div><div class="answer-val">B &mdash; the outline of fields &mdash; FEATURE IN THE LANDSCAPE</div><div class="answer-note">Listen for the location switch (&ldquo;on the other side of the river&rdquo;), then for what is ruled out: &ldquo;No other houses or huts&hellip; but&hellip;&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q16</span><div><div class="answer-val">C &mdash; start to organise school visits &mdash; FUTURE PLAN</div><div class="answer-note">Only future forms count: &ldquo;we&rsquo;re putting on&hellip; this autumn&rdquo;. Past (&ldquo;you saw the documentary&rdquo;) and uncertain (&ldquo;we don&rsquo;t know for sure&rdquo;) are traps.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q17</span><div><div class="answer-val">B &mdash; ROUTE &mdash; a walking description</div><div class="answer-note">Full route from &ldquo;you are here&rdquo; at the bottom: main path &rarr; path bends left &rarr; smaller track off to the RIGHT &rarr; the river. Confirmation: the divers are there.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q18</span><div><div class="answer-val">A &mdash; COMPASS DIRECTION + LANDMARK</div><div class="answer-note">No route at all this time: &ldquo;very near the castle walls in the <em>northwest</em> corner&rdquo;. Find the compass rose on the map first.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q19</span><div><div class="answer-val">G &mdash; SIZE + POSITION</div><div class="answer-note">Three filters: the <em>largest</em> structure, in a <em>central</em> area, <em>next to</em> the current excavation area.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q20</span><div><div class="answer-val">E &mdash; ROUTE &mdash; with a warning</div><div class="answer-note">Turn right at the first information board &rarr; path into the trees &rarr; on your right <em>before</em> you come out of the trees. &ldquo;If you reach the river you&rsquo;ve gone too far&rdquo; = it is NOT on the bank.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">most of the people digging here are volunteers</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">a charity which sets up projects like this up and down the country</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">a rainstorm washed away some of the earth and sand</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">just by chance the team found some old maps and documents</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">we&rsquo;re still waiting to uncover any such items</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">we can see the borders of an ancient field system</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">keep going till the path bends to the left</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">the largest structure in a central area of the site</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C. He is a full-time archaeologist for the town council.</div><div class="answer-note">&ldquo;I&rsquo;m a full-time archaeologist for the town council, but I was asked to join the project by NHA.&rdquo; The <em>volunteers</em> are the other diggers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. They are general ways coins are usually found, used here as distractors.</div><div class="answer-note">Note the generalising words: &ldquo;Coins are <em>often</em> found&hellip; <em>Or</em> coins are uncovered&hellip;&rdquo;. Only after &ldquo;<em>Here</em>&rdquo; does he describe this case.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. Peter Swift, an amateur historian.</div><div class="answer-note">After the coin &ldquo;hit the news&rdquo;, Peter Swift contacted Hayden. The <em>proof</em>, however, came from the old maps and documents &mdash; that is what Q13 asks about.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. They realised they were close to an important discovery.</div><div class="answer-note">&lsquo;Be on to something&rsquo; = have the first sign of a real discovery. It marks the end of the Q13 answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. Making tools.</div><div class="answer-note">&ldquo;The people who once lived here were skilled at making <em>tools</em> from animal bones.&rdquo; Bones are therefore something already found &mdash; a Q14 distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. It turned out to be a modern wall.</div><div class="answer-note">&ldquo;We found a long wall and thought it was an ancient palace, but it <em>turned out to be a modern wall</em>.&rdquo; This is why option A in Q15 is wrong.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. A TV documentary suggested it, but the team are not sure yet.</div><div class="answer-note">&ldquo;Maybe you saw the TV documentary&hellip; that suggested the objects&hellip; are going to the town&rsquo;s museum, but we don&rsquo;t know that for sure yet.&rdquo; Uncertainty = not a plan.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Go straight, then take the smaller track that leads off to the right.</div><div class="answer-note">The <em>path</em> bends to the left on its own; the only instruction to you is to follow the <em>smaller track</em> on the right down to the river.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. By a compass direction plus the castle walls.</div><div class="answer-note">&ldquo;Very near the castle walls in the <em>northwest</em> corner of the site.&rdquo; Always check the compass rose before the audio starts.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. It contains oyster shells and fishbones thrown from the castle kitchen.</div><div class="answer-note">&ldquo;We found oyster shells and fishbones and we assumed they were thrown from the castle kitchen above.&rdquo; Post holes belong to the meeting hall.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">A. Largest structure / central area / next to the current excavation area.</div><div class="answer-note">Three filters in one sentence. Treat each adjective (<em>largest</em>, <em>central</em>) as a separate test the letter must pass.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. The fish pond is between the information board and the river, inside the trees.</div><div class="answer-note">A negative direction clue. Hayden even explains it: fish ponds were normally beside a river, but &ldquo;the pond here is further away&rdquo;.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

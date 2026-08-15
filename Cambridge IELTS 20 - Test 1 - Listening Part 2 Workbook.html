@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Listening Part 2</h1>
+    <h2>Edelman Pottery Talk · Multiple Choice + Multiple Answer (Q11–20)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This is a <strong>monologue</strong>: a professional potter called Heather McCallum welcomes a group of visitors to Edelman Pottery and talks to them before they go into the workshop. In the first half she explains why pottery matters to archaeologists, why people take her classes and what visitors should wear; in the second half she walks them round the workshop and describes the three things you need &mdash; a <strong>kiln</strong>, a <strong>potter&rsquo;s wheel</strong> and <strong>tools</strong>. There are six single-answer multiple-choice questions and two &ldquo;choose TWO letters&rdquo; questions.</p></div><div class="card"><p><strong>Who is speaking?</strong> One speaker only: <strong>Heather McCallum</strong>, a professional potter at Edelman Pottery. She is giving a short introductory talk to visitors who are about to make a pot for the first time.</p><p><strong>The situation 情境:</strong> 陶艺师 Heather 在参观者进入工作室前做介绍。前半部分讲陶器为什么能保存下来、考古学家能从中看出什么、学员来上课的动机、以及她自己最喜欢陶艺的哪一点；后半部分带大家看工作室里的三样东西：窑（kiln）、拉坯机（potter&rsquo;s wheel）和工具（tools）。</p><p><strong>Task type:</strong> Q11&ndash;16 = multiple choice, <strong>choose A, B or C</strong> (one answer each). Q17&ndash;18 and Q19&ndash;20 = <strong>choose TWO letters, A&ndash;E</strong>. In the two-letter questions the order does not matter, and you get one mark per correct letter.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> For 3-option multiple choice, <strong>underline the difference between A, B and C before you listen</strong> &mdash; here the three options are usually all mentioned, but only one answers the actual question. Q14 is the clearest example: <em>calming</em>, <em>messy</em> and <em>physical benefits</em> are all in the recording, but the question asks what Heather values <em>most</em>, so you must wait for the signal &lsquo;<em>what I love most is&hellip;</em>&rsquo;. For the two multiple-answer questions (17&ndash;18 and 19&ndash;20) do the opposite: instead of hunting for the right letters, <strong>cross out the ones she contradicts</strong>. Heather often says the opposite of an option (&lsquo;odd names you may find <em>hard to remember</em>&rsquo; kills &lsquo;memorable names&rsquo;; &lsquo;I wouldn&rsquo;t recommend spending money on them&rsquo; kills &lsquo;worth buying&rsquo;).</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q11 &mdash; &ldquo;stands the test of time&rdquo;</b> is an idiom, not the answer. The answer comes from the next sentence: baskets and pictures <em>don&rsquo;t survive in the earth</em> the way pots do.</li><li><b>Q12 &mdash; two different things are read from a pot.</b> The <em>clay</em> and the tool scratches tell you <em>where</em> a pot came from; the <em>impressions</em> tell you what it was <em>used</em> for. The question asks about USE, so &lsquo;the clay it was made with&rsquo; is a trap.</li><li><b>Q14 &mdash; all three options appear.</b> &lsquo;Messy&rsquo; is why it is fun <em>for children</em>; &lsquo;good exercise for hands and wrists&rsquo; is a benefit <em>for the elderly</em>. Only the concentration is what <em>she</em> loves most.</li><li><b>Q16 &mdash; aprons vs clothes vs jewellery.</b> All three are said, but only jewellery is something she <em>reminds</em> them of (&lsquo;as we said in our email&rsquo;). Aprons are <em>provided</em>, and she only hopes their clothes are old.</li><li><b>Q17&ndash;18 &mdash; &ldquo;since their invention&rdquo; is not a date.</b> She never says <em>when</em> kilns were invented, and she says a kiln is hard to keep in a house rather than explaining where to put one.</li><li><b>Q19&ndash;20 &mdash; negative wording.</b> &lsquo;Odd names that you may find hard to remember&rsquo; is the OPPOSITE of &lsquo;memorable names&rsquo;, and &lsquo;I wouldn&rsquo;t recommend spending money on them&rsquo; is the OPPOSITE of &lsquo;worth buying&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">pottery</span></td><td><span class="pos">n.</span></td><td>pots and other objects made from clay; the craft of making them</td><td class="zh">陶器；陶艺</td><td>&ldquo;I just want to say a bit about the craft of <em>pottery</em>.&rdquo;</td><td class="note">The topic word of the whole section. Also the name of the place: <em>Edelman Pottery</em>.</td></tr>
+<tr><td><span class="word">potter</span></td><td><span class="pos">n.</span></td><td>a person whose job is making pots from clay</td><td class="zh">陶艺师；陶工</td><td>&ldquo;I&rsquo;m one of the <em>potters</em> who work here.&rdquo;</td><td class="note">Q14 asks what she values about being a <em>potter</em> &mdash; the answer must be about HER, not about children or elderly people.</td></tr>
+<tr><td><span class="word">clay</span></td><td><span class="pos">n.</span></td><td>heavy, sticky earth that becomes hard when it is baked</td><td class="zh">黏土；陶土</td><td>&ldquo;A kiln removes the water from <em>clay</em>.&rdquo;</td><td class="note">Q12 distractor: the clay tells archaeologists <em>where</em> a pot came from, not what it was used for.</td></tr>
+<tr><td><span class="word">craft</span></td><td><span class="pos">n.</span></td><td>a skilled activity in which you make things with your hands</td><td class="zh">手工艺</td><td>&ldquo;A bit about the <em>craft</em> of pottery.&rdquo;</td><td class="note">Paraphrase family: craft / art form / skill / technique. All four appear in this talk.</td></tr>
+<tr><td><span class="word">survive</span></td><td><span class="pos">v.</span></td><td>to continue to exist after a long time or a difficult event</td><td class="zh">存留；幸存</td><td>&ldquo;Things like baskets and pictures don&rsquo;t <em>survive</em> in the earth in the same way that pots do.&rdquo;</td><td class="note"><strong>Key to Q11.</strong> &lsquo;Survive in the earth&rsquo; = &lsquo;last longer in the ground&rsquo;.</td></tr>
+<tr><td><span class="word">artefact</span></td><td><span class="pos">n.</span></td><td>an object made by a person, especially an old one studied by historians</td><td class="zh">人工制品；文物</td><td>&ldquo;The shape of an <em>artefact</em> may have been lost.&rdquo;</td><td class="note">British spelling <em>artefact</em>, American <em>artifact</em>. Both accepted, but be consistent.</td></tr>
+<tr><td><span class="word">archaeologist</span></td><td><span class="pos">n.</span></td><td>a scientist who studies the past by digging up old objects</td><td class="zh">考古学家</td><td>&ldquo;Pottery has given <em>archaeologists</em> a fascinating insight into how ancient humans lived.&rdquo;</td><td class="note">Spelling trap: a-r-c-h-a-e-o-l-o-g-i-s-t. The subject of Q12.</td></tr>
+<tr><td><span class="word">insight</span></td><td><span class="pos">n.</span></td><td>a clear and useful understanding of something</td><td class="zh">深刻的了解；洞察</td><td>&ldquo;A fascinating <em>insight</em> into how ancient humans lived.&rdquo;</td><td class="note">Collocation to learn: <em>give / provide an insight into</em> something.</td></tr>
+<tr><td><span class="word">impression</span></td><td><span class="pos">n.</span></td><td>a mark left on a soft surface when something is pressed onto it</td><td class="zh">压痕；印记</td><td>&ldquo;Archaeologists can tell whether the pots were for storage or cooking by examining the <em>impressions</em> on the clay.&rdquo;</td><td class="note"><strong>Key to Q12.</strong> &lsquo;Impressions&rsquo; + &lsquo;scratches&rsquo; = &lsquo;the marks that are on it&rsquo;. Note the other meaning of <em>impression</em> (= an opinion) is NOT used here.</td></tr>
+<tr><td><span class="word">scratch</span></td><td><span class="pos">n.</span></td><td>a thin mark cut into a surface by something sharp</td><td class="zh">划痕</td><td>&ldquo;The <em>scratches</em> from tools&hellip; can reveal where the pots came from.&rdquo;</td><td class="note">Part of the same paraphrase family as <em>impressions</em> &rarr; <em>marks</em> (Q12).</td></tr>
+<tr><td><span class="word">reveal</span></td><td><span class="pos">v.</span></td><td>to show or make known something that was hidden</td><td class="zh">揭示；显示</td><td>&ldquo;The clay itself can <em>reveal</em> where the pots came from.&rdquo;</td><td class="note">Listening synonym of <em>show / tell you / indicate</em>. Often introduces a fact you must catch.</td></tr>
+<tr><td><span class="word">ancestor</span></td><td><span class="pos">n.</span></td><td>a member of your family who lived a long time ago</td><td class="zh">祖先</td><td>&ldquo;Like our <em>ancestors</em>, they hope that something they create will also last longer than they do.&rdquo;</td><td class="note">The sentence right before the Q13 answer &mdash; it tells you the topic has moved to <em>students&rsquo; motives</em>.</td></tr>
+<tr><td><span class="word">outlive</span></td><td><span class="pos">v.</span></td><td>to live or last longer than someone or something else</td><td class="zh">比……活得久；比……长久</td><td>&ldquo;Something they create will also last longer than they do.&rdquo;</td><td class="note"><strong>Key to Q13.</strong> The question paper prints <em>outlive them</em>; the audio says <em>last longer than they do</em> and <em>after their death</em>.</td></tr>
+<tr><td><span class="word">concentration</span></td><td><span class="pos">n.</span></td><td>the ability to give all your attention to one thing</td><td class="zh">专注；注意力集中</td><td>&ldquo;What I love most is the <em>concentration</em> you need to make a good pot.&rdquo;</td><td class="note"><strong>Key to Q14.</strong> &lsquo;What I love most&rsquo; is the signal phrase &mdash; the question asks what she values MOST.</td></tr>
+<tr><td><span class="word">stress</span></td><td><span class="pos">n.</span></td><td>worry and pressure caused by a difficult situation</td><td class="zh">压力</td><td>&ldquo;That focus takes you away from the <em>stresses</em> of everyday life.&rdquo;</td><td class="note">Escaping stress = a <em>calming effect</em> (Q14 option A). This is the paraphrase you must make.</td></tr>
+<tr><td><span class="word">arthritis</span></td><td><span class="pos">n.</span></td><td>a painful illness that makes the joints stiff and swollen</td><td class="zh">关节炎</td><td>&ldquo;It&rsquo;s also good exercise for hands and wrists and helps with <em>arthritis</em>.&rdquo;</td><td class="note">This is a real physical benefit &mdash; but it applies to <em>elderly people</em>, so it is the Q14 distractor (option C), not the answer.</td></tr>
+<tr><td><span class="word">messy</span></td><td><span class="pos">adj.</span></td><td>dirty and untidy</td><td class="zh">脏乱的；弄得一团糟的</td><td>&ldquo;It&rsquo;s a fun activity for children because it&rsquo;s so <em>messy</em>.&rdquo;</td><td class="note">Q14 distractor (option B): messy is why it is fun for <em>children</em>.</td></tr>
+<tr><td><span class="word">apron</span></td><td><span class="pos">n.</span></td><td>a piece of clothing worn over the front to keep your clothes clean</td><td class="zh">围裙</td><td>&ldquo;We&rsquo;ll provide <em>aprons</em> later.&rdquo;</td><td class="note">Q16 distractor (option A): the pottery <em>provides</em> them, so visitors are not asked to put them on.</td></tr>
+<tr><td><span class="word">jewellery</span></td><td><span class="pos">n.</span></td><td>rings, necklaces, watches and similar decorative objects</td><td class="zh">首饰；珠宝</td><td>&ldquo;Please remove any watches, necklaces, etc.&rdquo;</td><td class="note"><strong>Key to Q16.</strong> The audio lists examples (watches, necklaces); the question paper uses the category word <em>jewellery</em>. UK spelling has double L.</td></tr>
+<tr><td><span class="word">kiln</span></td><td><span class="pos">n.</span></td><td>a very hot oven used for baking clay so that it becomes hard</td><td class="zh">窑；陶窑</td><td>&ldquo;A <em>kiln</em>, which is basically a very hot oven where you fire the pottery.&rdquo;</td><td class="note">Pronounced /kIln/ &mdash; the N is often almost silent, which is why it sounds like &lsquo;kil&rsquo;. Subject of Q17&ndash;18.</td></tr>
+<tr><td><span class="word">fire</span></td><td><span class="pos">v.</span></td><td>to bake clay objects in a kiln to make them hard</td><td class="zh">烧制（陶器）</td><td>&ldquo;A very hot oven where you <em>fire</em> the pottery.&rdquo;</td><td class="note">A technical verb: nothing to do with dismissing someone or with flames here.</td></tr>
+<tr><td><span class="word">permanently</span></td><td><span class="pos">adv.</span></td><td>for ever; in a way that will not change</td><td class="zh">永久地</td><td>&ldquo;This allows anything you&rsquo;ve made to set <em>permanently</em> in shape.&rdquo;</td><td class="note">Part of the kiln&rsquo;s FUNCTION (Q17&ndash;18 answer A): remove water &rarr; set permanently.</td></tr>
+<tr><td><span class="word">domestic</span></td><td><span class="pos">adj.</span></td><td>used in the home; not industrial</td><td class="zh">家用的</td><td>&ldquo;<em>Domestic</em> ovens don&rsquo;t really get hot enough.&rdquo;</td><td class="note">Supports Q17&ndash;18 answer E: what people use <em>instead of</em> a kiln.</td></tr>
+<tr><td><span class="word">crack</span></td><td><span class="pos">v.</span></td><td>to break so that a line appears on the surface</td><td class="zh">开裂</td><td>&ldquo;Eventually the clay will <em>crack</em> and fall apart.&rdquo;</td><td class="note">Collocation: <em>crack and fall apart</em>. A warning, not a safety procedure.</td></tr>
+<tr><td><span class="word">toxic</span></td><td><span class="pos">adj.</span></td><td>poisonous; harmful to health</td><td class="zh">有毒的</td><td>&ldquo;Kilns release <em>toxic</em> compounds into the air.&rdquo;</td><td class="note">She says you need to <em>know about</em> safety procedures &mdash; but she never explains them, so &lsquo;ways of keeping them safe&rsquo; is NOT an answer.</td></tr>
+<tr><td><span class="word">revolutionize</span></td><td><span class="pos">v.</span></td><td>to change something completely and for the better</td><td class="zh">彻底改变；使发生革命性变化</td><td>&ldquo;Its invention <em>revolutionised</em> the pottery industry.&rdquo;</td><td class="note">Said about the potter&rsquo;s <em>wheel</em>, not the kiln &mdash; do not carry it over to Q17&ndash;18.</td></tr>
+<tr><td><span class="word">sculpt</span></td><td><span class="pos">v.</span></td><td>to shape a material such as clay or stone into a figure</td><td class="zh">雕塑；塑形</td><td>&ldquo;Your hands can make all kinds of shapes and curves without relying on a <em>sculpting</em> tool.&rdquo;</td><td class="note">Noun forms: <em>sculpture</em> (the object), <em>sculptor</em> (the person).</td></tr>
+<tr><td><span class="word">handle</span></td><td><span class="pos">v.</span></td><td>to touch, hold and control something with your hands</td><td class="zh">处理；操作</td><td>&ldquo;There are some basic tools that you will need to <em>handle</em> the clay on the wheel.&rdquo;</td><td class="note"><strong>Key to Q19&ndash;20 (C).</strong> &lsquo;You will need&rsquo; = they are <em>essential</em>.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">stand the test of time</span></td><td>to remain good or important over a very long period</td><td class="zh">经受住时间的考验</td></tr>
+<tr><td><span class="phrase">tens of thousands of years old</span></td><td>extremely ancient</td><td class="zh">有几万年的历史</td></tr>
+<tr><td><span class="phrase">in small pieces</span></td><td>broken into fragments</td><td class="zh">碎成小块</td></tr>
+<tr><td><span class="phrase">there&rsquo;s no doubt that&hellip;</span></td><td>it is certainly true that&hellip;</td><td class="zh">毫无疑问……</td></tr>
+<tr><td><span class="phrase">give somebody an insight into&hellip;</span></td><td>help someone understand something clearly</td><td class="zh">让某人深入了解……</td></tr>
+<tr><td><span class="phrase">the marks on the clay</span></td><td>the impressions and scratches left on the surface</td><td class="zh">黏土上的痕迹</td></tr>
+<tr><td><span class="phrase">take a class with somebody</span></td><td>attend lessons taught by that person</td><td class="zh">上某人的课</td></tr>
+<tr><td><span class="phrase">last longer than they do</span></td><td>continue to exist after the maker has died</td><td class="zh">比他们活得更久</td></tr>
+<tr><td><span class="phrase">as far as I&rsquo;m concerned</span></td><td>in my personal opinion</td><td class="zh">就我而言；在我看来</td></tr>
+<tr><td><span class="phrase">what I love most is&hellip;</span></td><td>the thing I value above everything else is&hellip;</td><td class="zh">我最喜欢的是……</td></tr>
+<tr><td><span class="phrase">take you away from the stresses of everyday life</span></td><td>help you forget daily pressures; relax you</td><td class="zh">让你远离日常生活的压力</td></tr>
+<tr><td><span class="phrase">good exercise for hands and wrists</span></td><td>a healthy physical activity for those joints</td><td class="zh">对手和手腕是很好的锻炼</td></tr>
+<tr><td><span class="phrase">keep things simple</span></td><td>not make something complicated</td><td class="zh">把事情简单化</td></tr>
+<tr><td><span class="phrase">tie your hair back</span></td><td>fasten long hair behind your head</td><td class="zh">把头发扎起来</td></tr>
+<tr><td><span class="phrase">put something somewhere safe</span></td><td>store something where it will not be lost or damaged</td><td class="zh">把某物放在安全的地方</td></tr>
+<tr><td><span class="phrase">have a look around</span></td><td>look at everything in a place</td><td class="zh">四处看看</td></tr>
+<tr><td><span class="phrase">there&rsquo;s a lot going on</span></td><td>many things are happening at the same time</td><td class="zh">这里很热闹／同时进行着很多事</td></tr>
+<tr><td><span class="phrase">in the far corner</span></td><td>at the corner furthest away from you</td><td class="zh">在最远的角落</td></tr>
+<tr><td><span class="phrase">since their invention</span></td><td>from the time they were first created until now</td><td class="zh">自从被发明以来</td></tr>
+<tr><td><span class="phrase">a lot of progress has been made</span></td><td>things have improved considerably</td><td class="zh">已经取得很大进展</td></tr>
+<tr><td><span class="phrase">set permanently in shape</span></td><td>become hard and keep its form for ever</td><td class="zh">永久定型</td></tr>
+<tr><td><span class="phrase">fall apart</span></td><td>break into pieces</td><td class="zh">散架；碎裂</td></tr>
+<tr><td><span class="phrase">bear in mind that&hellip;</span></td><td>remember and consider that&hellip;</td><td class="zh">要记住……</td></tr>
+<tr><td><span class="phrase">release toxic compounds into the air</span></td><td>give off poisonous substances</td><td class="zh">向空气中释放有毒物质</td></tr>
+<tr><td><span class="phrase">rely on something</span></td><td>depend on it; need it in order to work</td><td class="zh">依赖某物</td></tr>
+<tr><td><span class="phrase">go through them all</span></td><td>deal with or explain every one of them</td><td class="zh">把它们逐一讲一遍</td></tr>
+<tr><td><span class="phrase">as we go along</span></td><td>gradually, while we are doing the activity</td><td class="zh">我们一边做一边（讲）</td></tr>
+<tr><td><span class="phrase">I wouldn&rsquo;t recommend spending money on&hellip;</span></td><td>I advise you not to buy&hellip; yet</td><td class="zh">我不建议现在花钱买……</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Answer Sentences (the ten real answers)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Each sentence below rewrites one of the ten exam questions as a statement. Fill the gap with <strong>one word</strong> taken from the recording. These are the ideas the correct letters are built on.</p><div class="ex-item"><span class="ex-num">1.</span><label>Pottery differs from other art forms because pots <input type="text" class="blank" id="b1" data-answer="survive" placeholder="______"> in the earth when baskets and pictures do not. (Q11)<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Even pots found in small <input type="text" class="blank" id="b2" data-answer="pieces" placeholder="______"> still give information about the past. (Q11)<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Archaeologists work out the use of a pot by examining the <input type="text" class="blank" id="b3" data-answer="impressions" placeholder="______"> on the clay. (Q12)<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The clay itself and the <input type="text" class="blank" id="b4" data-answer="scratches" placeholder="______"> from tools reveal where a pot came from. (Q12)<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Some students hope their work will last longer than they do &mdash; that is, it will <input type="text" class="blank" id="b5" data-answer="outlive" placeholder="______"> them. (Q13)<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>What Heather loves most is the <input type="text" class="blank" id="b6" data-answer="concentration" placeholder="______"> you need to make a good pot. (Q14)<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>That focus takes you away from the <input type="text" class="blank" id="b7" data-answer="stresses" placeholder="______"> of everyday life, so the effect is calming. (Q14)<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Like nearly everyone who comes, the visitors are trying the art for the <input type="text" class="blank" id="b8" data-answer="first" placeholder="______"> time. (Q15)<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Heather asks the group to remove watches and <input type="text" class="blank" id="b9" data-answer="necklaces" placeholder="______"> before they start. (Q16)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>A kiln removes the <input type="text" class="blank" id="b10" data-answer="water" placeholder="______"> from clay so the object sets permanently. (Q17&ndash;18)<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Instead of a kiln, some people use a domestic <input type="text" class="blank" id="b11" data-answer="oven" placeholder="______"> or a fire pit outside. (Q17&ndash;18)<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>There are basic tools you will need in order to <input type="text" class="blank" id="b12" data-answer="handle" placeholder="______"> the clay on the wheel. (Q19&ndash;20)<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Multiple-choice options are usually written in a <em>different word class</em> from the audio, so word-building is a listening skill, not just a writing skill.</p><div class="ex-item"><span class="ex-num">1.</span><label>Pottery has given <input type="text" class="blank" id="b13" data-answer="archaeologists" placeholder="______"> (ARCHAEOLOGY) an insight into ancient life.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The kiln allows the object to set <input type="text" class="blank" id="b14" data-answer="permanently" placeholder="______"> (PERMANENT) in shape.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The invention of the wheel <input type="text" class="blank" id="b15" data-answer="revolutionised" placeholder="______"> (REVOLUTION) the pottery industry.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Making pots is <input type="text" class="blank" id="b16" data-answer="calming" placeholder="______"> (CALM), which is what Heather values most.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Children enjoy pottery because of its <input type="text" class="blank" id="b17" data-answer="messy" placeholder="______"> (MESS) nature.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Kilns release <input type="text" class="blank" id="b18" data-answer="toxic" placeholder="______"> (TOXIN) compounds into the air.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Your hands can shape the clay without <input type="text" class="blank" id="b19" data-answer="relying" placeholder="______"> (RELY) on a sculpting tool.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Some tools have odd names that are hard to <input type="text" class="blank" id="b20" data-answer="remember" placeholder="______"> (MEMORY).<span class="feedback" id="fb20"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word here is in the recording and every one of them is regularly misspelled. Type the full, correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>k _ l n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="kiln" placeholder="______"> (the N is easy to miss when you hear it)<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>a r c h a e _ l o g i s t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="archaeologists" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>j e w _ l l e r y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="jewellery" placeholder="______"> (UK spelling)<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>c e r a m _ c &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="ceramic" placeholder="______"><span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>a r t h r _ t i s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b25" data-answer="arthritis" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>t e c h n _ q u e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b26" data-answer="techniques" placeholder="______"><span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>n e c k l _ c e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b27" data-answer="necklaces" placeholder="______"><span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>a p r _ n s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b28" data-answer="aprons" placeholder="______"><span class="feedback" id="fb28"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Facts</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write numbers in <strong>figures</strong>. Part 2 talks are full of measurements and dates that sound like answers but are really just background detail &mdash; practise catching them anyway.</p><div class="ex-item"><span class="ex-num">1.</span><label>The speaker&rsquo;s surname is Heather <input type="text" class="blank" id="b29" data-answer="McCallum" placeholder="______">.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The place she works is called <input type="text" class="blank" id="b30" data-answer="Edelman" placeholder="______"> Pottery.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>A kiln works at temperatures of around <input type="text" class="blank" id="b31" data-answer="1000" placeholder="______"> degrees Celsius.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Progress in temperature control has been made in the past <input type="text" class="blank" id="b32" data-answer="20" placeholder="______"> years.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Pottery as an art form is tens of <input type="text" class="blank" id="b33" data-answer="thousands" placeholder="______"> of years old.<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The wheel shapes clay into objects with circular walls, such as a <input type="text" class="blank" id="b34" data-answer="bowl" placeholder="______">.<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The wheel allowed <input type="text" class="blank" id="b35" data-answer="multiple" placeholder="______"> items to be produced in a day.<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Some people fire their pottery in a fire <input type="text" class="blank" id="b36" data-answer="pit" placeholder="______"> outside.<span class="feedback" id="fb36"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what Heather actually says; on the right is the wording printed on the question paper. Write the missing word. This is exactly the jump you must make in the exam.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;Baskets and pictures don&rsquo;t survive in the earth in the same way that pots do.&rdquo; &rarr; Paper: pottery <input type="text" class="blank" id="b37" data-answer="lasts" placeholder="______"> longer in the ground.<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;examining the impressions on the clay&rdquo; &rarr; Paper: the <input type="text" class="blank" id="b38" data-answer="marks" placeholder="______"> that are on it.<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;something they create will last longer than they do&rdquo; &rarr; Paper: something that will <input type="text" class="blank" id="b39" data-answer="outlive" placeholder="______"> them.<span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;takes you away from the stresses of everyday life&rdquo; &rarr; Paper: its <input type="text" class="blank" id="b40" data-answer="calming" placeholder="______"> effect.<span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;this is the first time you will have tried the art&rdquo; &rarr; Paper: they have never made a <input type="text" class="blank" id="b41" data-answer="pot" placeholder="______"> before.<span class="feedback" id="fb41"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;please remove any watches, necklaces, etc.&rdquo; &rarr; Paper: take off their <input type="text" class="blank" id="b42" data-answer="jewellery" placeholder="______">.<span class="feedback" id="fb42"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;a kiln removes the water from clay&hellip; allows it to set permanently&rdquo; &rarr; Paper: what their <input type="text" class="blank" id="b43" data-answer="function" placeholder="______"> is.<span class="feedback" id="fb43"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Audio: &ldquo;Can&rsquo;t I use my oven?&hellip; some people fire pottery in a fire pit&rdquo; &rarr; Paper: what some people use <input type="text" class="blank" id="b44" data-answer="instead" placeholder="______"> of one.<span class="feedback" id="fb44"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Audio: &ldquo;there are some basic tools that you will need&rdquo; &rarr; Paper: some are <input type="text" class="blank" id="b45" data-answer="essential" placeholder="______"> items.<span class="feedback" id="fb45"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Audio: &ldquo;We can provide these&rdquo; &rarr; Paper: some are <input type="text" class="blank" id="b46" data-answer="available" placeholder="______"> for use by participants.<span class="feedback" id="fb46"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q11</span></td><td>Pottery differs from other art forms because&hellip;</td><td><b>REASON &mdash; a property of pots</b></td><td>A comparison with other crafts. Listen for &lsquo;don&rsquo;t survive&hellip; the same way that pots do&rsquo;.</td><td class="note">A &mdash; it lasts longer in the ground</td></tr>
+<tr><td><span class="word">Q12</span></td><td>Archaeologists identify the USE of ancient pottery from&hellip;</td><td><b>EVIDENCE &mdash; a physical feature</b></td><td>Two features are described. Match the one linked to &lsquo;storage or cooking&rsquo;, not to &lsquo;where it came from&rsquo;.</td><td class="note">B &mdash; the marks that are on it</td></tr>
+<tr><td><span class="word">Q13</span></td><td>Some people join the class because they want to&hellip;</td><td><b>MOTIVE &mdash; a purpose</b></td><td>Listen after &lsquo;when I ask people why&hellip;&rsquo;. Key idea: something lasting beyond their own life.</td><td class="note">C &mdash; make something that will outlive them</td></tr>
+<tr><td><span class="word">Q14</span></td><td>What does Heather value MOST about being a potter?</td><td><b>OPINION &mdash; her personal favourite</b></td><td>The superlative signal &lsquo;what I love most is&hellip;&rsquo;. Other benefits belong to children and to elderly people.</td><td class="note">A &mdash; its calming effect</td></tr>
+<tr><td><span class="word">Q15</span></td><td>Most of the visitors to Edelman Pottery&hellip;</td><td><b>FACT about the group &mdash; experience level</b></td><td>&lsquo;Like nearly everyone who comes here&rsquo; = most visitors. Then listen for what is true of them.</td><td class="note">B &mdash; have never made a pot before</td></tr>
+<tr><td><span class="word">Q16</span></td><td>Heather REMINDS her visitors that they should&hellip;</td><td><b>INSTRUCTION &mdash; something repeated</b></td><td>&lsquo;Reminds&rsquo; means it was said before &mdash; listen for &lsquo;as we said in our email&rsquo;.</td><td class="note">C &mdash; take off their jewellery</td></tr>
+<tr><td><span class="word">Q17&ndash;18</span></td><td>Which TWO things does Heather EXPLAIN about kilns?</td><td><b>TWO LETTERS &mdash; topics she develops</b></td><td>Tick only what she actually explains. Mentioning a word once is not explaining it.</td><td class="note">A + E &mdash; what their function is; what some people use instead of one</td></tr>
+<tr><td><span class="word">Q19&ndash;20</span></td><td>Which TWO points does Heather make about a potter&rsquo;s tools?</td><td><b>TWO LETTERS &mdash; claims about tools</b></td><td>Watch for negatives: she says the names are hard to remember and that you should not buy tools yet.</td><td class="note">C + E &mdash; some are essential items; some are available for use by participants</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Pottery <b>lasts longer in the ground</b> than other art forms.&rdquo; (Q11 A)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;We know this because it <b>stands the test of time</b>. Things like baskets and pictures <b>don&rsquo;t survive in the earth</b> in the same way that pots do.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">survive in the earth = last in the ground; the comparison is made by saying other things do NOT do it</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;Wood does not last as long as stone&rsquo; using &lsquo;survive&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Archaeologists identify the use of pottery from <b>the marks that are on it</b>.&rdquo; (Q12 B)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Archaeologists can tell whether the pots were for, say, <b>storage or cooking</b> by examining the <b>impressions on the clay</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">impressions / scratches = marks; &lsquo;whether pots were for storage or cooking&rsquo; = their USE</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence using &lsquo;you can tell&hellip; by examining&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;They want to make something that will <b>outlive</b> them.&rdquo; (Q13 C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;They hope that something they create will also <b>last longer than they do</b>&hellip; might say something about humanity many years <b>after their death</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">outlive somebody = last longer than they do = still exist after their death</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence about an object that will outlive you&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;What she values most is its <b>calming effect</b>.&rdquo; (Q14 A)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;As far as I&rsquo;m concerned, <b>what I love most</b> is the <b>concentration</b> you need&hellip; That focus <b>takes you away from the stresses</b> of everyday life.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">concentration / focus + escaping stress = a calming effect. &lsquo;What I love most&rsquo; answers &lsquo;value MOST&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Say what you love most about a hobby, using &lsquo;what I love most is&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Most visitors <b>have never made a pot before</b>.&rdquo; (Q15 B)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>Like nearly everyone who comes here</b>, I&rsquo;m sure this is the <b>first time</b> you will have tried the art. So we&rsquo;ll keep things simple today.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">nearly everyone who comes here = most visitors; the first time you have tried it = never done it before</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;It is my first visit&rsquo; using &lsquo;I have never&hellip; before&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;They should <b>take off their jewellery</b>.&rdquo; (Q16 C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>As we said in our email</b>, please <b>remove any watches, necklaces, etc.</b> and put them somewhere safe&hellip; We&rsquo;ll <b>provide aprons</b> later.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">watches + necklaces = the category word <em>jewellery</em>; &lsquo;as we said in our email&rsquo; = a reminder</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="List three items you would call &lsquo;jewellery&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>What some people use instead of</b> a kiln.&rdquo; (Q17&ndash;18 E)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;You may think, &lsquo;<b>Can&rsquo;t I use my oven?</b>&rsquo; Well, that&rsquo;s possible, but domestic ovens don&rsquo;t get hot enough&hellip; Some people fire pottery in a <b>fire pit outside</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">A rhetorical question plus &lsquo;some people&hellip;&rsquo; = alternatives to the real thing</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;instead of&rsquo; about a tool you do not own&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;pottery as an art form is tens of thousands of years old&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;they still provide a lot of information about the past&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;by examining the impressions on the clay&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;something they create will last longer than they do&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;that focus takes you away from the stresses of everyday life&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;please remove any watches, necklaces, etc.&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;a kiln removes the water from clay at around 1,000 degrees&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;I wouldn&rsquo;t recommend spending money on them yet&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why does Heather say we know pottery is tens of thousands of years old?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Because written records describe it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Because pots survive in the earth when other objects do not.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Because more people practised it than other crafts.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Because broken pots are easy to repair.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What do the <em>impressions on the clay</em> tell archaeologists?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Where the pot was made.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. How old the pot is.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. What the pot was used for.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Who owned the pot.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Heather says the shape of an artefact &ldquo;may have been lost&rdquo;. Why does this matter for Q12?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. It rules out option C, the basic shape of it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. It proves pots were used for cooking.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. It explains why kilns were invented.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. It shows pottery is an ancient art form.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">According to Heather, some students want their work to&hellip;</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. look as though it is very old.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. prove they are good at something.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. say something about humanity after they die.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. be displayed in a museum.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which benefit of pottery does Heather link to <strong>elderly</strong> people?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. It is messy and fun.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. It is good exercise for hands and wrists.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. It requires deep concentration.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. It produces useful gifts.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why is &lsquo;its messy nature&rsquo; the wrong answer to Q14?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Heather never uses the word messy.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. She says messiness makes pottery fun for children, not that she values it most.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. She says pottery is not messy at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. She only mentions it after the questions have ended.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What does Heather assume about the visitors&rsquo; experience?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They have all taken a class before.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. They will bring friends next time.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It is their first attempt at pottery.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They learn techniques too quickly.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does Heather say about aprons?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Visitors must bring their own.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. The pottery will provide them later.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. They are not necessary.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. They should be put on immediately.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Which TWO things does Heather actually explain about kilns?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Their function and what people use instead.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. When they were invented and how to keep them safe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Where to put one at home and their function.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. How to build one and what they cost.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Heather says kilns &ldquo;release toxic compounds into the air&rdquo;. Why is this NOT an answer?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Because it is not true of modern kilns.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Because she tells you safety procedures exist but does not explain ways of keeping them safe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Because she is talking about fire pits.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Because it comes before the question begins.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What does Heather say about the names of pottery tools?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. They are memorable.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. They are all in Latin.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. They are odd and may be hard to remember.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. She will list every one of them now.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Why is &lsquo;Some are worth buying&rsquo; wrong for Q19&ndash;20?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. She says the tools are too expensive to sell.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. She says &lsquo;we can provide these, and I wouldn&rsquo;t recommend spending money on them yet&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. She never mentions money.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. She says only professionals may buy tools.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 11–20</h3><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;Things like baskets and pictures don&rsquo;t <em>survive in the earth</em> in the same way that pots do.&rsquo; = it lasts longer in the ground. B and C are never claimed.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;Archaeologists can tell whether the pots were for storage or cooking by examining the <em>impressions on the clay</em>.&rsquo; Impressions/scratches = marks. The clay reveals <em>where</em> pots came from (not use), and the shape &lsquo;may have been lost&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">C</div><div class="answer-note">&lsquo;They hope that something they create will <em>last longer than they do</em>&hellip; many years <em>after their death</em>.&rsquo; = outlive them.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;<em>What I love most</em> is the concentration&hellip; that focus <em>takes you away from the stresses of everyday life</em>.&rsquo; = a calming effect. Messiness is for children; exercise for hands and wrists is for elderly people.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;<em>Like nearly everyone who comes here</em>, I&rsquo;m sure this is the <em>first time</em> you will have tried the art.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">C</div><div class="answer-note">&lsquo;<em>As we said in our email</em>, please <em>remove any watches, necklaces</em>, etc.&rsquo; Watches and necklaces = jewellery, and &lsquo;as we said in our email&rsquo; = a reminder. Aprons are provided; she only hopes their clothes are old.</div></div></div>
+<div class="answer-item"><span class="answer-num">17 &amp; 18</span><div><div class="answer-val">A, E (in either order)</div><div class="answer-note"><b>A (function):</b> &lsquo;a kiln <em>removes the water from clay</em> at temperatures of around 1,000&deg;C. This allows anything you&rsquo;ve made to <em>set permanently in shape</em>.&rsquo; <b>E (alternatives):</b> &lsquo;Can&rsquo;t I use my <em>oven</em>?&hellip; Some people fire pottery in a <em>fire pit outside</em>.&rsquo; She gives no invention date (B), does not explain safety methods (C), and says a kiln is hard to keep at home rather than where to put one (D).</div></div></div>
+<div class="answer-item"><span class="answer-num">19 &amp; 20</span><div><div class="answer-val">C, E (in either order)</div><div class="answer-note"><b>C (essential):</b> &lsquo;there are some <em>basic tools that you will need</em> to handle the clay on the wheel.&rsquo; <b>E (provided):</b> &lsquo;<em>We can provide these</em>.&rsquo; A is wrong (the <em>names</em>, not the tools, are hard); B is contradicted by &lsquo;I wouldn&rsquo;t recommend spending money on them yet&rsquo;; D is the opposite of &lsquo;odd names&hellip; hard to remember&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Answer Sentences (the ten real answers)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">survive</div><div class="answer-note">Pottery differs from other art forms because pots</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">pieces</div><div class="answer-note">Even pots found in small</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">impressions</div><div class="answer-note">Archaeologists work out the use of a pot by examining the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">scratches</div><div class="answer-note">The clay itself and the</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">outlive</div><div class="answer-note">Some students hope their work will last longer than they do &mdash; that is, it will</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">concentration</div><div class="answer-note">What Heather loves most is the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">stresses</div><div class="answer-note">That focus takes you away from the</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">first</div><div class="answer-note">Like nearly everyone who comes, the visitors are trying the art for the</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">necklaces</div><div class="answer-note">Heather asks the group to remove watches and</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">water</div><div class="answer-note">A kiln removes the</div></div></div>
+<div class="answer-item"><span class="answer-num">11.</span><div><div class="answer-val">oven</div><div class="answer-note">Instead of a kiln, some people use a domestic</div></div></div>
+<div class="answer-item"><span class="answer-num">12.</span><div><div class="answer-val">handle</div><div class="answer-note">There are basic tools you will need in order to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">archaeologists</div><div class="answer-note">Pottery has given</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">permanently</div><div class="answer-note">The kiln allows the object to set</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">revolutionised</div><div class="answer-note">The invention of the wheel</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">calming</div><div class="answer-note">Making pots is</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">messy</div><div class="answer-note">Children enjoy pottery because of its</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">toxic</div><div class="answer-note">Kilns release</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">relying</div><div class="answer-note">Your hands can shape the clay without</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">remember</div><div class="answer-note">Some tools have odd names that are hard to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">kiln</div><div class="answer-note">k _ l n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">archaeologists</div><div class="answer-note">a r c h a e _ l o g i s t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">jewellery</div><div class="answer-note">j e w _ l l e r y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">ceramic</div><div class="answer-note">c e r a m _ c  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">arthritis</div><div class="answer-note">a r t h r _ t i s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">techniques</div><div class="answer-note">t e c h n _ q u e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">necklaces</div><div class="answer-note">n e c k l _ c e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">aprons</div><div class="answer-note">a p r _ n s  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Facts</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">McCallum</div><div class="answer-note">The speaker&rsquo;s surname is Heather</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">Edelman</div><div class="answer-note">The place she works is called</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">1000</div><div class="answer-note">A kiln works at temperatures of around</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">20</div><div class="answer-note">Progress in temperature control has been made in the past</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">thousands</div><div class="answer-note">Pottery as an art form is tens of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">bowl</div><div class="answer-note">The wheel shapes clay into objects with circular walls, such as a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">multiple</div><div class="answer-note">The wheel allowed</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">pit</div><div class="answer-note">Some people fire their pottery in a fire</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">lasts</div><div class="answer-note">Audio: &ldquo;Baskets and pictures don&rsquo;t survive in the earth in the same way that pots do.&rdquo; &rarr; Paper: pottery</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">marks</div><div class="answer-note">Audio: &ldquo;examining the impressions on the clay&rdquo; &rarr; Paper: the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">outlive</div><div class="answer-note">Audio: &ldquo;something they create will last longer than they do&rdquo; &rarr; Paper: something that will</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">calming</div><div class="answer-note">Audio: &ldquo;takes you away from the stresses of everyday life&rdquo; &rarr; Paper: its</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">pot</div><div class="answer-note">Audio: &ldquo;this is the first time you will have tried the art&rdquo; &rarr; Paper: they have never made a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">jewellery</div><div class="answer-note">Audio: &ldquo;please remove any watches, necklaces, etc.&rdquo; &rarr; Paper: take off their</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">function</div><div class="answer-note">Audio: &ldquo;a kiln removes the water from clay&hellip; allows it to set permanently&rdquo; &rarr; Paper: what their</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">instead</div><div class="answer-note">Audio: &ldquo;Can&rsquo;t I use my oven?&hellip; some people fire pottery in a fire pit&rdquo; &rarr; Paper: what some people use</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">essential</div><div class="answer-note">Audio: &ldquo;there are some basic tools that you will need&rdquo; &rarr; Paper: some are</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">available</div><div class="answer-note">Audio: &ldquo;We can provide these&rdquo; &rarr; Paper: some are</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">A &mdash; it lasts longer in the ground &mdash; REASON &mdash; a property of pots</div><div class="answer-note">A comparison with other crafts. Listen for &lsquo;don&rsquo;t survive&hellip; the same way that pots do&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B &mdash; the marks that are on it &mdash; EVIDENCE &mdash; a physical feature</div><div class="answer-note">Two features are described. Match the one linked to &lsquo;storage or cooking&rsquo;, not to &lsquo;where it came from&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q13</span><div><div class="answer-val">C &mdash; make something that will outlive them &mdash; MOTIVE &mdash; a purpose</div><div class="answer-note">Listen after &lsquo;when I ask people why&hellip;&rsquo;. Key idea: something lasting beyond their own life.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q14</span><div><div class="answer-val">A &mdash; its calming effect &mdash; OPINION &mdash; her personal favourite</div><div class="answer-note">The superlative signal &lsquo;what I love most is&hellip;&rsquo;. Other benefits belong to children and to elderly people.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q15</span><div><div class="answer-val">B &mdash; have never made a pot before &mdash; FACT about the group &mdash; experience level</div><div class="answer-note">&lsquo;Like nearly everyone who comes here&rsquo; = most visitors. Then listen for what is true of them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q16</span><div><div class="answer-val">C &mdash; take off their jewellery &mdash; INSTRUCTION &mdash; something repeated</div><div class="answer-note">&lsquo;Reminds&rsquo; means it was said before &mdash; listen for &lsquo;as we said in our email&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q17&ndash;18</span><div><div class="answer-val">A + E &mdash; what their function is; what some people use instead of one &mdash; TWO LETTERS &mdash; topics she develops</div><div class="answer-note">Tick only what she actually explains. Mentioning a word once is not explaining it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q19&ndash;20</span><div><div class="answer-val">C + E &mdash; some are essential items; some are available for use by participants &mdash; TWO LETTERS &mdash; claims about tools</div><div class="answer-note">Watch for negatives: she says the names are hard to remember and that you should not buy tools yet.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">pottery as an art form is tens of thousands of years old</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">they still provide a lot of information about the past</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">by examining the impressions on the clay</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">something they create will last longer than they do</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">that focus takes you away from the stresses of everyday life</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">please remove any watches, necklaces, etc.</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">a kiln removes the water from clay at around 1,000 degrees</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">I wouldn&rsquo;t recommend spending money on them yet</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Because pots survive in the earth when other objects do not.</div><div class="answer-note">&lsquo;It stands the test of time. Things like baskets and pictures don&rsquo;t survive in the earth in the same way that pots do.&rsquo; That is Q11 answer A.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. What the pot was used for.</div><div class="answer-note">&lsquo;Whether the pots were for, say, storage or cooking&rsquo; = the USE. The <em>clay</em> and the tool scratches tell you <em>where</em> they came from &mdash; that is the Q12 trap.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. It rules out option C, the basic shape of it.</div><div class="answer-note">If the shape is often lost, the shape cannot be the reliable evidence the question asks about. Listen for options being <em>eliminated</em>, not only confirmed.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. say something about humanity after they die.</div><div class="answer-note">&lsquo;Their work&hellip; might say something about humanity many years after their death.&rsquo; This is Q13 answer C: something that will outlive them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. It is good exercise for hands and wrists.</div><div class="answer-note">&lsquo;If you&rsquo;re elderly, it&rsquo;s also good exercise for hands and wrists and helps with arthritis.&rsquo; This is why &lsquo;physical benefits&rsquo; is wrong for Q14 &mdash; it is not what SHE values most.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. She says messiness makes pottery fun for children, not that she values it most.</div><div class="answer-note">Classic 3-option MCQ design: all three options are said, but the question adds a limit (&lsquo;value MOST&rsquo;, and about HER). Match the whole question, not the keyword.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. It is their first attempt at pottery.</div><div class="answer-note">&lsquo;Like nearly everyone who comes here, I&rsquo;m sure this is the first time you will have tried the art.&rsquo; = Q15 answer B on the paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. The pottery will provide them later.</div><div class="answer-note">&lsquo;We&rsquo;ll provide aprons later.&rsquo; So option A of Q16 (&lsquo;put on their aprons&rsquo;) is a distractor, even though the word is clearly heard.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A. Their function and what people use instead.</div><div class="answer-note">Function: it removes water from clay at about 1,000&deg;C so objects set permanently. Alternatives: a domestic oven or a fire pit outside. She says kilns have changed little &ldquo;since their invention&rdquo; but gives no date, and she says a kiln is hard to keep in a house rather than where to put one.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Because she tells you safety procedures exist but does not explain ways of keeping them safe.</div><div class="answer-note">The task word is <em>explain</em>. Naming a topic in one clause (&lsquo;you also need to know about safety procedures&rsquo;) is not explaining it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. They are odd and may be hard to remember.</div><div class="answer-note">Direct opposite of Q19&ndash;20 option D. Also note &lsquo;rather than go through them all now, I&rsquo;ll just name a few as we go along&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. She says &lsquo;we can provide these, and I wouldn&rsquo;t recommend spending money on them yet&rsquo;.</div><div class="answer-note">The same sentence gives you one correct letter (E: available for participants) and eliminates another (B). In multiple-answer questions, one sentence often does both jobs.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

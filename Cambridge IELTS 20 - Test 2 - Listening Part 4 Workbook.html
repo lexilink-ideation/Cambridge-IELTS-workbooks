@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Listening Part 4 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 4</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 4</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Listening Part 4</h1>
+    <h2>Developing Food Trends &middot; Notes Completion (Q31&ndash;40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This is a single-speaker academic talk about how <strong>food fashions</strong> are created and sold. The lecturer first explains the machinery behind a food trend &mdash; smartphones, social media influencers, supermarkets and celebrity chefs &mdash; and then walks through four case studies: the <strong>avocado</strong>, <strong>oat milk</strong>, Norwegian <strong>skrei</strong> and <strong>quinoa</strong>. The talk ends on the ethical cost of a sudden surge in demand. You complete a set of bullet-point notes with <strong>ONE WORD ONLY</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> One lecturer giving a talk on food marketing &mdash; probably to business or nutrition students. There are no interruptions and no self-correction, so you cannot rely on a speaker repeating an answer.</p><p><strong>The situation 情境:</strong> 一场关于&ldquo;食物潮流是如何被制造出来的&rdquo;的讲座。讲者先说明智能手机、社交媒体网红、超市和名厨如何共同推动潮流，再依次分析四个案例：牛油果（1990年代英国公关活动）、燕麦奶（瑞典品牌 Oatley）、挪威 skrei 鳕鱼，最后以藜麦为例谈潮流带来的伦理问题。答案严格按照题纸小标题的顺序出现。</p><p><strong>Task type:</strong> Notes completion under four headings. Instruction: <strong>ONE WORD ONLY</strong> &mdash; no numbers are needed anywhere in this part, and writing two words scores zero even if both words are correct.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> Part 4 has no second speaker to slow the talk down, so your only anchors are the <strong>headings on the question paper</strong>: <em>Developing food trends &rarr; Marketing campaigns (avocado / oat milk / skrei) &rarr; Ethical concerns (quinoa)</em>. Those headings arrive in exactly this order in the recording, so if you lose a gap, jump forward to the next heading word (&lsquo;avocado&rsquo;, &lsquo;oat milk&rsquo;, &lsquo;skrei&rsquo;, &lsquo;quinoa&rsquo;) rather than trying to catch up. Because the limit is <strong>ONE WORD ONLY</strong>, every answer here is a single noun or adjective &mdash; if you are tempted to write &lsquo;coffee shops&rsquo; or &lsquo;soil fertility&rsquo;, you have written two words and scored zero. Decide the word type for each gap in the preparation time: Q32 and Q35 need adjectives/noun-modifiers, Q31, Q33 and Q34 need plural people or things, Q37&ndash;Q40 need abstract nouns.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q31 &ldquo;photos&rdquo; must be plural</b> &mdash; the note says &lsquo;(31) of food <em>being shared</em>&rsquo;. The audio says &lsquo;taking <em>photos</em> of their food and instantly sharing <em>them</em>&rsquo;. <em>Photographs</em> and <em>pictures</em> are also accepted, but a singular &lsquo;photo&rsquo; is risky.</li><li><b>Q33 chefs, not influencers</b> &mdash; influencers are discussed for a long time just before this gap, but the note is under <em>supermarkets</em>: they watch what &lsquo;well-known <em>chefs</em> are putting on their menus&rsquo;. The nearest loud word is not the answer.</li><li><b>Q34 journalists, not farmers or a PR company</b> &mdash; three groups of people appear in one sentence: a British PR company (who paid), journalists (who travelled) and avocado farmers (who were visited). The note says &lsquo;<em>were invited to visit growers</em>&rsquo;, so you need the travellers.</li><li><b>Q36 coffee, not supermarkets</b> &mdash; the audio explicitly rejects supermarkets: &lsquo;This proved far more effective than offering samples in supermarkets.&rsquo; A comparison sentence often contains the wrong answer <em>and</em> the right one.</li><li><b>Q39 price, not demand</b> &mdash; &lsquo;when demand peaked&hellip; the <em>price</em> soared&rsquo;. &lsquo;Demand&rsquo; is the cause, &lsquo;price&rsquo; is the increase the note asks about. (<em>cost</em> is also accepted.)</li><li><b>Q40 soil, not fertility</b> &mdash; the note reads &lsquo;poor quality (40)&rsquo;, so the gap needs the <em>thing</em>, not the quality of it. Audio: &lsquo;the <em>fertility of the soil</em> decreased dramatically&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">trend</span></td><td><span class="pos">n.</span></td><td>a general direction in which things are changing or becoming popular</td><td class="zh">潮流；趋势</td><td>&ldquo;The food industry is obsessed with finding the next big food <em>trend</em>.&rdquo;</td><td class="note">The title word of the whole talk. Collocations to know: <em>set / follow / spot / exploit</em> a trend.</td></tr>
+<tr><td><span class="word">fashion</span></td><td><span class="pos">n.</span></td><td>a style or activity that is popular for a period of time</td><td class="zh">流行；时尚</td><td>&ldquo;Interest in food <em>fashions</em> has risen rapidly.&rdquo;</td><td class="note">Here it means a passing craze, not clothes. &lsquo;Food fashions&rsquo; = &lsquo;food trends&rsquo;.</td></tr>
+<tr><td><span class="word">influencer</span></td><td><span class="pos">n.</span></td><td>a person with many social-media followers who is paid to promote products</td><td class="zh">网红；带货达人</td><td>&ldquo;&hellip;using social media <em>influencers</em> as brand ambassadors.&rdquo;</td><td class="note">Sits right next to Q32 and Q33. Loud, repeated and <em>never</em> the answer &mdash; a classic Part 4 decoy.</td></tr>
+<tr><td><span class="word">ambassador</span></td><td><span class="pos">n.</span></td><td>someone chosen to represent and promote a brand</td><td class="zh">品牌大使；代言人</td><td>&ldquo;&hellip;as brand <em>ambassadors</em> in return for free samples.&rdquo;</td><td class="note">Already printed on the question paper, so use it to locate the influencer section, not as an answer.</td></tr>
+<tr><td><span class="word">vegan</span></td><td><span class="pos">adj./n.</span></td><td>containing no animal products at all; a person who eats no animal products</td><td class="zh">纯素的；纯素食者</td><td>&ldquo;Companies which sell <em>vegan</em> produce were pioneers&hellip;&rdquo;</td><td class="note"><strong>Answer to Q32.</strong> Note the paraphrase: audio <em>produce</em> &rarr; note <em>food brands</em>. Spelling: v-e-g-a-n, not &lsquo;vegen&rsquo;.</td></tr>
+<tr><td><span class="word">produce</span></td><td><span class="pos">n.</span></td><td>food that is grown or made to be sold</td><td class="zh">农产品；食品</td><td>&ldquo;Companies which sell vegan <em>produce</em>&hellip;&rdquo;</td><td class="note">As a NOUN the stress moves to the front (PRO-duce) and it means goods, not the verb &lsquo;to produce&rsquo;.</td></tr>
+<tr><td><span class="word">pioneer</span></td><td><span class="pos">n./v.</span></td><td>the first person or group to do something new</td><td class="zh">先驱；开创者</td><td>&ldquo;&hellip;were <em>pioneers</em> in being able to increase sales really quickly.&rdquo;</td><td class="note">Signals &lsquo;first&rsquo; or &lsquo;earliest&rsquo;. It flags that vegan brands are the example being named.</td></tr>
+<tr><td><span class="word">chef</span></td><td><span class="pos">n.</span></td><td>a professional cook, especially the head cook in a restaurant</td><td class="zh">厨师；主厨</td><td>&ldquo;&hellip;interested in what well-known <em>chefs</em> are putting on their menus.&rdquo;</td><td class="note"><strong>Answer to Q33.</strong> &lsquo;Well-known&rsquo; = &lsquo;Famous&rsquo; on the question paper. <em>cooks</em> is also accepted; keep the plural.</td></tr>
+<tr><td><span class="word">dedicated</span></td><td><span class="pos">adj.</span></td><td>existing for one purpose only</td><td class="zh">专门的；专职的</td><td>&ldquo;They have <em>dedicated</em> teams closely following which new products are trending.&rdquo;</td><td class="note">Common academic adjective: a dedicated team / fund / website. Do not confuse with &lsquo;devoted to a person&rsquo;.</td></tr>
+<tr><td><span class="word">journalist</span></td><td><span class="pos">n.</span></td><td>a person who writes for newspapers or magazines</td><td class="zh">记者</td><td>&ldquo;They paid for a group of <em>journalists</em> to travel out to South Africa.&rdquo;</td><td class="note"><strong>Answer to Q34.</strong> The paraphrase chain is: paid for them to travel &rarr; &lsquo;were <em>invited to visit</em>&rsquo;. <em>reporters</em> is also accepted.</td></tr>
+<tr><td><span class="word">grower</span></td><td><span class="pos">n.</span></td><td>a person or company that grows crops commercially</td><td class="zh">种植者；种植园主</td><td>&ldquo;&hellip;to meet avocado <em>farmers</em>.&rdquo; (question paper: <em>growers</em>)</td><td class="note">This is the note-paper word for the audio&rsquo;s <em>farmers</em>. Recognising it stops you writing &lsquo;farmers&rsquo; in gap 34 by mistake.</td></tr>
+<tr><td><span class="word">profile</span></td><td><span class="pos">n.</span></td><td>the amount of public attention something receives</td><td class="zh">知名度；曝光度</td><td>&ldquo;A British PR company was hired to raise its <em>profile</em>.&rdquo;</td><td class="note">Fixed phrase: <em>raise / boost the profile of</em> something = make it better known.</td></tr>
+<tr><td><span class="word">staple</span></td><td><span class="pos">n.</span></td><td>a basic food that people eat regularly</td><td class="zh">主食；日常必需食品</td><td>&ldquo;&hellip;which at this time was certainly not the daily <em>staple</em> it&rsquo;s since become.&rdquo;</td><td class="note">Useful for describing how a luxury becomes normal. &lsquo;It&rsquo;s since become&rsquo; = it has become since then.</td></tr>
+<tr><td><span class="word">nutrient</span></td><td><span class="pos">n.</span></td><td>a substance in food that living things need to grow and stay healthy</td><td class="zh">营养素；养分</td><td>&ldquo;&hellip;a superfood rich in <em>nutrients</em> and therefore beneficial for health.&rdquo;</td><td class="note">Leads directly into <strong>Q35</strong>: &lsquo;beneficial for health&rsquo; = &lsquo;<em>health</em> benefits&rsquo;.</td></tr>
+<tr><td><span class="word">beneficial</span></td><td><span class="pos">adj.</span></td><td>having a good effect</td><td class="zh">有益的</td><td>&ldquo;&hellip;therefore <em>beneficial</em> for health.&rdquo;</td><td class="note">The question paper uses the noun <em>benefits</em>; the audio uses the adjective. Same family, different form.</td></tr>
+<tr><td><span class="word">provocation</span></td><td><span class="pos">n.</span></td><td>deliberately doing something to annoy or challenge people</td><td class="zh">挑衅；激怒</td><td>&ldquo;&hellip;a media campaign which used <em>provocation</em> as a way of getting their message across.&rdquo;</td><td class="note">Explains the note &lsquo;received publicity by <em>upsetting</em> competitors&rsquo; &mdash; the annoyance was intentional.</td></tr>
+<tr><td><span class="word">aggravate</span></td><td><span class="pos">v.</span></td><td>to make someone angry or annoyed</td><td class="zh">激怒；使恼火</td><td>&ldquo;The fact that this campaign <em>aggravated</em> competitors&hellip; was seen as a plus.&rdquo;</td><td class="note">&lsquo;Aggravated&rsquo; = &lsquo;upset&rsquo; on the question paper. It can also mean &lsquo;make worse&rsquo; &mdash; context decides.</td></tr>
+<tr><td><span class="word">retail</span></td><td><span class="pos">n./adj.</span></td><td>the selling of goods directly to the public in shops</td><td class="zh">零售</td><td>&ldquo;The brand decided against a big <em>retail</em> launch.&rdquo;</td><td class="note">&lsquo;Decided against&rsquo; = chose not to. This is the sentence just before <strong>Q36</strong>.</td></tr>
+<tr><td><span class="word">chain</span></td><td><span class="pos">n.</span></td><td>a group of shops or restaurants owned by the same company</td><td class="zh">连锁店</td><td>&ldquo;&hellip;getting the product into coffee <em>chains</em>.&rdquo;</td><td class="note">The note says <em>coffee shops</em>, the audio says <em>coffee chains</em> &mdash; the answer word <strong>coffee</strong> survives both.</td></tr>
+<tr><td><span class="word">alternative</span></td><td><span class="pos">adj.</span></td><td>different from the usual or traditional kind</td><td class="zh">替代的；另类的</td><td>&ldquo;&hellip;other <em>alternative</em> milk products such as almond milk.&rdquo;</td><td class="note">Collocation: alternative milk / energy / medicine. Almond milk is the comparison item, not an answer.</td></tr>
+<tr><td><span class="word">carbon footprint</span></td><td><span class="pos">n. phr.</span></td><td>the total amount of greenhouse gas an activity produces</td><td class="zh">碳足迹</td><td>&ldquo;&hellip;it also has a relatively low <em>carbon footprint</em>.&rdquo;</td><td class="note">One of the two clues for <strong>Q37 environment</strong>, together with &lsquo;requires less water&rsquo;.</td></tr>
+<tr><td><span class="word">delicacy</span></td><td><span class="pos">n.</span></td><td>a rare or expensive food that people consider special</td><td class="zh">珍馐；美味佳肴</td><td>&ldquo;Norwegian skrei, a rarely available seasonal fish <em>delicacy</em>&hellip;&rdquo;</td><td class="note">The commas around this phrase are a free definition of &lsquo;skrei&rsquo; &mdash; you do not need to know the word itself.</td></tr>
+<tr><td><span class="word">reputation</span></td><td><span class="pos">n.</span></td><td>the opinion people generally have about something</td><td class="zh">声誉；口碑</td><td>&ldquo;&hellip;used to build the <em>reputation</em> of Norway&rsquo;s fisheries in general.&rdquo;</td><td class="note"><strong>Answer to Q38.</strong> Note-paper &lsquo;strengthen&rsquo; = audio &lsquo;build&rsquo;; &lsquo;Norwegian seafood&rsquo; = &lsquo;Norway&rsquo;s fisheries&rsquo;.</td></tr>
+<tr><td><span class="word">sustainably</span></td><td><span class="pos">adv.</span></td><td>in a way that does not damage the environment long term</td><td class="zh">可持续地</td><td>&ldquo;The public can be encouraged to buy things which are more <em>sustainably</em> produced.&rdquo;</td><td class="note">Belongs to the positive side of the argument. Do not mix it up with the environment clue for Q37, which is about oat milk.</td></tr>
+<tr><td><span class="word">surge</span></td><td><span class="pos">n.</span></td><td>a sudden large increase</td><td class="zh">激增；猛涨</td><td>&ldquo;&hellip;the effects a <em>surge</em> in demand can cause.&rdquo;</td><td class="note">Synonym family for Q39: surge / soar / peak / grow. All four appear in this final section.</td></tr>
+<tr><td><span class="word">soar</span></td><td><span class="pos">v.</span></td><td>to rise very quickly to a high level</td><td class="zh">飙升</td><td>&ldquo;When demand peaked&hellip; the price <em>soared</em>.&rdquo;</td><td class="note"><strong>Key to Q39.</strong> &lsquo;The price soared&rsquo; = &lsquo;an increase in its price&rsquo;.</td></tr>
+<tr><td><span class="word">unaffordable</span></td><td><span class="pos">adj.</span></td><td>too expensive for people to be able to buy</td><td class="zh">买不起的；负担不起的</td><td>&ldquo;&hellip;making it <em>unaffordable</em> for local people.&rdquo;</td><td class="note">Prefix <em>un-</em> + afford + <em>-able</em>. This is the ethical problem the heading points to.</td></tr>
+<tr><td><span class="word">fertility</span></td><td><span class="pos">n.</span></td><td>the ability of soil to produce good crops</td><td class="zh">肥力；肥沃程度</td><td>&ldquo;&hellip;the <em>fertility</em> of the soil decreased dramatically.&rdquo;</td><td class="note">Careful: &lsquo;fertility&rsquo; is the quality, <strong>soil</strong> is the answer to Q40 because the note says &lsquo;poor quality ___&rsquo;.</td></tr>
+<tr><td><span class="word">desertification</span></td><td><span class="pos">n.</span></td><td>the process by which fertile land turns into desert</td><td class="zh">荒漠化</td><td>&ldquo;&hellip;which could potentially lead to <em>desertification</em> in some areas.&rdquo;</td><td class="note">A long word, but you only need to recognise it &mdash; it is the consequence, not the answer.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">the birth of the smartphone</span></td><td>the time when smartphones first appeared</td><td class="zh">智能手机诞生之时</td></tr>
+<tr><td><span class="phrase">instantly sharing them with their friends</span></td><td>sending them to friends immediately</td><td class="zh">立刻分享给朋友</td></tr>
+<tr><td><span class="phrase">be obsessed with</span></td><td>think about something all the time</td><td class="zh">痴迷于；执着于</td></tr>
+<tr><td><span class="phrase">the next big food trend</span></td><td>the food that will become popular next</td><td class="zh">下一个大热食品潮流</td></tr>
+<tr><td><span class="phrase">create a huge demand for</span></td><td>make very many people want something</td><td class="zh">为&hellip;制造巨大需求</td></tr>
+<tr><td><span class="phrase">previously unknown or not needed</span></td><td>that nobody had heard of or wanted before</td><td class="zh">此前无人知晓或不需要的</td></tr>
+<tr><td><span class="phrase">in return for free samples</span></td><td>in exchange for products given without charge</td><td class="zh">以免费样品作为交换</td></tr>
+<tr><td><span class="phrase">command large fees</span></td><td>be able to charge a lot of money</td><td class="zh">能收取高额费用</td></tr>
+<tr><td><span class="phrase">increase sales really quickly</span></td><td>make the amount sold rise fast</td><td class="zh">迅速提升销量</td></tr>
+<tr><td><span class="phrase">readily available</span></td><td>easy to find and buy</td><td class="zh">容易买到的</td></tr>
+<tr><td><span class="phrase">have a role to play in</span></td><td>be one of the causes of / contribute to</td><td class="zh">在&hellip;中发挥作用</td></tr>
+<tr><td><span class="phrase">dedicated teams</span></td><td>staff who work on one thing only</td><td class="zh">专职团队</td></tr>
+<tr><td><span class="phrase">trending on social media</span></td><td>being talked about a lot online right now</td><td class="zh">在社交媒体上走红</td></tr>
+<tr><td><span class="phrase">put something on the menu</span></td><td>start offering a dish in a restaurant</td><td class="zh">把某道菜列入菜单</td></tr>
+<tr><td><span class="phrase">raise its profile</span></td><td>make it better known to the public</td><td class="zh">提升知名度</td></tr>
+<tr><td><span class="phrase">stimulate demand</span></td><td>make people want to buy more</td><td class="zh">刺激需求</td></tr>
+<tr><td><span class="phrase">rich in nutrients</span></td><td>containing a lot of useful substances</td><td class="zh">营养丰富</td></tr>
+<tr><td><span class="phrase">beneficial for health</span></td><td>good for the body</td><td class="zh">有益健康</td></tr>
+<tr><td><span class="phrase">get their message across</span></td><td>communicate what they want to say successfully</td><td class="zh">有效传达信息</td></tr>
+<tr><td><span class="phrase">was seen as a plus</span></td><td>was considered an advantage</td><td class="zh">被视为一个优势</td></tr>
+<tr><td><span class="phrase">decide against</span></td><td>choose not to do something</td><td class="zh">决定不做某事</td></tr>
+<tr><td><span class="phrase">in favour of</span></td><td>instead of, preferring the other option</td><td class="zh">转而选择；倾向于</td></tr>
+<tr><td><span class="phrase">remove the need for</span></td><td>make something unnecessary</td><td class="zh">使&hellip;变得不必要</td></tr>
+<tr><td><span class="phrase">have an advantage over</span></td><td>be better than something in one way</td><td class="zh">比&hellip;更有优势</td></tr>
+<tr><td><span class="phrase">less of an impact on</span></td><td>a smaller effect on</td><td class="zh">对&hellip;影响更小</td></tr>
+<tr><td><span class="phrase">a relatively low carbon footprint</span></td><td>producing fairly little greenhouse gas</td><td class="zh">碳足迹相对较低</td></tr>
+<tr><td><span class="phrase">rarely available</span></td><td>only on sale at certain times</td><td class="zh">很少有货的；难得一见的</td></tr>
+<tr><td><span class="phrase">otherwise known as</span></td><td>also called</td><td class="zh">又称；也叫作</td></tr>
+<tr><td><span class="phrase">build the reputation of</span></td><td>improve how people think about something</td><td class="zh">树立&hellip;的声誉</td></tr>
+<tr><td><span class="phrase">a surge in demand</span></td><td>a sudden sharp rise in how much people want something</td><td class="zh">需求激增</td></tr>
+<tr><td><span class="phrase">be native to</span></td><td>grow or live naturally in a place</td><td class="zh">原产于</td></tr>
+<tr><td><span class="phrase">work the land all year round</span></td><td>farm the land in every season without a break</td><td class="zh">全年不停地耕作</td></tr>
+<tr><td><span class="phrase">negative consequences</span></td><td>bad results</td><td class="zh">负面后果</td></tr>
+<tr><td><span class="phrase">lead to desertification</span></td><td>cause land to turn into desert</td><td class="zh">导致荒漠化</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q31&ndash;40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The ten exam gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY</strong> in each gap, exactly as the recording says it.</p><div class="ex-item"><span class="ex-num">1.</span><label>Interest in food fashions grew once people started sharing <input type="text" class="blank" id="b1" data-answer="photos" placeholder="______"> of their food on social media.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Sales of <input type="text" class="blank" id="b2" data-answer="vegan" placeholder="______"> food brands grew quickly through influencer marketing.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Supermarkets watch what famous <input type="text" class="blank" id="b3" data-answer="chefs" placeholder="______"> put on their menus.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>A group of <input type="text" class="blank" id="b4" data-answer="journalists" placeholder="______"> were paid to fly to South Africa and meet avocado growers.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Avocado advertising promoted the fruit as a superfood with <input type="text" class="blank" id="b5" data-answer="health" placeholder="______"> benefits.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>In the USA, oat milk was promoted through <input type="text" class="blank" id="b6" data-answer="coffee" placeholder="______"> shops instead of a big retail launch.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Oat milk appealed to shoppers who care about the <input type="text" class="blank" id="b7" data-answer="environment" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Demand for skrei has strengthened the <input type="text" class="blank" id="b8" data-answer="reputation" placeholder="______"> of Norwegian seafood.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>The success of quinoa caused a sharp rise in its <input type="text" class="blank" id="b9" data-answer="price" placeholder="______">.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Farming quinoa all year round produced poor quality <input type="text" class="blank" id="b10" data-answer="soil" placeholder="______">.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Listening you lose the mark for a wrong <em>form</em> even when you clearly heard the right idea.</p><div class="ex-item"><span class="ex-num">1.</span><label>Avocados were advertised as <input type="text" class="blank" id="b11" data-answer="beneficial" placeholder="______"> (BENEFIT) for health.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The demand for skrei has helped build Norway&rsquo;s <input type="text" class="blank" id="b12" data-answer="reputation" placeholder="______"> (REPUTE) for seafood.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The campaign deliberately used <input type="text" class="blank" id="b13" data-answer="provocation" placeholder="______"> (PROVOKE) to attract attention.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>High prices made quinoa <input type="text" class="blank" id="b14" data-answer="unaffordable" placeholder="______"> (AFFORD) for people in Peru.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The <input type="text" class="blank" id="b15" data-answer="fertility" placeholder="______"> (FERTILE) of the soil decreased dramatically.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Shoppers now <input type="text" class="blank" id="b16" data-answer="associate" placeholder="______"> (ASSOCIATION) Norway with excellent seafood.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Public interest in food fashions has risen <input type="text" class="blank" id="b17" data-answer="rapidly" placeholder="______"> (RAPID) since the smartphone appeared.<span class="feedback" id="fb17"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word below is said in this recording and every one of them is regularly misspelled in the exam. Type the full correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>v e g _ n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="vegan" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>e n v i r o _ m e n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="environment" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>r e p u t _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="reputation" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>j o u r n a l _ s t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="journalists" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>n u t r _ e n t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="nutrients" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>s u p e r m a r k _ t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="supermarkets" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The plural of &lsquo;chef&rsquo; &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="chefs" placeholder="______"><span class="feedback" id="fb24"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Places</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">None of these are answers in the exam, but Part 4 is full of them and they are exactly what pulls your attention away from the real gap. Write figures as figures.</p><div class="ex-item"><span class="ex-num">1.</span><label>The avocado campaign began in the <input type="text" class="blank" id="b25" data-answer="1990s" placeholder="______">.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>UK avocado sales rose from &pound;<input type="text" class="blank" id="b26" data-answer="13" placeholder="______"> million a year&hellip;<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&hellip;to around &pound;<input type="text" class="blank" id="b27" data-answer="150" placeholder="______"> million a year.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The journalists flew to <input type="text" class="blank" id="b28" data-answer="South" placeholder="______"> Africa to meet growers.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Oatley is a <input type="text" class="blank" id="b29" data-answer="Swedish" placeholder="______"> oat-milk brand.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Skrei is also known as Arctic <input type="text" class="blank" id="b30" data-answer="cod" placeholder="______">.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Quinoa is native to <input type="text" class="blank" id="b31" data-answer="Peru" placeholder="______">.<span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the speaker actually says; on the right is the word the <em>note</em> needs. This jump is where the mark is won or lost.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;Companies which sell vegan <b>produce</b>&hellip;&rdquo; &rarr; Note: sales of <input type="text" class="blank" id="b32" data-answer="vegan" placeholder="______"> food brands.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;what <b>well-known</b> chefs are putting on their menus&rdquo; &rarr; Note: famous <input type="text" class="blank" id="b33" data-answer="chefs" placeholder="______"> are influential.<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;They <b>paid for</b> a group of journalists <b>to travel out to</b> South Africa&rdquo; &rarr; Note: <input type="text" class="blank" id="b34" data-answer="journalists" placeholder="______"> were invited to visit growers.<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;rich in nutrients and therefore <b>beneficial for health</b>&rdquo; &rarr; Note: advertising focused on its <input type="text" class="blank" id="b35" data-answer="health" placeholder="______"> benefits.<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;getting the product into coffee <b>chains</b>&rdquo; &rarr; Note: promotion through <input type="text" class="blank" id="b36" data-answer="coffee" placeholder="______"> shops.<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;less of an impact on the environment&hellip; low carbon footprint&rdquo; &rarr; Note: consumers concerned about the <input type="text" class="blank" id="b37" data-answer="environment" placeholder="______">.<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;used&hellip; to <b>build</b> the reputation of <b>Norway&rsquo;s fisheries</b>&rdquo; &rarr; Note: strengthen the <input type="text" class="blank" id="b38" data-answer="reputation" placeholder="______"> of Norwegian seafood.<span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q31</span></td><td>started with <b>(31)</b> of food being shared on social media</td><td><b>PLURAL NOUN &mdash; a thing people share online</b></td><td>Listen for the very first sentence: &lsquo;the birth of the smartphone&hellip; people first began <em>taking</em>&hellip;&rsquo;</td><td class="note">photos / photographs / pictures</td></tr>
+<tr><td><span class="word">Q32</span></td><td>Sales of <b>(32)</b> food brands have grown this way</td><td><b>ADJECTIVE used before a noun &mdash; a diet type</b></td><td>The audio says &lsquo;companies which sell ___ <em>produce</em>&rsquo; and calls them &lsquo;pioneers&rsquo;.</td><td class="note">vegan</td></tr>
+<tr><td><span class="word">Q33</span></td><td>Famous <b>(33)</b> are influential</td><td><b>PLURAL NOUN &mdash; a job/people</b></td><td>&lsquo;Famous&rsquo; = &lsquo;well-known&rsquo;. The sentence is about what supermarkets watch, not about influencers.</td><td class="note">chefs / cooks</td></tr>
+<tr><td><span class="word">Q34</span></td><td><b>(34)</b> were invited to visit growers in South Africa</td><td><b>PLURAL NOUN &mdash; a group of people</b></td><td>Three groups appear together. You need the ones who <em>travelled</em>, not the ones who paid or were visited.</td><td class="note">journalists / reporters</td></tr>
+<tr><td><span class="word">Q35</span></td><td>Advertising focused on its <b>(35)</b> benefits</td><td><b>NOUN used as a modifier before &lsquo;benefits&rsquo;</b></td><td>Listen for &lsquo;superfood rich in nutrients and therefore <em>beneficial for&hellip;</em>&rsquo;.</td><td class="note">health</td></tr>
+<tr><td><span class="word">Q36</span></td><td>Promotion in the USA through <b>(36)</b> shops</td><td><b>NOUN used before &lsquo;shops&rsquo;</b></td><td>The audio contrasts two channels &mdash; a big retail launch/supermarket samples versus somewhere else. Take the one that <em>worked</em>.</td><td class="note">coffee</td></tr>
+<tr><td><span class="word">Q37</span></td><td>appealed to consumers concerned about the <b>(37)</b></td><td><b>SINGULAR ABSTRACT NOUN (takes &lsquo;the&rsquo;)</b></td><td>Two supporting clues follow: less water needed and a low carbon footprint.</td><td class="note">environment</td></tr>
+<tr><td><span class="word">Q38</span></td><td>has helped strengthen the <b>(38)</b> of Norwegian seafood</td><td><b>SINGULAR ABSTRACT NOUN</b></td><td>&lsquo;Strengthen&rsquo; will be said differently &mdash; listen for &lsquo;build the ___ of Norway&rsquo;s fisheries&rsquo;.</td><td class="note">reputation</td></tr>
+<tr><td><span class="word">Q39</span></td><td>Its success led to an increase in its <b>(39)</b></td><td><b>SINGULAR NOUN &mdash; something that can increase</b></td><td>&lsquo;An increase in&rsquo; will be a verb in the audio: <em>soared</em>. Do not write &lsquo;demand&rsquo;.</td><td class="note">price / cost</td></tr>
+<tr><td><span class="word">Q40</span></td><td>Overuse of resources resulted in poor quality <b>(40)</b></td><td><b>SINGULAR UNCOUNTABLE NOUN &mdash; a natural resource</b></td><td>&lsquo;Poor quality&rsquo; = the audio&rsquo;s &lsquo;fertility&hellip; decreased&rsquo;. You need the thing itself, not its quality.</td><td class="note">soil</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;The growth in interest started with <b>(31) of food being shared</b> on social media&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;&hellip;since the birth of the smartphone, when people first began <b>taking photos of their food and instantly sharing them</b> with their friends.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">being shared (passive on the paper) = sharing them (active in the audio). The gap needs the object of &lsquo;taking&rsquo;: <em>photos</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;people share photos&rsquo; as a passive sentence&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Sales of <b>(32)</b> food brands have grown this way&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Companies which sell <b>vegan produce</b> were <b>pioneers</b> in being able to <b>increase sales really quickly</b> in this way.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">produce (audio) = food brands (paper); increase sales quickly = sales have grown</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence using &lsquo;were pioneers in&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>Famous</b> (33) are influential&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;They have dedicated teams&hellip; particularly interested in what <b>well-known chefs</b> are putting on their menus.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">famous = well-known. &lsquo;Are influential&rsquo; = supermarkets pay attention to them.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Give two more synonyms of &lsquo;famous&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;(34) <b>were invited to visit</b> growers in South Africa&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;A British PR company&hellip; <b>paid for a group of journalists to travel out to</b> South Africa to meet avocado <b>farmers</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">paid for X to travel = X were invited; farmers = growers. Three groups of people, only one travelled.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;the company paid for us to fly there&rsquo; using &lsquo;we were invited&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Promotion through <b>(36) shops</b> reduced the need for advertising&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The brand <b>decided against a big retail launch in favour of getting the product into coffee chains</b>, which <b>removed the need for a big advertising budget</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">chains = shops; removed the need for = reduced the need for. &lsquo;Supermarkets&rsquo; is rejected in the very next sentence.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;decided against X in favour of Y&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;It appealed to consumers who are <b>concerned about the (37)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Many consumers <b>prefer it</b> because it has <b>less of an impact on the environment</b>. It requires significantly less water&hellip; and a relatively low carbon footprint.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">appealed to = consumers prefer it; concerned about the environment = less impact on the environment</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Explain in one sentence why oat milk is greener than almond milk&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;has helped <b>strengthen the (38)</b> of Norwegian seafood&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The demand for skrei has been used by a food marketing agency to <b>build the reputation of Norway&rsquo;s fisheries</b> in general.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">strengthen = build; Norwegian seafood = Norway&rsquo;s fisheries</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;build the reputation of&hellip;&rsquo;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;since the birth of the smartphone&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;taking photos of their food and instantly sharing them&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;social media influencers as brand ambassadors&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;what well-known chefs are putting on their menus&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;a superfood rich in nutrients and beneficial for health&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;getting the product into coffee chains&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;less of an impact on the environment&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;the fertility of the soil decreased dramatically&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the speaker, what started the rapid rise in interest in food fashions?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Television cookery programmes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. The arrival of the smartphone and food photos on social media.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Supermarkets opening dedicated marketing teams.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. A British PR campaign in the 1990s.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What do influencers usually receive for posting about a new food product?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Free samples.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. A share of the profits.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Supermarket vouchers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Nothing at all.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which type of company was named as a pioneer of influencer marketing?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Oat milk producers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Supermarket chains.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Companies selling vegan produce.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Norwegian fisheries.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why is <em>chefs</em> the answer to Q33 rather than <em>influencers</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Because influencers are never mentioned in the talk.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Because the note is about what supermarkets monitor.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Because influencers work only for vegan brands.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Because chefs are more famous than influencers.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Who actually travelled to South Africa in the avocado campaign?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. The PR company&rsquo;s directors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. A group of journalists.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. A group of chefs.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Supermarket buyers.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How was the avocado advertised to the British public?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. As a cheap everyday food.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. As a superfood that is good for your health.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. As a sustainable alternative to meat.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. As a product used by famous chefs.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why did Oatley see it as an advantage that its campaign annoyed competitors?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. It forced competitors out of the market.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It generated publicity and made oat milk seem cool.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It reduced the price of dairy milk.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. It persuaded supermarkets to stock the product.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">In the USA, which sales channel did Oatley choose, and which did it reject?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Chose supermarkets; rejected coffee chains.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Chose coffee chains; rejected a big retail launch.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Chose online delivery; rejected supermarkets.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Chose restaurants; rejected coffee chains.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What two facts are given to show oat milk&rsquo;s environmental advantage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. It is cheaper and lasts longer.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It needs less water and has a low carbon footprint.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It is grown locally and needs no packaging.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. It uses fewer nutrients and less land.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What has the demand for Norwegian skrei been used to achieve?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Higher prices for Michelin-starred restaurants.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. A better reputation for Norway&rsquo;s seafood in general.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. A longer fishing season.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Protection of Arctic cod stocks.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What ethical problem did the quinoa boom create for people in Peru?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Farmers were forced to sell their land.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. The price rose so much that local people could not afford it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Quinoa disappeared from local menus.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Foreign companies took over production.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Why is <em>soil</em> the answer to Q40 and not <em>fertility</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Because fertility is never mentioned.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Because the note says &lsquo;poor quality ___&rsquo;, so it needs the resource itself.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Because fertility is two words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Because desertification is the real answer.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 31&ndash;40</h3><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">photos (photographs / pictures)</div><div class="answer-note">&lsquo;&hellip;when people first began taking <em>photos</em> of their food and instantly sharing them with their friends.&rsquo; Plural, because the note says &lsquo;of food being shared&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">vegan</div><div class="answer-note">&lsquo;Companies which sell <em>vegan</em> produce were pioneers in being able to increase sales really quickly in this way.&rsquo; <em>produce</em> = &lsquo;food brands&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">chefs (cooks)</div><div class="answer-note">Supermarkets&rsquo; dedicated teams are &lsquo;particularly interested in what well-known <em>chefs</em> are putting on their menus&rsquo;. &lsquo;Well-known&rsquo; = &lsquo;Famous&rsquo;. Keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">journalists (reporters)</div><div class="answer-note">&lsquo;They paid for a group of <em>journalists</em> to travel out to South Africa to meet avocado farmers.&rsquo; &lsquo;Paid for&hellip; to travel&rsquo; = &lsquo;were invited to visit&rsquo;; &lsquo;farmers&rsquo; = &lsquo;growers&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">health</div><div class="answer-note">&lsquo;Advertisements were designed to promote the avocado as a superfood rich in nutrients and therefore beneficial for <em>health</em>.&rsquo; The paper turns the adjective into the noun modifier &lsquo;health benefits&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">coffee</div><div class="answer-note">&lsquo;&hellip;in favour of getting the product into <em>coffee</em> chains, which removed the need for a big advertising budget.&rsquo; &lsquo;Chains&rsquo; on the recording = &lsquo;shops&rsquo; on the paper; supermarkets are explicitly rejected in the next sentence.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">environment</div><div class="answer-note">&lsquo;Many consumers prefer it because it has less of an impact on the <em>environment</em>&rsquo; &mdash; supported by &lsquo;significantly less water&rsquo; and &lsquo;a relatively low carbon footprint&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">reputation</div><div class="answer-note">&lsquo;The demand for skrei has been used by a food marketing agency to build the <em>reputation</em> of Norway&rsquo;s fisheries in general.&rsquo; &lsquo;Build&rsquo; = &lsquo;strengthen&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">price (cost)</div><div class="answer-note">&lsquo;When demand peaked some years ago, the <em>price</em> soared, making it unaffordable for local people.&rsquo; &lsquo;Soared&rsquo; = &lsquo;an increase in&rsquo;. Do not write &lsquo;demand&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">soil</div><div class="answer-note">&lsquo;One issue has been that the fertility of the <em>soil</em> decreased dramatically.&rsquo; The note asks for &lsquo;poor quality ___&rsquo;, so the answer is the resource, not the word &lsquo;fertility&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q31&ndash;40)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">photos</div><div class="answer-note">Interest in food fashions grew once people started sharing</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">vegan</div><div class="answer-note">Sales of</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">chefs</div><div class="answer-note">Supermarkets watch what famous</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">journalists</div><div class="answer-note">A group of</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">health</div><div class="answer-note">Avocado advertising promoted the fruit as a superfood with</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">coffee</div><div class="answer-note">In the USA, oat milk was promoted through</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">environment</div><div class="answer-note">Oat milk appealed to shoppers who care about the</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">reputation</div><div class="answer-note">Demand for skrei has strengthened the</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">price</div><div class="answer-note">The success of quinoa caused a sharp rise in its</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">soil</div><div class="answer-note">Farming quinoa all year round produced poor quality</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">beneficial</div><div class="answer-note">Avocados were advertised as</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">reputation</div><div class="answer-note">The demand for skrei has helped build Norway&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">provocation</div><div class="answer-note">The campaign deliberately used</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">unaffordable</div><div class="answer-note">High prices made quinoa</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">fertility</div><div class="answer-note">The</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">associate</div><div class="answer-note">Shoppers now</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">rapidly</div><div class="answer-note">Public interest in food fashions has risen</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">vegan</div><div class="answer-note">v e g _ n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">environment</div><div class="answer-note">e n v i r o _ m e n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">reputation</div><div class="answer-note">r e p u t _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">journalists</div><div class="answer-note">j o u r n a l _ s t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">nutrients</div><div class="answer-note">n u t r _ e n t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">supermarkets</div><div class="answer-note">s u p e r m a r k _ t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">chefs</div><div class="answer-note">The plural of &lsquo;chef&rsquo;  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Places</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">1990s</div><div class="answer-note">The avocado campaign began in the</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">13</div><div class="answer-note">UK avocado sales rose from &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">150</div><div class="answer-note">&hellip;to around &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">South</div><div class="answer-note">The journalists flew to</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">Swedish</div><div class="answer-note">Oatley is a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">cod</div><div class="answer-note">Skrei is also known as Arctic</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">Peru</div><div class="answer-note">Quinoa is native to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">vegan</div><div class="answer-note">Audio: &ldquo;Companies which sell vegan produce&hellip;&rdquo; &rarr; Note: sales of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">chefs</div><div class="answer-note">Audio: &ldquo;what well-known chefs are putting on their menus&rdquo; &rarr; Note: famous</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">journalists</div><div class="answer-note">Audio: &ldquo;They paid for a group of journalists to travel out to South Africa&rdquo; &rarr; Note:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">health</div><div class="answer-note">Audio: &ldquo;rich in nutrients and therefore beneficial for health&rdquo; &rarr; Note: advertising focused on its</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">coffee</div><div class="answer-note">Audio: &ldquo;getting the product into coffee chains&rdquo; &rarr; Note: promotion through</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">environment</div><div class="answer-note">Audio: &ldquo;less of an impact on the environment&hellip; low carbon footprint&rdquo; &rarr; Note: consumers concerned about the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">reputation</div><div class="answer-note">Audio: &ldquo;used&hellip; to build the reputation of Norway&rsquo;s fisheries&rdquo; &rarr; Note: strengthen the</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q31</span><div><div class="answer-val">photos / photographs / pictures &mdash; PLURAL NOUN &mdash; a thing people share online</div><div class="answer-note">Listen for the very first sentence: &lsquo;the birth of the smartphone&hellip; people first began <em>taking</em>&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q32</span><div><div class="answer-val">vegan &mdash; ADJECTIVE used before a noun &mdash; a diet type</div><div class="answer-note">The audio says &lsquo;companies which sell ___ <em>produce</em>&rsquo; and calls them &lsquo;pioneers&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q33</span><div><div class="answer-val">chefs / cooks &mdash; PLURAL NOUN &mdash; a job/people</div><div class="answer-note">&lsquo;Famous&rsquo; = &lsquo;well-known&rsquo;. The sentence is about what supermarkets watch, not about influencers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q34</span><div><div class="answer-val">journalists / reporters &mdash; PLURAL NOUN &mdash; a group of people</div><div class="answer-note">Three groups appear together. You need the ones who <em>travelled</em>, not the ones who paid or were visited.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q35</span><div><div class="answer-val">health &mdash; NOUN used as a modifier before &lsquo;benefits&rsquo;</div><div class="answer-note">Listen for &lsquo;superfood rich in nutrients and therefore <em>beneficial for&hellip;</em>&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q36</span><div><div class="answer-val">coffee &mdash; NOUN used before &lsquo;shops&rsquo;</div><div class="answer-note">The audio contrasts two channels &mdash; a big retail launch/supermarket samples versus somewhere else. Take the one that <em>worked</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q37</span><div><div class="answer-val">environment &mdash; SINGULAR ABSTRACT NOUN (takes &lsquo;the&rsquo;)</div><div class="answer-note">Two supporting clues follow: less water needed and a low carbon footprint.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q38</span><div><div class="answer-val">reputation &mdash; SINGULAR ABSTRACT NOUN</div><div class="answer-note">&lsquo;Strengthen&rsquo; will be said differently &mdash; listen for &lsquo;build the ___ of Norway&rsquo;s fisheries&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q39</span><div><div class="answer-val">price / cost &mdash; SINGULAR NOUN &mdash; something that can increase</div><div class="answer-note">&lsquo;An increase in&rsquo; will be a verb in the audio: <em>soared</em>. Do not write &lsquo;demand&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q40</span><div><div class="answer-val">soil &mdash; SINGULAR UNCOUNTABLE NOUN &mdash; a natural resource</div><div class="answer-note">&lsquo;Poor quality&rsquo; = the audio&rsquo;s &lsquo;fertility&hellip; decreased&rsquo;. You need the thing itself, not its quality.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">since the birth of the smartphone</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">taking photos of their food and instantly sharing them</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">social media influencers as brand ambassadors</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">what well-known chefs are putting on their menus</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">a superfood rich in nutrients and beneficial for health</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">getting the product into coffee chains</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">less of an impact on the environment</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">the fertility of the soil decreased dramatically</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. The arrival of the smartphone and food photos on social media.</div><div class="answer-note">&lsquo;Interest in food fashions has risen rapidly since the birth of the smartphone when people first began taking photos of their food.&rsquo; This is the clue for Q31.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A. Free samples.</div><div class="answer-note">&lsquo;&hellip;using social media influencers as brand ambassadors in return for free samples.&rsquo; Only the biggest influencers &lsquo;command large fees&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. Companies selling vegan produce.</div><div class="answer-note">Q32. &lsquo;Companies which sell vegan produce were pioneers in being able to increase sales really quickly in this way.&rsquo; Note that <em>produce</em> becomes <em>food brands</em> on the paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. Because the note is about what supermarkets monitor.</div><div class="answer-note">The bullet sits under the supermarket point: their teams are &lsquo;particularly interested in what well-known chefs are putting on their menus&rsquo;. Influencers are the loud distractor just before it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. A group of journalists.</div><div class="answer-note">Q34. &lsquo;They paid for a group of journalists to travel out to South Africa to meet avocado farmers.&rsquo; The farmers were visited, not invited.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. As a superfood that is good for your health.</div><div class="answer-note">Q35. &lsquo;Advertisements were designed to promote the avocado as a superfood rich in nutrients and therefore beneficial for health.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. It generated publicity and made oat milk seem cool.</div><div class="answer-note">The campaign &lsquo;used provocation as a way of getting their message across&rsquo;; aggravating dairy producers &lsquo;was seen as a plus as it helped to make oat milk seem cool&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Chose coffee chains; rejected a big retail launch.</div><div class="answer-note">Q36. &lsquo;The brand decided against a big retail launch in favour of getting the product into coffee chains&hellip; This proved far more effective than offering samples in supermarkets.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. It needs less water and has a low carbon footprint.</div><div class="answer-note">Q37. &lsquo;It requires significantly less water to produce than other alternative milk products and it also has a relatively low carbon footprint.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. A better reputation for Norway&rsquo;s seafood in general.</div><div class="answer-note">Q38. &lsquo;The demand for skrei has been used by a food marketing agency to build the reputation of Norway&rsquo;s fisheries in general.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. The price rose so much that local people could not afford it.</div><div class="answer-note">Q39. &lsquo;When demand peaked&hellip; the price soared, making it unaffordable for local people.&rsquo; Note that farmers did benefit financially &mdash; the harm was to consumers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Because the note says &lsquo;poor quality ___&rsquo;, so it needs the resource itself.</div><div class="answer-note">&lsquo;The fertility of the soil decreased dramatically&rsquo; = poor quality <strong>soil</strong>. The gap needs the noun that the quality belongs to.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

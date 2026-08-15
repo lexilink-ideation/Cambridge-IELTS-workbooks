@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Listening Part 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 1</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Listening Part 1</h1>
+    <h2>Furniture Rental Companies &middot; Table Completion (Q1&ndash;10)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Shelley Meyer has rented a house on Archwood Avenue and is moving in next week. She phones the <strong>house owner</strong>, who has promised to tell her about furniture rental companies in the city. He describes <strong>four companies in turn</strong> &mdash; Peak Rentals, Aaron and Oliver, Larch Furniture and Space Rentals &mdash; giving prices, extra charges and one or two conditions for each. You complete a table with <strong>ONE WORD AND/OR A NUMBER</strong> per gap.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two speakers: <strong>Shelley Meyer</strong>, a woman about to move into a rented house, and the <strong>house owner</strong> (male), who gives all the information. She mostly asks short questions and reacts, so almost every answer is in <em>his</em> turns.</p><p><strong>The situation 情境:</strong> Shelley 下周就要搬进 Archwood Avenue 的租住房，因为工作合同只是临时的，她打算先租家具而不是买。房东按顺序介绍了四家家具租赁公司：Peak Rentals（价格 105&ndash;239 美元／房间／月，家具最新，1&ndash;2 天送达，租客厅整套家具送台灯）、Aaron and Oliver（中等价位，每月多收 12% 的损坏费，另提供房屋清洁服务）、Larch Furniture（家具和电子设备价格最低，但必须自己买保险，最短合同六个月）、Space Rentals（离房子很近，价格要看 App，送达后七天内可要求更换）。答案按公司顺序出现。</p><p><strong>Task type:</strong> Table completion. Instruction: <strong>ONE WORD AND/OR A NUMBER</strong> for each answer. Two words = 0 marks, so &lsquo;electronic equipment&rsquo; or &lsquo;a lamp&rsquo; would both be wrong &mdash; write <em>electronic</em> and <em>lamp</em>.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The table has <strong>one row per company</strong> and two information columns (<em>Information about costs / Additional notes</em>). Because the speakers work through the companies one at a time, the ten answers arrive strictly in order &mdash; but the two columns of a single row can be filled in either order, so keep your eyes on the whole row. Before the audio starts, look at what is <em>already printed</em>: &lsquo;$&rsquo;, &lsquo;12% monthly fee&rsquo;, &lsquo;1&ndash;2 days&rsquo;, &lsquo;Six months&rsquo;, &lsquo;within 7 days&rsquo;. Those printed numbers are not answers; they are anchors that tell you which sentence you have reached. Then predict the word type: Q1 is a price, Q2 and Q6 are adjectives, Q3, Q5, Q7, Q9 and Q10 are nouns, Q4 and Q8 are company names that will be spelled out or clearly stressed.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>$105 vs $239 (Q1).</b> Both numbers are said in one breath: &lsquo;starts at $105 and goes up to $239&rsquo;. The table already prints &lsquo;from $105 to $___&rsquo;, so you need the <em>upper</em> figure. Write <b>239</b>, not 105.</li><li><b>&lsquo;more modern than&hellip;&rsquo; vs &lsquo;is very ___&rsquo; (Q2).</b> The table wants a plain adjective but the audio uses a comparative: &lsquo;the furniture from Peak Rentals is <em>more modern than any of the other companies</em>&rsquo;. Strip the comparative and write <b>modern</b>.</li><li><b>Cleaning: furniture or house? (Q5 area).</b> &lsquo;They also do cleaning for customers.&rsquo; &mdash; &lsquo;For the furniture?&rsquo; &mdash; &lsquo;For the house.&rsquo; The cleaning service is already printed on the paper; the gap in that row is the reason for the 12% charge, which is <b>damage</b>. Do not let the correction distract you.</li><li><b>Six months vs twelve months (Q7 area).</b> Two contract lengths are mentioned seconds apart: the minimum rental contract (six months, already printed) and the house lease (twelve months). Neither is an answer &mdash; the answer in that row is <b>insurance</b>.</li><li><b>&lsquo;a week&rsquo; = &lsquo;7 days&rsquo; (Q10).</b> The table prints &lsquo;within 7 days of delivery&rsquo; but the speaker says &lsquo;within a week of receiving it&rsquo;. Recognise the equivalence, and note the grammar: &lsquo;___ <em>are</em> allowed&rsquo; forces the plural <b>exchanges</b>.</li><li><b>Names must be captured letter by letter (Q4, Q8).</b> Shelley mishears the first company (&lsquo;Sorry. What? And Oliver?&rsquo;) and the owner spells it out. <b>Aaron</b> has a double A; <b>Space</b> Rentals is said only once, so write it immediately.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">rent</span></td><td><span class="pos">v.</span></td><td>to pay money regularly to use something that belongs to someone else</td><td class="zh">租用；租赁</td><td>&ldquo;I&rsquo;m <em>renting</em> your house on Archwood Avenue.&rdquo;</td><td class="note">The whole section is built on this verb. Note both directions: <em>rent from</em> an owner, <em>rent out</em> to a customer.</td></tr>
+<tr><td><span class="word">furniture</span></td><td><span class="pos">n. (uncountable)</span></td><td>the large movable objects in a room, such as tables, chairs and beds</td><td class="zh">家具</td><td>&ldquo;I&rsquo;ll most probably need to rent some <em>furniture</em>.&rdquo;</td><td class="note">Never write &lsquo;furnitures&rsquo;. It is uncountable, which is why the paper says &lsquo;The furniture <em>is</em> very ___&rsquo; (Q2).</td></tr>
+<tr><td><span class="word">temporary</span></td><td><span class="pos">adj.</span></td><td>lasting only for a limited time</td><td class="zh">临时的；暂时的</td><td>&ldquo;until I know whether my <em>temporary</em> work contract is going to be made permanent&rdquo;</td><td class="note">Explains why she rents rather than buys. The opposite, <em>permanent</em>, appears in the same sentence.</td></tr>
+<tr><td><span class="word">permanent</span></td><td><span class="pos">adj.</span></td><td>lasting for a long time or for ever</td><td class="zh">永久的；长期的</td><td>&ldquo;whether my temporary work contract is going to be made <em>permanent</em>&rdquo;</td><td class="note">Spelling trap: per-ma-n<b>e</b>nt (not &lsquo;permanant&rsquo;). A very common Part 1 word in work topics.</td></tr>
+<tr><td><span class="word">brochure</span></td><td><span class="pos">n.</span></td><td>a small booklet giving information about a product or service</td><td class="zh">宣传册；小册子</td><td>&ldquo;I actually have one of their <em>brochures</em> here.&rdquo;</td><td class="note">Spelling trap: b-r-o-c-h-u-r-e. Whenever a speaker picks up a brochure, numbers and offers follow immediately.</td></tr>
+<tr><td><span class="word">range</span></td><td><span class="pos">v. / n.</span></td><td>to vary between two limits; the distance between the lowest and highest</td><td class="zh">幅度；范围；从……到……</td><td>&ldquo;that price <em>range</em> you gave is more than I was hoping to pay&rdquo;</td><td class="note">The table says &lsquo;Prices range from $105 to $___&rsquo;. In the audio the same idea is &lsquo;starts at&hellip; and goes up to&hellip;&rsquo; (Q1).</td></tr>
+<tr><td><span class="word">per</span></td><td><span class="pos">prep.</span></td><td>for each</td><td class="zh">每；每一</td><td>&ldquo;It says the monthly price <em>per</em> room.&rdquo;</td><td class="note">&lsquo;Per room per month&rsquo; on the paper = &lsquo;the monthly price per room&rsquo; in the audio. Word order changes; meaning does not.</td></tr>
+<tr><td><span class="word">feedback</span></td><td><span class="pos">n.</span></td><td>comments about how good or bad something is</td><td class="zh">反馈；评价</td><td>&ldquo;you said you had some positive <em>feedback</em> about this company&rdquo;</td><td class="note">Paraphrase family: feedback / reports / reviews / what people say. Here it introduces the answers to Q2 and Q3.</td></tr>
+<tr><td><span class="word">modern</span></td><td><span class="pos">adj.</span></td><td>of a recent design or style; not old-fashioned</td><td class="zh">现代的；新式的</td><td>&ldquo;the furniture from Peak Rentals is more <em>modern</em> than any of the other companies&rdquo;</td><td class="note"><strong>Answer to Q2.</strong> The audio gives a comparative; the table wants the bare adjective.</td></tr>
+<tr><td><span class="word">deliver</span></td><td><span class="pos">v.</span></td><td>to take goods to a customer&rsquo;s address</td><td class="zh">送货；配送</td><td>&ldquo;the furniture will be <em>delivered</em> to you in just one or two days&rdquo;</td><td class="note">&lsquo;Delivers in 1&ndash;2 days&rsquo; is already printed &mdash; use it as a signpost that Q3 is about to be said.</td></tr>
+<tr><td><span class="word">place an order</span></td><td><span class="pos">phr.</span></td><td>to formally ask a company to supply something</td><td class="zh">下订单</td><td>&ldquo;once you <em>place an order</em>, the furniture will be delivered&rdquo;</td><td class="note">Fixed collocation: <em>place</em> an order, not &lsquo;make&rsquo; or &lsquo;do&rsquo; an order.</td></tr>
+<tr><td><span class="word">special offer</span></td><td><span class="pos">n.</span></td><td>a temporary reduction in price, or a free extra item</td><td class="zh">特惠；促销活动</td><td>&ldquo;the brochure says that there&rsquo;s a <em>special offer</em> at the moment&rdquo;</td><td class="note">This exact phrase is printed on the table above Q3, so it tells you the answer is seconds away.</td></tr>
+<tr><td><span class="word">lamp</span></td><td><span class="pos">n.</span></td><td>a device that gives light, usually standing on a table or floor</td><td class="zh">台灯；落地灯</td><td>&ldquo;You&rsquo;ll also get a <em>lamp</em> at no extra cost.&rdquo;</td><td class="note"><strong>Answer to Q3.</strong> &lsquo;At no extra cost&rsquo; = the word &lsquo;Free&rsquo; printed on the paper. Write <em>lamp</em>, singular, with no article.</td></tr>
+<tr><td><span class="word">mid-price / mid-range</span></td><td><span class="pos">adj.</span></td><td>neither expensive nor cheap</td><td class="zh">中等价位的</td><td>&ldquo;I&rsquo;d say they&rsquo;re a <em>mid-price</em> company.&rdquo;</td><td class="note">The table prints &lsquo;Mid-range prices&rsquo;; the audio says &lsquo;mid-price&rsquo;. Same idea, different compound &mdash; a signal that you are in the Aaron and Oliver row.</td></tr>
+<tr><td><span class="word">charge</span></td><td><span class="pos">v. / n.</span></td><td>to ask someone to pay an amount of money</td><td class="zh">收费；索价</td><td>&ldquo;they <em>charge</em> an extra 12% every month&rdquo;</td><td class="note">The 12% is already printed, so do not write it. What you need is what the charge is <em>for</em> (Q5).</td></tr>
+<tr><td><span class="word">damage</span></td><td><span class="pos">n.</span></td><td>harm that makes something less useful or attractive</td><td class="zh">损坏；损害</td><td>&ldquo;they charge an extra 12% every month <em>in case of damage</em>&rdquo;</td><td class="note"><strong>Answer to Q5.</strong> Uncountable here &mdash; never write &lsquo;damages&rsquo;, which means financial compensation.</td></tr>
+<tr><td><span class="word">electronic</span></td><td><span class="pos">adj.</span></td><td>working by means of electric circuits and microchips</td><td class="zh">电子的</td><td>&ldquo;That&rsquo;s for both furniture and also <em>electronic</em> equipment.&rdquo;</td><td class="note"><strong>Answer to Q6.</strong> The paper says &lsquo;___ items&rsquo;, so you need the adjective only &mdash; not &lsquo;electronic equipment&rsquo; (two words = 0 marks).</td></tr>
+<tr><td><span class="word">equipment</span></td><td><span class="pos">n. (uncountable)</span></td><td>the machines and tools needed for a particular purpose</td><td class="zh">设备；器材</td><td>&ldquo;both furniture and also electronic <em>equipment</em>&rdquo;</td><td class="note">On the question paper this is paraphrased as &lsquo;items&rsquo;. Both are ways of avoiding a repeated word.</td></tr>
+<tr><td><span class="word">take out insurance</span></td><td><span class="pos">phr.</span></td><td>to buy an insurance policy</td><td class="zh">投保；买保险</td><td>&ldquo;you have to <em>take out insurance</em> on the furniture&rdquo;</td><td class="note"><strong>Answer to Q7.</strong> The paper says &lsquo;Must have own ___&rsquo;, which matches &lsquo;you need to organize that yourself&rsquo;.</td></tr>
+<tr><td><span class="word">organize</span></td><td><span class="pos">v.</span></td><td>to arrange something yourself</td><td class="zh">安排；自行办理</td><td>&ldquo;you need to <em>organize</em> that yourself&rdquo;</td><td class="note">Here it means &lsquo;arrange&rsquo;, not &lsquo;tidy&rsquo;. &lsquo;Yourself&rsquo; is the clue that becomes &lsquo;own&rsquo; on the paper.</td></tr>
+<tr><td><span class="word">contract</span></td><td><span class="pos">n.</span></td><td>a formal written agreement</td><td class="zh">合同；合约</td><td>&ldquo;you can&rsquo;t take out a <em>contract</em> for less than 6 months&rdquo;</td><td class="note">Two contracts appear in this recording &mdash; her work contract and the rental contract. Keep them apart.</td></tr>
+<tr><td><span class="word">minimum</span></td><td><span class="pos">n. / adj.</span></td><td>the smallest amount or level allowed</td><td class="zh">最低限度；最少</td><td>&ldquo;you can&rsquo;t take out a contract for less than 6 months&rdquo; = a <em>minimum</em> of six months</td><td class="note">The paper prints &lsquo;Minimum contract length: Six months&rsquo;. The audio never says &lsquo;minimum&rsquo; &mdash; it says &lsquo;can&rsquo;t&hellip; for less than&rsquo;.</td></tr>
+<tr><td><span class="word">located</span></td><td><span class="pos">adj.</span></td><td>situated in a particular place</td><td class="zh">位于</td><td>&ldquo;It&rsquo;s called Space Rentals, and it&rsquo;s <em>located</em> very near to the house.&rdquo;</td><td class="note">Q8 comes immediately after this sentence, so listen through the location detail to catch the name.</td></tr>
+<tr><td><span class="word">app</span></td><td><span class="pos">n.</span></td><td>a computer program you use on a phone or tablet</td><td class="zh">应用程序</td><td>&ldquo;it&rsquo;s best to use their <em>app</em> to find out what it would cost you&rdquo;</td><td class="note"><strong>Answer to Q9.</strong> Only three letters, easy to miss. It answers &lsquo;See the ___ for the most up-to-date prices&rsquo;.</td></tr>
+<tr><td><span class="word">up-to-date</span></td><td><span class="pos">adj.</span></td><td>containing the newest information</td><td class="zh">最新的</td><td>The table asks you to check the app for the &lsquo;most <em>up-to-date</em> prices&rsquo;.</td><td class="note">Paraphrase in the audio: &lsquo;I don&rsquo;t have any information about their charges, so it&rsquo;s best to&hellip;&rsquo; &mdash; the owner&rsquo;s information is out of date.</td></tr>
+<tr><td><span class="word">exchange</span></td><td><span class="pos">n. / v.</span></td><td>the act of giving something back and receiving a different item</td><td class="zh">更换；调换</td><td>&ldquo;you can request <em>exchanges</em> as long as you do that within a week&rdquo;</td><td class="note"><strong>Answer to Q10.</strong> The paper says &lsquo;___ <em>are</em> allowed&rsquo;, so the PLURAL is required.</td></tr>
+<tr><td><span class="word">request</span></td><td><span class="pos">v.</span></td><td>to ask for something formally or politely</td><td class="zh">请求；申请</td><td>&ldquo;you can <em>request</em> exchanges&rdquo;</td><td class="note">On the paper this becomes &lsquo;are allowed&rsquo;. Active in the audio, passive on the question paper &mdash; an extremely common Listening shift.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">I&rsquo;m due to move in next week</span></td><td>I am scheduled to start living there next week</td><td class="zh">我下周就要搬进去</td></tr>
+<tr><td><span class="phrase">when I viewed the house</span></td><td>when I looked round the house before renting it</td><td class="zh">我看房的时候</td></tr>
+<tr><td><span class="phrase">a temporary work contract</span></td><td>a job agreement that lasts only a short time</td><td class="zh">临时工作合同</td></tr>
+<tr><td><span class="phrase">be made permanent</span></td><td>be changed into a long-term arrangement</td><td class="zh">转为长期／转正</td></tr>
+<tr><td><span class="phrase">give you an idea of their costs</span></td><td>tell you roughly what they charge</td><td class="zh">让你大致了解他们的收费</td></tr>
+<tr><td><span class="phrase">the monthly price per room</span></td><td>the amount charged for each room each month</td><td class="zh">每个房间每月的价格</td></tr>
+<tr><td><span class="phrase">starts at&hellip; and goes up to&hellip;</span></td><td>ranges from a lower figure to a higher one</td><td class="zh">从……起，最高到……</td></tr>
+<tr><td><span class="phrase">get a general idea</span></td><td>understand something approximately, not exactly</td><td class="zh">有个大致概念</td></tr>
+<tr><td><span class="phrase">positive reports / positive feedback</span></td><td>good comments from other customers</td><td class="zh">正面的评价</td></tr>
+<tr><td><span class="phrase">place an order</span></td><td>formally ask a company to supply goods</td><td class="zh">下订单</td></tr>
+<tr><td><span class="phrase">at no extra cost</span></td><td>without paying anything more</td><td class="zh">不额外收费；免费</td></tr>
+<tr><td><span class="phrase">more than I was hoping to pay</span></td><td>more expensive than I wanted</td><td class="zh">比我预期的要贵</td></tr>
+<tr><td><span class="phrase">a mid-price company</span></td><td>a company whose prices are in the middle</td><td class="zh">价位中等的公司</td></tr>
+<tr><td><span class="phrase">charge an extra 12% every month</span></td><td>add 12% to the monthly bill</td><td class="zh">每月额外收取12%</td></tr>
+<tr><td><span class="phrase">in case of damage</span></td><td>to cover the possibility that something gets broken</td><td class="zh">以防损坏</td></tr>
+<tr><td><span class="phrase">do the math carefully</span></td><td>calculate the total cost carefully</td><td class="zh">仔细算一算账</td></tr>
+<tr><td><span class="phrase">the lowest prices in town</span></td><td>cheaper than anywhere else locally</td><td class="zh">全城最低价</td></tr>
+<tr><td><span class="phrase">take out insurance on&hellip;</span></td><td>buy an insurance policy to cover something</td><td class="zh">为……投保</td></tr>
+<tr><td><span class="phrase">take out a contract</span></td><td>enter into a formal agreement</td><td class="zh">签订合同</td></tr>
+<tr><td><span class="phrase">for less than six months</span></td><td>for any period shorter than six months</td><td class="zh">短于六个月</td></tr>
+<tr><td><span class="phrase">located very near to the house</span></td><td>situated very close to the house</td><td class="zh">位置离房子很近</td></tr>
+<tr><td><span class="phrase">the most up-to-date prices</span></td><td>the newest, currently correct prices</td><td class="zh">最新的价格</td></tr>
+<tr><td><span class="phrase">request exchanges</span></td><td>ask to swap items for different ones</td><td class="zh">申请更换</td></tr>
+<tr><td><span class="phrase">within a week of receiving it</span></td><td>in the seven days after it arrives</td><td class="zh">收到后一周之内</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Table Completion (the real exam gaps Q1&ndash;10)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the ten gaps from the Part 1 table, rewritten as full sentences. Write <strong>ONE WORD AND/OR A NUMBER</strong> in each gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>At Peak Rentals, prices range from $105 to $<input type="text" class="blank" id="b1" data-answer="239" placeholder="______"> per room per month.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>People say the furniture from Peak Rentals is very <input type="text" class="blank" id="b2" data-answer="modern" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Peak Rentals gives customers a free <input type="text" class="blank" id="b3" data-answer="lamp" placeholder="______"> with every living room set.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The second company the owner suggests is <input type="text" class="blank" id="b4" data-answer="Aaron" placeholder="______"> and Oliver.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Aaron and Oliver add a 12% monthly fee in case of <input type="text" class="blank" id="b5" data-answer="damage" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Larch Furniture has the cheapest prices for furniture and <input type="text" class="blank" id="b6" data-answer="electronic" placeholder="______"> items.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Customers of Larch Furniture must arrange their own <input type="text" class="blank" id="b7" data-answer="insurance" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The company nearest to the house is called <input type="text" class="blank" id="b8" data-answer="Space" placeholder="______"> Rentals.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>To see their most up-to-date prices you have to use their <input type="text" class="blank" id="b9" data-answer="app" placeholder="______">.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Space Rentals allows <input type="text" class="blank" id="b10" data-answer="exchanges" placeholder="______"> within seven days of delivery.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Getting the word <em>form</em> wrong (singular / plural, noun / adjective) is one of the commonest ways to lose marks in Listening.</p><div class="ex-item"><span class="ex-num">1.</span><label>Shelley hopes her temporary contract will be made <input type="text" class="blank" id="b11" data-answer="permanent" placeholder="______"> (PERMANENTLY).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The house owner has always heard <input type="text" class="blank" id="b12" data-answer="positive" placeholder="______"> (POSITIVELY) reports about Peak Rentals.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Once you place an order the furniture is <input type="text" class="blank" id="b13" data-answer="delivered" placeholder="______"> (DELIVERY) in one or two days.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Larch Furniture rents out furniture and <input type="text" class="blank" id="b14" data-answer="electronic" placeholder="______"> (ELECTRONICS) equipment.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Space Rentals is <input type="text" class="blank" id="b15" data-answer="located" placeholder="______"> (LOCATION) very near to the house.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The table says &lsquo;___ are allowed&rsquo;, so you need the plural noun <input type="text" class="blank" id="b16" data-answer="exchanges" placeholder="______"> (EXCHANGE).<span class="feedback" id="fb16"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every one of these words is said in this recording and every one of them is regularly misspelled by candidates. Type the correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>f u r n i t _ r e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b17" data-answer="furniture" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>b r o c h _ r e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="brochure" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>i n s u r _ n c e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="insurance" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>e q u i p m _ n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="equipment" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>p e r m a n _ n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="permanent" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>t e m p _ r a r y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="temporary" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The owner spells the company name out: A&ndash;A&ndash;R&ndash;O&ndash;N &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="Aaron" placeholder="______"><span class="feedback" id="fb23"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Percentages</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write numbers in <strong>figures</strong>. Do not write the $ sign or the % sign &mdash; they are already printed on the question paper.</p><div class="ex-item"><span class="ex-num">1.</span><label>At Peak Rentals the monthly price per room starts at $<input type="text" class="blank" id="b24" data-answer="105" placeholder="______">.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The same price range goes up to $<input type="text" class="blank" id="b25" data-answer="239" placeholder="______">.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Aaron and Oliver charge an extra <input type="text" class="blank" id="b26" data-answer="12" placeholder="______">% every month.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Larch Furniture will not agree to a contract of less than <input type="text" class="blank" id="b27" data-answer="6" placeholder="______"> months.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Shelley is renting the house itself for <input type="text" class="blank" id="b28" data-answer="12" placeholder="______"> months.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Peak Rentals delivers in one or <input type="text" class="blank" id="b29" data-answer="2" placeholder="______"> days.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Space Rentals allows exchanges within <input type="text" class="blank" id="b30" data-answer="7" placeholder="______"> days of delivery.<span class="feedback" id="fb30"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read what the house owner actually says, then write the word that belongs in the table.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;the furniture&hellip; is <em>more modern than any of the other companies</em>&rdquo; &rarr; Table: the furniture is very <input type="text" class="blank" id="b31" data-answer="modern" placeholder="______"><span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;You&rsquo;ll also get a lamp <em>at no extra cost</em>.&rdquo; &rarr; Table: Free <input type="text" class="blank" id="b32" data-answer="lamp" placeholder="______"> with every living room set<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;they charge an extra 12% every month <em>in case of</em>&hellip;&rdquo; &rarr; Table: 12% monthly fee for <input type="text" class="blank" id="b33" data-answer="damage" placeholder="______"><span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;the lowest prices in town&hellip; for both furniture and also ___ equipment&rdquo; &rarr; Table: furniture and <input type="text" class="blank" id="b34" data-answer="electronic" placeholder="______"> items<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;you have to take out ___ on the furniture, and you need to organize that <em>yourself</em>&rdquo; &rarr; Table: Must have own <input type="text" class="blank" id="b35" data-answer="insurance" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;it&rsquo;s best to use their ___ to find out what it would cost you&rdquo; &rarr; Table: See the <input type="text" class="blank" id="b36" data-answer="app" placeholder="______"> for the most up-to-date prices<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;you can <em>request</em> ___ as long as you do that <em>within a week</em>&rdquo; &rarr; Table: <input type="text" class="blank" id="b37" data-answer="exchanges" placeholder="______"> are allowed within 7 days<span class="feedback" id="fb37"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q1</span></td><td>Prices range from $105 to $<b>(1)</b> per room per month</td><td><b>NUMBER &mdash; a price</b></td><td>&lsquo;from&hellip; to&hellip;&rsquo; &rarr; listen for <em>starts at&hellip; and goes up to&hellip;</em> and take the SECOND figure.</td><td class="note">239</td></tr>
+<tr><td><span class="word">Q2</span></td><td>The furniture is very <b>(2)</b></td><td><b>ADJECTIVE &mdash; a quality of the furniture</b></td><td>Follows &lsquo;positive feedback&rsquo;. Expect a comparative in the audio (<em>more ___ than any of the others</em>).</td><td class="note">modern</td></tr>
+<tr><td><span class="word">Q3</span></td><td>Special offer: Free <b>(3)</b> with every living room set</td><td><b>NOUN &mdash; a single household object</b></td><td>&lsquo;Free&rsquo; = <em>at no extra cost</em>. Listen for what is added to the chairs and TV table.</td><td class="note">lamp</td></tr>
+<tr><td><span class="word">Q4</span></td><td><b>(4)</b> and Oliver</td><td><b>PROPER NOUN &mdash; a person-style company name</b></td><td>Shelley mishears it, so the owner spells it out. Write the letters down as you hear them.</td><td class="note">Aaron</td></tr>
+<tr><td><span class="word">Q5</span></td><td>12% monthly fee for <b>(5)</b></td><td><b>NOUN &mdash; a reason for a charge (uncountable)</b></td><td>The 12% is printed, so ignore the figure. Listen for <em>in case of&hellip;</em></td><td class="note">damage</td></tr>
+<tr><td><span class="word">Q6</span></td><td>Cheapest prices for renting furniture and <b>(6)</b> items</td><td><b>ADJECTIVE</b></td><td>The paper says &lsquo;items&rsquo;; the audio will say <em>equipment</em>. You need only the adjective in front of it.</td><td class="note">electronic</td></tr>
+<tr><td><span class="word">Q7</span></td><td>Must have own <b>(7)</b></td><td><b>NOUN (uncountable)</b></td><td>&lsquo;own&rsquo; = <em>you need to organize that yourself</em>. Listen for the fixed phrase <em>take out&hellip;</em></td><td class="note">insurance</td></tr>
+<tr><td><span class="word">Q8</span></td><td><b>(8)</b> Rentals</td><td><b>PROPER NOUN &mdash; a company name</b></td><td>Said only once, and not spelled out. It comes right after &lsquo;I just thought of another furniture rental company&rsquo;.</td><td class="note">Space</td></tr>
+<tr><td><span class="word">Q9</span></td><td>See the <b>(9)</b> for the most up-to-date prices</td><td><b>NOUN &mdash; a source of information</b></td><td>The owner says he has no information about their charges, then tells her the best way to find out.</td><td class="note">app</td></tr>
+<tr><td><span class="word">Q10</span></td><td><b>(10)</b> are allowed within 7 days of delivery</td><td><b>PLURAL NOUN</b></td><td>&lsquo;are&rsquo; forces the plural. &lsquo;7 days&rsquo; will be said as <em>a week</em>.</td><td class="note">exchanges</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Prices <b>range from</b> $105 <b>to</b> $(1) per room per month&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;It says the monthly price per room <b>starts at $105 and goes up to $239</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">range from X to Y = start at X and go up to Y. The gap is on the RIGHT of &lsquo;to&rsquo;, so you need the higher number.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence about rents in your city using &lsquo;range from&hellip; to&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;The furniture is <b>very</b> (2)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;People have mentioned that the furniture from Peak Rentals is <b>more modern than any of the other companies</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">A comparative in the audio (<em>more modern than any other</em>) becomes a plain adjective on the paper (<em>very modern</em>).</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Turn &lsquo;cheaper than all the others&rsquo; into a &lsquo;very + adjective&rsquo; sentence&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Special offer: <b>Free</b> (3) with every living room set&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;If you rent living room furniture, I believe that&rsquo;s a set of chairs and a TV table. You&rsquo;ll also get a lamp <b>at no extra cost</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">free = at no extra cost; a living room set = a set of chairs and a TV table.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;delivery is free&rsquo; using &lsquo;at no extra cost&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>12% monthly fee for</b> (5)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;they <b>charge an extra 12% every month in case of damage</b>&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a fee for X = they charge&hellip; in case of X. The number is printed, so the answer is the <em>reason</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;in case of&hellip;&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Offers cheapest prices for renting furniture and (6) <b>items</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;it has <b>the lowest prices in town</b>. That&rsquo;s for both furniture and also <b>electronic equipment</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">cheapest = the lowest prices; items = equipment. Only the adjective goes in the gap.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Say what a shop sells using &lsquo;both&hellip; and also&hellip;&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Must have <b>own</b> (7)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;you have to <b>take out insurance</b> on the furniture, and you need to <b>organize that yourself</b>&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">must have your own X = you need to organize X yourself. &lsquo;Take out&rsquo; is the standard verb with insurance.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a rule for tenants beginning &lsquo;You have to take out&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;(10) <b>are allowed within 7 days</b> of delivery&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;if you don&rsquo;t like the furniture once it&rsquo;s delivered, you can <b>request exchanges</b> as long as you do that <b>within a week of receiving it</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">you can request = are allowed; a week = 7 days; delivery = receiving it. Note the plural forced by &lsquo;are&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;you can cancel within 14 days&rsquo; in the passive&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;I&rsquo;m renting your house on Archwood Avenue and I&rsquo;m due to move in next week&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;at least until I know whether my temporary work contract is going to be made permanent&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;the monthly price per room starts at $105 and goes up to $239&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;once you place an order, the furniture will be delivered in just one or two days&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;if you rent living room furniture you&rsquo;ll also get a lamp at no extra cost&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;they charge an extra 12% every month in case of damage&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;you have to take out insurance on the furniture and organize that yourself&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;you can request exchanges within a week of receiving it&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why does Shelley want to rent furniture rather than buy it?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. The house she has rented is completely empty.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Her work contract may only be temporary.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. She cannot afford to buy furniture.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. She is only staying in the city for six months.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The audio says prices &lsquo;start at $105 and go up to $239&rsquo;. What goes in gap 1?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. 105, because it is said first.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. 239, because the table already prints &lsquo;from $105 to $___&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Both numbers, separated by a dash.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Neither &mdash; the answer is &lsquo;monthly&rsquo;.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which phrase in the audio gives you the answer &lsquo;modern&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. &lsquo;the biggest company&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. &lsquo;I&rsquo;ve always heard positive reports&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. &lsquo;more modern than any of the other companies&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. &lsquo;delivered in just one or two days&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What exactly does a customer get free with a living room set?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. a set of chairs</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. a TV table</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. a lamp</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. delivery within two days</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How does the owner make sure Shelley gets the company name right in Q4?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. He repeats it three times.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. He spells it out letter by letter.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. He tells her to look it up online.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. He says it is a very common surname.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What is the extra 12% monthly charge at Aaron and Oliver for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. cleaning the house</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. possible damage</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. delivery</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. insurance</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The owner says the company &lsquo;also do cleaning for customers&rsquo;. What is cleaned?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. the furniture</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. the house</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. both the furniture and the house</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. only the carpets</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The table says &lsquo;furniture and ___ items&rsquo;. Why is &lsquo;electronic equipment&rsquo; wrong?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Because the audio says &lsquo;electric&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Because the instruction allows only ONE WORD AND/OR A NUMBER.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Because equipment cannot be rented.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Because the word &lsquo;items&rsquo; means furniture only.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What are the two conditions attached to renting from Larch Furniture?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. a 12% monthly fee and a six-month contract</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. your own insurance and a minimum six-month contract</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. your own insurance and payment in advance</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. a deposit and delivery within a week</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why does the owner tell Shelley to use Space Rentals&rsquo; app?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Because they have no brochure.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Because he does not know their charges.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Because the app gives a discount.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Because she can order exchanges through it.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">The table reads &lsquo;(10) ___ are allowed within 7 days of delivery&rsquo;. What must you write?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. exchange</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. exchanges</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. exchanged</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. to exchange</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the best strategy for this particular table?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Write down every number you hear and sort them out afterwards.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Use the printed numbers (12%, 1&ndash;2 days, six months, 7 days) as signposts and predict the word type of each gap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Listen only for company names, since they are the hardest part.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Fill in the whole table from memory at the end.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1&ndash;10</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">239</div><div class="answer-note">&lsquo;It says the monthly price per room starts at $105 and goes up to <em>$239</em>.&rsquo; The table prints &lsquo;from $105 to $___&rsquo;, so the upper figure is needed. Do not write the $ sign.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">modern</div><div class="answer-note">&lsquo;the furniture from Peak Rentals is more <em>modern</em> than any of the other companies&rsquo;. The comparative in the audio becomes &lsquo;is very ___&rsquo; on the paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">lamp</div><div class="answer-note">&lsquo;If you rent living room furniture&hellip; You&rsquo;ll also get a <em>lamp</em> at no extra cost.&rsquo; &lsquo;At no extra cost&rsquo; = &lsquo;Free&rsquo;. Singular, no article.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">Aaron</div><div class="answer-note">&lsquo;Then you could try <em>Aaron</em> and Oliver.&rsquo; Shelley mishears, so the owner spells it out (A-A-R-O-N). Capital letter required for a name.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">damage</div><div class="answer-note">&lsquo;they charge an extra 12% every month <em>in case of damage</em>&rsquo;. The 12% is already printed; the gap needs the reason for the fee. Uncountable &mdash; not &lsquo;damages&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">electronic</div><div class="answer-note">&lsquo;it has the lowest prices in town. That&rsquo;s for both furniture and also <em>electronic</em> equipment.&rsquo; The paper prints &lsquo;items&rsquo;, so write the adjective only.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">insurance</div><div class="answer-note">&lsquo;you have to take out <em>insurance</em> on the furniture, and you need to organize that yourself&rsquo; = &lsquo;Must have own ___&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">Space</div><div class="answer-note">&lsquo;It&rsquo;s called <em>Space</em> Rentals, and it&rsquo;s located very near to the house.&rsquo; Said only once and not spelled out. Either &lsquo;Space&rsquo; or &lsquo;space&rsquo; is accepted.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">app</div><div class="answer-note">&lsquo;I don&rsquo;t have any information about their charges, so it&rsquo;s best to use their <em>app</em> to find out what it would cost you.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">exchanges</div><div class="answer-note">&lsquo;you can request <em>exchanges</em> as long as you do that within a week of receiving it&rsquo;. &lsquo;A week&rsquo; = &lsquo;7 days&rsquo;; &lsquo;are allowed&rsquo; forces the plural.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Table Completion (the real exam gaps Q1&ndash;10)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">239</div><div class="answer-note">At Peak Rentals, prices range from $105 to $</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">modern</div><div class="answer-note">People say the furniture from Peak Rentals is very</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">lamp</div><div class="answer-note">Peak Rentals gives customers a free</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">Aaron</div><div class="answer-note">The second company the owner suggests is</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">damage</div><div class="answer-note">Aaron and Oliver add a 12% monthly fee in case of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">electronic</div><div class="answer-note">Larch Furniture has the cheapest prices for furniture and</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">insurance</div><div class="answer-note">Customers of Larch Furniture must arrange their own</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">Space</div><div class="answer-note">The company nearest to the house is called</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">app</div><div class="answer-note">To see their most up-to-date prices you have to use their</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">exchanges</div><div class="answer-note">Space Rentals allows</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">permanent</div><div class="answer-note">Shelley hopes her temporary contract will be made</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">positive</div><div class="answer-note">The house owner has always heard</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">delivered</div><div class="answer-note">Once you place an order the furniture is</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">electronic</div><div class="answer-note">Larch Furniture rents out furniture and</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">located</div><div class="answer-note">Space Rentals is</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">exchanges</div><div class="answer-note">The table says &lsquo;___ are allowed&rsquo;, so you need the plural noun</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">furniture</div><div class="answer-note">f u r n i t _ r e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">brochure</div><div class="answer-note">b r o c h _ r e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">insurance</div><div class="answer-note">i n s u r _ n c e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">equipment</div><div class="answer-note">e q u i p m _ n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">permanent</div><div class="answer-note">p e r m a n _ n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">temporary</div><div class="answer-note">t e m p _ r a r y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">Aaron</div><div class="answer-note">The owner spells the company name out: A&ndash;A&ndash;R&ndash;O&ndash;N  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Percentages</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">105</div><div class="answer-note">At Peak Rentals the monthly price per room starts at $</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">239</div><div class="answer-note">The same price range goes up to $</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">12</div><div class="answer-note">Aaron and Oliver charge an extra</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">6</div><div class="answer-note">Larch Furniture will not agree to a contract of less than</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">12</div><div class="answer-note">Shelley is renting the house itself for</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">2</div><div class="answer-note">Peak Rentals delivers in one or</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">7</div><div class="answer-note">Space Rentals allows exchanges within</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">modern</div><div class="answer-note">Audio: &ldquo;the furniture&hellip; is more modern than any of the other companies&rdquo; &rarr; Table: the furniture is very</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">lamp</div><div class="answer-note">Audio: &ldquo;You&rsquo;ll also get a lamp at no extra cost.&rdquo; &rarr; Table: Free</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">damage</div><div class="answer-note">Audio: &ldquo;they charge an extra 12% every month in case of&hellip;&rdquo; &rarr; Table: 12% monthly fee for</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">electronic</div><div class="answer-note">Audio: &ldquo;the lowest prices in town&hellip; for both furniture and also ___ equipment&rdquo; &rarr; Table: furniture and</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">insurance</div><div class="answer-note">Audio: &ldquo;you have to take out ___ on the furniture, and you need to organize that yourself&rdquo; &rarr; Table: Must have own</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">app</div><div class="answer-note">Audio: &ldquo;it&rsquo;s best to use their ___ to find out what it would cost you&rdquo; &rarr; Table: See the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">exchanges</div><div class="answer-note">Audio: &ldquo;you can request ___ as long as you do that within a week&rdquo; &rarr; Table:</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">239 &mdash; NUMBER &mdash; a price</div><div class="answer-note">&lsquo;from&hellip; to&hellip;&rsquo; &rarr; listen for <em>starts at&hellip; and goes up to&hellip;</em> and take the SECOND figure.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">modern &mdash; ADJECTIVE &mdash; a quality of the furniture</div><div class="answer-note">Follows &lsquo;positive feedback&rsquo;. Expect a comparative in the audio (<em>more ___ than any of the others</em>).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">lamp &mdash; NOUN &mdash; a single household object</div><div class="answer-note">&lsquo;Free&rsquo; = <em>at no extra cost</em>. Listen for what is added to the chairs and TV table.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">Aaron &mdash; PROPER NOUN &mdash; a person-style company name</div><div class="answer-note">Shelley mishears it, so the owner spells it out. Write the letters down as you hear them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">damage &mdash; NOUN &mdash; a reason for a charge (uncountable)</div><div class="answer-note">The 12% is printed, so ignore the figure. Listen for <em>in case of&hellip;</em></div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">electronic &mdash; ADJECTIVE</div><div class="answer-note">The paper says &lsquo;items&rsquo;; the audio will say <em>equipment</em>. You need only the adjective in front of it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">insurance &mdash; NOUN (uncountable)</div><div class="answer-note">&lsquo;own&rsquo; = <em>you need to organize that yourself</em>. Listen for the fixed phrase <em>take out&hellip;</em></div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">Space &mdash; PROPER NOUN &mdash; a company name</div><div class="answer-note">Said only once, and not spelled out. It comes right after &lsquo;I just thought of another furniture rental company&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">app &mdash; NOUN &mdash; a source of information</div><div class="answer-note">The owner says he has no information about their charges, then tells her the best way to find out.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">exchanges &mdash; PLURAL NOUN</div><div class="answer-note">&lsquo;are&rsquo; forces the plural. &lsquo;7 days&rsquo; will be said as <em>a week</em>.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">I&rsquo;m renting your house on Archwood Avenue and I&rsquo;m due to move in next week</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">at least until I know whether my temporary work contract is going to be made permanent</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">the monthly price per room starts at $105 and goes up to $239</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">once you place an order, the furniture will be delivered in just one or two days</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">if you rent living room furniture you&rsquo;ll also get a lamp at no extra cost</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">they charge an extra 12% every month in case of damage</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">you have to take out insurance on the furniture and organize that yourself</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">you can request exchanges within a week of receiving it</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Her work contract may only be temporary.</div><div class="answer-note">&lsquo;At least until I know whether my temporary work contract is going to be made permanent.&rsquo; D confuses her 12-month house lease with Larch Furniture&rsquo;s six-month minimum.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. 239, because the table already prints &lsquo;from $105 to $___&rsquo;.</div><div class="answer-note">Always read what is already printed. The gap sits after &lsquo;to&rsquo;, so it needs the upper figure of the range.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. &lsquo;more modern than any of the other companies&rsquo;</div><div class="answer-note">The table wants a plain adjective, so you must remove the comparative structure: <em>more modern than&hellip;</em> &rarr; <em>very modern</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. a lamp</div><div class="answer-note">The chairs and the TV table are what a living room set <em>is</em>; the free extra is the lamp, given &lsquo;at no extra cost&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. He spells it out letter by letter.</div><div class="answer-note">Shelley mishears (&lsquo;Sorry. What? And Oliver?&rsquo;), so he spells the name. Note the double A: A-A-R-O-N.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. possible damage</div><div class="answer-note">&lsquo;They charge an extra 12% every month <em>in case of damage</em>.&rsquo; Insurance belongs to Larch Furniture, and the cleaning is a separate free-standing service.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. the house</div><div class="answer-note">Shelley guesses &lsquo;For the furniture?&rsquo; and is corrected: &lsquo;For the house.&rsquo; This correction pattern &mdash; wrong guess, then correction &mdash; is a favourite IELTS distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Because the instruction allows only ONE WORD AND/OR A NUMBER.</div><div class="answer-note">The word &lsquo;items&rsquo; is already printed and does the job of &lsquo;equipment&rsquo;. Writing two words scores zero even though the meaning is right.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. your own insurance and a minimum six-month contract</div><div class="answer-note">&lsquo;You have to take out insurance&hellip; you need to organize that yourself&rsquo; and &lsquo;you can&rsquo;t take out a contract for less than 6 months&rsquo;. The 12% belongs to Aaron and Oliver.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Because he does not know their charges.</div><div class="answer-note">&lsquo;I don&rsquo;t have any information about their charges, so it&rsquo;s best to use their app to find out what it would cost you.&rsquo; That is why the table says &lsquo;most up-to-date prices&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. exchanges</div><div class="answer-note">The verb &lsquo;are&rsquo; requires a plural subject. Grammar on the question paper is free information &mdash; use it before the audio starts.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Use the printed numbers (12%, 1&ndash;2 days, six months, 7 days) as signposts and predict the word type of each gap.</div><div class="answer-note">The printed details are not answers &mdash; they are landmarks that tell you which company you are on. Combined with word-type prediction, they stop you writing a grammatically impossible word.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

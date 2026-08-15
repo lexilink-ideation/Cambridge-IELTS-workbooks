@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Reading Passage 2</h1>
+    <h2>Procrastination &middot; Matching Information + Summary Completion + Multiple Choice (Q14&ndash;26)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>A psychologist explains why we <strong>put off</strong> important tasks and how to stop. The central claim is counter-intuitive: procrastination is <em>not</em> laziness or bad time management but poor <strong>mood management</strong> &mdash; we avoid tasks that threaten our self-worth, feel briefly better, then feel guilty, which makes us procrastinate again. The writer then sets out the costs (worse grades, academic misconduct, lower income and job stability, poorer physical and mental health) and finishes with two practical routes out: controlling distractions and reframing the task, and forgiving ourselves instead of being harshly self-critical.</p></div><div class="card"><p><strong>What the passage argues:</strong> That procrastination is an <em>emotion-regulation</em> problem, not a time-management or character problem; that avoiding a task gives real but temporary mood repair which then rebounds as guilt; and that because the cause is emotional, the cure must be emotional too &mdash; self-compassion and reframing, not harsher self-discipline.</p><p><strong>段落结构 Structure:</strong> A：定义与常见场景，指出自责是最糟糕的应对方式。B：破除误解——不是懒惰或不会管理时间，而是情绪管理不良；脑成像显示慢性拖延者在&ldquo;威胁识别&rdquo;与&ldquo;情绪调节&rdquo;脑区存在差异。C：哪些人、哪些任务最容易拖延（低自尊者、完美主义者、备考等高情绪负担任务），以及&ldquo;逃避—短暂舒缓—内疚—再拖延&rdquo;的循环。D：代价之一，效率与诚信——德国3,000名学生研究、美国22,000名员工调查。E：代价之二，身心健康——抑郁焦虑、头痛感冒、睡眠差、心脏健康风险高63%。F：两条出路——管理环境与重新看待任务；原谅自己、不过度自责。</p><p><strong>Task type:</strong> <strong>Q14&ndash;16 Matching information to paragraphs A&ndash;F</strong> (NB: a letter may be used more than once &mdash; and here B is used twice). <strong>Q17&ndash;22 Summary completion</strong>, <em>ONE WORD ONLY from the passage</em>. <strong>Q23&ndash;24 and Q25&ndash;26: choose TWO letters from A&ndash;E</strong> &mdash; both marks are lost if you choose three.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Three task types on six lettered paragraphs, and the order is different for each. <strong>Matching information (Q14&ndash;16)</strong> does <em>not</em> follow the passage order, so do it <strong>last</strong>, after the summary has already forced you to read paragraphs B and C closely. <strong>Summary completion (Q17&ndash;22)</strong> <em>does</em> follow the order and covers only paragraphs B and C, so it is the fastest six marks in the paper &mdash; do it first, and remember the limit is <strong>ONE WORD ONLY from the passage</strong>, so &lsquo;poor time management&rsquo; or &lsquo;a sense of guilt&rsquo; would both score zero. For the two <strong>choose-TWO-letters</strong> questions, the five options are deliberately all plausible advice or plausible findings: the only test is whether the passage <em>actually says it</em>. Tick each option against a specific sentence, and reject anything you cannot point to.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q14 and Q16 are both paragraph B</b> &mdash; the instruction says &lsquo;you may use any letter more than once&rsquo; for a reason. Candidates who assume one letter per question get at least one of these wrong.</li><li><b>Q15 is in paragraph F, not paragraph A</b> &mdash; paragraph A says &lsquo;We all do it from time to time&rsquo;, which <em>feels</em> like the answer. But Q15 asks about the <em>realisation</em>, i.e. actively reminding yourself: &lsquo;We should remind ourselves that we&rsquo;re not the first person to procrastinate, nor the last&rsquo; (F).</li><li><b>Q17 laziness, not &lsquo;poor time management&rsquo;</b> &mdash; the passage gives both misconceptions in one phrase, but the summary already uses the second one in its next sentence (&lsquo;an inability to organise time efficiently&rsquo;). Cross off what the summary has already said.</li><li><b>Q18 anxious, not &lsquo;anxiety&rsquo;</b> &mdash; the gap follows &lsquo;cause us to <em>feel</em>&rsquo;, so it needs the adjective the passage uses: &lsquo;makes us <em>anxious</em>&rsquo;. Paragraph E contains the noun <em>anxiety</em>, in a different context &mdash; the wrong form <em>and</em> the wrong paragraph.</li><li><b>Q19 threats must be plural</b> &mdash; &lsquo;areas of the brain linked to detection of <em>threats</em>&rsquo;. Copy the plural exactly as printed.</li><li><b>Q23&ndash;24 rejects the tempting options</b> &mdash; B (poorer quality work), D (less enjoyment) and E (worse relationships) all sound reasonable, but the US survey reports only two things: <em>less annual income</em> (A) and <em>less employment stability</em> (C).</li><li><b>Q25&ndash;26 rejects familiar self-help advice</b> &mdash; B (manageable aims), C (rewarding yourself) and D (prioritising) are standard productivity tips that this passage never gives. It offers only distraction control (E) and self-forgiveness (A). Note that the &lsquo;reward&rsquo; in paragraph C is a description of the problem, not a recommendation.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">procrastination</span></td><td><span class="pos">n.</span></td><td>the habit of delaying something you should do</td><td class="zh">拖延（症）</td><td>&ldquo;<em>Procrastination</em> is the habit of delaying a necessary task.&rdquo;</td><td class="note">The title word. The verb is <em>procrastinate</em>, the person is a <em>procrastinator</em> &mdash; all three forms appear.</td></tr>
+<tr><td><span class="word">delay</span></td><td><span class="pos">v./n.</span></td><td>to make something happen later than planned</td><td class="zh">推迟；延迟</td><td>&ldquo;&hellip;the habit of <em>delaying</em> a necessary task.&rdquo;</td><td class="note">Paraphrase family that runs through the whole passage: delay / put off / avoid / postpone.</td></tr>
+<tr><td><span class="word">berate</span></td><td><span class="pos">v.</span></td><td>to criticise someone angrily</td><td class="zh">严厉斥责；责骂</td><td>&ldquo;&hellip;<em>berating</em> ourselves won&rsquo;t stop us procrastinating again.&rdquo;</td><td class="note">Paragraph A. It is the exact opposite of the paragraph F advice (self-forgiveness) &mdash; the writer frames the whole argument between these two poles.</td></tr>
+<tr><td><span class="word">contrary to popular belief</span></td><td><span class="pos">phr.</span></td><td>unlike what most people think</td><td class="zh">与人们普遍看法相反</td><td>&ldquo;<em>Contrary to popular belief</em>, procrastination is not due to laziness&hellip;&rdquo;</td><td class="note"><strong>The key to Q14.</strong> This phrase <em>is</em> &lsquo;mention of false assumptions&rsquo;.</td></tr>
+<tr><td><span class="word">laziness</span></td><td><span class="pos">n.</span></td><td>unwillingness to work or make an effort</td><td class="zh">懒惰</td><td>&ldquo;&hellip;procrastination is not due to <em>laziness</em> or poor time management.&rdquo;</td><td class="note"><strong>Answer to Q17.</strong> Uncountable, no plural. Adjective: <em>lazy</em>.</td></tr>
+<tr><td><span class="word">self-worth</span></td><td><span class="pos">n.</span></td><td>the value you believe you have as a person</td><td class="zh">自我价值感</td><td>&ldquo;If just thinking about the task threatens our sense of <em>self-worth</em>&hellip;&rdquo;</td><td class="note">Near-synonym of <em>self-esteem</em>, which appears twice more. Both are hyphenated compounds &mdash; not single-word answers.</td></tr>
+<tr><td><span class="word">anxious</span></td><td><span class="pos">adj.</span></td><td>worried and nervous</td><td class="zh">焦虑的；不安的</td><td>&ldquo;&hellip;or makes us <em>anxious</em>, we will be more likely to put it off.&rdquo;</td><td class="note"><strong>Answer to Q18.</strong> The gap follows &lsquo;cause us to feel&rsquo;, so it must be the ADJECTIVE, not <em>anxiety</em>.</td></tr>
+<tr><td><span class="word">brain imaging</span></td><td><span class="pos">n. phr.</span></td><td>techniques that produce pictures of the working brain</td><td class="zh">脑成像</td><td>&ldquo;Research involving <em>brain imaging</em> has found that areas of the brain&hellip; are actually different.&rdquo;</td><td class="note"><strong>The key to Q16.</strong> &lsquo;Brain imaging&rsquo; = &lsquo;neurological evidence&rsquo;.</td></tr>
+<tr><td><span class="word">threat</span></td><td><span class="pos">n.</span></td><td>something that could cause harm or danger</td><td class="zh">威胁</td><td>&ldquo;&hellip;areas of the brain linked to detection of <em>threats</em> and emotion regulation&hellip;&rdquo;</td><td class="note"><strong>Answer to Q19.</strong> &lsquo;Detection&rsquo; = &lsquo;identifying&rsquo;. Keep the plural.</td></tr>
+<tr><td><span class="word">chronically</span></td><td><span class="pos">adv.</span></td><td>continuing over a long period</td><td class="zh">长期地；慢性地</td><td>&ldquo;&hellip;in people who <em>chronically</em> procrastinate&hellip;&rdquo;</td><td class="note">Adjective: <em>chronic</em>, used later as &lsquo;chronic procrastination&rsquo;. Opposite: &lsquo;occasionally&rsquo;.</td></tr>
+<tr><td><span class="word">emotionally loaded</span></td><td><span class="pos">adj. phr.</span></td><td>carrying strong feelings</td><td class="zh">情绪负担重的</td><td>&ldquo;Tasks that are <em>emotionally loaded</em> or difficult&hellip; are prime candidates.&rdquo;</td><td class="note">Opens the sentence that gives you <strong>Q20</strong>: &lsquo;such as preparing for exams&rsquo;.</td></tr>
+<tr><td><span class="word">prime candidate</span></td><td><span class="pos">n. phr.</span></td><td>the most likely example of something</td><td class="zh">最典型的例子；首选对象</td><td>&ldquo;&hellip;are <em>prime candidates</em> for procrastination.&rdquo;</td><td class="note">Nothing to do with elections here &mdash; &lsquo;candidate&rsquo; means &lsquo;likely case&rsquo;.</td></tr>
+<tr><td><span class="word">self-esteem</span></td><td><span class="pos">n.</span></td><td>confidence in your own worth</td><td class="zh">自尊（心）</td><td>&ldquo;People with low <em>self-esteem</em> are more likely to procrastinate.&rdquo;</td><td class="note">Appears in the summary as &lsquo;those with low self-esteem&rsquo;, so it cannot be the answer to Q21 &mdash; that leaves <em>perfectionists</em>.</td></tr>
+<tr><td><span class="word">perfectionist</span></td><td><span class="pos">n.</span></td><td>someone who demands extremely high standards of themselves</td><td class="zh">完美主义者</td><td>&ldquo;Another group of people who tend to procrastinate are <em>perfectionists</em>.&rdquo;</td><td class="note"><strong>Answer to Q21.</strong> The summary says &lsquo;either ___ or those with low self-esteem&rsquo;, so the plural is required.</td></tr>
+<tr><td><span class="word">judge harshly</span></td><td><span class="pos">v. phr.</span></td><td>to criticise severely</td><td class="zh">苛刻地评判</td><td>&ldquo;&hellip;perfectionists, who worry their work will be <em>judged harshly</em> by others.&rdquo;</td><td class="note">Reappears as option A in Q25&ndash;26 (&lsquo;not judging ourselves harshly&rsquo;) &mdash; the same words, a different direction.</td></tr>
+<tr><td><span class="word">evaluate</span></td><td><span class="pos">v.</span></td><td>to judge the quality or value of something</td><td class="zh">评估；评价</td><td>&ldquo;&hellip;then what we did can&rsquo;t be <em>evaluated</em>.&rdquo;</td><td class="note">The hidden logic of perfectionism: an unfinished task is a task that cannot be criticised.</td></tr>
+<tr><td><span class="word">conditions us to</span></td><td><span class="pos">v. phr.</span></td><td>trains us by repeated reward to behave in a certain way</td><td class="zh">使我们形成条件反射；养成习惯</td><td>&ldquo;This is rewarding, and it <em>conditions us to</em> use procrastination to repair our mood.&rdquo;</td><td class="note">The mechanism of the vicious cycle: relief acts as a reward, so the behaviour is learned.</td></tr>
+<tr><td><span class="word">mood repair</span></td><td><span class="pos">n. phr.</span></td><td>making yourself feel better in the short term</td><td class="zh">情绪修复</td><td>&ldquo;The &lsquo;<em>mood repair</em>&rsquo; we experience is temporary.&rdquo;</td><td class="note">The writer puts it in quotation marks to signal scepticism &mdash; a small attitude marker worth noticing.</td></tr>
+<tr><td><span class="word">guilt</span></td><td><span class="pos">n.</span></td><td>the unhappy feeling of having done something wrong</td><td class="zh">内疚；愧疚</td><td>&ldquo;&hellip;people tend to be left with a sense of <em>guilt</em>.&rdquo;</td><td class="note"><strong>Answer to Q22.</strong> The summary says &lsquo;a feeling of ___&rsquo;, so write the noun only, not &lsquo;a sense of guilt&rsquo;.</td></tr>
+<tr><td><span class="word">reinforce</span></td><td><span class="pos">v.</span></td><td>to make something stronger</td><td class="zh">强化；加强</td><td>&ldquo;&hellip;but also <em>reinforces</em> their tendency to procrastinate.&rdquo;</td><td class="note">This verb closes the loop: guilt does not punish the habit, it feeds it.</td></tr>
+<tr><td><span class="word">toll</span></td><td><span class="pos">n.</span></td><td>the damage or cost caused by something</td><td class="zh">代价；损失</td><td>&ldquo;&hellip;they think of the <em>toll</em> on productivity.&rdquo;</td><td class="note">Collocation: <em>take a toll on</em> / <em>the toll on</em>. A formal way of saying &lsquo;harm&rsquo;.</td></tr>
+<tr><td><span class="word">misconduct</span></td><td><span class="pos">n.</span></td><td>unacceptable or dishonest behaviour</td><td class="zh">不端行为</td><td>&ldquo;&hellip;more likely to engage in study-related <em>misconduct</em>, such as cheating and plagiarism.&rdquo;</td><td class="note">Note the collocation <em>engage in</em> misconduct. Plagiarism = using someone else&rsquo;s work as your own.</td></tr>
+<tr><td><span class="word">fraudulent</span></td><td><span class="pos">adj.</span></td><td>dishonest and intended to deceive</td><td class="zh">欺骗性的；虚假的</td><td>&ldquo;&hellip;using <em>fraudulent</em> excuses to get deadline extensions.&rdquo;</td><td class="note">The behaviour <em>most closely</em> linked with procrastination in the German study &mdash; a superlative worth marking.</td></tr>
+<tr><td><span class="word">employment stability</span></td><td><span class="pos">n. phr.</span></td><td>how securely and continuously someone stays in work</td><td class="zh">就业稳定性</td><td>&ldquo;&hellip;had less annual income and less <em>employment stability</em>.&rdquo;</td><td class="note"><strong>Key to Q23&ndash;24 option C.</strong> Less stability = &lsquo;they don&rsquo;t keep their jobs for as long&rsquo;.</td></tr>
+<tr><td><span class="word">correlate with</span></td><td><span class="pos">v.</span></td><td>to be closely connected with, without necessarily causing</td><td class="zh">与&hellip;相关</td><td>&ldquo;Procrastination also <em>correlates with</em> serious health and well-being problems.&rdquo;</td><td class="note">A careful scientific verb: correlation is not proof of cause. The writer chooses it deliberately.</td></tr>
+<tr><td><span class="word">prone to</span></td><td><span class="pos">adj. phr.</span></td><td>likely to suffer from or do something</td><td class="zh">易于；有&hellip;倾向的</td><td>&ldquo;&hellip;people <em>prone to</em> procrastination had a 63% greater risk of poor heart health.&rdquo;</td><td class="note">Followed by a noun or -ing. Synonym of &lsquo;likely to&rsquo; / &lsquo;tend to&rsquo;.</td></tr>
+<tr><td><span class="word">vicious cycle</span></td><td><span class="pos">n. phr.</span></td><td>a bad situation that keeps making itself worse</td><td class="zh">恶性循环</td><td>&ldquo;&hellip;one route out of the <em>vicious cycle</em> of procrastination.&rdquo;</td><td class="note">The image behind the whole passage: avoid &rarr; relief &rarr; guilt &rarr; avoid again.</td></tr>
+<tr><td><span class="word">fend off</span></td><td><span class="pos">v. phr.</span></td><td>to keep something away; to resist</td><td class="zh">抵挡；避开</td><td>&ldquo;&hellip;strategies that can help us <em>fend off</em> distractions.&rdquo;</td><td class="note"><strong>Key to Q25&ndash;26 option E</strong> (&lsquo;avoiding things that stop us concentrating&rsquo;).</td></tr>
+<tr><td><span class="word">compassion</span></td><td><span class="pos">n.</span></td><td>sympathy and kindness towards someone who is suffering</td><td class="zh">同情；怜悯</td><td>&ldquo;Forgiving ourselves and feeling <em>compassion</em> when we procrastinate can help break the cycle.&rdquo;</td><td class="note"><strong>Key to Q25&ndash;26 option A.</strong> Self-compassion = not being &lsquo;overly critical of ourselves&rsquo;.</td></tr>
+<tr><td><span class="word">take the edge off</span></td><td><span class="pos">v. phr.</span></td><td>to make an unpleasant feeling less intense</td><td class="zh">缓解；减轻</td><td>&ldquo;Doing this can <em>take the edge off</em> the negative feelings we have about ourselves.&rdquo;</td><td class="note">Idiomatic, and typical of this writer&rsquo;s accessible style. Followed by a noun phrase.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">put off a task</span></td><td>delay doing something</td><td class="zh">推迟一项任务</td></tr>
+<tr><td><span class="phrase">from time to time</span></td><td>occasionally</td><td class="zh">时不时；偶尔</td></tr>
+<tr><td><span class="phrase">let someone down</span></td><td>disappoint someone</td><td class="zh">让某人失望</td></tr>
+<tr><td><span class="phrase">the job at hand</span></td><td>the task you should be doing now</td><td class="zh">手头的工作</td></tr>
+<tr><td><span class="phrase">deep down</span></td><td>in your true feelings, even if you do not admit it</td><td class="zh">内心深处</td></tr>
+<tr><td><span class="phrase">get on with it</span></td><td>start and continue doing it</td><td class="zh">着手去做；接着干</td></tr>
+<tr><td><span class="phrase">contrary to popular belief</span></td><td>unlike what most people assume</td><td class="zh">与普遍看法相反</td></tr>
+<tr><td><span class="phrase">be due to</span></td><td>be caused by</td><td class="zh">由&hellip;造成</td></tr>
+<tr><td><span class="phrase">poor time management</span></td><td>not organising your hours well</td><td class="zh">时间管理不善</td></tr>
+<tr><td><span class="phrase">be keen to do something</span></td><td>want to do it</td><td class="zh">乐意做某事</td></tr>
+<tr><td><span class="phrase">threaten our sense of self-worth</span></td><td>make us doubt our own value</td><td class="zh">威胁我们的自我价值感</td></tr>
+<tr><td><span class="phrase">detection of threats</span></td><td>noticing possible dangers</td><td class="zh">威胁的识别</td></tr>
+<tr><td><span class="phrase">emotion regulation</span></td><td>controlling how you feel</td><td class="zh">情绪调节</td></tr>
+<tr><td><span class="phrase">prime candidates for</span></td><td>the most likely cases of</td><td class="zh">最典型的&hellip;对象</td></tr>
+<tr><td><span class="phrase">be judged harshly by others</span></td><td>be criticised severely by other people</td><td class="zh">被他人苛刻评判</td></tr>
+<tr><td><span class="phrase">a mood boost</span></td><td>a sudden improvement in how you feel</td><td class="zh">情绪提振</td></tr>
+<tr><td><span class="phrase">in the long run</span></td><td>over an extended period of time</td><td class="zh">从长远看</td></tr>
+<tr><td><span class="phrase">be left with a sense of guilt</span></td><td>end up feeling that you did wrong</td><td class="zh">最终留下内疚感</td></tr>
+<tr><td><span class="phrase">the toll on productivity</span></td><td>the damage done to how much gets done</td><td class="zh">对生产力的损害</td></tr>
+<tr><td><span class="phrase">impact negatively on</span></td><td>have a bad effect on</td><td class="zh">对&hellip;产生负面影响</td></tr>
+<tr><td><span class="phrase">engage in misconduct</span></td><td>behave dishonestly</td><td class="zh">做出不端行为</td></tr>
+<tr><td><span class="phrase">deadline extensions</span></td><td>extra time granted to finish work</td><td class="zh">延长截止期限</td></tr>
+<tr><td><span class="phrase">a quarter of their workday</span></td><td>25% of their working hours</td><td class="zh">工作日的四分之一</td></tr>
+<tr><td><span class="phrase">less employment stability</span></td><td>a less secure and continuous working life</td><td class="zh">就业稳定性较低</td></tr>
+<tr><td><span class="phrase">correlate with</span></td><td>be statistically linked to</td><td class="zh">与&hellip;相关</td></tr>
+<tr><td><span class="phrase">be prone to</span></td><td>be likely to experience</td><td class="zh">易于&hellip;</td></tr>
+<tr><td><span class="phrase">coping strategies</span></td><td>the ways people deal with stress</td><td class="zh">应对策略</td></tr>
+<tr><td><span class="phrase">after accounting for</span></td><td>after allowing for the effect of other factors</td><td class="zh">在排除&hellip;影响之后</td></tr>
+<tr><td><span class="phrase">a route out of</span></td><td>a way of escaping from</td><td class="zh">摆脱&hellip;的途径</td></tr>
+<tr><td><span class="phrase">fend off distractions</span></td><td>keep away the things that interrupt you</td><td class="zh">抵挡干扰</td></tr>
+<tr><td><span class="phrase">evidence-based strategies</span></td><td>methods supported by research</td><td class="zh">有实证依据的策略</td></tr>
+<tr><td><span class="phrase">be overly critical of ourselves</span></td><td>criticise ourselves too much</td><td class="zh">过度自我批评</td></tr>
+<tr><td><span class="phrase">take the edge off</span></td><td>reduce the sharpness of a bad feeling</td><td class="zh">缓和；减轻</td></tr>
+<tr><td><span class="phrase">get back on track</span></td><td>return to doing what you should be doing</td><td class="zh">重回正轨</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;Contrary to popular belief, procrastination is not due to laziness or poor time management.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Procrastination is not due to laziness or poor time management.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Contrary to popular belief&rsquo; = a fronted prepositional phrase signalling that a common assumption is about to be corrected.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The pattern <strong>Contrary to X, Y</strong> always sets up a correction: X is what people think, Y is what is true. Note the negative scope &mdash; <em>not due to A or B</em> denies both causes, not just the first.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Most people think procrastination means you are lazy or bad at managing time. That is wrong.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">与人们普遍的看法相反，拖延并非源于懒惰或时间管理不善。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;If just thinking about the task threatens our sense of self-worth or makes us anxious, we will be more likely to put it off.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We will be more likely to put it off.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;If just thinking about the task threatens&hellip; or makes&hellip;&rsquo; = a conditional clause with two verbs sharing one subject.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A <strong>first conditional</strong> (if + present, will + verb). The subject of the if-clause is a gerund phrase, <em>just thinking about the task</em> &mdash; the thinking, not the task itself, is what does the damage. That is the whole argument of paragraph B in one word.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">If merely thinking about a job makes us feel worthless or worried, we are more likely to delay it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">如果仅仅是想到这项任务就会威胁到我们的自我价值感或让我们感到焦虑，我们就更可能把它拖下去。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Research involving brain imaging has found that areas of the brain linked to detection of threats and emotion regulation are actually different in people who chronically procrastinate compared to those who don&rsquo;t procrastinate frequently.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Research has found that areas of the brain are actually different.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;involving brain imaging&rsquo; and &lsquo;linked to detection of threats and emotion regulation&rsquo; = two reduced relative clauses; &lsquo;compared to those who&hellip;&rsquo; = a comparison phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two <strong>reduced relatives</strong> (which involves&hellip; / which are linked to&hellip;) stack modifiers before the verb, which is why the main verb <em>are</em> arrives so late. Find <em>areas&hellip; are different</em> first, then add the layers back.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Brain scans show that the parts of the brain handling danger and feelings look different in habitual procrastinators.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">涉及脑成像的研究发现，与不常拖延的人相比，长期拖延者大脑中与威胁识别和情绪调节相关的区域确实存在差异。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Afterwards, people tend to be left with a sense of guilt that not only increases their negative mood, but also reinforces their tendency to procrastinate.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">People tend to be left with a sense of guilt.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that not only increases&hellip; but also reinforces&hellip;&rsquo; = a defining relative clause containing a correlative pair.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>not only&hellip; but also&hellip;</strong> joins two verbs sharing the subject <em>that</em> (= guilt). This is the sentence that closes the vicious cycle, and the noun <em>guilt</em> is the answer to Q22 &mdash; one word, without &lsquo;a sense of&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Afterwards people feel guilty, which makes their mood worse and makes them delay things even more.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">事后，人们往往会产生内疚感，这种内疚不仅加重了负面情绪，还强化了他们拖延的倾向。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;In one study of over 700 people, I found people prone to procrastination had a 63% greater risk of poor heart health after accounting for other personality traits and demographics.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">I found people prone to procrastination had a 63% greater risk of poor heart health.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;In one study of over 700 people&rsquo; = the setting; &lsquo;after accounting for other personality traits and demographics&rsquo; = a qualifying phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The final phrase is what makes this science rather than opinion: <strong>after accounting for</strong> means other explanations were statistically removed first. Academic writers add these qualifiers precisely so that a Yes/No/Not Given item can test whether you noticed them.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In a study of more than 700 people, habitual procrastinators were 63% more likely to have heart problems, even allowing for other differences between them.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在一项涉及700多人的研究中，我发现在排除其他人格特质与人口统计因素后，易拖延者出现心脏健康问题的风险高出63%。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;We should admit that we feel bad, but not be overly critical of ourselves.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We should admit that we feel bad. / We should not be overly critical of ourselves.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that we feel bad&rsquo; = a noun clause acting as the object of <em>admit</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two imperatives share the modal <em>should</em>, joined by <strong>but</strong>: accept the feeling, reject the self-attack. This single sentence is the source of option A in Q25&ndash;26 (&lsquo;not judging ourselves harshly&rsquo;) and the direct answer to the &lsquo;berating ourselves&rsquo; of paragraph A.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Admit you feel bad about it, but do not attack yourself for it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们应当承认自己感觉糟糕，但不要过分苛责自己。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Summary Completion (the real exam gaps Q17&ndash;22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The six summary gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY</strong>, copied exactly from the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>Many people wrongly believe that procrastination is caused by <input type="text" class="blank" id="b1" data-answer="laziness" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>We put off tasks that damage our self-esteem or make us feel <input type="text" class="blank" id="b2" data-answer="anxious" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Brain scans show differences in the areas that regulate emotion and identify <input type="text" class="blank" id="b3" data-answer="threats" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Preparing to take <input type="text" class="blank" id="b4" data-answer="exams" placeholder="______"> is a typical emotionally loaded task.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The two groups most likely to procrastinate are <input type="text" class="blank" id="b5" data-answer="perfectionists" placeholder="______"> and people with low self-esteem.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Short-term mood repair is usually followed by a feeling of <input type="text" class="blank" id="b6" data-answer="guilt" placeholder="______">.<span class="feedback" id="fb6"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>People who <input type="text" class="blank" id="b7" data-answer="chronically" placeholder="______"> (= over a long period) procrastinate show different brain activity.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Perfectionists fear that their work will be <input type="text" class="blank" id="b8" data-answer="evaluated" placeholder="______"> (= judged) by others.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Relief acts as a reward, which <input type="text" class="blank" id="b9" data-answer="conditions" placeholder="______"> (= trains) us to procrastinate again.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Guilt <input type="text" class="blank" id="b10" data-answer="reinforces" placeholder="______"> (= strengthens) the tendency to delay tasks.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Students used <input type="text" class="blank" id="b11" data-answer="fraudulent" placeholder="______"> (= dishonest) excuses to get deadline extensions.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Good strategies help us <input type="text" class="blank" id="b12" data-answer="fend" placeholder="______"> (= ___ off = keep away) off distractions.<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Summary completion punishes the wrong form even when the idea is right.</p><div class="ex-item"><span class="ex-num">1.</span><label>Procrastination is not caused by <input type="text" class="blank" id="b13" data-answer="laziness" placeholder="______"> (LAZY).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Thinking about the task can make us <input type="text" class="blank" id="b14" data-answer="anxious" placeholder="______"> (ANXIETY).<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>People who set impossibly high standards are <input type="text" class="blank" id="b15" data-answer="perfectionists" placeholder="______"> (PERFECT).<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Procrastination <input type="text" class="blank" id="b16" data-answer="negatively" placeholder="______"> (NEGATIVE) impacts on student performance.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Feeling <input type="text" class="blank" id="b17" data-answer="compassion" placeholder="______"> (COMPASSIONATE) for ourselves helps break the cycle.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>People <input type="text" class="blank" id="b18" data-answer="prone" placeholder="______"> (PRONENESS) to procrastination have worse heart health.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never repeats the passage word for word. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;false assumptions&rdquo; &rarr; Passage: contrary to popular <input type="text" class="blank" id="b19" data-answer="belief" placeholder="______">.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;neurological evidence&rdquo; &rarr; Passage: research involving brain <input type="text" class="blank" id="b20" data-answer="imaging" placeholder="______">.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;identifying threats&rdquo; &rarr; Passage: <input type="text" class="blank" id="b21" data-answer="detection" placeholder="______"> of threats.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;they don&rsquo;t keep their jobs for as long&rdquo; &rarr; Passage: less employment <input type="text" class="blank" id="b22" data-answer="stability" placeholder="______">.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;avoiding things that stop us concentrating&rdquo; &rarr; Passage: <input type="text" class="blank" id="b23" data-answer="fend" placeholder="______"> off distractions.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;not judging ourselves harshly&rdquo; &rarr; Passage: not be overly <input type="text" class="blank" id="b24" data-answer="critical" placeholder="______"> of ourselves.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;the realisation that others also procrastinate&rdquo; &rarr; Passage: we are not the <input type="text" class="blank" id="b25" data-answer="first" placeholder="______"> person to procrastinate, nor the last.<span class="feedback" id="fb25"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Connectors and Reduction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this writer uses to link cause, contrast and result.</p><div class="ex-item"><span class="ex-num">1.</span><label><input type="text" class="blank" id="b26" data-answer="contrary" placeholder="______"> to popular belief, procrastination is not laziness. (a fronted correction phrase)<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>&lsquo;areas of the brain <input type="text" class="blank" id="b27" data-answer="linked" placeholder="______"> to detection of threats&rsquo; &mdash; reduce &lsquo;which are ___ to&rsquo; to a past participle.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Guilt not only increases our negative mood, <input type="text" class="blank" id="b28" data-answer="but" placeholder="______"> also reinforces the habit. (the second half of a correlative pair)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;people <input type="text" class="blank" id="b29" data-answer="prone" placeholder="______"> to procrastination&rsquo; &mdash; reduce &lsquo;people who are likely to procrastinate&rsquo;.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>&lsquo;the behaviour <input type="text" class="blank" id="b30" data-answer="that" placeholder="______"> procrastination was most closely linked with&rsquo; (a relative pronoun as object).<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>We should admit that we feel bad, <input type="text" class="blank" id="b31" data-answer="but" placeholder="______"> not be overly critical of ourselves. (contrast within one modal)<span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that matches the Chinese. One word per gap &mdash; every answer comes from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>恶性循环 &rarr; a vicious <input type="text" class="blank" id="b32" data-answer="cycle" placeholder="______"><span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>情绪调节 &rarr; emotion <input type="text" class="blank" id="b33" data-answer="regulation" placeholder="______"><span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>自我价值感 &rarr; a sense of self-<input type="text" class="blank" id="b34" data-answer="worth" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>从长远看 &rarr; in the long <input type="text" class="blank" id="b35" data-answer="run" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>应对策略 &rarr; coping <input type="text" class="blank" id="b36" data-answer="strategies" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>重回正轨 &rarr; get back on <input type="text" class="blank" id="b37" data-answer="track" placeholder="______"><span class="feedback" id="fb37"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; the cycle the whole passage is built on</strong></p><p>Task threatens self-worth &rarr; we avoid it &rarr; we escape the negative emotion &rarr; &ldquo;This is rewarding, and it <em>conditions us to</em> use procrastination to repair our mood&rdquo; &rarr; the relief is temporary &rarr; guilt arrives &rarr; guilt &ldquo;<em>reinforces</em> their tendency to procrastinate&rdquo; &rarr; back to the start. Every question in this passage sits somewhere on that loop. If you can draw the loop from memory, Q17&ndash;22 take four minutes.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;Contrary to popular belief&rsquo; is the hinge of the argument</strong></p><p>Paragraph B opens by naming two false causes (laziness, poor time management) and replacing them with a third (poor mood management). This single move gives you <strong>Q14</strong> (&lsquo;false assumptions&rsquo;) <em>and</em> <strong>Q17</strong> (<em>laziness</em>). Watch for the other reversals too: &ldquo;<em>In the long run, however</em>, procrastination isn&rsquo;t an effective way of managing emotions&rdquo; &mdash; the word <em>however</em> turns the short-term benefit into a long-term cost.</p></div>
+<div class="card"><p><strong>Comparison &mdash; who is being compared with whom</strong></p><p>Three comparisons carry marks. (1) Chronic procrastinators <em>vs</em> people who don&rsquo;t procrastinate frequently &rarr; brain differences (Q16). (2) Employees who procrastinate <em>vs</em> those who do not &rarr; less income, less employment stability (Q23&ndash;24). (3) People prone to procrastination <em>vs</em> others &rarr; 63% greater heart risk. Before you answer any comparison question, name both sides out loud &mdash; the wrong options usually compare the wrong pair.</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;such as&rsquo; and &lsquo;for example&rsquo; point straight at answers</strong></p><p>&ldquo;Tasks that are emotionally loaded or difficult, <em>such as preparing for exams</em>&rdquo; gives you <strong>Q20</strong>; &ldquo;study-related misconduct, <em>such as cheating and plagiarism</em>&rdquo; and &ldquo;health issues, <em>such as headaches, flu and colds</em>&rdquo; illustrate the general claims before them. In summary completion the gap is very often the example, because the general statement is already paraphrased in the summary.</p></div>
+<div class="card"><p><strong>Definition &mdash; the passage defines its own key terms</strong></p><p>&ldquo;Procrastination <em>is</em> the habit of delaying a necessary task, usually by focusing on less urgent, more enjoyable, and easier activities instead&rdquo; (paragraph A) and &ldquo;The &lsquo;mood repair&rsquo; we experience is temporary&rdquo; (paragraph C, in quotation marks). When a writer defines a term in the first line, that line is almost always the topic sentence &mdash; and matching-information questions about &lsquo;a definition of&hellip;&rsquo; point there.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; only paragraph F contains recommendations</strong></p><p>Paragraphs A&ndash;E describe the problem and its costs; paragraph F is the only place the writer tells you what to <em>do</em>: manage your environment, fend off distractions, remind yourself why the task matters, forgive yourself, do not be overly critical, remember you are not the only one. That is why both answers to <strong>Q25&ndash;26</strong> come from F, and why plausible tips like &lsquo;set manageable aims&rsquo; or &lsquo;reward yourself&rsquo; must be rejected &mdash; they are simply not there.</p></div>
+<div class="card"><p><strong>Evidence and hedging &mdash; how the writer signals how sure she is</strong></p><p>Compare &ldquo;Scientific studies <em>suggest</em>&rdquo;, &ldquo;This <em>makes sense if we consider</em>&rdquo; and &ldquo;procrastination also <em>correlates with</em>&rdquo; with the flat statements &ldquo;Research&hellip; <em>has found</em>&rdquo; and &ldquo;I <em>found</em>&rdquo;. <em>Correlates with</em> is not <em>causes</em>. Any answer option claiming that procrastination <em>causes</em> heart disease would go beyond what this passage says.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; sympathetic, first-person, anti-self-blame</strong></p><p>Notice the pronouns: &ldquo;<em>We</em> all do it from time to time&rdquo;, &ldquo;<em>my</em> research&rdquo;, &ldquo;<em>I</em> found&rdquo;. The writer includes herself among procrastinators and explicitly rejects self-punishment: berating ourselves is &ldquo;one of the worst things we can do&rdquo;. The passage therefore <em>cannot</em> support any option recommending stricter self-discipline &mdash; a useful filter for Q25&ndash;26.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching information to paragraphs (Q14&ndash;16)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These questions do NOT follow the order of the passage, and one letter is used twice. Do them last, and match the <em>function</em> of the information, not just its topic.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>14. mention of false assumptions about why people procrastinate</b> &rarr; <strong>B</strong> &mdash; &lsquo;<em>Contrary to popular belief</em>, procrastination is not due to laziness or poor time management.&rsquo; &lsquo;Popular belief&rsquo; that is then denied = a false assumption.</li><li><b>15. reference to the realisation that others also procrastinate</b> &rarr; <strong>F</strong> &mdash; &lsquo;We should remind ourselves that we&rsquo;re <em>not the first person to procrastinate, nor the last</em>.&rsquo; Paragraph A&rsquo;s &lsquo;We all do it from time to time&rsquo; is a statement of fact, not a <em>realisation</em> we are told to have.</li><li><b>16. neurological evidence of a link between procrastination and emotion</b> &rarr; <strong>B</strong> &mdash; &lsquo;Research involving <em>brain imaging</em> has found that areas of the brain linked to detection of threats and <em>emotion regulation</em> are actually different&hellip;&rsquo; Brain imaging = neurological evidence.</li></ul><p style="margin-top:10px;"><b>Method:</b> read the three statements, underline the noun that names the <em>type</em> of information (assumptions / realisation / evidence), then skim each paragraph asking &lsquo;is there a sentence doing that job here?&rsquo; Do not hunt for topic words &mdash; every paragraph is about procrastination.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Summary Completion (Q17&ndash;22): ONE WORD ONLY</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The summary paraphrases paragraphs B and C in order. Predict the word class for each gap before you go back to the text.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q17 laziness</b> (NOUN) &mdash; &lsquo;the result of ___&rsquo;. The passage names two false causes; the summary&rsquo;s next sentence already uses the other one (&lsquo;an inability to organise time efficiently&rsquo; = poor time management).</li><li><b>Q18 anxious</b> (ADJECTIVE) &mdash; &lsquo;cause us to <em>feel</em> ___&rsquo;. Passage: &lsquo;or makes us anxious&rsquo;. The noun <em>anxiety</em> (paragraph E) would be the wrong form and the wrong place.</li><li><b>Q19 threats</b> (PLURAL NOUN) &mdash; &lsquo;identifying ___&rsquo; = &lsquo;<em>detection of</em> threats&rsquo;.</li><li><b>Q20 exams</b> (PLURAL NOUN) &mdash; &lsquo;Getting ready to take ___&rsquo; = &lsquo;preparing for exams&rsquo;. &lsquo;Take exams&rsquo; requires the plural.</li><li><b>Q21 perfectionists</b> (PLURAL NOUN &mdash; people) &mdash; &lsquo;either ___ or those with low self-esteem&rsquo;. Self-esteem is already used, so the other group is the answer.</li><li><b>Q22 guilt</b> (NOUN) &mdash; &lsquo;a feeling of ___&rsquo; = &lsquo;a sense of guilt&rsquo;. Write the noun alone.</li></ul><p style="margin-top:10px;"><b>Check:</b> read the finished summary straight through. If a sentence reads oddly, you have almost certainly taken the right idea in the wrong grammatical form.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Choose TWO letters (Q23&ndash;24 and Q25&ndash;26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Five options, two marks. Treat each option as a separate True / Not Given decision and demand a sentence for it.</p><p><b>Q23&ndash;24: comparisons between employees who procrastinate and those who do not &rarr; <strong>A and C</strong></b></p><ul style="margin-left:18px;line-height:1.9;"><li><b>A. Their salaries are lower.</b> &rarr; YES: &lsquo;participants who said they regularly procrastinated had <em>less annual income</em>&rsquo;, reinforced by &lsquo;annual income decreased by US$15,000&rsquo;.</li><li><b>B. The quality of their work is inferior.</b> &rarr; NO: the passage mentions a toll on <em>productivity</em> and on student <em>performance</em>, but never the quality of employees&rsquo; work.</li><li><b>C. They don&rsquo;t keep their jobs for as long.</b> &rarr; YES: &lsquo;less <em>employment stability</em>&rsquo;.</li><li><b>D. They don&rsquo;t enjoy their working lives as much.</b> &rarr; NO: job satisfaction is never mentioned.</li><li><b>E. They have poorer relationships with colleagues.</b> &rarr; NO: colleagues are never mentioned.</li></ul><p style="margin-top:12px;"><b>Q25&ndash;26: recommendations for getting out of the cycle &rarr; <strong>A and E</strong></b></p><ul style="margin-left:18px;line-height:1.9;"><li><b>A. not judging ourselves harshly.</b> &rarr; YES: &lsquo;We should admit that we feel bad, but <em>not be overly critical of ourselves</em>&rsquo;, plus &lsquo;Forgiving ourselves and feeling compassion&rsquo;.</li><li><b>B. setting ourselves manageable aims.</b> &rarr; NO: never mentioned.</li><li><b>C. rewarding ourselves for tasks achieved.</b> &rarr; NO &mdash; and note the trap: &lsquo;rewarding&rsquo; appears in paragraph C, but there it describes the <em>problem</em> (avoidance feels rewarding), not a recommendation.</li><li><b>D. prioritising tasks according to their importance.</b> &rarr; NO: the passage says to remind ourselves <em>why</em> a task is important, which is reframing, not ranking a to-do list.</li><li><b>E. avoiding things that stop us concentrating.</b> &rarr; YES: &lsquo;strategies that can help us <em>fend off distractions</em>&rsquo;.</li></ul><p style="margin-top:10px;"><b>Rule:</b> in choose-TWO questions the wrong options are usually true of the <em>world</em> but absent from the <em>passage</em>. Never reward an option for sounding sensible.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Complete each sentence with NO MORE THAN TWO WORDS AND/OR A NUMBER, then check against the suggested answer.</p><ul style="margin-left:18px;line-height:1.9;"><li>Scientific studies suggest procrastination is caused by poor ______. &rarr; <strong>mood management</strong></li><li>The German study followed over ______ students for six months. &rarr; <strong>3,000</strong></li><li>Procrastinating students were most closely linked with using ______ to get deadline extensions. &rarr; <strong>fraudulent excuses</strong></li><li>Employees spend almost ______ of the workday procrastinating. &rarr; <strong>a quarter</strong></li><li>Each one-point rise in chronic procrastination meant a fall in income of ______. &rarr; <strong>US$15,000</strong></li><li>People prone to procrastination had a ______ greater risk of poor heart health. &rarr; <strong>63%</strong></li></ul></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each lettered paragraph to the heading that fits it best. A heading must cover the whole paragraph, not one striking statistic.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Paragraph A</b> &rarr; <em>A familiar habit, and the wrong response to it</em> &mdash; not &lsquo;How to write a difficult message&rsquo;, which is only an example.</li><li><b>Paragraph B</b> &rarr; <em>Correcting a common misunderstanding</em>.</li><li><b>Paragraph C</b> &rarr; <em>Who procrastinates, and why relief does not last</em>.</li><li><b>Paragraph D</b> &rarr; <em>The price paid at college and at work</em> &mdash; not &lsquo;Cheating among German students&rsquo;, a single study inside it.</li><li><b>Paragraph E</b> &rarr; <em>Effects on the body and the mind</em>.</li><li><b>Paragraph F</b> &rarr; <em>Two practical ways to break the cycle</em>.</li></ul><p style="margin-top:10px;"><b>Watch out:</b> D and E both list negative consequences. D is about <em>achievement and money</em>; E is about <em>health</em>. Headings are separated by the domain, not by the fact that both are bad news.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Yes / No / Not Given thinking (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These statements are about the writer&rsquo;s views rather than plain facts. Decide before you read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>Criticising yourself is an effective way to stop procrastinating. &rarr; <strong>NO</strong> &mdash; &lsquo;berating ourselves won&rsquo;t stop us procrastinating again. In fact, it&rsquo;s one of the worst things we can do.&rsquo;</li><li>Procrastination has been proved to cause heart disease. &rarr; <strong>NO</strong> &mdash; the writer says procrastination &lsquo;<em>correlates with</em>&rsquo; health problems and reports a &lsquo;greater <em>risk</em>&rsquo;, which is not a claim of cause.</li><li>Procrastinators are aware that they should be getting on with the task. &rarr; <strong>YES</strong> &mdash; &lsquo;deep down we know that we should just be getting on with it&rsquo;.</li><li>Perfectionists procrastinate more than people with low self-esteem. &rarr; <strong>NOT GIVEN</strong> &mdash; both groups are named, but they are never ranked against each other.</li><li>Avoiding a difficult task makes people feel better immediately. &rarr; <strong>YES</strong> &mdash; &lsquo;we also avoid the negative emotions associated with them. This is rewarding&hellip;&rsquo; but the relief is &lsquo;temporary&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the writer, what does procrastination usually involve doing instead of the necessary task?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Nothing at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Less urgent, more enjoyable and easier activities.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Equally difficult tasks from a different subject.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Planning and re-planning the schedule.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What does the writer say about criticising ourselves for procrastinating?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. It works, but only in the short term.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It is one of the worst things we can do.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. It is effective for perfectionists only.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. It is necessary before we can improve.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why is the answer to Q14 paragraph B?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Because it defines procrastination.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Because it says &lsquo;Contrary to popular belief&rsquo; and then denies two common explanations.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Because it describes a study of German students.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Because it recommends managing your environment.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Which paragraph contains the neurological evidence asked for in Q16?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Paragraph A</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Paragraph B</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Paragraph D</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Paragraph E</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why is the answer to Q15 paragraph F rather than paragraph A?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Because paragraph A never mentions other people.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Because Q15 asks about actively reminding ourselves that others procrastinate too.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Because paragraph A is about students.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Because paragraph F contains statistics.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What kind of task are we most likely to put off?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. One that takes a long time.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. One that threatens our self-worth or makes us anxious.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. One that involves other people.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. One with no clear deadline.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why do perfectionists tend to procrastinate?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They have too many tasks to complete.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. They worry that their work will be judged harshly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. They find easy tasks boring.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They have unusually low self-esteem.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Why is the relief we get from procrastinating described as a problem?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Because it is temporary and is followed by guilt, which strengthens the habit.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Because it makes the task harder to understand.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Because other people notice it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Because it only works for enjoyable tasks.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">In the German study, which behaviour was procrastination most closely linked with?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Cheating in tests.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Plagiarism in essays.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Using dishonest excuses to get deadline extensions.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Missing lectures.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which TWO findings about procrastinating employees are reported (Q23&ndash;24)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Lower income and less employment stability.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Poorer quality work and worse relationships with colleagues.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Less enjoyment of work and lower income.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Longer working hours and lower income.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What does &lsquo;after accounting for other personality traits and demographics&rsquo; tell you about the 63% heart-health finding?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. The figure applies only to older people.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Other possible explanations were statistically allowed for.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. The study proves procrastination causes heart disease.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The study included fewer than 700 people.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which TWO recommendations does the writer actually give (Q25&ndash;26)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Rewarding yourself and prioritising tasks.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Not judging yourself harshly and avoiding distractions.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Setting manageable aims and forgiving yourself.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Prioritising tasks and avoiding distractions.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 14&ndash;26</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;<em>Contrary to popular belief</em>, procrastination is not due to laziness or poor time management.&rsquo; A popular belief that the writer denies = &lsquo;false assumptions about why people procrastinate&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">F</div><div class="answer-note">&lsquo;We should <em>remind ourselves</em> that we&rsquo;re not the first person to procrastinate, nor the last.&rsquo; Paragraph A&rsquo;s &lsquo;We all do it from time to time&rsquo; states the fact; only F frames it as a <em>realisation</em> we should have.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;Research involving <em>brain imaging</em> has found that areas of the brain linked to detection of threats and <em>emotion regulation</em> are actually different in people who chronically procrastinate&hellip;&rsquo; Brain imaging = neurological evidence. B is used twice in this task.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">laziness</div><div class="answer-note">Paragraph B: &lsquo;procrastination is not due to <em>laziness</em> or poor time management&rsquo;. The summary&rsquo;s next sentence already covers the second misconception, so the gap must take the first.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">anxious</div><div class="answer-note">Paragraph B: &lsquo;If just thinking about the task threatens our sense of self-worth or makes us <em>anxious</em>&hellip;&rsquo; The gap follows &lsquo;cause us to feel&rsquo;, so the ADJECTIVE is required, not <em>anxiety</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">threats</div><div class="answer-note">Paragraph B: &lsquo;areas of the brain linked to <em>detection of threats</em> and emotion regulation&rsquo;. &lsquo;Identifying&rsquo; = &lsquo;detection of&rsquo;. Keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">exams</div><div class="answer-note">Paragraph C: &lsquo;Tasks that are emotionally loaded or difficult, <em>such as preparing for exams</em>&rsquo;. &lsquo;Getting ready to take&rsquo; = &lsquo;preparing for&rsquo;; the plural is required by &lsquo;take ___&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">perfectionists</div><div class="answer-note">Paragraph C: &lsquo;Another group of people who tend to procrastinate are <em>perfectionists</em>, who worry their work will be judged harshly.&rsquo; The summary already names the low-self-esteem group, so this is the other one.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">guilt</div><div class="answer-note">Paragraph C: &lsquo;people tend to be left with a sense of <em>guilt</em> that not only increases their negative mood, but also reinforces their tendency to procrastinate.&rsquo; Write the noun alone &mdash; &lsquo;a sense of guilt&rsquo; is three words.</div></div></div>
+<div class="answer-item"><span class="answer-num">23 &amp; 24</span><div><div class="answer-val">A and C (in either order)</div><div class="answer-note">Paragraph D, the US survey of over 22,000 employees: those who regularly procrastinated &lsquo;had <em>less annual income</em>&rsquo; (= A, salaries are lower) &lsquo;and <em>less employment stability</em>&rsquo; (= C, they don&rsquo;t keep their jobs for as long). B, D and E are never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">25 &amp; 26</span><div><div class="answer-val">A and E (in either order)</div><div class="answer-note">Paragraph F: &lsquo;strategies that can help us <em>fend off distractions</em>&rsquo; (= E, avoiding things that stop us concentrating) and &lsquo;Forgiving ourselves&hellip; <em>not be overly critical of ourselves</em>&rsquo; (= A, not judging ourselves harshly). B, C and D are standard productivity advice that this passage never gives &mdash; note that the &lsquo;rewarding&rsquo; in paragraph C describes the problem, not a recommendation.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Summary Completion (the real exam gaps Q17&ndash;22)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">laziness</div><div class="answer-note">Many people wrongly believe that procrastination is caused by</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">anxious</div><div class="answer-note">We put off tasks that damage our self-esteem or make us feel</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">threats</div><div class="answer-note">Brain scans show differences in the areas that regulate emotion and identify</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">exams</div><div class="answer-note">Preparing to take</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">perfectionists</div><div class="answer-note">The two groups most likely to procrastinate are</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">guilt</div><div class="answer-note">Short-term mood repair is usually followed by a feeling of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">chronically</div><div class="answer-note">People who</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">evaluated</div><div class="answer-note">Perfectionists fear that their work will be</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">conditions</div><div class="answer-note">Relief acts as a reward, which</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">reinforces</div><div class="answer-note">Guilt</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">fraudulent</div><div class="answer-note">Students used</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">fend</div><div class="answer-note">Good strategies help us</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">laziness</div><div class="answer-note">Procrastination is not caused by</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">anxious</div><div class="answer-note">Thinking about the task can make us</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">perfectionists</div><div class="answer-note">People who set impossibly high standards are</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">negatively</div><div class="answer-note">Procrastination</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">compassion</div><div class="answer-note">Feeling</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">prone</div><div class="answer-note">People</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">belief</div><div class="answer-note">Question: &ldquo;false assumptions&rdquo; &rarr; Passage: contrary to popular</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">imaging</div><div class="answer-note">Question: &ldquo;neurological evidence&rdquo; &rarr; Passage: research involving brain</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">detection</div><div class="answer-note">Question: &ldquo;identifying threats&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">stability</div><div class="answer-note">Question: &ldquo;they don&rsquo;t keep their jobs for as long&rdquo; &rarr; Passage: less employment</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">fend</div><div class="answer-note">Question: &ldquo;avoiding things that stop us concentrating&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">critical</div><div class="answer-note">Question: &ldquo;not judging ourselves harshly&rdquo; &rarr; Passage: not be overly</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">first</div><div class="answer-note">Question: &ldquo;the realisation that others also procrastinate&rdquo; &rarr; Passage: we are not the</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Connectors and Reduction</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">contrary</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">linked</div><div class="answer-note">&lsquo;areas of the brain</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">but</div><div class="answer-note">Guilt not only increases our negative mood,</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">prone</div><div class="answer-note">&lsquo;people</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">that</div><div class="answer-note">&lsquo;the behaviour</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">but</div><div class="answer-note">We should admit that we feel bad,</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">cycle</div><div class="answer-note">恶性循环 &rarr; a vicious</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">regulation</div><div class="answer-note">情绪调节 &rarr; emotion</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">worth</div><div class="answer-note">自我价值感 &rarr; a sense of self-</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">run</div><div class="answer-note">从长远看 &rarr; in the long</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">strategies</div><div class="answer-note">应对策略 &rarr; coping</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">track</div><div class="answer-note">重回正轨 &rarr; get back on</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Less urgent, more enjoyable and easier activities.</div><div class="answer-note">Paragraph A&rsquo;s opening definition: &lsquo;delaying a necessary task, usually by focusing on less urgent, more enjoyable, and easier activities instead&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. It is one of the worst things we can do.</div><div class="answer-note">&lsquo;Berating ourselves won&rsquo;t stop us procrastinating again. In fact, it&rsquo;s one of the worst things we can do.&rsquo; This sets up the self-compassion advice in paragraph F.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. Because it says &lsquo;Contrary to popular belief&rsquo; and then denies two common explanations.</div><div class="answer-note">A &lsquo;false assumption&rsquo; is a popular belief that the writer rejects: not laziness, not poor time management, but poor mood management.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. Paragraph B</div><div class="answer-note">&lsquo;Research involving brain imaging has found that areas of the brain linked to detection of threats and emotion regulation are actually different&hellip;&rsquo; Note that B answers two of the three matching questions.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. Because Q15 asks about actively reminding ourselves that others procrastinate too.</div><div class="answer-note">Paragraph A states the fact (&lsquo;We all do it from time to time&rsquo;); paragraph F turns it into a strategy: &lsquo;We should remind ourselves that we&rsquo;re not the first person to procrastinate, nor the last.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. One that threatens our self-worth or makes us anxious.</div><div class="answer-note">Paragraph B: &lsquo;If just thinking about the task threatens our sense of self-worth or makes us anxious, we will be more likely to put it off.&rsquo; This gives Q18 (<em>anxious</em>).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. They worry that their work will be judged harshly.</div><div class="answer-note">Paragraph C: &lsquo;perfectionists, who worry their work will be judged harshly by others&hellip; if we don&rsquo;t finish that report&hellip; then what we did can&rsquo;t be evaluated.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A. Because it is temporary and is followed by guilt, which strengthens the habit.</div><div class="answer-note">Paragraph C: the &lsquo;mood repair&rsquo; is temporary and people are &lsquo;left with a sense of guilt that not only increases their negative mood, but also reinforces their tendency to procrastinate&rsquo;. This gives Q22.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. Using dishonest excuses to get deadline extensions.</div><div class="answer-note">&lsquo;But the behaviour that procrastination was <em>most closely</em> linked with was using fraudulent excuses to get deadline extensions.&rsquo; Cheating and plagiarism are mentioned, but not as the closest link.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. Lower income and less employment stability.</div><div class="answer-note">The US survey of over 22,000 employees reports exactly two outcomes: &lsquo;less annual income and less employment stability&rsquo;. Work quality, enjoyment and colleagues are never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Other possible explanations were statistically allowed for.</div><div class="answer-note">The phrase means other factors were controlled for. Note that the writer still writes &lsquo;correlates with&rsquo; and &lsquo;greater risk&rsquo; &mdash; not &lsquo;causes&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Not judging yourself harshly and avoiding distractions.</div><div class="answer-note">Paragraph F offers only two things: &lsquo;strategies that can help us fend off distractions&rsquo; (E) and &lsquo;Forgiving ourselves&hellip; not be overly critical of ourselves&rsquo; (A). The other options are sensible advice the passage never gives.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

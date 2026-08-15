@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Reading Passage 1</h1>
+    <h2>Frozen Food · Notes Completion + True/False/Not Given (Q1–13)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage tells the story of frozen food from a US point of view. It moves in strict <strong>chronological order</strong>: ancient ice storage and the freeze-drying of potatoes in the Andes, natural ice traded by Boston ship owners, the Australian invention of &lsquo;mechanical ice&rsquo; in 1870, Clarence Birdseye&rsquo;s quick-freezing innovations after 1917, the wartime tin shortage, the spread of home refrigerators in the 1950s, the launch of the &lsquo;TV Dinner&rsquo; in 1954, and finally the size of the industry today. Because the text is a timeline, dates and decades are your fastest way to find any answer.</p></div><div class="card"><p><strong>What the passage argues:</strong> That frozen food became an everyday product only when several things came together: a way of freezing quickly enough not to damage the food, packaging and transport that shops could afford, a wartime shortage that made canned food scarce, and finally a freezer in the average family&rsquo;s kitchen. The writer reports rather than argues &mdash; the tone is factual throughout.</p><p><strong>段落结构 Structure:</strong> 全文按时间顺序展开：① 远古用冰保存食物、安第斯山区的冻干土豆；② 19世纪的天然冰贸易（波士顿船东、1851年冷藏车运黄油）；③ 1870年澳大利亚发明"机械制冰"及其原理；④ 1880年冷冻牛羊肉运往英国，但冰晶破坏细胞；⑤ 1912年伯宰（Birdseye）在拉布拉多受因纽特人启发；⑥ 他的三大创新：速冻、包装内冷冻、玻璃纸透明包装；⑦ 20世纪30年代的障碍与租赁方案；⑧ 二战锡短缺带来转机、50年代冰箱普及；⑨ 1954年"电视晚餐"大获成功；⑩ 今日产业规模。</p><p><strong>Task type:</strong> Two tasks. <strong>Questions 1&ndash;7</strong>: notes completion, <strong>ONE WORD ONLY from the passage</strong> &mdash; you must copy the writer&rsquo;s exact word. <strong>Questions 8&ndash;13</strong>: TRUE / FALSE / NOT GIVEN about information in the passage (not about the writer&rsquo;s opinion, so never write YES or NO).</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Both tasks here are <strong>in passage order</strong>, and the notes for Q1&ndash;7 even print the year and the country above each gap (<em>2,000 years ago, South America &hellip; 1851, USA &hellip; 1880, Australia</em>). Use those headings as an index: find the paragraph with that date first, then read only those three or four lines. For the True/False/Not Given set, do the same &mdash; every statement contains a name or a date (Boston, Australia, Labrador, Swanson) that pins it to one paragraph. Then ask the only question that matters: does the passage <em>state</em> this, <em>contradict</em> it, or <em>never mention</em> it? Your own knowledge about frozen food is not evidence.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q1 needs the food, not the process.</b> The notes say &lsquo;conserved the nutritional value of (1)&hellip; using a method of freezing then drying&rsquo;. The method is already described, so the gap is the thing being preserved: <em>potatoes</em>.</li><li><b>Q3 &lsquo;Two kinds of&hellip;&rsquo;</b> &mdash; the passage names beef and mutton. The single word that covers both, and that the passage actually uses, is <em>meat</em> (&lsquo;they could export <em>meat</em> across the oceans&rsquo;). Writing &lsquo;beef and mutton&rsquo; breaks the ONE WORD rule.</li><li><b>Q6 tin, not cans.</b> The shortage was of the metal: &lsquo;tin was being used for munitions&hellip; canned foods were rationed to save tin&rsquo;. &lsquo;Cans&rsquo; is the product, not the shortage.</li><li><b>Q8 wealth is never mentioned.</b> The passage says Boston ship owners had ice towed across the Atlantic, but says nothing about how much money they made &mdash; a textbook <strong>NOT GIVEN</strong>.</li><li><b>Q10 reverses cause and sequence.</b> Birdseye went to Labrador &lsquo;to trap and trade furs&rsquo; after running out of money; the Inuit fascinated him only once he was there. Purpose &ne; result, so the answer is <strong>FALSE</strong>.</li><li><b>Q12 &lsquo;new style of container&rsquo;.</b> The tray was &lsquo;the same segmented aluminum tray that was used by airlines&rsquo; &mdash; borrowed, not new. <strong>FALSE</strong>. Compare Q13, where the industry is never compared with other countries: <strong>NOT GIVEN</strong>.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">preserve</span></td><td><span class="pos">v.</span></td><td>to keep food from going bad</td><td class="zh">保存；保鲜</td><td>&ldquo;At some point in history, humans discovered that ice <em>preserved</em> food.&rdquo;</td><td class="note">The topic verb of the whole passage. Noun <em>preservation</em> appears in &lsquo;for the purpose of food preservation&rsquo; (Q8&rsquo;s paragraph).</td></tr>
+<tr><td><span class="word">conserve</span></td><td><span class="pos">v.</span></td><td>to keep something in good condition; to save it for later</td><td class="zh">保存；保留</td><td>&ldquo;&hellip;a unique means of <em>conserving</em> potatoes for later consumption.&rdquo;</td><td class="note">The notes for Q1 reuse this exact verb (&lsquo;People conserved the nutritional value of&hellip;&rsquo;), which is your signal that the answer is in this sentence.</td></tr>
+<tr><td><span class="word">consumption</span></td><td><span class="pos">n.</span></td><td>the eating or using of something</td><td class="zh">食用；消费</td><td>&ldquo;&hellip;for later <em>consumption</em>.&rdquo;</td><td class="note">Appears again at the end: &lsquo;sold to consumers for home <em>consumption</em>&rsquo;. Verb <em>consume</em>, person <em>consumer</em>.</td></tr>
+<tr><td><span class="word">trample</span></td><td><span class="pos">v.</span></td><td>to step heavily on something again and again</td><td class="zh">踩踏；践踏</td><td>&ldquo;They froze them overnight, then <em>trampled</em> them to squeeze out the moisture.&rdquo;</td><td class="note">Part of the three-step Andean method: freeze &rarr; trample &rarr; dry. The notes summarise it as &lsquo;freezing then drying&rsquo;.</td></tr>
+<tr><td><span class="word">moisture</span></td><td><span class="pos">n.</span></td><td>small amounts of water inside something</td><td class="zh">水分；湿气</td><td>&ldquo;&hellip;to squeeze out the <em>moisture</em>.&rdquo;</td><td class="note">Removing moisture = drying. Useful in any Task 1 or science text about food and climate.</td></tr>
+<tr><td><span class="word">nutritional</span></td><td><span class="pos">adj.</span></td><td>relating to the goodness in food that keeps you healthy</td><td class="zh">营养的</td><td>&ldquo;This preserved their <em>nutritional</em> value &mdash; if not their aesthetic appeal.&rdquo;</td><td class="note">Printed in the Q1 note, so it is a locator, not an answer. Noun <em>nutrition</em>.</td></tr>
+<tr><td><span class="word">aesthetic</span></td><td><span class="pos">adj.</span></td><td>connected with beauty and how something looks</td><td class="zh">美观的；审美的</td><td>&ldquo;&hellip;if not their <em>aesthetic</em> appeal.&rdquo;</td><td class="note">&lsquo;If not their aesthetic appeal&rsquo; is a dry joke: the potatoes were still nutritious but ugly. Recognising this tone helps in Y/N/NG tasks.</td></tr>
+<tr><td><span class="word">refrigeration</span></td><td><span class="pos">n.</span></td><td>the process of keeping things cold to preserve them</td><td class="zh">冷藏；制冷</td><td>&ldquo;Natural ice remained the main form of <em>refrigeration</em> until late in the 19th century.&rdquo;</td><td class="note">Family: refrigerate (v.), refrigerator (n., the Q7 answer), refrigeration (n.). Q7 needs the <em>machine</em>, so it must be <em>refrigerator</em>.</td></tr>
+<tr><td><span class="word">insulated</span></td><td><span class="pos">adj.</span></td><td>covered with material that stops heat passing through</td><td class="zh">隔热的；绝缘的</td><td>&ldquo;&hellip;putting blocks of ice in <em>insulated</em> rail cars to send butter&hellip;&rdquo;</td><td class="note">Appears twice: insulated rail cars (1851) and an insulated compartment inside the 1870 machine. Both sentences hold answers.</td></tr>
+<tr><td><span class="word">compressor</span></td><td><span class="pos">n.</span></td><td>a machine that squeezes gas into a smaller space</td><td class="zh">压缩机</td><td>&ldquo;They used a <em>compressor</em> to force a gas&hellip; through a condenser.&rdquo;</td><td class="note">The technical paragraph (compressor &rarr; condenser &rarr; evaporator coil) contains no answers &mdash; skim it and move on. Recognising a &lsquo;no-question zone&rsquo; saves minutes.</td></tr>
+<tr><td><span class="word">condenser</span></td><td><span class="pos">n.</span></td><td>a device that turns gas into liquid by cooling it</td><td class="zh">冷凝器</td><td>&ldquo;The compressed gas gave up some of its heat as it moved through the <em>condenser</em>.&rdquo;</td><td class="note">Verb <em>condense</em> also means &lsquo;to make a text shorter&rsquo; &mdash; useful in Writing.</td></tr>
+<tr><td><span class="word">evaporator</span></td><td><span class="pos">n.</span></td><td>the part where liquid turns into gas and takes heat away</td><td class="zh">蒸发器</td><td>&ldquo;&hellip;released quickly into a low-pressure <em>evaporator</em> coil.&rdquo;</td><td class="note">Verb <em>evaporate</em> is high-frequency in geography and climate passages.</td></tr>
+<tr><td><span class="word">compartment</span></td><td><span class="pos">n.</span></td><td>a separate closed section inside something</td><td class="zh">隔间；（冰箱的）冷冻室</td><td>&ldquo;&hellip;cooled air passed into an insulated <em>compartment</em>.&rdquo;</td><td class="note">Returns at the end: &lsquo;increasing the size of the freezer <em>compartments</em>&rsquo; &mdash; the sentence right after the Q7 answer.</td></tr>
+<tr><td><span class="word">palatable</span></td><td><span class="pos">adj.</span></td><td>good enough to eat; pleasant in taste</td><td class="zh">可口的；尚能入口的</td><td>&ldquo;While the food frozen this way was still <em>palatable</em>, there was some deterioration.&rdquo;</td><td class="note">Key to Q9. &lsquo;While X was still palatable, there was some deterioration&rsquo; = it was edible <em>but</em> worse &mdash; a concession, not praise.</td></tr>
+<tr><td><span class="word">deterioration</span></td><td><span class="pos">n.</span></td><td>the process of becoming worse in quality</td><td class="zh">变质；恶化</td><td>&ldquo;&hellip;there was some <em>deterioration</em>.&rdquo;</td><td class="note">Verb <em>deteriorate</em>. In Q9 this word plus &lsquo;spoilt the flavor and texture&rsquo; makes the statement TRUE.</td></tr>
+<tr><td><span class="word">crystal</span></td><td><span class="pos">n.</span></td><td>a small piece of ice with a regular shape</td><td class="zh">结晶；冰晶</td><td>&ldquo;During the freezing process, <em>crystals</em> formed within the cells of the food.&rdquo;</td><td class="note"><strong>Answer to Q4</strong>, and it must be PLURAL: &lsquo;reduced the damage that <em>crystals</em> caused&rsquo;.</td></tr>
+<tr><td><span class="word">burst</span></td><td><span class="pos">v.</span></td><td>to break open suddenly</td><td class="zh">破裂；胀破</td><td>&ldquo;&hellip;when the ice expanded and the cells <em>burst</em>&hellip;&rdquo;</td><td class="note">Irregular verb: burst &ndash; burst &ndash; burst. The cause chain is: crystals form &rarr; ice expands &rarr; cells burst &rarr; flavour is spoilt.</td></tr>
+<tr><td><span class="word">spoil</span></td><td><span class="pos">v.</span></td><td>to ruin something; (of food) to go bad</td><td class="zh">破坏；（食物）变质</td><td>&ldquo;&hellip;this <em>spoilt</em> the flavor and texture of the food.&rdquo;</td><td class="note">The Q4 note reuses the verb: &lsquo;quick-freezing methods, so that (4) did not <em>spoil</em> the food&rsquo;.</td></tr>
+<tr><td><span class="word">texture</span></td><td><span class="pos">n.</span></td><td>the way something feels when you touch or eat it</td><td class="zh">口感；质地</td><td>&ldquo;&hellip;spoilt the flavor and <em>texture</em> of the food.&rdquo;</td><td class="note">Note the US spellings in this passage: <em>flavor</em>, <em>color</em>, <em>aluminum</em>. Either spelling is accepted in IELTS.</td></tr>
+<tr><td><span class="word">indigenous</span></td><td><span class="pos">adj.</span></td><td>belonging to a place from the earliest times</td><td class="zh">本土的；原住民的</td><td>&ldquo;The modern frozen food industry began with the <em>indigenous</em> Inuit people of Canada.&rdquo;</td><td class="note">A formal synonym of &lsquo;native&rsquo;. High-value word for Writing Task 2 on culture and heritage.</td></tr>
+<tr><td><span class="word">methodically</span></td><td><span class="pos">adv.</span></td><td>in a careful, orderly, step-by-step way</td><td class="zh">有条不紊地</td><td>&ldquo;Birdseye <em>methodically</em> kept inventing better freezers.&rdquo;</td><td class="note">Shows the writer&rsquo;s quiet admiration. Adjective <em>methodical</em>.</td></tr>
+<tr><td><span class="word">innovation</span></td><td><span class="pos">n.</span></td><td>a new idea, method or product</td><td class="zh">创新；革新</td><td>&ldquo;Birdseye was responsible for several key <em>innovations</em>.&rdquo;</td><td class="note">The Q4&ndash;Q5 note heading uses this exact word, so the two answers must both come from the paragraph that follows it.</td></tr>
+<tr><td><span class="word">cellophane</span></td><td><span class="pos">n.</span></td><td>a thin, clear plastic-like material used for wrapping</td><td class="zh">玻璃纸；赛璐玢</td><td>&ldquo;He also introduced the use of <em>cellophane</em>, the first transparent material for food packaging.&rdquo;</td><td class="note"><strong>Answer to Q5.</strong> Copy the spelling from the passage: c-e-l-l-o-p-h-a-n-e.</td></tr>
+<tr><td><span class="word">transparent</span></td><td><span class="pos">adj.</span></td><td>clear, so that you can see through it</td><td class="zh">透明的</td><td>&ldquo;&hellip;the first <em>transparent</em> material for food packaging, which allowed consumers to see the quality.&rdquo;</td><td class="note">The note paraphrases this as &lsquo;so the product was visible&rsquo; &mdash; that paraphrase confirms Q5.</td></tr>
+<tr><td><span class="word">lease</span></td><td><span class="pos">v.</span></td><td>to rent something out to someone for a period of time</td><td class="zh">出租；租赁</td><td>&ldquo;So, Birdseye <em>leased</em> inexpensive freezer cases to them.&rdquo;</td><td class="note">His solution to the shops&rsquo; money problem. He leased freezer cases <em>and</em> insulated railroad cars &mdash; two separate steps.</td></tr>
+<tr><td><span class="word">obstacle</span></td><td><span class="pos">n.</span></td><td>something that blocks progress</td><td class="zh">障碍；阻碍</td><td>&ldquo;But there were still <em>obstacles</em>.&rdquo;</td><td class="note">A four-word paragraph opener that signals a problem&ndash;solution block. Useful signposting word for your own essays.</td></tr>
+<tr><td><span class="word">ration</span></td><td><span class="pos">v.</span></td><td>to limit the amount of something each person may have</td><td class="zh">定量配给；限量供应</td><td>&ldquo;Canned foods were <em>rationed</em> to save tin for the war effort.&rdquo;</td><td class="note">This sentence contains the Q6 answer: the shortage was of <em>tin</em>, and rationing was the consequence.</td></tr>
+<tr><td><span class="word">munitions</span></td><td><span class="pos">n.</span></td><td>military supplies, especially weapons and ammunition</td><td class="zh">军火；弹药</td><td>&ldquo;&hellip;because tin was being used for <em>munitions</em>.&rdquo;</td><td class="note">Signals the wartime cause. &lsquo;The war effort&rsquo; in the next line is its paraphrase.</td></tr>
+<tr><td><span class="word">abundant</span></td><td><span class="pos">adj.</span></td><td>available in large quantities</td><td class="zh">充足的；丰富的</td><td>&ldquo;&hellip;while frozen foods were <em>abundant</em> and cheap.&rdquo;</td><td class="note">Opposite of <em>scarce</em>. The contrast canned/rationed vs frozen/abundant explains why sales rose.</td></tr>
+<tr><td><span class="word">appliance</span></td><td><span class="pos">n.</span></td><td>a machine used in the home, such as a fridge or washing machine</td><td class="zh">（家用）电器</td><td>&ldquo;&hellip;refrigerator technology had developed far enough to make these <em>appliances</em> affordable.&rdquo;</td><td class="note">A formal cover word for the refrigerator. Q7 asks for the machine itself, so the passage word <em>refrigerator</em> is what you write.</td></tr>
+<tr><td><span class="word">segmented</span></td><td><span class="pos">adj.</span></td><td>divided into separate sections</td><td class="zh">分格的；分段的</td><td>&ldquo;&hellip;served in the same <em>segmented</em> aluminum tray that was used by airlines.&rdquo;</td><td class="note">The word &lsquo;same&hellip; that was used by airlines&rsquo; is exactly why Q12 is FALSE: the tray was not new.</td></tr>
+<tr><td><span class="word">turnover</span></td><td><span class="pos">n.</span></td><td>the total amount of money a business or industry takes in</td><td class="zh">营业额；总收入</td><td>&ldquo;&hellip;the US frozen food industry has a <em>turnover</em> of over $67 billion annually.&rdquo;</td><td class="note">Do not confuse with <em>profit</em>. The final paragraph is full of figures but contains only one question-relevant idea &mdash; and no comparison with other countries (Q13).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at some point in history</span></td><td>at a time in the past that we cannot name exactly</td><td class="zh">在历史上的某个时刻</td></tr>
+<tr><td><span class="phrase">as far back as 10,000 years ago</span></td><td>a very long time ago indeed</td><td class="zh">早在一万年前</td></tr>
+<tr><td><span class="phrase">a unique means of conserving&hellip;</span></td><td>a method of preserving that no one else used</td><td class="zh">一种独特的保存方法</td></tr>
+<tr><td><span class="phrase">squeeze out the moisture</span></td><td>press something to force the water out</td><td class="zh">把水分挤出来</td></tr>
+<tr><td><span class="phrase">preserve the nutritional value</span></td><td>keep the goodness in the food</td><td class="zh">保留营养价值</td></tr>
+<tr><td><span class="phrase">aesthetic appeal</span></td><td>how attractive something looks</td><td class="zh">美观程度；卖相</td></tr>
+<tr><td><span class="phrase">the main form of refrigeration</span></td><td>the most common way of keeping things cold</td><td class="zh">主要的制冷方式</td></tr>
+<tr><td><span class="phrase">for the purpose of food preservation</span></td><td>in order to keep food from going bad</td><td class="zh">为了保存食物</td></tr>
+<tr><td><span class="phrase">insulated rail cars</span></td><td>train wagons lined to keep the cold in</td><td class="zh">隔热保温的铁路车厢</td></tr>
+<tr><td><span class="phrase">give up heat</span></td><td>release heat into the surroundings</td><td class="zh">放出热量</td></tr>
+<tr><td><span class="phrase">lower its temperature to freezing point</span></td><td>make it cold enough to freeze</td><td class="zh">把温度降到冰点</td></tr>
+<tr><td><span class="phrase">be quick to realize that&hellip;</span></td><td>understand something immediately</td><td class="zh">很快意识到……</td></tr>
+<tr><td><span class="phrase">export meat across the oceans</span></td><td>send meat by ship to other continents</td><td class="zh">把肉类跨洋出口</td></tr>
+<tr><td><span class="phrase">crystals formed within the cells</span></td><td>ice grew inside the food itself</td><td class="zh">细胞内形成冰晶</td></tr>
+<tr><td><span class="phrase">spoil the flavour and texture</span></td><td>ruin how food tastes and feels</td><td class="zh">破坏风味与口感</td></tr>
+<tr><td><span class="phrase">run out of money</span></td><td>have no money left</td><td class="zh">钱花光了</td></tr>
+<tr><td><span class="phrase">become fascinated with&hellip;</span></td><td>become extremely interested in something</td><td class="zh">对……着迷</td></tr>
+<tr><td><span class="phrase">quick-freezing techniques</span></td><td>ways of freezing food very fast</td><td class="zh">速冻技术</td></tr>
+<tr><td><span class="phrase">with a minimum of effort</span></td><td>very easily; without much work</td><td class="zh">毫不费力地</td></tr>
+<tr><td><span class="phrase">but there were still obstacles</span></td><td>problems remained to be solved</td><td class="zh">但仍存在障碍</td></tr>
+<tr><td><span class="phrase">take advantage of&hellip;</span></td><td>make good use of an opportunity or product</td><td class="zh">利用……</td></tr>
+<tr><td><span class="phrase">give a boost to&hellip;</span></td><td>help something grow or improve</td><td class="zh">推动；促进</td></tr>
+<tr><td><span class="phrase">be rationed to save tin for the war effort</span></td><td>be limited so the metal could go to the military</td><td class="zh">被限量供应以节省锡用于战争</td></tr>
+<tr><td><span class="phrase">abundant and cheap</span></td><td>plentiful and low in price</td><td class="zh">充足而便宜</td></tr>
+<tr><td><span class="phrase">affordable for the average family</span></td><td>cheap enough for an ordinary household</td><td class="zh">普通家庭负担得起</td></tr>
+<tr><td><span class="phrase">look for convenience at mealtimes</span></td><td>want meals that are quick and easy</td><td class="zh">希望用餐更方便</td></tr>
+<tr><td><span class="phrase">the moment was right for&hellip;</span></td><td>conditions were perfect for something to succeed</td><td class="zh">时机已经成熟</td></tr>
+<tr><td><span class="phrase">a huge advertising budget</span></td><td>a very large amount of money spent on promotion</td><td class="zh">巨额广告预算</td></tr>
+<tr><td><span class="phrase">an instant success</span></td><td>popular immediately after it appeared</td><td class="zh">一炮而红</td></tr>
+<tr><td><span class="phrase">a trusted brand name</span></td><td>a company name that customers believe in</td><td class="zh">值得信赖的品牌</td></tr>
+<tr><td><span class="phrase">a turnover of over $67 billion annually</span></td><td>total yearly sales above 67 billion dollars</td><td class="zh">年营业额超过670亿美元</td></tr>
+<tr><td><span class="phrase">a third of the total food service sales</span></td><td>33% of all food sold by restaurants and canteens</td><td class="zh">占餐饮服务总销售额的三分之一</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;In the early 1800s, ship owners from Boston, USA, had enormous blocks of Arctic ice towed all over the Atlantic for the purpose of food preservation.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Ship owners had enormous blocks of Arctic ice towed all over the Atlantic.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;from Boston, USA&rsquo; = a reduced relative phrase identifying the owners; &lsquo;for the purpose of food preservation&rsquo; = a purpose phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>have something done</strong> (causative): the owners did not tow the ice themselves &mdash; they arranged for it to be towed. Note also &lsquo;for the purpose of + noun/-ing&rsquo;, a formal way of saying &lsquo;in order to&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Boston ship owners paid for huge blocks of Arctic ice to be pulled across the Atlantic so that food could be kept fresh.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">19世纪初，美国波士顿的船东雇人将巨大的北极冰块拖运至大西洋各地，用于保存食物。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;During the freezing process, crystals formed within the cells of the food, and when the ice expanded and the cells burst, this spoilt the flavor and texture of the food.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Crystals formed within the cells&hellip; / this spoilt the flavor and texture of the food.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;when the ice expanded and the cells burst&rsquo; = a time clause with two verbs sharing one &lsquo;when&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A four-step <strong>causal chain</strong> packed into one sentence: form &rarr; expand &rarr; burst &rarr; spoil. The pronoun <em>this</em> refers back to the whole time clause, not to one noun.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Ice crystals grew inside the food; as they got bigger the cells broke, and the food ended up tasting and feeling worse.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在冷冻过程中，食物细胞内会形成冰晶；冰晶膨胀使细胞破裂，从而破坏了食物的风味与口感。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;While he was there, he became fascinated with how the Inuit would quickly freeze fish in the Arctic air.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">He became fascinated with how the Inuit would quickly freeze fish.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;While he was there&rsquo; = a time clause; &lsquo;how the Inuit would&hellip;&rsquo; = a noun clause acting as the object of &lsquo;fascinated with&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>would</strong> here is not a conditional &mdash; it describes a <em>repeated past habit</em> (= used to). &lsquo;While he was there&rsquo; also proves the interest came <em>after</em> he arrived, which is the whole point of Question 10.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Once he was in Labrador, he became very interested in the Inuit way of freezing fish fast.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">他在当地期间，对因纽特人利用北极空气快速冷冻鱼类的方法产生了浓厚兴趣。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;In the 1930s, few grocery stores could afford to buy freezers for a market that wasn&rsquo;t established yet.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Few grocery stores could afford to buy freezers.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that wasn&rsquo;t established yet&rsquo; = a defining relative clause describing the market.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>few</strong> (without &lsquo;a&rsquo;) is negative: almost none. Compare <em>a few</em> = some. IELTS statements often flip this pair, so read the article carefully.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In the 1930s hardly any food shops had enough money to buy freezers, because customers for frozen food did not exist yet.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">20世纪30年代，几乎没有杂货店买得起冷柜，因为当时冷冻食品市场尚未形成。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;American consumers couldn&rsquo;t resist the combination of a trusted brand name, a single-serving package and the convenience of a meal that could be ready after only 25 minutes in a hot oven.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">American consumers couldn&rsquo;t resist the combination.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Three parallel noun phrases (&lsquo;a trusted brand name / a single-serving package / the convenience of a meal&rsquo;) inside &lsquo;the combination of&hellip;&rsquo;, plus the relative clause &lsquo;that could be ready after only 25 minutes&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Parallel structure</strong>: after &lsquo;the combination of&rsquo;, every item must be the same kind of phrase. Copy this pattern in Writing Task 2 when you list reasons.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Shoppers loved having all three things at once: a name they knew, a portion for one person, and a meal that took only 25 minutes to heat.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">值得信赖的品牌、单人份包装，加上只需在热烤箱中加热25分钟即可食用的便利，这样的组合让美国消费者无法抗拒。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;7)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The seven exam gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY from the passage</strong> in each gap &mdash; the writer&rsquo;s exact word, in the writer&rsquo;s exact form.</p><div class="ex-item"><span class="ex-num">1.</span><label>In the Andes 2,000 years ago, people preserved the nutritional value of <input type="text" class="blank" id="b1" data-answer="potatoes" placeholder="______"> by freezing and then drying them.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>In 1851, <input type="text" class="blank" id="b2" data-answer="butter" placeholder="______"> was kept cool by ice in specially adapted railway cars.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>In 1880, two kinds of <input type="text" class="blank" id="b3" data-answer="meat" placeholder="______"> became the first frozen food shipped from Australia to England.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Birdseye&rsquo;s quick-freezing methods reduced the damage caused by <input type="text" class="blank" id="b4" data-answer="crystals" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>He packaged products in <input type="text" class="blank" id="b5" data-answer="cellophane" placeholder="______">, so customers could see the product.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>In the early 1940s, frozen food became popular because of a shortage of <input type="text" class="blank" id="b6" data-answer="tin" placeholder="______">.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>By the 1950s a large number of American homes owned a <input type="text" class="blank" id="b7" data-answer="refrigerator" placeholder="______">.<span class="feedback" id="fb7"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>The frozen meat was still <input type="text" class="blank" id="b8" data-answer="palatable" placeholder="______"> (= good enough to eat), but its quality had fallen.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>There was some <input type="text" class="blank" id="b9" data-answer="deterioration" placeholder="______"> (= worsening in quality) during the voyage.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Cellophane was the first <input type="text" class="blank" id="b10" data-answer="transparent" placeholder="______"> (= see-through) material used for food packaging.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Birdseye <input type="text" class="blank" id="b11" data-answer="leased" placeholder="______"> (= rented out) freezer cases to grocery stores that could not buy them.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Canned food was <input type="text" class="blank" id="b12" data-answer="rationed" placeholder="______"> (= limited per person) to save metal for the war.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Frozen foods, by contrast, were <input type="text" class="blank" id="b13" data-answer="abundant" placeholder="______"> (= plentiful) and cheap.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The Inuit method fascinated Birdseye because the fish stayed <input type="text" class="blank" id="b14" data-answer="fresh" placeholder="______"> (= as if newly caught) for months.<span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Reading, the grammar of the sentence decides the form &mdash; meaning alone is not enough.</p><div class="ex-item"><span class="ex-num">1.</span><label>Natural ice was the main form of <input type="text" class="blank" id="b15" data-answer="refrigeration" placeholder="______"> (REFRIGERATE) until the late 19th century.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The Andean method preserved the <input type="text" class="blank" id="b16" data-answer="nutritional" placeholder="______"> (NUTRITION) value of the potatoes.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Birdseye was responsible for several key <input type="text" class="blank" id="b17" data-answer="innovations" placeholder="______"> (INNOVATE) in the industry.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Ice in the cells caused the food to <input type="text" class="blank" id="b18" data-answer="deteriorate" placeholder="______"> (DETERIORATION) in flavour.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>1950s families wanted <input type="text" class="blank" id="b19" data-answer="convenience" placeholder="______"> (CONVENIENT) at mealtimes.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>New technology finally made refrigerators <input type="text" class="blank" id="b20" data-answer="affordable" placeholder="______"> (AFFORD) for ordinary families.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The TV Dinner needed only a <input type="text" class="blank" id="b21" data-answer="minimum" placeholder="______"> (MINIMAL) of effort to prepare.<span class="feedback" id="fb21"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never copies the passage. Read the wording used in the questions, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Notes: &ldquo;kept cool by ice during transportation in specially adapted trains&rdquo; &rarr; Passage: blocks of ice in <input type="text" class="blank" id="b22" data-answer="insulated" placeholder="______"> rail cars.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Notes: &ldquo;so the product was visible&rdquo; &rarr; Passage: the first <input type="text" class="blank" id="b23" data-answer="transparent" placeholder="______"> material for food packaging.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Notes: &ldquo;a shortage of&hellip;&rdquo; &rarr; Passage: canned foods were rationed to save <input type="text" class="blank" id="b24" data-answer="tin" placeholder="______"> for the war effort.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q11: &ldquo;invested a great deal of money in the promotion&rdquo; &rarr; Passage: a huge <input type="text" class="blank" id="b25" data-answer="advertising" placeholder="______"> budget.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q12: &ldquo;a new style of container&rdquo; &rarr; Passage: the <input type="text" class="blank" id="b26" data-answer="same" placeholder="______"> segmented aluminium tray used by airlines.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q10: &ldquo;in order to learn how the Inuit froze fish&rdquo; &rarr; Passage: he went to Labrador to <input type="text" class="blank" id="b27" data-answer="trap" placeholder="______"> and trade furs.<span class="feedback" id="fb27"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Linkers and Reference Words</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to build its long sentences and its timeline.</p><div class="ex-item"><span class="ex-num">1.</span><label>Ship owners <input type="text" class="blank" id="b28" data-answer="had" placeholder="______"> enormous blocks of ice towed across the Atlantic. (causative: arrange for someone else to do it)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label><input type="text" class="blank" id="b29" data-answer="While" placeholder="______"> the food was still palatable, there was some deterioration. (concession: although)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&hellip;a market <input type="text" class="blank" id="b30" data-answer="that" placeholder="______"> wasn&rsquo;t established yet. (defining relative pronoun for a thing)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label><input type="text" class="blank" id="b31" data-answer="few" placeholder="______"> grocery stores could afford freezers &mdash; that is, almost none of them could. (negative quantifier, no article)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Sales increased in the early 1940s, <input type="text" class="blank" id="b32" data-answer="when" placeholder="______"> World War II gave a boost to the industry. (relative adverb of time)<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Frozen foods were abundant and cheap, <input type="text" class="blank" id="b33" data-answer="while" placeholder="______"> canned foods were rationed. (linker showing contrast between two facts)<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>&hellip;a meal <input type="text" class="blank" id="b34" data-answer="that" placeholder="______"> could be ready after only 25 minutes in a hot oven. (relative pronoun introducing the selling point)<span class="feedback" id="fb34"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all seven come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>营养价值 &rarr; nutritional <input type="text" class="blank" id="b35" data-answer="value" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>为了保存食物 &rarr; for the <input type="text" class="blank" id="b36" data-answer="purpose" placeholder="______"> of food preservation<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>速冻技术 &rarr; quick-freezing <input type="text" class="blank" id="b37" data-answer="techniques" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>单人份包装 &rarr; a single-serving <input type="text" class="blank" id="b38" data-answer="package" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>一炮而红 &rarr; an instant <input type="text" class="blank" id="b39" data-answer="success" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>年营业额 &rarr; an annual <input type="text" class="blank" id="b40" data-answer="turnover" placeholder="______"><span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>家庭自用消费 &rarr; home <input type="text" class="blank" id="b41" data-answer="consumption" placeholder="______"><span class="feedback" id="fb41"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; why early frozen meat was disappointing</strong></p><p>Follow the chain in one sentence: <em>crystals formed within the cells</em> &rarr; <em>the ice expanded</em> &rarr; <em>the cells burst</em> &rarr; <em>this spoilt the flavor and texture</em>. Birdseye&rsquo;s solution reverses the chain: quick-freezing &lsquo;reduced the damage that crystals caused&rsquo;. That single link supplies Q4 (<strong>crystals</strong>) and makes Q9 <strong>TRUE</strong>. When a passage builds a chain like this, the answer is usually the <em>first</em> item in it &mdash; the root cause.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;while&rsquo; does two different jobs here</strong></p><p>&ldquo;<em>While</em> the food frozen this way was still palatable, there was some deterioration&rdquo; = <em>although</em> (concession). But &ldquo;Canned foods were rationed&hellip;, <em>while</em> frozen foods were abundant and cheap&rdquo; = <em>whereas</em> (comparison of two facts). Same word, two meanings &mdash; decide which one you are reading before you judge a True/False statement.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the missing comparison in Question 13</strong></p><p>The final paragraph is full of numbers: $67 billion turnover, $26.6 billion for home consumption, a third of food service sales. But nowhere does the writer compare the US industry with any other country. A statement containing a superlative (&lsquo;the largest in the world&rsquo;, &lsquo;the fastest growing&rsquo;) is <strong>NOT GIVEN</strong> unless the passage itself makes that comparison. Numbers on the page are not the same as a ranking.</p></div>
+<div class="card"><p><strong>Examples &mdash; specific instances stand for a general category</strong></p><p>&ldquo;A shipment of Australian <em>beef and mutton</em> was sent, frozen, to England&rdquo;, and two lines earlier the passage says cattlemen realised they could &ldquo;export <em>meat</em> across the oceans&rdquo;. The notes ask for &lsquo;Two kinds of (3)&rsquo;, so you need the <strong>category word</strong> that covers both examples: <em>meat</em>. Practise moving up and down this ladder &mdash; examples &harr; category &mdash; because summary and note tasks constantly demand it.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; free explanations inside commas</strong></p><p>&ldquo;&hellip;the use of cellophane, <em>the first transparent material for food packaging</em>, which allowed consumers to see the quality of the product.&rdquo; The commas hand you a definition, and the relative clause hands you the <em>purpose</em>. That purpose is exactly how the note phrases Q5 (&lsquo;so the product was visible&rsquo;), which is how you know cellophane is the answer even if you have never met the word.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; the shape of the 1930s paragraph</strong></p><p>Problem 1: shops could not afford freezers &rarr; Solution: he <em>leased</em> them cheap freezer cases. Problem 2: he could not ship nationwide &rarr; Solution: he leased <em>insulated railroad cars</em>. Problem 3: home freezers were too small &rarr; no solution yet &mdash; and that unsolved problem is what the 1950s paragraph finally answers with the <em>refrigerator</em> (Q7). Reading the paragraph as problem&ndash;solution tells you where the story must go next.</p></div>
+<div class="card"><p><strong>Chronology &mdash; the dates are the index to this passage</strong></p><p>10,000 years ago (ice storage) &rarr; 2,000 years ago (Andean potatoes, <strong>Q1</strong>) &rarr; early 1800s (Boston ice, <strong>Q8</strong>) &rarr; 1851 (butter by rail, <strong>Q2</strong>) &rarr; 1870 (mechanical ice) &rarr; 1880 (frozen meat to England, <strong>Q3, Q9</strong>) &rarr; 1912 (Labrador, <strong>Q10</strong>) &rarr; 1917&ndash;29 (Birdseye&rsquo;s freezers, <strong>Q4, Q5</strong>) &rarr; 1930s (obstacles) &rarr; early 1940s (tin, <strong>Q6</strong>) &rarr; 1953 (33 million fridges, <strong>Q7</strong>) &rarr; 1954 (TV Dinner, <strong>Q11, Q12</strong>) &rarr; today (<strong>Q13</strong>). Mark these dates in the margin while you skim and you will never search twice.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; reporting, with one dry joke</strong></p><p>The tone is neutral and factual: the writer explains, dates and quantifies, but does not praise or condemn frozen food. The only flicker of personality is &ldquo;This preserved their nutritional value &mdash; <em>if not their aesthetic appeal</em>&rdquo;, a quiet joke that the freeze-dried potatoes looked terrible. Because the passage reports information rather than argues a case, the task uses TRUE/FALSE/NOT GIVEN, not YES/NO/NOT GIVEN &mdash; and you must never mark a statement FALSE simply because the writer sounds unenthusiastic.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Notes Completion (Q1&ndash;7): use the date headings as an index</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD ONLY, copied from the passage. Each note block prints a year and a country, so you never need to search the whole text.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q1 potatoes</b> &mdash; heading &lsquo;2,000 years ago, South America&rsquo;. The passage: &lsquo;the inhabitants of South America&rsquo;s Andean mountains had a unique means of conserving <em>potatoes</em>&hellip; This preserved their nutritional value&rsquo;. The freezing-then-drying method is already in the note, so the gap must be the food.</li><li><b>Q2 butter</b> &mdash; heading &lsquo;1851, USA&rsquo;. &lsquo;Railroads first began putting blocks of ice in insulated rail cars to send <em>butter</em>&hellip;&rsquo;. &lsquo;Specially adapted trains&rsquo; = &lsquo;insulated rail cars&rsquo;.</li><li><b>Q3 meat</b> &mdash; heading &lsquo;1880, Australia&rsquo;. The two kinds are beef and mutton, but you may write only ONE word, so use the category word the passage itself supplies: &lsquo;they could export <em>meat</em> across the oceans&rsquo;.</li><li><b>Q4 crystals</b> &mdash; &lsquo;quick-freezing techniques that reduced the damage that <em>crystals</em> caused&rsquo;. The note says &lsquo;so that (4) did not spoil the food&rsquo;; the verb is plural, so keep the -s.</li><li><b>Q5 cellophane</b> &mdash; &lsquo;the use of <em>cellophane</em>, the first transparent material for food packaging, which allowed consumers to see the quality&rsquo; = &lsquo;so the product was visible&rsquo;.</li><li><b>Q6 tin</b> &mdash; &lsquo;<em>tin</em> was being used for munitions. Canned foods were rationed to save tin&rsquo;. The note says &lsquo;a shortage of&rsquo;, so name the metal, not the cans.</li><li><b>Q7 refrigerator</b> &mdash; &lsquo;By 1953, 33 million US families owned a <em>refrigerator</em>&rsquo;. &lsquo;A large number of homes&rsquo; = &lsquo;33 million US families&rsquo;. The note uses &lsquo;a&rsquo;, so the singular form is required.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> read each completed note aloud. If it is not grammatical English, or if it needs two words, you have taken the wrong word.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; TRUE / FALSE / NOT GIVEN (Q8&ndash;13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide for yourself first, then read the reason. Remember: FALSE = the passage says the opposite; NOT GIVEN = the passage simply never says.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>8. The ice business made some Boston ship owners very wealthy.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; we are told they had ice towed across the Atlantic for food preservation, and nothing at all about their profits. Plausible is not the same as stated.</li><li><b>9. A disadvantage of the Australian process was that it affected the taste of food.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;there was some deterioration&hellip; this spoilt the <em>flavor</em> and texture&rsquo;. Flavour = taste.</li><li><b>10. Birdseye travelled to Labrador in order to learn how the Inuit froze fish.</b> &rarr; <strong>FALSE</strong> &mdash; he &lsquo;ran out of money and went to Labrador <em>to trap and trade furs</em>&rsquo;; only &lsquo;<em>while he was there</em>&rsquo; did he become fascinated by the fish. The statement changes his purpose.</li><li><b>11. Swanson invested a great deal of money in promoting the TV Dinner.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;with the help of a clever name and a <em>huge advertising budget</em>&rsquo;. Advertising budget = money spent on promotion.</li><li><b>12. Swanson developed a new style of container for the launch.</b> &rarr; <strong>FALSE</strong> &mdash; the meal came &lsquo;in the <em>same</em> segmented aluminum tray <em>that was used by airlines</em>&rsquo;. Borrowed, therefore not new.</li><li><b>13. The US frozen food industry is currently the largest in the world.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; the last paragraph gives US figures only and makes no international comparison.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> underline the risky word in each statement &mdash; <em>wealthy, taste, in order to, a great deal, new, largest</em>. That word, not the topic, decides the answer.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? Train yourself to jump to the right block instead of re-reading from the beginning.</p><ul style="margin-left:18px;line-height:1.9;"><li>How ancient peoples freeze-dried food &rarr; paragraph 1 (Andes, 2,000 years ago).</li><li>Ice moved by ship and by rail &rarr; paragraph 2 (early 1800s, 1851).</li><li>How a refrigeration machine actually works &rarr; paragraph 3 (compressor, condenser, evaporator) &mdash; a &lsquo;no-question zone&rsquo;: skim it.</li><li>Why early frozen meat lost quality &rarr; paragraph 4 (1880, crystals, cells burst).</li><li>Where Birdseye got his idea &rarr; paragraph 5 (Labrador, Inuit).</li><li>His three innovations &rarr; paragraph 7 (quick-freezing, freezing in the package, cellophane).</li><li>Why shops and homes could not use frozen food yet &rarr; paragraph 8 (the 1930s obstacles).</li><li>The wartime boost and the spread of home fridges &rarr; paragraph 9 (early 1940s, 1953).</li><li>The TV Dinner story &rarr; paragraph 10 (1954, 13 million sold, $2.7 billion by 1959).</li><li>The size of the industry now &rarr; the final paragraph.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in a chronological passage, pencil the year beside each paragraph while you skim. It is the cheapest index you will ever build, and it works for every question type.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Not in the real test, but built from this passage. Complete each sentence with NO MORE THAN TWO WORDS from the passage, then check against the Answer Key tab.</p><ol style="margin-left:18px;line-height:1.9;"><li>The Andean method involved freezing the potatoes overnight and then trampling them to remove the __________. <em>(moisture)</em></li><li>Until late in the 19th century, __________ was the main form of refrigeration. <em>(natural ice)</em></li><li>The Australian invention was originally designed to keep __________ cool. <em>(beer)</em></li><li>Birdseye stayed with General Foods as __________ of research. <em>(director)</em></li><li>To reach shops across the country, he leased insulated __________. <em>(railroad cars)</em></li><li>Within a year of its launch, Swanson had sold __________ TV dinners. <em>(13 million)</em></li></ol><p style="margin-top:10px;"><b>Why this drill matters:</b> sentence completion punishes over-copying. Take the shortest phrase that answers the question and still fits the grammar.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Summary completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read this summary of the final third of the passage. Each gap needs ONE WORD from the text. Answers are given in italics so you can self-check immediately.</p><p style="line-height:2;">In the 1930s few shops could afford freezers, so Birdseye <b>__________</b> <em>(leased)</em> cheap freezer cases to them and did the same with insulated railroad cars. Home freezers, however, were still too small. Sales finally rose in the early 1940s because <b>__________</b> <em>(tin)</em> was needed for munitions, so canned food was <b>__________</b> <em>(rationed)</em> while frozen food stayed plentiful. By the 1950s better technology had made these <b>__________</b> <em>(appliances)</em> affordable, and manufacturers were enlarging the freezer <b>__________</b> <em>(compartments)</em>. In 1954 Swanson combined a clever name, a large advertising budget and an aluminium tray borrowed from <b>__________</b> <em>(airlines)</em> to launch the TV Dinner, which was an instant <b>__________</b> <em>(success)</em>.</p><p style="margin-top:10px;"><b>Technique:</b> read the whole summary once before writing anything. The grammar around each gap (article, plural, verb form) rules out most candidate words before you even look back at the passage.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Matching dates and people (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">A quick memory check on the timeline. Match each date to what happened; then cover the answers and say them aloud.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>1851</b> &mdash; ice-filled insulated rail cars carry butter from Ogdensburg to Boston.</li><li><b>1870</b> &mdash; Australian inventors produce &lsquo;mechanical ice&rsquo;, first used to cool beer.</li><li><b>1880</b> &mdash; frozen Australian beef and mutton reach England.</li><li><b>1912</b> &mdash; Birdseye, out of money, goes to Labrador to trade furs.</li><li><b>1917</b> &mdash; he returns to the USA and starts building quick-freezing machines.</li><li><b>1929</b> &mdash; his business is sold and becomes General Foods; he stays as director of research.</li><li><b>1953</b> &mdash; 33 million US families own a refrigerator.</li><li><b>1954</b> &mdash; Swanson launches the first TV Dinner; 13 million are sold within a year.</li><li><b>1959</b> &mdash; Americans spend $2.7 billion a year on frozen food, half a billion of it on ready meals.</li></ul><p style="margin-top:10px;"><b>Exam value:</b> in a date-heavy passage, examiners build distractors out of neighbouring years (1912 vs 1917, 1953 vs 1954). Always match the date to the <em>event</em>, never to the nearest number.</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What did the Andean method preserve, according to the passage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. The appearance of the potatoes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. The nutritional value of the potatoes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. The moisture in the potatoes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. The size of the potatoes.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What was carried in the insulated rail cars of 1851?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Beef</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Fish</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Butter</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Potatoes</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What was the Australian refrigeration invention of 1870 originally intended for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Keeping beer cool in hot weather.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Exporting meat to England.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Freezing fish at sea.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Storing ice on ships.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why did the early frozen meat lose quality?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. The ships were too slow.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Ice crystals expanded and burst the cells.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. The meat was not packaged.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. The temperature was not low enough.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why did Clarence Birdseye go to Labrador in 1912?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. To study Inuit freezing methods.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. To sell frozen fish.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. To trap and trade furs after running out of money.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. To finish his biology degree.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Which of these was NOT one of Birdseye&rsquo;s innovations?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Quick-freezing to reduce crystal damage.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Freezing food inside its selling package.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Using cellophane so customers could see the food.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Inventing the segmented aluminium tray.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'D')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why did Birdseye lease freezer cases to grocery stores in the 1930s?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Because the stores could not afford to buy them for an unproven market.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Because the law required it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Because his own freezers were too large.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Because consumers demanded it.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How did World War II help the frozen food industry?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Soldiers were given frozen rations.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Tin went to munitions, so canned food was rationed while frozen food stayed plentiful.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Factories were converted into freezer plants.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Refrigerators became cheaper during the war.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What does the passage say about US families in 1953?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. 33 million of them owned a refrigerator.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. 13 million of them bought a TV Dinner.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. They spent $2.7 billion on frozen food.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Half of them owned a freezer.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which combination made the TV Dinner irresistible to consumers?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Low price, large portions and free delivery.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. A trusted brand, a single-serving package and a 25-minute cooking time.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Fresh ingredients, a clever name and a reusable tray.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Nationwide advertising, a low price and a money-back guarantee.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Question 13 says the US frozen food industry is currently the largest in the world. Why is it NOT GIVEN?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. The passage says it is the second largest.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. The passage gives US figures but never compares countries.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. The passage says the figures are out of date.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The passage only discusses restaurants.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the fastest way to locate answers in this passage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Read every paragraph twice.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Use the dates, which run in order from ancient times to today.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Search for the word &lsquo;frozen&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Read the last paragraph first.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1–13</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">potatoes</div><div class="answer-note">Paragraph 1: &lsquo;the inhabitants of South America&rsquo;s Andean mountains had a unique means of conserving <em>potatoes</em> for later consumption&hellip; This preserved their nutritional value.&rsquo; The note&rsquo;s &lsquo;freezing then drying&rsquo; = froze them overnight&hellip; then dried them in the sun.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">butter</div><div class="answer-note">Paragraph 2: &lsquo;railroads first began putting blocks of ice in insulated rail cars to send <em>butter</em> from Ogdensburg, New York, to Boston.&rsquo; &lsquo;Specially adapted trains&rsquo; = &lsquo;insulated rail cars&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">meat</div><div class="answer-note">The 1880 shipment was &lsquo;Australian beef and mutton&rsquo; &mdash; two kinds of <em>meat</em>, the word the passage uses just before: &lsquo;they could export meat across the oceans&rsquo;. ONE WORD ONLY, so the category word is required.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">crystals</div><div class="answer-note">Birdseye &lsquo;developed quick-freezing techniques that reduced the damage that <em>crystals</em> caused&rsquo;. Keep the plural: the note reads &lsquo;so that (4) did not spoil the food&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">cellophane</div><div class="answer-note">&lsquo;He also introduced the use of <em>cellophane</em>, the first transparent material for food packaging, which allowed consumers to see the quality of the product.&rsquo; &lsquo;Transparent&rsquo; = &lsquo;the product was visible&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">tin</div><div class="answer-note">&lsquo;World War II gave a boost to the frozen food industry because <em>tin</em> was being used for munitions. Canned foods were rationed to save tin&hellip;&rsquo; The shortage is of the metal, not of cans.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">refrigerator</div><div class="answer-note">&lsquo;By 1953, 33 million US families owned a <em>refrigerator</em>.&rsquo; &lsquo;A large number of homes&rsquo; paraphrases &lsquo;33 million US families&rsquo;; the note&rsquo;s &lsquo;a&rsquo; requires the singular.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 2 states only that Boston ship owners had Arctic ice towed across the Atlantic &lsquo;for the purpose of food preservation&rsquo;. Their wealth or profits are never mentioned anywhere in the passage.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">TRUE</div><div class="answer-note">&lsquo;While the food frozen this way was still palatable, there was some deterioration&hellip; this spoilt the <em>flavor</em> and texture of the food.&rsquo; Flavour = taste, so the Australian process did affect the taste.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">FALSE</div><div class="answer-note">He &lsquo;ran out of money and went to Labrador in Canada <em>to trap and trade furs</em>&rsquo;; only &lsquo;while he was there&rsquo; did he become fascinated with the Inuit method. The statement misstates his purpose.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">TRUE</div><div class="answer-note">&lsquo;&hellip;with the help of a clever name and a <em>huge advertising budget</em>, it launched the first &ldquo;TV Dinner&rdquo;.&rsquo; A huge advertising budget = a great deal of money invested in promotion.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">FALSE</div><div class="answer-note">The meal came &lsquo;in the <em>same</em> segmented aluminum tray <em>that was used by airlines</em>&rsquo; &mdash; an existing container borrowed from another industry, not a new style developed by Swanson.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">The final paragraph gives US turnover figures ($67 billion in total, $26.6 billion for home consumption) but never compares the US industry with that of any other country, so no ranking can be confirmed.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;7)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">potatoes</div><div class="answer-note">In the Andes 2,000 years ago, people preserved the nutritional value of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">butter</div><div class="answer-note">In 1851,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">meat</div><div class="answer-note">In 1880, two kinds of</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">crystals</div><div class="answer-note">Birdseye&rsquo;s quick-freezing methods reduced the damage caused by</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">cellophane</div><div class="answer-note">He packaged products in</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">tin</div><div class="answer-note">In the early 1940s, frozen food became popular because of a shortage of</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">refrigerator</div><div class="answer-note">By the 1950s a large number of American homes owned a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">palatable</div><div class="answer-note">The frozen meat was still</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">deterioration</div><div class="answer-note">There was some</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">transparent</div><div class="answer-note">Cellophane was the first</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">leased</div><div class="answer-note">Birdseye</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">rationed</div><div class="answer-note">Canned food was</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">abundant</div><div class="answer-note">Frozen foods, by contrast, were</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">fresh</div><div class="answer-note">The Inuit method fascinated Birdseye because the fish stayed</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">refrigeration</div><div class="answer-note">Natural ice was the main form of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">nutritional</div><div class="answer-note">The Andean method preserved the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">innovations</div><div class="answer-note">Birdseye was responsible for several key</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">deteriorate</div><div class="answer-note">Ice in the cells caused the food to</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">convenience</div><div class="answer-note">1950s families wanted</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">affordable</div><div class="answer-note">New technology finally made refrigerators</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">minimum</div><div class="answer-note">The TV Dinner needed only a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">insulated</div><div class="answer-note">Notes: &ldquo;kept cool by ice during transportation in specially adapted trains&rdquo; &rarr; Passage: blocks of ice in</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">transparent</div><div class="answer-note">Notes: &ldquo;so the product was visible&rdquo; &rarr; Passage: the first</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">tin</div><div class="answer-note">Notes: &ldquo;a shortage of&hellip;&rdquo; &rarr; Passage: canned foods were rationed to save</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">advertising</div><div class="answer-note">Q11: &ldquo;invested a great deal of money in the promotion&rdquo; &rarr; Passage: a huge</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">same</div><div class="answer-note">Q12: &ldquo;a new style of container&rdquo; &rarr; Passage: the</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">trap</div><div class="answer-note">Q10: &ldquo;in order to learn how the Inuit froze fish&rdquo; &rarr; Passage: he went to Labrador to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Linkers and Reference Words</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">had</div><div class="answer-note">Ship owners</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">While</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">that</div><div class="answer-note">&hellip;a market</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">few</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">when</div><div class="answer-note">Sales increased in the early 1940s,</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">while</div><div class="answer-note">Frozen foods were abundant and cheap,</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">that</div><div class="answer-note">&hellip;a meal</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">value</div><div class="answer-note">营养价值 &rarr; nutritional</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">purpose</div><div class="answer-note">为了保存食物 &rarr; for the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">techniques</div><div class="answer-note">速冻技术 &rarr; quick-freezing</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">package</div><div class="answer-note">单人份包装 &rarr; a single-serving</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">success</div><div class="answer-note">一炮而红 &rarr; an instant</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">turnover</div><div class="answer-note">年营业额 &rarr; an annual</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">consumption</div><div class="answer-note">家庭自用消费 &rarr; home</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. The nutritional value of the potatoes.</div><div class="answer-note">&lsquo;This preserved their nutritional value &mdash; if not their aesthetic appeal.&rsquo; The dash tells you the looks were <em>not</em> preserved.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. Butter</div><div class="answer-note">Blocks of ice were put in insulated rail cars &lsquo;to send butter from Ogdensburg, New York, to Boston&rsquo; &mdash; the answer to Q2.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. Keeping beer cool in hot weather.</div><div class="answer-note">&lsquo;Initially, this process was invented to keep Australian beer cool&hellip; But Australian cattlemen were quick to realize&hellip;&rsquo; The meat export came second.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. Ice crystals expanded and burst the cells.</div><div class="answer-note">&lsquo;Crystals formed within the cells&hellip; the ice expanded and the cells burst&hellip; this spoilt the flavor and texture.&rsquo; This makes Q9 TRUE and supplies the Q4 answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. To trap and trade furs after running out of money.</div><div class="answer-note">His <em>purpose</em> was furs; the interest in freezing came &lsquo;while he was there&rsquo;. That distinction is exactly why Q10 is FALSE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">D. Inventing the segmented aluminium tray.</div><div class="answer-note">The tray belongs to the Swanson TV Dinner story, and even there it was borrowed from airlines &mdash; the source of the Q12 trap.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A. Because the stores could not afford to buy them for an unproven market.</div><div class="answer-note">&lsquo;Few grocery stores could afford to buy freezers for a market that wasn&rsquo;t established yet.&rsquo; Note that &lsquo;few&rsquo; here means &lsquo;almost none&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Tin went to munitions, so canned food was rationed while frozen food stayed plentiful.</div><div class="answer-note">This sentence supplies Q6: the shortage was of <em>tin</em>, not of cans or of food generally.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A. 33 million of them owned a refrigerator.</div><div class="answer-note">Keep the figures apart: 33 million fridges (1953), 13 million TV dinners (within a year of 1954), $2.7 billion spent (1959).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. A trusted brand, a single-serving package and a 25-minute cooking time.</div><div class="answer-note">The passage lists exactly three things after &lsquo;the combination of&rsquo;. Parallel lists like this are favourite sources of multiple-choice options.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. The passage gives US figures but never compares countries.</div><div class="answer-note">A superlative needs a comparison in the text. $67 billion is a fact about the USA, not a ranking against other nations.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Use the dates, which run in order from ancient times to today.</div><div class="answer-note">The notes even print the years above the gaps (1851, 1880, 1917 onwards&hellip;). In a chronological text the timeline is a ready-made index.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

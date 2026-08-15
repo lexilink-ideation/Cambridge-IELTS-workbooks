@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Reading Passage 2</h1>
+    <h2>Can the Planet&rsquo;s Coral Reefs Be Saved? &middot; Matching Headings + Multiple Choice + Sentence Completion (Q14&ndash;26)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage is a <strong>news-style report</strong> built around a new artificial coral reef at London Zoo. Sections A&ndash;C explain what the exhibit is, how corals actually work (tiny animals called polyps living with algae) and why the nickname &lsquo;rainforests of the sea&rsquo; is disputed. Sections D&ndash;F turn to the threats &mdash; warming, bleaching, acidification, pollution &mdash; and then to the research at the zoo that is trying to find tougher corals and make them breed more often. The last section explains why showing this work to the public matters.</p></div><div class="card"><p><strong>What the passage argues:</strong> That coral reefs are both extraordinarily valuable and extraordinarily fragile &mdash; they are the first part of the ocean to show that something is wrong &mdash; but that laboratory research into heat-tolerant species and artificial spawning, displayed to the public in exhibits like London Zoo&rsquo;s <em>Tiny Giants</em>, gives a genuine reason for hope.</p><p><strong>段落结构 Structure:</strong> A段：伦敦动物园新建人工珊瑚礁展馆 Tiny Giants，策展人提出两个目的（展示珊瑚之美 + 展示保护研究）。B段：珊瑚的生物学——水螅体（polyps）与藻类的共生关系，覆盖0.1%的海床却养活25%以上的海洋物种。C段：&ldquo;海中雨林&rdquo;这一比喻引发的争议，Attenborough 认为珊瑚礁更胜雨林。D段：威胁清单——热压力与白化、酸化、海平面上升、污染、缺氧、洋流变化；2050年前或损失90%以上。E段：动物园实验室的两项研究——寻找耐热耐酸物种、提高繁殖/产卵频率。F段：全球实验室网络与公众教育，结尾强调希望。</p><p><strong>Task type:</strong> <strong>Q14&ndash;19 Matching Headings</strong> (six sections A&ndash;F, seven headings i&ndash;vii &mdash; one is never used), <strong>Q20&ndash;21 and Q22&ndash;23 Multiple Choice, choose TWO letters</strong> (both answers must be right to score both marks; order does not matter), and <strong>Q24&ndash;26 Sentence Completion</strong> &mdash; <em>ONE WORD ONLY</em> from the passage.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Three task types share one short passage, and they run <em>in passage order</em>, so never search from the top twice. For <strong>Matching Headings</strong> (Q14&ndash;19) read the <em>first and last sentence</em> of each section and ask &lsquo;what is this section <em>doing</em>?&rsquo; &mdash; describing, disagreeing, warning, or hoping. For the two <strong>choose-TWO</strong> questions (Q20&ndash;23) tick options only when you can put your finger on the exact words; five plausible options are designed so that three of them are things you &lsquo;know&rsquo; about reefs but the writer never says. For <strong>sentence completion</strong> (Q24&ndash;26) the limit is <em>ONE WORD ONLY</em> &mdash; copy the spelling from the passage, including the British spelling <em>colour</em>.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Heading i is a decoy</b> &mdash; &lsquo;Tried and tested solutions&rsquo; sounds perfect for Section E, but the research there is <em>new and unfinished</em> (&lsquo;scientists <em>will be</em> studying&rsquo;, &lsquo;we could <em>consider</em>&rsquo;). Nothing in this passage has been tried and tested, so heading i is the one that stays unused.</li><li><b>Q20&ndash;21: what you know vs what is written</b> &mdash; overfishing (B) and marine disease (D) are real reef problems and extreme storms (A) sound like climate change, but the writer&rsquo;s list is exact: thermal stress, acidification, sea level increase, <em>pollution by humans</em>, deoxygenation and <em>ocean current changes</em>. Only C and E are in it.</li><li><b>Q22&ndash;23 option shift</b> &mdash; in this question the distractor D (&lsquo;creating artificial reefs that corals could grow on&rsquo;) borrows the words &lsquo;artificial reef&rsquo; from Section A, where they describe a <em>display tank</em>, not a research project. Repeated words are the bait.</li><li><b>Q24 plural</b> &mdash; the sentence says &lsquo;a number of&rsquo;, so the gap needs the plural <em>tentacles</em>. Copying the singular loses the mark even though the word is right.</li><li><b>Q25 wrong direction</b> &mdash; the passage sentence gives two benefits at once: the algae get <em>protection</em>, the polyps get <em>nutrients</em>. Read carefully which partner the question is asking about. Q25 asks what the <em>algae</em> gain.</li><li><b>Q26 spelling</b> &mdash; the passage is British English: <em>colour</em>, not &lsquo;color&rsquo;. Copy what is printed. Also note the verb: bleaching &lsquo;<em>strips</em> reefs of their colour&rsquo; = &lsquo;remove&rsquo;.</li><li><b>Percentages that are not answers</b> &mdash; 0.1%, 25% and 90% all appear within a few lines. Attach each number to its own idea: ocean bed covered / marine species housed / reefs that could be lost by 2050.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">artificial</span></td><td><span class="pos">adj.</span></td><td>made by people rather than existing in nature</td><td class="zh">人造的；人工的</td><td>&ldquo;&hellip;a giant <em>artificial</em> reef they have been assembling&hellip;&rdquo;</td><td class="note">Section A. Careful in Q22&ndash;23: the artificial reef is a <em>display tank</em>, not a research method for growing wild coral.</td></tr>
+<tr><td><span class="word">assemble</span></td><td><span class="pos">v.</span></td><td>to put the parts of something together</td><td class="zh">组装；搭建</td><td>&ldquo;&hellip;a giant artificial reef they have been <em>assembling</em>&hellip;&rdquo;</td><td class="note">Present perfect continuous here &mdash; the work has been going on for a long time and has just finished.</td></tr>
+<tr><td><span class="word">thrive</span></td><td><span class="pos">v.</span></td><td>to grow well and be healthy</td><td class="zh">茁壮成长；繁盛</td><td>&ldquo;&hellip;fish that <em>thrive</em> in their presence&hellip;&rdquo;</td><td class="note">Collocation: thrive <em>in</em> a place / condition. Paraphrase family: flourish, do well, prosper.</td></tr>
+<tr><td><span class="word">minuscule</span></td><td><span class="pos">adj.</span></td><td>extremely small</td><td class="zh">极小的；微小的</td><td>&ldquo;&hellip;dedicated to the <em>minuscule</em> invertebrate creatures&hellip;&rdquo;</td><td class="note">Note the ironic exhibit name <em>Tiny Giants</em>: tiny animals with a giant role.</td></tr>
+<tr><td><span class="word">invertebrate</span></td><td><span class="pos">n. / adj.</span></td><td>an animal without a backbone</td><td class="zh">无脊椎动物</td><td>&ldquo;&hellip;the minuscule <em>invertebrate</em> creatures that sustain life&hellip;&rdquo;</td><td class="note">Corals, molluscs and sponges are all invertebrates. Opposite: vertebrate (fish, birds, mammals).</td></tr>
+<tr><td><span class="word">sustain</span></td><td><span class="pos">v.</span></td><td>to keep something alive or in existence</td><td class="zh">维持；支撑</td><td>&ldquo;&hellip;creatures that <em>sustain</em> life across the planet.&rdquo;</td><td class="note">Strong verb for &lsquo;support&rsquo;. Related: sustainable, sustainability &mdash; core IELTS environment words.</td></tr>
+<tr><td><span class="word">diverse</span></td><td><span class="pos">adj.</span></td><td>containing many different kinds</td><td class="zh">多样的</td><td>&ldquo;Coral reefs are the most <em>diverse</em> ecosystems on Earth&hellip;&rdquo;</td><td class="note">Noun: diversity. Supports heading <em>v</em> for Section A only indirectly &mdash; the heading is about the curator&rsquo;s two aims, not about diversity.</td></tr>
+<tr><td><span class="word">curator</span></td><td><span class="pos">n.</span></td><td>a person in charge of a collection in a museum or zoo</td><td class="zh">（博物馆/动物园的）馆长；策展人</td><td>&ldquo;&hellip;said Paul Pearce-Kelly, senior <em>curator</em> of invertebrates and fish&hellip;&rdquo;</td><td class="note">The quoted expert. Every quotation in this passage is his except Attenborough&rsquo;s in Section C.</td></tr>
+<tr><td><span class="word">polyp</span></td><td><span class="pos">n.</span></td><td>a tiny simple sea animal with a tube-shaped body and tentacles</td><td class="zh">（珊瑚）水螅体</td><td>&ldquo;Corals are composed of tiny animals, known as <em>polyps</em>&hellip;&rdquo;</td><td class="note"><strong>Key to Q24.</strong> The polyps are the animals; the tentacles are the parts that catch food.</td></tr>
+<tr><td><span class="word">tentacle</span></td><td><span class="pos">n.</span></td><td>a long thin arm-like part used for feeling or catching food</td><td class="zh">触手</td><td>&ldquo;&hellip;polyps, with <em>tentacles</em> for capturing small marine creatures&hellip;&rdquo;</td><td class="note"><strong>Answer to Q24.</strong> Keep the plural &mdash; the question says &lsquo;a number of&rsquo;.</td></tr>
+<tr><td><span class="word">transparent</span></td><td><span class="pos">adj.</span></td><td>clear, so that light passes through and you can see through it</td><td class="zh">透明的</td><td>&ldquo;These polyps are <em>transparent</em> but get their brilliant tones&hellip; from algae&hellip;&rdquo;</td><td class="note">Explains <em>why</em> bleaching happens: take the algae away and the colourless animal is all that is left.</td></tr>
+<tr><td><span class="word">algae</span></td><td><span class="pos">n. (pl.)</span></td><td>simple plant-like organisms that live in water</td><td class="zh">藻类</td><td>&ldquo;&hellip;from <em>algae</em> that live within them&hellip;&rdquo;</td><td class="note">Plural noun (singular: alga). Q25 asks what the algae <em>gain</em>: protection.</td></tr>
+<tr><td><span class="word">photosynthesise</span></td><td><span class="pos">v.</span></td><td>to make food from sunlight, as plants do</td><td class="zh">进行光合作用</td><td>&ldquo;&hellip;their <em>photosynthesising</em> of the sun&rsquo;s rays provides nutrients&hellip;&rdquo;</td><td class="note">Used here as a gerund (an -ing noun). British spelling with <em>-s-</em>.</td></tr>
+<tr><td><span class="word">symbiotic</span></td><td><span class="pos">adj.</span></td><td>describing a relationship in which two different living things both benefit</td><td class="zh">共生的</td><td>&ldquo;This comfortable <em>symbiotic</em> relationship has led to the growth of coral reefs&hellip;&rdquo;</td><td class="note">The single word that makes heading <em>ii</em> (&lsquo;Cooperation beneath the waves&rsquo;) fit Section B.</td></tr>
+<tr><td><span class="word">nutrient</span></td><td><span class="pos">n.</span></td><td>a substance that living things need in order to grow</td><td class="zh">养分；营养物质</td><td>&ldquo;&hellip;provides <em>nutrients</em> for the polyps.&rdquo;</td><td class="note">The polyps&rsquo; half of the deal. Do not confuse it with Q25, which asks about the algae.</td></tr>
+<tr><td><span class="word">dismiss</span></td><td><span class="pos">v.</span></td><td>to refuse to accept an idea; to say it is not worth considering</td><td class="zh">否定；不接受</td><td>&ldquo;&hellip;though the comparison is <em>dismissed</em> by some naturalists&hellip;&rdquo;</td><td class="note"><strong>Key to Q16.</strong> &lsquo;dismissed&rsquo; = disagreement &rarr; heading <em>iv</em>.</td></tr>
+<tr><td><span class="word">naturalist</span></td><td><span class="pos">n.</span></td><td>an expert in or student of natural history</td><td class="zh">博物学家；自然学家</td><td>&ldquo;&hellip;dismissed by some <em>naturalists</em>, including David Attenborough.&rdquo;</td><td class="note">Not the same as &lsquo;natural&rsquo;. &lsquo;including&rsquo; signals that Attenborough is one example of a group.</td></tr>
+<tr><td><span class="word">mind-blowing</span></td><td><span class="pos">adj.</span></td><td>extremely impressive or surprising</td><td class="zh">令人震撼的</td><td>&ldquo;The sight is <em>mind-blowing</em>.&rdquo;</td><td class="note">Informal, from a spoken quotation. IELTS passages keep the speaker&rsquo;s own register inside quotation marks.</td></tr>
+<tr><td><span class="word">thermal stress</span></td><td><span class="pos">n. phr.</span></td><td>damage caused to a living thing by temperatures that are too high</td><td class="zh">热压力；高温胁迫</td><td>&ldquo;&hellip;the most immediate problem coming in the form of <em>thermal stress</em>.&rdquo;</td><td class="note">The academic label for &lsquo;the sea is too hot&rsquo;. It causes bleaching, which causes death.</td></tr>
+<tr><td><span class="word">bleaching</span></td><td><span class="pos">n.</span></td><td>the process of losing colour and turning white</td><td class="zh">白化</td><td>&ldquo;Rising ocean temperatures are triggering <em>bleaching</em> events&hellip;&rdquo;</td><td class="note"><strong>Key to Q26.</strong> Bleaching &lsquo;strips reefs of their colour&rsquo; &mdash; strip of = remove from.</td></tr>
+<tr><td><span class="word">acidification</span></td><td><span class="pos">n.</span></td><td>the process of becoming more acidic</td><td class="zh">酸化</td><td>&ldquo;Other menaces include ocean <em>acidification</em>&hellip;&rdquo;</td><td class="note">Appears again in Section E (&lsquo;warm, acidic waters&rsquo;) &mdash; the condition the hardy corals must survive.</td></tr>
+<tr><td><span class="word">deoxygenation</span></td><td><span class="pos">n.</span></td><td>the loss of oxygen from water</td><td class="zh">脱氧；含氧量下降</td><td>&ldquo;&hellip;pollution by humans, <em>deoxygenation</em> and ocean current changes&hellip;&rdquo;</td><td class="note">A long word you do not need to define &mdash; you only need to see that it is one item on a list of threats.</td></tr>
+<tr><td><span class="word">menace</span></td><td><span class="pos">n.</span></td><td>a danger or threat</td><td class="zh">威胁；危险</td><td>&ldquo;Other <em>menaces</em> include ocean acidification&hellip;&rdquo;</td><td class="note">Synonym of &lsquo;threat&rsquo;. The list that follows it is the source of the Q20&ndash;21 answers.</td></tr>
+<tr><td><span class="word">erosion</span></td><td><span class="pos">n.</span></td><td>the gradual wearing away of something by water or wind</td><td class="zh">侵蚀</td><td>&ldquo;&hellip;really harsh conditions &mdash; wave <em>erosion</em> and other factors.&rdquo;</td><td class="note">Used to show corals are already tough &mdash; which makes their current dying even more alarming.</td></tr>
+<tr><td><span class="word">pinpoint</span></td><td><span class="pos">v.</span></td><td>to identify something exactly</td><td class="zh">精确找出；确定</td><td>&ldquo;&hellip;scientists are trying to <em>pinpoint</em> hardy types of coral&hellip;&rdquo;</td><td class="note"><strong>Key to Q22&ndash;23.</strong> &lsquo;pinpoint hardy types&rsquo; = &lsquo;identify corals that can cope well&rsquo;.</td></tr>
+<tr><td><span class="word">hardy</span></td><td><span class="pos">adj.</span></td><td>able to survive difficult conditions</td><td class="zh">耐寒的；能吃苦的；适应力强的</td><td>&ldquo;&hellip;<em>hardy</em> types of coral that could survive our overheated oceans&hellip;&rdquo;</td><td class="note">Paraphrase family: tough / resilient / able to cope. Do not read it as &lsquo;hardly&rsquo;.</td></tr>
+<tr><td><span class="word">spawn</span></td><td><span class="pos">v. / n.</span></td><td>(of fish or corals) to produce eggs</td><td class="zh">产卵</td><td>&ldquo;Coral <em>spawn</em> just once a year.&rdquo;</td><td class="note">Central to Q22&ndash;23: making corals spawn artificially = speeding up reproduction.</td></tr>
+<tr><td><span class="word">restoration</span></td><td><span class="pos">n.</span></td><td>the act of returning something to its earlier, better condition</td><td class="zh">恢复；修复</td><td>&ldquo;&hellip;which can assist coral reef <em>restoration</em> efforts.&rdquo;</td><td class="note">Verb: restore. Compare &lsquo;conservation&rsquo; (protecting what is left) with &lsquo;restoration&rsquo; (rebuilding).</td></tr>
+<tr><td><span class="word">blighted</span></td><td><span class="pos">adj.</span></td><td>spoiled or damaged</td><td class="zh">遭到破坏的；凋敝的</td><td>&ldquo;That would be a big help in restoring <em>blighted</em> reefs.&rdquo;</td><td class="note">Strong emotive adjective. Useful for Writing Task 2 on the environment.</td></tr>
+<tr><td><span class="word">crucial</span></td><td><span class="pos">adj.</span></td><td>extremely important</td><td class="zh">至关重要的</td><td>&ldquo;The <em>crucial</em> point is that the progress we make&hellip; can be shown to the public&hellip;&rdquo;</td><td class="note">A signpost word: what comes after it is the writer&rsquo;s main idea for Section F &rarr; heading <em>vi</em>.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">put the final touches to</span></td><td>finish the last small details of something</td><td class="zh">完成最后的收尾工作</td></tr>
+<tr><td><span class="phrase">world-renowned</span></td><td>famous everywhere in the world</td><td class="zh">举世闻名的</td></tr>
+<tr><td><span class="phrase">form the core of</span></td><td>be the central and most important part of</td><td class="zh">构成&hellip;的核心</td></tr>
+<tr><td><span class="phrase">dedicated to</span></td><td>created for one particular purpose or subject</td><td class="zh">专门用于；致力于</td></tr>
+<tr><td><span class="phrase">sustain life across the planet</span></td><td>keep living things alive everywhere on Earth</td><td class="zh">维系全球生命</td></tr>
+<tr><td><span class="phrase">carry out research</span></td><td>do a scientific study</td><td class="zh">开展研究</td></tr>
+<tr><td><span class="phrase">conservation efforts</span></td><td>organised work to protect nature</td><td class="zh">保护工作</td></tr>
+<tr><td><span class="phrase">be composed of</span></td><td>be made up of</td><td class="zh">由&hellip;组成</td></tr>
+<tr><td><span class="phrase">known as</span></td><td>called; named</td><td class="zh">被称为</td></tr>
+<tr><td><span class="phrase">capture small marine creatures</span></td><td>catch tiny sea animals</td><td class="zh">捕捉微小海洋生物</td></tr>
+<tr><td><span class="phrase">a symbiotic relationship</span></td><td>a partnership in which both sides benefit</td><td class="zh">共生关系</td></tr>
+<tr><td><span class="phrase">provide homes for</span></td><td>be the habitat of</td><td class="zh">为&hellip;提供栖息地</td></tr>
+<tr><td><span class="phrase">the rainforests of the sea</span></td><td>a nickname for coral reefs</td><td class="zh">海中雨林</td></tr>
+<tr><td><span class="phrase">dismiss the comparison</span></td><td>reject the idea that two things are alike</td><td class="zh">否定这一比较</td></tr>
+<tr><td><span class="phrase">under very serious threat</span></td><td>in great danger</td><td class="zh">面临严重威胁</td></tr>
+<tr><td><span class="phrase">in the form of</span></td><td>appearing as; taking the shape of</td><td class="zh">以&hellip;的形式</td></tr>
+<tr><td><span class="phrase">trigger bleaching events</span></td><td>cause episodes of coral turning white</td><td class="zh">引发白化事件</td></tr>
+<tr><td><span class="phrase">strip something of its colour</span></td><td>take the colour completely away from something</td><td class="zh">使&hellip;失去颜色</td></tr>
+<tr><td><span class="phrase">habitat destruction</span></td><td>the loss of the places where animals live</td><td class="zh">栖息地破坏</td></tr>
+<tr><td><span class="phrase">greenhouse gas emissions</span></td><td>gases released into the air that cause warming</td><td class="zh">温室气体排放</td></tr>
+<tr><td><span class="phrase">unless urgent action is taken</span></td><td>if nothing is done immediately</td><td class="zh">除非立即采取行动</td></tr>
+<tr><td><span class="phrase">harsh conditions</span></td><td>a difficult and severe environment</td><td class="zh">严酷的条件</td></tr>
+<tr><td><span class="phrase">all is not well with</span></td><td>there is something wrong with</td><td class="zh">&hellip;出了问题</td></tr>
+<tr><td><span class="phrase">pinpoint hardy types</span></td><td>identify the toughest varieties</td><td class="zh">精准找出耐受性强的种类</td></tr>
+<tr><td><span class="phrase">breeding rates</span></td><td>how quickly a species produces young</td><td class="zh">繁殖率</td></tr>
+<tr><td><span class="phrase">aquarium-based research</span></td><td>scientific work done in tanks rather than at sea</td><td class="zh">基于水族馆的研究</td></tr>
+<tr><td><span class="phrase">assist restoration efforts</span></td><td>help work aimed at rebuilding something</td><td class="zh">助力修复工作</td></tr>
+<tr><td><span class="phrase">a global network</span></td><td>an organisation of linked centres worldwide</td><td class="zh">全球网络</td></tr>
+<tr><td><span class="phrase">a critically important goal</span></td><td>an aim of the very highest importance</td><td class="zh">极其重要的目标</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;These polyps are transparent but get their brilliant tones of pink, orange, blue, green, etc. from algae that live within them, which in turn get protection, while their photosynthesising of the sun&rsquo;s rays provides nutrients for the polyps.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These polyps are transparent but get their brilliant tones&hellip; from algae.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that live within them&rsquo; = a defining relative clause identifying the algae; &lsquo;which in turn get protection&rsquo; = a non-defining clause about the algae; &lsquo;while their photosynthesising&hellip; provides nutrients&rsquo; = a clause of simultaneous contrast.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The whole exchange is packed into one sentence: algae &rarr; colour and food for the polyps; polyps &rarr; <strong>protection</strong> for the algae. <em>in turn</em> signals the second half of a two-way deal, and is your marker for <strong>Q25</strong>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The coral animals have no colour of their own. Algae inside them give them colour and food, and in return the algae are kept safe.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这些水螅体本身是透明的，其鲜艳的粉、橙、蓝、绿等色彩来自生活在其体内的藻类；藻类因此获得保护，而它们对阳光的光合作用又为水螅体提供养分。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;This comfortable symbiotic relationship has led to the growth of coral reefs that cover 0.1% of the planet&rsquo;s ocean bed while providing homes for more than 25% of marine species.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This comfortable symbiotic relationship has led to the growth of coral reefs.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that cover 0.1%&hellip;&rsquo; = a relative clause describing the reefs; &lsquo;while providing homes&hellip;&rsquo; = a reduced clause of contrast (= although they provide homes).</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>lead to + noun</strong> is a cause-and-effect verb, not a verb of movement. The two percentages are deliberately unbalanced: a tiny area, a huge share of species &mdash; that contrast <em>is</em> the point.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because coral and algae work together, reefs have grown. They cover almost none of the sea floor but shelter over a quarter of all sea life.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这种舒适的共生关系促成了珊瑚礁的生长；珊瑚礁仅覆盖全球海床的0.1%，却为超过25%的海洋物种提供了栖息地。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;As a result, coral reefs are often described as the &lsquo;rainforests of the sea&rsquo;, though the comparison is dismissed by some naturalists, including David Attenborough.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Coral reefs are often described as the &lsquo;rainforests of the sea&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;though the comparison is dismissed&hellip;&rsquo; = a concession clause; &lsquo;including David Attenborough&rsquo; = an exemplifying phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two passives in one sentence (&lsquo;are described&rsquo;, &lsquo;is dismissed&rsquo;) because the people doing it are unimportant or general. <em>though</em> flips the sentence &mdash; and that flip is exactly what heading <strong>iv</strong> (&lsquo;Disagreement about the accuracy of a certain phrase&rsquo;) describes.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People often call reefs the rainforests of the sea, but some experts, such as David Attenborough, say the comparison is wrong.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">因此，珊瑚礁常被称为&ldquo;海中雨林&rdquo;，不过包括大卫&middot;阿滕伯勒在内的一些博物学家并不认同这一比喻。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Unfortunately, these majestic sights are now under very serious threat, with the most immediate problem coming in the form of thermal stress.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These majestic sights are now under very serious threat.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;with the most immediate problem coming&hellip;&rsquo; = a <em>with</em> + noun + present participle structure adding detail.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The <strong>with + -ing</strong> pattern is a compact academic way of adding a second fact without a new sentence. <em>most immediate</em> means &lsquo;first in time&rsquo;, not &lsquo;most serious&rsquo; &mdash; the rest of the paragraph then lists the others.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Sadly, reefs are in great danger, and the first danger to arrive is heat.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">遗憾的是，这些壮观的景象如今正面临严重威胁，其中最迫在眉睫的问题是热压力。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Scientists advise that more than 90% of reefs could be lost by 2050 unless urgent action is taken to tackle global heating and greenhouse gas emissions.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Scientists advise that more than 90% of reefs could be lost by 2050.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;unless urgent action is taken&hellip;&rsquo; = a negative conditional clause; &lsquo;to tackle global heating&hellip;&rsquo; = an infinitive of purpose.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>unless</strong> = if&hellip; not. Note the hedging: <em>could</em> be lost, scientists <em>advise</em>. The writer reports a prediction, he does not state a fact &mdash; useful for Yes/No/Not Given thinking.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Experts warn that if we do not act now on climate change, over nine reefs in ten may be gone by 2050.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">科学家提醒，除非立即采取行动应对全球变暖和温室气体排放，否则到2050年可能有超过90%的珊瑚礁消失。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;However, aquarium-based research has enabled some corals to spawn artificially, which can assist coral reef restoration efforts.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Aquarium-based research has enabled some corals to spawn artificially.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;which can assist coral reef restoration efforts&rsquo; = a non-defining relative clause commenting on the whole idea.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>enable + object + to do</strong> is the standard academic &lsquo;make it possible&rsquo; pattern (compare: allow, permit, help). This is the sentence behind the Q22&ndash;23 option about speeding up reproduction.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Research in tanks has made it possible for some corals to release eggs artificially, which helps rebuild damaged reefs.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而，基于水族馆的研究已使某些珊瑚能够人工产卵，这有助于珊瑚礁的修复工作。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Sentence Completion (the real exam gaps Q24&ndash;26, plus extra practice)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write <strong>ONE WORD ONLY</strong> from the passage in each gap. Items 1&ndash;3 are the real exam sentences; items 4&ndash;8 use the same skill on other parts of the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>Corals have a number of <input type="text" class="blank" id="b1" data-answer="tentacles" placeholder="______"> which they use to collect their food.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Algae gain <input type="text" class="blank" id="b2" data-answer="protection" placeholder="______"> from being inside the coral.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Increases in the warmth of the sea water can remove the <input type="text" class="blank" id="b3" data-answer="colour" placeholder="______"> from coral.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The tiny animals that corals are made of are called <input type="text" class="blank" id="b4" data-answer="polyps" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The bright colours of a coral actually come from the <input type="text" class="blank" id="b5" data-answer="algae" placeholder="______"> living inside it.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Coral reefs cover only 0.1% of the planet&rsquo;s ocean <input type="text" class="blank" id="b6" data-answer="bed" placeholder="______">.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Paul Pearce-Kelly is a senior <input type="text" class="blank" id="b7" data-answer="curator" placeholder="______"> at the Zoological Society of London.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>In nature, corals <input type="text" class="blank" id="b8" data-answer="spawn" placeholder="______"> only once a year.<span class="feedback" id="fb8"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>The relationship between coral and algae is <input type="text" class="blank" id="b9" data-answer="symbiotic" placeholder="______"> (= both sides benefit from it).<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The Tiny Giants gallery is dedicated to <input type="text" class="blank" id="b10" data-answer="invertebrate" placeholder="______"> (= without a backbone) creatures.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Rising sea temperatures trigger <input type="text" class="blank" id="b11" data-answer="bleaching" placeholder="______"> (= loss of colour) events.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Ocean <input type="text" class="blank" id="b12" data-answer="acidification" placeholder="______"> (= the sea becoming more acidic) is another menace.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Reefs already survive wave <input type="text" class="blank" id="b13" data-answer="erosion" placeholder="______"> (= being slowly worn away by water).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Artificial spawning can assist reef <input type="text" class="blank" id="b14" data-answer="restoration" placeholder="______"> (= returning something to a healthy state).<span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Academic Reading the answer must fit the grammar of the sentence, not only its meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>Coral reefs are the most <input type="text" class="blank" id="b15" data-answer="diverse" placeholder="______"> (DIVERSITY) ecosystems on Earth.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Untouched by algae, the polyps themselves are <input type="text" class="blank" id="b16" data-answer="transparent" placeholder="______"> (TRANSPARENCY).<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The algae keep the polyps alive by <input type="text" class="blank" id="b17" data-answer="photosynthesising" placeholder="______"> (PHOTOSYNTHESIS) the sun&rsquo;s rays.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Reefs are threatened by global <input type="text" class="blank" id="b18" data-answer="warming" placeholder="______"> (WARM).<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Greenhouse gas <input type="text" class="blank" id="b19" data-answer="emissions" placeholder="______"> (EMIT) must be reduced quickly.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Saving the reefs is a critically important <input type="text" class="blank" id="b20" data-answer="ecological" placeholder="______"> (ECOLOGY) goal.<span class="feedback" id="fb20"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The options in Q20&ndash;23 never use the passage&rsquo;s own words. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;the contamination of the sea from waste&rdquo; &rarr; Passage: <input type="text" class="blank" id="b21" data-answer="pollution" placeholder="______"> by humans.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;alterations in the usual flow of water in the seas&rdquo; &rarr; Passage: ocean <input type="text" class="blank" id="b22" data-answer="current" placeholder="______"> changes.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;corals that can cope well with the changed sea conditions&rdquo; &rarr; Passage: species that can <input type="text" class="blank" id="b23" data-answer="survive" placeholder="______"> best in warm, acidic waters.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;methods that would speed up reproduction&rdquo; &rarr; Passage: research aimed at increasing coral <input type="text" class="blank" id="b24" data-answer="breeding" placeholder="______"> rates.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;which they use to collect their food&rdquo; &rarr; Passage: tentacles for <input type="text" class="blank" id="b25" data-answer="capturing" placeholder="______"> small marine creatures.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;they want to identify tough corals&rdquo; &rarr; Passage: scientists are trying to <input type="text" class="blank" id="b26" data-answer="pinpoint" placeholder="______"> hardy types of coral.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;encourage the public to feel hopeful&rdquo; &rarr; Passage: encourage them to <input type="text" class="blank" id="b27" data-answer="believe" placeholder="______"> that we can do something to save the reefs.<span class="feedback" id="fb27"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Linking Words and Reduction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to pack several facts into one long sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label>Polyps get their colours from algae, <input type="text" class="blank" id="b28" data-answer="which" placeholder="______"> in turn get protection. (relative pronoun referring to the algae)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The comparison is dismissed by some naturalists, <input type="text" class="blank" id="b29" data-answer="including" placeholder="______"> David Attenborough. (introducing one example of a group)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>More than 90% of reefs could be lost by 2050 <input type="text" class="blank" id="b30" data-answer="unless" placeholder="______"> urgent action is taken. (= if action is not taken)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Corals will be the first to react <input type="text" class="blank" id="b31" data-answer="when" placeholder="______"> things start to go wrong in the oceans. (time clause)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Reefs cover only 0.1% of the ocean bed <input type="text" class="blank" id="b32" data-answer="while" placeholder="______"> providing homes for over 25% of marine species. (contrast + -ing clause)<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>&lsquo;algae that live within them&rsquo; can be reduced to &lsquo;algae <input type="text" class="blank" id="b33" data-answer="living" placeholder="______"> within them&rsquo;. (present participle)<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>&lsquo;research which is based in aquariums&rsquo; can be reduced to &lsquo;aquarium-<input type="text" class="blank" id="b34" data-answer="based" placeholder="______"> research&rsquo;. (past participle used as an adjective)<span class="feedback" id="fb34"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; every answer comes from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>人工礁 &rarr; an <input type="text" class="blank" id="b35" data-answer="artificial" placeholder="______"> reef<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>海平面上升 &rarr; sea level <input type="text" class="blank" id="b36" data-answer="increase" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>栖息地破坏 &rarr; habitat <input type="text" class="blank" id="b37" data-answer="destruction" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>海水缺氧 &rarr; <input type="text" class="blank" id="b38" data-answer="deoxygenation" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>海洋物种 &rarr; marine <input type="text" class="blank" id="b39" data-answer="species" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>最迫在眉睫的问题 &rarr; the most <input type="text" class="blank" id="b40" data-answer="immediate" placeholder="______"> problem<span class="feedback" id="fb40"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; the chain that kills a reef</strong></p><p>Rising ocean temperatures &rarr; thermal stress &rarr; bleaching events &rarr; loss of colour &rarr; death. The mechanism is hidden in Section B: the polyps are <em>transparent</em> and the colour belongs to the algae, so when heat drives the algae out, the reef goes white and starves. Sections B and D therefore have to be read <em>together</em> &mdash; that link is what makes <strong>Q26 (colour)</strong> findable.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;though&rsquo;, &lsquo;however&rsquo; and &lsquo;unfortunately&rsquo; mark the turns</strong></p><p>Each of these words turns the passage: &lsquo;<em>though</em> the comparison is dismissed&rsquo; (Section C becomes about disagreement), &lsquo;<em>Unfortunately</em>, these majestic sights are now under&hellip; threat&rsquo; (Section D becomes the warning), &lsquo;<em>However</em>, scientists are trying to pinpoint&hellip;&rsquo; (Section E becomes the response). In a headings task, the sentence after the turn word usually contains the heading.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the disputed metaphor</strong></p><p>&lsquo;The rainforests of the sea&rsquo; is a comparison, and Attenborough attacks it by comparing the two experiences: in a rainforest the animals are hidden in the trees; on a reef the life is visible in front of you. Notice that the passage never says which ecosystem is objectively richer &mdash; it reports an opinion. A True/False item claiming &lsquo;reefs contain more species than rainforests&rsquo; would be NOT GIVEN.</p></div>
+<div class="card"><p><strong>Examples &mdash; lists are where choose-TWO answers hide</strong></p><p>Two lists matter. Threats: &lsquo;ocean acidification, sea level increase, <em>pollution by humans</em>, deoxygenation and <em>ocean current changes</em>&rsquo; &mdash; that is where <strong>Q20&ndash;21 (C and E)</strong> live. Research aims: find species that survive warm acidic water, and increase breeding rates &mdash; that is where <strong>Q22&ndash;23 (B and D)</strong> live. Bracket lists as you skim; they are answer-dense.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; free explanations inside commas</strong></p><p>&ldquo;tiny animals, <em>known as polyps</em>&rdquo;; &ldquo;the zoo&rsquo;s new gallery, <em>Tiny Giants</em>, which is dedicated to&hellip;&rdquo;; &ldquo;Paul Pearce-Kelly, <em>senior curator of invertebrates and fish</em>&rdquo;. You never need a dictionary for these words &mdash; the commas define them. This habit alone saves two or three minutes per passage.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; the shape of the whole text</strong></p><p>Sections A&ndash;C set up the value of reefs, Section D states the problem, Sections E&ndash;F give the response: laboratory research, a global network of linked centres, and public display. Matching Headings is far easier once you have labelled each section <em>value / problem / response</em> in the margin.</p></div>
+<div class="card"><p><strong>Modality &amp; hedging &mdash; what is certain and what is not</strong></p><p>Compare &lsquo;Coral reefs <em>are</em> dying&rsquo; (fact) with &lsquo;more than 90% <em>could</em> be lost&rsquo;, &lsquo;we <em>could consider</em> the launching of coral-spawning programmes&rsquo; and &lsquo;scientists <em>will be</em> studying&rsquo; (predictions and plans). Nothing in Section E has been proved yet &mdash; which is precisely why heading <em>i</em>, &lsquo;Tried and tested solutions&rsquo;, is a trap.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; alarmed but deliberately hopeful</strong></p><p>The passage ends on the curator&rsquo;s words: progress &lsquo;can be shown to the public and encourage them to <em>believe that we can do something</em>&rsquo;. The final section is not new science; it is about morale. That is why its heading is <em>vi &mdash; Promoting hope</em>, and why an option saying the reefs are now safe would be wrong for the same reason.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching Headings (Q14&ndash;19)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Six sections, seven headings: one heading is never used. Ask what each section <em>does</em>, not what it mentions.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>14. Section A</b> &rarr; <strong>v &mdash; Two clear educational goals</strong>. The curator states exactly two aims: &lsquo;we want to show people how wonderful they are&rsquo; and &lsquo;we also want to highlight the research and conservation efforts&rsquo;. The word <em>also</em> gives you the &lsquo;two&rsquo;.</li><li><b>15. Section B</b> &rarr; <strong>ii &mdash; Cooperation beneath the waves</strong>. The whole section is the polyp&ndash;algae deal: &lsquo;this comfortable <em>symbiotic</em> relationship&rsquo;. Cooperation = symbiosis.</li><li><b>16. Section C</b> &rarr; <strong>iv &mdash; Disagreement about the accuracy of a certain phrase</strong>. The phrase is &lsquo;the rainforests of the sea&rsquo;; the disagreement is &lsquo;the comparison is <em>dismissed</em> by some naturalists&rsquo;.</li><li><b>17. Section D</b> &rarr; <strong>vii &mdash; A warning of further trouble ahead</strong>. &lsquo;And that is just the start&rsquo;, followed by a list of other menaces and the 2050 prediction.</li><li><b>18. Section E</b> &rarr; <strong>iii &mdash; Working to lessen the problems</strong>. Two research aims: find corals that survive warm acidic water, and raise breeding rates.</li><li><b>19. Section F</b> &rarr; <strong>vi &mdash; Promoting hope</strong>. &lsquo;encourage them to believe that we can do something to save the planet&rsquo;s reefs&rsquo;.</li><li><b>Not used: i &mdash; Tried and tested solutions.</b> Section E is future-tense research, not proven practice.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> two headings here (iii and i) both sound like &lsquo;solutions&rsquo;, and two (v and vi) both sound like &lsquo;the public&rsquo;. Choose by <em>evidence</em>, and always leave the hardest section until the others are fixed.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Multiple Choice, choose TWO (Q20&ndash;21): causes of damage</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">You must select two letters, and you only score if both are right. Work by elimination against the writer&rsquo;s actual list in Section D.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>A a rising number of extreme storms</b> &rarr; <em>not mentioned</em>. &lsquo;Wave erosion&rsquo; appears, but as a condition corals already survive &mdash; not as a growing threat.</li><li><b>B the removal of too many fish from the sea</b> &rarr; <em>not mentioned</em>. Overfishing is a real-world reef problem, but this writer never raises it. Outside knowledge is the enemy here.</li><li><b>C the contamination of the sea from waste</b> &rarr; <strong>CORRECT</strong>. Passage: &lsquo;<em>pollution by humans</em>&rsquo;. Contamination = pollution.</li><li><b>D increased disease among marine species</b> &rarr; <em>not mentioned</em>. The passage says corals die, not that disease spreads.</li><li><b>E alterations in the usual flow of water in the seas</b> &rarr; <strong>CORRECT</strong>. Passage: &lsquo;<em>ocean current changes</em>&rsquo;. Alterations = changes; flow of water = currents.</li></ul><p style="margin-top:10px;"><b>Technique:</b> find the sentence that contains the list, then tick options off against it one at a time. Never choose an option because it is true in the world.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Multiple Choice, choose TWO (Q22&ndash;23): the London Zoo researchers</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This question sends you to one paragraph only &mdash; the second half of Section E, where the curator lists what the labs will do.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>A expanding the number of different corals bred in laboratories</b> &rarr; <em>wrong</em>. The aim is more frequent spawning, not a wider <em>range</em> of species in the labs. &lsquo;All species&rsquo; is mentioned only as a hypothetical extension.</li><li><b>B identifying corals that cope well with changed sea conditions</b> &rarr; <strong>CORRECT</strong>. &lsquo;pinpoint hardy types of coral that could survive our overheated oceans&rsquo; and &lsquo;find those that can survive best in warm, acidic waters&rsquo;.</li><li><b>C creating artificial reefs for corals to grow on</b> &rarr; <em>wrong</em>. The artificial reef in Section A is an exhibition tank, not a research technique. Word-match trap.</li><li><b>D methods that would speed up reproduction in some corals</b> &rarr; <strong>CORRECT</strong>. &lsquo;increase coral breeding rates&rsquo;; corals spawn once a year, but artificial spawning could happen &lsquo;several times a year&rsquo;.</li><li><b>E materials that might protect reefs from higher temperatures</b> &rarr; <em>wrong</em>. The plan is to find tougher <em>corals</em>, not protective materials.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> both correct options can be supported by a quotation. If you can only quote for one of your two letters, one of them is wrong.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Sentence Completion (Q24&ndash;26): ONE WORD ONLY</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These three sentences follow the passage in order, and all three answers sit in Sections B and D. Decide the word type before you look.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q24 tentacles</b> &mdash; &lsquo;a number of&hellip;&rsquo; needs a <em>plural countable noun</em>. Passage: &lsquo;polyps, with tentacles for capturing small marine creatures&rsquo;. Capturing = collecting their food.</li><li><b>Q25 protection</b> &mdash; &lsquo;gain&hellip;&rsquo; needs an <em>uncountable noun</em>. Passage: the algae &lsquo;in turn get protection&rsquo;. Do not write &lsquo;nutrients&rsquo; &mdash; those go to the polyps, not the algae.</li><li><b>Q26 colour</b> &mdash; &lsquo;remove the&hellip; from coral&rsquo; needs a noun. Passage: bleaching events &lsquo;strip reefs of their colour&rsquo;. British spelling; one word only, so not &lsquo;their colour&rsquo;.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in sentence completion the grammar of the printed sentence is a free clue. Read your finished sentence aloud &mdash; if it sounds wrong, the word is wrong.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; True / False / Not Given thinking (extra practice)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This passage does not include a T/F/NG task, but it is perfect for training the judgement. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>The Tiny Giants gallery focuses on large sea creatures. &rarr; <strong>FALSE</strong> &mdash; it is dedicated to <em>minuscule invertebrate</em> creatures; the name is deliberately ironic.</li><li>Coral polyps would have no colour without algae. &rarr; <strong>TRUE</strong> &mdash; &lsquo;These polyps are transparent but get their brilliant tones&hellip; from algae&rsquo;.</li><li>David Attenborough believes reefs are more beautiful than rainforests. &rarr; <strong>TRUE</strong> &mdash; &lsquo;if you want beauty and wildlife, you want a coral reef&rsquo;.</li><li>Rainforests contain fewer species than coral reefs. &rarr; <strong>NOT GIVEN</strong> &mdash; the passage compares the <em>experience</em> of visiting them, never the species counts.</li><li>Corals in the wild reproduce more than once a year. &rarr; <strong>FALSE</strong> &mdash; &lsquo;Coral spawn just once a year&rsquo;; several times a year is only a future possibility in aquariums.</li><li>London Zoo&rsquo;s laboratory results are shared with other research centres. &rarr; <strong>TRUE</strong> &mdash; &lsquo;the London Zoo centre linked to this global network. Studies carried out in one centre can then be tested in others.&rsquo;</li></ul></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Locating information fast (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which section would you scan for each idea? In a six-section passage, getting to the right block in ten seconds is worth more than reading quickly.</p><ul style="margin-left:18px;line-height:1.9;"><li>The size of the tank window &rarr; Section A (&lsquo;seven-metre-wide window&rsquo;).</li><li>What corals eat and how they catch it &rarr; Section B (tentacles, small marine creatures).</li><li>The proportion of sea life that depends on reefs &rarr; Section B (more than 25%).</li><li>An expert rejecting a popular nickname &rarr; Section C.</li><li>A prediction with a date &rarr; Section D (90% by 2050).</li><li>Why corals are described as an early-warning system &rarr; end of Section D (&lsquo;corals will be the first to react&rsquo;).</li><li>The two aims of the zoo&rsquo;s laboratories &rarr; Section E.</li><li>How different research centres work together &rarr; Section F.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in a sectioned passage, write two or three words beside each letter as you skim. That margin index answers the headings task and locates every later question.</p></div>
+<div class="exercise-block"><h3>Skill 7 &mdash; Summary completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Cover the passage and complete this summary of Sections B and D with ONE WORD ONLY. Answers are listed under each gap in the Answer Key style below.</p><p style="line-height:2;">Corals are colonies of tiny animals called <strong>polyps</strong>, which use their <strong>tentacles</strong> to catch food. Because the polyps are <strong>transparent</strong>, the colour of a reef comes from the <strong>algae</strong> inside them; in exchange for <strong>protection</strong>, the algae supply <strong>nutrients</strong> through photosynthesis. This <strong>symbiotic</strong> partnership built reefs that shelter over a quarter of marine species. Today warmer seas cause <strong>bleaching</strong>, which strips reefs of their <strong>colour</strong>, and further menaces include acidification, pollution, <strong>deoxygenation</strong> and changes to ocean currents.</p><p style="margin-top:10px;"><b>How to use this:</b> read the summary once with the bold words covered. Every one of them is a single word taken directly from the passage &mdash; exactly what a real summary task demands.</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is the &lsquo;Tiny Giants&rsquo; gallery dedicated to?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Large predatory fish of the Pacific.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Minuscule invertebrate creatures that sustain life.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Models of extinct sea animals.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Deep-sea exploration technology.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">According to Section A, what are the curator&rsquo;s two stated aims?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. To breed rare fish and to sell them to other zoos.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. To show how wonderful reefs are and to highlight research and conservation work.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. To train new curators and to raise money for the zoo.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. To recreate the Great Barrier Reef and to test new tank materials.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why are coral polyps themselves colourless?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Because they live too deep for sunlight to reach them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Because bleaching has already removed their pigment.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Because they are transparent, and the colour belongs to the algae inside them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Because they only develop colour when they spawn.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">In the coral&ndash;algae partnership, what do the ALGAE receive?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. nutrients</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. protection</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. oxygen</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. colour</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which two figures does Section B give about coral reefs?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They cover 25% of the ocean bed and hold 0.1% of species.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They cover 0.1% of the ocean bed and hold more than 25% of marine species.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They cover 90% of the ocean bed and are 25% bleached.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They cover 0.1% of the ocean and produce 25% of the world&rsquo;s oxygen.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why does David Attenborough reject the phrase &lsquo;rainforests of the sea&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Because rainforests contain far more species than reefs.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Because reefs are not really forests at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Because in a rainforest the wildlife is hidden, while on a reef it is there in front of you.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Because the phrase was invented by tourism companies.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Which pair of threats is actually listed by the writer (the Q20&ndash;21 answers)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. more extreme storms and overfishing</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. pollution by humans and ocean current changes</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. marine disease and sea level increase</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. overfishing and deoxygenation</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does &lsquo;And that is just the start&rsquo; tell you about Section D?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. The problems described are only the beginning of a longer list.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Bleaching began recently.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. The research programme has only just been launched.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. The reef exhibit opens soon.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Which word in Section E means &lsquo;able to survive difficult conditions&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. hardy</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. blighted</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. transparent</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. minuscule</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">How often do corals spawn naturally, and what does the research hope to change?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Once a year; researchers hope artificial spawning could happen several times a year.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Several times a year; researchers hope to slow this down.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Once a decade; researchers hope to double it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Continuously; researchers hope to control the timing.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why is the heading &lsquo;Tried and tested solutions&rsquo; NOT used for Section E?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Because Section E is about threats, not solutions.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Because the research is planned or recent, not proven over time.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Because the solutions described failed.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Because Section E only discusses public education.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What does the curator say is the &lsquo;crucial point&rsquo; in Section F?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. That the London Zoo tank is the largest in Europe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. That reef research must be funded by governments.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. That visible progress can encourage the public to believe reefs can be saved.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. That young coral grows faster in aquariums than in the sea.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 14&ndash;26</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">v</div><div class="answer-note">Section A: the curator names exactly two aims &mdash; &lsquo;we want to show people how wonderful they are&rsquo; and &lsquo;we <em>also</em> want to highlight the research and conservation efforts&rsquo;. Two goals, both about teaching the public.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">ii</div><div class="answer-note">Section B describes the polyp&ndash;algae deal: the algae give colour and nutrients, the polyps give shelter &mdash; &lsquo;this comfortable <em>symbiotic</em> relationship&rsquo;. Cooperation beneath the waves.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">iv</div><div class="answer-note">Section C: reefs are &lsquo;often described as the <em>rainforests of the sea</em>, though the comparison is <em>dismissed</em> by some naturalists&rsquo;. A certain phrase, and disagreement about whether it is accurate.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">vii</div><div class="answer-note">Section D moves from bleaching to &lsquo;And that is just the start&rsquo;, then lists further menaces and predicts that over 90% of reefs could be lost by 2050. That is a warning of further trouble ahead.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">iii</div><div class="answer-note">Section E: scientists are trying to pinpoint hardy corals and to raise breeding rates &mdash; active work aimed at reducing the damage. Heading <em>i</em> does not fit because none of this has been tried and tested yet.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">vi</div><div class="answer-note">Section F: the crucial point is that progress &lsquo;can be shown to the public and <em>encourage them to believe that we can do something</em> to save the planet&rsquo;s reefs&rsquo;. The section is about hope, not new findings.</div></div></div>
+<div class="answer-item"><span class="answer-num">20 &amp; 21</span><div><div class="answer-val">C and E (either order)</div><div class="answer-note">Section D lists the menaces: &lsquo;ocean acidification, sea level increase, <em>pollution by humans</em>, deoxygenation and <em>ocean current changes</em>&rsquo;. C = contamination from waste = pollution by humans; E = alterations in the usual flow of water = ocean current changes. Storms (A), overfishing (B) and disease (D) are never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">22 &amp; 23</span><div><div class="answer-val">B and D (either order)</div><div class="answer-note">Section E gives the two research aims. B: &lsquo;pinpoint <em>hardy</em> types of coral&hellip; find those that can <em>survive best in warm, acidic waters</em>&rsquo; = corals that cope with changed sea conditions. D: &lsquo;increase coral <em>breeding rates</em>&hellip; coral-spawning programmes several times a year&rsquo; = speeding up reproduction. The artificial reef in Section A is a display tank, not research, so option C is a word-match trap.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">tentacles</div><div class="answer-note">Section B: &lsquo;polyps, with <em>tentacles</em> for capturing small marine creatures in the sea water&rsquo;. Capturing food = collecting their food. &lsquo;A number of&rsquo; requires the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">protection</div><div class="answer-note">Section B: the colours come from &lsquo;algae that live within them, <em>which in turn get protection</em>&rsquo;. The algae gain protection; the polyps gain nutrients &mdash; do not swap them.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">colour</div><div class="answer-note">Section D: &lsquo;Rising ocean temperatures are triggering bleaching events that <em>strip reefs of their colour</em>&rsquo;. Strip of = remove from. British spelling &mdash; write <em>colour</em>, one word only.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Sentence Completion (the real exam gaps Q24&ndash;26, plus extra practice)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">tentacles</div><div class="answer-note">Corals have a number of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">protection</div><div class="answer-note">Algae gain</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">colour</div><div class="answer-note">Increases in the warmth of the sea water can remove the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">polyps</div><div class="answer-note">The tiny animals that corals are made of are called</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">algae</div><div class="answer-note">The bright colours of a coral actually come from the</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">bed</div><div class="answer-note">Coral reefs cover only 0.1% of the planet&rsquo;s ocean</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">curator</div><div class="answer-note">Paul Pearce-Kelly is a senior</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">spawn</div><div class="answer-note">In nature, corals</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">symbiotic</div><div class="answer-note">The relationship between coral and algae is</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">invertebrate</div><div class="answer-note">The Tiny Giants gallery is dedicated to</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">bleaching</div><div class="answer-note">Rising sea temperatures trigger</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">acidification</div><div class="answer-note">Ocean</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">erosion</div><div class="answer-note">Reefs already survive wave</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">restoration</div><div class="answer-note">Artificial spawning can assist reef</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">diverse</div><div class="answer-note">Coral reefs are the most</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">transparent</div><div class="answer-note">Untouched by algae, the polyps themselves are</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">photosynthesising</div><div class="answer-note">The algae keep the polyps alive by</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">warming</div><div class="answer-note">Reefs are threatened by global</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">emissions</div><div class="answer-note">Greenhouse gas</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">ecological</div><div class="answer-note">Saving the reefs is a critically important</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">pollution</div><div class="answer-note">Question: &ldquo;the contamination of the sea from waste&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">current</div><div class="answer-note">Question: &ldquo;alterations in the usual flow of water in the seas&rdquo; &rarr; Passage: ocean</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">survive</div><div class="answer-note">Question: &ldquo;corals that can cope well with the changed sea conditions&rdquo; &rarr; Passage: species that can</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">breeding</div><div class="answer-note">Question: &ldquo;methods that would speed up reproduction&rdquo; &rarr; Passage: research aimed at increasing coral</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">capturing</div><div class="answer-note">Question: &ldquo;which they use to collect their food&rdquo; &rarr; Passage: tentacles for</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">pinpoint</div><div class="answer-note">Question: &ldquo;they want to identify tough corals&rdquo; &rarr; Passage: scientists are trying to</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">believe</div><div class="answer-note">Question: &ldquo;encourage the public to feel hopeful&rdquo; &rarr; Passage: encourage them to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Linking Words and Reduction</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">which</div><div class="answer-note">Polyps get their colours from algae,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">including</div><div class="answer-note">The comparison is dismissed by some naturalists,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">unless</div><div class="answer-note">More than 90% of reefs could be lost by 2050</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">when</div><div class="answer-note">Corals will be the first to react</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">while</div><div class="answer-note">Reefs cover only 0.1% of the ocean bed</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">living</div><div class="answer-note">&lsquo;algae that live within them&rsquo; can be reduced to &lsquo;algae</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">based</div><div class="answer-note">&lsquo;research which is based in aquariums&rsquo; can be reduced to &lsquo;aquarium-</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">artificial</div><div class="answer-note">人工礁 &rarr; an</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">increase</div><div class="answer-note">海平面上升 &rarr; sea level</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">destruction</div><div class="answer-note">栖息地破坏 &rarr; habitat</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">deoxygenation</div><div class="answer-note">海水缺氧 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">species</div><div class="answer-note">海洋物种 &rarr; marine</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">immediate</div><div class="answer-note">最迫在眉睫的问题 &rarr; the most</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Minuscule invertebrate creatures that sustain life.</div><div class="answer-note">Section A: the gallery &lsquo;is dedicated to the minuscule invertebrate creatures that sustain life across the planet&rsquo;. The name is a deliberate contrast: tiny animals, giant importance.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. To show how wonderful reefs are and to highlight research and conservation work.</div><div class="answer-note">These two aims are why Section A takes heading <strong>v</strong>, &lsquo;Two clear educational goals&rsquo;. The word &lsquo;also&rsquo; signals the second aim.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. Because they are transparent, and the colour belongs to the algae inside them.</div><div class="answer-note">Section B: &lsquo;These polyps are transparent but get their brilliant tones&hellip; from algae that live within them.&rsquo; This is also the mechanism behind Q26.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. protection</div><div class="answer-note"><strong>Answer to Q25.</strong> &lsquo;&hellip;algae that live within them, which in turn get protection&rsquo;. The nutrients go the other way, to the polyps.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. They cover 0.1% of the ocean bed and hold more than 25% of marine species.</div><div class="answer-note">A tiny area supporting a huge share of sea life &mdash; the contrast the writer builds with &lsquo;while&rsquo;. Match every percentage to its own idea.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. Because in a rainforest the wildlife is hidden, while on a reef it is there in front of you.</div><div class="answer-note">Section C: &lsquo;where&hellip; are the birds? Where are the animals? They are hiding in the trees&hellip; if you want beauty and wildlife, you want a coral reef.&rsquo; This disagreement gives heading <strong>iv</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. pollution by humans and ocean current changes</div><div class="answer-note">Option C in the exam = &lsquo;contamination of the sea from waste&rsquo; = pollution by humans; option E = &lsquo;alterations in the usual flow of water&rsquo; = ocean current changes. Storms, overfishing and disease never appear.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A. The problems described are only the beginning of a longer list.</div><div class="answer-note">It introduces the further menaces and the 2050 prediction &mdash; which is why Section D takes heading <strong>vii</strong>, &lsquo;A warning of further trouble ahead&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A. hardy</div><div class="answer-note">&lsquo;scientists are trying to pinpoint hardy types of coral that could survive our overheated oceans&rsquo; &mdash; the sentence behind one of the Q22&ndash;23 answers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. Once a year; researchers hope artificial spawning could happen several times a year.</div><div class="answer-note">&lsquo;Coral spawn just once a year&hellip; we could consider the launching of coral-spawning programmes several times a year.&rsquo; This supports the Q22&ndash;23 option about speeding up reproduction.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Because the research is planned or recent, not proven over time.</div><div class="answer-note">Look at the verbs: scientists &lsquo;will be studying&rsquo;, &lsquo;we could consider&rsquo;, &lsquo;if this can be extended&rsquo;. Nothing has been tried and tested yet.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. That visible progress can encourage the public to believe reefs can be saved.</div><div class="answer-note">This is the reason Section F takes heading <strong>vi</strong>, &lsquo;Promoting hope&rsquo;: the section is about public belief, not new science.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

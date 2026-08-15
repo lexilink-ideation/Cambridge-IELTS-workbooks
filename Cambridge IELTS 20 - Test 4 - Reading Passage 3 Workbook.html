@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Reading Passage 3</h1>
+    <h2>A New Role for Livestock Guard Dogs &middot; Matching Information + Matching People + Summary Completion (Q27&ndash;40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage tells the story of a job that came back. For thousands of years big dogs guarded sheep and goats from wolves and bears; when those predators were wiped out in the 19th and 20th centuries the dogs became unemployed &mdash; and now that conservation has brought the predators back, the dogs are needed again. The twist in the title is that the dogs now protect the <strong>predators</strong> too: a farmer who is not losing animals has no reason to shoot a wolf or a cheetah. The second half of the passage is carefully balanced, listing the <strong>doubts</strong> (self-reported figures, predators simply pushed next door) and the <strong>side effects</strong> (more jackals killed, diseases spread, competition for food) before ending on a hopeful note.</p></div><div class="card"><p><strong>What the passage argues:</strong> That livestock guard dogs are now a <em>conservation</em> tool as well as a farming tool &mdash; fewer dead sheep means fewer dead wolves and cheetahs. The writer accepts the evidence is strong but insists on two qualifications: much of it is self-reported, and protecting one predator can quietly harm other species.</p><p><strong>段落结构 Structure:</strong> 第A段：历史背景——捕食者被消灭后护畜犬失业；随着野生动物保护，捕食者回归，护畜犬"复出"。第B段：全球约50个犬种；从小与畜群一起长大，挡在畜群与威胁之间、吠叫、驱赶；训练要点（Macon）。第C段：效果证据——葡萄牙Ribeiro：90%以上农户评价"很好或极佳"；澳大利亚van Bommel与Johnson：65%以上牧民称捕食完全停止。第D段：新角色——保护捕食者本身；纳米比亚猎豹案例；Young提出"共同利益"。第E段：质疑——Smith指出88%的数据属自我报告，须谨慎；Ribeiro指出压力可能转移给邻居。第F段：非预期的生态影响——豺被杀数量上升、传播疾病、与其他食肉动物争食、制造"恐惧景观"。第G段：正面外溢效应——保护地面筑巢鸟类；澳大利亚用犬提升生物多样性；对未来审慎乐观。</p><p><strong>Task type:</strong> <strong>Q27&ndash;31 Matching information to paragraphs A&ndash;G</strong> &mdash; <em>NB: you may use any letter more than once</em>; <strong>Q32&ndash;36 Matching statements to five named people A&ndash;E</strong>, each used once; <strong>Q37&ndash;40 Summary completion</strong> &mdash; <em>ONE WORD ONLY</em> from the passage, drawn from paragraphs F and G in order.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> This is a classic Passage 3 shape: <em>A&ndash;C evidence for, D the new idea, E&ndash;F objections, G the balanced ending</em>. Label the seven paragraphs with those five words before you start and Q27&ndash;31 become almost mechanical. Two warnings. First, the <strong>NB</strong> above Q27&ndash;31 tells you a letter may be used more than once &mdash; here paragraph B answers <em>two</em> questions, so never cross a letter off. Second, Q32&ndash;36 are matching-people questions: every answer is inside a pair of <strong>quotation marks</strong>, so find the five quotes first and match statements to quotes, not to paragraphs. The summary at the end (Q37&ndash;40) draws only on paragraphs F and G and follows their order exactly.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q29 and Q31 are both paragraph B.</b> The <em>NB</em> line exists precisely because of this. Q29 wants the dogs&rsquo; <em>methods</em> (standing between livestock and threat, barking, chasing, mere presence); Q31 wants how they <em>gain their skills</em> (raised from an early age with the animals; Macon on initial training). Two different sentences, one paragraph.</li><li><b>Q30 says &ldquo;academics&rdquo;, plural.</b> Paragraph D also contains an academic (Julie Young at Utah State University) with a positive claim, but only <em>one</em>. Paragraph C has Silvia Ribeiro in Portugal <em>and</em> van Bommel and Johnson in Australia, all reporting protection of herds. Count the researchers before you choose.</li><li><b>Q27 &ldquo;one predator&hellip; protected&rdquo; is not paragraph G.</b> In G the dogs protect ground-nesting <em>birds</em> from foxes &mdash; birds are prey, and the fox is the animal being kept away. The predator that gets protected is the Namibian <strong>cheetah</strong> in paragraph D, because farmers stopped killing them.</li><li><b>Q37 is jackals, not cheetahs.</b> The summary sentence says deaths of <em>other</em> predators rose. Paragraph F: &lsquo;in spite of the impact&hellip; on cheetahs, the number of <em>jackals</em> killed by dogs and people actually increased.&rsquo; The word &lsquo;cheetahs&rsquo; sits in the same sentence as a distractor.</li><li><b>Q40 needs an animal, not a bird.</b> &lsquo;predators such as ______&rsquo; &mdash; the passage says the nests are in fields &lsquo;where <em>foxes</em> would normally raid them&rsquo;. Students who are still thinking about Namibia sometimes write &lsquo;jackals&rsquo; again.</li><li><b>Q32 vs Q34 &mdash; two people talking about killing predators.</b> Young (D) is positive: no dead cow means no permit to kill a wolf, so both livestock and wildlife are saved. Ribeiro (E) is negative: if only some farmers have dogs, the pressure moves to the neighbour, who may poison a whole pack. Same topic, opposite direction.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">livestock</span></td><td><span class="pos">n. (uncountable)</span></td><td>farm animals kept for food or wool</td><td class="zh">家畜；牲畜</td><td>&ldquo;<em>Livestock</em> guard dogs, traditionally used to protect farm animals&hellip;&rdquo;</td><td class="note">Never &lsquo;livestocks&rsquo;. It covers sheep, goats and cattle together &mdash; the paraphrase for &lsquo;farmers&rsquo; herds&rsquo; in Q30.</td></tr>
+<tr><td><span class="word">predator</span></td><td><span class="pos">n.</span></td><td>an animal that hunts and eats other animals</td><td class="zh">捕食者；食肉动物</td><td>&ldquo;&hellip;to protect their sheep, goats and cattle from <em>predators</em> such as wolves and bears.&rdquo;</td><td class="note">The single most important word here: the title says the dogs now protect the predators <em>themselves</em>. Adjective: predatory. Related noun: <em>predation</em>.</td></tr>
+<tr><td><span class="word">predation</span></td><td><span class="pos">n.</span></td><td>the killing of one animal by another for food</td><td class="zh">捕食（行为）</td><td>&ldquo;&hellip;more than 65 per cent of herders reported that <em>predation</em> stopped completely&hellip;&rdquo;</td><td class="note">Do not confuse with <em>predator</em>: predation is the act, the predator is the animal. Q30 is built on this sentence.</td></tr>
+<tr><td><span class="word">exterminate</span></td><td><span class="pos">v.</span></td><td>to kill all the members of a group of animals or people</td><td class="zh">灭绝；彻底消灭</td><td>&ldquo;&hellip;when such predators were largely <em>exterminated</em>, most guard dogs lost their jobs.&rdquo;</td><td class="note">Stronger than &lsquo;reduce&rsquo;. Note the hedge <em>largely</em> &mdash; not completely, which is why some predators could return.</td></tr>
+<tr><td><span class="word">widespread</span></td><td><span class="pos">adj.</span></td><td>existing over a large area</td><td class="zh">广泛分布的；普遍的</td><td>&ldquo;&hellip;predators have become more <em>widespread</em> again.&rdquo;</td><td class="note">Reappears as the idea behind Q34: a solution that is <em>not</em> widespread creates new problems.</td></tr>
+<tr><td><span class="word">revival</span></td><td><span class="pos">n.</span></td><td>a return to activity or popularity after a quiet period</td><td class="zh">复兴；复苏</td><td>&ldquo;&hellip;guard dogs are enjoying an unexpected <em>revival</em>.&rdquo;</td><td class="note">Verb <em>revive</em>. The word that closes paragraph A and sums up the whole story: an old job comes back.</td></tr>
+<tr><td><span class="word">breed</span></td><td><span class="pos">n. / v.</span></td><td>a particular type of animal within a species</td><td class="zh">（动物）品种；繁殖</td><td>&ldquo;Today there are around 50 <em>breeds</em> of guard dogs on duty&hellip;&rdquo;</td><td class="note">Countable noun here. Do not read it as the verb &lsquo;to breed&rsquo; &mdash; the number 50 tells you it is a noun.</td></tr>
+<tr><td><span class="word">mere</span></td><td><span class="pos">adj.</span></td><td>nothing more than; only</td><td class="zh">仅仅的；只不过</td><td>&ldquo;&hellip;but often their <em>mere</em> presence is sufficient.&rdquo;</td><td class="note"><strong>Key to Q29.</strong> &lsquo;Mere presence&rsquo; = just being there, with no action needed. The phrase returns in paragraph F: &lsquo;their mere presence can influence the behaviour of prey animals&rsquo;.</td></tr>
+<tr><td><span class="word">sufficient</span></td><td><span class="pos">adj.</span></td><td>enough for a purpose</td><td class="zh">足够的</td><td>&ldquo;&hellip;often their mere presence is <em>sufficient</em>.&rdquo;</td><td class="note">Formal synonym of &lsquo;enough&rsquo;. Q34 uses the adverb form: &lsquo;not <em>sufficiently</em> widespread&rsquo;.</td></tr>
+<tr><td><span class="word">affection</span></td><td><span class="pos">n.</span></td><td>a feeling of liking and caring for someone</td><td class="zh">喜爱；亲昵</td><td>&ldquo;&hellip;too much human <em>affection</em> makes it a great dog for guarding the front porch&hellip;&rdquo;</td><td class="note"><strong>Key to Q36.</strong> Macon&rsquo;s point: a house dog needs human bonding, a livestock dog must bond with the sheep instead.</td></tr>
+<tr><td><span class="word">rate</span></td><td><span class="pos">v.</span></td><td>to judge how good something is</td><td class="zh">评价；评定</td><td>&ldquo;&hellip;more than 90 per cent of the farmers&hellip; <em>rate</em> the performance of the dogs as very good or excellent.&rdquo;</td><td class="note">Followed by <em>as</em> + adjective. This is survey language &mdash; and survey language is exactly what Smith later warns about in Q33.</td></tr>
+<tr><td><span class="word">herder</span></td><td><span class="pos">n.</span></td><td>a person who looks after a group of farm animals</td><td class="zh">牧民；牧人</td><td>&ldquo;&hellip;more than 65 per cent of <em>herders</em> reported that predation stopped completely&hellip;&rdquo;</td><td class="note">Family: herd (n. the animals), herder (the person), shepherd (specifically sheep), rancher (US, large farm).</td></tr>
+<tr><td><span class="word">efficient</span></td><td><span class="pos">adj.</span></td><td>working well without wasting effort or resources</td><td class="zh">高效的</td><td>&ldquo;&hellip;the most <em>efficient</em> control method that we have&hellip;&rdquo;</td><td class="note"><strong>Key to Q35.</strong> &lsquo;The most efficient control method&rsquo; = &lsquo;the best way of protecting farm animals&rsquo;. Do not confuse with <em>effective</em> (it works) &mdash; efficient adds &lsquo;at low cost&rsquo;.</td></tr>
+<tr><td><span class="word">tolerant</span></td><td><span class="pos">adj.</span></td><td>willing to accept something you may not like</td><td class="zh">容忍的；宽容的</td><td>&ldquo;&hellip;reductions in livestock losses can make farmers more <em>tolerant</em> of predators&hellip;&rdquo;</td><td class="note">Collocation: tolerant <em>of</em>. Noun <em>tolerance</em>. This one adjective carries the whole argument of paragraph D.</td></tr>
+<tr><td><span class="word">be held responsible for</span></td><td><span class="pos">v. phr.</span></td><td>to be blamed for something</td><td class="zh">被认为应对&hellip;负责</td><td>&ldquo;&hellip;the cheetahs are often <em>held responsible</em> for animal losses&hellip;&rdquo;</td><td class="note">Passive and impersonal: the writer reports the blame without agreeing with it. A useful academic hedge for Writing Task 2.</td></tr>
+<tr><td><span class="word">dramatic</span></td><td><span class="pos">adj.</span></td><td>sudden and very noticeable</td><td class="zh">显著的；急剧的</td><td>&ldquo;&hellip;reported a <em>dramatic</em> reduction in livestock losses&hellip;&rdquo;</td><td class="note">Nothing to do with theatre here. Collocations: a dramatic rise / fall / reduction / increase.</td></tr>
+<tr><td><span class="word">common ground</span></td><td><span class="pos">n. phr.</span></td><td>shared interests or opinions between two sides</td><td class="zh">共同点；共同利益</td><td>&ldquo;There is <em>common ground</em> from the livestock perspective and from the conservation perspective.&rdquo;</td><td class="note"><strong>Key to Q32.</strong> The two sides are farmers and conservationists; the shared benefit is that both livestock and predators survive.</td></tr>
+<tr><td><span class="word">rancher</span></td><td><span class="pos">n.</span></td><td>a farmer with a large area of land for cattle or sheep</td><td class="zh">（美）大牧场主</td><td>&ldquo;If <em>ranchers</em> don&rsquo;t have a dead cow, they will not make a call to apply for a permit&hellip;&rdquo;</td><td class="note">American English; the British/Australian equivalents in this passage are <em>farmer</em> and <em>herder</em>.</td></tr>
+<tr><td><span class="word">permit</span></td><td><span class="pos">n.</span></td><td>an official document allowing you to do something</td><td class="zh">许可证</td><td>&ldquo;&hellip;they will not make a call to apply for a <em>permit</em> to kill a wolf.&rdquo;</td><td class="note">Noun stress on the first syllable (PER-mit); the verb is per-MIT. Shows the killing here is legal, not poaching.</td></tr>
+<tr><td><span class="word">self-reported</span></td><td><span class="pos">adj.</span></td><td>given by the people themselves rather than measured independently</td><td class="zh">自我报告的</td><td>&ldquo;&hellip;warned that such <em>self-reported</em> results must be taken with a pinch of salt.&rdquo;</td><td class="note"><strong>Key to Q33.</strong> The question paraphrase is &lsquo;claims&hellip; may not be totally accurate&rsquo;.</td></tr>
+<tr><td><span class="word">take with a pinch of salt</span></td><td><span class="pos">idiom</span></td><td>to not fully believe something</td><td class="zh">对&hellip;持保留态度</td><td>&ldquo;&hellip;such self-reported results must be <em>taken with a pinch of salt</em>.&rdquo;</td><td class="note">One of the few idioms in Cambridge Reading. It signals doubt, not disagreement &mdash; Smith does not say the farmers are lying.</td></tr>
+<tr><td><span class="word">displace</span></td><td><span class="pos">v.</span></td><td>to force something to move from its usual place</td><td class="zh">取代；使移位</td><td>&ldquo;&hellip;livestock guard dogs merely <em>displace</em> predators to unprotected neighbouring properties&hellip;&rdquo;</td><td class="note"><strong>Key to Q34.</strong> The problem is not solved, only moved. Note <em>merely</em> = only &mdash; a hedging adverb that carries criticism.</td></tr>
+<tr><td><span class="word">fate</span></td><td><span class="pos">n.</span></td><td>what finally happens to someone or something</td><td class="zh">命运；结局</td><td>&ldquo;&hellip;neighbouring properties, where their <em>fate</em> isn&rsquo;t recorded.&rdquo;</td><td class="note">A quiet, powerful word: the wolves probably die, but nobody counts them, so the statistics look better than reality.</td></tr>
+<tr><td><span class="word">unintended</span></td><td><span class="pos">adj.</span></td><td>not planned or wanted</td><td class="zh">非预期的；意外的</td><td>&ldquo;Another concern is whether there may be <em>unintended</em> ecological effects&hellip;&rdquo;</td><td class="note">The heading idea for the Q37&ndash;40 summary: &lsquo;Unintended ecological effects of using guard dogs&rsquo;.</td></tr>
+<tr><td><span class="word">jackal</span></td><td><span class="pos">n.</span></td><td>a wild dog-like animal of Africa and Asia</td><td class="zh">豺；胡狼</td><td>&ldquo;&hellip;the number of <em>jackals</em> killed by dogs and people actually increased.&rdquo;</td><td class="note"><strong>Answer to Q37.</strong> Keep the plural &mdash; the summary says &lsquo;a rise in the deaths of other predators, particularly&hellip;&rsquo;.</td></tr>
+<tr><td><span class="word">carnivore</span></td><td><span class="pos">n.</span></td><td>an animal that eats meat</td><td class="zh">食肉动物</td><td>&ldquo;They may also compete with other <em>carnivores</em> for food.&rdquo;</td><td class="note"><strong>Sets up Q39.</strong> The summary paraphrases this as &lsquo;reduce the amount of food available to certain wild animals&rsquo;.</td></tr>
+<tr><td><span class="word">landscape of fear</span></td><td><span class="pos">n. phr.</span></td><td>an area where prey animals change their behaviour because a hunter may be near</td><td class="zh">恐惧景观（生态学术语）</td><td>&ldquo;&hellip;by creating a &lsquo;<em>landscape of fear</em>&rsquo;, their mere presence can influence the behaviour of prey animals.&rdquo;</td><td class="note">The quotation marks tell you it is a technical term the writer is borrowing, not an everyday phrase.</td></tr>
+<tr><td><span class="word">raid</span></td><td><span class="pos">v.</span></td><td>to enter a place suddenly in order to steal</td><td class="zh">突袭；劫掠</td><td>&ldquo;&hellip;in fields, where foxes would normally <em>raid</em> them.&rdquo;</td><td class="note">Here it means stealing eggs or chicks from nests. <strong>The sentence that answers Q40.</strong></td></tr>
+<tr><td><span class="word">refuge</span></td><td><span class="pos">n.</span></td><td>a safe place, protected from danger</td><td class="zh">避难所；庇护地</td><td>&ldquo;&hellip;using dogs to enhance biodiversity and create <em>refuges</em> for species threatened by predation.&rdquo;</td><td class="note">Plural <em>refuges</em>. Together with &lsquo;bright future&rsquo; this is what makes Q28 paragraph G.</td></tr>
+<tr><td><span class="word">coexistence</span></td><td><span class="pos">n.</span></td><td>living together in the same place at the same time</td><td class="zh">共存；共处</td><td>&ldquo;&hellip;a bright future for guard dogs in promoting harmonious <em>coexistence</em> between humans and wildlife.&rdquo;</td><td class="note">co- (together) + existence. The final word of the passage and the clearest signal of the writer&rsquo;s optimistic ending.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">worked alongside shepherds</span></td><td>worked together with people who look after sheep</td><td class="zh">与牧羊人并肩工作</td></tr>
+<tr><td><span class="phrase">largely exterminated</span></td><td>almost completely wiped out</td><td class="zh">基本被消灭殆尽</td></tr>
+<tr><td><span class="phrase">lost their jobs</span></td><td>were no longer needed for work</td><td class="zh">失去了工作</td></tr>
+<tr><td><span class="phrase">increased efforts have been made</span></td><td>more work has been done</td><td class="zh">人们付出了更多努力</td></tr>
+<tr><td><span class="phrase">an unexpected revival</span></td><td>a surprising return to importance</td><td class="zh">意外的复兴</td></tr>
+<tr><td><span class="phrase">on duty</span></td><td>actively working</td><td class="zh">在岗；执勤</td></tr>
+<tr><td><span class="phrase">raised from an early age</span></td><td>brought up from when they were very young</td><td class="zh">从幼年起养育</td></tr>
+<tr><td><span class="phrase">place themselves between</span></td><td>stand in the space separating two things</td><td class="zh">把自己置于&hellip;之间</td></tr>
+<tr><td><span class="phrase">chase away predators</span></td><td>drive hunting animals off</td><td class="zh">驱赶捕食者</td></tr>
+<tr><td><span class="phrase">their mere presence is sufficient</span></td><td>just being there is enough</td><td class="zh">仅仅在场就已足够</td></tr>
+<tr><td><span class="phrase">too much human affection</span></td><td>excessive attention and love from people</td><td class="zh">过多的人类亲昵</td></tr>
+<tr><td><span class="phrase">the evidence indicates</span></td><td>the facts show</td><td class="zh">证据表明</td></tr>
+<tr><td><span class="phrase">highly effective</span></td><td>working very well</td><td class="zh">非常有效</td></tr>
+<tr><td><span class="phrase">rate the performance as excellent</span></td><td>judge the results to be very good</td><td class="zh">将表现评为优秀</td></tr>
+<tr><td><span class="phrase">predation stopped completely</span></td><td>no animals were killed by hunters any more</td><td class="zh">捕食完全停止</td></tr>
+<tr><td><span class="phrase">saw a decrease in attacks</span></td><td>experienced fewer attacks</td><td class="zh">攻击次数减少</td></tr>
+<tr><td><span class="phrase">managed and used properly</span></td><td>looked after and employed in the right way</td><td class="zh">妥善管理和使用</td></tr>
+<tr><td><span class="phrase">the most efficient control method</span></td><td>the best-value way of controlling the problem</td><td class="zh">最高效的控制方法</td></tr>
+<tr><td><span class="phrase">more tolerant of predators</span></td><td>more willing to accept predators</td><td class="zh">对捕食者更宽容</td></tr>
+<tr><td><span class="phrase">less likely to kill them</span></td><td>not so likely to kill them</td><td class="zh">更不可能杀死它们</td></tr>
+<tr><td><span class="phrase">outside protected areas</span></td><td>beyond official wildlife reserves</td><td class="zh">在保护区之外</td></tr>
+<tr><td><span class="phrase">held responsible for animal losses</span></td><td>blamed when farm animals die</td><td class="zh">被归咎于牲畜损失</td></tr>
+<tr><td><span class="phrase">a dramatic reduction</span></td><td>a very large fall</td><td class="zh">大幅减少</td></tr>
+<tr><td><span class="phrase">there is common ground</span></td><td>the two sides share an interest</td><td class="zh">存在共同点</td></tr>
+<tr><td><span class="phrase">apply for a permit</span></td><td>formally request official permission</td><td class="zh">申请许可证</td></tr>
+<tr><td><span class="phrase">looking at all the published evidence</span></td><td>reviewing everything that has been printed</td><td class="zh">综观所有已发表的证据</td></tr>
+<tr><td><span class="phrase">taken with a pinch of salt</span></td><td>not completely believed</td><td class="zh">不可全信</td></tr>
+<tr><td><span class="phrase">merely displace predators</span></td><td>only move the hunters somewhere else</td><td class="zh">只是把捕食者赶到别处</td></tr>
+<tr><td><span class="phrase">unprotected neighbouring properties</span></td><td>nearby farms with no defences</td><td class="zh">无防护的邻近农场</td></tr>
+<tr><td><span class="phrase">transferring the wolf pressure</span></td><td>moving the problem of wolves elsewhere</td><td class="zh">把狼的压力转移出去</td></tr>
+<tr><td><span class="phrase">an entire pack of wolves</span></td><td>a whole group of wolves</td><td class="zh">一整群狼</td></tr>
+<tr><td><span class="phrase">unintended ecological effects</span></td><td>environmental results nobody planned</td><td class="zh">非预期的生态影响</td></tr>
+<tr><td><span class="phrase">a negative impact on other species</span></td><td>harm done to different animals</td><td class="zh">对其他物种的负面影响</td></tr>
+<tr><td><span class="phrase">in spite of</span></td><td>despite; even though something else is true</td><td class="zh">尽管</td></tr>
+<tr><td><span class="phrase">spread diseases to wild animals</span></td><td>pass illnesses on to wildlife</td><td class="zh">把疾病传给野生动物</td></tr>
+<tr><td><span class="phrase">compete for food</span></td><td>both try to get the same limited food</td><td class="zh">争夺食物</td></tr>
+<tr><td><span class="phrase">build their nests on the ground</span></td><td>make nests at ground level</td><td class="zh">在地面筑巢</td></tr>
+<tr><td><span class="phrase">enhance biodiversity</span></td><td>increase the variety of living things</td><td class="zh">提升生物多样性</td></tr>
+<tr><td><span class="phrase">species threatened by predation</span></td><td>animals at risk from being hunted</td><td class="zh">受捕食威胁的物种</td></tr>
+<tr><td><span class="phrase">harmonious coexistence</span></td><td>living together peacefully</td><td class="zh">和谐共处</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;But in the 19th and 20th centuries, when such predators were largely exterminated, most guard dogs lost their jobs.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Most guard dogs lost their jobs.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;in the 19th and 20th centuries&rsquo; = a time phrase; &lsquo;when such predators were largely exterminated&rsquo; = a non-defining relative clause with <em>when</em>, explaining the cause.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The relative clause is doing the work of a <em>because</em> clause: the dogs lost their jobs <em>because</em> the predators were gone. Note the passive &lsquo;were exterminated&rsquo; &mdash; the writer does not name who did it, though it was humans.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People killed off nearly all the wolves and bears in the 1800s and 1900s, so most guard dogs were no longer needed.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但在19世纪和20世纪，这类捕食者基本被消灭殆尽，大多数护畜犬也因此失去了工作。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;If necessary, they will chase away predators, but often their mere presence is sufficient.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">They will chase away predators. / Their mere presence is sufficient.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;If necessary&rsquo; = a reduced conditional clause (= if it is necessary), placed first for emphasis.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two options are contrasted by <em>but</em>: active defence versus passive deterrence. <strong>Key to Q29:</strong> the question asks about &lsquo;the methods used&hellip; to keep predators away&rsquo;, and this sentence plus the previous one (standing between the livestock and any threat, barking loudly) is the full answer.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The dogs will drive predators off when they have to, but usually just being there is enough.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">必要时它们会驱赶捕食者，但通常仅仅是它们在场就已足够。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;A fluffy white puppy is fun to be around, but too much human affection makes it a great dog for guarding the front porch, rather than a great livestock guard dog.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Too much human affection makes it a great dog for guarding the front porch.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;A fluffy white puppy is fun to be around&rsquo; = a concession before the <em>but</em>; &lsquo;rather than a great livestock guard dog&rsquo; = a contrasting phrase closing the sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>make + object + noun phrase</strong> (makes <em>it</em> <em>a great dog</em>) is the causative pattern. <strong>Key to Q36:</strong> guarding the front porch = a house guard dog, so the two kinds of training need a different focus.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A cuddly puppy is nice, but if people give it too much love it becomes a house dog, not a flock dog.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">毛茸茸的白色小狗很讨人喜欢，但过多的人类亲昵会让它成为看门的好狗，而不是优秀的护畜犬。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;It is hoped that reductions in livestock losses can make farmers more tolerant of predators and less likely to kill them.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">It is hoped that&hellip; (impersonal main clause)</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that reductions in livestock losses can make farmers more tolerant&hellip; and less likely&hellip;&rsquo; = a noun clause functioning as the real subject.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>It is hoped that&hellip;</strong> is an impersonal passive: nobody is named as hoping, so the claim stays cautious. Notice the two parallel results after <em>make farmers</em>: more tolerant <em>of</em>, less likely <em>to</em>. Different prepositions, same structure.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People hope that if farmers lose fewer animals, they will accept predators more and kill them less.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">人们希望，牲畜损失的减少能让农民对捕食者更加宽容，也更不容易去猎杀它们。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Looking at all the published evidence, Bethany Smith at Nottingham Trent University in the UK found that up to 88 per cent of farmers said they no longer killed predators after using dogs &mdash; but warned that such self-reported results must be taken with a pinch of salt.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Bethany Smith found that up to 88 per cent of farmers said they no longer killed predators &mdash; but warned that&hellip;</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Looking at all the published evidence&rsquo; = a present-participle clause of manner; two <em>that</em>-clauses hang off the parallel verbs <em>found</em> and <em>warned</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The sentence structure itself is the answer to Q33: the writer gives you a big number and then immediately undercuts it with <em>but warned</em>. Watch the hedge <strong>up to</strong> 88 per cent &mdash; that is a maximum, not an average.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">After reviewing all the studies, Smith found that as many as 88% of farmers claimed to have stopped killing predators, but she said we should not fully trust figures that people report about themselves.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在查阅了所有已发表的证据后，英国诺丁汉特伦特大学的Bethany Smith发现，高达88%的农民表示使用护畜犬后不再猎杀捕食者，但她提醒说，这类自我报告的结果不可全信。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;For example, their presence has been found to protect birds which build their nests on the ground in fields, where foxes would normally raid them.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Their presence has been found to protect birds.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;which build their nests on the ground in fields&rsquo; = a defining relative clause identifying which birds; &lsquo;where foxes would normally raid them&rsquo; = a relative clause of place attached to <em>fields</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two relative clauses chain one after the other &mdash; a very common Passage 3 pattern. <strong>Key to Q40:</strong> the summary says &lsquo;threatened by predators such as ______&rsquo;, and the animal inside the second relative clause is <strong>foxes</strong>. The conditional <em>would normally</em> means &lsquo;in the usual situation, without dogs&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">For instance, having dogs around protects birds that nest on the ground in fields, where foxes would usually steal from the nests.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">例如，人们发现犬只的存在能保护那些在田间地面筑巢的鸟类——在没有犬只的情况下，狐狸通常会袭击这些鸟巢。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Summary Completion (the real exam gaps Q37&ndash;40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This is the exam summary, &lsquo;Unintended ecological effects of using guard dogs&rsquo;. Write <strong>ONE WORD ONLY</strong> from the passage in each gap. All four come from paragraphs F and G, in order.</p><div class="ex-item"><span class="ex-num">1.</span><label>In Namibia, the use of guard dogs has led to a rise in the deaths of other predators, particularly <input type="text" class="blank" id="b1" data-answer="jackals" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>It has been suggested that the dogs could have <input type="text" class="blank" id="b2" data-answer="diseases" placeholder="______"> which may affect other species.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>It has also been suggested that the dogs may reduce the amount of <input type="text" class="blank" id="b3" data-answer="food" placeholder="______"> available to certain wild animals.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>On the other hand, the dogs may protect birds&rsquo; nests, which might otherwise be threatened by predators such as <input type="text" class="blank" id="b4" data-answer="foxes" placeholder="______">.<span class="feedback" id="fb4"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>In the 19th and 20th centuries wolves and bears were largely <input type="text" class="blank" id="b5" data-answer="exterminated" placeholder="______"> (= completely wiped out).<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Guard dogs are now enjoying an unexpected <input type="text" class="blank" id="b6" data-answer="revival" placeholder="______"> (= a return to being needed).<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Often the dogs&rsquo; <input type="text" class="blank" id="b7" data-answer="mere" placeholder="______"> (= nothing more than) presence is enough to keep predators away.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Fewer losses can make farmers more <input type="text" class="blank" id="b8" data-answer="tolerant" placeholder="______"> (= willing to accept) of predators.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Cheetahs are often held <input type="text" class="blank" id="b9" data-answer="responsible" placeholder="______"> (= blamed) for the loss of farm animals.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The dogs may simply <input type="text" class="blank" id="b10" data-answer="displace" placeholder="______"> (= move elsewhere) predators to neighbouring farms.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Australian researchers are creating <input type="text" class="blank" id="b11" data-answer="refuges" placeholder="______"> (= safe places) for threatened species.<span class="feedback" id="fb11"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Reading, the right idea in the wrong form still scores zero.</p><div class="ex-item"><span class="ex-num">1.</span><label>More than 65 per cent of herders reported that <input type="text" class="blank" id="b12" data-answer="predation" placeholder="______"> (PREDATOR) stopped completely.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Ninety per cent of farmers rated the dogs&rsquo; <input type="text" class="blank" id="b13" data-answer="performance" placeholder="______"> (PERFORM) as very good or excellent.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Van Bommel calls guard dogs the most <input type="text" class="blank" id="b14" data-answer="efficient" placeholder="______"> (EFFICIENCY) control method available.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Reduced losses may increase farmers&rsquo; <input type="text" class="blank" id="b15" data-answer="tolerance" placeholder="______"> (TOLERANT) of wolves and cheetahs.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Smith warns that results reported by farmers themselves may not be <input type="text" class="blank" id="b16" data-answer="reliable" placeholder="______"> (RELY).<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Guard dogs can have unintended <input type="text" class="blank" id="b17" data-answer="ecological" placeholder="______"> (ECOLOGY) effects on other species.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The aim is to promote harmonious <input type="text" class="blank" id="b18" data-answer="coexistence" placeholder="______"> (COEXIST) between humans and wildlife.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every answer in this passage sits behind a paraphrase. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;how guard dogs gain their skills&rdquo; &rarr; Passage: their initial <input type="text" class="blank" id="b19" data-answer="training" placeholder="______"> is to make them understand that livestock is their life.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;a successful way of protecting farmers&rsquo; herds&rdquo; &rarr; Passage: guard dogs are highly <input type="text" class="blank" id="b20" data-answer="effective" placeholder="______">.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;the best way of protecting farm animals&rdquo; &rarr; Passage: the most <input type="text" class="blank" id="b21" data-answer="efficient" placeholder="______"> control method that we have.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;as long as the dogs are appropriately handled&rdquo; &rarr; Passage: if they are <input type="text" class="blank" id="b22" data-answer="managed" placeholder="______"> and used properly.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;may not be totally accurate&rdquo; &rarr; Passage: must be taken with a <input type="text" class="blank" id="b23" data-answer="pinch" placeholder="______"> of salt.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;if the use&hellip; is not sufficiently widespread&rdquo; &rarr; Passage: if we are not working with <input type="text" class="blank" id="b24" data-answer="everybody" placeholder="______">, we transfer the pressure to the neighbour.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;an optimistic suggestion&rdquo; &rarr; Passage: there may be a <input type="text" class="blank" id="b25" data-answer="bright" placeholder="______"> future for guard dogs.<span class="feedback" id="fb25"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Linkers and Hedges</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. Passage 3 texts are built from exactly these joints &mdash; learn them and long sentences stop being frightening.</p><div class="ex-item"><span class="ex-num">1.</span><label>In the 19th and 20th centuries, <input type="text" class="blank" id="b26" data-answer="when" placeholder="______"> such predators were largely exterminated, most guard dogs lost their jobs. (relative adverb of time)<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label><input type="text" class="blank" id="b27" data-answer="As" placeholder="______"> a result, farmers once more need to protect their livestock. (result linker)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>It is <input type="text" class="blank" id="b28" data-answer="hoped" placeholder="______"> that fewer losses will make farmers more tolerant. (impersonal passive)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label><input type="text" class="blank" id="b29" data-answer="In" placeholder="______"> spite of the impact on cheetahs, the number of jackals killed increased. (concession)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The dogs protect birds <input type="text" class="blank" id="b30" data-answer="which" placeholder="______"> build their nests on the ground. (defining relative pronoun)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Nests are in fields, <input type="text" class="blank" id="b31" data-answer="where" placeholder="______"> foxes would normally raid them. (relative adverb of place)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Guard dogs <input type="text" class="blank" id="b32" data-answer="merely" placeholder="______"> displace predators to neighbouring properties. (hedging adverb = only)<span class="feedback" id="fb32"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all seven come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>家畜护卫犬 &rarr; <input type="text" class="blank" id="b33" data-answer="livestock" placeholder="______"> guard dogs<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>捕食者数量回升、分布更广 &rarr; predators have become more <input type="text" class="blank" id="b34" data-answer="widespread" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>共同点 &rarr; common <input type="text" class="blank" id="b35" data-answer="ground" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>申请许可证 &rarr; apply for a <input type="text" class="blank" id="b36" data-answer="permit" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>与其他食肉动物争食 &rarr; compete with other <input type="text" class="blank" id="b37" data-answer="carnivores" placeholder="______"> for food<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>提升生物多样性 &rarr; enhance <input type="text" class="blank" id="b38" data-answer="biodiversity" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>和谐共处 &rarr; harmonious <input type="text" class="blank" id="b39" data-answer="coexistence" placeholder="______"><span class="feedback" id="fb39"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; a chain that runs the whole length of the passage</strong></p><p>Follow it in one line: predators exterminated &rarr; dogs unemployed &rarr; conservation brings predators back &rarr; dogs re-employed &rarr; livestock losses fall &rarr; farmers stop shooting predators &rarr; predators are protected. The hinge sentence is Julie Young&rsquo;s: &ldquo;If ranchers don&rsquo;t have a dead cow, they will not make a call to apply for a permit to kill a wolf.&rdquo; That one <em>if</em>-sentence is the argument of the entire article, and it is also the answer to Q32.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;but&rsquo; is where the marks are</strong></p><p>Count the reversals: &ldquo;<em>But</em> in the 19th and 20th centuries&hellip;&rdquo;, &ldquo;In recent years, <em>however</em>&hellip;&rdquo;, &ldquo;<em>but</em> often their mere presence is sufficient&rdquo;, &ldquo;<em>But</em> today&rsquo;s guard dogs also have a new role&rdquo;, &ldquo;<em>but</em> warned that such self-reported results&hellip;&rdquo;, &ldquo;The evidence so far, <em>however</em>, indicates that these consequences aren&rsquo;t always negative.&rdquo; Five of the seven paragraphs turn on a contrast word, and four of them sit next to an answer.</p></div>
+<div class="card"><p><strong>Comparison &mdash; percentages that look alike but measure different things</strong></p><p>Four figures use &lsquo;90 per cent&rsquo; or similar and they measure four different things: 90%+ of Portuguese farmers <em>rated the dogs highly</em>; 65%+ of Australian herders saw predation <em>stop</em>; 90%+ of Namibian cheetahs live <em>outside protected areas</em>; 90%+ of Namibian farmers reported <em>fewer losses</em>; up to 88% of farmers said they <em>no longer killed predators</em>. Never match a question to a number &mdash; match it to what the number counts.</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;For example&rsquo; and &lsquo;Indeed&rsquo; mark the evidence layer</strong></p><p>Paragraph C opens &lsquo;<em>For example</em>, in Portugal&hellip;&rsquo; and paragraph G says &lsquo;<em>For example</em>, their presence has been found to protect birds&hellip; <em>Indeed</em>, Australian researchers are now using dogs to enhance biodiversity&rsquo;. <em>Indeed</em> does not mean &lsquo;in fact&rsquo; in the Chinese sense of correcting something &mdash; it strengthens the point just made. Q28 (an optimistic suggestion) lives in exactly this strengthening move.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; who each expert is, given free</strong></p><p>Every name arrives with its credentials attached: &lsquo;Dan Macon, <em>a shepherd with three guard dogs</em>&rsquo;; &lsquo;biologist Silvia Ribeiro&rsquo;; &lsquo;Linda van Bommel and Chris Johnson <em>at the University of Tasmania</em>&rsquo;; &lsquo;Julie Young, <em>at Utah State University in the US</em>&rsquo;; &lsquo;Bethany Smith <em>at Nottingham Trent University in the UK</em>&rsquo;. Note who is <em>not</em> an academic: Macon is a working shepherd. Q30 asks for &lsquo;different <em>academics</em>&rsquo;, which quietly excludes his paragraph.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &rarr; new problem</strong></p><p>The passage does not stop at the solution. Paragraph D gives the good news; paragraph E raises doubt about the <em>evidence</em> (self-reported) and about <em>displacement</em> (the neighbour poisons a whole pack); paragraph F raises doubt about <em>other species</em> (jackals, diseases, competition for food, a landscape of fear). This three-step shape is standard in academic writing, and in IELTS it is usually where the Yes/No/Not Given or multiple-choice questions are set.</p></div>
+<div class="card"><p><strong>Chronology &mdash; four time markers organise the argument</strong></p><p>&lsquo;For thousands of years&rsquo; (the old job) &rarr; &lsquo;in the 19th and 20th centuries&rsquo; (the job disappears) &rarr; &lsquo;In recent years&rsquo; / &lsquo;Today&rsquo; (the job returns) &rarr; &lsquo;In 2015&rsquo; (the jackal study) &rarr; &lsquo;The evidence so far&rsquo; and &lsquo;are now using&rsquo; (the present, still unfinished). Q26-style questions about &lsquo;in recent years&rsquo; always attach to the third of these markers.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; supportive, but scrupulously balanced</strong></p><p>The writer clearly likes the idea, yet every positive claim is hedged: &lsquo;<em>It is hoped that</em>&hellip;&rsquo;, &lsquo;Young <em>believes</em> this result applies widely&rsquo;, &lsquo;<em>it is possible that</em>&hellip;&rsquo;, &lsquo;<em>The extent of this problem isn&rsquo;t known</em>&rsquo;, &lsquo;<em>so if we can get this right</em>, there <em>may</em> be a bright future&rsquo;. That final conditional is the whole attitude in nine words: optimistic, but conditional on doing it properly.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching Information to Paragraphs (Q27&ndash;31)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the <strong>NB</strong> line first: a letter may be used more than once. Turn each question into one keyword, then check your seven-paragraph map.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>27. An example of one predator being protected by guard dogs &rarr; D.</b> Keyword: <em>protected predator</em>. In Namibia more than 90% of farmers reported a dramatic reduction in losses &lsquo;and said that as a result they were less likely to kill predators&rsquo; &mdash; the cheetah is protected. In G the dogs protect <em>birds</em>, which are prey, not predators.</li><li><b>28. An optimistic suggestion about possible positive developments &rarr; G.</b> Keyword: <em>optimistic</em>. &lsquo;So if we can get this right, there may be a <em>bright future</em> for guard dogs in promoting harmonious coexistence&rsquo; &mdash; a forward-looking hope, which is what &lsquo;possible developments&rsquo; means.</li><li><b>29. How the dogs&rsquo; methods keep predators away &rarr; B.</b> Keyword: <em>methods</em>. Standing between the livestock and any threat, barking loudly, chasing predators away, or simply being present. Four techniques in two sentences.</li><li><b>30. Claims by different academics that the dogs protect herds successfully &rarr; C.</b> Keyword: <em>different academics</em>, plural. Ribeiro in Portugal (90%+ rate performance very good or excellent) <em>and</em> van Bommel and Johnson in Australia (65%+ saw predation stop). Paragraph D has only one academic; paragraph B has a shepherd, not an academic.</li><li><b>31. How the dogs gain their skills &rarr; B.</b> Keyword: <em>learn</em>. &lsquo;These dogs are raised from an early age with the animals they will be watching&rsquo; plus Macon on &lsquo;their initial training&rsquo;. Yes, B again &mdash; that is exactly why the NB is printed.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> when you find your answer for one question, do not cross the paragraph off unless the instructions say each letter is used once. Here, doing so would cost you a mark on Q31.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Matching Statements to People (Q32&ndash;36)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Five people, five statements, each used once. Find the quotation marks before you read the statements &mdash; in this passage every answer is inside a direct quote or the sentence introducing one.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>32. Guard dogs may save both livestock and wild animals &rarr; D (Julie Young).</b> &lsquo;There is <em>common ground</em> from the livestock perspective and from the conservation perspective&hellip; If ranchers don&rsquo;t have a dead cow, they will not&hellip; apply for a permit to kill a wolf.&rsquo; Two perspectives = both livestock and wildlife.</li><li><b>33. Reported changes in behaviour may not be totally accurate &rarr; E (Bethany Smith).</b> &lsquo;up to 88 per cent of farmers <em>said</em> they no longer killed predators &mdash; but warned that such <em>self-reported</em> results must be taken with a pinch of salt.&rsquo; The behaviour change is &lsquo;no longer killed predators&rsquo;; the doubt is about the reporting.</li><li><b>34. Negative results if the use is not widespread enough &rarr; B (Silvia Ribeiro).</b> &lsquo;In some regions, we work with almost every farmer, but in others only one or two have dogs&hellip; If we are <em>not working with everybody</em>, we are transferring the wolf pressure to the neighbour&rsquo;s herd and he can use poison and kill an entire pack.&rsquo;</li><li><b>35. The best method, provided the dogs are handled properly &rarr; C (Linda van Bommel).</b> &lsquo;<em>If they are managed and used properly</em>, livestock guard dogs are the <em>most efficient</em> control method that we have&hellip;&rsquo; The conditional clause is the &lsquo;as long as&rsquo; in the statement.</li><li><b>36. Training a flock dog needs a different focus from training a house dog &rarr; A (Dan Macon).</b> &lsquo;too much human affection makes it a great dog for <em>guarding the front porch</em>, rather than a great livestock guard dog.&rsquo; Front porch = house.</li></ul><p style="margin-top:10px;"><b>Careful:</b> Ribeiro appears twice, in paragraphs C and E, saying opposite kinds of thing. In people-matching tasks always check whether a name is quoted more than once before you commit.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Summary Completion, ONE WORD ONLY (Q37&ndash;40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide the word type for each gap before you look back at the passage. The summary covers paragraph F and the start of G, in order.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q37 jackals</b> &mdash; &lsquo;a rise in the deaths of other predators, particularly ______&rsquo; needs a plural animal name. Passage: &lsquo;in spite of the impact&hellip; on cheetahs, the number of <em>jackals</em> killed by dogs and people actually increased&rsquo;. &lsquo;Other predators&rsquo; rules out cheetahs.</li><li><b>Q38 diseases</b> &mdash; &lsquo;the dogs could have ______ which may affect other species&rsquo; needs a plural noun that a dog can carry. Passage: &lsquo;They have been found to <em>spread diseases</em> to wild animals, including endangered Ethiopian wolves.&rsquo;</li><li><b>Q39 food</b> &mdash; &lsquo;reduce the amount of ______&rsquo; needs an uncountable noun (because of &lsquo;amount of&rsquo;). Passage: &lsquo;They may also <em>compete with other carnivores for food</em>.&rsquo; Do not write &lsquo;foods&rsquo;.</li><li><b>Q40 foxes</b> &mdash; &lsquo;predators such as ______&rsquo; needs a plural animal name. Passage: nests &lsquo;in fields, where <em>foxes</em> would normally raid them&rsquo;.</li></ul><p style="margin-top:10px;"><b>Grammar as a filter:</b> &lsquo;the amount of&rsquo; before Q39 guarantees an uncountable noun, and &lsquo;such as&rsquo; before Q40 guarantees an example, almost always plural. The grammar narrows the field before you read a single line of the passage.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Yes / No / Not Given thinking (extra practice)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These statements are about the <em>writer&rsquo;s claims</em>, which is what Y/N/NG tests. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>Guard dogs always have to fight predators in order to protect livestock. &rarr; <strong>NO</strong> &mdash; &lsquo;often their mere presence is sufficient&rsquo;, so fighting is not always necessary.</li><li>The writer fully accepts the 88 per cent figure reported by farmers. &rarr; <strong>NO</strong> &mdash; the figure is reported and then immediately qualified with &lsquo;taken with a pinch of salt&rsquo;.</li><li>The scale of the harm done to non-target species is well understood. &rarr; <strong>NO</strong> &mdash; &lsquo;The extent of this problem isn&rsquo;t known&rsquo;.</li><li>Guard dogs are cheaper than fences for protecting livestock. &rarr; <strong>NOT GIVEN</strong> &mdash; the passage calls them &lsquo;the most efficient control method&rsquo; but never compares them with fences or mentions cost.</li><li>The writer believes guard dogs could benefit wildlife in the future. &rarr; <strong>YES</strong> &mdash; &lsquo;there may be a bright future for guard dogs in promoting harmonious coexistence between humans and wildlife&rsquo;.</li></ul><p style="margin-top:10px;"><b>Rule:</b> if the passage hedges (&lsquo;may&rsquo;, &lsquo;it is possible that&rsquo;, &lsquo;isn&rsquo;t known&rsquo;) then any statement claiming certainty is NO, not NOT GIVEN.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Multiple choice practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">MCQ distractors in Passage 3 are built by swapping who said what, or by turning a hedge into a certainty. Try these four.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Why did most guard dogs lose their work in the 19th and 20th centuries?</b> &rarr; Because predators had been largely exterminated. (Not because farming declined, and not because better methods were invented &mdash; neither is mentioned.)</li><li><b>What does Dan Macon say is the main aim of a guard dog&rsquo;s early training?</b> &rarr; To make the dog understand that livestock will be its life. (Not to make it aggressive, and not to make it obey humans.)</li><li><b>What worries Ribeiro about partial coverage?</b> &rarr; That wolves are pushed onto neighbours who may use poison. (Not that the dogs are expensive, and not that wolves learn to avoid dogs.)</li><li><b>What did the 2015 Namibian research find?</b> &rarr; That jackal deaths rose even though cheetahs benefited. (Not that cheetah numbers fell, and not that the dogs killed no other animals.)</li></ul><p style="margin-top:10px;"><b>Technique:</b> read the stem, answer it in your own words with the passage covered, then look for the option closest to your own sentence. Choosing between four written options first is how students talk themselves into distractors.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Locating information fast in a seven-paragraph passage</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Passage 3 is long and the clock is tight. Train the jump: idea &rarr; paragraph, without re-reading from the top.</p><ul style="margin-left:18px;line-height:1.9;"><li>Why the dogs became unemployed and then needed again &rarr; <b>A</b>.</li><li>How many breeds there are, and how puppies are brought up &rarr; <b>B</b>.</li><li>Survey figures from Portugal and Australia &rarr; <b>C</b>.</li><li>Cheetahs, Namibia, and the &lsquo;permit to kill a wolf&rsquo; quote &rarr; <b>D</b>.</li><li>The 88 per cent figure, the pinch of salt, poison and the neighbour&rsquo;s herd &rarr; <b>E</b>.</li><li>Jackals, diseases, Ethiopian wolves, competition for food, landscape of fear &rarr; <b>F</b>.</li><li>Ground-nesting birds, foxes, biodiversity refuges, bright future &rarr; <b>G</b>.</li></ul><p style="margin-top:10px;"><b>Tip:</b> before answering anything, write two or three words next to each paragraph letter. Ninety seconds spent on that map will save you five minutes of hunting later &mdash; and it is the only reliable defence against a passage where one letter is the answer twice.</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why did most livestock guard dogs lose their jobs in the 19th and 20th centuries?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Farmers could no longer afford to feed them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Predators such as wolves and bears were largely exterminated.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. New breeds of dog replaced them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Sheep and goat farming became less common.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Which of these is NOT one of the methods paragraph B describes?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Standing between the livestock and any threat.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Barking loudly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Chasing predators away when necessary.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Leading the flock to safer ground.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'D')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does Dan Macon mean by &ldquo;a great dog for guarding the front porch&rdquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. A dog that has been trained for many years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. A dog that has bonded with humans rather than with livestock.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. A dog that is too small to face a wolf.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. A dog that only works at night.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why is paragraph C the answer to Question 30 rather than paragraph D?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Because paragraph D contains no percentages.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Because paragraph C is longer.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Because Question 30 asks for claims by different academics, and C quotes researchers in two countries.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Because paragraph D is about dogs rather than predators.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How do guard dogs end up protecting predators, according to paragraph D?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They physically defend cheetahs from farmers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They frighten cheetahs into staying inside protected areas.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. By reducing livestock losses, they remove the farmers&rsquo; reason to kill predators.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They lead conservationists to the cheetahs&rsquo; territory.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What does Julie Young mean by &ldquo;common ground&rdquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Land that farmers and conservationists share.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. An interest that both farmers and conservationists benefit from.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. An agreement signed by ranchers and the government.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. The area where cheetahs and livestock live side by side.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why does Bethany Smith warn that the 88 per cent figure should be treated with caution?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Because the study covered only one country.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Because the figure comes from what farmers say about themselves.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Because the research has not yet been published.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Because 88 per cent is too small a majority.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What problem does Silvia Ribeiro identify in paragraph E?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Guard dogs sometimes attack the livestock they protect.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Wolves have learned to avoid the dogs completely.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Where only some farmers have dogs, wolf pressure moves to neighbours who may use poison.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Poison is now illegal in most of Portugal.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What did researchers report in 2015 about Namibia?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Cheetah numbers had fallen despite the guard dogs.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. The number of jackals killed by dogs and people had increased.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Guard dogs had spread disease to Ethiopian wolves.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Farmers had stopped using guard dogs altogether.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which of the following is NOT listed in paragraph F as an ecological impact of guard dogs?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Spreading diseases to wild animals.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Competing with other carnivores for food.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Creating a &lsquo;landscape of fear&rsquo; that changes prey behaviour.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Damaging the plants that livestock feed on.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'D')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How do guard dogs help ground-nesting birds, according to paragraph G?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. By carrying eggs to safer places.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. By keeping foxes away from the nests.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. By providing warmth during cold nights.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. By frightening away larger birds of prey.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which sentence best describes the writer&rsquo;s conclusion?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Guard dogs have already solved the conflict between farmers and predators.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Guard dogs do more ecological harm than good.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Guard dogs could bring real benefits for people and wildlife, but only if they are used carefully.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Guard dogs should be replaced by fences and poison controls.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 27–40</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">D</div><div class="answer-note">Paragraph D: in Namibia, once guard dogs cut livestock losses, more than 90 per cent of farmers &lsquo;said that as a result they were less likely to kill predators&rsquo; &mdash; the cheetah is the predator that gets protected. In G the animals protected are birds, which are prey.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">G</div><div class="answer-note">Paragraph G: &lsquo;So if we can get this right, there may be a <em>bright future</em> for guard dogs in promoting harmonious coexistence between humans and wildlife&rsquo; &mdash; a forward-looking, optimistic suggestion.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">Paragraph B: the dogs &lsquo;place themselves between the livestock and any threat, barking loudly&rsquo;, will &lsquo;chase away predators&rsquo; if needed, and often their &lsquo;mere presence is sufficient&rsquo;. That is the description of their methods.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">C</div><div class="answer-note">Paragraph C reports <em>two</em> sets of academics: biologist Silvia Ribeiro in Portugal (over 90 per cent of farmers rate performance very good or excellent) and van Bommel and Johnson at the University of Tasmania (over 65 per cent of herders saw predation stop). &lsquo;Different academics&rsquo; requires more than one.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">B</div><div class="answer-note">Paragraph B again &mdash; the NB allows repeats. &lsquo;These dogs are raised from an early age with the animals they will be watching&rsquo;, and Macon explains &lsquo;their <em>initial training</em> is to make them understand that livestock is going to be their life&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">D</div><div class="answer-note">Julie Young: &lsquo;There is <em>common ground</em> from the livestock perspective and from the conservation perspective&hellip; If ranchers don&rsquo;t have a dead cow, they will not make a call to apply for a permit to kill a wolf.&rsquo; Both farm animals and wild animals are saved.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">E</div><div class="answer-note">Bethany Smith found that &lsquo;up to 88 per cent of farmers <em>said</em> they no longer killed predators &mdash; but warned that such <em>self-reported</em> results must be taken with a pinch of salt&rsquo;. Reported behaviour change, treated with doubt.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">B</div><div class="answer-note">Silvia Ribeiro: &lsquo;If we are <em>not working with everybody</em>, we are transferring the wolf pressure to the neighbour&rsquo;s herd and he can use poison and kill an entire pack of wolves.&rsquo; Partial coverage = &lsquo;not sufficiently widespread&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">C</div><div class="answer-note">Linda van Bommel: &lsquo;<em>If they are managed and used properly</em>, livestock guard dogs are the <em>most efficient</em> control method that we have in terms of the amount of livestock that they save from predation.&rsquo; The conditional matches &lsquo;as long as the dogs are appropriately handled&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">A</div><div class="answer-note">Dan Macon: &lsquo;too much human affection makes it a great dog for <em>guarding the front porch</em>, rather than a great livestock guard dog&rsquo; &mdash; a house guard dog needs a different training focus.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">jackals</div><div class="answer-note">Paragraph F: &lsquo;in spite of the impact farmers obtaining guard dogs had on cheetahs, the number of <em>jackals</em> killed by dogs and people actually increased&rsquo;. The summary asks about <em>other</em> predators, so cheetahs is the distractor. Keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">diseases</div><div class="answer-note">Paragraph F: &lsquo;They have been found to spread <em>diseases</em> to wild animals, including endangered Ethiopian wolves.&rsquo; The summary says the dogs &lsquo;could have ______ which may affect other species&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">food</div><div class="answer-note">Paragraph F: &lsquo;They may also compete with other carnivores for <em>food</em>.&rsquo; &lsquo;The amount of&rsquo; in the summary requires an uncountable noun &mdash; write <em>food</em>, never &lsquo;foods&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">foxes</div><div class="answer-note">Paragraph G: dogs protect birds that nest on the ground in fields, &lsquo;where <em>foxes</em> would normally raid them&rsquo;. &lsquo;Raid&rsquo; = threaten the nests; &lsquo;such as&rsquo; needs the plural example.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Summary Completion (the real exam gaps Q37&ndash;40)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">jackals</div><div class="answer-note">In Namibia, the use of guard dogs has led to a rise in the deaths of other predators, particularly</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">diseases</div><div class="answer-note">It has been suggested that the dogs could have</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">food</div><div class="answer-note">It has also been suggested that the dogs may reduce the amount of</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">foxes</div><div class="answer-note">On the other hand, the dogs may protect birds&rsquo; nests, which might otherwise be threatened by predators such as</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">exterminated</div><div class="answer-note">In the 19th and 20th centuries wolves and bears were largely</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">revival</div><div class="answer-note">Guard dogs are now enjoying an unexpected</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">mere</div><div class="answer-note">Often the dogs&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">tolerant</div><div class="answer-note">Fewer losses can make farmers more</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">responsible</div><div class="answer-note">Cheetahs are often held</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">displace</div><div class="answer-note">The dogs may simply</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">refuges</div><div class="answer-note">Australian researchers are creating</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">predation</div><div class="answer-note">More than 65 per cent of herders reported that</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">performance</div><div class="answer-note">Ninety per cent of farmers rated the dogs&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">efficient</div><div class="answer-note">Van Bommel calls guard dogs the most</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">tolerance</div><div class="answer-note">Reduced losses may increase farmers&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">reliable</div><div class="answer-note">Smith warns that results reported by farmers themselves may not be</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">ecological</div><div class="answer-note">Guard dogs can have unintended</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">coexistence</div><div class="answer-note">The aim is to promote harmonious</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">training</div><div class="answer-note">Question: &ldquo;how guard dogs gain their skills&rdquo; &rarr; Passage: their initial</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">effective</div><div class="answer-note">Question: &ldquo;a successful way of protecting farmers&rsquo; herds&rdquo; &rarr; Passage: guard dogs are highly</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">efficient</div><div class="answer-note">Question: &ldquo;the best way of protecting farm animals&rdquo; &rarr; Passage: the most</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">managed</div><div class="answer-note">Question: &ldquo;as long as the dogs are appropriately handled&rdquo; &rarr; Passage: if they are</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">pinch</div><div class="answer-note">Question: &ldquo;may not be totally accurate&rdquo; &rarr; Passage: must be taken with a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">everybody</div><div class="answer-note">Question: &ldquo;if the use&hellip; is not sufficiently widespread&rdquo; &rarr; Passage: if we are not working with</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">bright</div><div class="answer-note">Question: &ldquo;an optimistic suggestion&rdquo; &rarr; Passage: there may be a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Linkers and Hedges</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">when</div><div class="answer-note">In the 19th and 20th centuries,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">As</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">hoped</div><div class="answer-note">It is</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">In</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">which</div><div class="answer-note">The dogs protect birds</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">where</div><div class="answer-note">Nests are in fields,</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">merely</div><div class="answer-note">Guard dogs</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">livestock</div><div class="answer-note">家畜护卫犬 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">widespread</div><div class="answer-note">捕食者数量回升、分布更广 &rarr; predators have become more</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">ground</div><div class="answer-note">共同点 &rarr; common</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">permit</div><div class="answer-note">申请许可证 &rarr; apply for a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">carnivores</div><div class="answer-note">与其他食肉动物争食 &rarr; compete with other</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">biodiversity</div><div class="answer-note">提升生物多样性 &rarr; enhance</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">coexistence</div><div class="answer-note">和谐共处 &rarr; harmonious</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Predators such as wolves and bears were largely exterminated.</div><div class="answer-note">Paragraph A: &lsquo;when such predators were largely exterminated, most guard dogs lost their jobs&rsquo;. The dogs&rsquo; &lsquo;unexpected revival&rsquo; came when conservation brought the predators back.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">D. Leading the flock to safer ground.</div><div class="answer-note">The passage lists positioning, barking, chasing and simple presence &mdash; these four make Q29 paragraph B. Leading the flock is never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. A dog that has bonded with humans rather than with livestock.</div><div class="answer-note">Too much human affection produces a house dog, not a flock dog. This contrast in focus is the answer to Q36 (person A).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. Because Question 30 asks for claims by different academics, and C quotes researchers in two countries.</div><div class="answer-note">Paragraph C has Ribeiro in Portugal <em>and</em> van Bommel and Johnson in Australia. Paragraph D quotes only Julie Young, so &lsquo;different academics&rsquo; does not fit.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. By reducing livestock losses, they remove the farmers&rsquo; reason to kill predators.</div><div class="answer-note">More than 90% of Namibian farmers reported a dramatic reduction in losses &lsquo;and said that as a result they were less likely to kill predators&rsquo;. This is why Q27 is paragraph D.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. An interest that both farmers and conservationists benefit from.</div><div class="answer-note">She names the two sides explicitly &mdash; &lsquo;from the livestock perspective and from the conservation perspective&rsquo; &mdash; which is exactly the Q32 statement about saving both livestock and wild animals.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. Because the figure comes from what farmers say about themselves.</div><div class="answer-note">&lsquo;such self-reported results must be taken with a pinch of salt&rsquo; &mdash; the answer to Q33 (person E). Note she reviewed <em>all the published evidence</em>, so C is contradicted.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. Where only some farmers have dogs, wolf pressure moves to neighbours who may use poison.</div><div class="answer-note">&lsquo;If we are not working with everybody, we are transferring the wolf pressure to the neighbour&rsquo;s herd and he can use poison and kill an entire pack of wolves.&rsquo; This is Q34.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. The number of jackals killed by dogs and people had increased.</div><div class="answer-note">This is the answer to Q37. The sentence begins &lsquo;in spite of the impact&hellip; on cheetahs&rsquo;, so &lsquo;cheetahs&rsquo; is deliberately placed nearby as a distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">D. Damaging the plants that livestock feed on.</div><div class="answer-note">A, B and C are all in paragraph F &mdash; and A and B supply the answers to Q38 (<em>diseases</em>) and Q39 (<em>food</em>). Plant damage is never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. By keeping foxes away from the nests.</div><div class="answer-note">The birds nest in fields &lsquo;where foxes would normally raid them&rsquo; &mdash; the source of the Q40 answer, <em>foxes</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. Guard dogs could bring real benefits for people and wildlife, but only if they are used carefully.</div><div class="answer-note">The final sentence is a conditional: &lsquo;<em>if we can get this right</em>, there <em>may</em> be a bright future&hellip;&rsquo; Optimism plus a condition &mdash; which is why Q28 is paragraph G.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

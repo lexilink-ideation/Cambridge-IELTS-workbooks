@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Reading Passage 2</h1>
+    <h2>Adapting to the Effects of Climate Change &middot; Matching Information + Sentence Completion + Matching People (Q14&ndash;26)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage is a <strong>tour of five real adaptation projects</strong> around the world: raising the roads of Miami Beach, growing mangroves back behind bamboo dams in Java, building floating houses in the Mekong Delta, planting salt-tolerant vegetables in Bangladesh, and cooling the streets of Los Angeles with reflective paint and trees. Paragraph A is the introduction; paragraphs B&ndash;F are five separate case studies, each with <strong>one named expert who is quoted</strong>. Because the structure is &lsquo;one place per paragraph&rsquo;, almost every question is really asking you <em>which country</em> &mdash; find the place and you have found the answer.</p></div><div class="card"><p><strong>What the passage argues:</strong> That adaptation is no longer optional &mdash; warming is already locked in for decades &mdash; and that the most interesting answers are coming from the places hit hardest. It also quietly argues for a <em>second</em> point: single-purpose engineering (a seawall, a taller house) works less well than solutions that work <em>with</em> natural processes and <em>with</em> the local community.</p><p><strong>段落结构 Structure:</strong> 第A段：总起——即使今天停止排放，变暖仍将持续约40年；受影响最重的地区反而创新最活跃。第B段：美国迈阿密海滩——抬高道路61厘米、安装大功率抽水泵（Pineda）。第C段：印尼爪哇——海堤失效，改用竹制半透水坝帮助红树林自然恢复（Tol）。第D段：越南湄公河三角洲——可漂浮房屋，造价仅为抬高地基的三分之一（English）。第E段：孟加拉国——土壤盐碱化，改种耐盐作物，年收成增加二至三次（Chowdhury）。第F段：美国洛杉矶——GIS定位少树街道，铺浅灰反光路面降温6&deg;C（Spotts）。</p><p><strong>Task type:</strong> <strong>Q14&ndash;17 Matching information to paragraphs A&ndash;F</strong> (not in passage order); <strong>Q18&ndash;22 Sentence completion</strong> &mdash; <em>ONE WORD ONLY</em> from the passage, and these <em>do</em> follow the order of the passage; <strong>Q23&ndash;26 Matching statements to five named people A&ndash;E</strong>, each person used once.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Build a <strong>five-line map</strong> before you touch the questions: B = Miami Beach / raised roads + pumps / Pineda; C = Java, Indonesia / mangroves + bamboo dams / Tol; D = Mekong Delta, Vietnam / floating houses / English; E = Bangladesh / salty soil + new crops / Chowdhury; F = Los Angeles / cool pavement + trees / Spotts. That map answers Q14&ndash;17 (which paragraph), Q18&ndash;22 (the sentences run in paragraph order B&rarr;F) and Q23&ndash;26 (which person) all at once. For the sentence completion remember <strong>ONE WORD ONLY</strong>: if you want to write &lsquo;semi-permeable dams&rsquo; you must cut it to <em>dams</em>. And note that Q23&ndash;26 are <em>not</em> in passage order &mdash; matching-people questions almost never are.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q15 &mdash; two numbers, one meaning.</b> Paragraph A contains &lsquo;40 years&rsquo; and paragraph B contains &lsquo;20, 30, 40 years&rsquo;. Both mention 40 years, so the number cannot decide it. The question asks how long until we <em>stop noticing the effects</em>, which is the scientists&rsquo; forecast in A, not the maintenance schedule in B.</li><li><b>Q18 word limit.</b> The passage says &lsquo;new <em>pumps</em> that can remove up to 75,000 litres of water per minute&rsquo;. The answer is <em>pumps</em> alone &mdash; &lsquo;new pumps&rsquo; or &lsquo;water pumps&rsquo; is two words and scores zero. Same trap in Q19 (<em>dams</em>, not &lsquo;semi-permeable dams&rsquo;) and Q21 (<em>crops</em>, not &lsquo;salt-tolerant crops&rsquo;).</li><li><b>Q20 needs a verb.</b> &lsquo;houses that can ______&rsquo; &mdash; after <em>can</em> only a bare verb fits. The passage word is <strong>float</strong>. Students who write &lsquo;floating&rsquo; or &lsquo;amphibious&rsquo; lose the mark on grammar, not on comprehension.</li><li><b>Q22 is about trees, not paint.</b> Paragraph F describes two things: planting trees <em>and</em> a cool-pavement coating. The sentence says &lsquo;increased the <em>number of</em> ______&rsquo;, and you can only count trees. &lsquo;Pavements&rsquo; or &lsquo;coatings&rsquo; were not increased in number.</li><li><b>Q23 vs Q26 &mdash; two very similar-sounding statements.</b> Tol (B) talks about approaches that &lsquo;engage and benefit communities&rsquo; = <em>involve and help residents</em>. English (C) talks about the technology being needed &lsquo;in places that didn&rsquo;t previously need it&rsquo; = <em>the number of locations has grown</em>. Both sound community-friendly; only one is about <em>numbers of places</em>.</li><li><b>Q25 traps you into paragraph A.</b> &lsquo;More work will need to be done in future decades&rsquo; sounds like the 40-year forecast, but the statement is attributed to a <em>person</em>. Only Pineda says &lsquo;we&rsquo;ll need to <em>go back in there</em> and adjust&rsquo; &mdash; future work, by the same team.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">adapt</span></td><td><span class="pos">v.</span></td><td>to change so you can cope with a new situation</td><td class="zh">适应；改造</td><td>&ldquo;Nations are already preparing for, and <em>adapting</em> to, climate change.&rdquo;</td><td class="note">The title word. Note the difference: <em>mitigation</em> = stopping climate change; <em>adaptation</em> = living with it. The whole passage is about the second.</td></tr>
+<tr><td><span class="word">emissions</span></td><td><span class="pos">n. pl.</span></td><td>gases released into the air</td><td class="zh">排放物；排放量</td><td>&ldquo;Even if we stopped all CO2 <em>emissions</em> tomorrow&hellip;&rdquo;</td><td class="note">Almost always plural in this sense. Collocations: cut / reduce / halt emissions.</td></tr>
+<tr><td><span class="word">forecast</span></td><td><span class="pos">v. / n.</span></td><td>to say what will happen in the future</td><td class="zh">预测；预报</td><td>&ldquo;&hellip;with scientists <em>forecasting</em> that global warming would continue&hellip;&rdquo;</td><td class="note"><strong>Key to Q15.</strong> The question word is &lsquo;a prediction&rsquo; &mdash; forecast is its paraphrase.</td></tr>
+<tr><td><span class="word">breach</span></td><td><span class="pos">v.</span></td><td>to break through a wall or barrier</td><td class="zh">突破；冲破（堤坝）</td><td>&ldquo;Seawater isn&rsquo;t just <em>breaching</em> the island city&rsquo;s walls&hellip;&rdquo;</td><td class="note">Military-sounding verb used for water. Contrast with the quieter <em>seeping</em> in the same sentence.</td></tr>
+<tr><td><span class="word">seep</span></td><td><span class="pos">v.</span></td><td>to move slowly through small holes</td><td class="zh">渗出；渗漏</td><td>&ldquo;&hellip;it&rsquo;s <em>seeping up</em> through the ground.&rdquo;</td><td class="note">This one word explains why a seawall alone cannot save Miami Beach &mdash; the water comes from <em>below</em>.</td></tr>
+<tr><td><span class="word">elevation</span></td><td><span class="pos">n.</span></td><td>the act of raising something higher</td><td class="zh">抬升；高程</td><td>&ldquo;The <em>elevation</em> work was carried out as part of&hellip;&rdquo;</td><td class="note">Verb <em>elevate</em>, adjective <em>elevated</em>. Paragraph D reuses it: &lsquo;permanently elevating houses&rsquo;.</td></tr>
+<tr><td><span class="word">vulnerable</span></td><td><span class="pos">adj.</span></td><td>easily harmed or damaged</td><td class="zh">脆弱的；易受影响的</td><td>&ldquo;Starting in the lowest and most <em>vulnerable</em> neighbourhoods&hellip;&rdquo;</td><td class="note">Appears twice (Miami Beach neighbourhoods, and &lsquo;Bangladesh is especially vulnerable&rsquo;). Collocation: vulnerable <em>to</em> something.</td></tr>
+<tr><td><span class="word">mitigation</span></td><td><span class="pos">n.</span></td><td>action taken to make something less severe</td><td class="zh">缓解；减缓</td><td>&ldquo;&hellip;climate-<em>mitigation</em> strategies have often been overlooked.&rdquo;</td><td class="note">Verb <em>mitigate</em>. Be careful in the exam: mitigation and adaptation are <em>different</em> ideas, and question writers love swapping them.</td></tr>
+<tr><td><span class="word">overlook</span></td><td><span class="pos">v.</span></td><td>to fail to notice or to ignore</td><td class="zh">忽视；忽略</td><td>&ldquo;&hellip;strategies have often been <em>overlooked</em>.&rdquo;</td><td class="note">Not &lsquo;look over&rsquo;. Passive form here means nobody says who ignored them &mdash; a common academic move.</td></tr>
+<tr><td><span class="word">staple</span></td><td><span class="pos">adj. / n.</span></td><td>basic, standard, used all the time</td><td class="zh">主要的；常规的</td><td>&ldquo;Seawalls are a <em>staple</em> strategy for many coastal communities&hellip;&rdquo;</td><td class="note">A &lsquo;staple strategy&rsquo; = the usual, default choice. The word sets up the contrast: usual, but it fails here.</td></tr>
+<tr><td><span class="word">exacerbate</span></td><td><span class="pos">v.</span></td><td>to make a bad situation worse</td><td class="zh">加剧；恶化</td><td>&ldquo;&hellip;they frequently collapse, further <em>exacerbating</em> coastal erosion.&rdquo;</td><td class="note">Band-8 vocabulary. Note the irony the writer is building: the defence itself makes the damage worse.</td></tr>
+<tr><td><span class="word">erosion</span></td><td><span class="pos">n.</span></td><td>the gradual wearing away of land by water or wind</td><td class="zh">侵蚀；冲刷</td><td>&ldquo;&hellip;further exacerbating coastal <em>erosion</em>.&rdquo;</td><td class="note">Verb <em>erode</em>. Pairs with <em>sediment</em> and <em>subsidence</em> in this paragraph.</td></tr>
+<tr><td><span class="word">sediment</span></td><td><span class="pos">n.</span></td><td>sand and mud carried by water and left behind</td><td class="zh">沉积物；泥沙</td><td>&ldquo;&hellip;trapping <em>sediment</em> in their net-like root systems&hellip;&rdquo;</td><td class="note"><strong>Key to Q14.</strong> Trapping sediment + raising the sea bed + weakening waves = &lsquo;how a plant protects a coastline&rsquo;.</td></tr>
+<tr><td><span class="word">dampen</span></td><td><span class="pos">v.</span></td><td>to reduce the strength of something</td><td class="zh">减弱；抑制</td><td>&ldquo;&hellip;<em>dampening</em> the energy of waves and tidal currents.&rdquo;</td><td class="note">Here it means &lsquo;weaken&rsquo;, not &lsquo;make wet&rsquo; &mdash; a classic false-friend for Chinese learners.</td></tr>
+<tr><td><span class="word">semi-permeable</span></td><td><span class="pos">adj.</span></td><td>letting some things through but not others</td><td class="zh">半透水的；半渗透的</td><td>&ldquo;&hellip;building <em>semi-permeable</em> dams, made from bamboo poles and brushwood&hellip;&rdquo;</td><td class="note">The prefix <em>semi-</em> = half. The dams let water and mud through but slow them down &mdash; that is the point.</td></tr>
+<tr><td><span class="word">mimic</span></td><td><span class="pos">v.</span></td><td>to copy the way something behaves</td><td class="zh">模仿；仿效</td><td>&ldquo;&hellip;to <em>mimic</em> the role of mangrove roots&hellip;&rdquo;</td><td class="note">The core idea of the whole paragraph: engineering that copies nature instead of fighting it.</td></tr>
+<tr><td><span class="word">subsidence</span></td><td><span class="pos">n.</span></td><td>the sinking of the ground</td><td class="zh">地面下沉</td><td>&ldquo;&hellip;moderate success, mainly in areas with less <em>subsidence</em>.&rdquo;</td><td class="note">The limiting condition on the Java project. If the land is still sinking, nothing planted on it survives.</td></tr>
+<tr><td><span class="word">retrofit</span></td><td><span class="pos">v.</span></td><td>to add new technology to an existing building</td><td class="zh">改造；加装</td><td>&ldquo;&hellip;researching and <em>retrofitting</em> amphibious houses since 2006.&rdquo;</td><td class="note">Retro (backwards) + fit. The reason it is cheap: you keep the house you already have.</td></tr>
+<tr><td><span class="word">amphibious</span></td><td><span class="pos">adj.</span></td><td>able to work both on land and in water</td><td class="zh">两栖的</td><td>&ldquo;&hellip;<em>amphibious</em> structures can be sensitively adapted&hellip;&rdquo;</td><td class="note">Same root as the frog word <em>amphibian</em>. Do not write it for Q20 &mdash; the gap needs the verb <em>float</em>.</td></tr>
+<tr><td><span class="word">stilts</span></td><td><span class="pos">n. pl.</span></td><td>tall posts that hold a building above the ground</td><td class="zh">支柱；高脚桩</td><td>&ldquo;Homes in this part of Vietnam are traditionally built on <em>stilts</em>.&rdquo;</td><td class="note">The <em>old</em> solution. The new one is to let the house rise and fall with the water instead.</td></tr>
+<tr><td><span class="word">foundations</span></td><td><span class="pos">n. pl.</span></td><td>the solid base a building stands on</td><td class="zh">地基</td><td>&ldquo;&hellip;about a third of what it would cost to completely replace a building&rsquo;s <em>foundations</em>.&rdquo;</td><td class="note"><strong>Key to Q16.</strong> &lsquo;About a third of the cost&rsquo; = &lsquo;particularly cost-effective&rsquo;.</td></tr>
+<tr><td><span class="word">salinity</span></td><td><span class="pos">n.</span></td><td>the amount of salt in soil or water</td><td class="zh">盐度；含盐量</td><td>&ldquo;&hellip;affected by soil and water <em>salinity</em>.&rdquo;</td><td class="note">Adjective <em>saline</em>; the passage also says <em>salt-affected</em> and <em>salt-tolerant</em>. Q21 says &lsquo;high salt content&rsquo; &mdash; same family.</td></tr>
+<tr><td><span class="word">tolerant</span></td><td><span class="pos">adj.</span></td><td>able to survive difficult conditions</td><td class="zh">耐受的；能忍受的</td><td>&ldquo;&hellip;cultivating naturally salt-<em>tolerant</em> crops in the region.&rdquo;</td><td class="note">Two meanings in this passage: plants that <em>tolerate</em> salt, and farmers who are more <em>tolerant</em> of change. Noun: tolerance.</td></tr>
+<tr><td><span class="word">cultivate</span></td><td><span class="pos">v.</span></td><td>to grow plants on land</td><td class="zh">种植；耕作</td><td>&ldquo;&hellip;to start <em>cultivating</em> naturally salt-tolerant crops&hellip;&rdquo;</td><td class="note">More formal than &lsquo;grow&rsquo;. Noun <em>cultivation</em>; a person who does it is a <em>cultivator</em>.</td></tr>
+<tr><td><span class="word">barren</span></td><td><span class="pos">adj.</span></td><td>producing no plants or crops</td><td class="zh">贫瘠的；不毛的</td><td>&ldquo;&hellip;comparing a <em>barren</em> plot of land to the &lsquo;beautiful, lush green vegetable garden&rsquo;&hellip;&rdquo;</td><td class="note">The opposite pair <em>barren</em> / <em>lush</em> is how the writer shows the result without giving a statistic.</td></tr>
+<tr><td><span class="word">harvest</span></td><td><span class="pos">n.</span></td><td>the crop gathered at the end of a growing season</td><td class="zh">收成；收获</td><td>&ldquo;&hellip;reported increases of two to three more <em>harvests</em> per year.&rdquo;</td><td class="note">Countable here (&lsquo;two to three more harvests&rsquo;), so the plural matters if you ever have to write it.</td></tr>
+<tr><td><span class="word">canopy</span></td><td><span class="pos">n.</span></td><td>the cover formed by the tops of trees</td><td class="zh">树冠层</td><td>&ldquo;&hellip;identified streets with low tree <em>canopy</em> cover&hellip;&rdquo;</td><td class="note">The measurement behind Q22: low canopy cover is the problem, planting trees is the answer.</td></tr>
+<tr><td><span class="word">coating</span></td><td><span class="pos">n.</span></td><td>a thin layer of a substance spread over a surface</td><td class="zh">涂层；覆层</td><td>&ldquo;&hellip;covered them with a light-grey, light-reflecting <em>coating</em>&hellip;&rdquo;</td><td class="note">A distractor for Q22: it was applied, but its <em>number</em> was not increased. Only trees can be counted.</td></tr>
+<tr><td><span class="word">intervention</span></td><td><span class="pos">n.</span></td><td>action taken deliberately to change a situation</td><td class="zh">干预；介入措施</td><td>Q17 asks about locating &ldquo;areas most in need of <em>intervention</em>&rdquo;.</td><td class="note">A question-paper word, not a passage word. In paragraph F the intervention is the cool pavement, and the locating tool is the GIS mapping system.</td></tr>
+<tr><td><span class="word">thermal</span></td><td><span class="pos">adj.</span></td><td>relating to heat</td><td class="zh">热的；热成像的</td><td>&ldquo;&hellip;the only cool spot on an otherwise red <em>thermal</em> image&hellip;&rdquo;</td><td class="note">Red = hot on a thermal image. The visual proof that the coating works, seen from the Space Station.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">preparing for and adapting to</span></td><td>getting ready for something and changing to cope with it</td><td class="zh">为&hellip;做准备并加以适应</td></tr>
+<tr><td><span class="phrase">since industrial times</span></td><td>since factories and heavy industry began</td><td class="zh">自工业时代以来</td></tr>
+<tr><td><span class="phrase">ice caps would continue to melt</span></td><td>the polar ice would keep turning to water</td><td class="zh">冰盖将继续融化</td></tr>
+<tr><td><span class="phrase">innovation is thriving</span></td><td>new ideas are developing very successfully</td><td class="zh">创新蓬勃发展</td></tr>
+<tr><td><span class="phrase">seeping up through the ground</span></td><td>rising slowly from below the surface</td><td class="zh">从地下渗上来</td></tr>
+<tr><td><span class="phrase">the lowest and most vulnerable neighbourhoods</span></td><td>the areas at greatest risk of flooding</td><td class="zh">地势最低、最脆弱的社区</td></tr>
+<tr><td><span class="phrase">as much as 61 centimetres</span></td><td>a maximum of 61 cm</td><td class="zh">高达61厘米</td></tr>
+<tr><td><span class="phrase">ambitious but much-needed</span></td><td>very large in scale, and badly required</td><td class="zh">雄心勃勃却又亟需的</td></tr>
+<tr><td><span class="phrase">in the face of floods</span></td><td>when floods happen</td><td class="zh">面对洪水时</td></tr>
+<tr><td><span class="phrase">the job is far from over</span></td><td>there is still a lot of work left</td><td class="zh">工作远未结束</td></tr>
+<tr><td><span class="phrase">a staple strategy</span></td><td>the standard, usual method</td><td class="zh">常规做法</td></tr>
+<tr><td><span class="phrase">exacerbating coastal erosion</span></td><td>making the wearing away of the coast worse</td><td class="zh">加剧海岸侵蚀</td></tr>
+<tr><td><span class="phrase">net-like root systems</span></td><td>roots shaped like a net</td><td class="zh">网状根系</td></tr>
+<tr><td><span class="phrase">dampening the energy of waves</span></td><td>reducing the force of the waves</td><td class="zh">削弱波浪能量</td></tr>
+<tr><td><span class="phrase">create favourable conditions</span></td><td>make the situation suitable for something to happen</td><td class="zh">创造有利条件</td></tr>
+<tr><td><span class="phrase">grow back naturally</span></td><td>return by itself without being planted</td><td class="zh">自然恢复生长</td></tr>
+<tr><td><span class="phrase">moderate success</span></td><td>a reasonable but not complete result</td><td class="zh">中等程度的成功</td></tr>
+<tr><td><span class="phrase">single-solution focused</span></td><td>designed to solve only one problem</td><td class="zh">只针对单一问题的</td></tr>
+<tr><td><span class="phrase">embed natural processes</span></td><td>build nature&rsquo;s own systems into a design</td><td class="zh">嵌入自然过程</td></tr>
+<tr><td><span class="phrase">engage and benefit communities</span></td><td>involve local people and do them good</td><td class="zh">让社区参与并从中获益</td></tr>
+<tr><td><span class="phrase">built on stilts</span></td><td>raised on tall posts above the ground</td><td class="zh">建在高脚桩上</td></tr>
+<tr><td><span class="phrase">on the tip of everybody&rsquo;s tongue</span></td><td>something everyone was talking about</td><td class="zh">人人挂在嘴边</td></tr>
+<tr><td><span class="phrase">at greater risk from wind damage</span></td><td>more likely to be harmed by wind</td><td class="zh">更易受风灾影响</td></tr>
+<tr><td><span class="phrase">sensitively adapted</span></td><td>changed carefully to respect local needs</td><td class="zh">因地制宜地改造</td></tr>
+<tr><td><span class="phrase">less than a metre above sea level</span></td><td>only just higher than the sea</td><td class="zh">海拔不足一米</td></tr>
+<tr><td><span class="phrase">lies on floodplains</span></td><td>is situated on flat land that floods</td><td class="zh">位于洪泛平原上</td></tr>
+<tr><td><span class="phrase">rather than fighting against it</span></td><td>instead of resisting it</td><td class="zh">与其对抗，不如&hellip;</td></tr>
+<tr><td><span class="phrase">better suited to</span></td><td>more appropriate for</td><td class="zh">更适合于</td></tr>
+<tr><td><span class="phrase">a barren plot of land</span></td><td>a piece of ground where nothing grows</td><td class="zh">一块寸草不生的地</td></tr>
+<tr><td><span class="phrase">lush green vegetable garden</span></td><td>a thick, healthy garden full of vegetables</td><td class="zh">郁郁葱葱的菜园</td></tr>
+<tr><td><span class="phrase">harvests per year</span></td><td>the number of crops gathered annually</td><td class="zh">每年的收成次数</td></tr>
+<tr><td><span class="phrase">a series of pilot projects</span></td><td>several small trial schemes</td><td class="zh">一系列试点项目</td></tr>
+<tr><td><span class="phrase">bring down its average temperature</span></td><td>reduce the typical temperature</td><td class="zh">降低平均气温</td></tr>
+<tr><td><span class="phrase">a matter of life and death</span></td><td>extremely serious, affecting survival</td><td class="zh">生死攸关的事</td></tr>
+<tr><td><span class="phrase">low tree canopy cover</span></td><td>few trees shading the street</td><td class="zh">树冠覆盖率低</td></tr>
+<tr><td><span class="phrase">light-reflecting coating</span></td><td>a surface layer that bounces sunlight away</td><td class="zh">反光涂层</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;Even if we stopped all CO2 emissions tomorrow, we would continue to see the impact of the CO2 already released since industrial times, with scientists forecasting that global warming would continue for around 40 years.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We would continue to see the impact of the CO2 already released since industrial times.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Even if we stopped all CO2 emissions tomorrow&rsquo; = a concessive conditional clause; &lsquo;with scientists forecasting&hellip;&rsquo; = a <em>with</em> + participle clause adding evidence.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Even if + past simple, would + verb</strong> is the second conditional used to concede: &lsquo;imagine the best case &mdash; it still would not help.&rsquo; The <em>with</em> + <em>-ing</em> structure is a compact way to attach an expert opinion without starting a new sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Stopping emissions today would not stop the warming; scientists say it would keep going for about 40 more years.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">即使我们明天停止所有二氧化碳排放，工业时代以来已经排放的二氧化碳仍会持续产生影响，科学家预测全球变暖还将持续约40年。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;In Miami Beach, Florida, USA, seawater isn&rsquo;t just breaching the island city&rsquo;s walls, it&rsquo;s seeping up through the ground, so the only way to save the city is to lift it up above sea level.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Three clauses: seawater isn&rsquo;t just breaching the walls / it&rsquo;s seeping up through the ground / the only way to save the city is to lift it up.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">There is no subordinator before the second clause &mdash; the writer uses a comma and lets &lsquo;not just&hellip;&rsquo; do the joining work; &lsquo;so&rsquo; then marks the conclusion.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>not just X, (but) Y</strong> upgrades the problem: the wall is not the only weak point. Because the water comes from <em>underneath</em>, a taller wall is useless &mdash; which is exactly why the city raises the roads instead.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The sea does not only come over the walls in Miami Beach; it also rises through the ground, so the city must be lifted.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在美国佛罗里达州的迈阿密海滩，海水不仅冲破了这座岛城的堤墙，还从地下渗上来，因此拯救这座城市的唯一办法就是把它抬高到海平面以上。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;So, Wetlands International started out with a different approach, building semi-permeable dams, made from bamboo poles and brushwood, to mimic the role of mangrove roots and create favourable conditions for mangroves to grow back naturally.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Wetlands International started out with a different approach.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;building semi-permeable dams&rsquo; = a present-participle clause explaining <em>how</em>; &lsquo;made from bamboo poles and brushwood&rsquo; = a reduced relative clause (= which are made from&hellip;); &lsquo;to mimic&hellip; and create&hellip;&rsquo; = two infinitives of purpose sharing one <em>to</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Notice the three-layer stack: <em>action &rarr; description &rarr; purpose</em>. <strong>Key to Q19:</strong> the question says &lsquo;the first stage of a project&rsquo; and the passage says &lsquo;<em>started out with</em>&hellip; building&hellip; dams&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Wetlands International began differently: they built bamboo dams that act like mangrove roots so the mangroves could return by themselves.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">因此，湿地国际组织采用了不同的方法：用竹竿和灌木枝搭建半透水坝，模仿红树林根系的作用，为红树林自然恢复创造有利条件。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Homes in this part of Vietnam are traditionally built on stilts but these ones had been built to float.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Two coordinated clauses joined by <em>but</em>: homes are traditionally built on stilts / these ones had been built to float.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;to float&rsquo; = an infinitive of purpose after a passive verb.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The tense contrast carries the meaning: <strong>present simple</strong> (&lsquo;are traditionally built&rsquo; = the old normal) against <strong>past perfect passive</strong> (&lsquo;had been built&rsquo; = done before the flood arrived). <strong>Key to Q20:</strong> the gap follows &lsquo;houses that can ______&rsquo;, so you need the bare verb <em>float</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People there normally put houses on tall posts, but these four houses were made to sit on the water instead.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">越南这一带的房屋传统上都建在高脚桩上，但这几栋房子却是被造成能够漂浮的。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Certain varieties of carrot, potato, kohlrabi, cabbage and beetroot have been found to be better suited to salty soil than the rice and wheat that is typically grown there.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Certain varieties of carrot, potato, kohlrabi, cabbage and beetroot have been found to be better suited to salty soil.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;than the rice and wheat&hellip;&rsquo; = the second half of the comparison; &lsquo;that is typically grown there&rsquo; = a defining relative clause describing rice and wheat.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>be found to be</strong> = research has shown that they are. The comparison is between <em>two sets of crops</em>, which is why the answer to Q21 is the general word <em>crops</em> and not the name of any one vegetable.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Some kinds of carrot, potato, kohlrabi, cabbage and beetroot cope with salty ground better than the usual rice and wheat.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">研究发现，某些品种的胡萝卜、土豆、球茎甘蓝、卷心菜和甜菜根比当地通常种植的水稻和小麦更适应盐碱土壤。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Spotts says one of these streets, in the Winnetka neighbourhood of San Fernando Valley, can now be seen as a pale crescent, the only cool spot on an otherwise red thermal image, from the International Space Station.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">One of these streets can now be seen as a pale crescent from the International Space Station.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;in the Winnetka neighbourhood of San Fernando Valley&rsquo; = a place phrase inside the subject; &lsquo;the only cool spot on an otherwise red thermal image&rsquo; = an appositive renaming &lsquo;a pale crescent&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Three pieces of information are pushed between the subject and the final phrase, so the sentence looks hard. Strip the commas away and only seven words are left. <em>Otherwise</em> here means &lsquo;in every other respect&rsquo; &mdash; everything except that one street is red (hot).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">From space, that one painted street shows up as a pale curve &mdash; the single cool place on a map where everything else is red.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">斯波茨说，圣费尔南多谷温内特卡社区的其中一条街，如今从国际空间站上看去是一道浅色的弧形——在一片红色热成像图中唯一的凉爽区域。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Sentence Completion (the real exam gaps Q18&ndash;22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the five exam sentences. Write <strong>ONE WORD ONLY</strong> from the passage in each gap. If your answer needs two words, it is wrong.</p><div class="ex-item"><span class="ex-num">1.</span><label>The stormwater-management programme in Miami Beach has involved the installation of efficient <input type="text" class="blank" id="b1" data-answer="pumps" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The construction of <input type="text" class="blank" id="b2" data-answer="dams" placeholder="______"> was the first stage of a project to ensure the success of mangroves in Indonesia.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>As a response to rising floodwaters in the Mekong Delta, a not-for-profit organisation has been building houses that can <input type="text" class="blank" id="b3" data-answer="float" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Rising sea levels in Bangladesh have made it necessary to introduce various <input type="text" class="blank" id="b4" data-answer="crops" placeholder="______"> that are suitable for areas of high salt content.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>A project in LA has increased the number of <input type="text" class="blank" id="b5" data-answer="trees" placeholder="______"> on the city&rsquo;s streets.<span class="feedback" id="fb5"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Seawater is <input type="text" class="blank" id="b6" data-answer="seeping" placeholder="______"> (= moving slowly) up through the ground in Miami Beach.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Collapsing seawalls further <input type="text" class="blank" id="b7" data-answer="exacerbate" placeholder="______"> (= make worse) coastal erosion.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Mangrove roots trap <input type="text" class="blank" id="b8" data-answer="sediment" placeholder="______"> (= mud and sand carried by water) and raise the sea bed.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The bamboo dams <input type="text" class="blank" id="b9" data-answer="mimic" placeholder="______"> (= copy the behaviour of) the roots of mangrove trees.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The project has had only moderate success in areas with high <input type="text" class="blank" id="b10" data-answer="subsidence" placeholder="______"> (= sinking of the ground).<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Farmers are now growing salt-<input type="text" class="blank" id="b11" data-answer="tolerant" placeholder="______"> (= able to survive) varieties of vegetable.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The street appears pale on a <input type="text" class="blank" id="b12" data-answer="thermal" placeholder="______"> (= heat-showing) image taken from space.<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Reading, the right meaning in the wrong form still scores zero.</p><div class="ex-item"><span class="ex-num">1.</span><label>Scientists&rsquo; <input type="text" class="blank" id="b13" data-answer="forecasts" placeholder="______"> (FORECAST) suggest warming will continue for around 40 years.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The <input type="text" class="blank" id="b14" data-answer="elevation" placeholder="______"> (ELEVATE) of the roads was part of a stormwater programme.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Climate-<input type="text" class="blank" id="b15" data-answer="mitigation" placeholder="______"> (MITIGATE) strategies have often been overlooked.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Coastal <input type="text" class="blank" id="b16" data-answer="erosion" placeholder="______"> (ERODE) gets worse when seawalls collapse.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Thirty-five million people are affected by soil and water <input type="text" class="blank" id="b17" data-answer="salinity" placeholder="______"> (SALINE).<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The <input type="text" class="blank" id="b18" data-answer="cultivation" placeholder="______"> (CULTIVATE) of new vegetables has raised the number of harvests.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The city wants to make its streets <input type="text" class="blank" id="b19" data-answer="cooler" placeholder="______"> (COOL) by planting trees.<span class="feedback" id="fb19"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The questions never repeat the passage word for word. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;a <em>prediction</em>&rdquo; &rarr; Passage: scientists <input type="text" class="blank" id="b20" data-answer="forecasting" placeholder="______"> that global warming would continue.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;a natural protection for coastlines&rdquo; &rarr; Passage: mangrove roots <input type="text" class="blank" id="b21" data-answer="trapping" placeholder="______"> sediment and elevating the sea bed.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;particularly cost-effective&rdquo; &rarr; Passage: it is much <input type="text" class="blank" id="b22" data-answer="cheaper" placeholder="______"> than permanently elevating houses.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;a technology used to locate areas&rdquo; &rarr; Passage: a Geographic Information System data <input type="text" class="blank" id="b23" data-answer="mapping" placeholder="______"> tool.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;involve and help residents&rdquo; &rarr; Passage: approaches that engage and <input type="text" class="blank" id="b24" data-answer="benefit" placeholder="______"> communities.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;absolutely vital for our survival&rdquo; &rarr; Passage: literally a matter of life and <input type="text" class="blank" id="b25" data-answer="death" placeholder="______">.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;areas of high salt content&rdquo; &rarr; Passage: crops that are salt-<input type="text" class="blank" id="b26" data-answer="tolerant" placeholder="______">.<span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Linkers and Reductions</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to pack several ideas into one sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label><input type="text" class="blank" id="b27" data-answer="Even" placeholder="______"> if we stopped all emissions tomorrow, warming would continue for decades. (concessive conditional)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Seawater is not just breaching the walls, <input type="text" class="blank" id="b28" data-answer="so" placeholder="______"> the only answer is to raise the city. (result linker)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&lsquo;dams which are made from bamboo poles&rsquo; can be reduced to &lsquo;dams <input type="text" class="blank" id="b29" data-answer="made" placeholder="______"> from bamboo poles&rsquo;. (past participle)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The dams were built <input type="text" class="blank" id="b30" data-answer="to" placeholder="______"> mimic the role of mangrove roots. (infinitive of purpose)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Vegetables are better suited to salty soil <input type="text" class="blank" id="b31" data-answer="than" placeholder="______"> the rice and wheat usually grown there. (comparison)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label><input type="text" class="blank" id="b32" data-answer="Rather" placeholder="______"> than fighting against the salt, the project helps farmers live with it. (preference structure)<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The street is a pale crescent on an <input type="text" class="blank" id="b33" data-answer="otherwise" placeholder="______"> red thermal image. (= in every other respect)<span class="feedback" id="fb33"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all seven come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>海平面上升 &rarr; sea <input type="text" class="blank" id="b34" data-answer="levels" placeholder="______"> rise<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>加剧海岸侵蚀 &rarr; <input type="text" class="blank" id="b35" data-answer="exacerbating" placeholder="______"> coastal erosion<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>创造有利条件 &rarr; create <input type="text" class="blank" id="b36" data-answer="favourable" placeholder="______"> conditions<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>建在高脚桩上 &rarr; built on <input type="text" class="blank" id="b37" data-answer="stilts" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>洪泛平原 &rarr; <input type="text" class="blank" id="b38" data-answer="floodplains" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>生死攸关 &rarr; a matter of life and <input type="text" class="blank" id="b39" data-answer="death" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>反光涂层 &rarr; a light-reflecting <input type="text" class="blank" id="b40" data-answer="coating" placeholder="______"><span class="feedback" id="fb40"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; why each place chose the solution it did</strong></p><p>Every case study follows the same chain: <em>a specific local problem &rarr; a specific engineering answer</em>. Miami Beach: the water rises <em>through the ground</em>, so a wall cannot help &rarr; raise the roads and pump. Java: the shore is <em>soft and muddy</em>, so seawalls collapse &rarr; use flexible bamboo dams instead. Vietnam: taller houses are <em>at greater risk from wind damage</em> &rarr; let the house float rather than lifting it. When you can state the local problem in one clause, you can predict the paragraph&rsquo;s answer.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;rather than&rsquo;, &lsquo;instead&rsquo;, &lsquo;but&rsquo;</strong></p><p>The passage is built on reversals of the obvious. &ldquo;Homes&hellip; are traditionally built on stilts <em>but</em> these ones had been built to float.&rdquo; &ldquo;<em>Rather than</em> fighting against it, one project is helping communities adapt to salt-affected soils.&rdquo; Wetlands International &lsquo;started out with a <em>different</em> approach&rsquo;. Each of these signals marks the innovation &mdash; and the innovation is what the questions are about.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the numbers that rank things</strong></p><p>Only two real comparisons are made, and both are tested. Cost: floating houses are &lsquo;about a <em>third</em> of what it would cost to completely replace a building&rsquo;s foundations&rsquo; (Q16). Crops: certain vegetables are &lsquo;<em>better suited</em> to salty soil <em>than</em> the rice and wheat that is typically grown there&rsquo; (Q21). If a question contains a comparative form, go looking for <em>than</em>, <em>more</em>, <em>less</em> or a fraction in the passage.</p></div>
+<div class="card"><p><strong>Examples &mdash; a named case is doing the arguing</strong></p><p>The writer never says &lsquo;adaptation works&rsquo; in the abstract; five named places do the arguing instead. Notice that the evidence is always a <em>number</em> or an <em>image</em>: 61 centimetres of road, 75,000 litres a minute, a third of the cost, two to three more harvests, 6&deg;C cooler, one pale crescent seen from space. In matching-information tasks, these concrete details are your fastest way back to the right paragraph.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; free explanations inside commas</strong></p><p>&ldquo;coastal mangroves: <em>ecosystems of trees and shrubs that help defend coastal areas</em>&hellip;&rdquo; &mdash; the colon gives you the whole of Q14 without a dictionary. The same trick names every expert: &ldquo;Susanna Tol <em>of the not-for-profit organisation Wetlands International</em>&rdquo;, &ldquo;Raisa Chowdhury <em>of the international development organisation ICCO Cooperation</em>&rdquo;. When you see a colon or a pair of commas after a technical noun, slow down: the answer is often inside them.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &rarr; limitation</strong></p><p>Notice that the writer is honest about limits, and the limitation sentence often comes last. Java: the programme &lsquo;has seen <em>moderate</em> success, mainly in areas with <em>less subsidence</em>&rsquo;. Miami Beach: &lsquo;the job is <em>far from over</em>&rsquo;. Mangrove planting itself: &lsquo;while hugely popular, the <em>majority</em>&hellip; <em>fail</em>&rsquo;. If a True/False/Not Given task were built on this passage, these hedged sentences would be where the FALSE items came from.</p></div>
+<div class="card"><p><strong>Chronology &mdash; time is used sparingly, so it stands out</strong></p><p>Only four time references appear: &lsquo;since industrial times&rsquo;, the 40-year forecast (A), &lsquo;in 20, 30, 40 years&rsquo; (B), September 2018 (D) and &lsquo;since 2006&rsquo; (D). Because there are so few, each one is worth marking. Q15 turns on separating the <em>forecast</em> in A from the <em>maintenance plan</em> in B &mdash; two different 40-year statements in adjacent paragraphs.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; positive, but never triumphant</strong></p><p>The tone is admiring: &lsquo;innovation is thriving&rsquo;, &lsquo;ambitious but much-needed&rsquo;, &lsquo;another plus comes from&hellip;&rsquo;. But every case is qualified &mdash; moderate success, far from over, most projects fail. The writer&rsquo;s real position is the one Tol states: single-solution engineering is not enough, and lasting answers must be <em>multifunctional</em> and community-based. Any answer option claiming these projects have solved the problem would be wrong.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching Information to Paragraphs (Q14&ndash;17)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These questions are <em>not</em> in passage order, so never read from the top. Turn each question into one keyword, then check your five-line map.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>14. How a type of plant functions as a natural protection for coastlines &rarr; C.</b> The keyword is <em>plant</em>. Only paragraph C has plants defending a coast: mangrove roots trap sediment, raise the sea bed and dampen wave energy. Paragraph F also mentions trees &mdash; but for shade, not for coastal defence.</li><li><b>15. A prediction about how long it could take to stop noticing the effects &rarr; A.</b> The keyword is <em>prediction</em> = &lsquo;scientists forecasting&rsquo;. Warming would continue &lsquo;for around 40 years&rsquo;. Paragraph B also says &lsquo;40 years&rsquo;, but that is a plan to go back and do more work, not a forecast of when the effects stop.</li><li><b>16. A reference to a solution being particularly cost-effective &rarr; D.</b> The keyword is <em>cost</em>: &lsquo;much cheaper&hellip; about a third of what it would cost to completely replace a building&rsquo;s foundations&rsquo;. No other paragraph mentions money at all &mdash; a rare gift in this task type.</li><li><b>17. A technology used to locate areas most in need of intervention &rarr; F.</b> The keyword is <em>locate</em>: the Geographic Information System data mapping tool &lsquo;identified streets with low tree canopy cover&rsquo;. Note that <em>identify</em> is the passage&rsquo;s word for <em>locate</em>.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> in a passage of case studies, matching-information questions are really country questions. Write the country beside each letter before you start and you will answer all four in under three minutes.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Sentence Completion, ONE WORD ONLY (Q18&ndash;22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Two decisions per gap: (1) what part of speech does the grammar demand? (2) can I say it in one word? Do both before you look at the passage.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q18 pumps</b> &mdash; &lsquo;the installation of efficient ______&rsquo; needs a plural countable noun that can be installed. Passage: &lsquo;the city has set up new pumps that can remove up to 75,000 litres of water per minute&rsquo;. &lsquo;Efficient&rsquo; is the question&rsquo;s paraphrase of that capacity.</li><li><b>Q19 dams</b> &mdash; &lsquo;The construction of ______ was the first stage&rsquo; needs a noun you can build. Passage: &lsquo;<em>started out with</em> a different approach, <em>building</em> semi-permeable dams&rsquo;. &lsquo;Started out with&rsquo; = &lsquo;the first stage&rsquo;.</li><li><b>Q20 float</b> &mdash; after &lsquo;houses that <em>can</em>&rsquo; only a bare infinitive fits. Passage: &lsquo;these ones had been built to float&rsquo;. Reject <em>floating</em>, <em>amphibious</em> and <em>rise</em>.</li><li><b>Q21 crops</b> &mdash; &lsquo;various ______ that are suitable for&hellip;&rsquo; needs a plural noun covering carrots, potatoes, cabbage and beetroot together. Passage: &lsquo;cultivating naturally salt-tolerant crops&rsquo;. One word means you drop &lsquo;salt-tolerant&rsquo;.</li><li><b>Q22 trees</b> &mdash; &lsquo;increased the number of ______&rsquo; needs something countable. Passage: the Cool Streets programme includes &lsquo;the planting of trees&rsquo;. The pavement coating is applied, not counted.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> read each finished sentence aloud. &lsquo;Houses that can floating&rsquo; is instantly wrong to the ear &mdash; use your ear as the last grammar check.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Matching Statements to People (Q23&ndash;26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Five names, four statements &mdash; so one person is not used. Find the quotation marks first: in this passage every answer is inside a direct quote.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>23. Strategies must involve and help residents &rarr; B (Tol).</b> &lsquo;It&rsquo;s critical that we transition towards multifunctional approaches that <em>engage and benefit communities</em> and local decision-makers.&rsquo; engage = involve; benefit = help; communities = residents. Three-for-three.</li><li><b>24. Heat reduction is vital for survival here &rarr; E (Spotts).</b> &lsquo;Urban cooling is literally a <em>matter of life and death</em> for our future in LA.&rsquo; The paraphrase pair is &lsquo;life and death&rsquo; = &lsquo;absolutely vital for our survival&rsquo;.</li><li><b>25. More work will be needed in future decades &rarr; A (Pineda).</b> &lsquo;We know that in 20, 30, 40 years, we&rsquo;ll need to <em>go back in there and adjust</em> to the changing environment.&rsquo; &lsquo;20, 30, 40 years&rsquo; = &lsquo;future decades&rsquo;; the whole paragraph is about flooding, which gives you &lsquo;rising water levels&rsquo;.</li><li><b>26. The number of places needing flood adaptation has grown &rarr; C (English).</b> &lsquo;This technology is becoming necessary <em>in places that didn&rsquo;t previously need it</em>.&rsquo; That is a statement about the <em>spread</em> of the problem, not about the technology itself.</li><li><b>Not used: D (Chowdhury).</b> His quotes are about salinity figures and the contrast between a barren plot and a lush garden &mdash; useful colour, but no statement matches it.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> underline every pair of quotation marks in the passage before you read the statements. In people-matching tasks the answer is almost always inside them, and unquoted description is almost always a distractor.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; True / False / Not Given thinking (extra practice)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, a task type that is not in the real exam paper here. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>Miami Beach has raised every road in the city by 61 centimetres. &rarr; <strong>FALSE</strong> &mdash; the work started &lsquo;in the lowest and most vulnerable neighbourhoods&rsquo; and roads were raised &lsquo;by as much as&rsquo; 61 cm, which states a maximum, not a uniform figure.</li><li>Most attempts to replant mangroves in Java have been unsuccessful. &rarr; <strong>TRUE</strong> &mdash; &lsquo;while hugely popular, the majority of mangrove-planting projects fail&rsquo;.</li><li>Floating houses are more expensive than houses built on stilts. &rarr; <strong>NOT GIVEN</strong> &mdash; the comparison made is with <em>replacing foundations</em>, never with stilt houses.</li><li>Salt-tolerant vegetables have allowed some Bangladeshi farmers to harvest more often. &rarr; <strong>TRUE</strong> &mdash; &lsquo;increases of two to three more harvests per year&rsquo;.</li><li>The cool pavement coating lowered air temperature in LA by 6&deg;C. &rarr; <strong>FALSE</strong> &mdash; the 6&deg;C figure is for <em>road surface</em> temperature; the city&rsquo;s <em>average</em> temperature goal is 1.5&deg;C.</li></ul><p style="margin-top:10px;"><b>Watch the quantity words:</b> <em>every, most, all, only, as much as</em>. They decide more TRUE/FALSE items than the topic vocabulary does.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Summary completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete this summary of paragraphs C and E with <strong>NO MORE THAN TWO WORDS</strong>, then compare with the suggested answers.</p><ul style="margin-left:18px;line-height:1.9;"><li>On the northern shores of Java the ground is soft and ______, so seawalls collapse. &rarr; <strong>muddy</strong></li><li>Mangrove roots raise the ______ and weaken waves and tidal currents. &rarr; <strong>sea bed</strong></li><li>The dams are made from ______ and brushwood. &rarr; <strong>bamboo poles</strong></li><li>The programme worked best where there was less ______. &rarr; <strong>subsidence</strong></li><li>About 35 million Bangladeshis on the ______ are affected by salinity. &rarr; <strong>coastal belt</strong></li><li>ICCO Cooperation has worked with ______ farmers. &rarr; <strong>10,000</strong></li></ul><p style="margin-top:10px;"><b>Note:</b> in summary tasks the gaps follow the passage order strictly, so if your answers jump backwards you have located the wrong paragraph.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Multiple choice thinking (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">MCQ options are built from real passage words in the wrong relationship. Learn to spot the swap.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Why can a seawall not save Miami Beach?</b> Because the seawater also rises <em>through the ground</em>, not only over the walls. A tempting wrong option would say &lsquo;because the walls are too low&rsquo; &mdash; true-sounding, but not what the passage says.</li><li><b>What is the purpose of the bamboo dams?</b> To create the conditions for mangroves to return <em>naturally</em> &mdash; not to replace mangroves permanently, and not to stop all wave action.</li><li><b>Why are amphibious houses preferred to raised houses?</b> Two reasons are given: lower cost <em>and</em> less wind risk. An option offering only one of the two is incomplete but not wrong; an option saying &lsquo;they last longer&rsquo; is invented.</li><li><b>What does the GIS tool do?</b> It <em>identifies</em> which streets need treating. It does not lower the temperature &mdash; the coating does that.</li></ul><p style="margin-top:10px;"><b>Rule:</b> when two options both appear in the passage, choose the one that answers the <em>question stem</em>, not the one that repeats the most passage words.</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to paragraph A, what would happen if all CO2 emissions stopped tomorrow?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Global warming would stop immediately.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Global warming would continue for around 40 years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Sea levels would begin to fall.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Ice caps would refreeze within a decade.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why is a seawall not enough to protect Miami Beach?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Because the city cannot afford one.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Because storms are too frequent there.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Because seawater also seeps up through the ground.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Because the ground is too soft to build on.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What is the answer to Question 18, and why must it be one word?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. new pumps &mdash; the passage says &ldquo;new pumps&rdquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. pumps &mdash; the instruction says ONE WORD ONLY</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. stormwater &mdash; it is the name of the programme</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. litres &mdash; it measures the capacity</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">How do mangroves protect a coastline, according to paragraph C?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. By absorbing salt from the seawater.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. By trapping sediment, raising the sea bed and reducing wave energy.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. By growing tall enough to act as a windbreak.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. By replacing the need for pumps.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What was the purpose of the semi-permeable bamboo dams built in Java?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. To replace mangroves permanently.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. To stop all waves reaching the shore.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. To copy mangrove roots so mangroves could return naturally.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. To provide building material for local villages.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why is the answer to Question 20 <em>float</em> rather than <em>floating</em> or <em>amphibious</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Because the passage uses the word most often.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Because &ldquo;houses that can&hellip;&rdquo; must be followed by a bare verb.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Because &ldquo;amphibious&rdquo; is two words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Because the answer must be a noun.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Which two advantages of amphibious houses does Elizabeth English mention?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Lower cost and reduced wind risk.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Lower cost and faster construction.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Longer life and lower maintenance.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Reduced wind risk and government funding.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How has the Bangladesh project helped farmers on salt-affected land?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. By removing the salt from the soil.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. By building barriers to keep seawater out.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. By introducing crops that tolerate salt, raising harvests by two to three a year.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. By moving farmers away from the coastal belt.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What role did the Geographic Information System tool play in Los Angeles?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. It lowered road surface temperature by 6&deg;C.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It identified streets with low tree canopy cover.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It measured the city&rsquo;s average temperature goal.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. It photographed the streets from the International Space Station.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which person says that solutions must engage and benefit local communities?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Yanira Pineda</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Susanna Tol</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Elizabeth English</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Greg Spotts</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Question 26 says the number of locations needing flood adaptation has grown. Whose words support this?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Pineda &mdash; &ldquo;in 20, 30, 40 years we&rsquo;ll need to go back in there&rdquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Chowdhury &mdash; &ldquo;35 million people&hellip; are affected by salinity&rdquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. English &mdash; &ldquo;this technology is becoming necessary in places that didn&rsquo;t previously need it&rdquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Spotts &mdash; &ldquo;urban cooling is literally a matter of life and death&rdquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which statement best captures the writer&rsquo;s overall position?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Adaptation projects have already solved the problem in these five places.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Adaptation is necessary and inventive, but every project so far has clear limits.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Only rich countries can afford to adapt to climate change.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Cutting emissions would remove the need for adaptation.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 14–26</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">C</div><div class="answer-note">Paragraph C defines mangroves as &lsquo;ecosystems of trees and shrubs that help defend coastal areas by trapping sediment in their net-like root systems, elevating the sea bed and dampening the energy of waves&rsquo; &mdash; a plant working as natural coastal protection.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">A</div><div class="answer-note">Paragraph A: &lsquo;scientists forecasting that global warming would continue for around 40 years&rsquo;. &lsquo;Forecasting&rsquo; = &lsquo;a prediction&rsquo;. The &lsquo;20, 30, 40 years&rsquo; in paragraph B is a maintenance plan, not a forecast.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">D</div><div class="answer-note">Paragraph D: floating houses are &lsquo;much cheaper&hellip; about a third of what it would cost to completely replace a building&rsquo;s foundations&rsquo; = &lsquo;particularly cost-effective&rsquo;. No other paragraph mentions cost.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">F</div><div class="answer-note">Paragraph F: a &lsquo;Geographic Information System data mapping tool&rsquo; <em>identified</em> the streets with low tree canopy cover. Identify = locate; the cool-pavement treatment = the intervention.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">pumps</div><div class="answer-note">Paragraph B: &lsquo;the city has set up new pumps that can remove up to 75,000 litres of water per minute&rsquo;. ONE WORD ONLY, so drop &lsquo;new&rsquo;; &lsquo;efficient&rsquo; paraphrases the capacity figure.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">dams</div><div class="answer-note">Paragraph C: Wetlands International &lsquo;<em>started out with</em> a different approach, building semi-permeable dams&rsquo; &mdash; &lsquo;started out with&rsquo; = &lsquo;the first stage&rsquo;. Write <em>dams</em> only, not &lsquo;semi-permeable dams&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">float</div><div class="answer-note">Paragraph D: &lsquo;Homes in this part of Vietnam are traditionally built on stilts but these ones had been built to float.&rsquo; After &lsquo;houses that can&rsquo; the gap needs the bare verb <em>float</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">crops</div><div class="answer-note">Paragraph E: ICCO Cooperation helped farmers &lsquo;start cultivating naturally salt-tolerant crops&rsquo;. &lsquo;Areas of high salt content&rsquo; = salt-affected soils; the one-word answer is the category word <em>crops</em>, not any vegetable name.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">trees</div><div class="answer-note">Paragraph F: the Cool Streets LA programme includes &lsquo;the planting of trees&rsquo;. Only trees can be counted &mdash; the light-reflecting coating is applied to surfaces, not increased in number.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">B</div><div class="answer-note">Susanna Tol: &lsquo;it&rsquo;s critical that we transition towards multifunctional approaches that&hellip; <em>engage and benefit communities</em> and local decision-makers.&rsquo; engage = involve, benefit = help, communities = residents of the region.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">E</div><div class="answer-note">Greg Spotts: &lsquo;Urban cooling is <em>literally a matter of life and death</em> for our future in LA.&rsquo; Urban cooling = interventions which reduce heat; life and death = vital for survival.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">A</div><div class="answer-note">Yanira Pineda: &lsquo;We know that in 20, 30, 40 years, we&rsquo;ll need to <em>go back in there and adjust</em> to the changing environment.&rsquo; Her whole paragraph is about flooding and sea-level rise, and she also says &lsquo;the job is far from over&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">C</div><div class="answer-note">Elizabeth English: &lsquo;this technology is becoming necessary <em>in places that didn&rsquo;t previously need it</em>&rsquo; &mdash; i.e. the number of locations that must adapt to flooding has increased in recent years.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Sentence Completion (the real exam gaps Q18&ndash;22)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">pumps</div><div class="answer-note">The stormwater-management programme in Miami Beach has involved the installation of efficient</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">dams</div><div class="answer-note">The construction of</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">float</div><div class="answer-note">As a response to rising floodwaters in the Mekong Delta, a not-for-profit organisation has been building houses that can</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">crops</div><div class="answer-note">Rising sea levels in Bangladesh have made it necessary to introduce various</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">trees</div><div class="answer-note">A project in LA has increased the number of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">seeping</div><div class="answer-note">Seawater is</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">exacerbate</div><div class="answer-note">Collapsing seawalls further</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">sediment</div><div class="answer-note">Mangrove roots trap</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">mimic</div><div class="answer-note">The bamboo dams</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">subsidence</div><div class="answer-note">The project has had only moderate success in areas with high</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">tolerant</div><div class="answer-note">Farmers are now growing salt-</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">thermal</div><div class="answer-note">The street appears pale on a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">forecasts</div><div class="answer-note">Scientists&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">elevation</div><div class="answer-note">The</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">mitigation</div><div class="answer-note">Climate-</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">erosion</div><div class="answer-note">Coastal</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">salinity</div><div class="answer-note">Thirty-five million people are affected by soil and water</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">cultivation</div><div class="answer-note">The</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">cooler</div><div class="answer-note">The city wants to make its streets</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">forecasting</div><div class="answer-note">Question: &ldquo;a prediction&rdquo; &rarr; Passage: scientists</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">trapping</div><div class="answer-note">Question: &ldquo;a natural protection for coastlines&rdquo; &rarr; Passage: mangrove roots</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">cheaper</div><div class="answer-note">Question: &ldquo;particularly cost-effective&rdquo; &rarr; Passage: it is much</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">mapping</div><div class="answer-note">Question: &ldquo;a technology used to locate areas&rdquo; &rarr; Passage: a Geographic Information System data</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">benefit</div><div class="answer-note">Question: &ldquo;involve and help residents&rdquo; &rarr; Passage: approaches that engage and</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">death</div><div class="answer-note">Question: &ldquo;absolutely vital for our survival&rdquo; &rarr; Passage: literally a matter of life and</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">tolerant</div><div class="answer-note">Question: &ldquo;areas of high salt content&rdquo; &rarr; Passage: crops that are salt-</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Linkers and Reductions</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Even</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">so</div><div class="answer-note">Seawater is not just breaching the walls,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">made</div><div class="answer-note">&lsquo;dams which are made from bamboo poles&rsquo; can be reduced to &lsquo;dams</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">to</div><div class="answer-note">The dams were built</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">than</div><div class="answer-note">Vegetables are better suited to salty soil</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">Rather</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">otherwise</div><div class="answer-note">The street is a pale crescent on an</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">levels</div><div class="answer-note">海平面上升 &rarr; sea</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">exacerbating</div><div class="answer-note">加剧海岸侵蚀 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">favourable</div><div class="answer-note">创造有利条件 &rarr; create</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">stilts</div><div class="answer-note">建在高脚桩上 &rarr; built on</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">floodplains</div><div class="answer-note">洪泛平原 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">death</div><div class="answer-note">生死攸关 &rarr; a matter of life and</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">coating</div><div class="answer-note">反光涂层 &rarr; a light-reflecting</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Global warming would continue for around 40 years.</div><div class="answer-note">Scientists forecast that warming &lsquo;would continue for around 40 years&rsquo; because of CO2 already released. This forecast is what makes Q15 paragraph A.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. Because seawater also seeps up through the ground.</div><div class="answer-note">Water rising from below cannot be blocked by a wall, which is why the city raises roads and installs pumps instead. (The soft ground problem belongs to Java, paragraph C.)</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. pumps &mdash; the instruction says ONE WORD ONLY</div><div class="answer-note">&lsquo;ONE WORD ONLY&rsquo; means adjectives must be dropped. The efficient equipment installed is the <strong>pumps</strong> that remove up to 75,000 litres per minute.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. By trapping sediment, raising the sea bed and reducing wave energy.</div><div class="answer-note">This three-part description is exactly what Q14 calls &lsquo;how a type of plant functions as a natural protection for coastlines&rsquo;, and it is the reason the answer is paragraph C.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. To copy mangrove roots so mangroves could return naturally.</div><div class="answer-note">The dams &lsquo;mimic the role of mangrove roots and create favourable conditions for mangroves to grow back naturally&rsquo;. This is also the first stage referred to in Q19 (<em>dams</em>).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. Because &ldquo;houses that can&hellip;&rdquo; must be followed by a bare verb.</div><div class="answer-note">After the modal <em>can</em>, English requires the base form. The passage supplies it: &lsquo;these ones had been built to <strong>float</strong>&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A. Lower cost and reduced wind risk.</div><div class="answer-note">They cost about a third of replacing foundations, and they avoid &lsquo;the problem of taller houses being at greater risk from wind damage&rsquo;. The cost point is what makes Q16 paragraph D.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. By introducing crops that tolerate salt, raising harvests by two to three a year.</div><div class="answer-note">&lsquo;Rather than fighting against it&rsquo;, the project helps farmers adapt. Carrot, potato, kohlrabi, cabbage and beetroot varieties suit salty soil better than rice and wheat &mdash; the answer to Q21 is the general word <em>crops</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. It identified streets with low tree canopy cover.</div><div class="answer-note">Identifying where treatment is needed = &lsquo;a technology used to locate areas most in need of intervention&rsquo;, which is why Q17 is paragraph F. The 6&deg;C drop comes from the coating, not the tool.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Susanna Tol</div><div class="answer-note">Tol criticises &lsquo;single-solution focused&rsquo; infrastructure and calls for multifunctional approaches that &lsquo;engage and benefit communities and local decision-makers&rsquo; &mdash; the answer to Q23.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. English &mdash; &ldquo;this technology is becoming necessary in places that didn&rsquo;t previously need it&rdquo;</div><div class="answer-note">&lsquo;Places that didn&rsquo;t previously need it&rsquo; is a statement about the number of locations spreading. Pineda&rsquo;s quote is about future <em>work</em> (Q25), not about more places.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Adaptation is necessary and inventive, but every project so far has clear limits.</div><div class="answer-note">Each case is admired and then qualified: &lsquo;the job is far from over&rsquo;, &lsquo;the majority of mangrove-planting projects fail&rsquo;, &lsquo;moderate success&hellip; mainly in areas with less subsidence&rsquo;. Paragraph A also states that warming continues even if emissions stop, which rules out D.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

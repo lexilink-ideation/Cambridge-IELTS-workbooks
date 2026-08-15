@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Reading Passage 3</h1>
+    <h2>Invasion of the Robot Umpires &middot; Yes / No / Not Given + Summary (List of Phrases) + Multiple Choice (Q27&ndash;40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage is a piece of <strong>journalism with an argument inside it</strong>. It describes how Major League Baseball began replacing the human umpire&rsquo;s judgment with the <strong>Automated Ball-Strike System (ABS)</strong>, nicknamed the &lsquo;robo-umpire&rsquo;, and reports what officials, coaches, a philosopher and a player think about it. The writer is not neutral: after presenting MLB&rsquo;s case for accuracy, he keeps returning to one question &mdash; if the arguing stops, has the game lost something human? Because it is an opinion piece, the True/False task becomes <strong>YES / NO / NOT GIVEN</strong>: you are judging the <em>writer&rsquo;s claims</em>, not the facts of baseball.</p></div><div class="card"><p><strong>What the passage argues:</strong> That ABS really is more accurate than a human umpire &mdash; and that this may not be the point. Arguments over the strike zone have been &lsquo;the game&rsquo;s animating force&rsquo; for 150 years, and the writer repeatedly suggests that removing controversy may also remove some of the pleasure, because sport is one of the places where imperfection is enjoyable rather than a fault.</p><p><strong>段落结构 Structure:</strong> 第1&ndash;2段：DeJesus 首次使用 ABS，好球区的定义，全场鸦雀无声（对应 Q33&ndash;37 的摘要题）。第3段：150年来关于好球区的争吵，以及机器来了之后争吵消失。第4段：首季怪判 &rarr; MLB 微调尺寸 &rarr; 一致认为极其稳定；Manfred 说能减少争议；作者反问争议是否值得减少（Q28、Q29）。第5段：教练 Viola 批评 ABS 不留情面、迂腐、死抠条文，怀念投手与裁判之间的默契（Q38）。第6段：Sword 解释动机——怕失去年轻观众；1960年代快速球让比赛变得单调（Q30、Q39）。第7段：各种改革方案都被排除，只有 ABS 是理想载体，好球区可以是任何形状（Q31、Q32）。第8段：与 VAR、鹰眼的对比——那些判的是有形的界线。第9&ndash;10段：哲学家 Noe 与球员 Russo 的反对意见（Q40）。</p><p><strong>Task type:</strong> <strong>Q27&ndash;32 Yes / No / Not Given</strong> (the writer&rsquo;s claims, in passage order); <strong>Q33&ndash;37 Summary completion from a list of phrases A&ndash;H</strong> (eight options, five gaps, so three options are never used); <strong>Q38&ndash;40 Multiple choice, four options</strong> &mdash; one about a named paragraph, one about a named speaker, one about the writer&rsquo;s purpose.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Three task types sit on one passage, and they are <em>not</em> equally expensive. Do the <strong>summary (Q33&ndash;37)</strong> first: it covers only paragraphs 1&ndash;3, the phrases are given to you, and grammar alone eliminates most options. Then do <strong>Y/N/NG (Q27&ndash;32)</strong>, which runs in passage order across the whole text. Leave the <strong>three multiple-choice questions (Q38&ndash;40)</strong> until last, because two of them ask about the writer&rsquo;s <em>purpose</em> and you answer those far better once you have read everything. For Y/N/NG, remember the split: <strong>NO</strong> means the writer says the opposite; <strong>NOT GIVEN</strong> means the topic may appear but the <em>specific claim</em> never does. Four of the six statements in this set hang on that difference.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q29 &mdash; money is never mentioned.</b> The paragraph is full of precision (&lsquo;near-perfect&rsquo;, &lsquo;fractions of an inch&rsquo;) and MLB clearly paid for the system, so the statement <em>feels</em> covered. But &lsquo;justify the money spent&rsquo; appears nowhere &rarr; <strong>NOT GIVEN</strong>.</li><li><b>Q31 &mdash; the bats really are there.</b> &lsquo;from changing the bats to changing the geometry of the field&rsquo; makes you feel you have found the answer. What is missing is the <em>fierce debate</em>: the passage only says the ideas were discussed and ruled out &rarr; <strong>NOT GIVEN</strong>.</li><li><b>Q30 &mdash; &lsquo;more exciting&rsquo; belongs to the wrong noun.</b> The phrase &lsquo;make baseball more exciting&rsquo; describes Sword&rsquo;s project, not the fastball. The fastball &lsquo;flattened the game&hellip; a type of play lacking much action&rsquo; &rarr; <strong>NO</strong>.</li><li><b>Q37 &mdash; silence is not approval.</b> Option E (widespread approval) is the trap for option G (total silence). &lsquo;There was no heckling and no shouted disagreement. Nobody said a word&rsquo; tells you only that people were quiet &mdash; the passage never says they were pleased.</li><li><b>Q35 &mdash; &lsquo;boundary&rsquo; is borrowed from the wrong paragraph.</b> Option A (pitch boundary) uses the word <em>boundaries</em> that appears in paragraph 3 about arguments. The gap needs the definition in paragraph 2: an <em>imaginary</em> zone &rarr; H, perceived area.</li><li><b>Q38 says &lsquo;the fifth paragraph&rsquo;.</b> Count the paragraphs before you read. Paragraph 5 begins &lsquo;A human, at least, yells back&rsquo; &mdash; the Viola paragraph. Answering from paragraph 4 (Manfred) gives you the opposite view.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">umpire</span></td><td><span class="pos">n.</span></td><td>an official who watches a game and decides whether the rules have been followed</td><td class="zh">裁判员</td><td>&ldquo;DeJesus became the first <em>umpire</em> in a minor league game to use ABS.&rdquo;</td><td class="note">The whole passage is about removing this person&rsquo;s judgment. Q27 turns on the fact that he no longer judges <em>at all</em>.</td></tr>
+<tr><td><span class="word">commission</span></td><td><span class="pos">v.</span></td><td>to formally order and pay for a piece of work to be produced</td><td class="zh">委托制作；出资开发</td><td>&ldquo;Major League Baseball, who had <em>commissioned</em> the system, wanted human umpires to announce the calls.&rdquo;</td><td class="note">Q29 is built on this word: MLB paid for ABS, but paying for something is not the same as wanting to <em>justify</em> the cost.</td></tr>
+<tr><td><span class="word">contraption</span></td><td><span class="pos">n.</span></td><td>a strange-looking machine or device</td><td class="zh">奇怪的装置；玩意儿</td><td>&ldquo;The <em>contraption</em> looked like a large black pizza box with one glowing green eye.&rdquo;</td><td class="note">A faintly comic word. The writer&rsquo;s choice of vocabulary is already signalling his scepticism &mdash; useful for Q40.</td></tr>
+<tr><td><span class="word">mount</span></td><td><span class="pos">v.</span></td><td>to fix something firmly into position, usually high up</td><td class="zh">安装；架设</td><td>&ldquo;It was <em>mounted</em> above the press stand.&rdquo;</td><td class="note">Almost always passive when describing equipment: <em>be mounted above / on / behind</em>.</td></tr>
+<tr><td><span class="word">judgment call</span></td><td><span class="pos">n. phr.</span></td><td>a decision that depends on personal opinion rather than a fixed rule</td><td class="zh">主观判断</td><td>&ldquo;Previously, calling a strike was a <em>judgment call</em> on the part of the umpire.&rdquo;</td><td class="note"><strong>Key to Q34.</strong> Option D &lsquo;subjective assessment&rsquo; is a one-for-one academic paraphrase of this everyday phrase.</td></tr>
+<tr><td><span class="word">heckling</span></td><td><span class="pos">n.</span></td><td>shouting rude or mocking remarks at someone in public</td><td class="zh">起哄；喝倒彩</td><td>&ldquo;There was no <em>heckling</em> and no shouted disagreement.&rdquo;</td><td class="note"><strong>Key to Q37.</strong> &lsquo;No heckling&rsquo; + &lsquo;nobody said a word&rsquo; = silence, not approval.</td></tr>
+<tr><td><span class="word">animating</span></td><td><span class="pos">adj.</span></td><td>giving life, energy or purpose to something</td><td class="zh">赋予活力的；核心的</td><td>&ldquo;the strike zone has been the game&rsquo;s <em>animating</em> force&rdquo;</td><td class="note">A strong evaluative adjective. It tells you the writer thinks the argument <em>is</em> the game &mdash; the seed of Q38 and Q40.</td></tr>
+<tr><td><span class="word">boundary</span></td><td><span class="pos">n.</span></td><td>the line that marks the limit of an area</td><td class="zh">界限；边界</td><td>&ldquo;countless arguments&hellip; have taken place over its <em>boundaries</em>&rdquo;</td><td class="note">Distractor word for Q35: option A (&lsquo;pitch boundary&rsquo;) recycles it from paragraph 3, where it belongs to arguments, not to the definition.</td></tr>
+<tr><td><span class="word">evolve</span></td><td><span class="pos">v.</span></td><td>to develop gradually over a long period</td><td class="zh">逐渐演变</td><td>&ldquo;The rules of play have <em>evolved</em> in various stages.&rdquo;</td><td class="note">Returns at the end: &lsquo;as baseball <em>evolves</em>, ABS can allow the zone to change with it&rsquo; &mdash; direct support for Q32 (YES).</td></tr>
+<tr><td><span class="word">tweak</span></td><td><span class="pos">v.</span></td><td>to make small adjustments to something</td><td class="zh">微调</td><td>&ldquo;MLB decided to <em>tweak</em> the dimensions of the zone.&rdquo;</td><td class="note"><strong>Key to Q28.</strong> tweak the dimensions = amend the size. Informal verb, very common in journalism.</td></tr>
+<tr><td><span class="word">dimensions</span></td><td><span class="pos">n. pl.</span></td><td>the measurements of something &mdash; its width, height and depth</td><td class="zh">尺寸；大小</td><td>&ldquo;tweak the <em>dimensions</em> of the zone&rdquo;</td><td class="note">The Q28 statement says &lsquo;the size&rsquo;. Recognising dimensions = size is half the question.</td></tr>
+<tr><td><span class="word">consensus</span></td><td><span class="pos">n.</span></td><td>an opinion that almost everyone shares</td><td class="zh">共识</td><td>&ldquo;the following year the <em>consensus</em> was that ABS is profoundly consistent&rdquo;</td><td class="note">Signals a <em>general</em> view, not one person&rsquo;s. Useful for spotting where a passage stops reporting individuals.</td></tr>
+<tr><td><span class="word">consistent</span></td><td><span class="pos">adj.</span></td><td>always behaving or performing in the same way</td><td class="zh">稳定的；始终如一的</td><td>&ldquo;the consensus was that ABS is profoundly <em>consistent</em>&rdquo;</td><td class="note">Positive here, but note how paragraph 5 re-labels the same quality as &lsquo;unforgiving&rsquo;. Same fact, opposite attitude.</td></tr>
+<tr><td><span class="word">controversy</span></td><td><span class="pos">n.</span></td><td>public disagreement and argument about something</td><td class="zh">争议</td><td>&ldquo;It&rsquo;ll reduce <em>controversy</em> in the game, and be good for the game.&rdquo;</td><td class="note">The hinge word of the passage. Manfred wants less of it; the writer asks whether it is &lsquo;the sign of a human hand&rsquo;.</td></tr>
+<tr><td><span class="word">unforgiving</span></td><td><span class="pos">adj.</span></td><td>strict; allowing no mistake at all</td><td class="zh">不留情面的；毫不宽容的</td><td>&ldquo;it was also <em>unforgiving</em> and pedantic, almost legalistic&rdquo;</td><td class="note">One of the three negative adjectives in paragraph 5 &mdash; the evidence base for Q38 (option B).</td></tr>
+<tr><td><span class="word">pedantic</span></td><td><span class="pos">adj.</span></td><td>too concerned with small rules and details</td><td class="zh">迂腐的；拘泥细节的</td><td>&ldquo;unforgiving and <em>pedantic</em>, almost legalistic&rdquo;</td><td class="note">Learn the trio together: unforgiving / pedantic / legalistic. Three ways of saying &lsquo;too exact to be enjoyable&rsquo;.</td></tr>
+<tr><td><span class="word">legalistic</span></td><td><span class="pos">adj.</span></td><td>following the exact wording of rules rather than their spirit</td><td class="zh">死抠条文的</td><td>&ldquo;almost <em>legalistic</em>&hellip; &lsquo;Manfred is a lawyer,&rsquo; Viola noted.&rdquo;</td><td class="note">The joke about the lawyer is not decoration &mdash; it reinforces the criticism, which is why B fits Q38.</td></tr>
+<tr><td><span class="word">tasked with</span></td><td><span class="pos">phr.</span></td><td>given a particular job or responsibility</td><td class="zh">受命负责</td><td>&ldquo;The executive <em>tasked with</em> running the experiment for MLB is Morgan Sword.&rdquo;</td><td class="note">A formal reduced relative clause (= who is tasked with). Common way academic writing compresses information.</td></tr>
+<tr><td><span class="word">rule out</span></td><td><span class="pos">phr. v.</span></td><td>to decide that something is not possible or not suitable</td><td class="zh">排除；否决</td><td>&ldquo;all of these were <em>ruled out</em> as potential fixes&rdquo;</td><td class="note"><strong>Key to Q31.</strong> The ideas were rejected &mdash; but rejection is not the same as &lsquo;fierce debate&rsquo;, which is never described.</td></tr>
+<tr><td><span class="word">vehicle</span></td><td><span class="pos">n.</span></td><td>(figurative) a means of achieving or expressing something</td><td class="zh">（比喻）手段；载体</td><td>&ldquo;ABS was seen as a perfect <em>vehicle</em> for change.&rdquo;</td><td class="note">Reading passages love a familiar word used abstractly. Nothing here is being driven.</td></tr>
+<tr><td><span class="word">delineate</span></td><td><span class="pos">v.</span></td><td>to mark or describe the limits of something clearly</td><td class="zh">清晰划定；界定</td><td>&ldquo;The boundaries of action are precise, <em>delineated</em> like the keys of a piano.&rdquo;</td><td class="note">The image that separates ABS from VAR and Hawk-Eye: those judge physical lines, ABS judges an imaginary box.</td></tr>
+<tr><td><span class="word">discretion</span></td><td><span class="pos">n.</span></td><td>the freedom to decide something using your own judgment</td><td class="zh">自由裁量权；斟酌决定的权力</td><td>&ldquo;Historically, a certain <em>discretion</em> has been appreciated.&rdquo;</td><td class="note">The clearest single-word statement of the writer&rsquo;s position. Underline it for Q38 and Q40.</td></tr>
+<tr><td><span class="word">dissenting</span></td><td><span class="pos">adj.</span></td><td>disagreeing with an official or generally accepted opinion</td><td class="zh">持异议的</td><td>&ldquo;Some players I have met take a <em>dissenting</em> stance toward the robots too.&rdquo;</td><td class="note">The word &lsquo;too&rsquo; is important: it groups Russo with Noe, which is what Q40 asks about.</td></tr>
+<tr><td><span class="word">stance</span></td><td><span class="pos">n.</span></td><td>a publicly stated attitude towards an issue</td><td class="zh">立场；态度</td><td>&ldquo;take a dissenting <em>stance</em> toward the robots&rdquo;</td><td class="note">Collocations: take / adopt a stance <em>on</em> or <em>toward</em> something.</td></tr>
+<tr><td><span class="word">flatten</span></td><td><span class="pos">v.</span></td><td>to make something dull, uniform and without variety</td><td class="zh">使变得单调平淡</td><td>&ldquo;It <em>flattened</em> the game into strikeouts, walks, and home runs.&rdquo;</td><td class="note"><strong>Key to Q30.</strong> Flattened = less varied, less exciting. That is why the statement is NO.</td></tr>
+<tr><td><span class="word">maximize</span></td><td><span class="pos">v.</span></td><td>to make something as large or as productive as possible</td><td class="zh">最大化；充分利用</td><td>&ldquo;We watch baseball to kill time, not to <em>maximize</em> it.&rdquo;</td><td class="note">The writer&rsquo;s sharpest line: a game is not supposed to be efficient. Straight support for Q40 (option C).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">fed to him through an earpiece</span></td><td>delivered to him electronically in his ear</td><td class="zh">通过耳机传给他</td></tr>
+<tr><td><span class="phrase">a modified missile-tracking system</span></td><td>a re-purposed military tracking device</td><td class="zh">经过改装的导弹追踪系统</td></tr>
+<tr><td><span class="phrase">make a judgment call</span></td><td>decide something using your own opinion</td><td class="zh">做出主观判断</td></tr>
+<tr><td><span class="phrase">pass through the strike zone</span></td><td>cross the invisible box above the plate</td><td class="zh">穿过好球区</td></tr>
+<tr><td><span class="phrase">no shouted disagreement</span></td><td>nobody argued out loud</td><td class="zh">没有人大声表示异议</td></tr>
+<tr><td><span class="phrase">nobody said a word</span></td><td>everyone stayed completely silent</td><td class="zh">没有一个人吭声</td></tr>
+<tr><td><span class="phrase">countless arguments</span></td><td>a very large number of disputes</td><td class="zh">数不清的争吵</td></tr>
+<tr><td><span class="phrase">shout personal abuse</span></td><td>insult someone directly and offensively</td><td class="zh">进行人身辱骂</td></tr>
+<tr><td><span class="phrase">tweak the dimensions</span></td><td>make small changes to the size</td><td class="zh">微调尺寸</td></tr>
+<tr><td><span class="phrase">profoundly consistent</span></td><td>extremely reliable and unvarying</td><td class="zh">极其稳定一致</td></tr>
+<tr><td><span class="phrase">precise to within fractions of an inch</span></td><td>accurate to a tiny part of an inch</td><td class="zh">精确到几分之一英寸</td></tr>
+<tr><td><span class="phrase">reduce controversy</span></td><td>cause there to be less public argument</td><td class="zh">减少争议</td></tr>
+<tr><td><span class="phrase">the sign of a human hand</span></td><td>evidence that a person, not a machine, is involved</td><td class="zh">人参与其中的标志</td></tr>
+<tr><td><span class="phrase">work as designed</span></td><td>do exactly what it was built to do</td><td class="zh">按设计正常运作</td></tr>
+<tr><td><span class="phrase">a dialogue between pitcher and umpire</span></td><td>an unspoken give-and-take between the two</td><td class="zh">投手与裁判之间的互动</td></tr>
+<tr><td><span class="phrase">be tasked with running the experiment</span></td><td>be given the job of managing the trial</td><td class="zh">受命负责这项试验</td></tr>
+<tr><td><span class="phrase">be in charge of baseball operations</span></td><td>be responsible for how the sport is run</td><td class="zh">主管棒球运营事务</td></tr>
+<tr><td><span class="phrase">terrified of losing younger fans</span></td><td>very afraid that young people will stop watching</td><td class="zh">极其担心失去年轻观众</td></tr>
+<tr><td><span class="phrase">as has been the case with&hellip;</span></td><td>as has already happened with&hellip;</td><td class="zh">正如……所经历的那样</td></tr>
+<tr><td><span class="phrase">brainstorm potential fixes</span></td><td>think up many possible solutions together</td><td class="zh">集思广益寻找解决办法</td></tr>
+<tr><td><span class="phrase">a perfect vehicle for change</span></td><td>an ideal means of bringing about change</td><td class="zh">推动变革的理想载体</td></tr>
+<tr><td><span class="phrase">move away from judgment calls</span></td><td>stop relying on human opinion</td><td class="zh">逐步摆脱主观判罚</td></tr>
+<tr><td><span class="phrase">deal with something physical</span></td><td>involve objects you can see and measure</td><td class="zh">处理有形的事物</td></tr>
+<tr><td><span class="phrase">take a dissenting stance</span></td><td>publicly disagree with the accepted view</td><td class="zh">持反对立场</td></tr>
+<tr><td><span class="phrase">kill time</span></td><td>pass time pleasantly without trying to be productive</td><td class="zh">消磨时间</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;Instead of making any judgments himself about a strike, DeJesus had decisions fed to him through an earpiece, connected to a modified missile-tracking system.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">DeJesus had decisions fed to him through an earpiece.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Instead of making any judgments himself&rsquo; = a preposition + -ing phrase of replacement; &lsquo;connected to a modified missile-tracking system&rsquo; = a reduced relative clause describing the earpiece.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>have + object + past participle</strong> (&lsquo;had decisions <em>fed</em> to him&rsquo;) means someone else does it <em>to</em> you. He is the receiver, not the doer &mdash; which is exactly what Q27 tests.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">DeJesus did not decide anything himself; a machine told him what to say.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">德赫苏斯并不自己判断好球与否，而是通过耳机接收判罚结果，耳机连接着一套改装过的导弹追踪系统。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Even if the batter does not hit the ball, a pitch that passes through the strike zone is considered a strike.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A pitch is considered a strike.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Even if the batter does not hit the ball&rsquo; = a concession clause; &lsquo;that passes through the strike zone&rsquo; = a defining relative clause narrowing which pitch.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Even if</strong> introduces a condition that does <em>not</em> change the result. The passive &lsquo;is considered&rsquo; is how rules and definitions are usually written in English.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A ball that crosses the zone counts as a strike whether or not the batter swings at it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">即使击球手没有击中球，只要投球穿过好球区，就算作一次好球。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;But the question is whether controversy is worth reducing, or whether it is the sign of a human hand.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The question is whether controversy is worth reducing.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;or whether it is the sign of a human hand&rsquo; = a second noun clause sharing the same verb &lsquo;is&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>whether A or whether B</strong> sets up a genuine alternative. &lsquo;be worth + -ing&rsquo; takes no object after the -ing form. This single sentence is the writer&rsquo;s thesis.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Should we really get rid of arguing &mdash; or is arguing proof that humans are involved?</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">但问题在于：争议究竟值不值得被减少，还是说它恰恰是&ldquo;人的痕迹&rdquo;？</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;According to Sword, ABS was part of a larger project to make baseball more exciting since executives are terrified of losing younger fans, as has been the case with horse racing and boxing.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">ABS was part of a larger project.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;to make baseball more exciting&rsquo; = infinitive of purpose; &lsquo;since executives are terrified&hellip;&rsquo; = a reason clause; &lsquo;as has been the case with&hellip;&rsquo; = a comparison clause with no subject of its own.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>since</strong> here means <em>because</em>, not <em>from that time</em>. Three layers of information hang off one short main clause &mdash; find the main verb (<em>was</em>) first.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Sword says ABS was introduced because bosses fear young people will stop watching baseball, the way they stopped watching horse racing and boxing.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">斯沃德表示，ABS 只是让棒球更精彩这一更大计划的一部分，因为高管们非常害怕失去年轻观众——赛马和拳击就是前车之鉴。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;This type of baseball essentially hasn&rsquo;t existed since the 1960s, when the hundred-mile-an-hour fastball, which is difficult to hit and control, entered the game.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This type of baseball hasn&rsquo;t existed since the 1960s.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;when the&hellip; fastball&hellip; entered the game&rsquo; = a relative clause of time; &lsquo;which is difficult to hit and control&rsquo; = a non-defining relative clause nested inside it.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Present perfect + since</strong> means the situation has continued up to now. Notice the clause inside a clause: the subject (<em>fastball</em>) and its verb (<em>entered</em>) are pushed seven words apart.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Exciting, action-filled baseball has been missing since the 1960s, when very fast pitching arrived.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这种类型的棒球自20世纪60年代起基本上就不存在了——当时时速百英里、既难打中又难控制的快速球进入了比赛。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Some players I have met take a dissenting stance toward the robots too, believing that accuracy is not the answer.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Some players take a dissenting stance toward the robots.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;I have met&rsquo; = a contact relative clause with <em>that/whom</em> omitted; &lsquo;believing that accuracy is not the answer&rsquo; = a present-participle clause giving their reason.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">English lets you drop the object relative pronoun: <em>players (whom) I have met</em>. The word <strong>too</strong> links these players back to Noe &mdash; the grouping Q40 asks about.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Some players I know also disagree with the robots, because they think being accurate is not what matters.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我见过的一些球员同样对机器人持反对立场，他们认为准确并不是问题的答案。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Summary Completion from a List (the real exam gaps Q33&ndash;37)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct <strong>letter A&ndash;H</strong> in each gap. Options: <b>A</b> pitch boundary &middot; <b>B</b> numerous disputes &middot; <b>C</b> team tactics &middot; <b>D</b> subjective assessment &middot; <b>E</b> widespread approval &middot; <b>F</b> former roles &middot; <b>G</b> total silence &middot; <b>H</b> perceived area. Three options are never used &mdash; check the grammar of the gap before you check the meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>Even after ABS was developed, MLB still wanted human umpires to shout out decisions as they had in their (33) <input type="text" class="blank" id="b1" data-answer="F" placeholder="______"> &nbsp;[letter]<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The umpire&rsquo;s job had, at one time, required a (34) <input type="text" class="blank" id="b2" data-answer="D" placeholder="______"> about whether a ball was a strike. &nbsp;[letter]<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>A ball is a strike when the batter does not hit it and it crosses through a (35) <input type="text" class="blank" id="b3" data-answer="H" placeholder="______"> extending approximately from the knee to the chest. &nbsp;[letter]<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>In the past, (36) <input type="text" class="blank" id="b4" data-answer="B" placeholder="______"> over strike calls were not uncommon. &nbsp;[letter]<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>During the first game DeJesus used ABS, strike calls were met with (37) <input type="text" class="blank" id="b5" data-answer="G" placeholder="______">. &nbsp;[letter]<span class="feedback" id="fb5"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>For 150 years the strike zone has been the game&rsquo;s <input type="text" class="blank" id="b6" data-answer="animating" placeholder="______"> force (= the thing that gives it its energy and life).<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>After the first season MLB decided to <input type="text" class="blank" id="b7" data-answer="tweak" placeholder="______"> the dimensions of the zone (= to adjust them slightly).<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Viola found the robot umpire <input type="text" class="blank" id="b8" data-answer="pedantic" placeholder="______"> (= too concerned with tiny rules and details).<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Every other proposed change was <input type="text" class="blank" id="b9" data-answer="ruled" placeholder="______"> out (= rejected as unsuitable).<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The hundred-mile-an-hour fastball <input type="text" class="blank" id="b10" data-answer="flattened" placeholder="______"> the game into strikeouts, walks and home runs (= made it dull and repetitive).<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Historically, a certain <input type="text" class="blank" id="b11" data-answer="discretion" placeholder="______"> has been appreciated (= freedom to decide using personal judgment).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Some players take a <input type="text" class="blank" id="b12" data-answer="dissenting" placeholder="______"> stance toward the robots (= they disagree with the official view).<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Academic Reading the answer must fit the grammar of the sentence, not only its meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>MLB says the device is near-perfect and extremely <input type="text" class="blank" id="b13" data-answer="precise" placeholder="______"> (PRECISION).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Manfred believes ABS will reduce <input type="text" class="blank" id="b14" data-answer="controversy" placeholder="______"> (CONTROVERSIAL) in the game.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The system behaves the same way every time; that <input type="text" class="blank" id="b15" data-answer="consistency" placeholder="______"> (CONSISTENT) is what MLB values.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Executives are <input type="text" class="blank" id="b16" data-answer="terrified" placeholder="______"> (TERROR) of losing younger fans.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Russo believes that <input type="text" class="blank" id="b17" data-answer="accuracy" placeholder="______"> (ACCURATE) is not the answer.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The rules of play have <input type="text" class="blank" id="b18" data-answer="evolved" placeholder="______"> (EVOLUTION) in various stages.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never repeats the passage word for word. Read the wording used in the questions, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q27 says &ldquo;he shared decision-making&rdquo; &rarr; Passage: instead of making any <input type="text" class="blank" id="b19" data-answer="judgments" placeholder="______"> himself.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q28 says &ldquo;amend the size&rdquo; &rarr; Passage: <input type="text" class="blank" id="b20" data-answer="tweak" placeholder="______"> the dimensions of the zone.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q28 says &ldquo;criticisms were received from players&rdquo; &rarr; Passage: players <input type="text" class="blank" id="b21" data-answer="complained" placeholder="______"> about some strange calls.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Option D says &ldquo;a subjective assessment&rdquo; &rarr; Passage: calling a strike was a <input type="text" class="blank" id="b22" data-answer="judgment" placeholder="______"> call.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Option H says &ldquo;a perceived area&rdquo; &rarr; Passage: an <input type="text" class="blank" id="b23" data-answer="imaginary" placeholder="______"> zone about seventeen inches wide.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Option B says &ldquo;numerous disputes&rdquo; &rarr; Passage: <input type="text" class="blank" id="b24" data-answer="countless" placeholder="______"> arguments between a manager and the umpire.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Option G says &ldquo;total silence&rdquo; &rarr; Passage: nobody said a <input type="text" class="blank" id="b25" data-answer="word" placeholder="______">.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q39 says &ldquo;retained a young audience&rdquo; &rarr; Passage: executives are <input type="text" class="blank" id="b26" data-answer="terrified" placeholder="______"> of losing younger fans.<span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses, Linking and Reduction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to stack ideas into long sentences.</p><div class="ex-item"><span class="ex-num">1.</span><label>Instead <input type="text" class="blank" id="b27" data-answer="of" placeholder="______"> making any judgments himself, DeJesus had decisions fed to him. (preposition + -ing after &lsquo;instead&rsquo;)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Major League Baseball, <input type="text" class="blank" id="b28" data-answer="who" placeholder="______"> had commissioned the system, wanted human umpires to announce the calls. (non-defining relative pronoun for an organisation treated as people)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>A pitch <input type="text" class="blank" id="b29" data-answer="that" placeholder="______"> passes through the strike zone is considered a strike. (defining relative pronoun &mdash; no comma)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;a system which has been modified&rsquo; can be reduced to &lsquo;a <input type="text" class="blank" id="b30" data-answer="modified" placeholder="______"> system&rsquo;. (past participle used as an adjective)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>&lsquo;the executive who is tasked with running the experiment&rsquo; can be reduced to &lsquo;the executive <input type="text" class="blank" id="b31" data-answer="tasked" placeholder="______"> with running the experiment&rsquo;. (reduced relative clause)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>This type of baseball hasn&rsquo;t existed <input type="text" class="blank" id="b32" data-answer="since" placeholder="______"> the 1960s. (time preposition used with the present perfect)<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>You may scream your disagreement in an umpire&rsquo;s face, <input type="text" class="blank" id="b33" data-answer="but" placeholder="______"> you must never touch them. (contrast conjunction)<span class="feedback" id="fb33"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the Chinese, then complete the English sentence from the passage with ONE word. This trains you to retrieve academic vocabulary, not just recognise it.</p><div class="ex-item"><span class="ex-num">1.</span><label>争议究竟值不值得被减少？ &rarr; But the question is whether controversy is worth <input type="text" class="blank" id="b34" data-answer="reducing" placeholder="______">, or whether it is the sign of a human hand.<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>高管们非常害怕失去年轻观众。 &rarr; Executives are <input type="text" class="blank" id="b35" data-answer="terrified" placeholder="______"> of losing younger fans.<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>这些方案最终全都被排除了。 &rarr; All of these were <input type="text" class="blank" id="b36" data-answer="ruled" placeholder="______"> out as potential fixes.<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>从历史上看，一定程度的自由裁量一直受到赞赏。 &rarr; Historically, a certain <input type="text" class="blank" id="b37" data-answer="discretion" placeholder="______"> has been appreciated.<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>我们看棒球是为了消磨时间，而不是为了把时间用到极致。 &rarr; We watch baseball to kill time, not to <input type="text" class="blank" id="b38" data-answer="maximize" placeholder="______"> it.<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>近二十年来，各项运动都在逐渐远离主观判罚。 &rarr; In the past twenty years, sports have moved <input type="text" class="blank" id="b39" data-answer="away" placeholder="______"> from judgment calls.<span class="feedback" id="fb39"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; two chains running in opposite directions</strong></p><p>Chain one is technological: players complain about strange calls &rarr; MLB tweaks the dimensions &rarr; the consensus becomes &lsquo;profoundly consistent&rsquo;. Chain two is human: the robot arrives &rarr; &ldquo;the arguments stopped&rdquo; &rarr; something the writer values disappears. Q28 lives on the first chain (complaint <em>causes</em> the change, so YES); Q38 lives on the second.</p></div>
+<div class="card"><p><strong>Contrast &mdash; the signal words that carry the argument</strong></p><p>Watch <em>Instead of</em> (paragraph 1: he does not judge &mdash; Q27), <em>Previously</em> (paragraph 2: the job used to be a judgment call &mdash; Q34), <em>however</em> (paragraph 3: &ldquo;When the robo-umpires came, however, the arguments stopped&rdquo;) and above all <em>But</em> in paragraph 4: &ldquo;<em>But</em> the question is whether controversy is worth reducing&hellip;&rdquo;. In an opinion piece, the sentence after &lsquo;but&rsquo; is usually the writer&rsquo;s own view.</p></div>
+<div class="card"><p><strong>Comparison &amp; analogy &mdash; why ABS is not the same as VAR or Hawk-Eye</strong></p><p>Paragraph 8 compares four technologies and then draws a line through them: soccer&rsquo;s VAR, tennis&rsquo;s Hawk-Eye and baseball&rsquo;s instant replay all judge <em>physical</em> things &mdash; bases, lines, goals, &ldquo;delineated like the keys of a piano&rdquo;. ABS judges an imaginary box. The comparison is the argument: precision is fair when the boundary is real, and questionable when it is not.</p></div>
+<div class="card"><p><strong>Examples &mdash; what they are doing in each paragraph</strong></p><p>&lsquo;Horse racing and boxing&rsquo; are examples of sports that <em>lost</em> young audiences (they support Q39). &lsquo;A triangle, or a blob, or something shaped like Texas&rsquo; are examples of what ABS makes possible (they support Q32). &lsquo;Changing the bats&hellip; changing the geometry of the field&rsquo; are examples of ideas that were <em>rejected</em> (Q31). Ask every example: is it evidence for, or evidence against?</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; information tucked inside brackets, commas and dashes</strong></p><p>The strike zone is defined in brackets as &ldquo;an imaginary zone about seventeen inches wide, stretching from the batter&rsquo;s knees to the middle of his chest&rdquo; &mdash; that bracket alone answers Q35. Apposition also identifies every speaker: &lsquo;Rob Manfred, <em>who is Commissioner for MLB</em>&rsquo;, &lsquo;Frank Viola, <em>a coach for a North Carolina team</em>&rsquo;, &lsquo;Alva Noe, <em>a professor at Berkeley University and a baseball fan</em>&rsquo;. Build a quick who-is-who list as you read.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; the shape of paragraphs 6 and 7</strong></p><p>Problem: young fans are being lost, and fans say they want more action. Investigation: ask the fans, then brainstorm every rule that could change. Rejection: all the obvious fixes are ruled out. Solution: ABS, because any zone can be loaded into it. Notice that the solution is presented in <em>Sword&rsquo;s</em> voice, not the writer&rsquo;s &mdash; which is why Q39 asks what <em>Sword</em> says.</p></div>
+<div class="card"><p><strong>Chronology &mdash; the time markers that let you locate answers fast</strong></p><p>&lsquo;A few years ago&rsquo; (DeJesus, paragraph 1) &rarr; &lsquo;For a hundred and fifty years or so&rsquo; (the tradition of arguing, paragraph 3) &rarr; &lsquo;During the first robo-umpire season&hellip; the following year&rsquo; (complaints, then the tweak, paragraph 4) &rarr; &lsquo;since the 1960s&rsquo; (the fastball, paragraph 6) &rarr; &lsquo;For almost a decade&hellip; In the past twenty years&rsquo; (other sports, paragraph 8). Two of the six Y/N/NG answers sit next to a time marker.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; reported, then revealed</strong></p><p>For four paragraphs the writer only reports. Then he starts to appear: a rhetorical question (&ldquo;But the question is whether controversy is worth reducing&rdquo;), a concession (&ldquo;Perhaps he&rsquo;s right&rdquo;), and finally a direct claim in his own voice (&ldquo;We watch baseball to kill time, not to maximize it&rdquo;). In Y/N/NG and purpose questions, these first-person moments are worth more than any quotation.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; YES / NO / NOT GIVEN (Q27&ndash;32)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">YES = the writer claims this. NO = the writer claims the opposite. NOT GIVEN = the writer never makes this claim, even if the topic appears. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>27. DeJesus shared decision-making about strikes with ABS.</b> &rarr; <strong>NO</strong> &mdash; &lsquo;<em>Instead of</em> making any judgments himself&hellip; DeJesus had decisions fed to him&rsquo;. He announced; he did not share. The statement says the opposite.</li><li><b>28. MLB thought it necessary to change the size of the zone after player criticism.</b> &rarr; <strong>YES</strong> &mdash; &lsquo;players complained about some strange calls. <em>In response</em>, MLB decided to tweak the dimensions&rsquo;. Complaint + response = exactly the claim.</li><li><b>29. MLB is keen to justify the money spent on improving ABS&rsquo;s accuracy.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; MLB commissioned the system and boasts about its precision, but cost, value for money and justification are never mentioned anywhere in the passage.</li><li><b>30. The hundred-mile-an-hour fastball led to a more exciting style of play.</b> &rarr; <strong>NO</strong> &mdash; it &lsquo;<em>flattened</em> the game into strikeouts, walks, and home runs &mdash; a type of play <em>lacking much action</em>&rsquo;.</li><li><b>31. The differing proposals for changing the bat led to fierce debate on Sword&rsquo;s team.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; bats are mentioned in a list of things they &lsquo;talked about changing&rsquo;, and all the ideas were ruled out. No disagreement, and certainly no fierceness, is described.</li><li><b>32. ABS makes changes to the shape of the strike zone feasible.</b> &rarr; <strong>YES</strong> &mdash; &lsquo;you can load <em>any</em> strike zone you want into the system. It might be a triangle, or a blob&hellip;&rsquo; Feasible = possible.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> circle the one word carrying the risk &mdash; <em>shared, necessary, justify, more exciting, fierce, feasible</em>. That word, not the topic, decides the answer. And when a statement adds an <em>emotion</em> (fierce, keen, reluctant) that the passage never reports, NOT GIVEN is very likely.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Summary Completion from a list of phrases (Q33&ndash;37)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Eight options, five gaps: three are pure distractors. Work grammar first, then meaning, then the paragraph. This summary only covers paragraphs 1&ndash;3.</p><p><b>Step 1 &mdash; sort the options by grammar.</b> Countable plural: <em>numerous disputes, team tactics, former roles</em>. Countable singular after &lsquo;a&rsquo;: <em>subjective assessment, perceived area, pitch boundary</em>. Uncountable: <em>widespread approval, total silence</em>. Now look at the gaps: Q34 and Q35 both follow &lsquo;a&rsquo;, so only three options can fill each; Q36 is the subject of &lsquo;<em>were</em> not uncommon&rsquo;, so it must be plural; Q37 follows &lsquo;met with&rsquo;, which takes an uncountable reaction.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>33 = F, former roles</b> &mdash; &lsquo;announce the calls, just as they would have done <em>in the past</em>&rsquo;. &lsquo;As they had in their ___&rsquo; needs a plural noun about the job they used to do.</li><li><b>34 = D, subjective assessment</b> &mdash; &lsquo;calling a strike was a <em>judgment call</em> on the part of the umpire&rsquo;. Judgment call = subjective assessment; &lsquo;at one time&rsquo; matches &lsquo;Previously&rsquo;.</li><li><b>35 = H, perceived area</b> &mdash; &lsquo;an <em>imaginary zone</em> about seventeen inches wide&rsquo;. Imaginary = perceived (it exists only in the mind). A &lsquo;pitch boundary&rsquo; would be a line you can see.</li><li><b>36 = B, numerous disputes</b> &mdash; &lsquo;<em>countless arguments</em>&hellip; have taken place over its boundaries&rsquo;. Countless = numerous, arguments = disputes, and the verb &lsquo;were&rsquo; confirms the plural.</li><li><b>37 = G, total silence</b> &mdash; &lsquo;there was no heckling and no shouted disagreement. Nobody said a word.&rsquo;</li></ul><p style="margin-top:10px;"><b>The three unused options tell a story too:</b> C (team tactics) is off-topic and appears nowhere; A (pitch boundary) steals the word <em>boundaries</em> from the wrong paragraph; E (widespread approval) turns silence into agreement. Distractors are almost always built from a real word in a wrong place, or a real situation given a wrong emotion.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Multiple choice (Q38&ndash;40): three different kinds of question</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Q38 is located in a named paragraph, Q39 belongs to a named person, and Q40 asks about the writer&rsquo;s purpose. Each needs a different search.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>38. What does the writer suggest about ABS in the fifth paragraph? &rarr; B (it may reduce some of the appeal of the game).</b> Paragraph 5 is the Viola paragraph: the system is &lsquo;unforgiving and pedantic, almost legalistic&rsquo;, its zone is &lsquo;too precise&rsquo;, and the old &lsquo;<em>dialogue</em> between pitcher and umpire&rsquo; has gone. That is a loss of pleasure, not of correctness. A is wrong because the passage insists the calls are <em>right</em>; C (human umpires disappearing) is never suggested &mdash; DeJesus still announces the calls; D reverses the logic, since it is ABS that makes rule changes easy, not the players who demand them.</li><li><b>39. Morgan Sword says the introduction of ABS&hellip; &rarr; D (an attempt to ensure baseball retained a young audience).</b> &lsquo;ABS was part of a larger project to make baseball more exciting <em>since executives are terrified of losing younger fans</em>, as has been the case with horse racing and boxing.&rsquo; A misuses the word &lsquo;experiment&rsquo; (Sword runs the experiment, but he never doubts the outcome); B is the wrong paragraph &mdash; other sports appear in paragraph 8, in the <em>writer&rsquo;s</em> voice, not Sword&rsquo;s; C confuses attitudes about the <em>role of sport</em> with fans&rsquo; taste in matches.</li><li><b>40. Why does the writer include the views of Noe and Russo? &rarr; C (to indicate that accuracy is not the same thing as enjoyment).</b> Noe attacks &lsquo;algorithms [that] take the hard choices of living out of life&rsquo;; Russo says &lsquo;perfect would be weird&hellip; What is there to talk about?&rsquo; The writer places them together and adds his own line: &lsquo;We watch baseball to kill time, not to maximize it.&rsquo; A fails because both men take the <em>same</em> side; B is too broad and is Russo&rsquo;s point about life, not about sport; D is about audience numbers, which belongs to Sword.</li></ul><p style="margin-top:10px;"><b>Technique:</b> in purpose questions, ask &lsquo;what would be lost if this paragraph were deleted?&rsquo; Delete Noe and Russo and you lose the counter-argument to accuracy &mdash; so C.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Matching features: who says what</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This passage has five named voices. Exam papers often turn that into a matching task, and even when they do not, a who-is-who list stops you attributing an opinion to the wrong person (the Q39 trap).</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Fred DeJesus</b> &mdash; the umpire who used ABS first. He is described, but he expresses no opinion at all. Any option quoting his view would be wrong.</li><li><b>Rob Manfred</b> (Commissioner) &mdash; ABS &lsquo;will reduce controversy in the game, and be good for the game&rsquo;. The pro-technology position.</li><li><b>Frank Viola</b> (coach, ex-major-league pitcher) &mdash; it works as designed but is unforgiving, pedantic, legalistic; skill used to be rewarded and there was a dialogue with the umpire.</li><li><b>Morgan Sword</b> (baseball operations) &mdash; explains motive (young fans, more action) and flexibility (any zone can be loaded in). Practical, not philosophical.</li><li><b>Alva Noe</b> (professor) &mdash; the strongest opposition: a &lsquo;terrible idea&rsquo;, part of a movement to use algorithms &lsquo;to take the hard choices of living out of life&rsquo;.</li><li><b>Joe Russo</b> (player) &mdash; accuracy is not the answer; &lsquo;I think perfect would be weird&rsquo;.</li></ul><p style="margin-top:10px;"><b>Test yourself:</b> who thinks the technology is <em>accurate</em> but still a problem? Viola and Russo. Who never questions accuracy? Manfred and Sword. Sorting speakers by what they <em>concede</em>, not just what they attack, is what matching-features questions reward.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? Train yourself to jump to the right block instead of re-reading from the top.</p><ul style="margin-left:18px;line-height:1.9;"><li>How the machine physically looked and where it sat &rarr; paragraph 1.</li><li>The definition and measurements of the strike zone &rarr; paragraph 2 (in brackets).</li><li>What spectators are and are not allowed to do to an umpire &rarr; paragraph 3.</li><li>The adjustment made after the first season &rarr; paragraph 4.</li><li>A criticism from someone who used to pitch &rarr; paragraph 5.</li><li>Why MLB started the project at all &rarr; paragraph 6.</li><li>Ideas that were considered and rejected &rarr; paragraph 7.</li><li>Technology used in other sports &rarr; paragraph 8.</li><li>Opinions from outside the sport &rarr; paragraphs 9 and 10.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in an interview-based article, write the speaker&rsquo;s surname beside each paragraph as you skim. Names are the cheapest index this kind of passage offers &mdash; and Q38&ndash;40 are all indexed by either a number or a name.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, a task type it does not actually use. Complete each sentence with NO MORE THAN TWO WORDS from the passage, then compare with the suggested answer.</p><ul style="margin-left:18px;line-height:1.9;"><li>ABS was built from a modified ______ system. &rarr; <strong>missile-tracking</strong></li><li>The device was mounted above the ______. &rarr; <strong>press stand</strong></li><li>The strike zone is roughly ______ inches wide. &rarr; <strong>seventeen</strong></li><li>MLB claims the system is precise to within ______ of an inch. &rarr; <strong>fractions</strong></li><li>Viola remembers a ______ between pitcher and umpire. &rarr; <strong>dialogue</strong></li><li>Fans said they wanted more hits, more defense and more ______. &rarr; <strong>baserunning</strong></li><li>Tennis uses ______ for line calls. &rarr; <strong>Hawk-Eye</strong></li><li>Noe argues that algorithms take the hard ______ of living out of life. &rarr; <strong>choices</strong></li></ul><p style="margin-top:10px;"><b>Reminder:</b> sentence completion answers must be copied exactly, including hyphens and capital letters (<em>Hawk-Eye</em>, not <em>hawk eye</em>).</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What did DeJesus actually do during the first ABS game?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. He judged each pitch and the machine confirmed it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. He announced out loud the decisions the machine gave him.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. He operated the missile-tracking system himself.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. He overruled the machine when he disagreed with it.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why is Q29 (&lsquo;MLB is keen to justify the money spent&hellip;&rsquo;) NOT GIVEN rather than NO?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Because the passage says MLB wasted money on ABS.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Because the passage says the system was cheap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Because cost is never discussed anywhere in the passage.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Because only Manfred, not MLB, talks about accuracy.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does &lsquo;It flattened the game into strikeouts, walks, and home runs&rsquo; tell you?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. The game became faster and more thrilling.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. The game lost variety and had less action.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. The game became easier for pitchers to control.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. The game attracted more young spectators.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Which phrase from the summary list means the same as &lsquo;a judgment call&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. pitch boundary</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. subjective assessment</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. team tactics</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. perceived area</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why is option E (&lsquo;widespread approval&rsquo;) wrong for Q37?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Because the crowd actually complained loudly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Because it is grammatically impossible in that gap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Because saying nothing does not prove that people agreed.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Because the approval came a year later.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">In paragraph 5, what is Viola&rsquo;s main complaint about ABS?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. It frequently makes mistakes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. It is too slow to give decisions.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. It is so exact that skill is no longer rewarded.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. It cannot be adjusted once installed.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What does &lsquo;There was a dialogue between pitcher and umpire&rsquo; mean here?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They talked to each other between innings.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. There was an unspoken give-and-take that a machine cannot reproduce.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. The umpire explained every decision aloud.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They argued constantly about the strike zone.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">According to Sword, why was ABS introduced?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. To match technology already used in soccer and tennis.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Because umpires asked to be relieved of the pressure.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. To stop baseball losing its younger audience.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Because the rules of baseball had become too complicated.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why does the writer mention VAR, Hawk-Eye and instant replay?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. To show that ABS is behind the times.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. To argue that all sports technology is unpopular.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. To show that those systems judge physical lines, unlike ABS.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. To prove that precision always causes problems.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What is the effect of the sentence &lsquo;We watch baseball to kill time, not to maximize it&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. It states the writer&rsquo;s own view that efficiency is not the point of sport.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. It reports Noe&rsquo;s exact words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. It explains how ABS saves time during a match.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. It criticises fans for wasting their afternoons.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why does the writer put Noe and Russo next to each other at the end?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. To show that opinions about technology differ widely.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. To suggest that being accurate is not the same as being enjoyable.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. To prove that players understand technology better than academics.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. To argue that baseball needs more spectators.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the most efficient order for tackling this passage in the exam?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Q27&ndash;40 strictly in number order, reading the passage twice.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. The summary first (paragraphs 1&ndash;3), then Y/N/NG in passage order, then the three MCQs.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. The three MCQs first, because they are worth the most.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Skim for names only, then guess the Y/N/NG items.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 27&ndash;40</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">NO</div><div class="answer-note">Paragraph 1: &lsquo;<em>Instead of</em> making any judgments himself about a strike, DeJesus had decisions fed to him through an earpiece.&rsquo; He received the decisions rather than sharing them, so the statement is contradicted.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">YES</div><div class="answer-note">Paragraph 4: &lsquo;players complained about some strange calls. <em>In response</em>, MLB decided to tweak the dimensions of the zone.&rsquo; tweak the dimensions = amend the size; in response = because criticism was received.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 4 discusses accuracy (&lsquo;near-perfect, precise to within fractions of an inch&rsquo;) and paragraph 2 says MLB commissioned the system, but the passage never mentions cost, value for money or any wish to justify spending.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">NO</div><div class="answer-note">Paragraph 6: the fastball &lsquo;<em>flattened</em> the game into strikeouts, walks, and home runs &mdash; a type of play <em>lacking much action</em>&rsquo;. The writer says the opposite of &lsquo;more exciting&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 7: &lsquo;Any rule that existed, they talked about changing &mdash; from changing the bats to changing the geometry of the field&hellip; all of these were ruled out.&rsquo; The bats appear, but no disagreement, and certainly no fierce debate, is ever described.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">YES</div><div class="answer-note">Paragraph 7: &lsquo;once you get the technology right, you can load <em>any</em> strike zone you want into the system. It might be a triangle, or a blob, or something shaped like Texas.&rsquo; feasible = possible.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">F &mdash; former roles</div><div class="answer-note">Paragraph 2: MLB &lsquo;wanted human umpires to announce the calls, <em>just as they would have done in the past</em>&rsquo;. &lsquo;as they had in their ___&rsquo; needs a plural noun for the job they used to do.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">D &mdash; subjective assessment</div><div class="answer-note">Paragraph 2: &lsquo;Previously, calling a strike was a <em>judgment call</em> on the part of the umpire.&rsquo; judgment call = subjective assessment; &lsquo;at one time&rsquo; = &lsquo;Previously&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">H &mdash; perceived area</div><div class="answer-note">Paragraph 2: the strike zone is &lsquo;an <em>imaginary zone</em> about seventeen inches wide, stretching from the batter&rsquo;s knees to the middle of his chest&rsquo;. Imaginary = perceived; option A (pitch boundary) borrows &lsquo;boundaries&rsquo; from paragraph 3.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">B &mdash; numerous disputes</div><div class="answer-note">Paragraph 3: &lsquo;<em>countless arguments</em> between a team&rsquo;s manager and the umpire have taken place over its boundaries&rsquo;. countless = numerous, arguments = disputes; the verb &lsquo;were&rsquo; in the summary confirms a plural noun.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">G &mdash; total silence</div><div class="answer-note">Paragraph 2: &lsquo;there was no heckling and no shouted disagreement. Nobody said a word.&rsquo; Option E (widespread approval) is the trap &mdash; silence is not agreement.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">B</div><div class="answer-note">Paragraph 5 (the Viola paragraph): ABS &lsquo;works as designed&rsquo; but is &lsquo;unforgiving and pedantic, almost legalistic&rsquo;, its zone is &lsquo;too precise&rsquo;, and the old &lsquo;dialogue between pitcher and umpire&rsquo; is gone &mdash; i.e. the game may lose some of its appeal. A is wrong because the calls are accepted as accurate; C is never suggested; D reverses the argument.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">D</div><div class="answer-note">Paragraph 6: &lsquo;ABS was part of a larger project to make baseball more exciting <em>since executives are terrified of losing younger fans</em>, as has been the case with horse racing and boxing.&rsquo; B belongs to paragraph 8 and is the writer&rsquo;s comparison, not Sword&rsquo;s reason.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">C</div><div class="answer-note">Paragraphs 9&ndash;10: Noe calls ABS &lsquo;a terrible idea&hellip; a movement to use algorithms to take the hard choices of living out of life&rsquo;; Russo says &lsquo;perfect would be weird&hellip; What is there to talk about?&rsquo; Both concede that ABS is accurate and argue that accuracy is not what makes the game enjoyable &mdash; reinforced by the writer&rsquo;s own line about killing time. A fails because both take the same side.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Summary Completion from a List (the real exam gaps Q33&ndash;37)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">F</div><div class="answer-note">Even after ABS was developed, MLB still wanted human umpires to shout out decisions as they had in their (33)</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">D</div><div class="answer-note">The umpire&rsquo;s job had, at one time, required a (34)</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">H</div><div class="answer-note">A ball is a strike when the batter does not hit it and it crosses through a (35)</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">B</div><div class="answer-note">In the past, (36)</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">G</div><div class="answer-note">During the first game DeJesus used ABS, strike calls were met with (37)</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">animating</div><div class="answer-note">For 150 years the strike zone has been the game&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">tweak</div><div class="answer-note">After the first season MLB decided to</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">pedantic</div><div class="answer-note">Viola found the robot umpire</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">ruled</div><div class="answer-note">Every other proposed change was</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">flattened</div><div class="answer-note">The hundred-mile-an-hour fastball</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">discretion</div><div class="answer-note">Historically, a certain</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">dissenting</div><div class="answer-note">Some players take a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">precise</div><div class="answer-note">MLB says the device is near-perfect and extremely</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">controversy</div><div class="answer-note">Manfred believes ABS will reduce</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">consistency</div><div class="answer-note">The system behaves the same way every time; that</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">terrified</div><div class="answer-note">Executives are</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">accuracy</div><div class="answer-note">Russo believes that</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">evolved</div><div class="answer-note">The rules of play have</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">judgments</div><div class="answer-note">Q27 says &ldquo;he shared decision-making&rdquo; &rarr; Passage: instead of making any</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">tweak</div><div class="answer-note">Q28 says &ldquo;amend the size&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">complained</div><div class="answer-note">Q28 says &ldquo;criticisms were received from players&rdquo; &rarr; Passage: players</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">judgment</div><div class="answer-note">Option D says &ldquo;a subjective assessment&rdquo; &rarr; Passage: calling a strike was a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">imaginary</div><div class="answer-note">Option H says &ldquo;a perceived area&rdquo; &rarr; Passage: an</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">countless</div><div class="answer-note">Option B says &ldquo;numerous disputes&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">word</div><div class="answer-note">Option G says &ldquo;total silence&rdquo; &rarr; Passage: nobody said a</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">terrified</div><div class="answer-note">Q39 says &ldquo;retained a young audience&rdquo; &rarr; Passage: executives are</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses, Linking and Reduction</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">of</div><div class="answer-note">Instead</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">who</div><div class="answer-note">Major League Baseball,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">that</div><div class="answer-note">A pitch</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">modified</div><div class="answer-note">&lsquo;a system which has been modified&rsquo; can be reduced to &lsquo;a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">tasked</div><div class="answer-note">&lsquo;the executive who is tasked with running the experiment&rsquo; can be reduced to &lsquo;the executive</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">since</div><div class="answer-note">This type of baseball hasn&rsquo;t existed</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">but</div><div class="answer-note">You may scream your disagreement in an umpire&rsquo;s face,</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">reducing</div><div class="answer-note">争议究竟值不值得被减少？ &rarr; But the question is whether controversy is worth</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">terrified</div><div class="answer-note">高管们非常害怕失去年轻观众。 &rarr; Executives are</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">ruled</div><div class="answer-note">这些方案最终全都被排除了。 &rarr; All of these were</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">discretion</div><div class="answer-note">从历史上看，一定程度的自由裁量一直受到赞赏。 &rarr; Historically, a certain</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">maximize</div><div class="answer-note">我们看棒球是为了消磨时间，而不是为了把时间用到极致。 &rarr; We watch baseball to kill time, not to</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">away</div><div class="answer-note">近二十年来，各项运动都在逐渐远离主观判罚。 &rarr; In the past twenty years, sports have moved</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. He announced out loud the decisions the machine gave him.</div><div class="answer-note">&lsquo;Instead of making any judgments himself&hellip; DeJesus had decisions fed to him through an earpiece&rsquo;, and MLB &lsquo;wanted human umpires to announce the calls&rsquo;. This is the basis of Q27 (NO).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. Because cost is never discussed anywhere in the passage.</div><div class="answer-note">NO would require the passage to state the opposite. It states nothing at all about money, so the claim simply cannot be checked &rarr; NOT GIVEN.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. The game lost variety and had less action.</div><div class="answer-note">The passage adds &lsquo;a type of play lacking much action&rsquo;. That is why Q30 is NO: the fastball made the game duller, not more exciting.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. subjective assessment</div><div class="answer-note">A judgment call is a decision based on personal opinion &mdash; a subjective assessment (Q34, option D on the exam paper).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. Because saying nothing does not prove that people agreed.</div><div class="answer-note">&lsquo;No heckling&hellip; Nobody said a word&rsquo; describes silence only. Turning silence into approval is the classic distractor move &mdash; the answer is G, total silence.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. It is so exact that skill is no longer rewarded.</div><div class="answer-note">He says it works as designed but is &lsquo;unforgiving and pedantic&rsquo;; umpires once rewarded a pitch thrown where you aimed &lsquo;even if it was an inch or two outside&rsquo;. This supports Q38 = B.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. There was an unspoken give-and-take that a machine cannot reproduce.</div><div class="answer-note">&lsquo;Dialogue&rsquo; is figurative: a human relationship in which skill was recognised. Its loss is what the writer suggests reduces the appeal of the game.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. To stop baseball losing its younger audience.</div><div class="answer-note">&lsquo;Executives are terrified of losing younger fans, as has been the case with horse racing and boxing.&rsquo; Option A comes from paragraph 8, which is the writer speaking, not Sword (Q39 = D on the exam paper).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. To show that those systems judge physical lines, unlike ABS.</div><div class="answer-note">&lsquo;These applications deal with something physical: bases, lines, goals&hellip; This is not the case with ABS and the strike zone.&rsquo; The comparison isolates what is special about the strike zone.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. It states the writer&rsquo;s own view that efficiency is not the point of sport.</div><div class="answer-note">The writer steps out of reporting and speaks in the first person plural. Sentences like this are the best evidence for Yes/No/Not Given and purpose questions.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. To suggest that being accurate is not the same as being enjoyable.</div><div class="answer-note">Both take the same side: a professor objects to algorithms removing hard choices, a player says &lsquo;perfect would be weird&hellip; What is there to talk about?&rsquo; (Q40 = C).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. The summary first (paragraphs 1&ndash;3), then Y/N/NG in passage order, then the three MCQs.</div><div class="answer-note">The summary is concentrated in the first three paragraphs and is largely solvable by grammar; Y/N/NG then walks you through the whole text in order; the purpose questions are easiest once everything has been read.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

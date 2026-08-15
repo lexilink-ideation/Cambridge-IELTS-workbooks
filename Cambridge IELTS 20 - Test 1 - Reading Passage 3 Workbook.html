@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Reading Passage 3</h1>
+    <h2>How Stress Affects Our Judgement · MCQ + Sentence Endings + Yes / No / Not Given (Q27–40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>A neuroscientist describes her own research into <strong>how stress changes the way we process information</strong>. Working with firefighters, whose shifts swing between calm and life-threatening, and then with students facing a surprise public speech, she found that stress makes people much better at taking in <em>bad</em> news &mdash; even bad news that has nothing to do with them &mdash; while leaving their response to good news unchanged. The second half explains the evolutionary reason for this &lsquo;switch&rsquo;, shows how stress spreads from person to person and through social media, and ends on a hopeful note: positive emotions are contagious too.</p></div><div class="card"><p><strong>What the passage argues:</strong> That stress does not simply make us think worse &mdash; it makes us <em>selectively better</em> at absorbing threatening information, an ancient survival mechanism that is now switched on by emails, news alerts and social media, and that can produce collective fear which is not always justified.</p><p><strong>段落结构 Structure:</strong> 第1段：引入问题——压力下我们处理信息的能力是变强还是变弱？第2段：为何选择消防员（工作时松时紧）。第3段：核心发现（压力只让「坏消息」更易被吸收）。第4段：研究方法（估计40种负面事件的概率 &rarr; 给好/坏消息 &rarr; 重新估计）。第5段：放松时乐观、压力下对坏消息高度警觉。第6段：学生演讲实验重复了同一模式。第7段：大脑「开关」与神经信号。第8段：进化解释与抑郁焦虑。第9&ndash;10段：压力在人与人、社交媒体间传播。第11段：集体恐慌的循环。第12段：希望同样具有传染性。</p><p><strong>Task type:</strong> <strong>Q27&ndash;30 Multiple choice</strong> (each tied to a numbered paragraph &mdash; count the paragraphs before you start); <strong>Q31&ndash;35 Sentence endings A&ndash;G</strong> (seven endings, five gaps, so two are never used); <strong>Q36&ndash;40 YES / NO / NOT GIVEN</strong> about the writer&rsquo;s claims.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Passage 3 is written in the <strong>first person by the researcher herself</strong>, so the questions test whether you can tell apart four different kinds of sentence: her <em>purpose</em> (why she studied firefighters), her <em>method</em> (what she asked people to do), her <em>results</em> (what she found), and her <em>interpretation</em> (what it means). Q29 asks for exactly this distinction. For the <strong>sentence-ending task</strong> (Q31&ndash;35), read the unfinished sentence first and predict the grammar of the ending &mdash; four of the seven endings start with a past-tense verb, so the subject of your ending must fit. For <strong>YES / NO / NOT GIVEN</strong>, remember you are judging the writer&rsquo;s <em>claims</em>, not facts about the world.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q29 &mdash; results vs method.</b> Paragraph 3 gives the finding; paragraph 4 begins &lsquo;This is how we arrived at these results&rsquo; and then lists what the researchers <em>did</em>. That is <strong>methodology</strong>, not an explanation of findings.</li><li><b>Count the paragraphs carefully.</b> The MCQs name the second, fourth and seventh paragraphs. The seventh begins &lsquo;When we experience stressful events&hellip;&rsquo; &mdash; if you miscount you will answer from the evolution paragraph instead and choose the wrong option.</li><li><b>Q33 &lsquo;always&rsquo;.</b> The sentence is about <em>good</em> news, and the passage says stress <em>didn&rsquo;t change</em> how they responded to it. The correct ending is F (&lsquo;behaved in a similar manner, regardless of the circumstances&rsquo;), not C, which describes treating good and bad news the same way &mdash; the opposite of the finding.</li><li><b>Q37 is a comparison the writer never makes.</b> Phones are linked to stress by an APA survey, but no other device is mentioned at all, so there is nothing to compare &mdash; <strong>NOT GIVEN</strong>.</li><li><b>Q38 reverses the passage.</b> Stress <em>enhances</em> the likelihood that people take in negative reports; the statement says we become <em>less</em> able to take it in &mdash; a direct contradiction, so <strong>NO</strong>.</li><li><b>Two endings are unused</b> in Q31&ndash;35 (A and C). Do not force every letter into an answer, and do not panic when two look attractive &mdash; check the grammar of the unfinished sentence first.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">weigh up</span></td><td><span class="pos">v. phr.</span></td><td>to consider something carefully before deciding</td><td class="zh">权衡；斟酌</td><td>&ldquo;we are all sometimes required to <em>weigh up</em> information under stressful conditions&rdquo;</td><td class="note">Opening paragraph. This is the &lsquo;challenge faced by everyone&rsquo; that makes Q27 answer <strong>C</strong>.</td></tr>
+<tr><td><span class="word">circumstances</span></td><td><span class="pos">n. pl.</span></td><td>the conditions and facts of a situation</td><td class="zh">情况；环境</td><td>&ldquo;do we become better or worse at processing&hellip; under such <em>circumstances</em>?&rdquo;</td><td class="note">Reappears in ending F of Q31&ndash;35 (&lsquo;regardless of the circumstances&rsquo;).</td></tr>
+<tr><td><span class="word">neuroscientist</span></td><td><span class="pos">n.</span></td><td>a scientist who studies the brain and nervous system</td><td class="zh">神经科学家</td><td>&ldquo;My colleague and I, both <em>neuroscientists</em>&hellip;&rdquo;</td><td class="note">Tells you the writer is reporting <em>her own</em> research &mdash; central to Q29.</td></tr>
+<tr><td><span class="word">hectic</span></td><td><span class="pos">adj.</span></td><td>extremely busy and full of fast activity</td><td class="zh">忙乱的；紧张的</td><td>&ldquo;Other days can be <em>hectic</em>, with numerous life-threatening incidents&hellip;&rdquo;</td><td class="note">The opposite of &lsquo;pretty relaxed&rsquo; in the previous sentence &mdash; the swing that answers Q28.</td></tr>
+<tr><td><span class="word">incident</span></td><td><span class="pos">n.</span></td><td>an event, especially an unpleasant or dangerous one</td><td class="zh">事件；事故</td><td>&ldquo;numerous life-threatening <em>incidents</em> to attend to&rdquo;</td><td class="note">Collocation: attend to / respond to an incident. Emergency-services vocabulary.</td></tr>
+<tr><td><span class="word">perceived</span></td><td><span class="pos">adj.</span></td><td>seen or believed to be, whether or not it is real</td><td class="zh">被感知到的；被认为的</td><td>&ldquo;We found that <em>perceived</em> threat acted as a trigger&hellip;&rdquo;</td><td class="note">A precise scientific hedge: it is the <em>feeling</em> of threat that matters, not the real danger.</td></tr>
+<tr><td><span class="word">trigger</span></td><td><span class="pos">n. / v.</span></td><td>something that makes a reaction start</td><td class="zh">诱因；引发</td><td>&ldquo;perceived threat acted as a <em>trigger</em> for a stress reaction&rdquo;</td><td class="note">Used three times in the passage, including &lsquo;a physiological change is triggered&rsquo; (paragraph 7).</td></tr>
+<tr><td><span class="word">convey</span></td><td><span class="pos">v.</span></td><td>to communicate information or a feeling</td><td class="zh">传达</td><td>&ldquo;but only as long as it <em>conveyed</em> bad news&rdquo;</td><td class="note">The whole finding depends on this clause. &lsquo;As long as&rsquo; = only on this condition.</td></tr>
+<tr><td><span class="word">estimate</span></td><td><span class="pos">v. / n.</span></td><td>to judge the size or likelihood of something</td><td class="zh">估计；估算</td><td>&ldquo;We asked the firefighters to <em>estimate</em> their likelihood of experiencing 40 different adverse events&rdquo;</td><td class="note">Method verb &mdash; a signal that paragraph 4 is describing procedure (Q29 = D).</td></tr>
+<tr><td><span class="word">likelihood</span></td><td><span class="pos">n.</span></td><td>the chance that something will happen</td><td class="zh">可能性；概率</td><td>&ldquo;their <em>likelihood</em> of experiencing these events was lower than they&rsquo;d thought&rdquo;</td><td class="note">Formal noun from &lsquo;likely&rsquo;. Appears again in the last paragraphs (&lsquo;increases the likelihood that&hellip;&rsquo;).</td></tr>
+<tr><td><span class="word">adverse</span></td><td><span class="pos">adj.</span></td><td>harmful or unfavourable</td><td class="zh">不利的；负面的</td><td>&ldquo;40 different <em>adverse</em> events in their life&rdquo;</td><td class="note">Paraphrase family: negative / unpleasant / harmful. Examples given: an accident, card fraud.</td></tr>
+<tr><td><span class="word">fraud</span></td><td><span class="pos">n.</span></td><td>the crime of deceiving people to get money</td><td class="zh">欺诈；诈骗</td><td>&ldquo;becoming a victim of card <em>fraud</em>&rdquo;</td><td class="note">Deliberately chosen because it has nothing to do with firefighting &mdash; that is the point of the finding.</td></tr>
+<tr><td><span class="word">embrace</span></td><td><span class="pos">v.</span></td><td>to accept something eagerly</td><td class="zh">欣然接受</td><td>&ldquo;they will ignore bad news and <em>embrace</em> the good&rdquo;</td><td class="note">Contrast pair: <em>ignore</em> vs <em>embrace</em>. This sentence answers Q31 (ending B).</td></tr>
+<tr><td><span class="word">hyper-vigilant</span></td><td><span class="pos">adj.</span></td><td>extremely alert and watchful</td><td class="zh">高度警觉的</td><td>&ldquo;they became <em>hyper-vigilant</em> to bad news&rdquo;</td><td class="note">Prefix <em>hyper-</em> = excessively. Q30&rsquo;s &lsquo;heightened sensitivity&rsquo; is the same idea.</td></tr>
+<tr><td><span class="word">alter</span></td><td><span class="pos">v.</span></td><td>to change something</td><td class="zh">改变；更改</td><td>&ldquo;and <em>altered</em> their beliefs in response&rdquo;</td><td class="note"><strong>Key to Q32</strong>: changing their beliefs means they now thought bad events were more likely.</td></tr>
+<tr><td><span class="word">spike</span></td><td><span class="pos">v.</span></td><td>to rise sharply and suddenly</td><td class="zh">骤升；飙升</td><td>&ldquo;Sure enough, their cortisol levels <em>spiked</em>&hellip;&rdquo;</td><td class="note">Physical evidence of stress in the student experiment &mdash; the basis of Q34.</td></tr>
+<tr><td><span class="word">alarming</span></td><td><span class="pos">adj.</span></td><td>frightening or worrying</td><td class="zh">令人担忧的；警示性的</td><td>&ldquo;they suddenly became better at processing unrelated, yet <em>alarming</em>, information&rdquo;</td><td class="note">&lsquo;Unrelated, yet alarming&rsquo; is the key phrase: the bad news did not concern them personally.</td></tr>
+<tr><td><span class="word">physiological</span></td><td><span class="pos">adj.</span></td><td>relating to how the body functions</td><td class="zh">生理的</td><td>&ldquo;a <em>physiological</em> change is triggered&hellip;&rdquo;</td><td class="note">Distinguish from <em>psychological</em> (mental). Both appear in stress passages, and IELTS exploits the confusion.</td></tr>
+<tr><td><span class="word">neural</span></td><td><span class="pos">adj.</span></td><td>relating to nerves or the brain</td><td class="zh">神经的</td><td>&ldquo;a sudden boost in a <em>neural</em> signal important for learning&rdquo;</td><td class="note">Paragraph 7, the target of Q30. &lsquo;Boost in a signal for learning&rsquo; = heightened sensitivity.</td></tr>
+<tr><td><span class="word">hazard</span></td><td><span class="pos">n.</span></td><td>a danger or risk</td><td class="zh">危险；隐患</td><td>&ldquo;they would have benefited from an increased ability to learn about <em>hazards</em>&rdquo;</td><td class="note">The evolutionary explanation. Synonym family: threat / danger / risk / warning sign.</td></tr>
+<tr><td><span class="word">on high alert</span></td><td><span class="pos">phr.</span></td><td>in a state of constant readiness for danger</td><td class="zh">处于高度戒备状态</td><td>&ldquo;it would have been wasteful to be <em>on high alert</em> constantly&rdquo;</td><td class="note">Explains why the brain needs a <em>switch</em> rather than permanent vigilance.</td></tr>
+<tr><td><span class="word">absorb</span></td><td><span class="pos">v.</span></td><td>to take in information or ideas</td><td class="zh">吸收；接收</td><td>&ldquo;a state in which they <em>absorb</em> all the negative messages around them&rdquo;</td><td class="note">Used about people with clinical depression and anxiety &mdash; the switch appears to be stuck.</td></tr>
+<tr><td><span class="word">tense up</span></td><td><span class="pos">v. phr.</span></td><td>to become physically and mentally tight with stress</td><td class="zh">紧张起来</td><td>&ldquo;we are more likely to <em>tense up</em> and feel stressed ourselves&rdquo;</td><td class="note">Opens the &lsquo;stress is contagious&rsquo; section that Q36 and Q40 come from.</td></tr>
+<tr><td><span class="word">uplifting</span></td><td><span class="pos">adj.</span></td><td>making you feel happier and more hopeful</td><td class="zh">振奋人心的</td><td>&ldquo;we are more likely to post <em>uplifting</em> messages ourselves&rdquo;</td><td class="note"><strong>Key to Q36</strong>: positive feeds produce positive posts, negative feeds negative ones.</td></tr>
+<tr><td><span class="word">pre-programmed</span></td><td><span class="pos">adj.</span></td><td>built in and automatic, decided in advance</td><td class="zh">预先设定的</td><td>&ldquo;a <em>pre-programmed</em> physiological reaction, which evolution has equipped us with&hellip;&rdquo;</td><td class="note">The irony of the passage: an ancient survival system is now set off by an online post.</td></tr>
+<tr><td><span class="word">famished</span></td><td><span class="pos">adj.</span></td><td>extremely hungry</td><td class="zh">极度饥饿的</td><td>&ldquo;to help us avoid <em>famished</em> predators&rdquo;</td><td class="note">A vivid word linking back to the &lsquo;hungry animals&rsquo; of the evolution paragraph.</td></tr>
+<tr><td><span class="word">collective</span></td><td><span class="pos">adj.</span></td><td>shared by all the members of a group</td><td class="zh">集体的；群体的</td><td>&ldquo;can create <em>collective</em> fear that is not always justified&rdquo;</td><td class="note">The central warning of the passage: individual stress scales up into group panic.</td></tr>
+<tr><td><span class="word">justified</span></td><td><span class="pos">adj.</span></td><td>reasonable; supported by good reasons</td><td class="zh">合理的；有正当理由的</td><td>&ldquo;collective fear that is not always <em>justified</em>&rdquo;</td><td class="note">&lsquo;Not always justified&rsquo; = sometimes unnecessary &mdash; the basis of Q39 (YES).</td></tr>
+<tr><td><span class="word">exaggerate</span></td><td><span class="pos">v.</span></td><td>to make something seem larger or worse than it is</td><td class="zh">夸大</td><td>&ldquo;that has the effect of <em>exaggerating</em> existing danger&rdquo;</td><td class="note">Note: the danger is real, but it is made to look bigger. That nuance decides Q38 and Q39.</td></tr>
+<tr><td><span class="word">contagious</span></td><td><span class="pos">adj.</span></td><td>spreading quickly from person to person</td><td class="zh">会传染的；有感染力的</td><td>&ldquo;positive emotions, such as hope, are <em>contagious</em> too&rdquo;</td><td class="note"><strong>Key to Q40.</strong> Normally used of disease; here used of moods, which is the writer&rsquo;s point.</td></tr>
+<tr><td><span class="word">induce</span></td><td><span class="pos">v.</span></td><td>to persuade or cause someone to do something</td><td class="zh">促使；诱导</td><td>&ldquo;powerful in <em>inducing</em> people to act to find solutions&rdquo;</td><td class="note">The optimistic ending: emotional contagion can be used deliberately and positively.</td></tr>
+<tr><td><span class="word">conscientious</span></td><td><span class="pos">adj.</span></td><td>careful, thorough and guided by a sense of duty</td><td class="zh">认真负责的</td><td>&ldquo;become <em>conscientious</em> agents of change&rdquo;</td><td class="note">Do not confuse with <em>conscious</em> (aware). The final phrase of the passage.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">weigh up information</span></td><td>consider evidence before deciding</td><td class="zh">权衡信息</td></tr>
+<tr><td><span class="phrase">under stressful conditions</span></td><td>while feeling pressure</td><td class="zh">在有压力的条件下</td></tr>
+<tr><td><span class="phrase">process information</span></td><td>take in and make sense of information</td><td class="zh">处理信息</td></tr>
+<tr><td><span class="phrase">these ups and downs</span></td><td>the swings between calm and pressure</td><td class="zh">这种起伏波动</td></tr>
+<tr><td><span class="phrase">the perfect setting for</span></td><td>an ideal situation for</td><td class="zh">&hellip;的理想场景</td></tr>
+<tr><td><span class="phrase">feel under pressure</span></td><td>feel stressed by demands</td><td class="zh">感到有压力</td></tr>
+<tr><td><span class="phrase">act as a trigger for</span></td><td>be the thing that starts</td><td class="zh">成为&hellip;的诱因</td></tr>
+<tr><td><span class="phrase">as long as</span></td><td>only on the condition that</td><td class="zh">只要；条件是</td></tr>
+<tr><td><span class="phrase">estimate their likelihood of</span></td><td>judge how probable something is for them</td><td class="zh">估计他们发生&hellip;的可能性</td></tr>
+<tr><td><span class="phrase">adverse events</span></td><td>unpleasant or harmful things that happen</td><td class="zh">负面事件</td></tr>
+<tr><td><span class="phrase">a victim of card fraud</span></td><td>someone whose bank card is used dishonestly</td><td class="zh">银行卡诈骗的受害者</td></tr>
+<tr><td><span class="phrase">ignore bad news and embrace the good</span></td><td>reject the negative and welcome the positive</td><td class="zh">忽视坏消息、欣然接受好消息</td></tr>
+<tr><td><span class="phrase">a different pattern emerged</span></td><td>a new regularity appeared in the data</td><td class="zh">出现了不同的模式</td></tr>
+<tr><td><span class="phrase">hyper-vigilant to bad news</span></td><td>extremely alert to negative information</td><td class="zh">对坏消息高度警觉</td></tr>
+<tr><td><span class="phrase">have nothing to do with</span></td><td>be completely unconnected to</td><td class="zh">与&hellip;毫无关系</td></tr>
+<tr><td><span class="phrase">alter their beliefs in response</span></td><td>change what they think because of it</td><td class="zh">据此改变自己的看法</td></tr>
+<tr><td><span class="phrase">in contrast</span></td><td>used to introduce an opposite finding</td><td class="zh">与之相反</td></tr>
+<tr><td><span class="phrase">cortisol levels spiked</span></td><td>the stress hormone rose sharply</td><td class="zh">皮质醇水平骤升</td></tr>
+<tr><td><span class="phrase">take in warnings</span></td><td>absorb information about danger</td><td class="zh">接收警示信息</td></tr>
+<tr><td><span class="phrase">focus on what might go wrong</span></td><td>concentrate on possible problems</td><td class="zh">关注可能出错的地方</td></tr>
+<tr><td><span class="phrase">brain imaging reveals</span></td><td>scans of the brain show</td><td class="zh">脑成像显示</td></tr>
+<tr><td><span class="phrase">a sudden boost in</span></td><td>a quick increase in</td><td class="zh">&hellip;的骤然增强</td></tr>
+<tr><td><span class="phrase">unexpected warning signs</span></td><td>surprising signals of danger</td><td class="zh">意外的危险信号</td></tr>
+<tr><td><span class="phrase">be on high alert</span></td><td>stay constantly ready for danger</td><td class="zh">保持高度戒备</td></tr>
+<tr><td><span class="phrase">switch away from a state</span></td><td>move out of a mental condition</td><td class="zh">从某种状态中切换出来</td></tr>
+<tr><td><span class="phrase">travels rapidly from one person to the next</span></td><td>spreads quickly between people</td><td class="zh">在人与人之间迅速传播</td></tr>
+<tr><td><span class="phrase">in turn</span></td><td>as a result, in sequence</td><td class="zh">继而；反过来</td></tr>
+<tr><td><span class="phrase">news alerts</span></td><td>automatic messages about breaking news</td><td class="zh">新闻推送</td></tr>
+<tr><td><span class="phrase">a pre-programmed physiological reaction</span></td><td>an automatic bodily response</td><td class="zh">预设的生理反应</td></tr>
+<tr><td><span class="phrase">raises your pulse</span></td><td>makes your heart beat faster</td><td class="zh">使脉搏加快</td></tr>
+<tr><td><span class="phrase">a wave of alarming information</span></td><td>a sudden mass of worrying reports</td><td class="zh">一波令人担忧的信息</td></tr>
+<tr><td><span class="phrase">exaggerating existing danger</span></td><td>making a real risk seem bigger</td><td class="zh">夸大现有的危险</td></tr>
+<tr><td><span class="phrase">a reliable pattern emerges</span></td><td>a regular sequence appears every time</td><td class="zh">出现一种可预测的模式</td></tr>
+<tr><td><span class="phrase">holding on</span></td><td>keeping shares instead of selling them</td><td class="zh">继续持有</td></tr>
+<tr><td><span class="phrase">agents of change</span></td><td>people who bring about improvement</td><td class="zh">推动改变的人</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;These ups and downs presented the perfect setting for an experiment on how people&rsquo;s ability to use information changes when they feel under pressure.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">These ups and downs presented the perfect setting for an experiment.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;on how people&rsquo;s ability&hellip; changes&rsquo; = an embedded question after a preposition; &lsquo;when they feel under pressure&rsquo; = a time clause inside it.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">After a preposition, a question becomes statement word order (<em>how ability changes</em>, not <em>how does ability change</em>). &lsquo;These ups and downs&rsquo; refers back to the whole previous description &mdash; a summary noun phrase.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because firefighters&rsquo; days switch between calm and dangerous, they were ideal subjects for a study of decision-making under pressure.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这种忙闲交替为研究「人在压力下运用信息的能力会如何变化」提供了理想的实验场景。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;We found that perceived threat acted as a trigger for a stress reaction that made the task of processing information easier for the firefighters &mdash; but only as long as it conveyed bad news.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We found that perceived threat acted as a trigger for a stress reaction.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that made the task&hellip; easier&rsquo; = a defining relative clause describing the reaction; &lsquo;but only as long as it conveyed bad news&rsquo; = a condition attached at the end.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The dash introduces the <strong>limit</strong> on the finding. In academic writing the sentence after a dash usually narrows the claim &mdash; and that narrowing is what the questions test.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Feeling threatened started a stress response that helped firefighters absorb information &mdash; but only if the information was bad.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我们发现，感知到的威胁会触发一种压力反应，使消防员更容易处理信息——但前提是这些信息传达的是坏消息。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Under these conditions, they became hyper-vigilant to bad news, even when it had nothing to do with their job, and altered their beliefs in response.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">They became hyper-vigilant to bad news&hellip; and altered their beliefs in response.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;even when it had nothing to do with their job&rsquo; = a concessive time clause dropped between the two verbs.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two main verbs (<em>became</em>, <em>altered</em>) share one subject, but a clause has been inserted between them. <strong>Even when</strong> = this was true in the surprising case too.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">When stressed, they noticed bad news much more &mdash; even unrelated bad news &mdash; and changed what they believed.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">在这种情况下，他们对坏消息变得高度警觉，即使那些消息与其工作毫无关系，并据此改变了自己的看法。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Brain imaging reveals that this &lsquo;switch&rsquo; is related to a sudden boost in a neural signal important for learning, specifically in response to unexpected warning signs, such as faces expressing fear.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Brain imaging reveals that this &lsquo;switch&rsquo; is related to a sudden boost in a neural signal.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;important for learning&rsquo; = a reduced relative (which is important for learning); &lsquo;specifically in response to&hellip;&rsquo; + &lsquo;such as&hellip;&rsquo; = narrowing and exemplifying phrases.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Notice how the sentence gets more precise as it goes on: signal &rarr; important for learning &rarr; in response to warning signs &rarr; e.g. fearful faces. <strong>This is the sentence Q30 is built on.</strong></span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Scans show the switch involves a sudden rise in a learning signal in the brain, especially when we see surprising signs of danger such as frightened faces.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">脑成像显示，这一「开关」与一种对学习至关重要的神经信号的骤然增强有关，尤其是在面对意外危险信号（如流露恐惧的面孔）时。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;In other words, a pre-programmed physiological reaction, which evolution has equipped us with to help us avoid famished predators, is now being triggered by an online post.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">A pre-programmed physiological reaction is now being triggered by an online post.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;which evolution has equipped us with to help us avoid famished predators&rsquo; = a non-defining relative clause containing an infinitive of purpose.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The relative clause separates the subject from its verb by fourteen words. Find <em>reaction&hellip; is being triggered</em> first, then read the middle. &lsquo;Equip somebody with something&rsquo; keeps its preposition at the end of the clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">A survival response evolution gave us for escaping hungry predators is now set off by a social media post.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">换句话说，进化赋予我们用以躲避饥饿捕食者的那种预设生理反应，如今却被一条网络帖子所触发。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;The good news, however, is that positive emotions, such as hope, are contagious too, and are powerful in inducing people to act to find solutions.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The good news is that positive emotions are contagious too and are powerful in inducing people to act.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;such as hope&rsquo; = an example inside the subject of the that-clause; &lsquo;to find solutions&rsquo; = an infinitive of purpose.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>The good news is that&hellip;</strong> is a discourse marker signalling the writer&rsquo;s turn from warning to encouragement. This final paragraph is where Q40 (YES) is answered.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Happily, feelings like hope spread between people as well, and they make people want to look for solutions.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">不过好消息是，希望等积极情绪同样具有传染性，而且能有力地促使人们采取行动去寻找解决方案。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Summary Completion (the whole study in seven gaps)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete this summary of the research with <strong>ONE WORD ONLY</strong> from the passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>Firefighters were chosen because some workdays are relaxed and others are <input type="text" class="blank" id="b1" data-answer="hectic" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>They were asked to estimate the <input type="text" class="blank" id="b2" data-answer="likelihood" placeholder="______"> of 40 different adverse events.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>When relaxed, people are normally <input type="text" class="blank" id="b3" data-answer="optimistic" placeholder="______"> and ignore bad news.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Under stress they became hyper-<input type="text" class="blank" id="b4" data-answer="vigilant" placeholder="______"> to bad news of every kind.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>In the lab, the students&rsquo; <input type="text" class="blank" id="b5" data-answer="cortisol" placeholder="______"> levels spiked before the surprise speech.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Brain scans link the switch to a boost in a <input type="text" class="blank" id="b6" data-answer="neural" placeholder="______"> signal important for learning.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The writer ends by noting that hope is <input type="text" class="blank" id="b7" data-answer="contagious" placeholder="______"> too.<span class="feedback" id="fb7"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Some firefighting shifts are <input type="text" class="blank" id="b8" data-answer="hectic" placeholder="______"> (= extremely busy and fast-moving).<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The 40 events were all <input type="text" class="blank" id="b9" data-answer="adverse" placeholder="______"> (= harmful or unfavourable) ones.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Stressed subjects <input type="text" class="blank" id="b10" data-answer="altered" placeholder="______"> (= changed) their beliefs in response to bad news.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>People with depression seem to <input type="text" class="blank" id="b11" data-answer="absorb" placeholder="______"> (= take in) every negative message around them.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>A wave of alarming news has the effect of <input type="text" class="blank" id="b12" data-answer="exaggerating" placeholder="______"> (= making something seem worse) existing danger.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Hope is powerful in <input type="text" class="blank" id="b13" data-answer="inducing" placeholder="______"> (= persuading) people to look for solutions.<span class="feedback" id="fb13"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Passage 3 vocabulary is abstract, so the word family matters as much as the meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>A <input type="text" class="blank" id="b14" data-answer="physiological" placeholder="______"> (PHYSIOLOGY) change is triggered when we feel threatened.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>We weigh up information under <input type="text" class="blank" id="b15" data-answer="stressful" placeholder="______"> (STRESS) conditions.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>They estimated the <input type="text" class="blank" id="b16" data-answer="likelihood" placeholder="______"> (LIKELY) of experiencing each event.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Stress temporarily <input type="text" class="blank" id="b17" data-answer="enhances" placeholder="______"> (ENHANCEMENT) the chance that we absorb negative reports.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The result can be collective fear that is not always <input type="text" class="blank" id="b18" data-answer="justified" placeholder="______"> (JUSTIFY).<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>We can become <input type="text" class="blank" id="b19" data-answer="conscientious" placeholder="______"> (CONSCIENCE) agents of change.<span class="feedback" id="fb19"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the question wording, then write the word the <em>passage</em> uses. This is the single most useful habit for Passage 3.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q28: &ldquo;ideal study subjects&rdquo; &rarr; Passage: these ups and downs presented the perfect <input type="text" class="blank" id="b20" data-answer="setting" placeholder="______"> for an experiment.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q30: &ldquo;indications of external threats&rdquo; &rarr; Passage: in response to unexpected <input type="text" class="blank" id="b21" data-answer="warning" placeholder="______"> signs.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q31: &ldquo;took relatively little notice of bad news&rdquo; &rarr; Passage: they will <input type="text" class="blank" id="b22" data-answer="ignore" placeholder="______"> bad news and embrace the good.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q34: &ldquo;put them in a stressful situation&rdquo; &rarr; Passage: students were told they had to give a surprise public <input type="text" class="blank" id="b23" data-answer="speech" placeholder="______">.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q36: &ldquo;the tone of our posts reflects our feeds&rdquo; &rarr; Passage: after positive feeds we post more <input type="text" class="blank" id="b24" data-answer="uplifting" placeholder="______"> messages.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q39: &ldquo;unnecessary precautions&rdquo; &rarr; Passage: trips are <input type="text" class="blank" id="b25" data-answer="cancelled" placeholder="______">, even if the disaster took place across the globe.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q40: &ldquo;can be used in a positive way&rdquo; &rarr; Passage: positive emotions such as hope are <input type="text" class="blank" id="b26" data-answer="contagious" placeholder="______"> too.<span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses: Linking, Reducing and Limiting</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These structures are exactly how the writer packs a finding, its limit and its explanation into a single sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label>Perceived threat triggered a stress reaction <input type="text" class="blank" id="b27" data-answer="that" placeholder="______"> made processing information easier. (defining relative pronoun)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>A pre-programmed reaction, <input type="text" class="blank" id="b28" data-answer="which" placeholder="______"> evolution has equipped us with, is now triggered by an online post. (non-defining relative pronoun)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Stress helped them process information &mdash; but only as long <input type="text" class="blank" id="b29" data-answer="as" placeholder="______"> it conveyed bad news. (conditional linker)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label><input type="text" class="blank" id="b30" data-answer="in" placeholder="______"> contrast, stress did not change how they responded to good news. (contrast linker)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>&lsquo;information which is unrelated yet alarming&rsquo; reduces to &lsquo;<input type="text" class="blank" id="b31" data-answer="unrelated" placeholder="______">, yet alarming, information&rsquo;. (adjective before the noun)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Stocks are sold, even <input type="text" class="blank" id="b32" data-answer="when" placeholder="______"> holding on is the best thing to do. (concessive linker)<span class="feedback" id="fb32"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>皮质醇水平骤升 &rarr; <input type="text" class="blank" id="b33" data-answer="cortisol" placeholder="______"> levels spiked<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>保持高度戒备 &rarr; be on high <input type="text" class="blank" id="b34" data-answer="alert" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>生理反应 &rarr; a <input type="text" class="blank" id="b35" data-answer="physiological" placeholder="______"> reaction<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>群体恐慌 &rarr; <input type="text" class="blank" id="b36" data-answer="collective" placeholder="______"> fear<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>权衡信息 &rarr; to <input type="text" class="blank" id="b37" data-answer="weigh" placeholder="______"> up information<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>推动改变的人 &rarr; agents of <input type="text" class="blank" id="b38" data-answer="change" placeholder="______"><span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; the loop that creates collective fear</strong></p><p>Paragraph 11 is one long causal circle: a stressful public event &rarr; a wave of alarming media &rarr; stress is triggered &rarr; stress spreads person to person &rarr; people absorb <em>more</em> negative reports &rarr; stress increases further &rarr; trips are cancelled and stocks are sold. The writer calls it &lsquo;a reliable pattern&rsquo;. Q39 is answered inside this loop.</p></div>
+<div class="card"><p><strong>Contrast &mdash; good news versus bad news</strong></p><p>The finding only makes sense as a contrast: stress made bad news easier to process, but &ldquo;<em>In contrast</em>, stress didn&rsquo;t change how they responded to good news.&rdquo; Q33 depends entirely on that sentence &mdash; the response to good news stayed the <em>same</em>, which is ending F, not ending C.</p></div>
+<div class="card"><p><strong>Comparison &mdash; where the passage does and does not compare</strong></p><p>The passage compares relaxed days with hectic days, firefighters with students, and prehistoric humans with modern phone users. It never compares phones with other devices, which is why Q37 is <strong>NOT GIVEN</strong>. Before answering a comparison question, ask: are both things actually in the text?</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;such as&rsquo; carries most of the concrete detail</strong></p><p>&ldquo;adverse events&hellip; <em>such as</em> being involved in an accident or becoming a victim of card fraud&rdquo;; &ldquo;warning signs, <em>such as</em> faces expressing fear&rdquo;; &ldquo;positive feeds&hellip; <em>such as</em> images of a pink sunset&rdquo;. Card fraud is the most important example in the passage because it is <em>unrelated to firefighting</em> &mdash; that is what makes the result surprising.</p></div>
+<div class="card"><p><strong>Definition &amp; restatement &mdash; &lsquo;In other words&rsquo;</strong></p><p>&ldquo;<em>In other words</em>, a pre-programmed physiological reaction&hellip; is now being triggered by an online post.&rdquo; When a writer restates, the second version is usually simpler and is the one the questions paraphrase. Also note the self-definition of &lsquo;this switch&rsquo; in paragraph 7.</p></div>
+<div class="card"><p><strong>Problem &rarr; explanation &rarr; solution</strong></p><p>Problem: stress makes us absorb alarming information and spreads fear. Explanation: an evolutionary switch that once protected us from predators. Solution (final paragraph): because hope is contagious too, we can &lsquo;frame our messages more effectively&rsquo;. Q40 sits in the solution stage &mdash; and the writer clearly approves of it.</p></div>
+<div class="card"><p><strong>Method vs findings &mdash; the distinction Q29 is built on</strong></p><p>Paragraph 3 = <em>findings</em> (&lsquo;We found that&hellip;&rsquo;). Paragraph 4 = <em>method</em> (&lsquo;We asked&hellip; We then gave them&hellip; and asked them to provide new estimates&rsquo;). Paragraph 5 = <em>results in detail</em>. Learn the verbs: <em>asked, gave, measured, recorded</em> signal method; <em>found, revealed, showed</em> signal results.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; concerned, but not pessimistic</strong></p><p>She warns that collective fear is &lsquo;not always justified&rsquo; and that reactions built for &lsquo;famished predators&rsquo; now fire at emails. But the last paragraph begins &lsquo;The good news, however&hellip;&rsquo; and ends with &lsquo;conscientious agents of change&rsquo;. In YES/NO/NOT GIVEN, any statement claiming she thinks the situation is hopeless would be <strong>NO</strong>.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Multiple choice, paragraph by paragraph (Q27&ndash;30)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Each question names a paragraph, so locate it first and read the whole paragraph before looking at the options. Then eliminate.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>27. How the writer introduces the topic</b> &rarr; <strong>C</strong> &mdash; &lsquo;we are <em>all</em> sometimes required to weigh up information under stressful conditions&rsquo;: a challenge everyone faces. B is wrong because no widely held assumption is stated and then questioned; D is wrong because no single most-anxious situation is specified.</li><li><b>28. The point about firefighters</b> &rarr; <strong>A</strong> &mdash; their days swing between relaxed and hectic, and &lsquo;these ups and downs presented the perfect setting for an experiment&rsquo;. B and D describe the firefighters themselves, which the paragraph never does.</li><li><b>29. What the writer is doing in paragraph 4</b> &rarr; <strong>D</strong> &mdash; &lsquo;We asked&hellip; We then gave them&hellip; and asked them to provide new estimates&rsquo; is a description of <em>methodology</em>. The findings were already given in the previous paragraph.</li><li><b>30. The brain mechanism in paragraph 7</b> &rarr; <strong>C</strong> &mdash; a boost in a learning signal &lsquo;specifically in response to unexpected warning signs&rsquo; = heightened sensitivity to external threats. A (speed) and B (controlling anxiety) are never claimed.</li></ul><p style="margin-top:10px;"><b>Method:</b> for &lsquo;what is the writer doing&rsquo; questions, ignore the content and label the paragraph&rsquo;s <em>function</em> in one word before you read the options: aim, method, result, explanation, example.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Matching sentence endings (Q31&ndash;35)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Seven endings, five questions: two are never used. Read the stem, predict the meaning, then find the ending that also fits grammatically.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>31. When relaxed, the firefighters usually&hellip;</b> &rarr; <strong>B</strong> (took relatively little notice of bad news) &mdash; &lsquo;they will ignore bad news and embrace the good&hellip; This is what happened when the firefighters were relaxed.&rsquo;</li><li><b>32. When stressed, they&hellip;</b> &rarr; <strong>G</strong> (thought it more likely that they would experience something bad) &mdash; they became hyper-vigilant to bad news and &lsquo;altered their beliefs in response&rsquo;.</li><li><b>33. Told good news, they always&hellip;</b> &rarr; <strong>F</strong> (behaved in a similar manner, regardless of the circumstances) &mdash; &lsquo;stress didn&rsquo;t change how they responded to good news&rsquo;.</li><li><b>34. The students&rsquo; cortisol levels rose when the researchers&hellip;</b> &rarr; <strong>E</strong> (put them in a stressful situation) &mdash; they were told they had to give a surprise public speech that would be judged and posted online.</li><li><b>35. Negative information was processed better when subjects&hellip;</b> &rarr; <strong>D</strong> (were feeling under stress) &mdash; the finding common to both experiments.</li></ul><p style="margin-top:10px;"><b>Unused:</b> A (made them feel optimistic) and C (responded to negative and positive information in the same way). C is the classic near-miss for Q33 &mdash; it says the two kinds of news were treated alike, whereas the passage says only the <em>good-news</em> response was unchanged.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; YES / NO / NOT GIVEN (Q36&ndash;40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">You are judging the <em>writer&rsquo;s claims</em>. NO means she claims the opposite; NOT GIVEN means she never takes a position.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>36. Our posts reflect the tone of our feeds.</b> &rarr; <strong>YES</strong> &mdash; positive feeds &rarr; uplifting posts; negative posts &rarr; &lsquo;we will in turn create more negative posts&rsquo;.</li><li><b>37. Phones affect stress more than other devices.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; the APA survey links phone-checking to stress, but no other device is mentioned, so no comparison exists.</li><li><b>38. The more we read about a stressful event, the less we take in.</b> &rarr; <strong>NO</strong> &mdash; the writer claims the opposite: stress &lsquo;temporarily enhances the likelihood that people will take in negative reports&rsquo;.</li><li><b>39. Social-media stress can lead to unnecessary precautions.</b> &rarr; <strong>YES</strong> &mdash; &lsquo;trips are cancelled, even if the disaster took place across the globe; stocks are sold, even when holding on is the best thing to do&rsquo;.</li><li><b>40. Being affected by others&rsquo; moods can be used positively.</b> &rarr; <strong>YES</strong> &mdash; hope is contagious too and is &lsquo;powerful in inducing people to act to find solutions&rsquo;.</li></ul><p style="margin-top:10px;"><b>Habit:</b> for every NO you choose, be able to point at the sentence that says the opposite. If you cannot, the answer is probably NOT GIVEN.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Locating information quickly</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? In a 12-paragraph passage, speed comes from knowing the shape of the argument.</p><ul style="margin-left:18px;line-height:1.9;"><li>Why firefighters were chosen &rarr; paragraph 2.</li><li>The one-sentence summary of the result &rarr; paragraph 3.</li><li>What participants were actually asked to do &rarr; paragraph 4.</li><li>The student speech experiment &rarr; paragraph 6.</li><li>Brain imaging and the neural &lsquo;switch&rsquo; &rarr; paragraph 7.</li><li>Depression and anxiety &rarr; paragraph 8.</li><li>Emotions spreading through social media &rarr; paragraph 9.</li><li>Cancelled trips and sold stocks &rarr; paragraph 11.</li></ul><p style="margin-top:10px;"><b>Tip:</b> mark the paragraph numbers in the margin as you skim. Three of the four MCQs here refer to paragraphs by number, so a miscount costs you marks directly.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Summary completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Complete each sentence with NO MORE THAN TWO WORDS from the passage, then check.</p><ul style="margin-left:18px;line-height:1.9;"><li>The firefighters estimated their chance of experiencing ______ different adverse events. &rarr; <strong>40</strong></li><li>The stressed students became better at processing information that was ______ but alarming. &rarr; <strong>unrelated</strong></li><li>Evolution gave us this reaction to help us avoid ______. &rarr; <strong>famished predators</strong></li><li>Constant vigilance in a safe environment would have been ______. &rarr; <strong>wasteful</strong></li><li>According to one study, social media posting enlarges your ______. &rarr; <strong>pupils</strong></li><li>The writer hopes readers will become conscientious ______. &rarr; <strong>agents of change</strong></li></ul></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Give each part of the passage a heading. A good heading names the paragraph&rsquo;s job, not its most colourful detail.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Paragraphs 1&ndash;2</b> &rarr; <em>A question, and an unusual place to answer it</em>.</li><li><b>Paragraphs 3&ndash;5</b> &rarr; <em>How the study worked, and what it showed</em>.</li><li><b>Paragraph 6</b> &rarr; <em>The same result outside the fire station</em>.</li><li><b>Paragraphs 7&ndash;8</b> &rarr; <em>A switch in the brain, and why we have it</em> &mdash; not &lsquo;The problem of depression&rsquo;, which is only the closing detail.</li><li><b>Paragraphs 9&ndash;10</b> &rarr; <em>How stress passes between people</em>.</li><li><b>Paragraphs 11&ndash;12</b> &rarr; <em>From collective fear to contagious hope</em>.</li></ul><p style="margin-top:10px;"><b>Watch out:</b> paragraphs 7 and 8 both discuss the brain. Paragraph 7 describes the mechanism; paragraph 8 explains its evolutionary purpose. Headings must separate <em>what</em> from <em>why</em>.</p></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How does the writer introduce the topic in the first paragraph (Q27)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. by defining technical terms</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. by challenging an assumption everyone shares</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. by mentioning a difficulty that everybody faces</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. by naming the situation that makes us most anxious</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why were firefighters ideal participants (Q28)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Their stress levels change regularly during their working lives.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. They have special training in handling stress.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Their job is typical of public service work.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Their personalities suit high-pressure work.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does the writer do in the fourth paragraph (Q29)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. explains the findings</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. justifies the approach</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. sets out the objectives</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. describes the methodology</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What was the key limit on the researchers&rsquo; main finding?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It applied only to firefighters.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It applied only when the information was bad news.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It applied only to information about their own job.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. It applied only to people who were already anxious.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What normally happens to people&rsquo;s use of information when they are relaxed (Q31)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They treat good and bad news identically.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They pay little attention to bad news.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They become more accurate about risk.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They refuse to change any of their beliefs.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why is the card-fraud example so important to the argument?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. It shows firefighters are often victims of crime.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. It is the most frightening of the 40 events.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. It has nothing to do with firefighting, yet stressed subjects still absorbed it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. It was the only event the researchers gave good news about.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Which ending correctly completes &lsquo;When the firefighters were told good news, they always&hellip;&rsquo; (Q33)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. responded to negative and positive information in the same way</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. behaved in a similar manner, regardless of the circumstances</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. thought it more likely that they would experience something bad</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. were feeling under stress</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does brain imaging reveal about the stress &lsquo;switch&rsquo; (Q30)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. It makes people react more quickly in emergencies.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. It gives us more control over our anxiety.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. It increases sensitivity to signs of danger from outside.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. It turns on when we need to warn other people.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why would a brain &lsquo;switch&rsquo; be more useful than permanent alertness?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Constant high alert would be wasteful in a safe environment.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Predators only hunt at certain times of day.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. The brain cannot process warnings and good news at once.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Alertness makes learning impossible.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What does the passage say about phones and stress (Q37)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. They cause more stress than any other device.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Repeatedly checking your phone is linked to stress.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. They reduce stress when used for positive feeds.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. They only affect people who already feel anxious.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which example shows collective fear producing an unnecessary action (Q39)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. People post images of a pink sunset.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Cortisol levels rise before a speech.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Trips are cancelled although the disaster happened on the other side of the world.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Firefighters clean equipment on quiet days.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the writer&rsquo;s final message (Q40)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Social media should be avoided completely.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Stress responses cannot be changed because they are pre-programmed.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Emotional contagion also works for hope, so messages can be framed to help.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Only neuroscientists can judge information accurately.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 27–40</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">C</div><div class="answer-note">Paragraph 1: &lsquo;we are all sometimes required to weigh up information under stressful conditions&rsquo; &mdash; a challenge faced by everyone. The closing question is an invitation to read on, not the questioning of a widely held assumption.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">Paragraph 2 contrasts &lsquo;pretty relaxed&rsquo; days with &lsquo;hectic&rsquo; ones and concludes: &lsquo;These ups and downs presented the perfect setting for an experiment&rsquo; = regular changes in stress make them ideal subjects.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">D</div><div class="answer-note">Paragraph 4 opens &lsquo;This is how we arrived at these results&rsquo; and describes the procedure &mdash; estimating the likelihood of 40 adverse events, receiving good or bad news, then re-estimating. That is methodology; the findings were stated in paragraph 3.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">C</div><div class="answer-note">Paragraph 7: the &lsquo;switch&rsquo; is &lsquo;a sudden boost in a neural signal important for learning, specifically in response to unexpected warning signs&rsquo; = heightened sensitivity to indications of external threats.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;People are normally quite optimistic &mdash; they will ignore bad news and embrace the good. This is what happened when the firefighters were relaxed.&rsquo; Ignoring bad news = taking relatively little notice of it.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">G</div><div class="answer-note">&lsquo;Under these conditions, they became hyper-vigilant to bad news&hellip; and altered their beliefs in response&rsquo; &mdash; that is, they now thought a bad event was more likely to happen to them.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">F</div><div class="answer-note">&lsquo;In contrast, stress didn&rsquo;t change how they responded to good news.&rsquo; Their behaviour was the same whatever the circumstances. Ending C is the trap &mdash; it would mean good and bad news were treated alike, which the study disproves.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">E</div><div class="answer-note">Paragraph 6: the students &lsquo;were told they had to give a surprise public speech, which would be judged by a panel, recorded and posted online. Sure enough, their cortisol levels spiked, their heart rates went up&rsquo; &mdash; the researchers put them in a stressful situation.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">D</div><div class="answer-note">Both the firefighters and the students absorbed negative information better while stressed &mdash; the single result common to the two experiments.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">YES</div><div class="answer-note">Paragraph 9: positive feeds make us &lsquo;post uplifting messages&rsquo;, while negative posts mean &lsquo;we will in turn create more negative posts&rsquo; &mdash; our tone mirrors our feed.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 10 links repeatedly checking your phone with stress (APA survey), but no other electronic device is mentioned anywhere, so the comparison is never made.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">NO</div><div class="answer-note">The writer claims the opposite: stress &lsquo;temporarily enhances the likelihood that people will take in negative reports&rsquo;. The statement says we become <em>less</em> able to take the information in.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">YES</div><div class="answer-note">Paragraph 11: &lsquo;trips are cancelled, even if the disaster took place across the globe; stocks are sold, even when holding on is the best thing to do&rsquo; &mdash; precautions that are not justified.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">YES</div><div class="answer-note">Final paragraph: hope is &lsquo;contagious too, and&hellip; powerful in inducing people to act to find solutions&rsquo;, so awareness of emotional contagion helps us &lsquo;frame our messages more effectively&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Summary Completion (the whole study in seven gaps)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">hectic</div><div class="answer-note">Firefighters were chosen because some workdays are relaxed and others are</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">likelihood</div><div class="answer-note">They were asked to estimate the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">optimistic</div><div class="answer-note">When relaxed, people are normally</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">vigilant</div><div class="answer-note">Under stress they became hyper-</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">cortisol</div><div class="answer-note">In the lab, the students&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">neural</div><div class="answer-note">Brain scans link the switch to a boost in a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">contagious</div><div class="answer-note">The writer ends by noting that hope is</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">hectic</div><div class="answer-note">Some firefighting shifts are</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">adverse</div><div class="answer-note">The 40 events were all</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">altered</div><div class="answer-note">Stressed subjects</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">absorb</div><div class="answer-note">People with depression seem to</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">exaggerating</div><div class="answer-note">A wave of alarming news has the effect of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">inducing</div><div class="answer-note">Hope is powerful in</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">physiological</div><div class="answer-note">A</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">stressful</div><div class="answer-note">We weigh up information under</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">likelihood</div><div class="answer-note">They estimated the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">enhances</div><div class="answer-note">Stress temporarily</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">justified</div><div class="answer-note">The result can be collective fear that is not always</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">conscientious</div><div class="answer-note">We can become</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">setting</div><div class="answer-note">Q28: &ldquo;ideal study subjects&rdquo; &rarr; Passage: these ups and downs presented the perfect</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">warning</div><div class="answer-note">Q30: &ldquo;indications of external threats&rdquo; &rarr; Passage: in response to unexpected</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">ignore</div><div class="answer-note">Q31: &ldquo;took relatively little notice of bad news&rdquo; &rarr; Passage: they will</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">speech</div><div class="answer-note">Q34: &ldquo;put them in a stressful situation&rdquo; &rarr; Passage: students were told they had to give a surprise public</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">uplifting</div><div class="answer-note">Q36: &ldquo;the tone of our posts reflects our feeds&rdquo; &rarr; Passage: after positive feeds we post more</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">cancelled</div><div class="answer-note">Q39: &ldquo;unnecessary precautions&rdquo; &rarr; Passage: trips are</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">contagious</div><div class="answer-note">Q40: &ldquo;can be used in a positive way&rdquo; &rarr; Passage: positive emotions such as hope are</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses: Linking, Reducing and Limiting</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">that</div><div class="answer-note">Perceived threat triggered a stress reaction</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">which</div><div class="answer-note">A pre-programmed reaction,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">as</div><div class="answer-note">Stress helped them process information &mdash; but only as long</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">in</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">unrelated</div><div class="answer-note">&lsquo;information which is unrelated yet alarming&rsquo; reduces to &lsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">when</div><div class="answer-note">Stocks are sold, even</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">cortisol</div><div class="answer-note">皮质醇水平骤升 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">alert</div><div class="answer-note">保持高度戒备 &rarr; be on high</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">physiological</div><div class="answer-note">生理反应 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">collective</div><div class="answer-note">群体恐慌 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">weigh</div><div class="answer-note">权衡信息 &rarr; to</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">change</div><div class="answer-note">推动改变的人 &rarr; agents of</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C. by mentioning a difficulty that everybody faces</div><div class="answer-note">&lsquo;We are <em>all</em> sometimes required to weigh up information under stressful conditions.&rsquo; The paragraph ends with an open question, which is not the same as questioning an assumption.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A. Their stress levels change regularly during their working lives.</div><div class="answer-note">Some days are &lsquo;pretty relaxed&rsquo;, others &lsquo;hectic&rsquo;: &lsquo;These ups and downs presented the perfect setting for an experiment.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">D. describes the methodology</div><div class="answer-note">It opens &lsquo;This is how we arrived at these results&rsquo; and then lists the procedure: estimate &rarr; receive good or bad news &rarr; estimate again. The findings came in the paragraph before.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. It applied only when the information was bad news.</div><div class="answer-note">&lsquo;&hellip;made the task of processing information easier &mdash; but only as long as it conveyed bad news.&rsquo; C is the opposite: the effect worked even for <em>unrelated</em> bad news such as card fraud.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. They pay little attention to bad news.</div><div class="answer-note">&lsquo;People are normally quite optimistic &mdash; they will ignore bad news and embrace the good.&rsquo; This is ending B in the sentence-completion task.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. It has nothing to do with firefighting, yet stressed subjects still absorbed it.</div><div class="answer-note">The stress effect worked on bad news &lsquo;even when it had nothing to do with their job&rsquo; &mdash; that is what makes the finding surprising.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. behaved in a similar manner, regardless of the circumstances</div><div class="answer-note">&lsquo;Stress didn&rsquo;t change how they responded to good news&rsquo; &mdash; their behaviour was the same whether relaxed or stressed. Option A is the trap: it describes treating the two kinds of news alike, which the study disproves.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. It increases sensitivity to signs of danger from outside.</div><div class="answer-note">&lsquo;A sudden boost in a neural signal important for learning, specifically in response to unexpected warning signs, such as faces expressing fear.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A. Constant high alert would be wasteful in a safe environment.</div><div class="answer-note">&lsquo;In a safe environment, however, it would have been wasteful to be on high alert constantly.&rsquo; The passage adds that people with depression and anxiety seem unable to switch away.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Repeatedly checking your phone is linked to stress.</div><div class="answer-note">The APA survey links repeated checking with stress. Because no other device is discussed, the comparison in Q37 is <strong>NOT GIVEN</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. Trips are cancelled although the disaster happened on the other side of the world.</div><div class="answer-note">The passage also gives &lsquo;stocks are sold, even when holding on is the best thing to do&rsquo;. Both are precautions the situation does not justify.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. Emotional contagion also works for hope, so messages can be framed to help.</div><div class="answer-note">&lsquo;Positive emotions, such as hope, are contagious too, and are powerful in inducing people to act to find solutions&hellip; become conscientious agents of change.&rsquo;</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Reading Passage 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 2</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Reading Passage 2</h1>
+    <h2>Bringing Back the Elm · Matching Information + Matching People + Summary Completion (Q14–26)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>Mark Rowe reports on attempts to <strong>reintroduce elm trees to Britain</strong>. Around 25 million elms &mdash; 90% of the UK total &mdash; were killed by Dutch elm disease in the 1960s and &rsquo;70s, and the tree has been largely forgotten since. The article explains how the fungus and the elm bark beetle work together, why a few mature trees survived, how important elm timber once was, and whether new disease-resistant hybrids should be planted. Three named experts &mdash; <strong>Matt Elliot</strong>, <strong>Karen Russell</strong> and <strong>Peter Bourne</strong> &mdash; disagree about the best way forward.</p></div><div class="card"><p><strong>What the passage argues:</strong> That elm <em>could</em> return to the British countryside, but only through trees that are resistant to or tolerant of the disease &mdash; and that experts genuinely disagree about whether planting part-non-native hybrids is a good idea or whether nature should simply be given time.</p><p><strong>段落结构 Structure:</strong> A：荷兰榆树病造成的损失与「重新引入」的希望。B：病因——真菌 + 榆小蠹，1970年代第二次疫情源于加拿大进口原木。C：如今榆树只存于矮树篱，树干长到10&ndash;15厘米即被攻击；少数百年古树幸存，但样本太少难以研究。D：榆木的历史用途（仅次于橡木）。E：布莱顿的17000棵榆树因海风而幸存，但形势危险。F：抗病苗木的培育与接种测试。G：社会接受度之争——Russell 支持，Elliot 谨慎。</p><p><strong>Task type:</strong> <strong>Q14&ndash;18 Matching information to sections A&ndash;G</strong> (letters may repeat &mdash; C is used twice here); <strong>Q19&ndash;23 Matching statements to people A/B/C</strong>; <strong>Q24&ndash;26 Summary completion</strong>, <em>ONE WORD ONLY</em> from the passage.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> This passage is lettered <strong>A&ndash;G</strong>, which tells you before you read a word that a <em>matching-information</em> task is coming. Do not read the sections in order: read all five statements (Q14&ndash;18) first, note the <strong>key noun</strong> in each (research problems / difference of opinion / how the disease arrived / a place that escaped / when young elms become vulnerable), then skim for those ideas. For the <strong>matching-people</strong> task, the fastest method is the opposite: find each name in the passage, read that person&rsquo;s quotation carefully, and match it to a statement. Every answer in Q19&ndash;23 is inside quotation marks &mdash; you only need to paraphrase what the person actually said.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>&ldquo;NB You may use any letter more than once&rdquo;</b> &mdash; five questions but seven sections, and section <b>C</b> is the answer to both Q14 and Q18. Students who assume each letter is used once will force a wrong answer somewhere else.</li><li><b>Q16 vs Q18</b> &mdash; both are about the beetle. Q16 wants how the disease <em>entered the country</em> (Canadian log shipments, section B); Q18 wants the <em>size at which a young tree is attacked</em> (10&ndash;15 cm trunk, section C). Read the whole statement, not just the topic word.</li><li><b>Q19 and Q21 are both Karen Russell</b> &mdash; she is quoted three separate times in the passage (sections C and F). Do not stop at her first quotation.</li><li><b>Q23 sounds like Peter Bourne</b> because he also describes remembering the disease as a boy. But the statement mentions <em>evidence of how prominent the tree once was</em>, which matches Elliot&rsquo;s old photographs, not Bourne&rsquo;s personal memory.</li><li><b>Q24&ndash;26: ONE WORD ONLY</b> &mdash; the passage says &lsquo;storage crates and flooring&rsquo;, but the summary already gives you &lsquo;boxes&rsquo;, so the answer is only <em>flooring</em>. Never copy two words when the instruction says one.</li><li><b>&ldquo;ran a close second to oak&rdquo;</b> &mdash; this means oak was <em>first</em> and elm second. Students often read &lsquo;close second&rsquo; as if elm were the winner.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">aftermath</span></td><td><span class="pos">n.</span></td><td>the period and situation following a bad event</td><td class="zh">（灾难的）余波；后果</td><td>&ldquo;In the <em>aftermath</em>, the elm&hellip; was largely forgotten.&rdquo;</td><td class="note">Signals a consequence paragraph. Collocation: <em>in the aftermath of</em> + disaster.</td></tr>
+<tr><td><span class="word">dominant</span></td><td><span class="pos">adj.</span></td><td>most important, powerful or noticeable</td><td class="zh">占主导地位的；最显眼的</td><td>&ldquo;the elm, once so <em>dominant</em> in the British landscape&rdquo;</td><td class="note">Related to Q24: the passage later ranks elm <em>second</em> to oak, so &lsquo;dominant&rsquo; is not the same as &lsquo;the most popular&rsquo;.</td></tr>
+<tr><td><span class="word">reintroduce</span></td><td><span class="pos">v.</span></td><td>to bring something back to a place where it used to exist</td><td class="zh">重新引入</td><td>&ldquo;there&rsquo;s now hope the elm may be <em>reintroduced</em> to the countryside&rdquo;</td><td class="note">The topic word of the whole article. Noun: <em>reintroduction</em>; Q15 is about disagreement over it.</td></tr>
+<tr><td><span class="word">epidemic</span></td><td><span class="pos">n.</span></td><td>a rapid, wide spread of a disease</td><td class="zh">流行病；疫情</td><td>&ldquo;A first <em>epidemic</em>, which occurred in the 1920s, gradually died down&hellip;&rdquo;</td><td class="note">Two epidemics are described (1920s and 1970s). Q16 concerns only the second one.</td></tr>
+<tr><td><span class="word">fungus</span></td><td><span class="pos">n.</span></td><td>a simple organism such as a mould; here, the disease agent</td><td class="zh">真菌</td><td>&ldquo;The disease is caused by a <em>fungus</em> that blocks the elms&rsquo; vascular system.&rdquo;</td><td class="note">Plural: <em>fungi</em>. The beetle carries it, but the fungus does the killing &mdash; two agents, one disease.</td></tr>
+<tr><td><span class="word">vascular</span></td><td><span class="pos">adj.</span></td><td>relating to the tubes that carry water and food in a plant</td><td class="zh">维管的；输导的</td><td>&ldquo;blocks the elms&rsquo; <em>vascular</em> (water, nutrient and food transport) system&rdquo;</td><td class="note">The passage defines it for you inside brackets &mdash; a free gloss you should always use.</td></tr>
+<tr><td><span class="word">wilt</span></td><td><span class="pos">v.</span></td><td>to become weak and bend downwards</td><td class="zh">枯萎；凋谢</td><td>&ldquo;causing branches to <em>wilt</em> and die&rdquo;</td><td class="note">Visible symptom vocabulary; compare &lsquo;leaf loss&rsquo; in section F.</td></tr>
+<tr><td><span class="word">trigger</span></td><td><span class="pos">v.</span></td><td>to cause something to start suddenly</td><td class="zh">引发；触发</td><td>&ldquo;in the &rsquo;70s a second epidemic was <em>triggered</em> by shipments of elm from Canada&rdquo;</td><td class="note"><strong>Key to Q16.</strong> &lsquo;Triggered by shipments from Canada&rsquo; = how the disease was brought in.</td></tr>
+<tr><td><span class="word">shipment</span></td><td><span class="pos">n.</span></td><td>a load of goods sent from one place to another</td><td class="zh">货运；一批货物</td><td>&ldquo;<em>shipments</em> of elm from Canada&rdquo;</td><td class="note">Import vocabulary. Paraphrase family: cargo / consignment / imported timber.</td></tr>
+<tr><td><span class="word">intact</span></td><td><span class="pos">adj.</span></td><td>complete and undamaged</td><td class="zh">完好无损的</td><td>&ldquo;its <em>intact</em> bark was perfect for the elm bark beetles&rdquo;</td><td class="note">The bark being undamaged is exactly why the beetles could travel in the logs.</td></tr>
+<tr><td><span class="word">virulent</span></td><td><span class="pos">adj.</span></td><td>(of a disease) extremely severe and fast-acting</td><td class="zh">毒性强的；致命的</td><td>&ldquo;the beetles carried a much more <em>virulent</em> strain&rdquo;</td><td class="note">Explains why the second epidemic destroyed &lsquo;the vast majority&rsquo; while the first died down.</td></tr>
+<tr><td><span class="word">strain</span></td><td><span class="pos">n.</span></td><td>a particular variety of a disease organism or plant</td><td class="zh">（病菌的）株；品系</td><td>&ldquo;a much more virulent <em>strain</em>&rdquo; / &ldquo;new hybrid <em>strains</em>&rdquo;</td><td class="note">Careful: the word is used for both the <em>fungus</em> (section B) and the <em>trees</em> (section F).</td></tr>
+<tr><td><span class="word">hedgerow</span></td><td><span class="pos">n.</span></td><td>a line of bushes and small trees along the edge of a field</td><td class="zh">（田间的）树篱</td><td>&ldquo;millions of small elms in <em>hedgerows</em>&rdquo;</td><td class="note">Where elms survive today &mdash; but only while they stay small. Sets up Q18.</td></tr>
+<tr><td><span class="word">diameter</span></td><td><span class="pos">n.</span></td><td>the width of a circle measured through its centre</td><td class="zh">直径</td><td>&ldquo;Once the trunk&hellip; reaches 10&ndash;15 centimetres or so in <em>diameter</em>&hellip;&rdquo;</td><td class="note"><strong>Key to Q18</strong> &mdash; this measurement is &lsquo;the stage at which young elms become vulnerable&rsquo;.</td></tr>
+<tr><td><span class="word">take hold</span></td><td><span class="pos">v. phr.</span></td><td>to become established and start to spread</td><td class="zh">扎根；蔓延开来</td><td>&ldquo;a perfect size for beetles to lay eggs and for the fungus to <em>take hold</em>&rdquo;</td><td class="note">Very common with diseases, ideas and habits. Not the same as &lsquo;hold on&rsquo;.</td></tr>
+<tr><td><span class="word">specimen</span></td><td><span class="pos">n.</span></td><td>an individual example of a plant or animal</td><td class="zh">（生物）个体；标本</td><td>&ldquo;mature <em>specimens</em> have been identified, in counties such as Cambridgeshire&rdquo;</td><td class="note">&lsquo;Mature specimens&rsquo; = large surviving trees &mdash; the small group Q14 says is hard to research.</td></tr>
+<tr><td><span class="word">succumb</span></td><td><span class="pos">v.</span></td><td>to be defeated by something, especially illness</td><td class="zh">屈服于；死于</td><td>&ldquo;why they stood tall when millions of others <em>succumbed</em>&rdquo;</td><td class="note">Follows with <em>to</em>: succumb to a disease. A formal, exam-friendly synonym of &lsquo;die&rsquo;.</td></tr>
+<tr><td><span class="word">tolerance</span></td><td><span class="pos">n.</span></td><td>the ability to survive something harmful without being destroyed</td><td class="zh">耐受性</td><td>&ldquo;Avoidance, <em>tolerance</em>, resistance? We don&rsquo;t know where the balance lies.&rdquo;</td><td class="note">Distinguish from <em>resistance</em>: a tolerant tree still gets infected but survives; a resistant one shows no symptoms.</td></tr>
+<tr><td><span class="word">hardwood</span></td><td><span class="pos">n.</span></td><td>hard, dense wood from broadleaved trees</td><td class="zh">硬木</td><td>&ldquo;elm ran a close second to oak as the <em>hardwood</em> tree of choice&rdquo;</td><td class="note"><strong>Key to Q24.</strong> &lsquo;Ran a close second to oak&rsquo; means oak was more popular.</td></tr>
+<tr><td><span class="word">prominent</span></td><td><span class="pos">adj.</span></td><td>easily seen or very noticeable; important</td><td class="zh">显著的；重要的</td><td>&ldquo;in many instances the most <em>prominent</em> tree in the landscape&rdquo;</td><td class="note">Reused in Q23&rsquo;s wording (&lsquo;how prominent the tree once was&rsquo;) &mdash; a direct signpost to Elliot&rsquo;s photographs.</td></tr>
+<tr><td><span class="word">keel</span></td><td><span class="pos">n.</span></td><td>the long central beam along the bottom of a ship</td><td class="zh">（船的）龙骨</td><td>&ldquo;used to build the <em>keel</em> of the 19th-century sailing ship Cutty Sark&rdquo;</td><td class="note"><strong>Answer to Q26.</strong> One word only &mdash; do not write &lsquo;the keel of the Cutty Sark&rsquo;.</td></tr>
+<tr><td><span class="word">ingrained</span></td><td><span class="pos">adj.</span></td><td>firmly fixed and difficult to change</td><td class="zh">根深蒂固的</td><td>&ldquo;Given how <em>ingrained</em> elm is in British culture&hellip;&rdquo;</td><td class="note">Introduces section E&rsquo;s point that the tree has many supporters (&lsquo;advocates&rsquo;).</td></tr>
+<tr><td><span class="word">advocate</span></td><td><span class="pos">n.</span></td><td>a person who publicly supports a cause</td><td class="zh">拥护者；倡导者</td><td>&ldquo;it&rsquo;s unsurprising the tree has many <em>advocates</em>&rdquo;</td><td class="note">As a verb the stress moves: ADvocate (noun) / advoCATE (verb).</td></tr>
+<tr><td><span class="word">precarious</span></td><td><span class="pos">adj.</span></td><td>not safe or certain; likely to get worse</td><td class="zh">不稳定的；岌岌可危的</td><td>&ldquo;However, the situation is <em>precarious</em>.&rdquo;</td><td class="note">The warning word before Bourne&rsquo;s &lsquo;right on our doorstep&rsquo; quotation (Q22).</td></tr>
+<tr><td><span class="word">hybrid</span></td><td><span class="pos">n. / adj.</span></td><td>a plant or animal produced from two different types</td><td class="zh">杂交（品种）</td><td>&ldquo;existing or new <em>hybrid</em> strains derived from resistant&hellip; species&rdquo;</td><td class="note">The heart of the debate in section G: hybrids are partly non-native.</td></tr>
+<tr><td><span class="word">seedling</span></td><td><span class="pos">n.</span></td><td>a very young plant grown from seed</td><td class="zh">幼苗</td><td>&ldquo;A new generation of <em>seedlings</em> have been bred and tested&hellip;&rdquo;</td><td class="note">Test method: a slit in the bark plus an injection of the pathogen.</td></tr>
+<tr><td><span class="word">withstand</span></td><td><span class="pos">v.</span></td><td>to be strong enough not to be harmed by something</td><td class="zh">经受住；抵御</td><td>&ldquo;to see if they can <em>withstand</em> the fungus&rdquo;</td><td class="note">Synonym family: resist / tolerate / survive. Q19 is about how quickly the test result appears.</td></tr>
+<tr><td><span class="word">pathogen</span></td><td><span class="pos">n.</span></td><td>an organism that causes disease</td><td class="zh">病原体</td><td>&ldquo;injecting a tiny amount of the <em>pathogen</em>&rdquo;</td><td class="note">Formal scientific word for the fungus &mdash; a paraphrase you should expect in the questions.</td></tr>
+<tr><td><span class="word">susceptible</span></td><td><span class="pos">adj.</span></td><td>easily harmed or affected by something</td><td class="zh">易受影响的；易感的</td><td>&ldquo;those that are <em>susceptible</em> show leaf loss and may even have died&rdquo;</td><td class="note">The exact opposite of &lsquo;resistant&rsquo;. Follows with <em>to</em>: susceptible to disease.</td></tr>
+<tr><td><span class="word">wary</span></td><td><span class="pos">adj.</span></td><td>cautious because of possible danger or problems</td><td class="zh">谨慎的；持保留态度的</td><td>&ldquo;Others are more <em>wary</em>.&rdquo;</td><td class="note"><strong>Key to Q15</strong> &mdash; this one word opens the disagreement between Russell and Elliot.</td></tr>
+<tr><td><span class="word">native</span></td><td><span class="pos">adj.</span></td><td>originally from a particular place</td><td class="zh">本土的；原生的</td><td>&ldquo;a small element of it is not <em>native</em> &mdash; are we bothered about that?&rdquo;</td><td class="note">The social-acceptance issue: replacing a native species with a horticultural analogue.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">accounting for 90% of</span></td><td>making up that proportion of the total</td><td class="zh">占总数的90%</td></tr>
+<tr><td><span class="phrase">in the aftermath</span></td><td>in the period following the disaster</td><td class="zh">在事件之后</td></tr>
+<tr><td><span class="phrase">start from a very low base</span></td><td>begin with very little to build on</td><td class="zh">起点非常低</td></tr>
+<tr><td><span class="phrase">gradually died down</span></td><td>slowly became weaker and stopped</td><td class="zh">逐渐平息</td></tr>
+<tr><td><span class="phrase">was triggered by</span></td><td>was started by</td><td class="zh">由&hellip;引发</td></tr>
+<tr><td><span class="phrase">destined for boat building</span></td><td>intended to be used for building boats</td><td class="zh">用于造船的</td></tr>
+<tr><td><span class="phrase">the vast majority of</span></td><td>almost all of</td><td class="zh">绝大多数</td></tr>
+<tr><td><span class="phrase">get targeted by</span></td><td>be chosen as a victim by</td><td class="zh">被&hellip;盯上</td></tr>
+<tr><td><span class="phrase">reach a certain size</span></td><td>grow to a particular size</td><td class="zh">长到一定的大小</td></tr>
+<tr><td><span class="phrase">for the fungus to take hold</span></td><td>for the fungus to become established</td><td class="zh">让真菌得以蔓延</td></tr>
+<tr><td><span class="phrase">mature specimens</span></td><td>fully grown individual trees</td><td class="zh">成熟的个体树木</td></tr>
+<tr><td><span class="phrase">escape the epidemic</span></td><td>avoid being affected by the outbreak</td><td class="zh">躲过疫情</td></tr>
+<tr><td><span class="phrase">work out why</span></td><td>find out the reason that</td><td class="zh">弄清楚为什么</td></tr>
+<tr><td><span class="phrase">stood tall</span></td><td>survived and remained standing</td><td class="zh">屹立不倒</td></tr>
+<tr><td><span class="phrase">down to luck</span></td><td>explained only by chance</td><td class="zh">只是靠运气</td></tr>
+<tr><td><span class="phrase">run a close second to</span></td><td>be almost, but not quite, the most popular</td><td class="zh">仅次于&hellip;</td></tr>
+<tr><td><span class="phrase">the tree of choice</span></td><td>the tree people prefer to use</td><td class="zh">首选树种</td></tr>
+<tr><td><span class="phrase">a key component of</span></td><td>an essential part of</td><td class="zh">&hellip;的重要组成部分</td></tr>
+<tr><td><span class="phrase">go back to the Bronze Age</span></td><td>date from that period</td><td class="zh">可追溯到青铜时代</td></tr>
+<tr><td><span class="phrase">the preferred material for</span></td><td>the material usually chosen for</td><td class="zh">&hellip;的首选材料</td></tr>
+<tr><td><span class="phrase">high levels of impact</span></td><td>strong repeated force</td><td class="zh">高强度冲击</td></tr>
+<tr><td><span class="phrase">given how ingrained</span></td><td>because it is so deeply established</td><td class="zh">鉴于&hellip;根深蒂固</td></tr>
+<tr><td><span class="phrase">contribute to their survival</span></td><td>help them stay alive</td><td class="zh">有助于它们存活</td></tr>
+<tr><td><span class="phrase">the situation is precarious</span></td><td>things could easily get worse</td><td class="zh">形势岌岌可危</td></tr>
+<tr><td><span class="phrase">right on our doorstep</span></td><td>very close to us</td><td class="zh">近在咫尺</td></tr>
+<tr><td><span class="phrase">rely heavily on</span></td><td>depend very much on</td><td class="zh">在很大程度上依赖</td></tr>
+<tr><td><span class="phrase">resistant to or tolerant of</span></td><td>able to fight off, or to survive, a disease</td><td class="zh">具抗性或耐受性</td></tr>
+<tr><td><span class="phrase">derived from</span></td><td>developed or obtained from</td><td class="zh">源自；由&hellip;培育而来</td></tr>
+<tr><td><span class="phrase">show no symptoms</span></td><td>display no signs of illness</td><td class="zh">没有任何症状</td></tr>
+<tr><td><span class="phrase">on the face of it</span></td><td>judging only by appearances</td><td class="zh">表面上看</td></tr>
+<tr><td><span class="phrase">raise questions of</span></td><td>make people ask about</td><td class="zh">引发关于&hellip;的疑问</td></tr>
+<tr><td><span class="phrase">give nature time to recover</span></td><td>let the natural world repair itself</td><td class="zh">给大自然恢复的时间</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;Around 25 million elms, accounting for 90% of all elm trees in the UK, died during the 1960s and &rsquo;70s of Dutch elm disease.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Around 25 million elms died during the 1960s and &rsquo;70s of Dutch elm disease.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;accounting for 90% of all elm trees in the UK&rsquo; = a participle phrase in commas, adding a statistic about the subject.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The subject and its verb are pushed far apart by the comma phrase. Cover everything between the commas and the sentence still works: <em>25 million elms&hellip; died&hellip;</em>. Note also the pattern <strong>die of + illness</strong>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Dutch elm disease killed about 25 million elms &mdash; nine out of every ten in the UK &mdash; in the 1960s and 1970s.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">约2500万棵榆树（占英国榆树总数的90%）在20世纪60至70年代死于荷兰榆树病。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;The wood came in the form of logs destined for boat building and its intact bark was perfect for the elm bark beetles that spread the deadly fungus.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Two main clauses: &lsquo;The wood came in the form of logs&rsquo; + &lsquo;its intact bark was perfect for the elm bark beetles&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;destined for boat building&rsquo; = a reduced relative (which were destined for&hellip;); &lsquo;that spread the deadly fungus&rsquo; = a defining relative clause describing the beetles.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two different reduction techniques in one sentence. Learn to see <em>noun + past participle</em> (logs destined) as a hidden relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">The imported wood was logs for building boats, and because the bark was undamaged the beetles that carry the fungus could live in it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这些木材以准备用于造船的原木形式运来，其完好的树皮正好适合传播致命真菌的榆小蠹寄生。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Yet mature specimens have been identified, in counties such as Cambridgeshire, that are hundreds of years old, and have mysteriously escaped the epidemic.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Mature specimens have been identified.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that are hundreds of years old, and have mysteriously escaped the epidemic&rsquo; = a relative clause separated from its noun by the phrase &lsquo;in counties such as Cambridgeshire&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The relative clause does <strong>not</strong> describe Cambridgeshire &mdash; it describes <em>specimens</em>. When a relative clause seems to modify the wrong noun, check whether a phrase has been inserted in front of it.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Some very old elms, for example in Cambridgeshire, have been found alive, and nobody knows why they were not killed.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而在剑桥郡等地已发现一些树龄达数百年的成熟个体，它们不知何故躲过了这场疫情。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;The key, Russell says, is to identify and study those trees that have survived and work out why they stood tall when millions of others succumbed.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The key is to identify and study those trees&hellip; and (to) work out why&hellip;</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Russell says&rsquo; = a reporting clause dropped into the middle; &lsquo;that have survived&rsquo; = defining relative; &lsquo;why they stood tall when millions of others succumbed&rsquo; = an embedded question.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two infinitives share one &lsquo;to&rsquo; (<em>to identify and study&hellip; and work out</em>). The inserted &lsquo;Russell says&rsquo; is your signal that everything around it can be matched to her in Q19&ndash;23.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Russell believes the answer is to find the surviving trees and discover why they lived when millions of others died.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">Russell 认为，关键在于找出并研究那些幸存的树木，弄清为何在数百万棵树死去时它们仍屹立不倒。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;This means a widespread reintroduction would involve existing or new hybrid strains derived from resistant, generally non-native elm species.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This means (that) a widespread reintroduction would involve existing or new hybrid strains.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;derived from resistant, generally non-native elm species&rsquo; = a reduced relative describing the strains.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The conditional <em>would</em> shows this is a plan, not a fact. &lsquo;Generally non-native&rsquo; is the detail that creates the argument in section G.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Bringing elms back on a large scale would mean planting hybrids bred from disease-resistant elms that usually come from other countries.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这意味着大规模重新引入将涉及由具抗性的、通常并非本土的榆树种培育出的现有或新的杂交品系。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Rather than plant new elms, the Woodland Trust emphasises providing space to those elms that have survived independently.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The Woodland Trust emphasises providing space to those elms.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;Rather than plant new elms&rsquo; = a fronted phrase of preference; &lsquo;that have survived independently&rsquo; = defining relative clause.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>Rather than + bare infinitive</strong> sets up a contrast between two policies. This sentence is the core of Q15 (a difference of opinion) and Q20 (Elliot&rsquo;s view).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Instead of planting new trees, the Woodland Trust wants to give room to the elms that survived on their own.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">林地信托强调的不是种植新榆树，而是为那些自行存活下来的榆树留出生长空间。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Summary Completion (includes the real exam gaps Q24&ndash;26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the summary of section D with <strong>ONE WORD ONLY</strong> from the passage. Gaps 1, 4 and 5 are the real exam answers to Q24, Q25 and Q26.</p><div class="ex-item"><span class="ex-num">1.</span><label>For hundreds of years the only hardwood more popular in Britain than elm was <input type="text" class="blank" id="b1" data-answer="oak" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Elm was also a key <input type="text" class="blank" id="b2" data-answer="component" placeholder="______"> of birch, ash and hazel woodlands.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Its use goes back to the Bronze Age, when it was widely used for <input type="text" class="blank" id="b3" data-answer="tools" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>In the 18th century its wood was used for storage crates and <input type="text" class="blank" id="b4" data-answer="flooring" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The <input type="text" class="blank" id="b5" data-answer="keel" placeholder="______"> of the sailing ship Cutty Sark was built from elm.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Elm suited objects that had to survive high levels of <input type="text" class="blank" id="b6" data-answer="impact" placeholder="______">.<span class="feedback" id="fb6"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>The second epidemic involved a far more <input type="text" class="blank" id="b7" data-answer="virulent" placeholder="______"> (= severe and fast-acting) strain of the fungus.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Small elms survive in <input type="text" class="blank" id="b8" data-answer="hedgerows" placeholder="______"> (= lines of bushes along field edges) between fields.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Millions of trees <input type="text" class="blank" id="b9" data-answer="succumbed" placeholder="______"> (= were defeated by the disease) while a few stood tall.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Brighton&rsquo;s position is still <input type="text" class="blank" id="b10" data-answer="precarious" placeholder="______"> (= unsafe and uncertain).<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Elm is deeply <input type="text" class="blank" id="b11" data-answer="ingrained" placeholder="______"> (= firmly fixed) in British culture.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Trees that are <input type="text" class="blank" id="b12" data-answer="susceptible" placeholder="______"> (= easily harmed) lose their leaves within weeks.<span class="feedback" id="fb12"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In summary completion the meaning is often obvious &mdash; marks are lost on the form.</p><div class="ex-item"><span class="ex-num">1.</span><label>Trees that are <input type="text" class="blank" id="b13" data-answer="resistant" placeholder="______"> (RESIST) show no symptoms after infection.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Russell asks about the balance between avoidance, <input type="text" class="blank" id="b14" data-answer="tolerance" placeholder="______"> (TOLERATE) and resistance.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The elm was once the most <input type="text" class="blank" id="b15" data-answer="prominent" placeholder="______"> (PROMINENCE) tree in the landscape.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The elm was once so <input type="text" class="blank" id="b16" data-answer="dominant" placeholder="______"> (DOMINANCE) that it defined the British countryside.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Any <input type="text" class="blank" id="b17" data-answer="reintroduction" placeholder="______"> (REINTRODUCE) would start from a very low base.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>New <input type="text" class="blank" id="b18" data-answer="seedlings" placeholder="______"> (SEEDLING) have been bred and tested against the fungus.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The questions never repeat the passage. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q16: &ldquo;how the disease was brought into Britain&rdquo; &rarr; Passage: the second epidemic was <input type="text" class="blank" id="b19" data-answer="triggered" placeholder="______"> by shipments of elm from Canada.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q18: &ldquo;the stage at which young elms become vulnerable&rdquo; &rarr; Passage: once the trunk reaches 10&ndash;15 centimetres in <input type="text" class="blank" id="b20" data-answer="diameter" placeholder="______">.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q19: &ldquo;the damage rapidly becomes visible&rdquo; &rarr; Passage: &lsquo;The <input type="text" class="blank" id="b21" data-answer="effects" placeholder="______"> are very quick,&rsquo; says Russell.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q22: &ldquo;insects carrying the disease are not very far away&rdquo; &rarr; Passage: the threat is right on our <input type="text" class="blank" id="b22" data-answer="doorstep" placeholder="______">.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q20: &ldquo;it may be better to wait and see&rdquo; &rarr; Passage: give nature <input type="text" class="blank" id="b23" data-answer="time" placeholder="______"> to recover.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q24: &ldquo;the only tree that was more popular&rdquo; &rarr; Passage: elm ran a close <input type="text" class="blank" id="b24" data-answer="second" placeholder="______"> to oak.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q14: &ldquo;research problems&hellip; only a few surviving large elms&rdquo; &rarr; Passage: <input type="text" class="blank" id="b25" data-answer="opportunities" placeholder="______"> are limited as the number of mature survivors is relatively small.<span class="feedback" id="fb25"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses: Reducing, Joining and Signposting</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to pack information into long sentences.</p><div class="ex-item"><span class="ex-num">1.</span><label>Around 25 million elms, <input type="text" class="blank" id="b26" data-answer="accounting" placeholder="______"> for 90% of all elm trees in the UK, died in the 1960s and &rsquo;70s. (participle phrase)<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The wood arrived as logs <input type="text" class="blank" id="b27" data-answer="destined" placeholder="______"> for boat building. (= which were destined &mdash; reduced relative)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The beetles <input type="text" class="blank" id="b28" data-answer="that" placeholder="______"> spread the fungus lived under the intact bark. (defining relative pronoun)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;hybrid strains which are derived from resistant species&rsquo; reduces to &lsquo;hybrid strains <input type="text" class="blank" id="b29" data-answer="derived" placeholder="______"> from resistant species&rsquo;.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label><input type="text" class="blank" id="b30" data-answer="given" placeholder="______"> how ingrained elm is in British culture, it is unsurprising the tree has many advocates. (fronted reason phrase)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label><input type="text" class="blank" id="b31" data-answer="rather" placeholder="______"> than plant new elms, the Woodland Trust wants to protect the survivors. (structure of preference)<span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>荷兰榆树病 &rarr; Dutch elm <input type="text" class="blank" id="b32" data-answer="disease" placeholder="______"><span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>抗病品系 &rarr; <input type="text" class="blank" id="b33" data-answer="resistant" placeholder="______"> strains<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>本土物种 &rarr; a <input type="text" class="blank" id="b34" data-answer="native" placeholder="______"> species<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>病原体 &rarr; the <input type="text" class="blank" id="b35" data-answer="pathogen" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>硬木 &rarr; a <input type="text" class="blank" id="b36" data-answer="hardwood" placeholder="______"> tree<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>形势岌岌可危 &rarr; the situation is <input type="text" class="blank" id="b37" data-answer="precarious" placeholder="______"><span class="feedback" id="fb37"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; two agents, one disease</strong></p><p>Follow the chain in section B: a fungus blocks the vascular system &rarr; branches wilt and die; Canadian logs arrive with <em>intact bark</em> &rarr; elm bark beetles survive the journey &rarr; the beetles spread a <em>more virulent strain</em> &rarr; most British elms die. The beetle is the carrier, the fungus is the killer. Q16 asks how the disease was <em>brought in</em>, so the answer must be the shipment, not the beetle in general.</p></div>
+<div class="card"><p><strong>Contrast &mdash; &lsquo;Yet&rsquo;, &lsquo;However&rsquo;, &lsquo;Nevertheless&rsquo;</strong></p><p>Each of these words marks a place where the passage turns, and IELTS loves to build questions there. &ldquo;<em>Yet</em> mature specimens have been identified&hellip;&rdquo; (survivors exist); &ldquo;<em>Nevertheless</em>, opportunities are limited&hellip;&rdquo; (but too few to study &mdash; Q14); &ldquo;<em>However</em>, the situation is precarious&rdquo; (Brighton is not safe &mdash; Q22).</p></div>
+<div class="card"><p><strong>Comparison &amp; ranking &mdash; where elm actually stood</strong></p><p>&ldquo;elm ran a close second to oak as the hardwood tree of choice&rdquo; ranks the two trees, and the summary in Q24 turns that ranking round: <em>the only tree that was more popular than elm was&hellip;</em>. When a question reverses a comparison, translate it into a simple order first: 1. oak, 2. elm.</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;such as&rsquo; and named cases</strong></p><p>&ldquo;in counties <em>such as</em> Cambridgeshire&rdquo;, &ldquo;items <em>such as</em> storage crates and flooring&rdquo;, &ldquo;the 19th-century sailing ship Cutty Sark&rdquo;. Concrete examples are the easiest text to scan for, which is why summary-completion answers (Q25, Q26) so often sit inside them.</p></div>
+<div class="card"><p><strong>Definition &mdash; brackets, dashes and footnotes</strong></p><p>The passage defines its own hard words: &lsquo;vascular <em>(water, nutrient and food transport)</em> system&rsquo; and the footnote explaining <em>horticultural analogue</em> as a cultivated species genetically similar to an existing one. Read footnotes before you read the questions &mdash; here the footnote is what makes Elliot&rsquo;s objection (&lsquo;You&rsquo;re effectively cloning&rsquo;) understandable.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &rarr; objection</strong></p><p>Problem: 90% of elms died. Proposed solution: plant resistant or tolerant hybrids (section F). Objection: they are partly non-native, they are effectively clones, and they may carry new diseases (section G). Alternative solution: give the natural survivors space and time. Q15 asks for the section where the <em>disagreement</em> is, which is exactly this last stage &mdash; section G.</p></div>
+<div class="card"><p><strong>Chronology &mdash; a timeline hidden in a non-chronological article</strong></p><p>Bronze Age (tools, shields) &rarr; 18th century (wider planting, crates, flooring) &rarr; 19th century (Cutty Sark&rsquo;s keel) &rarr; 1920s (first epidemic, dies down) &rarr; 1960s&ndash;70s (second epidemic, 25 million dead) &rarr; today (17,000 elms in Brighton; new seedlings tested). Section D holds the old dates, sections A&ndash;B the modern ones.</p></div>
+<div class="card"><p><strong>Attitude &mdash; three named voices, three positions</strong></p><p><strong>Karen Russell</strong>: scientific and pro-reintroduction (&lsquo;the environmental case&hellip; is strong&rsquo;). <strong>Matt Elliot</strong>: cautious, prefers natural recovery (&lsquo;Others are more wary&rsquo;, &lsquo;<em>On the face of it</em>, it seems like a good idea&rsquo; &mdash; a phrase that always introduces a <em>but</em>). <strong>Peter Bourne</strong>: personal and protective about Brighton. Sorting the speakers by attitude solves Q19&ndash;23 faster than re-reading each quotation.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching information to sections (Q14&ndash;18)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The instruction says a letter may be used more than once &mdash; and here section C is used twice. Work statement by statement, and stop as soon as you find the idea.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>14. research problems caused by there being few large survivors</b> &rarr; <strong>C</strong> &mdash; &lsquo;opportunities are limited as the number of these mature survivors is relatively small&rsquo;.</li><li><b>15. a difference of opinion about the value of reintroduction</b> &rarr; <strong>G</strong> &mdash; Russell says the environmental case is strong; &lsquo;Others are more wary&rsquo; and Elliot objects.</li><li><b>16. how the disease was brought into Britain</b> &rarr; <strong>B</strong> &mdash; the second epidemic &lsquo;was triggered by shipments of elm from Canada&rsquo;.</li><li><b>17. conditions that let one location escape the disease</b> &rarr; <strong>E</strong> &mdash; Brighton&rsquo;s strong sea winds make it hard for the beetle to attack.</li><li><b>18. the stage at which young elms become vulnerable</b> &rarr; <strong>C</strong> &mdash; once the trunk reaches 10&ndash;15 cm in diameter it is perfect for beetles and fungus.</li></ul><p style="margin-top:10px;"><b>Method:</b> convert each statement into two or three keywords before you search. For Q17 that is <em>place + escaped</em>; scanning for &lsquo;Brighton&rsquo; and &lsquo;winds&rsquo; takes seconds, whereas reading section E line by line takes minutes.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Matching statements to people (Q19&ndash;23)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every answer is inside a quotation. Find the name, read what the person said, then paraphrase it.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>19. damage becomes visible quickly</b> &rarr; <strong>B (Karen Russell)</strong> &mdash; &lsquo;The effects are very quick&hellip; You return in four to six weeks&rsquo;.</li><li><b>20. better to wait and see whether surviving elms flourish</b> &rarr; <strong>A (Matt Elliot)</strong> &mdash; &lsquo;Sometimes the best thing you can do is just give nature time to recover&rsquo;.</li><li><b>21. there must be an explanation for some elms surviving</b> &rarr; <strong>B (Karen Russell)</strong> &mdash; &lsquo;I don&rsquo;t see how it can be entirely down to luck&rsquo;.</li><li><b>22. disease-carrying insects are close by</b> &rarr; <strong>C (Peter Bourne)</strong> &mdash; &lsquo;the threat is right on our doorstep&rsquo;.</li><li><b>23. you grasp the impact when you see how prominent the tree was</b> &rarr; <strong>A (Matt Elliot)</strong> &mdash; &lsquo;You look at old photographs from the 1960s and it&rsquo;s only then that you realise the impact&rsquo;.</li></ul><p style="margin-top:10px;"><b>Warning:</b> two answers are Russell and two are Elliot. If your five answers are all different letters in a task with only three names, you have almost certainly made a mistake.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Summary completion, ONE WORD ONLY (Q24&ndash;26)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The summary follows one section only (D). Find that section first, then read the summary sentence by sentence.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q24 oak</b> &mdash; &lsquo;elm ran a close second to <em>oak</em>&rsquo;, so oak was the more popular tree. The gap needs a tree name, singular, no article.</li><li><b>Q25 flooring</b> &mdash; the passage pairs &lsquo;storage crates <em>and flooring</em>&rsquo;; the summary has already used &lsquo;boxes&rsquo; for crates, so only <em>flooring</em> is left.</li><li><b>Q26 keel</b> &mdash; &lsquo;used to build the <em>keel</em> of the 19th-century sailing ship Cutty Sark&rsquo;. Write the single noun.</li></ul><p style="margin-top:10px;"><b>Grammar check:</b> Q26 reads &lsquo;the Cutty Sark&rsquo;s ______ was also constructed&rsquo;. The singular verb <em>was</em> tells you the answer is a singular noun &mdash; a free clue that costs you nothing to use.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; True / False / Not Given practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>The 1920s epidemic killed more elms than the 1970s one. &rarr; <strong>FALSE</strong> &mdash; the first epidemic &lsquo;gradually died down&rsquo;; the second destroyed the vast majority.</li><li>Elms in hedgerows are attacked only after they reach a certain size. &rarr; <strong>TRUE</strong> &mdash; &lsquo;they get targeted by the beetle as soon as they reach a certain size&rsquo;.</li><li>Brighton has more elms than any other British city. &rarr; <strong>NOT GIVEN</strong> &mdash; the figure 17,000 is given, but no comparison with other cities is made.</li><li>Scientists know exactly why some mature elms survived. &rarr; <strong>FALSE</strong> &mdash; &lsquo;We don&rsquo;t know where the balance lies between the three.&rsquo;</li><li>The resistance test involves injecting the pathogen into the bark. &rarr; <strong>TRUE</strong> &mdash; &lsquo;cutting a small slit on the bark and injecting a tiny amount of the pathogen&rsquo;.</li></ul></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which heading fits each section? A heading must cover the whole section, not one striking detail.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Section B</b> &rarr; <em>How the disease works and how it arrived</em>.</li><li><b>Section C</b> &rarr; <em>Survivors, and why they are hard to study</em> &mdash; not &lsquo;Elms in hedgerows&rsquo;, which is only the opening detail.</li><li><b>Section D</b> &rarr; <em>A timber with a long history of use</em>.</li><li><b>Section E</b> &rarr; <em>One city where the tree survived &mdash; for now</em>.</li><li><b>Section F</b> &rarr; <em>Testing a new generation of trees</em>.</li><li><b>Section G</b> &rarr; <em>Should we plant them at all?</em></li></ul><p style="margin-top:10px;"><b>Watch out:</b> sections C and E both mention trees that escaped the disease. C is about <em>research</em> on survivors; E is about <em>one place</em> and why it was lucky. Distinguish headings by purpose, not by topic.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Multiple choice practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Choose the best option, then check the reasoning. In MCQ, three options are usually true statements about the passage that simply do not answer the question asked.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Why was the second epidemic so much worse than the first?</b> A. More elms had been planted. B. The beetles carried a more virulent strain. C. Nobody tried to stop it. D. The winters were milder. &rarr; <strong>B</strong>, stated directly in section B.</li><li><b>What does Elliot object to about hybrid elms?</b> A. They cost too much. B. They grow too slowly. C. They are effectively clones of a native species. D. They attract more beetles. &rarr; <strong>C</strong> &mdash; &lsquo;You&rsquo;re replacing a native species with a horticultural analogue&hellip; You&rsquo;re effectively cloning.&rsquo;</li><li><b>How is a seedling&rsquo;s resistance tested?</b> A. By planting it beside a diseased tree. B. By measuring its trunk. C. By injecting the pathogen through a slit in the bark. D. By counting its leaves in autumn. &rarr; <strong>C</strong>, section F.</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What proportion of the UK&rsquo;s elms was killed by Dutch elm disease in the 1960s and &rsquo;70s?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. about 25%</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. about half</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. about 90%</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. all of them</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What actually kills the tree in Dutch elm disease?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a fungus that blocks the vascular system</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. beetles eating the leaves</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. the removal of the bark</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. salt carried by sea winds</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">How did the second epidemic reach Britain (Q16)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. through seedlings imported for gardens</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. through shipments of elm logs from Canada</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. through beetles blown across the sea</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. through infected boats from Europe</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">At what point does a young hedgerow elm become vulnerable (Q18)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. as soon as it produces seeds</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. when it is about ten years old</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. when its trunk reaches 10&ndash;15 cm in diameter</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. when it grows taller than the hedge</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why does Karen Russell say the surviving mature elms are difficult to research (Q14)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They are all in private gardens.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They are protected by law.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. There are relatively few of them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They are too old to produce seed.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Which three explanations does Russell list for the survival of some elms?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. avoidance, tolerance and resistance</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. wind, soil and rainfall</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. age, size and location</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. luck, care and breeding</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">According to the passage, how did elm compare with oak?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Elm was always more popular than oak.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Oak was first and elm a close second.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. They were used for completely different purposes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Oak replaced elm in the 18th century.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Why have Brighton&rsquo;s elms survived (Q17)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. The city planted resistant hybrids early.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. The trees are regularly injected with fungicide.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Strong sea winds make it hard for the beetle to attack.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. The elms there are too small to interest the beetle.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What does Peter Bourne mean by &lsquo;the threat is right on our doorstep&rsquo; (Q22)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. The beetles are already inside the city&rsquo;s trees.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. The danger is very close and could easily arrive.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Local people are cutting down the elms.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The council has stopped funding tree care.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">How are new seedlings tested for resistance?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. They are planted next to infected trees for a year.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. A small amount of the pathogen is injected through a slit in the bark.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Their leaves are examined under a microscope.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Their roots are treated with chemicals.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is Matt Elliot&rsquo;s main objection to planting new elms (Q15)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It would cost too much public money.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. The new trees would not survive the British climate.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It replaces a native species with a genetically similar cultivated one.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The elm is no longer part of British culture.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which phrase in section G tells you that Elliot is about to disagree?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. &lsquo;On the face of it, it seems like a good idea&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. &lsquo;They will host wildlife&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. &lsquo;the environmental case&hellip; is strong&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. &lsquo;a small element of it is not native&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 14–26</h3><div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">C</div><div class="answer-note">Section C ends with Russell&rsquo;s point that studying survivors is limited &lsquo;as the number of these mature survivors is relatively small&rsquo; = research problems caused by there being few large elms.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">G</div><div class="answer-note">Section G sets Russell (&lsquo;the environmental case&hellip; is strong&rsquo;) against Elliot (&lsquo;Others are more wary&hellip; You&rsquo;re effectively cloning&rsquo;) &mdash; a difference of opinion about the value of reintroduction.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div><div class="answer-note">Section B: &lsquo;in the &rsquo;70s a second epidemic was triggered by shipments of elm from Canada&rsquo;, whose intact bark carried the beetles into the country.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">E</div><div class="answer-note">Section E: Brighton&rsquo;s 17,000 elms survive because &lsquo;strong winds from the sea make it difficult for the determined elm bark beetle to attack&rsquo; &mdash; local conditions that let one location escape.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">C</div><div class="answer-note">Section C: &lsquo;Once the trunk of the elm reaches 10&ndash;15 centimetres or so in diameter, it becomes a perfect size for beetles to lay eggs and for the fungus to take hold.&rsquo; Letters may be reused, so C answers both Q14 and Q18.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">B</div><div class="answer-note">Karen Russell, section F: &lsquo;The effects are very quick&hellip; You return in four to six weeks and trees that are resistant show no symptoms, whereas those that are susceptible show leaf loss.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">A</div><div class="answer-note">Matt Elliot, section G: &lsquo;Sometimes the best thing you can do is just give nature time to recover&hellip; over time, you might get resistance.&rsquo; = wait and see whether the survivors flourish.</div></div></div>
+<div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">B</div><div class="answer-note">Karen Russell, section C: &lsquo;I don&rsquo;t see how it can be entirely down to luck.&rsquo; Rejecting luck means there must be a real explanation.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">C</div><div class="answer-note">Peter Bourne, section E: &lsquo;The beetles can just march in if we&rsquo;re not careful, as the threat is right on our doorstep.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">A</div><div class="answer-note">Matt Elliot, section A: &lsquo;You look at old photographs from the 1960s and it&rsquo;s only then that you realise the impact.&rsquo; The photographs are the evidence of how prominent the tree once was.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">oak</div><div class="answer-note">Section D: &lsquo;elm ran a close second to oak as the hardwood tree of choice in Britain&rsquo; &mdash; so oak was the only tree more popular than elm.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">flooring</div><div class="answer-note">Section D: in the 18th century its wood &lsquo;was used for items such as storage crates and flooring&rsquo;. The summary already says &lsquo;boxes&rsquo; for crates, and only ONE WORD is allowed.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">keel</div><div class="answer-note">Section D: elm &lsquo;was used to build the keel of the 19th-century sailing ship Cutty Sark&rsquo;. The singular verb &lsquo;was constructed&rsquo; in the summary confirms a singular noun.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Summary Completion (includes the real exam gaps Q24&ndash;26)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">oak</div><div class="answer-note">For hundreds of years the only hardwood more popular in Britain than elm was</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">component</div><div class="answer-note">Elm was also a key</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">tools</div><div class="answer-note">Its use goes back to the Bronze Age, when it was widely used for</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">flooring</div><div class="answer-note">In the 18th century its wood was used for storage crates and</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">keel</div><div class="answer-note">The</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">impact</div><div class="answer-note">Elm suited objects that had to survive high levels of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">virulent</div><div class="answer-note">The second epidemic involved a far more</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">hedgerows</div><div class="answer-note">Small elms survive in</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">succumbed</div><div class="answer-note">Millions of trees</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">precarious</div><div class="answer-note">Brighton&rsquo;s position is still</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">ingrained</div><div class="answer-note">Elm is deeply</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">susceptible</div><div class="answer-note">Trees that are</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">resistant</div><div class="answer-note">Trees that are</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">tolerance</div><div class="answer-note">Russell asks about the balance between avoidance,</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">prominent</div><div class="answer-note">The elm was once the most</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">dominant</div><div class="answer-note">The elm was once so</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">reintroduction</div><div class="answer-note">Any</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">seedlings</div><div class="answer-note">New</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">triggered</div><div class="answer-note">Q16: &ldquo;how the disease was brought into Britain&rdquo; &rarr; Passage: the second epidemic was</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">diameter</div><div class="answer-note">Q18: &ldquo;the stage at which young elms become vulnerable&rdquo; &rarr; Passage: once the trunk reaches 10&ndash;15 centimetres in</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">effects</div><div class="answer-note">Q19: &ldquo;the damage rapidly becomes visible&rdquo; &rarr; Passage: &lsquo;The</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">doorstep</div><div class="answer-note">Q22: &ldquo;insects carrying the disease are not very far away&rdquo; &rarr; Passage: the threat is right on our</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">time</div><div class="answer-note">Q20: &ldquo;it may be better to wait and see&rdquo; &rarr; Passage: give nature</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">second</div><div class="answer-note">Q24: &ldquo;the only tree that was more popular&rdquo; &rarr; Passage: elm ran a close</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">opportunities</div><div class="answer-note">Q14: &ldquo;research problems&hellip; only a few surviving large elms&rdquo; &rarr; Passage:</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses: Reducing, Joining and Signposting</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">accounting</div><div class="answer-note">Around 25 million elms,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">destined</div><div class="answer-note">The wood arrived as logs</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">that</div><div class="answer-note">The beetles</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">derived</div><div class="answer-note">&lsquo;hybrid strains which are derived from resistant species&rsquo; reduces to &lsquo;hybrid strains</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">given</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">rather</div><div class="answer-note">&mdash;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">disease</div><div class="answer-note">荷兰榆树病 &rarr; Dutch elm</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">resistant</div><div class="answer-note">抗病品系 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">native</div><div class="answer-note">本土物种 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">pathogen</div><div class="answer-note">病原体 &rarr; the</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">hardwood</div><div class="answer-note">硬木 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">precarious</div><div class="answer-note">形势岌岌可危 &rarr; the situation is</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C. about 90%</div><div class="answer-note">&lsquo;Around 25 million elms, accounting for 90% of all elm trees in the UK, died&hellip;&rsquo; The figure 25 million is the number, not the percentage.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">A. a fungus that blocks the vascular system</div><div class="answer-note">The beetle is only the carrier: &lsquo;The disease is caused by a fungus that blocks the elms&rsquo; vascular&hellip; system, causing branches to wilt and die.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. through shipments of elm logs from Canada</div><div class="answer-note">Section B: the logs were &lsquo;destined for boat building and its intact bark was perfect for the elm bark beetles&rsquo;. The boats are what the wood was <em>for</em>, not how it travelled.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. when its trunk reaches 10&ndash;15 cm in diameter</div><div class="answer-note">Section C: at that size the trunk &lsquo;becomes a perfect size for beetles to lay eggs and for the fungus to take hold&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. There are relatively few of them.</div><div class="answer-note">&lsquo;Nevertheless, opportunities are limited as the number of these mature survivors is relatively small.&rsquo; The word &lsquo;Nevertheless&rsquo; marks the problem.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">A. avoidance, tolerance and resistance</div><div class="answer-note">&lsquo;Avoidance, tolerance, resistance? We don&rsquo;t know where the balance lies between the three.&rsquo; She then rejects pure luck &mdash; the basis of Q21.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. Oak was first and elm a close second.</div><div class="answer-note">&lsquo;elm ran a close second to oak as the hardwood tree of choice&rsquo; &mdash; the sentence behind Q24 (<strong>oak</strong>).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. Strong sea winds make it hard for the beetle to attack.</div><div class="answer-note">Section E: &lsquo;Strong winds from the sea make it difficult for the determined elm bark beetle to attack this coastal city&rsquo;s elm population.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. The danger is very close and could easily arrive.</div><div class="answer-note">He says &lsquo;The beetles can just march in if we&rsquo;re not careful&rsquo; &mdash; a warning, not a report that they have arrived. The passage calls the situation &lsquo;precarious&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. A small amount of the pathogen is injected through a slit in the bark.</div><div class="answer-note">Section F. Russell adds &lsquo;The effects are very quick&hellip; four to six weeks&rsquo; &mdash; the evidence for Q19.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. It replaces a native species with a genetically similar cultivated one.</div><div class="answer-note">&lsquo;You&rsquo;re replacing a native species with a horticultural analogue&hellip; You&rsquo;re effectively cloning.&rsquo; He also mentions the risk of new diseases.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A. &lsquo;On the face of it, it seems like a good idea&rsquo;</div><div class="answer-note">&lsquo;On the face of it&rsquo; always introduces a <em>but</em>. Recognising these hedging phrases lets you predict the writer&rsquo;s next move.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

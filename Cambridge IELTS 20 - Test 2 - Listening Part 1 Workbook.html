@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Listening Part 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 1</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Listening Part 1</h1>
+    <h2>Support for Carers · Table / Notes Completion (Q1&ndash;10)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A woman has given up her job to look after her elderly mother at home, and she meets a former colleague for a chat. The friend explains what <strong>practical support the local council</strong> can offer a carer: first an <strong>assessment of the mother&rsquo;s needs</strong>, then various kinds of financial and practical help. You complete a set of notes with <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two friends &mdash; a woman who has left work to become a full-time carer for her mother, and a former colleague from her office who happens to know how the council system works. Very informal, lots of everyday spoken English.</p><p><strong>The situation 情境:</strong> 一位女士为了照顾年迈的母亲辞去了工作，感觉与朋友同事渐渐疏远。老同事告诉她，当地议会（local council）可以为照护者提供实际帮助：先做一次"母亲需求评估"（assessment of needs），再根据评估结果提供交通费、家务帮助等支持。笔记按"好处→评估内容→可获得的支持"三段推进，答案顺序与录音一致。</p><p><strong>Task type:</strong> Notes completion (bulleted notes under three headings). Instruction: <strong>ONE WORD AND/OR A NUMBER</strong>. Every answer here is in fact a single word &mdash; writing two words scores zero.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The notes are laid out as a set of <strong>bullet points under three headings</strong> &mdash; what support gives the carer, the assessment, and the types of support offered. The headings move forward in the same order as the conversation, so once you have found Q1 you simply follow the bullets down the page. Notice that most gaps sit after a short signpost: &lsquo;<em>how much&hellip;</em>&rsquo;, &lsquo;<em>loss of&hellip;</em>&rsquo;, &lsquo;<em>preventing a&hellip;</em>&rsquo;, &lsquo;<em>help to reduce&hellip;</em>&rsquo;. Read those signposts first and decide the word type: &lsquo;how much&rsquo; wants an uncountable noun, &lsquo;a&rsquo; wants a singular countable noun, &lsquo;(6) her&rsquo; wants an <strong>-ing</strong> form because it is the subject of a phrase. Predicting the grammar stops you writing a word that cannot possibly fit.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>time (Q2) vs a break (Q1)</b> &mdash; both are about time. Q1 is what the carer <em>gains</em> (&lsquo;they sometimes need a break&rsquo;); Q2 is what the assessor <em>asks about</em> (&lsquo;the amount of <em>time</em> you spend&rsquo;).</li><li><b>dressing is printed on the paper</b> &mdash; &lsquo;help with getting dressed&rsquo; is the example already given, so do NOT write <em>dressing</em> for Q3. Keep listening: the answer is the woman&rsquo;s own addition, <em>shower</em>.</li><li><b>money (Q4)</b> is hidden inside &lsquo;whether she can <em>cope using money</em>&rsquo; &mdash; the note says &lsquo;dealing with&rsquo;, which is the paraphrase of &lsquo;cope with&rsquo;.</li><li><b>lifting (Q6)</b> must be the <em>-ing</em> form. The audio says &lsquo;<em>Lifting</em> her, for example&rsquo;, but many candidates write the bare verb <em>lift</em> and lose the mark.</li><li><b>petrol vs insurance (Q9)</b> &mdash; the note already prints &lsquo;fuel&rsquo;, which is petrol. The second, extra item is <em>insurance</em>. Two claimable items are mentioned; only one is missing.</li><li><b>stress (Q10)</b> &mdash; the audio says &lsquo;minimize <em>it</em>&rsquo;, using a pronoun. You must look back one sentence to find what <em>it</em> refers to.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">carer</span></td><td><span class="pos">n.</span></td><td>a person who looks after a sick, old or disabled family member</td><td class="zh">照护者；看护人</td><td>&ldquo;They realize that <em>carers</em> sometimes need time for other responsibilities.&rdquo;</td><td class="note">The key topic word. British English; American English says &lsquo;caregiver&rsquo;. It appears in two of the three note headings.</td></tr>
+<tr><td><span class="word">council</span></td><td><span class="pos">n.</span></td><td>the local government of a town or area</td><td class="zh">（地方）议会；市政当局</td><td>&ldquo;Have you tried to get any support from the local <em>council</em>?&rdquo;</td><td class="note">Council = the organisation giving the support in this whole recording. Spelling trap: coun-c-i-l, not &lsquo;councel&rsquo;.</td></tr>
+<tr><td><span class="word">break</span></td><td><span class="pos">n.</span></td><td>a short period of rest away from work or duty</td><td class="zh">休息；歇一歇</td><td>&ldquo;They sometimes need a <em>break</em>.&rdquo;</td><td class="note"><strong>Answer to Q1.</strong> Singular because the note prints &lsquo;a ___&rsquo;. The audio does not say &lsquo;rest&rsquo; or &lsquo;holiday&rsquo;.</td></tr>
+<tr><td><span class="word">relieved</span></td><td><span class="pos">adj.</span></td><td>glad because a worry or difficulty has gone</td><td class="zh">如释重负的；松了一口气</td><td>&ldquo;You must be <em>relieved</em> to have more time to look after your mother.&rdquo;</td><td class="note">A feelings word used early in the conversation &mdash; useful for tone questions, not an answer here.</td></tr>
+<tr><td><span class="word">cheerful</span></td><td><span class="pos">adj.</span></td><td>happy and positive in manner</td><td class="zh">开朗的；乐观的</td><td>&ldquo;She&rsquo;s very <em>cheerful</em>, but she needs a lot of help.&rdquo;</td><td class="note">Note the &lsquo;but&rsquo;. Positive + but + problem is a classic Part 1 pattern; the answer usually follows the &lsquo;but&rsquo;.</td></tr>
+<tr><td><span class="word">responsibility</span></td><td><span class="pos">n.</span></td><td>a duty that you must deal with</td><td class="zh">责任；职责</td><td>&ldquo;Carers sometimes need time for all the other <em>responsibilities</em> they have.&rdquo;</td><td class="note">This word is printed on the question paper above Q1, so it tells you where the recording has reached.</td></tr>
+<tr><td><span class="word">assessment</span></td><td><span class="pos">n.</span></td><td>an official judgement of what someone needs or how good something is</td><td class="zh">评估；鉴定</td><td>&ldquo;You&rsquo;d have to have an <em>assessment</em> of your mother&rsquo;s needs.&rdquo;</td><td class="note">The word that starts the second section of the notes (Q2&ndash;Q7). Hearing it tells you Q1 has gone.</td></tr>
+<tr><td><span class="word">eligible</span></td><td><span class="pos">adj.</span></td><td>allowed to have or do something because you meet the conditions</td><td class="zh">有资格的；符合条件的</td><td>&ldquo;Once they&rsquo;ve done this assessment, if I&rsquo;m <em>eligible</em>, what happens next?&rdquo;</td><td class="note">This question moves the recording into the third section (Q8&ndash;Q10). A useful signal word.</td></tr>
+<tr><td><span class="word">task</span></td><td><span class="pos">n.</span></td><td>a piece of work that has to be done</td><td class="zh">任务；活儿</td><td>&ldquo;They&rsquo;ll probably ask you what sorts of <em>tasks</em> you do for your mother.&rdquo;</td><td class="note">Printed on the paper as &lsquo;what types of tasks are involved&rsquo;; the audio says &lsquo;what sorts of tasks&rsquo; &mdash; types = sorts.</td></tr>
+<tr><td><span class="word">shower</span></td><td><span class="pos">n.</span></td><td>a wash under a spray of water; the equipment for this</td><td class="zh">淋浴</td><td>&ldquo;I help her get into the <em>shower</em> in the morning.&rdquo;</td><td class="note"><strong>Answer to Q3.</strong> The note says &lsquo;helping her have a ___&rsquo; = &lsquo;help her get into the&hellip;&rsquo;.</td></tr>
+<tr><td><span class="word">cope</span></td><td><span class="pos">v.</span></td><td>to deal successfully with a difficult situation</td><td class="zh">应付；处理</td><td>&ldquo;Whether she can <em>cope</em> using money.&rdquo;</td><td class="note">Paraphrase family: cope with = deal with = manage. This is the bridge to the answer <em>money</em> (Q4).</td></tr>
+<tr><td><span class="word">memory</span></td><td><span class="pos">n.</span></td><td>the ability to remember things</td><td class="zh">记忆力</td><td>&ldquo;She&rsquo;s started to have quite bad problems with her <em>memory</em>.&rdquo;</td><td class="note"><strong>Answer to Q5.</strong> The paper says &lsquo;loss of ___&rsquo;; the audio says &lsquo;problems with&hellip;&rsquo;. Uncountable here &mdash; do not write &lsquo;memories&rsquo;.</td></tr>
+<tr><td><span class="word">lift</span></td><td><span class="pos">v.</span></td><td>to raise something or someone up</td><td class="zh">抬起；举起</td><td>&ldquo;<em>Lifting</em> her, for example.&rdquo;</td><td class="note"><strong>Answer to Q6 is the -ing form: lifting.</strong> The note reads &lsquo;(6) her&rsquo;, so a gerund is the only grammatical fit.</td></tr>
+<tr><td><span class="word">fall</span></td><td><span class="pos">n.</span></td><td>an accident in which a person drops to the ground</td><td class="zh">摔倒；跌倒</td><td>&ldquo;How to avoid the possibility of your mum having a <em>fall</em>.&rdquo;</td><td class="note"><strong>Answer to Q7.</strong> &lsquo;Avoid the possibility of&rsquo; = &lsquo;preventing&rsquo;. Singular, because the note prints &lsquo;a ___&rsquo;.</td></tr>
+<tr><td><span class="word">financially</span></td><td><span class="pos">adv.</span></td><td>in a way that relates to money</td><td class="zh">在经济上；财务上</td><td>&ldquo;They might support you <em>financially</em>.&rdquo;</td><td class="note">This adverb opens the last note section: everything after it is about money.</td></tr>
+<tr><td><span class="word">transport</span></td><td><span class="pos">n.</span></td><td>the system or cost of moving people from place to place</td><td class="zh">交通；运输</td><td>&ldquo;They might help you with <em>transport</em> costs.&rdquo;</td><td class="note">Printed on the paper, so use it as your landmark for Q8.</td></tr>
+<tr><td><span class="word">taxi</span></td><td><span class="pos">n.</span></td><td>a car with a driver that you pay to take you somewhere</td><td class="zh">出租车</td><td>&ldquo;If you have to get a <em>taxi</em> to take your mother for an appointment.&rdquo;</td><td class="note"><strong>Answer to Q8.</strong> Very easy word, very easy to miss &mdash; it is said once, quickly, inside a long example.</td></tr>
+<tr><td><span class="word">appointment</span></td><td><span class="pos">n.</span></td><td>an arranged time to see a doctor or other professional</td><td class="zh">预约；（就诊）预约</td><td>&ldquo;To take your mother for an <em>appointment</em>.&rdquo;</td><td class="note">Health-topic vocabulary. Here it is only context around the answer <em>taxi</em>.</td></tr>
+<tr><td><span class="word">claim</span></td><td><span class="pos">v.</span></td><td>to ask officially for money you have a right to</td><td class="zh">申领；索赔</td><td>&ldquo;Could I <em>claim</em> for the petrol?&rdquo;</td><td class="note">&lsquo;Claim for X&rsquo; signals a money item. Both petrol and insurance are claimed &mdash; only one is the gap.</td></tr>
+<tr><td><span class="word">petrol</span></td><td><span class="pos">n.</span></td><td>the liquid fuel used in cars (US: gasoline)</td><td class="zh">汽油</td><td>&ldquo;Could I claim for the <em>petrol</em>?&rdquo;</td><td class="note">The note already prints <em>fuel</em>, which means petrol. Writing &lsquo;petrol&rsquo; for Q9 is therefore wrong.</td></tr>
+<tr><td><span class="word">insurance</span></td><td><span class="pos">n.</span></td><td>money paid regularly so a company will pay if there is an accident</td><td class="zh">保险</td><td>&ldquo;And you can claim for the <em>insurance</em>, too.&rdquo;</td><td class="note"><strong>Answer to Q9.</strong> Spelling: in-s-u-r-a-<strong>n</strong>-c-e. The word &lsquo;too&rsquo; tells you it is the extra, second item.</td></tr>
+<tr><td><span class="word">housework</span></td><td><span class="pos">n.</span></td><td>the cleaning and tidying done in a home</td><td class="zh">家务</td><td>&ldquo;If you need help with the <em>housework</em>, they can arrange for someone to come.&rdquo;</td><td class="note">One word, no space. Printed on the paper here, but a common gap word in other tests.</td></tr>
+<tr><td><span class="word">stress</span></td><td><span class="pos">n.</span></td><td>worry and tension caused by a difficult situation</td><td class="zh">压力；精神紧张</td><td>&ldquo;It seems to me you&rsquo;re under quite a bit of <em>stress</em>.&rdquo;</td><td class="note"><strong>Answer to Q10.</strong> The note says &lsquo;help to reduce ___&rsquo;; the audio says &lsquo;advice on how to minimize <em>it</em>&rsquo;. Follow the pronoun back.</td></tr>
+<tr><td><span class="word">minimize</span></td><td><span class="pos">v.</span></td><td>to make something as small as possible</td><td class="zh">使减到最少；尽量减少</td><td>&ldquo;They may be able to give you some advice on how to <em>minimize</em> it.&rdquo;</td><td class="note">Direct paraphrase of &lsquo;reduce&rsquo; on the question paper &mdash; the trigger for Q10.</td></tr>
+<tr><td><span class="word">lose touch with</span></td><td><span class="pos">phr.</span></td><td>to stop having contact with someone</td><td class="zh">失去联系</td><td>&ldquo;I&rsquo;m <em>losing touch with</em> my friends and colleagues.&rdquo;</td><td class="note">The opening line, which sets up why the carer needs &lsquo;a break&rsquo; (Q1).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">lose touch with someone</span></td><td>stop being in contact with them</td><td class="zh">与某人失去联系</td></tr>
+<tr><td><span class="phrase">we really miss you in the office</span></td><td>we are sorry you are no longer at work with us</td><td class="zh">办公室里大家都很想你</td></tr>
+<tr><td><span class="phrase">look after your mother</span></td><td>take care of your mother</td><td class="zh">照顾你母亲</td></tr>
+<tr><td><span class="phrase">get support from the local council</span></td><td>receive help provided by local government</td><td class="zh">从地方议会获得支持</td></tr>
+<tr><td><span class="phrase">practical support</span></td><td>real, useful help rather than just sympathy</td><td class="zh">实际的帮助；实用支持</td></tr>
+<tr><td><span class="phrase">need a break</span></td><td>need a period of rest</td><td class="zh">需要休息一下</td></tr>
+<tr><td><span class="phrase">How do I go about getting this support?</span></td><td>What steps should I take to get it?</td><td class="zh">我该怎么去申请这项支持？</td></tr>
+<tr><td><span class="phrase">an assessment of your mother&rsquo;s needs</span></td><td>an official check of what she requires</td><td class="zh">对你母亲需求的评估</td></tr>
+<tr><td><span class="phrase">come round and talk to you</span></td><td>visit your home to discuss things</td><td class="zh">上门来跟你谈</td></tr>
+<tr><td><span class="phrase">for a start</span></td><td>as the first thing / to begin with</td><td class="zh">首先；一开始</td></tr>
+<tr><td><span class="phrase">the amount of time you spend</span></td><td>how many hours you use</td><td class="zh">你花费的时间量</td></tr>
+<tr><td><span class="phrase">help with getting dressed</span></td><td>assist someone to put on clothes</td><td class="zh">帮忙穿衣服</td></tr>
+<tr><td><span class="phrase">get into the shower</span></td><td>step into the shower to wash</td><td class="zh">进去洗澡</td></tr>
+<tr><td><span class="phrase">cope using money</span></td><td>manage handling cash and payments</td><td class="zh">应付用钱这件事</td></tr>
+<tr><td><span class="phrase">becoming a bit of a problem</span></td><td>starting to be difficult</td><td class="zh">开始有点成问题了</td></tr>
+<tr><td><span class="phrase">she used to be very good at it</span></td><td>she was skilled at it in the past</td><td class="zh">她以前很在行</td></tr>
+<tr><td><span class="phrase">problems with her memory</span></td><td>difficulty remembering things</td><td class="zh">记忆方面的问题</td></tr>
+<tr><td><span class="phrase">I&rsquo;d be in real trouble</span></td><td>I would be in a very difficult situation</td><td class="zh">我就麻烦大了</td></tr>
+<tr><td><span class="phrase">avoid the possibility of a fall</span></td><td>stop a fall from happening</td><td class="zh">避免摔倒的可能</td></tr>
+<tr><td><span class="phrase">support you financially</span></td><td>give you money</td><td class="zh">在经济上支持你</td></tr>
+<tr><td><span class="phrase">claim for the petrol</span></td><td>ask to be repaid the cost of fuel</td><td class="zh">申领汽油费</td></tr>
+<tr><td><span class="phrase">once or twice a week</span></td><td>one or two times each week</td><td class="zh">每周一两次</td></tr>
+<tr><td><span class="phrase">under quite a bit of stress</span></td><td>experiencing a lot of pressure</td><td class="zh">压力相当大</td></tr>
+<tr><td><span class="phrase">get in touch with the council</span></td><td>contact the council</td><td class="zh">联系议会</td></tr>
+<tr><td><span class="phrase">straight away</span></td><td>immediately</td><td class="zh">马上；立刻</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Notes Completion (the real exam gaps)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the ten gaps from the Part 1 notes, rewritten as full sentences so you can see the grammar around each one. Write <strong>ONE WORD</strong> in each gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>As well as time for other responsibilities, support can give the carer a <input type="text" class="blank" id="b1" data-answer="break" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The assessment includes a discussion of how much <input type="text" class="blank" id="b2" data-answer="time" placeholder="______"> the caring involves.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Tasks may include helping the mother have a <input type="text" class="blank" id="b3" data-answer="shower" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Tasks may also include dealing with <input type="text" class="blank" id="b4" data-answer="money" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>One especially difficult aspect of caring is her loss of <input type="text" class="blank" id="b5" data-answer="memory" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Another difficult aspect is <input type="text" class="blank" id="b6" data-answer="lifting" placeholder="______"> her.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>A third difficult aspect is preventing a <input type="text" class="blank" id="b7" data-answer="fall" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Transport costs may include the cost of a <input type="text" class="blank" id="b8" data-answer="taxi" placeholder="______">.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Car-related costs include fuel and <input type="text" class="blank" id="b9" data-answer="insurance" placeholder="______">.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>The council can also help the carer to reduce <input type="text" class="blank" id="b10" data-answer="stress" placeholder="______">.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The notes control the grammar of every gap. Write the correct form of the word in CAPITALS &mdash; a right idea in the wrong form still scores zero.</p><div class="ex-item"><span class="ex-num">1.</span><label>The note reads &lsquo;(6) her&rsquo;, so you need the -ing form: <input type="text" class="blank" id="b11" data-answer="lifting" placeholder="______"> (LIFT).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The council will carry out an <input type="text" class="blank" id="b12" data-answer="assessment" placeholder="______"> (ASSESS) of the mother&rsquo;s needs.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The friend says the council may support her <input type="text" class="blank" id="b13" data-answer="financially" placeholder="______"> (FINANCE).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The carer wants to know whether she is <input type="text" class="blank" id="b14" data-answer="eligible" placeholder="______"> (ELIGIBILITY) for help.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Carers have many other <input type="text" class="blank" id="b15" data-answer="responsibilities" placeholder="______"> (RESPONSIBLE) besides caring.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The note prints &lsquo;a ___&rsquo;, so Q7 must be the singular noun <input type="text" class="blank" id="b16" data-answer="fall" placeholder="______"> (FALLING).<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The mother is no longer able to <input type="text" class="blank" id="b17" data-answer="cope" placeholder="______"> (COPING) with using money.<span class="feedback" id="fb17"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word below is said in this recording, and every one is regularly misspelled by candidates. Type the full, correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>i n s u r _ n c e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="insurance" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>c o u n c _ l &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="council" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>a s s e s s m _ n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="assessment" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>r e s p o n s i b _ l i t i e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="responsibilities" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>a p p o _ n t m e n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="appointment" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>h o u s e w _ r k &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="housework" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>c o l l e _ g u e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="colleagues" placeholder="______"><span class="feedback" id="fb24"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Type Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read the note wording only, then write the answer that fits both the meaning AND the grammar. This is exactly what you do in the 30 seconds before the audio starts.</p><div class="ex-item"><span class="ex-num">1.</span><label>&lsquo;how much ___ the caring involves&rsquo; needs an uncountable noun: <input type="text" class="blank" id="b25" data-answer="time" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>&lsquo;dealing with ___&rsquo; needs an uncountable noun about payment: <input type="text" class="blank" id="b26" data-answer="money" placeholder="______"><span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&lsquo;loss of ___&rsquo; needs an uncountable noun about the mind: <input type="text" class="blank" id="b27" data-answer="memory" placeholder="______"><span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;preventing a ___&rsquo; needs a singular countable noun about an accident: <input type="text" class="blank" id="b28" data-answer="fall" placeholder="______"><span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>&lsquo;cost of a ___&rsquo; needs a singular countable noun about transport: <input type="text" class="blank" id="b29" data-answer="taxi" placeholder="______"><span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>&lsquo;help to reduce ___&rsquo; needs an uncountable noun about pressure: <input type="text" class="blank" id="b30" data-answer="stress" placeholder="______"><span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>&lsquo;helping her have a ___&rsquo; needs a singular countable noun about washing: <input type="text" class="blank" id="b31" data-answer="shower" placeholder="______"><span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the speakers actually say; on the right is the word the note requires. Make the jump yourself.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;They sometimes need a ___.&rdquo; &rarr; Note: this can give the carer a <input type="text" class="blank" id="b32" data-answer="break" placeholder="______"><span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;They&rsquo;d want to know the amount of ___ you spend.&rdquo; &rarr; Note: how much <input type="text" class="blank" id="b33" data-answer="time" placeholder="______"> the caring involves<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;I help her get into the ___ in the morning.&rdquo; &rarr; Note: helping her have a <input type="text" class="blank" id="b34" data-answer="shower" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;whether she can cope using ___&rdquo; &rarr; Note: dealing with <input type="text" class="blank" id="b35" data-answer="money" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;quite bad problems with her ___&rdquo; &rarr; Note: loss of <input type="text" class="blank" id="b36" data-answer="memory" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;how to avoid the possibility of your mum having a ___&rdquo; &rarr; Note: preventing a <input type="text" class="blank" id="b37" data-answer="fall" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;you can claim for the ___, too&rdquo; &rarr; Note: fuel and <input type="text" class="blank" id="b38" data-answer="insurance" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Audio: &ldquo;advice on how to minimize it&rdquo; &rarr; Note: help to reduce <input type="text" class="blank" id="b39" data-answer="stress" placeholder="______"><span class="feedback" id="fb39"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q1</span></td><td>This can give the carer&hellip; a <b>(1)</b></td><td><b>SINGULAR NOUN &mdash; something a tired person needs</b></td><td>Follows &lsquo;time for other responsibilities&rsquo;. Listen for &lsquo;and also that they sometimes need&hellip;&rsquo;</td><td class="note">break</td></tr>
+<tr><td><span class="word">Q2</span></td><td>how much <b>(2)</b> the caring involves</td><td><b>UNCOUNTABLE NOUN &mdash; &lsquo;how much&rsquo; forbids a plural</b></td><td>&lsquo;how much&rsquo; &rarr; listen for &lsquo;the <em>amount of</em>&hellip;&rsquo;</td><td class="note">time</td></tr>
+<tr><td><span class="word">Q3</span></td><td>helping her have a <b>(3)</b></td><td><b>SINGULAR NOUN &mdash; a daily personal-care activity</b></td><td>The example &lsquo;dressing&rsquo; is already printed. Wait for the woman to add her own example.</td><td class="note">shower</td></tr>
+<tr><td><span class="word">Q4</span></td><td>dealing with <b>(4)</b></td><td><b>NOUN &mdash; something people manage or handle</b></td><td>&lsquo;dealing with&rsquo; = &lsquo;cope with / cope using&rsquo;</td><td class="note">money</td></tr>
+<tr><td><span class="word">Q5</span></td><td>loss of <b>(5)</b></td><td><b>UNCOUNTABLE NOUN &mdash; an ability that is disappearing</b></td><td>&lsquo;loss of&rsquo; = &lsquo;problems with&rsquo; in the audio</td><td class="note">memory</td></tr>
+<tr><td><span class="word">Q6</span></td><td><b>(6)</b> her</td><td><b>GERUND (-ing) &mdash; it is the subject of the phrase</b></td><td>A physical difficulty. Listen after &lsquo;any physical difficulties&hellip;?&rsquo;</td><td class="note">lifting</td></tr>
+<tr><td><span class="word">Q7</span></td><td>preventing a <b>(7)</b></td><td><b>SINGULAR NOUN &mdash; a household accident</b></td><td>&lsquo;preventing&rsquo; = &lsquo;avoid the possibility of&rsquo;</td><td class="note">fall</td></tr>
+<tr><td><span class="word">Q8</span></td><td>transport costs, e.g. cost of a <b>(8)</b></td><td><b>SINGULAR NOUN &mdash; a means of transport</b></td><td>Comes right after &lsquo;they might help you with transport costs, like&hellip;&rsquo;</td><td class="note">taxi</td></tr>
+<tr><td><span class="word">Q9</span></td><td>car-related costs, e.g. fuel and <b>(9)</b></td><td><b>NOUN &mdash; a second car expense</b></td><td>&lsquo;fuel&rsquo; is already printed = petrol. Listen for the word after &lsquo;and you can claim for the&hellip; too&rsquo;</td><td class="note">insurance</td></tr>
+<tr><td><span class="word">Q10</span></td><td>help to reduce <b>(10)</b></td><td><b>UNCOUNTABLE NOUN &mdash; a negative feeling</b></td><td>&lsquo;reduce&rsquo; = &lsquo;minimize&rsquo;. The audio uses the pronoun &lsquo;it&rsquo; &mdash; look back one sentence.</td><td class="note">stress</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;This can give the carer&hellip; a <b>(1)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Carers sometimes need <b>time for all the other responsibilities</b> they have&hellip; and also that they sometimes <b>need a break</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The first bullet (&lsquo;time for other responsibilities&rsquo;) is printed on the paper. The word &lsquo;also&rsquo; tells you the second bullet is coming.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence about a time you really needed a break&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;how much <b>(2)</b> the caring involves&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;They&rsquo;d want to know <b>the amount of time you spend</b> looking after your mother every day.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">how much X = the amount of X. &lsquo;How much&rsquo; also proves the noun is uncountable.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;How much money do you spend?&rsquo; using &lsquo;the amount of&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;helping her have a <b>(3)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Friend: &ldquo;if she needs help with <b>getting dressed</b>, for example&rdquo; &mdash; Woman: &ldquo;And also, I <b>help her get into the shower</b> in the morning.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The example in the audio (dressing) is already printed on the paper; the ANSWER is the extra item the other speaker adds.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Add an extra example to this sentence: &lsquo;I help my grandmother with cooking, and also&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;dealing with <b>(4)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;They&rsquo;ll probably ask you&hellip; whether she can <b>cope using money</b>.&rdquo; &mdash; &ldquo;That&rsquo;s becoming a bit of a problem.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">deal with = cope with = manage. The confirmation (&lsquo;that&rsquo;s becoming a problem&rsquo;) tells you this really is a difficulty.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;can&rsquo;t cope with&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>(6)</b> her&rdquo; and &ldquo;preventing a <b>(7)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Friend: &ldquo;are there any physical difficulties&hellip;? <b>Lifting</b> her, for example.&rdquo;&hellip; &ldquo;advice about&hellip; how to <b>avoid the possibility</b> of your mum <b>having a fall</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">preventing = avoiding the possibility of. And the note layout &lsquo;(6) her&rsquo; forces the -ing form <em>lifting</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;We want to avoid the possibility of accidents&rsquo; using &lsquo;prevent&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;car-related costs, e.g. fuel and <b>(9)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Woman: &ldquo;could I claim for the <b>petrol</b>?&rdquo; Friend: &ldquo;You could. And you can claim for the <b>insurance</b>, too.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">fuel = petrol, so petrol is already on the paper. &lsquo;too&rsquo; introduces the missing second item.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;and&hellip; too&rsquo; to add a second item&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;help to reduce <b>(10)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;it seems to me you&rsquo;re <b>under quite a bit of stress</b>&hellip; they may be able to give you some advice on how to <b>minimize it</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">reduce = minimize. But &lsquo;it&rsquo; is a pronoun &mdash; the actual answer word was said one sentence earlier.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write two sentences where the second one refers back with &lsquo;it&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;I&rsquo;m losing touch with my friends and colleagues&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;they offer different kinds of practical support&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;you&rsquo;d have to have an assessment of your mother&rsquo;s needs&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;the amount of time you spend looking after your mother every day&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;I help her get into the shower in the morning&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;how to avoid the possibility of your mum having a fall&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;if you have to get a taxi to take your mother for an appointment&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;you&rsquo;re under quite a bit of stress&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why has the woman left her job?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. She was made redundant by the office.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. She needed more time to care for her mother.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. She was ill and needed a break.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. She wanted to work for the local council.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What does &lsquo;a break&rsquo; mean in this recording?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a damaged object</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. a period of rest</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. a school holiday</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. a change of job</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which phrase in the audio matches &lsquo;how much (2) the caring involves&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. all the other responsibilities they have</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. the amount of time you spend looking after your mother</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. what sorts of tasks you do</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. once or twice a week</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why is &lsquo;dressing&rsquo; NOT the answer to Q3?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. The recording never mentions it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It is already printed on the question paper as an example.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It is the wrong word form.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. The mother can dress herself.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does &lsquo;whether she can cope using money&rsquo; tell you?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. The mother has no money.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. The mother finds handling money difficult now.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. The council will pay all her bills.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. The daughter does all the shopping.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">The notes say &lsquo;(6) her&rsquo;. What form must the answer take?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. the base verb: lift</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. the past tense: lifted</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. the -ing form: lifting</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. a plural noun: lifts</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Which words in the audio signal the answer to Q7 (&lsquo;preventing a ___&rsquo;)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. I&rsquo;m afraid of hurting my back</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. she&rsquo;s quite heavy</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. how to avoid the possibility of your mum having a fall</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. they can give you advice about that</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What is the function of the woman&rsquo;s question &lsquo;if I&rsquo;m eligible, what happens next?&rsquo;</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. It closes the conversation.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. It signals the move from the assessment to the types of support.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. It introduces the mother&rsquo;s memory problems.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. It repeats an earlier question.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why is &lsquo;petrol&rsquo; wrong for Q9?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. The speaker never says it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It is two words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. &lsquo;Fuel&rsquo; is already printed on the paper and means the same thing.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The council does not pay for it.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which word does &lsquo;minimize it&rsquo; refer back to?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. housework</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. stress</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. insurance</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. the assessment</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How often can the council arrange help with housework?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. every day</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. once or twice a week</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. once a month</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. only in emergencies</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the best way to work through this set of notes?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Write down every noun you hear and choose later.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Read the three headings first and predict the word type for each bullet.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Only listen for numbers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Wait for the second listening.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1&ndash;10</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">break</div><div class="answer-note">&lsquo;They realize that carers sometimes need time for all the other responsibilities they have&hellip; and also that they sometimes need a <em>break</em>.&rsquo; The first bullet is already printed, so the answer is the second idea.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">time</div><div class="answer-note">&lsquo;They&rsquo;d want to know the amount of <em>time</em> you spend looking after your mother every day.&rsquo; how much = the amount of.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">shower</div><div class="answer-note">&lsquo;I help her get into the <em>shower</em> in the morning.&rsquo; &lsquo;Dressing&rsquo; is printed on the paper as the given example, so it cannot be the answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">money</div><div class="answer-note">&lsquo;They&rsquo;ll probably ask you&hellip; whether she can cope using <em>money</em>.&rsquo; dealing with = cope with.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">memory</div><div class="answer-note">&lsquo;She&rsquo;s started to have quite bad problems with her <em>memory</em>.&rsquo; problems with = loss of. Uncountable &mdash; not &lsquo;memories&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">lifting</div><div class="answer-note">&lsquo;Are there any physical difficulties you have caring for her? <em>Lifting</em> her, for example.&rsquo; The note reads &lsquo;(6) her&rsquo;, so the -ing form is required.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">fall</div><div class="answer-note">&lsquo;They can give you advice&hellip; about how to avoid the possibility of your mum having a <em>fall</em>.&rsquo; avoid the possibility of = preventing.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">taxi</div><div class="answer-note">&lsquo;They might help you with transport costs, like if you have to get a <em>taxi</em> to take your mother for an appointment.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">insurance</div><div class="answer-note">&lsquo;Could I claim for the petrol?&rsquo; &mdash; &lsquo;You could. And you can claim for the <em>insurance</em>, too.&rsquo; Fuel (= petrol) is already printed.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">stress</div><div class="answer-note">&lsquo;It seems to me you&rsquo;re under quite a bit of <em>stress</em>&hellip; advice on how to minimize it.&rsquo; reduce = minimize; &lsquo;it&rsquo; = stress.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Notes Completion (the real exam gaps)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">break</div><div class="answer-note">As well as time for other responsibilities, support can give the carer a</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">time</div><div class="answer-note">The assessment includes a discussion of how much</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">shower</div><div class="answer-note">Tasks may include helping the mother have a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">money</div><div class="answer-note">Tasks may also include dealing with</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">memory</div><div class="answer-note">One especially difficult aspect of caring is her loss of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">lifting</div><div class="answer-note">Another difficult aspect is</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">fall</div><div class="answer-note">A third difficult aspect is preventing a</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">taxi</div><div class="answer-note">Transport costs may include the cost of a</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">insurance</div><div class="answer-note">Car-related costs include fuel and</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">stress</div><div class="answer-note">The council can also help the carer to reduce</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">lifting</div><div class="answer-note">The note reads &lsquo;(6) her&rsquo;, so you need the -ing form:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">assessment</div><div class="answer-note">The council will carry out an</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">financially</div><div class="answer-note">The friend says the council may support her</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">eligible</div><div class="answer-note">The carer wants to know whether she is</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">responsibilities</div><div class="answer-note">Carers have many other</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">fall</div><div class="answer-note">The note prints &lsquo;a ___&rsquo;, so Q7 must be the singular noun</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">cope</div><div class="answer-note">The mother is no longer able to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">insurance</div><div class="answer-note">i n s u r _ n c e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">council</div><div class="answer-note">c o u n c _ l  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">assessment</div><div class="answer-note">a s s e s s m _ n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">responsibilities</div><div class="answer-note">r e s p o n s i b _ l i t i e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">appointment</div><div class="answer-note">a p p o _ n t m e n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">housework</div><div class="answer-note">h o u s e w _ r k  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">colleagues</div><div class="answer-note">c o l l e _ g u e s  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Type Prediction</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">time</div><div class="answer-note">&lsquo;how much ___ the caring involves&rsquo; needs an uncountable noun:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">money</div><div class="answer-note">&lsquo;dealing with ___&rsquo; needs an uncountable noun about payment:</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">memory</div><div class="answer-note">&lsquo;loss of ___&rsquo; needs an uncountable noun about the mind:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">fall</div><div class="answer-note">&lsquo;preventing a ___&rsquo; needs a singular countable noun about an accident:</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">taxi</div><div class="answer-note">&lsquo;cost of a ___&rsquo; needs a singular countable noun about transport:</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">stress</div><div class="answer-note">&lsquo;help to reduce ___&rsquo; needs an uncountable noun about pressure:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">shower</div><div class="answer-note">&lsquo;helping her have a ___&rsquo; needs a singular countable noun about washing:</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">break</div><div class="answer-note">Audio: &ldquo;They sometimes need a ___.&rdquo; &rarr; Note: this can give the carer a</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">time</div><div class="answer-note">Audio: &ldquo;They&rsquo;d want to know the amount of ___ you spend.&rdquo; &rarr; Note: how much</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">shower</div><div class="answer-note">Audio: &ldquo;I help her get into the ___ in the morning.&rdquo; &rarr; Note: helping her have a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">money</div><div class="answer-note">Audio: &ldquo;whether she can cope using ___&rdquo; &rarr; Note: dealing with</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">memory</div><div class="answer-note">Audio: &ldquo;quite bad problems with her ___&rdquo; &rarr; Note: loss of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">fall</div><div class="answer-note">Audio: &ldquo;how to avoid the possibility of your mum having a ___&rdquo; &rarr; Note: preventing a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">insurance</div><div class="answer-note">Audio: &ldquo;you can claim for the ___, too&rdquo; &rarr; Note: fuel and</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">stress</div><div class="answer-note">Audio: &ldquo;advice on how to minimize it&rdquo; &rarr; Note: help to reduce</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">break &mdash; SINGULAR NOUN &mdash; something a tired person needs</div><div class="answer-note">Follows &lsquo;time for other responsibilities&rsquo;. Listen for &lsquo;and also that they sometimes need&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">time &mdash; UNCOUNTABLE NOUN &mdash; &lsquo;how much&rsquo; forbids a plural</div><div class="answer-note">&lsquo;how much&rsquo; &rarr; listen for &lsquo;the <em>amount of</em>&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">shower &mdash; SINGULAR NOUN &mdash; a daily personal-care activity</div><div class="answer-note">The example &lsquo;dressing&rsquo; is already printed. Wait for the woman to add her own example.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">money &mdash; NOUN &mdash; something people manage or handle</div><div class="answer-note">&lsquo;dealing with&rsquo; = &lsquo;cope with / cope using&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">memory &mdash; UNCOUNTABLE NOUN &mdash; an ability that is disappearing</div><div class="answer-note">&lsquo;loss of&rsquo; = &lsquo;problems with&rsquo; in the audio</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">lifting &mdash; GERUND (-ing) &mdash; it is the subject of the phrase</div><div class="answer-note">A physical difficulty. Listen after &lsquo;any physical difficulties&hellip;?&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">fall &mdash; SINGULAR NOUN &mdash; a household accident</div><div class="answer-note">&lsquo;preventing&rsquo; = &lsquo;avoid the possibility of&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">taxi &mdash; SINGULAR NOUN &mdash; a means of transport</div><div class="answer-note">Comes right after &lsquo;they might help you with transport costs, like&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">insurance &mdash; NOUN &mdash; a second car expense</div><div class="answer-note">&lsquo;fuel&rsquo; is already printed = petrol. Listen for the word after &lsquo;and you can claim for the&hellip; too&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">stress &mdash; UNCOUNTABLE NOUN &mdash; a negative feeling</div><div class="answer-note">&lsquo;reduce&rsquo; = &lsquo;minimize&rsquo;. The audio uses the pronoun &lsquo;it&rsquo; &mdash; look back one sentence.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">I&rsquo;m losing touch with my friends and colleagues</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">they offer different kinds of practical support</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">you&rsquo;d have to have an assessment of your mother&rsquo;s needs</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">the amount of time you spend looking after your mother every day</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">I help her get into the shower in the morning</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">how to avoid the possibility of your mum having a fall</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">if you have to get a taxi to take your mother for an appointment</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">you&rsquo;re under quite a bit of stress</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. She needed more time to care for her mother.</div><div class="answer-note">The colleague says &lsquo;you must be relieved to have more time to look after your mother&rsquo;. The word &lsquo;break&rsquo; in option C is a distractor from Q1.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. a period of rest</div><div class="answer-note">&lsquo;They sometimes need a break&rsquo; = a rest from caring. That is the answer to Q1, and it must be singular because the note prints &lsquo;a ___&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. the amount of time you spend looking after your mother</div><div class="answer-note">&lsquo;How much&rsquo; = &lsquo;the amount of&rsquo;, and it also proves the noun must be uncountable, so <em>time</em> fits.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. It is already printed on the question paper as an example.</div><div class="answer-note">The paper lists &lsquo;help with dressing&rsquo; above the gap. Words already printed can never be the answer &mdash; keep listening for the speaker&rsquo;s extra example, <em>shower</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. The mother finds handling money difficult now.</div><div class="answer-note">The woman replies &lsquo;that&rsquo;s becoming a bit of a problem. She used to be very good at it, but not any more.&rsquo; This confirms <em>money</em> for Q4.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. the -ing form: lifting</div><div class="answer-note">The phrase is the subject of a bullet point, so a gerund is needed. The audio also says &lsquo;<em>Lifting</em> her, for example&rsquo; &mdash; copy exactly what you hear.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. how to avoid the possibility of your mum having a fall</div><div class="answer-note">&lsquo;Avoid the possibility of&rsquo; is the paraphrase of &lsquo;preventing&rsquo;. Options A and B are about the carer&rsquo;s back, which belongs to Q6.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. It signals the move from the assessment to the types of support.</div><div class="answer-note">This is a section-change signal: everything after it belongs to Q8&ndash;Q10 on the second page of the notes.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. &lsquo;Fuel&rsquo; is already printed on the paper and means the same thing.</div><div class="answer-note">The note reads &lsquo;fuel and (9)&rsquo;. Fuel = petrol, so the missing item is the other one the friend adds: <em>insurance</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. stress</div><div class="answer-note">One sentence earlier: &lsquo;you&rsquo;re under quite a bit of stress&rsquo;. Reduce = minimize, so Q10 is <em>stress</em>. Pronouns often hide the link to the answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. once or twice a week</div><div class="answer-note">&lsquo;They can arrange for someone to come along once or twice a week.&rsquo; A frequency detail like this is not tested here, but the same phrasing is often a gap in other tests.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Read the three headings first and predict the word type for each bullet.</div><div class="answer-note">There is no second listening in IELTS. The headings (support / assessment / types of support) tell you where the recording is, and the small words (a, how much, loss of) tell you the grammar.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

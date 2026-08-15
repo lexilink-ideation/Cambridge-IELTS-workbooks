@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Listening Part 3</h1>
+    <h2>Theatre Programmes Project · Multiple Choice + Matching (Q21–30)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two students, <strong>Maya</strong> and <strong>Finn</strong>, are comparing notes on a joint project about <strong>theatre programmes</strong> (called <em>playbills</em> in the USA). They discuss how programmes are produced today, what happened in early British theatre, how eighteenth- and nineteenth-century programmes differed, and what changed during and after World War II. Finally they look at pictures of four specific programmes for their slides. Questions 21&ndash;26 are <strong>3-option multiple choice</strong>; questions 27&ndash;30 are <strong>matching</strong> (four shows, six possible comments A&ndash;F).</p></div><div class="card"><p><strong>Who is speaking?</strong> Two university students &mdash; <b>Maya</b> and <b>Finn</b> &mdash; planning a joint presentation. They agree far more often than they disagree, so the exam tests whether you notice <em>who</em> introduces each idea and whether the partner confirms it (&ldquo;That&rsquo;s right&rdquo;) or softens it.</p><p><strong>The situation 情境:</strong> Maya 和 Finn 在讨论他们关于「剧院节目单 theatre programmes（美国叫 playbills）」的小组作业：现在的节目单由公司制作并靠广告赚钱；早期英国剧院的节目单相当于一份「合同」；18 世纪和 19 世纪的节目单各有优点；二战使英国节目单缩成一张对折的纸。最后他们挑选四份节目单的图片放进 PPT（Q27–30）。</p><p><strong>Task type:</strong> Q21&ndash;26 multiple choice, <b>A / B / C</b>. Q27&ndash;30 matching: four shows, <b>six</b> comments <b>A&ndash;F</b> &mdash; choose FOUR, so two letters are never used and no letter is repeated.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> Part 3 multiple choice is really a test of <em>who thinks what</em> and <em>how strongly</em>. Mark the stem verbs before you listen: <em>was pleased</em>, <em>was surprised</em>, <em>feels&hellip; should include</em>, <em>both think</em>, <em>doesn&rsquo;t fully understand</em>. Then listen for the matching attitude signal in the audio &mdash; &ldquo;I&rsquo;m glad&rdquo;, &ldquo;I hadn&rsquo;t realised&rdquo;, &ldquo;we should definitely include&rdquo;, &ldquo;that&rsquo;s right&rdquo;, &ldquo;what I don&rsquo;t really get is&hellip;&rdquo;. For the matching task (Q27&ndash;30), read all six options first and reduce each to <em>one</em> keyword: <em>controversial / a country / audiences / a project / insights / artwork</em>. The four shows come in the order printed, and two options are never used. 先把六个选项各压缩成一个关键词，再听。</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q21 &mdash; all three options are touched in three consecutive clauses.</b> He <em>struggled</em> to find useful websites (kills C), the topic <em>is</em> one of the module convenor&rsquo;s research areas (kills A), and &ldquo;<em>no one else on the course is doing the same as us</em>&rdquo; is what he is &ldquo;glad&rdquo; about &rarr; <b>B</b>.</li><li><b>Q22 &mdash; the mistaken belief is the OPPOSITE of what is said.</b> &ldquo;Contrary to what many people think, theatres <em>don&rsquo;t</em> hire people to do the programmes.&rdquo; So the wrong belief is that theatres pay companies &rarr; <b>A</b>. Advertising is mentioned, but never as &ldquo;more than previously&rdquo;.</li><li><b>Q23 &mdash; &ldquo;surprised&rdquo; is signalled by &ldquo;I hadn&rsquo;t realised&rdquo;.</b> The famous cast and the huge crowds are shared background. The new information is that naming an actor created an <em>agreement with the audience</em> that could be <em>broken</em> &rarr; <b>C</b> (a kind of contract).</li><li><b>Q24 &mdash; touring and outdoor streets are both in the audio.</b> The company &ldquo;arrived in a town&rdquo; (touring) and paraded &ldquo;around the streets&rdquo; (outdoors) &mdash; but the point Maya wants explained is <em>why</em> they had to advertise themselves: most people were illiterate &rarr; <b>A</b> (promoted their own plays).</li><li><b>Q25 &mdash; &ldquo;both think&rdquo; needs two voices.</b> Colour and variety of designs belong to the <em>nineteenth</em> century. Maya praises eighteenth-century programmes because &ldquo;they told the theatre-goers so many things&rdquo; and Finn <em>adds</em> writer, plot and history &rarr; <b>C</b> (more informative).</li><li><b>Q27&ndash;30 &mdash; two comments are never used.</b> Nothing in the discussion is called <em>controversial</em> (A) and nothing is said to have <em>attracted audiences</em> (C). If you are tempted by them, you have matched a word rather than a meaning.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">playbill</span></td><td><span class="pos">n.</span></td><td>the American word for a theatre programme</td><td class="zh">（美）演出节目单</td><td>&ldquo;I didn&rsquo;t know theatre programmes are called <em>playbills</em> in the USA.&rdquo;</td><td class="note">UK <em>programme</em> = US <em>playbill</em> / <em>program</em>. The word returns in Q26, where the USA is contrasted with the UK.</td></tr>
+<tr><td><span class="word">convenor</span></td><td><span class="pos">n.</span></td><td>the member of staff who organises and leads a course module</td><td class="zh">课程负责人</td><td>&ldquo;It is one of the research areas of the module <em>convenor</em>.&rdquo;</td><td class="note">The question paper says <em>module leader</em>. Same person, different word &mdash; a pure vocabulary swap in Q21.</td></tr>
+<tr><td><span class="word">specialise in</span></td><td><span class="pos">v.</span></td><td>to concentrate on one particular activity or subject</td><td class="zh">专门从事</td><td>&ldquo;There are actually companies <em>specialising in</em> creating theatre programmes.&rdquo;</td><td class="note">Opens the Q22 section. Listen for the topic-launch pattern: &ldquo;I hadn&rsquo;t realised there&hellip;&rdquo;</td></tr>
+<tr><td><span class="word">contrary to</span></td><td><span class="pos">prep.</span></td><td>opposite to; different from</td><td class="zh">与……相反</td><td>&ldquo;<em>Contrary to</em> what many people think, theatres don&rsquo;t hire people to do the programmes.&rdquo;</td><td class="note"><strong>The Q22 trigger phrase.</strong> &lsquo;Contrary to what many people think&rsquo; = &lsquo;a mistaken belief is that&hellip;&rsquo; &mdash; and the belief is the NEGATIVE of the sentence that follows.</td></tr>
+<tr><td><span class="word">hire</span></td><td><span class="pos">v.</span></td><td>to pay someone to do a job for you</td><td class="zh">雇用</td><td>&ldquo;Theatres don&rsquo;t <em>hire</em> people to do the programmes.&rdquo;</td><td class="note">Paraphrase of &lsquo;pay companies to produce them&rsquo; in option A of Q22.</td></tr>
+<tr><td><span class="word">rights</span></td><td><span class="pos">n. (pl.)</span></td><td>legal permission to publish or use something</td><td class="zh">版权；出版权</td><td>&ldquo;Companies buy the <em>rights</em> to publish programmes on the theatre&rsquo;s behalf.&rdquo;</td><td class="note">Money flows the other way from what most people assume &mdash; that reversal is the whole answer.</td></tr>
+<tr><td><span class="word">on behalf of</span></td><td><span class="pos">phr.</span></td><td>instead of, or representing, someone else</td><td class="zh">代表；代替</td><td>&ldquo;&hellip;to publish programmes <em>on the theatre&rsquo;s behalf</em>.&rdquo;</td><td class="note">Very common in Listening Part 3 and in work contexts. Note the fixed preposition <em>on</em>.</td></tr>
+<tr><td><span class="word">advertising space</span></td><td><span class="pos">n.</span></td><td>room in a publication that businesses pay to use</td><td class="zh">广告版面</td><td>&ldquo;&hellip;then make their money selling <em>advertising space</em> within the programme booklet.&rdquo;</td><td class="note">Option C in Q22 twists this into &lsquo;far more adverts than previously&rsquo; &mdash; a comparison that is never made.</td></tr>
+<tr><td><span class="word">cast</span></td><td><span class="pos">n.</span></td><td>all the actors in a play or film</td><td class="zh">演员阵容</td><td>&ldquo;It said that the <em>cast</em> was always very important.&rdquo;</td><td class="note">Comes back in Q28: the articles reveal &lsquo;the thoughts and feelings of the cast&rsquo;.</td></tr>
+<tr><td><span class="word">draw a crowd</span></td><td><span class="pos">v. phr.</span></td><td>to attract a large number of people</td><td class="zh">吸引大批观众</td><td>&ldquo;Big names would <em>draw huge crowds</em>.&rdquo;</td><td class="note">Shared background, not the answer to Q23. Careful &mdash; it looks like option C in the <em>matching</em> task (&lsquo;effective at attracting audiences&rsquo;), which is never used.</td></tr>
+<tr><td><span class="word">accuse (sb of sth)</span></td><td><span class="pos">v.</span></td><td>to say that someone has done something wrong</td><td class="zh">指责；控告</td><td>&ldquo;People <em>accused</em> the theatre of breaking their agreement with the audience.&rdquo;</td><td class="note">Fixed pattern: accuse someone <b>of</b> + <em>-ing</em>.</td></tr>
+<tr><td><span class="word">agreement</span></td><td><span class="pos">n.</span></td><td>an arrangement that both sides promise to keep</td><td class="zh">协议；约定</td><td>&ldquo;&hellip;breaking their <em>agreement</em> with the audience.&rdquo;</td><td class="note"><strong>Answer to Q23 (C).</strong> agreement = <em>a kind of contract</em>. The audio never uses the word &lsquo;contract&rsquo;.</td></tr>
+<tr><td><span class="word">refund</span></td><td><span class="pos">n.</span></td><td>money given back to a customer</td><td class="zh">退款</td><td>&ldquo;They would demand <em>refunds</em>, and if they didn&rsquo;t get them, there were riots.&rdquo;</td><td class="note">Stress falls on the first syllable for the noun (RE-fund), the second for the verb (re-FUND).</td></tr>
+<tr><td><span class="word">riot</span></td><td><span class="pos">n.</span></td><td>violent public disorder by a crowd</td><td class="zh">骚乱；暴动</td><td>&ldquo;If they didn&rsquo;t get them, there were <em>riots</em>.&rdquo;</td><td class="note">The extreme reaction is what proves the programme functioned as a binding promise (Q23).</td></tr>
+<tr><td><span class="word">illiterate</span></td><td><span class="pos">adj.</span></td><td>unable to read or write</td><td class="zh">不识字的</td><td>&ldquo;Lots of ordinary people at that time were <em>illiterate</em>.&rdquo;</td><td class="note"><strong>The Q24 cause.</strong> If people cannot read, a printed programme cannot advertise &mdash; so actors advertised in person.</td></tr>
+<tr><td><span class="word">of limited value</span></td><td><span class="pos">phr.</span></td><td>not very useful</td><td class="zh">作用有限</td><td>&ldquo;Theatre programmes were <em>of limited value</em> in advertising plays.&rdquo;</td><td class="note">A formal way of saying &lsquo;not much use&rsquo;. Notice it is a criticism, not a compliment.</td></tr>
+<tr><td><span class="word">parade</span></td><td><span class="pos">v.</span></td><td>to walk in a group through the streets so people notice you</td><td class="zh">游行；招摇过市</td><td>&ldquo;They&rsquo;d <em>parade</em> around the streets in their costumes, beating drums.&rdquo;</td><td class="note">This is the act of <em>self-promotion</em> that makes Q24 answer A, even though the streets are outdoors (option B).</td></tr>
+<tr><td><span class="word">upcoming</span></td><td><span class="pos">adj.</span></td><td>happening soon</td><td class="zh">即将到来的</td><td>&ldquo;&hellip;announcing their <em>upcoming</em> performances.&rdquo;</td><td class="note">Synonym family: forthcoming / future / coming. &lsquo;Announcing upcoming performances&rsquo; = <em>promoting their own plays</em>.</td></tr>
+<tr><td><span class="word">resemble</span></td><td><span class="pos">v.</span></td><td>to look like or be similar to</td><td class="zh">类似于；像</td><td>&ldquo;Wasn&rsquo;t it in the 19th century that programmes started to <em>resemble</em> programmes today?&rdquo;</td><td class="note">Also the key verb in matching option F (&lsquo;It resembles an artwork&rsquo;) for Q27.</td></tr>
+<tr><td><span class="word">superior</span></td><td><span class="pos">adj.</span></td><td>better than something else</td><td class="zh">更好的；更优越的</td><td>&ldquo;I think 18th-century programmes were <em>superior</em>.&rdquo;</td><td class="note"><strong>Q25 signal.</strong> A comparative judgement word &mdash; the reason for it comes immediately after &lsquo;because&rsquo;.</td></tr>
+<tr><td><span class="word">plot</span></td><td><span class="pos">n.</span></td><td>the story of a play, novel or film</td><td class="zh">剧情；情节</td><td>&ldquo;And about the writer, the <em>plot</em>, and sometimes the history of the play.&rdquo;</td><td class="note">Finn&rsquo;s list is what makes the answer &lsquo;both think&rsquo; &mdash; he is adding to Maya&rsquo;s point about information.</td></tr>
+<tr><td><span class="word">undergo</span></td><td><span class="pos">v.</span></td><td>to experience a change or process</td><td class="zh">经历（变化）</td><td>&ldquo;The dramatic change they <em>underwent</em> during World War II.&rdquo;</td><td class="note">Irregular: undergo / underwent / undergone. Formal academic verb &mdash; useful in Writing too.</td></tr>
+<tr><td><span class="word">impose restrictions on</span></td><td><span class="pos">v. phr.</span></td><td>to officially limit the use of something</td><td class="zh">对……施加限制</td><td>&ldquo;When the government <em>imposed restrictions on</em> the use of paper.&rdquo;</td><td class="note">Sets up the contrast in Q26: restrictions in the UK only, not in the USA.</td></tr>
+<tr><td><span class="word">shortage</span></td><td><span class="pos">n.</span></td><td>a situation where there is not enough of something</td><td class="zh">短缺</td><td>&ldquo;I know there were paper <em>shortages</em> after the war, but only for 5 or 10 years.&rdquo;</td><td class="note">The numbers are the puzzle: shortages lasted 5&ndash;10 years, but nothing changed for over 25 &mdash; hence Q26.</td></tr>
+<tr><td><span class="word">decorative</span></td><td><span class="pos">adj.</span></td><td>attractive to look at; used as decoration</td><td class="zh">装饰性的；好看的</td><td>&ldquo;The programme looks very <em>decorative</em>. Good enough to put in a frame on the wall.&rdquo;</td><td class="note"><strong>Q27 (F).</strong> decorative + beautiful images + frame on the wall = <em>resembles an artwork</em>.</td></tr>
+<tr><td><span class="word">insight</span></td><td><span class="pos">n.</span></td><td>a clear or deep understanding of something</td><td class="zh">洞见；深入的了解</td><td>&ldquo;&hellip;so we can learn how the production was created and the thoughts and feelings of the cast.&rdquo;</td><td class="note"><strong>Q28 (E).</strong> The word &lsquo;insight&rsquo; is never said &mdash; you must build it from &lsquo;learn how&hellip;&rsquo; + &lsquo;thoughts and feelings&rsquo;.</td></tr>
+<tr><td><span class="word">surviving</span></td><td><span class="pos">adj.</span></td><td>still existing after a long time</td><td class="zh">尚存的；留存下来的</td><td>&ldquo;It&rsquo;s said to be the earliest <em>surviving</em> document printed on Australia&rsquo;s first printing press.&rdquo;</td><td class="note"><strong>Q29 (B).</strong> &lsquo;Earliest surviving&rsquo; + a named country = <em>historically significant for a country</em>.</td></tr>
+<tr><td><span class="word">digitised</span></td><td><span class="pos">adj.</span></td><td>converted into computer files</td><td class="zh">数字化的</td><td>&ldquo;It comes from the British Library&rsquo;s <em>digitised</em> collection of programmes.&rdquo;</td><td class="note"><strong>Q30 (D).</strong> &lsquo;Started a few years ago&rsquo; = <em>recent</em>; a library digitisation programme = <em>a project</em>.</td></tr>
+<tr><td><span class="word">comprise</span></td><td><span class="pos">v.</span></td><td>to consist of; to be made up of</td><td class="zh">包含；由……构成</td><td>&ldquo;It already <em>comprises</em> over 200,000 programmes.&rdquo;</td><td class="note">Formal synonym of &lsquo;contain&rsquo; / &lsquo;include&rsquo;. Never say &lsquo;is comprised of&rsquo; in careful writing.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">How&rsquo;s your research coming along?</span></td><td>How is your research progressing?</td><td class="zh">你的资料查得怎么样了？</td></tr>
+<tr><td><span class="phrase">look into a topic</span></td><td>investigate or research a subject</td><td class="zh">研究、调查一个课题</td></tr>
+<tr><td><span class="phrase">struggle to find</span></td><td>have difficulty finding</td><td class="zh">很难找到</td></tr>
+<tr><td><span class="phrase">put someone off</span></td><td>discourage someone from doing something</td><td class="zh">让某人打退堂鼓</td></tr>
+<tr><td><span class="phrase">no one else on the course</span></td><td>nobody among the other students</td><td class="zh">课上没有别人</td></tr>
+<tr><td><span class="phrase">specialise in creating&hellip;</span></td><td>concentrate on producing&hellip;</td><td class="zh">专门制作……</td></tr>
+<tr><td><span class="phrase">contrary to what many people think</span></td><td>unlike the common belief</td><td class="zh">与许多人的想法相反</td></tr>
+<tr><td><span class="phrase">buy the rights to publish</span></td><td>pay for legal permission to print</td><td class="zh">买下出版权</td></tr>
+<tr><td><span class="phrase">on the theatre&rsquo;s behalf</span></td><td>acting for the theatre</td><td class="zh">代表剧院</td></tr>
+<tr><td><span class="phrase">sell advertising space</span></td><td>charge businesses to place adverts</td><td class="zh">出售广告版面</td></tr>
+<tr><td><span class="phrase">draw huge crowds</span></td><td>attract very large audiences</td><td class="zh">吸引大批观众</td></tr>
+<tr><td><span class="phrase">accuse the theatre of breaking&hellip;</span></td><td>say publicly that the theatre had broken&hellip;</td><td class="zh">指责剧院违反了……</td></tr>
+<tr><td><span class="phrase">demand refunds</span></td><td>insist on getting one&rsquo;s money back</td><td class="zh">要求退票款</td></tr>
+<tr><td><span class="phrase">be of limited value</span></td><td>not be very useful</td><td class="zh">价值有限</td></tr>
+<tr><td><span class="phrase">parade around the streets</span></td><td>walk through the streets to be seen</td><td class="zh">在街上游行</td></tr>
+<tr><td><span class="phrase">announce upcoming performances</span></td><td>tell the public about shows that are coming soon</td><td class="zh">宣传即将上演的演出</td></tr>
+<tr><td><span class="phrase">start to resemble&hellip;</span></td><td>begin to look like&hellip;</td><td class="zh">开始像……</td></tr>
+<tr><td><span class="phrase">a greater variety of designs</span></td><td>more different styles</td><td class="zh">设计更加多样</td></tr>
+<tr><td><span class="phrase">undergo a dramatic change</span></td><td>experience a very large change</td><td class="zh">发生巨大变化</td></tr>
+<tr><td><span class="phrase">impose restrictions on&hellip;</span></td><td>officially limit&hellip;</td><td class="zh">对……加以限制</td></tr>
+<tr><td><span class="phrase">a single sheet folded to create four pages</span></td><td>one piece of paper bent in half, giving four sides</td><td class="zh">一张纸对折成四页</td></tr>
+<tr><td><span class="phrase">go back to being&hellip;</span></td><td>return to its earlier state</td><td class="zh">恢复成原来的样子</td></tr>
+<tr><td><span class="phrase">What I don&rsquo;t really get is&hellip;</span></td><td>What I cannot understand is&hellip;</td><td class="zh">我不太明白的是……</td></tr>
+<tr><td><span class="phrase">good enough to put in a frame</span></td><td>attractive enough to hang on a wall</td><td class="zh">好看到可以裱起来</td></tr>
+<tr><td><span class="phrase">the earliest surviving document</span></td><td>the oldest one still in existence</td><td class="zh">现存最早的文件</td></tr>
+<tr><td><span class="phrase">Wish I&rsquo;d known about it</span></td><td>I regret not knowing about it earlier</td><td class="zh">要是早知道就好了</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Key Facts from the Discussion</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with <strong>ONE WORD</strong> from the recording. These are the facts the exam questions are built on.</p><div class="ex-item"><span class="ex-num">1.</span><label>In the USA a theatre programme is called a <input type="text" class="blank" id="b1" data-answer="playbill" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Programme companies make their money by selling advertising <input type="text" class="blank" id="b2" data-answer="space" placeholder="______"> inside the booklet.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>In early British theatre, naming a famous actor created an <input type="text" class="blank" id="b3" data-answer="agreement" placeholder="______"> with the audience.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>When the star did not appear, audiences demanded <input type="text" class="blank" id="b4" data-answer="refunds" placeholder="______"> and sometimes there were riots.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Many ordinary people at that time were <input type="text" class="blank" id="b5" data-answer="illiterate" placeholder="______">, so printed programmes could not advertise plays well.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Nineteenth-century programmes always used <input type="text" class="blank" id="b6" data-answer="colour" placeholder="______"> and offered a greater variety of designs.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>During World War II the government imposed restrictions on the use of <input type="text" class="blank" id="b7" data-answer="paper" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The British Library collection already comprises over 200,000 <input type="text" class="blank" id="b8" data-answer="programmes" placeholder="______">.<span class="feedback" id="fb8"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Multiple Choice (Q21&ndash;26): write the letter</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type <strong>A</strong>, <strong>B</strong> or <strong>C</strong>. Before you type, say out loud which sentence in the audio kills each wrong option.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q21 Finn was pleased to discover that their topic <input type="text" class="blank" id="b9" data-answer="B" placeholder="______"> (A was unfamiliar to the module leader / B had not been chosen by other students / C was not difficult to research)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q22 A mistaken belief about theatre programmes is that <input type="text" class="blank" id="b10" data-answer="A" placeholder="______"> (A theatres pay companies to produce them / B few theatre-goers buy them / C they contain far more adverts than before)<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q23 In early British theatre, programmes <input type="text" class="blank" id="b11" data-answer="C" placeholder="______"> (A were hard to obtain / B were free of charge / C were seen as a kind of contract)<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q24 The project should explain why companies of actors <input type="text" class="blank" id="b12" data-answer="A" placeholder="______"> (A promoted their own plays / B performed outdoors / C had to tour)<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q25 Compared with nineteenth-century programmes, eighteenth-century ones were <input type="text" class="blank" id="b13" data-answer="C" placeholder="______"> (A more original / B more colourful / C more informative)<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q26 Maya does not fully understand why <input type="text" class="blank" id="b14" data-answer="B" placeholder="______"> (A very few programmes were printed in the USA / B British programmes failed to develop for so long / C British programmes copied US fashions)<span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Matching the Four Shows (Q27&ndash;30)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the letter <strong>A&ndash;F</strong> for each show, then complete the clue that gives it away. Remember: two of the six comments are never used.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q27 <em>Ruy Blas</em> &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b15" data-answer="F" placeholder="______"><span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q28 <em>Man of La Mancha</em> &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b16" data-answer="E" placeholder="______"><span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q29 <em>The Tragedy of Jane Shore</em> &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b17" data-answer="B" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q30 <em>The Sailors&rsquo; Festival</em> &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b18" data-answer="D" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Clue for Q27: the programme looks very <input type="text" class="blank" id="b19" data-answer="decorative" placeholder="______"> and is good enough to put in a frame.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Clue for Q28: it contains <input type="text" class="blank" id="b20" data-answer="articles" placeholder="______"> written by members of the theatre company.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Clue for Q29: it is the earliest <input type="text" class="blank" id="b21" data-answer="surviving" placeholder="______"> document printed on Australia&rsquo;s first printing press.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Clue for Q30: it comes from the British Library&rsquo;s <input type="text" class="blank" id="b22" data-answer="digitised" placeholder="______"> collection, started a few years ago.<span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS, or complete the spelling. Every item comes from this recording.</p><div class="ex-item"><span class="ex-num">1.</span><label>Some companies <input type="text" class="blank" id="b23" data-answer="specialise" placeholder="______"> (SPECIAL) in creating theatre programmes.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The programmes <input type="text" class="blank" id="b24" data-answer="underwent" placeholder="______"> (UNDERGO) a dramatic change during World War II.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audiences <input type="text" class="blank" id="b25" data-answer="accused" placeholder="______"> (ACCUSE) the theatre of breaking its agreement.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Nineteenth-century programmes had a greater <input type="text" class="blank" id="b26" data-answer="variety" placeholder="______"> (VARIOUS) of designs.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>i l l i t _ r a t e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b27" data-answer="illiterate" placeholder="______"><span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>c o m p r _ s e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b28" data-answer="comprises" placeholder="______"><span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>r e s e m b _ e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b29" data-answer="resemble" placeholder="______"><span class="feedback" id="fb29"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The left side is what the students actually say; the right side is the exam wording. Write the missing word.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;one of the research areas of the module <em>convenor</em>&rdquo; &rarr; Paper: &ldquo;their module <input type="text" class="blank" id="b30" data-answer="leader" placeholder="______">&rdquo;<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;theatres don&rsquo;t <em>hire</em> people to do the programmes&rdquo; &rarr; Paper: &ldquo;theatres <input type="text" class="blank" id="b31" data-answer="pay" placeholder="______"> companies to produce them&rdquo; (the mistaken belief)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;breaking their <em>agreement</em> with the audience&rdquo; &rarr; Paper: &ldquo;a kind of <input type="text" class="blank" id="b32" data-answer="contract" placeholder="______">&rdquo;<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;announcing their <em>upcoming performances</em>&rdquo; &rarr; Paper: &ldquo;<input type="text" class="blank" id="b33" data-answer="promoted" placeholder="______"> their own plays&rdquo;<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;they told the theatre-goers so many things&rdquo; &rarr; Paper: &ldquo;more <input type="text" class="blank" id="b34" data-answer="informative" placeholder="______">&rdquo;<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;the thoughts and feelings of the cast&rdquo; &rarr; Paper: &ldquo;it contains <input type="text" class="blank" id="b35" data-answer="insights" placeholder="______"> into the show&rdquo;<span class="feedback" id="fb35"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q21</span></td><td>Finn was <b>pleased</b> to discover that their topic&hellip;</td><td><b>POSITIVE OPINION</b></td><td>Listen for a happiness signal: &ldquo;I&rsquo;m <em>glad</em> we picked this subject&rdquo;. The clause right after it is the answer.</td><td class="note">B &mdash; had not been chosen by other students</td></tr>
+<tr><td><span class="word">Q22</span></td><td>A <b>mistaken belief</b> about theatre programmes is that&hellip;</td><td><b>A WRONG IDEA &mdash; stated as a negative</b></td><td>&ldquo;Contrary to what many people think&hellip; theatres <em>don&rsquo;t</em>&hellip;&rdquo;. You must flip the negative back to a positive to get the option.</td><td class="note">A &mdash; theatres pay companies to produce them</td></tr>
+<tr><td><span class="word">Q23</span></td><td>Finn was <b>surprised</b> that, in early British theatre, programmes&hellip;</td><td><b>NEW INFORMATION</b></td><td>Surprise markers: &ldquo;I <em>hadn&rsquo;t realised</em> that&hellip;&rdquo;. What comes before it (&ldquo;I remember reading&hellip;&rdquo;) is already-known background.</td><td class="note">C &mdash; were seen as a kind of contract</td></tr>
+<tr><td><span class="word">Q24</span></td><td>Maya feels their project <b>should include</b> an explanation of why companies of actors&hellip;</td><td><b>REASON / CAUSE</b></td><td>&ldquo;I also think it&rsquo;s <em>important to mention</em>&hellip;&rdquo; then a cause: &ldquo;lots of ordinary people were illiterate, <em>so</em>&hellip;&rdquo;.</td><td class="note">A &mdash; promoted their own plays</td></tr>
+<tr><td><span class="word">Q25</span></td><td>Finn and Maya <b>both think</b>&hellip; eighteenth-century programmes were&hellip;</td><td><b>SHARED COMPARATIVE OPINION</b></td><td>Wait for a judgement word (&ldquo;superior&rdquo;) plus &ldquo;because&hellip;&rdquo;, then for the partner to agree or add to the same list.</td><td class="note">C &mdash; were more informative</td></tr>
+<tr><td><span class="word">Q26</span></td><td>Maya <b>doesn&rsquo;t fully understand</b> why, in the twentieth century&hellip;</td><td><b>PUZZLE / SOMETHING UNEXPLAINED</b></td><td>Confusion markers: &ldquo;What I don&rsquo;t really <em>get</em> is&hellip;&rdquo;. Anything she says she <em>knows</em> is not the answer.</td><td class="note">B &mdash; British programmes failed to develop for so long</td></tr>
+<tr><td><span class="word">Q27</span></td><td><i>Ruy Blas</i> &mdash; comment A&ndash;F</td><td><b>A VISUAL / APPEARANCE COMMENT</b></td><td>Words about looks: decorative, beautiful images, frame on the wall.</td><td class="note">F &mdash; it resembles an artwork</td></tr>
+<tr><td><span class="word">Q28</span></td><td><i>Man of La Mancha</i> &mdash; comment A&ndash;F</td><td><b>A CONTENT COMMENT</b></td><td>Explicitly NOT about pictures. Listen for &ldquo;articles&hellip; we can learn how&hellip; thoughts and feelings&rdquo;.</td><td class="note">E &mdash; it contains insights into the show</td></tr>
+<tr><td><span class="word">Q29</span></td><td><i>The Tragedy of Jane Shore</i> &mdash; comment A&ndash;F</td><td><b>A HISTORICAL COMMENT + A COUNTRY</b></td><td>Listen for superlatives of age plus a country name: &ldquo;earliest surviving&hellip; Australia&rsquo;s first printing press&rdquo;.</td><td class="note">B &mdash; it is historically significant for a country</td></tr>
+<tr><td><span class="word">Q30</span></td><td><i>The Sailors&rsquo; Festival</i> &mdash; comment A&ndash;F</td><td><b>AN INSTITUTION / COLLECTION COMMENT</b></td><td>Listen for an organisation plus a recent time reference: &ldquo;British Library&rsquo;s digitised collection&hellip; started a few years ago&rdquo;.</td><td class="note">D &mdash; it is included in a recent project</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Finn was <b>pleased to discover</b> that their topic&hellip;&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Even though I <b>struggled to find</b> many useful websites, <b>I&rsquo;m glad we picked this subject. No one else on the course is doing the same as us.</b> Although it is one of the research areas of the module convenor.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">pleased = I&rsquo;m glad. The two &ldquo;concession&rdquo; words &mdash; <em>Even though</em> and <em>Although</em> &mdash; wrap the two wrong options around the right one.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;Even though&hellip;, I&rsquo;m glad&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;A <b>mistaken belief</b> about theatre programmes is that&hellip;&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>Contrary to what many people think</b>, theatres <b>don&rsquo;t hire people</b> to do the programmes. In fact, companies <b>buy the rights</b> to publish programmes on the theatre&rsquo;s behalf.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a mistaken belief = contrary to what many people think. Then INVERT: the false idea is that theatres DO hire (= pay) companies.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence beginning &lsquo;Contrary to what many people think, &hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Programmes were seen as a <b>kind of contract</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>I hadn&rsquo;t realised</b> that if the programme named a famous actor, that&rsquo;s who the public expected to perform. And if that didn&rsquo;t happen, people accused the theatre of <b>breaking their agreement with the audience</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">contract = agreement that can be broken. The word &lsquo;contract&rsquo; is never spoken &mdash; you build it from <em>expected</em> + <em>breaking their agreement</em> + <em>refunds</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Explain in one sentence what &lsquo;breaking an agreement&rsquo; means&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Why companies of actors <b>promoted their own plays</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Lots of ordinary people at that time were <b>illiterate</b>, so theatre programmes were <b>of limited value in advertising plays</b>. When a company of actors arrived in a town, they&rsquo;d <b>parade around the streets</b> in their costumes, beating drums and <b>announcing their upcoming performances</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">promote = advertise / announce upcoming performances. &lsquo;Arrived in a town&rsquo; (touring) and &lsquo;the streets&rsquo; (outdoors) are true details but not the point being explained.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;so&hellip;&rsquo; linking illiteracy to advertising&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Compared to nineteenth-century programmes, eighteenth-century ones were <b>more informative</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Maya: &ldquo;<b>Unlike programmes from the 18th century</b>, they always used <b>colour</b> and there was a <b>greater variety of designs</b>. But personally I think 18th-century programmes were <b>superior because they told the theatre-goers so many things</b>, including about the actors.&rdquo; Finn: &ldquo;And about the writer, the plot, and sometimes the history of the play.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">more informative = told them so many things. &lsquo;Unlike&rsquo; assigns colour and design variety to the NINETEENTH century, so A and B describe the wrong century.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;it gave a lot of information&rsquo; using &lsquo;informative&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Maya <b>doesn&rsquo;t fully understand</b> why&hellip;&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>What I don&rsquo;t really get is</b> that after the war, they <b>didn&rsquo;t go back to being more than one sheet or change in any way for over 25 years</b>. I <b>know</b> there were paper shortages after the war, but only for 5 or 10 years.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">doesn&rsquo;t fully understand = what I don&rsquo;t really get. The clause after &lsquo;I know&rsquo; is the part she DOES understand &mdash; never the answer.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence starting &lsquo;What I don&rsquo;t really get is&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q27&ndash;Q30</b> &mdash; four shows, four comments</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value"><i>Ruy Blas</i>: &ldquo;very <b>decorative</b>&hellip; good enough to put in a <b>frame</b> on the wall&rdquo; &rarr; F. <i>Man of La Mancha</i>: &ldquo;<b>not because of the pictures</b>, but because it contains <b>articles</b>&hellip; how the production was created&rdquo; &rarr; E. <i>Jane Shore</i>: &ldquo;the <b>earliest surviving document</b> printed on <b>Australia&rsquo;s first printing press</b>&rdquo; &rarr; B. <i>The Sailors&rsquo; Festival</i>: &ldquo;the <b>British Library&rsquo;s digitised collection</b>&hellip; <b>started a few years ago</b>&rdquo; &rarr; D.</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Compress each option to one keyword: artwork / insights / a country / a recent project. Note &ldquo;not because of the pictures&rdquo; &mdash; the speaker actively blocks option F for the second show.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a book or poster you like using &lsquo;good enough to put in a frame&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;I didn&rsquo;t know theatre programmes are called playbills in the USA&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;contrary to what many people think, theatres don&rsquo;t hire people to do the programmes&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;they make their money selling advertising space within the programme booklet&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;people accused the theatre of breaking their agreement with the audience&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;lots of ordinary people at that time were illiterate&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;they told the theatre-goers so many things, including about the actors&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;the dramatic change they underwent during World War II&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;it already comprises over 200,000 programmes, which is amazing&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is the American word for a theatre programme?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. a booklet</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. a playbill</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. a leaflet</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. a poster</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Which detail makes option C of Q21 (&lsquo;not difficult to research&rsquo;) wrong?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. No one else on the course chose the topic.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It is one of the module convenor&rsquo;s research areas.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. He struggled to find many useful websites.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Maya had already done her part.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">How do programme companies actually make their money?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Theatres pay them a production fee.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. They sell advertising space in the booklet.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. They charge audiences a high price per copy.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. They receive government support.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why did early British audiences riot?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Programmes were too expensive.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. A named star did not appear and refunds were refused.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. The theatre printed too many adverts.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. The plays were performed outdoors.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does &lsquo;I hadn&rsquo;t realised that&hellip;&rsquo; signal in Part 3?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. A fact both speakers already knew.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. A disagreement between the speakers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. New information &mdash; often the answer to a &lsquo;was surprised&rsquo; question.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. A change of topic to the next century.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why were printed programmes of limited value for advertising plays?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. They were too expensive to print.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Many ordinary people could not read.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Theatres refused to distribute them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. They only listed the cast.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did companies of actors do when they arrived in a town?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They handed out free programmes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. They performed a short scene in the theatre.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. They paraded the streets in costume, beating drums.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They put adverts in the local newspaper.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Which century&rsquo;s programmes always used colour and had a greater variety of designs?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. the eighteenth</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. the nineteenth</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. the twentieth</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. neither</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What happened to British programmes during World War II?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. They stopped being printed completely.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. They became a single sheet folded into four pages.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. They copied the American playbill format.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. They doubled in length.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What exactly puzzles Maya about the post-war period?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. That paper shortages lasted only 5 to 10 years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. That programmes stayed unchanged for over 25 years afterwards.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. That American playbills were never restricted.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. That the government imposed restrictions at all.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why is the <i>Man of La Mancha</i> programme worth showing, according to Finn?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Because of its beautiful pictures.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Because it is the oldest one they found.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Because its articles reveal how the production was created.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Because it is in a museum.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which two matching options (A&ndash;F) are NOT used in Q27&ndash;30?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. A (controversial origin) and C (effective at attracting audiences)</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. B (historically significant) and D (recent project)</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. D (recent project) and F (resembles an artwork)</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. C (attracting audiences) and E (insights into the show)</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 21–30</h3><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">B</div><div class="answer-note">&ldquo;I&rsquo;m glad we picked this subject. <em>No one else on the course is doing the same as us.</em>&rdquo; He <em>struggled</em> to find websites (not C) and the topic <em>is</em> a research area of the module convenor (not A).</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">A</div><div class="answer-note">&ldquo;<em>Contrary to what many people think</em>, theatres <em>don&rsquo;t hire people</em> to do the programmes.&rdquo; Invert the negative: the mistaken belief is that theatres pay companies to produce them.</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">C</div><div class="answer-note">&ldquo;I hadn&rsquo;t realised that if the programme named a famous actor, that&rsquo;s who the public expected to perform&hellip; people accused the theatre of <em>breaking their agreement with the audience</em>.&rdquo; agreement = contract.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">A</div><div class="answer-note">&ldquo;Lots of ordinary people were illiterate, so programmes were of limited value in advertising plays&hellip; they&rsquo;d parade around the streets&hellip; <em>announcing their upcoming performances</em>.&rdquo; = promoted their own plays.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">C</div><div class="answer-note">Maya: 18th-century programmes &ldquo;were <em>superior because they told the theatre-goers so many things</em>&rdquo;; Finn adds &ldquo;the writer, the plot, and sometimes the history of the play&rdquo;. Colour and design variety belong to the 19th century.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">B</div><div class="answer-note">&ldquo;<em>What I don&rsquo;t really get is</em> that after the war, they didn&rsquo;t go back to being more than one sheet or change in any way for over 25 years.&rdquo; She already knows about the paper shortages.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">F</div><div class="answer-note"><i>Ruy Blas</i>: &ldquo;the programme looks very <em>decorative</em>. Good enough to put in a <em>frame on the wall</em>. The images are just beautiful.&rdquo; = it resembles an artwork.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">E</div><div class="answer-note"><i>Man of La Mancha</i>: &ldquo;not because of the pictures, but because it contains <em>articles written by members of the theatre company</em>, so we can learn how the production was created and the thoughts and feelings of the cast.&rdquo; = insights into the show.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note"><i>The Tragedy of Jane Shore</i>: &ldquo;it&rsquo;s said to be the <em>earliest surviving document to have been printed on Australia&rsquo;s first printing press</em>.&rdquo; = historically significant for a country.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">D</div><div class="answer-note"><i>The Sailors&rsquo; Festival</i>: &ldquo;It comes from the <em>British Library&rsquo;s digitised collection</em> of programmes that was <em>started a few years ago</em>.&rdquo; = included in a recent project.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Key Facts from the Discussion</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">playbill</div><div class="answer-note">In the USA a theatre programme is called a</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">space</div><div class="answer-note">Programme companies make their money by selling advertising</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">agreement</div><div class="answer-note">In early British theatre, naming a famous actor created an</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">refunds</div><div class="answer-note">When the star did not appear, audiences demanded</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">illiterate</div><div class="answer-note">Many ordinary people at that time were</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">colour</div><div class="answer-note">Nineteenth-century programmes always used</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">paper</div><div class="answer-note">During World War II the government imposed restrictions on the use of</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">programmes</div><div class="answer-note">The British Library collection already comprises over 200,000</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Multiple Choice (Q21&ndash;26): write the letter</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">B</div><div class="answer-note">Q21 Finn was pleased to discover that their topic</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">A</div><div class="answer-note">Q22 A mistaken belief about theatre programmes is that</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">C</div><div class="answer-note">Q23 In early British theatre, programmes</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">A</div><div class="answer-note">Q24 The project should explain why companies of actors</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">C</div><div class="answer-note">Q25 Compared with nineteenth-century programmes, eighteenth-century ones were</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">B</div><div class="answer-note">Q26 Maya does not fully understand why</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Matching the Four Shows (Q27&ndash;30)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">F</div><div class="answer-note">Q27 Ruy Blas  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">E</div><div class="answer-note">Q28 Man of La Mancha  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">B</div><div class="answer-note">Q29 The Tragedy of Jane Shore  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">D</div><div class="answer-note">Q30 The Sailors&rsquo; Festival  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">decorative</div><div class="answer-note">Clue for Q27: the programme looks very</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">articles</div><div class="answer-note">Clue for Q28: it contains</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">surviving</div><div class="answer-note">Clue for Q29: it is the earliest</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">digitised</div><div class="answer-note">Clue for Q30: it comes from the British Library&rsquo;s</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">specialise</div><div class="answer-note">Some companies</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">underwent</div><div class="answer-note">The programmes</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">accused</div><div class="answer-note">Audiences</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">variety</div><div class="answer-note">Nineteenth-century programmes had a greater</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">illiterate</div><div class="answer-note">i l l i t _ r a t e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">comprises</div><div class="answer-note">c o m p r _ s e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">resemble</div><div class="answer-note">r e s e m b _ e  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">leader</div><div class="answer-note">Audio: &ldquo;one of the research areas of the module convenor&rdquo; &rarr; Paper: &ldquo;their module</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">pay</div><div class="answer-note">Audio: &ldquo;theatres don&rsquo;t hire people to do the programmes&rdquo; &rarr; Paper: &ldquo;theatres</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">contract</div><div class="answer-note">Audio: &ldquo;breaking their agreement with the audience&rdquo; &rarr; Paper: &ldquo;a kind of</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">promoted</div><div class="answer-note">Audio: &ldquo;announcing their upcoming performances&rdquo; &rarr; Paper: &ldquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">informative</div><div class="answer-note">Audio: &ldquo;they told the theatre-goers so many things&rdquo; &rarr; Paper: &ldquo;more</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">insights</div><div class="answer-note">Audio: &ldquo;the thoughts and feelings of the cast&rdquo; &rarr; Paper: &ldquo;it contains</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q21</span><div><div class="answer-val">B &mdash; had not been chosen by other students &mdash; POSITIVE OPINION</div><div class="answer-note">Listen for a happiness signal: &ldquo;I&rsquo;m <em>glad</em> we picked this subject&rdquo;. The clause right after it is the answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q22</span><div><div class="answer-val">A &mdash; theatres pay companies to produce them &mdash; A WRONG IDEA &mdash; stated as a negative</div><div class="answer-note">&ldquo;Contrary to what many people think&hellip; theatres <em>don&rsquo;t</em>&hellip;&rdquo;. You must flip the negative back to a positive to get the option.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q23</span><div><div class="answer-val">C &mdash; were seen as a kind of contract &mdash; NEW INFORMATION</div><div class="answer-note">Surprise markers: &ldquo;I <em>hadn&rsquo;t realised</em> that&hellip;&rdquo;. What comes before it (&ldquo;I remember reading&hellip;&rdquo;) is already-known background.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q24</span><div><div class="answer-val">A &mdash; promoted their own plays &mdash; REASON / CAUSE</div><div class="answer-note">&ldquo;I also think it&rsquo;s <em>important to mention</em>&hellip;&rdquo; then a cause: &ldquo;lots of ordinary people were illiterate, <em>so</em>&hellip;&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q25</span><div><div class="answer-val">C &mdash; were more informative &mdash; SHARED COMPARATIVE OPINION</div><div class="answer-note">Wait for a judgement word (&ldquo;superior&rdquo;) plus &ldquo;because&hellip;&rdquo;, then for the partner to agree or add to the same list.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q26</span><div><div class="answer-val">B &mdash; British programmes failed to develop for so long &mdash; PUZZLE / SOMETHING UNEXPLAINED</div><div class="answer-note">Confusion markers: &ldquo;What I don&rsquo;t really <em>get</em> is&hellip;&rdquo;. Anything she says she <em>knows</em> is not the answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q27</span><div><div class="answer-val">F &mdash; it resembles an artwork &mdash; A VISUAL / APPEARANCE COMMENT</div><div class="answer-note">Words about looks: decorative, beautiful images, frame on the wall.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q28</span><div><div class="answer-val">E &mdash; it contains insights into the show &mdash; A CONTENT COMMENT</div><div class="answer-note">Explicitly NOT about pictures. Listen for &ldquo;articles&hellip; we can learn how&hellip; thoughts and feelings&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q29</span><div><div class="answer-val">B &mdash; it is historically significant for a country &mdash; A HISTORICAL COMMENT + A COUNTRY</div><div class="answer-note">Listen for superlatives of age plus a country name: &ldquo;earliest surviving&hellip; Australia&rsquo;s first printing press&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q30</span><div><div class="answer-val">D &mdash; it is included in a recent project &mdash; AN INSTITUTION / COLLECTION COMMENT</div><div class="answer-note">Listen for an organisation plus a recent time reference: &ldquo;British Library&rsquo;s digitised collection&hellip; started a few years ago&rdquo;.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">I didn&rsquo;t know theatre programmes are called playbills in the USA</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">contrary to what many people think, theatres don&rsquo;t hire people to do the programmes</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">they make their money selling advertising space within the programme booklet</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">people accused the theatre of breaking their agreement with the audience</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">lots of ordinary people at that time were illiterate</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">they told the theatre-goers so many things, including about the actors</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">the dramatic change they underwent during World War II</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">it already comprises over 200,000 programmes, which is amazing</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. a playbill</div><div class="answer-note">&ldquo;I didn&rsquo;t know theatre programmes are called <em>playbills</em> in the USA.&rdquo; The word matters again in Q26, where the UK and USA are contrasted.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. He struggled to find many useful websites.</div><div class="answer-note">&ldquo;Even though I <em>struggled</em> to find many useful websites&hellip;&rdquo; &mdash; that is the exact opposite of &lsquo;not difficult to research&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. They sell advertising space in the booklet.</div><div class="answer-note">They <em>buy</em> the rights to publish, then &ldquo;make their money selling advertising space within the programme booklet&rdquo;. Option A is the mistaken belief in Q22.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. A named star did not appear and refunds were refused.</div><div class="answer-note">&ldquo;They would demand refunds, and if they didn&rsquo;t get them, there were riots.&rdquo; This is the evidence that the programme worked like a contract (Q23).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. New information &mdash; often the answer to a &lsquo;was surprised&rsquo; question.</div><div class="answer-note">Attitude verbs in the stem (<em>surprised</em>, <em>pleased</em>) have matching signals in the audio. Train yourself to hear them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. Many ordinary people could not read.</div><div class="answer-note">&ldquo;Lots of ordinary people at that time were <em>illiterate</em>. So theatre programmes were of limited value in advertising plays.&rdquo; This is the cause behind Q24.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. They paraded the streets in costume, beating drums.</div><div class="answer-note">A live, visual advertisement &mdash; the answer to Q24 is that they <em>promoted their own plays</em>, not that they performed outdoors.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. the nineteenth</div><div class="answer-note">&ldquo;<em>Unlike programmes from the 18th century</em>, they always used colour&hellip;&rdquo; &mdash; &lsquo;they&rsquo; = nineteenth-century programmes. This kills options A and B of Q25.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. They became a single sheet folded into four pages.</div><div class="answer-note">The government &ldquo;imposed restrictions on the use of paper&rdquo; in the UK only; US playbills &ldquo;continued to be published in the same format&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. That programmes stayed unchanged for over 25 years afterwards.</div><div class="answer-note">She says she <em>knows</em> about the shortages &mdash; the part she does not &ldquo;get&rdquo; is the 25 years of no change. Q26 answer B.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. Because its articles reveal how the production was created.</div><div class="answer-note">He says explicitly &ldquo;<em>not because of the pictures</em>, but because it contains articles&hellip; the thoughts and feelings of the cast&rdquo; = insights into the show (E).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A. A (controversial origin) and C (effective at attracting audiences)</div><div class="answer-note">Nothing in the discussion is described as controversial, and although &lsquo;big names would draw huge crowds&rsquo; is said earlier, it is about actors, not about any of these four programmes.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

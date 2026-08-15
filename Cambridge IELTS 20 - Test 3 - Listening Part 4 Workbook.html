@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Listening Part 4 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 4</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 4</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Listening Part 4</h1>
+    <h2>Inclusive Design · Notes Completion (Q31–40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A design and technology lecturer explains what <strong>inclusive design</strong> means: making products that as many different kinds of people as possible can use without any changes being made to the original design. The talk has three clear stages &mdash; a definition (and how it differs from <em>universal design</em>), everyday examples such as adjustable desks, sensor taps and interfaces for older users, and finally the harm caused by <strong>non-inclusive</strong> design in access, safety and workplace comfort. You must complete a set of notes with <strong>ONE WORD ONLY</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> A single speaker: a university <strong>design and technology lecturer</strong> giving a formal talk. The register is academic but the examples are everyday &mdash; desks, taps, seat belts, air conditioning.</p><p><strong>The situation 情境:</strong> 一位设计与技术专业的讲师介绍"包容性设计"（inclusive design）：先给出定义，并与"通用设计"（universal design）作区分；接着列举成功案例（可调节的桌子、感应水龙头、为老年人优化的界面）；最后讲不包容的设计在"出行、安全、办公舒适度"三方面造成的后果。笔记的三个标题就是录音的三个部分，跟着标题走就不会跟丢。</p><p><strong>Task type:</strong> Notes completion, <strong>ONE WORD ONLY</strong> for each answer, Questions 31&ndash;40. Answers come in the order of the talk. Two of them (<em>desks</em>, <em>taps</em>) are <strong>plural</strong> because the note has &lsquo;which are&rsquo; after the gap.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> This is a classic Part 4 lecture: one speaker, no interruptions, no second chance. Your safety net is the <strong>headings printed on the note page</strong> &mdash; <em>Definition / Examples of inclusive design / Impact of non-inclusive designs</em>, with the sub-headings <em>Access &mdash; Safety &mdash; Comfort in the workplace</em>. The lecturer signposts every one of these before the answer comes (&ldquo;Today, examples&hellip;&rdquo;, &ldquo;Safety is another issue&rdquo;, &ldquo;Another problem is related to comfort at work&rdquo;). Track the headings, not individual words, and you will always know which gap you are on. Because the instruction is <strong>ONE WORD ONLY</strong>, never write &lsquo;voice access&rsquo;, &lsquo;sensor taps&rsquo; or &lsquo;police officers&rsquo; &mdash; two words scores zero even when the meaning is right.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>adaptation, not adapt or adaptations</b> &mdash; the lecturer says &lsquo;without any type of <em>adaptation</em> having to be made&rsquo;. The note says &lsquo;without the need for any&rsquo;, so a singular uncountable-style noun fits (Q31).</li><li><b>universal design is the distractor, not the answer</b> &mdash; Q32 is about the thing universal design <em>adds</em>: people with <em>cognitive</em> difficulties. The audio says &lsquo;difficulties&rsquo;, the note says &lsquo;problems&rsquo;, so only the adjective goes in the gap.</li><li><b>Q33 and Q34 must be plural</b> &mdash; the note reads &lsquo;(33) <u>which are</u> adjustable&rsquo; and &lsquo;(34) in public toilets <u>which are</u> easier to use&rsquo;: <em>desks</em>, <em>taps</em>.</li><li><b>Q35 is a colour, not a design word</b> &mdash; the sentence is long (&lsquo;vision declines&hellip; we become worse at distinguishing between similar colors, in particular shades of <em>blue</em>&rsquo;) and the answer arrives before the words &lsquo;interfaces&rsquo; and &lsquo;designers&rsquo; that are printed on your page.</li><li><b>Q36: ONE WORD ONLY</b> &mdash; the audio says &lsquo;<em>voice access</em> is now a routine way of making commands&rsquo;. Write <em>voice</em> only; &lsquo;voice access&rsquo; is two words and scores 0.</li><li><b>Q38 shoulders is plural; Q39 is police, not emergency</b> &mdash; the audio ends with &lsquo;worst in the emergency services, particularly the police&rsquo;, and the note already prints &lsquo;officers&rsquo;, so the last word you hear is the one you need.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">inclusive</span></td><td><span class="pos">adj.</span></td><td>designed so that every kind of person can take part or use it</td><td class="zh">包容性的；无障碍的</td><td>&ldquo;Designers have become aware of the need to be <em>inclusive</em> when designing products.&rdquo;</td><td class="note">The title word of the whole talk. Noun form = <em>inclusion</em>; opposite = <em>non-inclusive</em>, which is the third heading on your note page.</td></tr>
+<tr><td><span class="word">adaptation</span></td><td><span class="pos">n.</span></td><td>a change made to something so that it suits a different person or purpose</td><td class="zh">改动；改造；适配</td><td>&ldquo;&hellip;so that as many people as possible can use them without any type of <em>adaptation</em> having to be made.&rdquo;</td><td class="note"><strong>Answer to Q31.</strong> Spelling: a-d-a-p-t-<strong>a</strong>-tion (not &lsquo;adaption&rsquo;). Verb <em>adapt</em>, adjective <em>adaptable</em>.</td></tr>
+<tr><td><span class="word">accessible</span></td><td><span class="pos">adj.</span></td><td>able to be reached, entered or used, especially by disabled people</td><td class="zh">可使用的；无障碍的</td><td>&ldquo;It means making sure products are <em>accessible</em>&hellip;&rdquo;</td><td class="note">Noun <em>access</em> is the first sub-heading in the &lsquo;Impact&rsquo; section. Listen for &lsquo;wheelchair friendly&rsquo; as its paraphrase.</td></tr>
+<tr><td><span class="word">barrier</span></td><td><span class="pos">n.</span></td><td>something that stops people from doing or reaching something</td><td class="zh">障碍；壁垒</td><td>&ldquo;Designing products that span economic, social, and cultural <em>barriers</em>.&rdquo;</td><td class="note">Often metaphorical in academic talks. &lsquo;Span barriers&rsquo; = work across all groups of people.</td></tr>
+<tr><td><span class="word">universal</span></td><td><span class="pos">adj.</span></td><td>involving or intended for absolutely everyone</td><td class="zh">通用的；普适的</td><td>&ldquo;<em>Universal</em> design aims to make products that work for everyone.&rdquo;</td><td class="note">The note says &lsquo;Not the same as universal design&rsquo; &mdash; a warning that a contrast is coming. Q32 sits inside that contrast.</td></tr>
+<tr><td><span class="word">cognitive</span></td><td><span class="pos">adj.</span></td><td>connected with thinking, learning, understanding and memory</td><td class="zh">认知的</td><td>&ldquo;&hellip;the needs of people who have <em>cognitive</em> difficulties.&rdquo;</td><td class="note"><strong>Answer to Q32.</strong> Audio &lsquo;difficulties&rsquo; = note &lsquo;problems&rsquo;, so only the adjective goes in the gap. Pronounced COG-ni-tiv.</td></tr>
+<tr><td><span class="word">adjustable</span></td><td><span class="pos">adj.</span></td><td>able to be changed in height, size or position</td><td class="zh">可调节的</td><td>&ldquo;&hellip;desks which can be <em>adjusted</em> to suit people of different heights.&rdquo;</td><td class="note">The note prints &lsquo;which are adjustable&rsquo;; the audio uses the passive verb &lsquo;can be adjusted&rsquo;. Same idea, different word class (Q33).</td></tr>
+<tr><td><span class="word">desk</span></td><td><span class="pos">n.</span></td><td>a table you sit at to work in an office or at school</td><td class="zh">书桌；办公桌</td><td>&ldquo;In workplaces, it is common to see <em>desks</em> which can be adjusted.&rdquo;</td><td class="note"><strong>Answer to Q33 &mdash; PLURAL.</strong> The note says &lsquo;(33) which <u>are</u> adjustable&rsquo;.</td></tr>
+<tr><td><span class="word">wheelchair</span></td><td><span class="pos">n.</span></td><td>a chair with wheels for someone who cannot walk</td><td class="zh">轮椅</td><td>&ldquo;&hellip;to suit people of different heights or for <em>wheelchair</em> users.&rdquo;</td><td class="note">Spelling trap: whee-l-chair, one word. It appears twice (adjustable desks, and public transport that is not &lsquo;wheelchair friendly&rsquo;).</td></tr>
+<tr><td><span class="word">tap</span></td><td><span class="pos">n.</span></td><td>the device you turn or touch to get water from a pipe (US: faucet)</td><td class="zh">水龙头</td><td>&ldquo;<em>Taps</em> that you activate by sensor require no pressing or twisting movements.&rdquo;</td><td class="note"><strong>Answer to Q34 &mdash; PLURAL.</strong> Do not write &lsquo;sensor taps&rsquo;: ONE WORD ONLY.</td></tr>
+<tr><td><span class="word">sensor</span></td><td><span class="pos">n.</span></td><td>a device that detects movement, heat or light and reacts to it</td><td class="zh">传感器；感应器</td><td>&ldquo;Taps that you activate by <em>sensor</em>&hellip;&rdquo;</td><td class="note">A strong distractor for Q34 &mdash; it is the <em>how</em>, not the <em>what</em>. The gap needs the object in the toilet.</td></tr>
+<tr><td><span class="word">hygienic</span></td><td><span class="pos">adj.</span></td><td>clean, so that germs do not spread</td><td class="zh">卫生的</td><td>&ldquo;These are not only more <em>hygienic</em>, they&rsquo;re also easier for people with dexterity issues.&rdquo;</td><td class="note">Spelling: h-y-g-i-e-n-i-c. Noun <em>hygiene</em>. &lsquo;Not only&hellip; they&rsquo;re also&hellip;&rsquo; signals two benefits &mdash; the second one is the inclusive-design point.</td></tr>
+<tr><td><span class="word">dexterity</span></td><td><span class="pos">n.</span></td><td>skill in using your hands</td><td class="zh">手的灵巧度；手部灵活性</td><td>&ldquo;&hellip;easier for people with <em>dexterity</em> or mobility issues.&rdquo;</td><td class="note">Paired with <em>mobility</em>. Both are polite academic ways of describing physical difficulty.</td></tr>
+<tr><td><span class="word">mobility</span></td><td><span class="pos">n.</span></td><td>the ability to move around</td><td class="zh">行动能力</td><td>&ldquo;&hellip;people with dexterity or <em>mobility</em> issues.&rdquo;</td><td class="note">Connects to the &lsquo;Access&rsquo; section later: buses and trains that are not wheelchair friendly reduce mobility.</td></tr>
+<tr><td><span class="word">decline</span></td><td><span class="pos">v.</span></td><td>to become gradually weaker, smaller or worse</td><td class="zh">衰退；下降</td><td>&ldquo;It&rsquo;s well known that vision <em>declines</em> with age.&rdquo;</td><td class="note">Said twice: vision declines, then &lsquo;motor skills also decline with age&rsquo;. &lsquo;Also&rsquo; is your signal that a new gap (Q36) is starting.</td></tr>
+<tr><td><span class="word">distinguish</span></td><td><span class="pos">v.</span></td><td>to see or hear the difference between two similar things</td><td class="zh">区分；分辨</td><td>&ldquo;We also become worse at <em>distinguishing</em> between similar colors.&rdquo;</td><td class="note">The full phrase is <em>distinguish between A and B</em>. This sentence is where Q35 hides.</td></tr>
+<tr><td><span class="word">shade</span></td><td><span class="pos">n.</span></td><td>a particular version of a colour, lighter or darker</td><td class="zh">色调；深浅</td><td>&ldquo;&hellip;similar colors, in particular <em>shades</em> of blue.&rdquo;</td><td class="note">The answer is the colour itself (<em>blue</em>), not &lsquo;shades&rsquo; &mdash; the note asks what designers avoid using.</td></tr>
+<tr><td><span class="word">interface</span></td><td><span class="pos">n.</span></td><td>the screen and controls you use to operate a computer or app</td><td class="zh">（人机）界面</td><td>&ldquo;&hellip;software designers rarely create <em>interfaces</em> with this color.&rdquo;</td><td class="note">Printed on the question paper (&lsquo;avoid using (35) in interfaces&rsquo;), so it is a locator word, not an answer.</td></tr>
+<tr><td><span class="word">command</span></td><td><span class="pos">n.</span></td><td>an instruction given to a computer or device</td><td class="zh">（计算机）指令</td><td>&ldquo;Voice access is now a routine way of making <em>commands</em>.&rdquo;</td><td class="note">The note says &lsquo;make commands using a mouse, keyboard or their (36)&rsquo; &mdash; mouse and keyboard are printed, so the missing third option is <em>voice</em>.</td></tr>
+<tr><td><span class="word">dummy</span></td><td><span class="pos">n.</span></td><td>a model of a human body used in tests</td><td class="zh">（碰撞测试）假人</td><td>&ldquo;Most cars are still crash tested using a <em>dummy</em> based on an average-sized male.&rdquo;</td><td class="note">Sets up Q37: the dummy is male, so the seat belt is not adapted for women &mdash; especially pregnant ones.</td></tr>
+<tr><td><span class="word">accommodate</span></td><td><span class="pos">v.</span></td><td>to change something so that it fits or suits someone</td><td class="zh">容纳；照顾到（某人的需要）</td><td>&ldquo;&hellip;the seat belts worn by the dummy are not adapted to <em>accommodate</em> them.&rdquo;</td><td class="note">A high-value Writing verb too: <em>accommodate the needs of&hellip;</em>. Double c, double m.</td></tr>
+<tr><td><span class="word">pregnant</span></td><td><span class="pos">adj.</span></td><td>expecting a baby</td><td class="zh">怀孕的</td><td>&ldquo;This has safety implications for all women, particularly those who are <em>pregnant</em>.&rdquo;</td><td class="note"><strong>Answer to Q37.</strong> The note reverses the word order &mdash; &lsquo;especially problematic for (37) women&rsquo; = &lsquo;particularly those who are pregnant&rsquo;.</td></tr>
+<tr><td><span class="word">protective</span></td><td><span class="pos">adj.</span></td><td>made to keep someone safe from harm</td><td class="zh">防护的</td><td>&ldquo;Employers are legally required to provide personal <em>protective</em> equipment or PPE.&rdquo;</td><td class="note">PPE = personal protective equipment. The lecturer gives the full phrase once, then uses the abbreviation, which is what the note uses.</td></tr>
+<tr><td><span class="word">shoulder</span></td><td><span class="pos">n.</span></td><td>the part of the body where the arm joins the neck</td><td class="zh">肩膀</td><td>&ldquo;Women can be tall and still have much smaller <em>shoulders</em> than the average man.&rdquo;</td><td class="note"><strong>Answer to Q38 &mdash; PLURAL.</strong> The note says &lsquo;the size of women&rsquo;s (38)&rsquo;.</td></tr>
+<tr><td><span class="word">hamper</span></td><td><span class="pos">v.</span></td><td>to make it harder for someone to do something</td><td class="zh">妨碍；阻碍</td><td>&ldquo;95% of women said that their PPE often <em>hampered</em> their work.&rdquo;</td><td class="note">Synonym family: hinder / restrict / get in the way of. A useful Task 2 verb as well.</td></tr>
+<tr><td><span class="word">emergency services</span></td><td><span class="pos">n.</span></td><td>the police, fire and ambulance services</td><td class="zh">紧急救援部门（警察、消防、急救）</td><td>&ldquo;This problem was worst in the <em>emergency services</em>, particularly the police.&rdquo;</td><td class="note">The note says &lsquo;officers dealing with emergencies&rsquo;, so &lsquo;emergency&rsquo; is already given &mdash; the answer must be the more specific word, <em>police</em> (Q39).</td></tr>
+<tr><td><span class="word">metabolic rate</span></td><td><span class="pos">n.</span></td><td>the speed at which your body turns food into energy and heat</td><td class="zh">新陈代谢率</td><td>&ldquo;This is due to differences in <em>metabolic rates</em> for men and women.&rdquo;</td><td class="note">The scientific reason behind Q40 &mdash; women feel colder at the same setting.</td></tr>
+<tr><td><span class="word">temperature</span></td><td><span class="pos">n.</span></td><td>how hot or cold something is</td><td class="zh">温度</td><td>&ldquo;There is a standard setting for air conditioning to be at a <em>temperature</em> of 21 degrees.&rdquo;</td><td class="note"><strong>Answer to Q40.</strong> Spelling trap: tem-per-<strong>a</strong>-ture. The number 21 is a distractor &mdash; the gap needs the noun, not the figure.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">become aware of the need to&hellip;</span></td><td>start to realise that something must be done</td><td class="zh">意识到有必要……</td></tr>
+<tr><td><span class="phrase">span economic, social and cultural barriers</span></td><td>work for people from every background</td><td class="zh">跨越经济、社会与文化的隔阂</td></tr>
+<tr><td><span class="phrase">without any type of adaptation</span></td><td>with no changes made for the individual user</td><td class="zh">无需任何改动</td></tr>
+<tr><td><span class="phrase">be linked with</span></td><td>be closely connected to another idea</td><td class="zh">与……相关联</td></tr>
+<tr><td><span class="phrase">not quite the same thing</span></td><td>similar but with an important difference</td><td class="zh">并不完全是一回事</td></tr>
+<tr><td><span class="phrase">present quite a challenge</span></td><td>be quite difficult to deal with</td><td class="zh">构成不小的挑战</td></tr>
+<tr><td><span class="phrase">adjusted to suit people of different heights</span></td><td>changed in height for tall and short users</td><td class="zh">可调节以适应不同身高</td></tr>
+<tr><td><span class="phrase">suffer from back or neck problems</span></td><td>regularly have pain in the back or neck</td><td class="zh">受背痛或颈痛困扰</td></tr>
+<tr><td><span class="phrase">activate by sensor</span></td><td>switch on automatically when movement is detected</td><td class="zh">通过感应器启动</td></tr>
+<tr><td><span class="phrase">pressing or twisting movements</span></td><td>the hand actions needed to push or turn something</td><td class="zh">按压或旋转的动作</td></tr>
+<tr><td><span class="phrase">dexterity or mobility issues</span></td><td>difficulty using the hands or moving around</td><td class="zh">手部灵活或行动方面的问题</td></tr>
+<tr><td><span class="phrase">be criticized for focusing too much on&hellip;</span></td><td>be blamed for paying attention only to one group</td><td class="zh">因过于关注……而受到批评</td></tr>
+<tr><td><span class="phrase">designed with the elderly in mind</span></td><td>made specifically for older users</td><td class="zh">专为老年人设计</td></tr>
+<tr><td><span class="phrase">vision declines with age</span></td><td>eyesight gets worse as people get older</td><td class="zh">视力随年龄下降</td></tr>
+<tr><td><span class="phrase">distinguish between similar colours</span></td><td>tell the difference between colours that look alike</td><td class="zh">分辨相近的颜色</td></tr>
+<tr><td><span class="phrase">a routine way of making commands</span></td><td>a normal, everyday method of giving instructions</td><td class="zh">发出指令的常规方式</td></tr>
+<tr><td><span class="phrase">have a serious impact on people&rsquo;s lives</span></td><td>strongly affect how people live</td><td class="zh">对人们的生活产生严重影响</td></tr>
+<tr><td><span class="phrase">wheelchair friendly</span></td><td>suitable for people using a wheelchair</td><td class="zh">方便轮椅使用者的</td></tr>
+<tr><td><span class="phrase">be legally required to provide</span></td><td>must supply something because the law says so</td><td class="zh">依法必须提供</td></tr>
+<tr><td><span class="phrase">free of charge</span></td><td>without the person having to pay</td><td class="zh">免费</td></tr>
+<tr><td><span class="phrase">comply with a legal requirement</span></td><td>do what the law demands</td><td class="zh">遵守法律规定</td></tr>
+<tr><td><span class="phrase">ill-fitting</span></td><td>the wrong size or shape for the wearer</td><td class="zh">不合身的</td></tr>
+<tr><td><span class="phrase">put women at risk</span></td><td>make a situation dangerous for women</td><td class="zh">使女性面临风险</td></tr>
+<tr><td><span class="phrase">hamper their work</span></td><td>make their job harder to do</td><td class="zh">妨碍她们的工作</td></tr>
+<tr><td><span class="phrase">a standard setting</span></td><td>a fixed default level used everywhere</td><td class="zh">标准（默认）设定</td></tr>
+<tr><td><span class="phrase">turn the air conditioning up or down</span></td><td>make the air conditioning stronger or weaker</td><td class="zh">调高或调低空调</td></tr>
+<tr><td><span class="phrase">waste energy</span></td><td>use power that is not needed</td><td class="zh">浪费能源</td></tr>
+<tr><td><span class="phrase">serious consequences for&hellip;</span></td><td>important bad results caused by something</td><td class="zh">对……造成严重后果</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The ten Part 4 gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY</strong> in each gap, exactly as you would on the answer sheet.</p><div class="ex-item"><span class="ex-num">1.</span><label>Inclusive design means products can be used by a diverse range of people without the need for any <input type="text" class="blank" id="b1" data-answer="adaptation" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Universal design goes further because it also caters for people with <input type="text" class="blank" id="b2" data-answer="cognitive" placeholder="______"> problems.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>One workplace example is <input type="text" class="blank" id="b3" data-answer="desks" placeholder="______"> which are adjustable, avoiding back or neck problems.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Another example is the <input type="text" class="blank" id="b4" data-answer="taps" placeholder="______"> in public toilets, which are easier to use.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>To help older users, designers avoid using <input type="text" class="blank" id="b5" data-answer="blue" placeholder="______"> in interfaces.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>People can now make commands with a mouse, a keyboard or their <input type="text" class="blank" id="b6" data-answer="voice" placeholder="______">.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Seat belts are especially problematic for <input type="text" class="blank" id="b7" data-answer="pregnant" placeholder="______"> women.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>PPE jackets are often unsuitable because of the size of women&rsquo;s <input type="text" class="blank" id="b8" data-answer="shoulders" placeholder="______">.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>PPE for female <input type="text" class="blank" id="b9" data-answer="police" placeholder="______"> officers dealing with emergencies is the worst of all.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>The <input type="text" class="blank" id="b10" data-answer="temperature" placeholder="______"> in offices is often too low for women.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Listening you lose the mark for a wrong form even when you clearly heard the right idea.</p><div class="ex-item"><span class="ex-num">1.</span><label>Designers have become aware of the need to be <input type="text" class="blank" id="b11" data-answer="inclusive" placeholder="______"> (INCLUDE) when they design products.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The aim is to make products <input type="text" class="blank" id="b12" data-answer="accessible" placeholder="______"> (ACCESS) to as many people as possible.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Desks which are <input type="text" class="blank" id="b13" data-answer="adjustable" placeholder="______"> (ADJUST) suit users of different heights.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Sensor taps are more <input type="text" class="blank" id="b14" data-answer="hygienic" placeholder="______"> (HYGIENE) than taps you have to twist.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Inaccessible buses reduce disabled people&rsquo;s <input type="text" class="blank" id="b15" data-answer="independence" placeholder="______"> (INDEPENDENT).<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Ill-fitting PPE has serious <input type="text" class="blank" id="b16" data-answer="safety" placeholder="______"> (SAFE) implications for women.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Not enough <input type="text" class="blank" id="b17" data-answer="consideration" placeholder="______"> (CONSIDER) is given to a range of users.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Vision <input type="text" class="blank" id="b18" data-answer="declines" placeholder="______"> (DECLINE) with age, and so do motor skills.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word below is said in this lecture and every one of them is regularly misspelled. Type the complete word.</p><div class="ex-item"><span class="ex-num">1.</span><label>a d a p t _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="adaptation" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>c o g n _ t i v e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="cognitive" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>h y g i _ n i c &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="hygienic" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>d e x t e r _ t y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="dexterity" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>e q u i p m _ n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="equipment" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>t e m p e r _ t u r e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="temperature" placeholder="______"><span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>w h e e l c h _ i r &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b25" data-answer="wheelchair" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>a c c o m m o d _ t e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b26" data-answer="accommodate" placeholder="______"><span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers &amp; Supporting Detail</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Part 4 lectures are full of figures that are <em>not</em> answers. Practise catching them anyway &mdash; the examiner often builds a distractor out of one. Write numbers in figures.</p><div class="ex-item"><span class="ex-num">1.</span><label>The standard air conditioning setting is a temperature of <input type="text" class="blank" id="b27" data-answer="21" placeholder="______"> degrees.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Over the past <input type="text" class="blank" id="b28" data-answer="100" placeholder="______"> years, UK workplaces have become considerably safer.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>A recent report found that <input type="text" class="blank" id="b29" data-answer="95" placeholder="______">% of women said their PPE hampered their work.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>PPE ranges from goggles to full <input type="text" class="blank" id="b30" data-answer="bodysuits" placeholder="______">, supplied free of charge.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Cars are still crash tested using a dummy based on an average-sized <input type="text" class="blank" id="b31" data-answer="male" placeholder="______">.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Employers must supply PPE free of <input type="text" class="blank" id="b32" data-answer="charge" placeholder="______">.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>In the office scenario, women wear blankets or <input type="text" class="blank" id="b33" data-answer="sweaters" placeholder="______"> while the men wear shorts.<span class="feedback" id="fb33"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the lecturer actually says; on the right is the wording on your note page. Write the ONE WORD that fills the gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;without any type of adaptation having to be made to the original design&rdquo; &rarr; Note: without the need for any <input type="text" class="blank" id="b34" data-answer="adaptation" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;people who have cognitive difficulties&rdquo; &rarr; Note: people with <input type="text" class="blank" id="b35" data-answer="cognitive" placeholder="______"> problems<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;desks which can be adjusted to suit people of different heights&rdquo; &rarr; Note: <input type="text" class="blank" id="b36" data-answer="desks" placeholder="______"> which are adjustable<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;Taps that you activate by sensor require no pressing or twisting&rdquo; &rarr; Note: <input type="text" class="blank" id="b37" data-answer="taps" placeholder="______"> in public toilets which are easier to use<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;shades of blue, which is why software designers rarely create interfaces with this color&rdquo; &rarr; Note: designers avoid using <input type="text" class="blank" id="b38" data-answer="blue" placeholder="______"> in interfaces<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;voice access is now a routine way of making commands&rdquo; &rarr; Note: make commands using a mouse, keyboard or their <input type="text" class="blank" id="b39" data-answer="voice" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;this problem was worst in the emergency services, particularly the police&rdquo; &rarr; Note: PPE for female <input type="text" class="blank" id="b40" data-answer="police" placeholder="______"> officers is the worst<span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Audio: &ldquo;a standard setting for air conditioning to be at a temperature of 21&deg;&rdquo; &rarr; Note: the <input type="text" class="blank" id="b41" data-answer="temperature" placeholder="______"> in offices is often too low for women<span class="feedback" id="fb41"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q31</span></td><td>without the need for any <b>(31)</b></td><td><b>NOUN &mdash; singular</b></td><td>&lsquo;without the need for any&rsquo; = &lsquo;without any type of&hellip; having to be made&rsquo;. Listen right after the definition of inclusive design.</td><td class="note">adaptation</td></tr>
+<tr><td><span class="word">Q32</span></td><td>catering for people with <b>(32)</b> problems</td><td><b>ADJECTIVE</b></td><td>&lsquo;problems&rsquo; is already printed, so the gap is the describing word. Clue: the difference between universal and inclusive design.</td><td class="note">cognitive</td></tr>
+<tr><td><span class="word">Q33</span></td><td><b>(33)</b> which are adjustable, avoiding back or neck problems</td><td><b>PLURAL NOUN &mdash; office object</b></td><td>&lsquo;which <u>are</u>&rsquo; forces a plural. Clue: &lsquo;in workplaces&hellip; can be adjusted to suit people of different heights&rsquo;.</td><td class="note">desks</td></tr>
+<tr><td><span class="word">Q34</span></td><td><b>(34)</b> in public toilets which are easier to use</td><td><b>PLURAL NOUN &mdash; bathroom object</b></td><td>Clue: &lsquo;no pressing or twisting movements&rsquo; and &lsquo;more hygienic&rsquo;. Do not write the method (sensor).</td><td class="note">taps</td></tr>
+<tr><td><span class="word">Q35</span></td><td>designers avoid using <b>(35)</b> in interfaces</td><td><b>NOUN &mdash; a colour</b></td><td>&lsquo;interfaces&rsquo; is printed, so listen for what is <em>hard to distinguish</em> for older eyes.</td><td class="note">blue</td></tr>
+<tr><td><span class="word">Q36</span></td><td>make commands using a mouse, keyboard or their <b>(36)</b></td><td><b>NOUN &mdash; a body-related method</b></td><td>Mouse and keyboard are given; you need the third option. ONE WORD ONLY &mdash; not &lsquo;voice access&rsquo;.</td><td class="note">voice</td></tr>
+<tr><td><span class="word">Q37</span></td><td>Seatbelts are especially problematic for <b>(37)</b> women</td><td><b>ADJECTIVE describing women</b></td><td>&lsquo;especially&rsquo; = &lsquo;particularly&rsquo;. Clue: the crash-test dummy is an average-sized male.</td><td class="note">pregnant</td></tr>
+<tr><td><span class="word">Q38</span></td><td>unsuitable because of the size of women&rsquo;s <b>(38)</b></td><td><b>PLURAL NOUN &mdash; body part</b></td><td>Clue: &lsquo;women can be tall and still have much smaller&hellip; than the average man&rsquo;.</td><td class="note">shoulders</td></tr>
+<tr><td><span class="word">Q39</span></td><td>PPE for female <b>(39)</b> officers dealing with emergencies</td><td><b>NOUN used as an adjective &mdash; a job</b></td><td>&lsquo;officers&rsquo; and &lsquo;emergencies&rsquo; are printed, so the answer is the more specific service named at the very end of the sentence.</td><td class="note">police</td></tr>
+<tr><td><span class="word">Q40</span></td><td>The <b>(40)</b> in offices is often too low for women</td><td><b>NOUN &mdash; singular, measurable</b></td><td>Clue: air conditioning, 21 degrees, metabolic rates. The figure 21 is a distractor &mdash; you need the noun.</td><td class="note">temperature</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;&hellip;without the need for any <b>(31)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;&hellip;so that as many different types of people as possible can use them <b>without any type of adaptation having to be made</b> to the original design.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">without the need for any X = without any type of X having to be made</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;You do not need to change it&rsquo; using &lsquo;without the need for&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;catering for people with <b>(32)</b> problems&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;&hellip;considering the needs of people who have <b>cognitive difficulties</b>, which can present quite a challenge.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">catering for the needs of = considering the needs of; problems = difficulties</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence using &lsquo;cater for the needs of&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>(33)</b> which are adjustable, avoiding back or neck problems&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;It is common to see <b>desks which can be adjusted</b> to suit people of different heights&hellip; one reason why office workers often <b>suffer from back or neck problems</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">which are adjustable = which can be adjusted (adjective &harr; passive verb). Plural because of &lsquo;are&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Turn &lsquo;a chair that can be raised&rsquo; into an adjective phrase&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>(34)</b> in public toilets which are easier to use&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>Taps that you activate by sensor require no pressing or twisting movements</b>&hellip; they are also <b>easier for people with dexterity or mobility issues</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">easier to use = require no pressing or twisting / easier for people with dexterity issues</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a door handle using &lsquo;requires no&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;designers avoid using <b>(35)</b> in interfaces&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;&hellip;we become worse at distinguishing between similar colors, in particular <b>shades of blue</b>, which is why software designers <b>rarely create interfaces with this color</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">avoid using X = rarely create&hellip; with X. &lsquo;This color&rsquo; refers back to <em>blue</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;which is why&hellip;&rsquo; to give a reason&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Seatbelts are especially problematic for <b>(37)</b> women&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;This has safety implications for all women, <b>particularly those who are pregnant</b>, as the seat belts&hellip; are not adapted to <b>accommodate</b> them.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">especially problematic for = has safety implications&hellip; particularly for</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;It is a big problem for beginners&rsquo; using &lsquo;particularly&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;PPE for female <b>(39)</b> officers dealing with emergencies is the worst&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;&hellip;this problem was <b>worst in the emergency services, particularly the police</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">officers dealing with emergencies = the emergency services; the specific answer is the LAST word said.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="List three jobs in the emergency services&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;designing products that span economic, social and cultural barriers&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;without any type of adaptation having to be made to the original design&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;the needs of people who have cognitive difficulties&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;desks which can be adjusted to suit people of different heights&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;taps that you activate by sensor require no pressing or twisting movements&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;we become worse at distinguishing between similar colours&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;voice access is now a routine way of making commands&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;women can be tall and still have much smaller shoulders than the average man&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the lecturer, what does inclusive design mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Designing a separate version of a product for each disability.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Designing products that as many people as possible can use with no changes made.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Designing only for people with cognitive difficulties.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. Designing cheap products that everybody can afford.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">How is universal design different from inclusive design in this talk?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. It is only used in workplaces.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It aims at products for everyone, including people with cognitive difficulties.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. It ignores the needs of elderly users.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. It was invented much earlier.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why does the lecturer mention back and neck problems?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. To explain why some offices still do not have adjustable desks.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. To show that standing desks are dangerous.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. To describe an illness caused by air conditioning.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. To argue that office work should be avoided.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">The note for Q34 says &lsquo;(34) in public toilets which are easier to use&rsquo;. Why is &lsquo;sensor&rsquo; wrong?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. The word sensor is not in the recording.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Sensor is the method of activation, not the object in the toilet.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Sensor is two words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. The note needs an adjective.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does &lsquo;these are not only more hygienic&rsquo; tell you about sensor taps?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They are more expensive but cleaner.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They are cleaner AND a second benefit is coming.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They are the only hygienic option.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They are difficult for older people.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why do software designers rarely use blue in interfaces?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Blue screens use more battery power.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Older users find similar shades of blue hard to tell apart.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Blue is associated with error messages.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Blue is difficult to print.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">The note says &lsquo;make commands using a mouse, keyboard or their (36)&rsquo;. What must you write?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. voice access</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. voice</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. speaking</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. motor skills</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What point does the crash-test dummy make?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Cars are tested too rarely.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Testing is based on an average-sized male, so belts do not suit all women.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Dummies are too expensive to redesign.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Seat belts are unnecessary for short journeys.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why are PPE jackets often unsuitable for women?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. They are usually too short.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Employers buy jackets designed for a small man, but women have smaller shoulders.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Women are not legally entitled to PPE.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The material is too heavy.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Where did the report find the PPE problem to be worst?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. In construction.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. In hospitals.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. In the emergency services, particularly the police.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. In factories.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why do many women feel cold in air-conditioned offices?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Offices are badly insulated.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. The standard setting was designed to suit men, whose metabolic rates differ.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Women sit closer to the windows.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The air conditioning is broken in most modern offices.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the best way to keep your place in this Part 4 lecture?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Write down every number you hear.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Follow the printed headings: Definition &rarr; Examples &rarr; Impact (Access / Safety / Comfort).</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Listen only for words you already know.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Wait for the speaker to repeat each answer.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 31–40</h3><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">adaptation</div><div class="answer-note">&lsquo;&hellip;so that as many different types of people as possible can use them without any type of <em>adaptation</em> having to be made to the original design.&rsquo; Note wording: &lsquo;without the need for any&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">cognitive</div><div class="answer-note">&lsquo;Universal design&hellip; includes considering the needs of people who have <em>cognitive</em> difficulties.&rsquo; &lsquo;difficulties&rsquo; = the printed word &lsquo;problems&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">desks</div><div class="answer-note">&lsquo;In workplaces, it is common to see <em>desks</em> which can be adjusted to suit people of different heights.&rsquo; PLURAL, because the note says &lsquo;which <u>are</u> adjustable&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">taps</div><div class="answer-note">&lsquo;<em>Taps</em> that you activate by sensor require no pressing or twisting movements&hellip; easier for people with dexterity or mobility issues.&rsquo; PLURAL. Not &lsquo;sensor taps&rsquo; &mdash; ONE WORD ONLY.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">blue</div><div class="answer-note">&lsquo;&hellip;worse at distinguishing between similar colors, in particular shades of <em>blue</em>, which is why software designers rarely create interfaces with this color.&rsquo; &lsquo;rarely create&rsquo; = &lsquo;avoid using&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">voice</div><div class="answer-note">&lsquo;So, <em>voice</em> access is now a routine way of making commands.&rsquo; Write <em>voice</em> only; mouse and keyboard are already printed on the question paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">pregnant</div><div class="answer-note">&lsquo;This has safety implications for all women, particularly those who are <em>pregnant</em>, as the seat belts worn by the dummy are not adapted to accommodate them.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">shoulders</div><div class="answer-note">&lsquo;Women can be tall and still have much smaller <em>shoulders</em> than the average man.&rsquo; PLURAL &mdash; the note says &lsquo;the size of women&rsquo;s (38)&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">police</div><div class="answer-note">&lsquo;This problem was worst in the emergency services, particularly the <em>police</em>.&rsquo; The note already prints &lsquo;officers dealing with emergencies&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">temperature</div><div class="answer-note">&lsquo;There is a standard setting for air conditioning to be at a <em>temperature</em> of 21 degrees designed to suit men.&rsquo; The figure 21 is a distractor; the gap needs the noun.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">adaptation</div><div class="answer-note">Inclusive design means products can be used by a diverse range of people without the need for any</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">cognitive</div><div class="answer-note">Universal design goes further because it also caters for people with</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">desks</div><div class="answer-note">One workplace example is</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">taps</div><div class="answer-note">Another example is the</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">blue</div><div class="answer-note">To help older users, designers avoid using</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">voice</div><div class="answer-note">People can now make commands with a mouse, a keyboard or their</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">pregnant</div><div class="answer-note">Seat belts are especially problematic for</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">shoulders</div><div class="answer-note">PPE jackets are often unsuitable because of the size of women&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">police</div><div class="answer-note">PPE for female</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">temperature</div><div class="answer-note">The</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">inclusive</div><div class="answer-note">Designers have become aware of the need to be</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">accessible</div><div class="answer-note">The aim is to make products</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">adjustable</div><div class="answer-note">Desks which are</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">hygienic</div><div class="answer-note">Sensor taps are more</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">independence</div><div class="answer-note">Inaccessible buses reduce disabled people&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">safety</div><div class="answer-note">Ill-fitting PPE has serious</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">consideration</div><div class="answer-note">Not enough</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">declines</div><div class="answer-note">Vision</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">adaptation</div><div class="answer-note">a d a p t _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">cognitive</div><div class="answer-note">c o g n _ t i v e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">hygienic</div><div class="answer-note">h y g i _ n i c  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">dexterity</div><div class="answer-note">d e x t e r _ t y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">equipment</div><div class="answer-note">e q u i p m _ n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">temperature</div><div class="answer-note">t e m p e r _ t u r e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">wheelchair</div><div class="answer-note">w h e e l c h _ i r  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">accommodate</div><div class="answer-note">a c c o m m o d _ t e  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers &amp; Supporting Detail</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">21</div><div class="answer-note">The standard air conditioning setting is a temperature of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">100</div><div class="answer-note">Over the past</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">95</div><div class="answer-note">A recent report found that</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">bodysuits</div><div class="answer-note">PPE ranges from goggles to full</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">male</div><div class="answer-note">Cars are still crash tested using a dummy based on an average-sized</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">charge</div><div class="answer-note">Employers must supply PPE free of</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">sweaters</div><div class="answer-note">In the office scenario, women wear blankets or</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">adaptation</div><div class="answer-note">Audio: &ldquo;without any type of adaptation having to be made to the original design&rdquo; &rarr; Note: without the need for any</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">cognitive</div><div class="answer-note">Audio: &ldquo;people who have cognitive difficulties&rdquo; &rarr; Note: people with</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">desks</div><div class="answer-note">Audio: &ldquo;desks which can be adjusted to suit people of different heights&rdquo; &rarr; Note:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">taps</div><div class="answer-note">Audio: &ldquo;Taps that you activate by sensor require no pressing or twisting&rdquo; &rarr; Note:</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">blue</div><div class="answer-note">Audio: &ldquo;shades of blue, which is why software designers rarely create interfaces with this color&rdquo; &rarr; Note: designers avoid using</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">voice</div><div class="answer-note">Audio: &ldquo;voice access is now a routine way of making commands&rdquo; &rarr; Note: make commands using a mouse, keyboard or their</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">police</div><div class="answer-note">Audio: &ldquo;this problem was worst in the emergency services, particularly the police&rdquo; &rarr; Note: PPE for female</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">temperature</div><div class="answer-note">Audio: &ldquo;a standard setting for air conditioning to be at a temperature of 21&deg;&rdquo; &rarr; Note: the</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q31</span><div><div class="answer-val">adaptation &mdash; NOUN &mdash; singular</div><div class="answer-note">&lsquo;without the need for any&rsquo; = &lsquo;without any type of&hellip; having to be made&rsquo;. Listen right after the definition of inclusive design.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q32</span><div><div class="answer-val">cognitive &mdash; ADJECTIVE</div><div class="answer-note">&lsquo;problems&rsquo; is already printed, so the gap is the describing word. Clue: the difference between universal and inclusive design.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q33</span><div><div class="answer-val">desks &mdash; PLURAL NOUN &mdash; office object</div><div class="answer-note">&lsquo;which <u>are</u>&rsquo; forces a plural. Clue: &lsquo;in workplaces&hellip; can be adjusted to suit people of different heights&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q34</span><div><div class="answer-val">taps &mdash; PLURAL NOUN &mdash; bathroom object</div><div class="answer-note">Clue: &lsquo;no pressing or twisting movements&rsquo; and &lsquo;more hygienic&rsquo;. Do not write the method (sensor).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q35</span><div><div class="answer-val">blue &mdash; NOUN &mdash; a colour</div><div class="answer-note">&lsquo;interfaces&rsquo; is printed, so listen for what is <em>hard to distinguish</em> for older eyes.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q36</span><div><div class="answer-val">voice &mdash; NOUN &mdash; a body-related method</div><div class="answer-note">Mouse and keyboard are given; you need the third option. ONE WORD ONLY &mdash; not &lsquo;voice access&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q37</span><div><div class="answer-val">pregnant &mdash; ADJECTIVE describing women</div><div class="answer-note">&lsquo;especially&rsquo; = &lsquo;particularly&rsquo;. Clue: the crash-test dummy is an average-sized male.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q38</span><div><div class="answer-val">shoulders &mdash; PLURAL NOUN &mdash; body part</div><div class="answer-note">Clue: &lsquo;women can be tall and still have much smaller&hellip; than the average man&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q39</span><div><div class="answer-val">police &mdash; NOUN used as an adjective &mdash; a job</div><div class="answer-note">&lsquo;officers&rsquo; and &lsquo;emergencies&rsquo; are printed, so the answer is the more specific service named at the very end of the sentence.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q40</span><div><div class="answer-val">temperature &mdash; NOUN &mdash; singular, measurable</div><div class="answer-note">Clue: air conditioning, 21 degrees, metabolic rates. The figure 21 is a distractor &mdash; you need the noun.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">designing products that span economic, social and cultural barriers</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">without any type of adaptation having to be made to the original design</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">the needs of people who have cognitive difficulties</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">desks which can be adjusted to suit people of different heights</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">taps that you activate by sensor require no pressing or twisting movements</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">we become worse at distinguishing between similar colours</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">voice access is now a routine way of making commands</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">women can be tall and still have much smaller shoulders than the average man</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Designing products that as many people as possible can use with no changes made.</div><div class="answer-note">&lsquo;Making sure products are accessible so that as many different types of people as possible can use them <em>without any type of adaptation</em>.&rsquo; A is the opposite of inclusive design.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. It aims at products for everyone, including people with cognitive difficulties.</div><div class="answer-note">&lsquo;Universal design aims to make products that work for everyone and that includes considering the needs of people who have cognitive difficulties.&rsquo; That is the source of Q32.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. To explain why some offices still do not have adjustable desks.</div><div class="answer-note">Adjustable desks &lsquo;still isn&rsquo;t always the case&hellip; and is one reason why office workers often suffer from back or neck problems&rsquo;. The problem is evidence of missing inclusive design.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. Sensor is the method of activation, not the object in the toilet.</div><div class="answer-note">&lsquo;Taps that you activate by sensor&rsquo; &mdash; the noun after the gap-phrase is <em>taps</em>, and &lsquo;which <em>are</em>&rsquo; forces the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. They are cleaner AND a second benefit is coming.</div><div class="answer-note">&lsquo;Not only&hellip; they&rsquo;re also&hellip;&rsquo; always signals a second point &mdash; here, easier for people with dexterity or mobility issues.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. Older users find similar shades of blue hard to tell apart.</div><div class="answer-note">&lsquo;We become worse at distinguishing between similar colors, in particular shades of blue, which is why software designers rarely create interfaces with this color.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. voice</div><div class="answer-note">The audio is &lsquo;voice access is now a routine way of making commands&rsquo;, but the instruction is <strong>ONE WORD ONLY</strong>, so <em>voice</em> is the only safe answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Testing is based on an average-sized male, so belts do not suit all women.</div><div class="answer-note">&lsquo;Most cars are still crash tested using a dummy based on an average-sized male&hellip; the seat belts&hellip; are not adapted to accommodate them&rsquo; &mdash; especially pregnant women (Q37).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. Employers buy jackets designed for a small man, but women have smaller shoulders.</div><div class="answer-note">&lsquo;All they need to do&hellip; is buy jackets designed for a small man&hellip; women can be tall and still have much smaller shoulders than the average man.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C. In the emergency services, particularly the police.</div><div class="answer-note">The final words of that sentence give the answer to Q39: &lsquo;worst in the emergency services, <em>particularly the police</em>&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. The standard setting was designed to suit men, whose metabolic rates differ.</div><div class="answer-note">&lsquo;This is due to differences in metabolic rates&hellip; a standard setting&hellip; at a temperature of 21 degrees designed to suit men.&rsquo; That sentence contains the answer to Q40.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Follow the printed headings: Definition &rarr; Examples &rarr; Impact (Access / Safety / Comfort).</div><div class="answer-note">The lecturer signposts each heading (&lsquo;Today, examples&hellip;&rsquo;, &lsquo;Safety is another issue&rsquo;, &lsquo;Another problem is related to comfort at work&rsquo;), and Part 4 never repeats anything.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

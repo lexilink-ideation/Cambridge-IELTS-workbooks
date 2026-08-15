@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Listening Part 3</h1>
+    <h2>Teaching Handwriting · Multiple Choice, two answers + single answer (Q21&ndash;30)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two education students &mdash; a man and a woman &mdash; are discussing an assignment on teaching handwriting to children. They begin with the benefits of learning to write by hand (memory, concentration, imagination, spatial awareness, fine motor skills), then talk about how to help children with <strong>dyspraxia</strong> and <strong>dyslexia</strong>, then compare cursive and print writing, and finally give their views on exams, the future of handwriting and their own writing. Questions 21&ndash;24 are <strong>pick TWO letters from A&ndash;E</strong>; questions 25&ndash;30 are <strong>3-option multiple choice</strong>.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two education students. In this recording the <b>man</b> speaks first (&ldquo;How are you getting on with the assignment?&rdquo;) and the <b>woman</b> replies. She is the one who mentions the pressure-sensitive pen, grid paper, keyboards for dyslexic children, cursive versus print, and her own spelling and punctuation. He is the one who talks about the study on imagination, exam results, the future of handwriting, and missing writing by hand.</p><p><strong>The situation 情境:</strong> 两名教育专业的学生在讨论一份关于「教孩子写字」的作业。他们先谈手写的好处（记忆、专注力、想象力、空间意识、精细动作），再谈如何帮助有书写障碍（dyspraxia）和阅读障碍（dyslexia）的孩子，接着比较连笔体和印刷体，最后谈考试评分、手写的未来，以及他们自己的字（Q21&ndash;30）。</p><p><strong>Task type:</strong> Q21&ndash;22 and Q23&ndash;24: <b>choose TWO letters, A&ndash;E</b> &mdash; one mark per letter, either order. Q25&ndash;30: <b>choose the correct letter A, B or C</b>. In the 3-option questions all three ideas are normally said out loud; only one of them answers the exact question asked.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> Almost every option in this section is spoken aloud, so &ldquo;I heard it&rdquo; is worthless here. Two habits decide your score. First, for Q21&ndash;22 the stem says <em>both</em> students found it surprising, so you need <b>two reactions</b>, not one &mdash; listen for agreement markers (&ldquo;Same here&rdquo;, &ldquo;I thought that too&rdquo;) and reject anything one of them says was obvious or expected. Second, for Q25&ndash;30 check <b>who</b> the stem names: three questions belong to <em>the woman</em>, one to <em>the man</em>, and two to <em>the students</em> together. Write M and W beside the questions before the audio starts, and ignore the other voice when the stem is speaker-specific. 先在题号旁标出「男/女/两人」，再听——说话人错了，选项再像也是零分。</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q21&ndash;22 needs TWO surprised people.</b> Memory (B) is dismissed with &ldquo;that seems pretty obvious&rdquo; and fine motor skills (A) with &ldquo;as I&rsquo;d always assumed&rdquo;. Imagination (D) is the cruellest option: the woman says &ldquo;I&rsquo;m not sure I understand how it improves&hellip; imagination&rdquo;, but the man replies &ldquo;<em>I would have guessed that would be the case</em>&rdquo; &mdash; so only one of them is surprised, and D is out.</li><li><b>Q23&ndash;24 asks what is EASIEST to correct, not what is discussed.</b> Letter shapes (D) needs &ldquo;lots of games&hellip; a lot of patience&rdquo;; writing slowly (E) gets &ldquo;I&rsquo;m not sure there&rsquo;s much you can do about&rdquo;. The two answers are flagged with easiness words: &ldquo;a really <em>simple</em> solution&rdquo; and &ldquo;one quite <em>simple</em> thing you can do&rdquo;.</li><li><b>Q23&ndash;24, option B (a straight line).</b> It is mentioned in the very same sentence as the spacing answer &mdash; but as the thing that matters <em>less</em>: &ldquo;that&rsquo;s more important for legibility <em>than</em> trying to get them to write in a straight line&rdquo;.</li><li><b>Q25, option B.</b> &ldquo;Fluent&rdquo; really is said &mdash; inside a negative: &ldquo;I read that developing fluency <em>isn&rsquo;t any faster</em>&rdquo;. Option A is the exact opposite of &ldquo;they can be more willing to have a go&rdquo;.</li><li><b>Q26, option C.</b> Teachers are mentioned, but the woman says &ldquo;teachers&rsquo; attitudes <em>have changed</em>&rdquo;, and the stylish-and-educated view of cursive belongs to <em>the past</em>: &ldquo;but not anymore&rdquo;.</li><li><b>Q29: two decoys around the real answer.</b> Note-taking (A) is raised and then dismissed (&ldquo;there are lots of apps for that&rdquo;), and historical documents (C) are said to be a problem in general, not <em>her</em> problem. Her own difficulty is spelling and punctuation.</li><li><b>Q30, option B.</b> Someone really is shocked by a comment &mdash; but her mother is shocked by her <em>spelling</em>, not her handwriting. Both students end by saying they miss writing by hand, which is regret (C).</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">handwriting</span></td><td><span class="pos">n.</span></td><td>writing done with a pen or pencil</td><td class="zh">手写；书写；字迹</td><td>&ldquo;An assignment on teaching <em>handwriting</em> to children.&rdquo;</td><td class="note">The topic word. Notice it means both the <em>skill</em> and a person&rsquo;s individual <em>style</em> &mdash; Q30 uses the second meaning.</td></tr>
+<tr><td><span class="word">benefit</span></td><td><span class="pos">n./v.</span></td><td>an advantage; to gain an advantage</td><td class="zh">好处；受益</td><td>&ldquo;Children <em>benefit</em> in so many ways from learning to write.&rdquo;</td><td class="note">Q21&ndash;22 asks about benefits. Collocations: benefit <em>from</em> something, the benefits <em>of</em> something.</td></tr>
+<tr><td><span class="word">concentration</span></td><td><span class="pos">n.</span></td><td>the ability to give all your attention to one thing</td><td class="zh">专注力；注意力</td><td>&ldquo;What&rsquo;s less obvious is how it helps develop their <em>concentration</em>.&rdquo;</td><td class="note"><strong>Answer to Q21&ndash;22 (C).</strong> Flagged by &lsquo;what&rsquo;s less obvious&rsquo; and then agreed by both speakers.</td></tr>
+<tr><td><span class="word">obvious</span></td><td><span class="pos">adj.</span></td><td>easy to see or understand</td><td class="zh">显而易见的</td><td>&ldquo;That seems pretty <em>obvious</em> when you think about it.&rdquo;</td><td class="note">A rejection signal in this task: if something is <em>obvious</em>, nobody was surprised by it, so it cannot be the answer.</td></tr>
+<tr><td><span class="word">occur to</span></td><td><span class="pos">phr. v.</span></td><td>to come into someone&rsquo;s mind for the first time</td><td class="zh">（想法）浮现；想到</td><td>&ldquo;That aspect of handwriting had never <em>occurred to</em> me before.&rdquo;</td><td class="note">The strongest &lsquo;I was surprised&rsquo; phrase in the recording, and it introduces answer C.</td></tr>
+<tr><td><span class="word">assume</span></td><td><span class="pos">v.</span></td><td>to think something is true without checking</td><td class="zh">假定；想当然</td><td>&ldquo;It&rsquo;s not just fine motor skills that improve&hellip; as I&rsquo;d always <em>assumed</em>.&rdquo;</td><td class="note">&lsquo;I&rsquo;d always assumed&rsquo; = I already knew / expected it &rarr; NOT surprising &rarr; option A is out.</td></tr>
+<tr><td><span class="word">imagination</span></td><td><span class="pos">n.</span></td><td>the ability to form new ideas in your mind</td><td class="zh">想象力</td><td>&ldquo;I&rsquo;m not sure I understand how it improves children&rsquo;s <em>imagination</em>.&rdquo;</td><td class="note">Option D. Only the woman is puzzled by it; the man &lsquo;would have guessed&rsquo; it, so it fails the &lsquo;both students&rsquo; test.</td></tr>
+<tr><td><span class="word">generate</span></td><td><span class="pos">v.</span></td><td>to produce or create something</td><td class="zh">产生；生成</td><td>&ldquo;Children <em>generated</em> more ideas when they were writing by hand.&rdquo;</td><td class="note">Academic verb for producing ideas. Paraphrase family: produce / come up with / create.</td></tr>
+<tr><td><span class="word">spatial awareness</span></td><td><span class="pos">n.</span></td><td>knowing where things are in relation to each other</td><td class="zh">空间意识</td><td>&ldquo;I&rsquo;d never associated <em>spatial awareness</em> with handwriting either.&rdquo;</td><td class="note"><strong>Answer to Q21&ndash;22 (E).</strong> &lsquo;I&rsquo;d never associated&hellip;&rsquo; + &lsquo;I thought that too&rsquo; = both surprised.</td></tr>
+<tr><td><span class="word">fine motor skills</span></td><td><span class="pos">n.</span></td><td>the ability to make small, precise hand movements</td><td class="zh">精细动作技能</td><td>&ldquo;It&rsquo;s not just <em>fine motor skills</em> that improve through writing.&rdquo;</td><td class="note">Option A. Mentioned, but with &lsquo;as I&rsquo;d always assumed&rsquo; &mdash; expected, not surprising.</td></tr>
+<tr><td><span class="word">dyspraxia</span></td><td><span class="pos">n.</span></td><td>a condition that makes coordinating movement difficult</td><td class="zh">运动协调障碍</td><td>&ldquo;Handwriting is so much harder for children with <em>dyspraxia</em>.&rdquo;</td><td class="note">Defined immediately after it is said (&lsquo;who have problems coordinating movement&rsquo;) &mdash; speakers usually gloss technical words like this.</td></tr>
+<tr><td><span class="word">dyslexia</span></td><td><span class="pos">n.</span></td><td>a condition that makes reading and spelling difficult</td><td class="zh">阅读障碍；诵读困难</td><td>&ldquo;It might be better to teach them to write on a laptop&hellip; like children with <em>dyslexia</em>.&rdquo;</td><td class="note">Q25 is specifically about dyslexia; Q23&ndash;24 is about dyspraxia. Do not let the two conditions blur together.</td></tr>
+<tr><td><span class="word">coordinate</span></td><td><span class="pos">v.</span></td><td>to make different parts of the body work together</td><td class="zh">协调</td><td>&ldquo;Children with dyspraxia&hellip; have problems <em>coordinating</em> movement.&rdquo;</td><td class="note">Spelling: co-or-di-nate. The noun is <em>coordination</em>.</td></tr>
+<tr><td><span class="word">letter formation</span></td><td><span class="pos">n.</span></td><td>the way individual letters are shaped and written</td><td class="zh">字母书写；写字形</td><td>&ldquo;They need so much more support with <em>letter formation</em>.&rdquo;</td><td class="note">A teaching term. It comes just before the &lsquo;games&hellip; patience&rsquo; comment that rules out option D.</td></tr>
+<tr><td><span class="word">distinguish</span></td><td><span class="pos">v.</span></td><td>to see or show the difference between things</td><td class="zh">区分；辨别</td><td>&ldquo;You need to play lots of games to help them <em>distinguish</em> letter shapes.&rdquo;</td><td class="note">Paraphrases option D (&lsquo;confusing letter shapes&rsquo;) &mdash; but the fix is slow, so D is not an answer.</td></tr>
+<tr><td><span class="word">patience</span></td><td><span class="pos">n.</span></td><td>the ability to wait or keep trying calmly</td><td class="zh">耐心</td><td>&ldquo;It takes a lot of <em>patience</em>.&rdquo;</td><td class="note">A difficulty signal: whatever takes a lot of patience is NOT &lsquo;easiest to correct&rsquo;. Do not confuse with <em>patients</em>.</td></tr>
+<tr><td><span class="word">pressure</span></td><td><span class="pos">n.</span></td><td>the force you use when pushing on something</td><td class="zh">压力；用力</td><td>&ldquo;Pens that light up if you <em>press</em> too hard.&rdquo;</td><td class="note"><strong>Answer to Q23&ndash;24 (C).</strong> Paper: &lsquo;applying too much pressure&rsquo;; audio: &lsquo;press too hard&rsquo;.</td></tr>
+<tr><td><span class="word">grid paper</span></td><td><span class="pos">n.</span></td><td>paper printed with small squares</td><td class="zh">方格纸</td><td>&ldquo;Use <em>grid paper</em> so they write each letter in a box.&rdquo;</td><td class="note">The mechanism behind Q23&ndash;24 (A): boxes train children to space letters correctly.</td></tr>
+<tr><td><span class="word">legibility</span></td><td><span class="pos">n.</span></td><td>how easy writing is to read</td><td class="zh">清晰度；易读性</td><td>&ldquo;That&rsquo;s more important for <em>legibility</em>&hellip;&rdquo;</td><td class="note">Adverb <em>legibly</em>: &lsquo;teach children to write legibly&rsquo;. Links straight to Q27 &mdash; examiners must be able to read the script.</td></tr>
+<tr><td><span class="word">struggle</span></td><td><span class="pos">v.</span></td><td>to find something very difficult</td><td class="zh">费力；挣扎</td><td>&ldquo;They often really <em>struggle</em> with handwriting, and some just give up.&rdquo;</td><td class="note">Common in Part 3 discussions. Collocation: struggle <em>with</em> something.</td></tr>
+<tr><td><span class="word">frustrating</span></td><td><span class="pos">adj.</span></td><td>making you annoyed because you cannot succeed</td><td class="zh">令人沮丧的</td><td>&ldquo;It&rsquo;s not as <em>frustrating</em> for them if they get things wrong.&rdquo;</td><td class="note"><strong>Key to Q25 (C).</strong> less frustrating when you make a mistake = children react more positively to mistakes.</td></tr>
+<tr><td><span class="word">fluency</span></td><td><span class="pos">n.</span></td><td>the ability to do something smoothly and quickly</td><td class="zh">流畅度；熟练程度</td><td>&ldquo;I read that developing <em>fluency</em> isn&rsquo;t any faster.&rdquo;</td><td class="note">The word from option B, said inside a NEGATIVE. Always listen one word further than the keyword.</td></tr>
+<tr><td><span class="word">cursive</span></td><td><span class="pos">adj./n.</span></td><td>handwriting in which the letters are joined together</td><td class="zh">连笔体；草书体</td><td>&ldquo;Teaching print rather than <em>cursive</em> handwriting where the letters are joined up.&rdquo;</td><td class="note">Defined for you in the same sentence. Its opposite here is <em>print</em> writing (separate letters).</td></tr>
+<tr><td><span class="word">learning difficulties</span></td><td><span class="pos">n.</span></td><td>conditions that make learning harder than usual</td><td class="zh">学习障碍</td><td>&ldquo;Especially for children with <em>learning difficulties</em> who find joining up letters really challenging.&rdquo;</td><td class="note"><strong>Key to Q26 (A).</strong> &lsquo;a certain group of children&rsquo; on the paper = this phrase in the audio.</td></tr>
+<tr><td><span class="word">script</span></td><td><span class="pos">n.</span></td><td>a piece of written work produced in an exam</td><td class="zh">答卷；卷面</td><td>&ldquo;Marks are definitely affected if examiners can&rsquo;t read the <em>script</em>.&rdquo;</td><td class="note">Exam-specific meaning &mdash; not a film script. Supports Q27 (A): grades are affected.</td></tr>
+<tr><td><span class="word">touch typing</span></td><td><span class="pos">n.</span></td><td>typing without looking at the keyboard</td><td class="zh">盲打</td><td>&ldquo;<em>Touch typing</em> still isn&rsquo;t taught in most schools.&rdquo;</td><td class="note">Q28 option A says typing will be taught <em>before</em> writing &mdash; the man actually says it isn&rsquo;t taught at all, and may not need to be.</td></tr>
+<tr><td><span class="word">punctuation</span></td><td><span class="pos">n.</span></td><td>the marks used in writing, such as commas and full stops</td><td class="zh">标点符号</td><td>&ldquo;My <em>punctuation</em> is really inconsistent.&rdquo;</td><td class="note"><strong>Answer to Q29 (B)</strong>, together with spelling. Spelling: p-u-n-c-t-u-a-t-i-o-n.</td></tr>
+<tr><td><span class="word">inconsistent</span></td><td><span class="pos">adj.</span></td><td>not always the same; not regular</td><td class="zh">不一致的；不稳定的</td><td>&ldquo;The fact that my punctuation is really <em>inconsistent</em>.&rdquo;</td><td class="note">Negative prefix <em>in-</em>. A soft way of admitting a weakness &mdash; common in academic speech.</td></tr>
+<tr><td><span class="word">put something down to</span></td><td><span class="pos">phr.</span></td><td>to explain something as being caused by</td><td class="zh">把……归因于</td><td>&ldquo;I think you can <em>put that down to</em> lack of practice.&rdquo;</td><td class="note">A causal expression. Paraphrase family: blame on / attribute to / it&rsquo;s because of.</td></tr>
+<tr><td><span class="word">individual</span></td><td><span class="pos">adj.</span></td><td>belonging to one particular person; distinctive</td><td class="zh">个人的；有个人特色的</td><td>&ldquo;My grandparents had such beautiful handwriting and it was so <em>individual</em>.&rdquo;</td><td class="note">Sets up Q30 (C): nobody could identify his handwriting now &mdash; a sense of loss, not embarrassment.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">How are you getting on with&hellip;?</span></td><td>How is it going with&hellip;?</td><td class="zh">……进展如何？</td></tr>
+<tr><td><span class="phrase">I hadn&rsquo;t realized that&hellip;</span></td><td>I did not know until now that&hellip;</td><td class="zh">我之前没意识到……</td></tr>
+<tr><td><span class="phrase">benefit in so many ways from&hellip;</span></td><td>gain many different advantages from</td><td class="zh">从……中获益良多</td></tr>
+<tr><td><span class="phrase">less important than in the past</span></td><td>not as important as it used to be</td><td class="zh">不如过去重要</td></tr>
+<tr><td><span class="phrase">hardly ever write by hand</span></td><td>almost never write with a pen</td><td class="zh">几乎从不手写</td></tr>
+<tr><td><span class="phrase">all the evidence suggests</span></td><td>every study points to the conclusion that</td><td class="zh">所有证据都表明</td></tr>
+<tr><td><span class="phrase">not least because</span></td><td>especially because</td><td class="zh">尤其是因为</td></tr>
+<tr><td><span class="phrase">the physical act of writing</span></td><td>the bodily movement of writing itself</td><td class="zh">书写这个身体动作本身</td></tr>
+<tr><td><span class="phrase">that seems pretty obvious</span></td><td>that is easy to understand</td><td class="zh">这看起来很明显</td></tr>
+<tr><td><span class="phrase">what&rsquo;s less obvious is&hellip;</span></td><td>the part people do not expect is</td><td class="zh">不那么明显的是……</td></tr>
+<tr><td><span class="phrase">sit still and focus on one thing</span></td><td>stay in one place concentrating on a single task</td><td class="zh">坐得住，专注做一件事</td></tr>
+<tr><td><span class="phrase">it had never occurred to me before</span></td><td>I had never thought of it</td><td class="zh">我以前从没想到过</td></tr>
+<tr><td><span class="phrase">Same here.</span></td><td>I feel exactly the same</td><td class="zh">我也一样</td></tr>
+<tr><td><span class="phrase">I would have guessed that would be the case</span></td><td>I already expected that &mdash; it does not surprise me</td><td class="zh">我本来就猜到会是这样</td></tr>
+<tr><td><span class="phrase">I&rsquo;d never associated X with Y</span></td><td>I had never connected the two things</td><td class="zh">我从没把X和Y联系起来</td></tr>
+<tr><td><span class="phrase">in relation to objects or other people</span></td><td>compared with where things or people are</td><td class="zh">相对于物体或他人的位置</td></tr>
+<tr><td><span class="phrase">as I&rsquo;d always assumed</span></td><td>as I had always believed anyway</td><td class="zh">正如我一直以为的那样</td></tr>
+<tr><td><span class="phrase">problems coordinating movement</span></td><td>difficulty making the body work smoothly</td><td class="zh">动作协调方面的困难</td></tr>
+<tr><td><span class="phrase">it takes a lot of patience</span></td><td>it is slow work</td><td class="zh">需要很大的耐心</td></tr>
+<tr><td><span class="phrase">a really simple solution</span></td><td>an easy way to fix the problem</td><td class="zh">一个非常简单的办法</td></tr>
+<tr><td><span class="phrase">press too hard</span></td><td>push down on the pen with too much force</td><td class="zh">下笔太用力</td></tr>
+<tr><td><span class="phrase">focus on accuracy</span></td><td>concentrate on getting it right rather than fast</td><td class="zh">把重点放在准确性上</td></tr>
+<tr><td><span class="phrase">they eventually speed up</span></td><td>in the end they write faster</td><td class="zh">他们最终会加快速度</td></tr>
+<tr><td><span class="phrase">give up</span></td><td>stop trying</td><td class="zh">放弃</td></tr>
+<tr><td><span class="phrase">have a go</span></td><td>try something</td><td class="zh">试一试</td></tr>
+<tr><td><span class="phrase">the letters are joined up</span></td><td>the letters are connected to each other</td><td class="zh">字母是连起来写的</td></tr>
+<tr><td><span class="phrase">teachers&rsquo; attitudes have changed</span></td><td>teachers now think differently</td><td class="zh">老师们的看法已经改变</td></tr>
+<tr><td><span class="phrase">be judged on their handwriting</span></td><td>be assessed according to how their writing looks</td><td class="zh">因字迹被评判</td></tr>
+<tr><td><span class="phrase">write legibly</span></td><td>write clearly enough to be read</td><td class="zh">写得工整易认</td></tr>
+<tr><td><span class="phrase">I can&rsquo;t see that changing much</span></td><td>I do not think it will change</td><td class="zh">我看这不会有太大变化</td></tr>
+<tr><td><span class="phrase">a basic life skill</span></td><td>an essential everyday ability</td><td class="zh">一项基本生活技能</td></tr>
+<tr><td><span class="phrase">relying on digital devices</span></td><td>depending on phones, tablets and computers</td><td class="zh">依赖电子设备</td></tr>
+<tr><td><span class="phrase">lack of practice</span></td><td>not doing something often enough</td><td class="zh">缺乏练习</td></tr>
+<tr><td><span class="phrase">I miss writing by hand</span></td><td>I feel sad that I no longer write by hand</td><td class="zh">我怀念手写的感觉</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Key Ideas from the Discussion</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These sentences retell the content the exam questions are built on. Write <strong>ONE WORD</strong> in each gap. Every word is actually said in the recording.</p><div class="ex-item"><span class="ex-num">1.</span><label>The evidence suggests children should learn to write by hand before they learn to <input type="text" class="blank" id="b1" data-answer="type" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The physical act of writing helps children remember <input type="text" class="blank" id="b2" data-answer="letters" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>To write by hand, children have to sit still and <input type="text" class="blank" id="b3" data-answer="focus" placeholder="______"> on one thing.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>In one study, primary age children <input type="text" class="blank" id="b4" data-answer="generated" placeholder="______"> more ideas writing by hand than on a keyboard.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Good spatial awareness matters because you have to <input type="text" class="blank" id="b5" data-answer="space" placeholder="______"> words correctly.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Children with dyspraxia have problems <input type="text" class="blank" id="b6" data-answer="coordinating" placeholder="______"> movement.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>They need much more support with letter <input type="text" class="blank" id="b7" data-answer="formation" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>With grid paper, children write each letter in a <input type="text" class="blank" id="b8" data-answer="box" placeholder="______">.<span class="feedback" id="fb8"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Choose TWO Letters (Q21&ndash;24)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the correct letter for each slot. In &ldquo;choose TWO&rdquo; questions, decide <em>why</em> each rejected option fails &mdash; that is what separates a 6.5 from an 8.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q21 &amp; 22 &mdash; first answer (alphabetical order): &ldquo;that aspect had never occurred to me&rdquo; / &ldquo;Same here&rdquo; &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b9" data-answer="C" placeholder="______"><span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q21 &amp; 22 &mdash; second answer: &ldquo;I&rsquo;d never associated&hellip;&rdquo; / &ldquo;I thought that too&rdquo; &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b10" data-answer="E" placeholder="______"><span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q23 &amp; 24 &mdash; first answer: grid paper trains children to space letters &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b11" data-answer="A" placeholder="______"><span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q23 &amp; 24 &mdash; second answer: a pen that lights up, &ldquo;a really simple solution&rdquo; &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b12" data-answer="C" placeholder="______"><span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Which Q21&ndash;22 option fails because the man says &ldquo;I would have guessed that would be the case&rdquo;? <input type="text" class="blank" id="b13" data-answer="D" placeholder="______"><span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Which Q23&ndash;24 option fails because it &ldquo;takes a lot of patience&rdquo;? <input type="text" class="blank" id="b14" data-answer="D" placeholder="______"><span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Multiple Choice (Q25&ndash;30): write the letter</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type <strong>A</strong>, <strong>B</strong> or <strong>C</strong>. Check the speaker named in each stem before you commit: W = the woman, M = the man, S = both students.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q25 (W) laptops and children with dyslexia &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b15" data-answer="C" placeholder="______"><span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q26 (W) cursive versus print writing &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b16" data-answer="A" placeholder="______"><span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q27 (S) poor handwriting and exam performance &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b17" data-answer="A" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q28 (M) the future of handwriting &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b18" data-answer="B" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q29 (W) the effect of relying on digital devices &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b19" data-answer="B" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q30 (S) how they feel about their own handwriting &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b20" data-answer="C" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>In Q25, which option is contradicted by &ldquo;developing fluency isn&rsquo;t any faster&rdquo;? <input type="text" class="blank" id="b21" data-answer="B" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>In Q29, which option is dismissed with &ldquo;there are lots of apps for that&rdquo;? <input type="text" class="blank" id="b22" data-answer="A" placeholder="______"><span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS, or complete the spelling. Every word here comes from this recording and every one is regularly misspelled by candidates.</p><div class="ex-item"><span class="ex-num">1.</span><label>Writing by hand helps children develop their <input type="text" class="blank" id="b23" data-answer="concentration" placeholder="______"> (CONCENTRATE).<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Children with dyspraxia have problems <input type="text" class="blank" id="b24" data-answer="coordinating" placeholder="______"> (COORDINATE) movement.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Typing is less <input type="text" class="blank" id="b25" data-answer="frustrating" placeholder="______"> (FRUSTRATE) for children who make mistakes.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>It has always been important to teach children to write <input type="text" class="blank" id="b26" data-answer="legibly" placeholder="______"> (LEGIBLE).<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>She admits that her punctuation is really <input type="text" class="blank" id="b27" data-answer="inconsistent" placeholder="______"> (CONSISTENT &mdash; make it negative).<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>d y s p r _ x i a &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b28" data-answer="dyspraxia" placeholder="______"><span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>d y s l _ x i a &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b29" data-answer="dyslexia" placeholder="______"><span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>p u n c t u _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b30" data-answer="punctuation" placeholder="______"><span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>i m a g i n _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b31" data-answer="imagination" placeholder="______"><span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the students actually say; on the right is the wording printed on the question paper. Write the missing word.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;that had never occurred to me before&rdquo; / &ldquo;Same here&rdquo; &rarr; Paper: a benefit both students found <input type="text" class="blank" id="b32" data-answer="surprising" placeholder="______"><span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;you have to space words correctly&rdquo; &rarr; Option: improved <input type="text" class="blank" id="b33" data-answer="spatial" placeholder="______"> awareness<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;a pen that lights up if you press too hard&rdquo; &rarr; Option: applying too much <input type="text" class="blank" id="b34" data-answer="pressure" placeholder="______"> when writing<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;grid paper&hellip; trains them to space the letters correctly&rdquo; &rarr; Option: not <input type="text" class="blank" id="b35" data-answer="spacing" placeholder="______"> letters correctly<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;it&rsquo;s not as frustrating for them if they get things wrong&rdquo; &rarr; Option: children react more <input type="text" class="blank" id="b36" data-answer="positively" placeholder="______"> if they make a mistake<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;cursive is more difficult&hellip; especially for children with learning difficulties&rdquo; &rarr; Option: cursive writing <input type="text" class="blank" id="b37" data-answer="disadvantages" placeholder="______"> a certain group of children<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;marks are definitely affected if examiners can&rsquo;t read the script&rdquo; &rarr; Option: there is evidence to suggest <input type="text" class="blank" id="b38" data-answer="grades" placeholder="______"> are affected<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Audio: &ldquo;teachers understand the value of handwriting. It&rsquo;s a basic life skill&rdquo; &rarr; Option: children will continue to learn to write by <input type="text" class="blank" id="b39" data-answer="hand" placeholder="______"><span class="feedback" id="fb39"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q21 &amp; 22</span></td><td>Which TWO benefits of learning to write did <b>both students find surprising</b>?</td><td><b>TWO LETTERS A&ndash;E</b></td><td>You need a surprise reaction from EACH speaker. Positive signals: &ldquo;had never occurred to me&rdquo;, &ldquo;Same here&rdquo;, &ldquo;I&rsquo;d never associated&rdquo;, &ldquo;I thought that too&rdquo;. Kill signals: &ldquo;pretty obvious&rdquo;, &ldquo;I&rsquo;d always assumed&rdquo;, &ldquo;I would have guessed&rdquo;.</td><td class="note">C, E</td></tr>
+<tr><td><span class="word">Q23 &amp; 24</span></td><td>For children with dyspraxia, which TWO handwriting problems are <b>easiest to correct</b>?</td><td><b>TWO LETTERS A&ndash;E</b></td><td>Listen for easiness words: &ldquo;a really <em>simple</em> solution&rdquo;, &ldquo;one quite <em>simple</em> thing you can do&rdquo;. Reject anything with &ldquo;a lot of patience&rdquo; or &ldquo;not much you can do&rdquo;.</td><td class="note">A, C</td></tr>
+<tr><td><span class="word">Q25</span></td><td>What does <b>the woman</b> say about using laptops with children with dyslexia?</td><td><b>LETTER A / B / C &mdash; an effect on the child</b></td><td>She gives one positive and one negative. The positive (less frustrating, more willing to have a go) is the answer; the negative is about <em>fluency</em>, which cancels option B.</td><td class="note">C</td></tr>
+<tr><td><span class="word">Q26</span></td><td>When discussing cursive versus print, <b>the woman</b> thinks that&hellip;</td><td><b>LETTER A / B / C &mdash; an opinion</b></td><td>Wait for &ldquo;especially for&hellip;&rdquo; &mdash; that is where the &lsquo;certain group of children&rsquo; appears. Anything about teachers describes a change, not a preference.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q27</span></td><td>According to <b>the students</b>, what impact does poor handwriting have on exams?</td><td><b>LETTER A / B / C &mdash; a claim about results</b></td><td>Two voices back the same idea: &ldquo;research shows I was right to worry&rdquo; and &ldquo;marks are definitely affected&rdquo;. Nothing is said about answer length or speed in exams.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q28</span></td><td>What prediction does <b>the man</b> make about the future of handwriting?</td><td><b>LETTER A / B / C &mdash; a future statement</b></td><td>Only future or &lsquo;will continue&rsquo; ideas count. &ldquo;I can&rsquo;t see that changing much&hellip; teachers understand the value&hellip; a basic life skill.&rdquo;</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q29</span></td><td><b>The woman</b> is concerned that digital devices have made it hard for her to&hellip;</td><td><b>LETTER A / B / C &mdash; a personal weakness</b></td><td>Look for a first-person admission (&ldquo;my&hellip;&rdquo;). Anything solved by an app, or described as a general problem, is a decoy.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q30</span></td><td>How do <b>the students</b> feel about their own handwriting?</td><td><b>LETTER A / B / C &mdash; a shared feeling</b></td><td>Listen to the last exchange only. Feeling words: &ldquo;I miss&hellip;&rdquo;, &ldquo;It&rsquo;s a shame&rdquo;, &ldquo;I feel the same way&rdquo;.</td><td class="note">C</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;improved <b>concentration</b>&rdquo; &mdash; a surprise for BOTH (Q21&ndash;22, C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">W: &ldquo;<b>What&rsquo;s less obvious is</b> how it helps develop their concentration. They have to sit still and focus on one thing.&rdquo; M: &ldquo;That aspect <b>had never occurred to me before</b>.&rdquo; W: &ldquo;<b>Same here.</b>&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">surprising = less obvious + never occurred to me + &lsquo;Same here&rsquo; (the second speaker&rsquo;s agreement is what makes it valid)</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write two lines of dialogue in which one person is surprised and the other agrees&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;improved <b>spatial awareness</b>&rdquo; (Q21&ndash;22, E)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">M: &ldquo;I&rsquo;d <b>never associated</b> spatial awareness with handwriting either.&rdquo; W: &ldquo;<b>I thought that too.</b> But good spatial awareness is essential for writing because you have to space words correctly.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">&lsquo;I&rsquo;d never associated X with Y&rsquo; = I was surprised that X and Y are connected</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence beginning &lsquo;I&rsquo;d never associated&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;improved <b>imagination</b>&rdquo; (Q21&ndash;22, D &mdash; WRONG)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">W: &ldquo;I&rsquo;m not sure I understand how it improves children&rsquo;s imagination.&rdquo; M: &ldquo;There was that study&hellip; <b>I would have guessed that would be the case.</b>&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Only ONE speaker is surprised. The stem says <em>both</em> &mdash; one reaction is not enough.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;I was amazed&rsquo; as an unsurprised reaction using &lsquo;I would have guessed&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;applying too much <b>pressure</b> when writing&rdquo; (Q23&ndash;24, C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">W: &ldquo;I like the idea of using one of those <b>pens that light up if you press too hard</b>. That seems like a <b>really simple solution</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">press too hard = apply too much pressure; &lsquo;a really simple solution&rsquo; = easiest to correct</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a simple fix for a problem using &lsquo;that seems like a really simple solution&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Children become <b>fluent</b> relatively quickly&rdquo; (Q25, B &mdash; WRONG)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">W: &ldquo;On a keyboard, they can be <b>more willing to have a go</b>. <b>But</b> I read that developing fluency <b>isn&rsquo;t any faster</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The keyword (fluency) is inside a negative. Always listen to the end of the clause before you tick a box.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence where &lsquo;but&rsquo; reverses the first half&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;cursive writing <b>disadvantages a certain group</b> of children&rdquo; (Q26, A)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">W: &ldquo;It&rsquo;s been proved that cursive is <b>more difficult to learn, especially for children with learning difficulties</b> who find joining up letters really challenging.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">harder for children with learning difficulties = disadvantages a certain group of children</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;This exam is harder for students who are dyslexic&rsquo; using &lsquo;disadvantages&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>regretful</b> that they have lost the habit&rdquo; (Q30, C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">M: &ldquo;Personally, <b>I miss writing by hand</b>. I hardly ever write anything now&hellip; <b>It&rsquo;s a shame.</b>&rdquo; W: &ldquo;<b>I feel the same way.</b> I used to write a diary by hand and now I do that digitally.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">I miss&hellip; + it&rsquo;s a shame + I used to&hellip; and now = regret about a lost habit</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write two sentences about a habit you have lost, using &lsquo;I used to&hellip; and now&hellip;&rsquo;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;children benefit in so many ways from learning to write&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;the physical act of writing helps children to remember letters&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;they have to sit still and focus on one thing&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;children with dyspraxia who have problems coordinating movement&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;one of those pens that lights up if you press too hard&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;developing fluency isn&rsquo;t any faster&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;marks are definitely affected if examiners can&rsquo;t read the script&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;I think you can put that down to lack of practice&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Which phrase tells you that a benefit was NOT surprising to a speaker?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. &lsquo;That had never occurred to me before.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. &lsquo;I&rsquo;d never associated that with handwriting.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. &lsquo;That seems pretty obvious when you think about it.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. &lsquo;Same here.&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why is &lsquo;improved imagination&rsquo; not an answer to Q21&ndash;22?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Neither student mentions imagination.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Only the woman is surprised; the man says he would have guessed it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. The study was about adults, not children.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. The students disagree about whether it is a benefit.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">According to the woman, why is spatial awareness important for handwriting?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Children have to space words correctly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Children have to hold the pen at the right angle.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Children have to sit still.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Children have to remember letter shapes.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Which problem for children with dyspraxia do the students think is HARD to fix?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. not spacing letters correctly</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. applying too much pressure</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. confusing letter shapes</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. writing on grid paper</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does &lsquo;that&rsquo;s more important for legibility than trying to get them to write in a straight line&rsquo; tell you?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. Straight lines are the easiest thing to correct.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Spacing matters more than straightness, so the straight line is not the answer.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Legibility does not matter in the classroom.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. Grid paper makes writing less legible.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What does the woman say happens when a dyslexic child makes a mistake on a keyboard?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. They lose motivation.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. They become fluent more quickly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. They find it less frustrating and are more willing to try.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. They give up completely.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What is said about cursive writing being &lsquo;stylish and educated&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. It is still the general view in the UK.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It was the view in the past, but not any more.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Only teachers hold that view.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Research has proved it.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Which evidence supports the students&rsquo; view on handwriting and exam grades?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Candidates write shorter answers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Neat handwriting matters less than it used to.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Research confirms the man&rsquo;s worry, and marks suffer if examiners cannot read the script.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Examiners are told to ignore handwriting.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What does the man say about touch typing?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. It will be taught before handwriting.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It is still not taught in most schools, and may not need to be.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It has replaced handwriting in exams.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. It is only useful on digital devices.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What is the woman&rsquo;s own difficulty caused by relying on digital devices?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. taking detailed notes</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. spelling and punctuation</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. reading historical documents</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. writing quickly</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why is &lsquo;embarrassed by comments made about it&rsquo; wrong for Q30?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Nobody comments on their writing at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Her mother&rsquo;s comment is about her spelling, not her handwriting.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. They are proud of their handwriting.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Only the man&rsquo;s handwriting is mentioned.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the best overall strategy for Q25&ndash;30 in this section?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Choose the option containing the words you heard most clearly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Mark who each stem is about (man / woman / both) and reject options said by the wrong speaker or in a negative.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Answer everything at the end from memory.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Always choose the option that is mentioned last.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 21–30</h3><div class="answer-item"><span class="answer-num">21 &amp; 22</span><div><div class="answer-val">C, E (in either order)</div><div class="answer-note"><b>C (concentration):</b> &lsquo;What&rsquo;s less obvious is how it helps develop their concentration&rsquo; &rarr; &lsquo;that aspect had never occurred to me before&rsquo; &rarr; &lsquo;Same here.&rsquo; <b>E (spatial awareness):</b> &lsquo;I&rsquo;d never associated spatial awareness with handwriting either&rsquo; &rarr; &lsquo;I thought that too.&rsquo; A is rejected by &lsquo;as I&rsquo;d always assumed&rsquo;, B by &lsquo;that seems pretty obvious&rsquo;, and D because only one speaker is surprised (&lsquo;I would have guessed that would be the case&rsquo;).</div></div></div>
+<div class="answer-item"><span class="answer-num">23 &amp; 24</span><div><div class="answer-val">A, C (in either order)</div><div class="answer-note"><b>A (spacing):</b> &lsquo;One quite <em>simple</em> thing you can do is to use grid paper&hellip; that trains them to space the letters correctly.&rsquo; <b>C (pressure):</b> &lsquo;pens that light up if you press too hard&hellip; a really <em>simple</em> solution.&rsquo; B is ranked as less important, D &lsquo;takes a lot of patience&rsquo;, and of E they say &lsquo;I&rsquo;m not sure there&rsquo;s much you can do about&rsquo; it.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">C</div><div class="answer-note">The woman: &lsquo;It&rsquo;s not as <em>frustrating</em> for them if they get things wrong. On a keyboard, they can be more willing to have a go.&rsquo; = children react more positively to mistakes. B is contradicted (&lsquo;developing fluency isn&rsquo;t any faster&rsquo;) and A is the opposite of &lsquo;willing to have a go&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">A</div><div class="answer-note">The woman: &lsquo;It&rsquo;s been proved that cursive is more difficult to learn, <em>especially for children with learning difficulties</em> who find joining up letters is really challenging.&rsquo; = it disadvantages a certain group. C fails because &lsquo;teachers&rsquo; attitudes have changed&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">A</div><div class="answer-note">The man: &lsquo;I was always worried that my poor handwriting affected my exam results. And now <em>research shows that I was right to worry</em>.&rsquo; The woman adds &lsquo;marks are definitely affected if examiners can&rsquo;t read the script&rsquo;. Nothing is said about shorter answers (C), and B is what &lsquo;most people think&rsquo; about handwriting generally, not about exams.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">B</div><div class="answer-note">The man: &lsquo;I can&rsquo;t see that changing much&hellip; teachers understand the value of handwriting. It&rsquo;s <em>a basic life skill</em>.&rsquo; = children will go on learning to write by hand. A reverses what he says about touch typing; C misuses &lsquo;write by hand on digital devices&rsquo;, which he offers as a possibility, not a dislike.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">The woman: &lsquo;My mother is shocked by my awful <em>spelling</em> and the fact that my <em>punctuation</em> is really inconsistent&hellip; you can put that down to lack of practice.&rsquo; A is dismissed (&lsquo;there are lots of apps for that&rsquo;) and C is a general remark about historical documents.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">C</div><div class="answer-note">The man: &lsquo;Personally, I <em>miss</em> writing by hand. I hardly ever write anything now&hellip; It&rsquo;s a shame.&rsquo; The woman: &lsquo;I feel the same way. I <em>used to</em> write a diary by hand and now I do that digitally.&rsquo; = regret at a lost habit. B misattributes her mother&rsquo;s comment, which was about spelling.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Key Ideas from the Discussion</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">type</div><div class="answer-note">The evidence suggests children should learn to write by hand before they learn to</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">letters</div><div class="answer-note">The physical act of writing helps children remember</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">focus</div><div class="answer-note">To write by hand, children have to sit still and</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">generated</div><div class="answer-note">In one study, primary age children</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">space</div><div class="answer-note">Good spatial awareness matters because you have to</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">coordinating</div><div class="answer-note">Children with dyspraxia have problems</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">formation</div><div class="answer-note">They need much more support with letter</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">box</div><div class="answer-note">With grid paper, children write each letter in a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Choose TWO Letters (Q21&ndash;24)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">C</div><div class="answer-note">Q21 &amp; 22 &mdash; first answer (alphabetical order): &ldquo;that aspect had never occurred to me&rdquo; / &ldquo;Same here&rdquo;  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">E</div><div class="answer-note">Q21 &amp; 22 &mdash; second answer: &ldquo;I&rsquo;d never associated&hellip;&rdquo; / &ldquo;I thought that too&rdquo;  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">A</div><div class="answer-note">Q23 &amp; 24 &mdash; first answer: grid paper trains children to space letters  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">C</div><div class="answer-note">Q23 &amp; 24 &mdash; second answer: a pen that lights up, &ldquo;a really simple solution&rdquo;  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">D</div><div class="answer-note">Which Q21&ndash;22 option fails because the man says &ldquo;I would have guessed that would be the case&rdquo;?</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">D</div><div class="answer-note">Which Q23&ndash;24 option fails because it &ldquo;takes a lot of patience&rdquo;?</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Multiple Choice (Q25&ndash;30): write the letter</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">C</div><div class="answer-note">Q25 (W) laptops and children with dyslexia  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">A</div><div class="answer-note">Q26 (W) cursive versus print writing  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">A</div><div class="answer-note">Q27 (S) poor handwriting and exam performance  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">B</div><div class="answer-note">Q28 (M) the future of handwriting  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">B</div><div class="answer-note">Q29 (W) the effect of relying on digital devices  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">C</div><div class="answer-note">Q30 (S) how they feel about their own handwriting  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">B</div><div class="answer-note">In Q25, which option is contradicted by &ldquo;developing fluency isn&rsquo;t any faster&rdquo;?</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">A</div><div class="answer-note">In Q29, which option is dismissed with &ldquo;there are lots of apps for that&rdquo;?</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">concentration</div><div class="answer-note">Writing by hand helps children develop their</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">coordinating</div><div class="answer-note">Children with dyspraxia have problems</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">frustrating</div><div class="answer-note">Typing is less</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">legibly</div><div class="answer-note">It has always been important to teach children to write</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">inconsistent</div><div class="answer-note">She admits that her punctuation is really</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">dyspraxia</div><div class="answer-note">d y s p r _ x i a  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">dyslexia</div><div class="answer-note">d y s l _ x i a  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">punctuation</div><div class="answer-note">p u n c t u _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">imagination</div><div class="answer-note">i m a g i n _ t i o n  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">surprising</div><div class="answer-note">Audio: &ldquo;that had never occurred to me before&rdquo; / &ldquo;Same here&rdquo; &rarr; Paper: a benefit both students found</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">spatial</div><div class="answer-note">Audio: &ldquo;you have to space words correctly&rdquo; &rarr; Option: improved</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">pressure</div><div class="answer-note">Audio: &ldquo;a pen that lights up if you press too hard&rdquo; &rarr; Option: applying too much</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">spacing</div><div class="answer-note">Audio: &ldquo;grid paper&hellip; trains them to space the letters correctly&rdquo; &rarr; Option: not</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">positively</div><div class="answer-note">Audio: &ldquo;it&rsquo;s not as frustrating for them if they get things wrong&rdquo; &rarr; Option: children react more</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">disadvantages</div><div class="answer-note">Audio: &ldquo;cursive is more difficult&hellip; especially for children with learning difficulties&rdquo; &rarr; Option: cursive writing</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">grades</div><div class="answer-note">Audio: &ldquo;marks are definitely affected if examiners can&rsquo;t read the script&rdquo; &rarr; Option: there is evidence to suggest</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">hand</div><div class="answer-note">Audio: &ldquo;teachers understand the value of handwriting. It&rsquo;s a basic life skill&rdquo; &rarr; Option: children will continue to learn to write by</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q21 &amp; 22</span><div><div class="answer-val">C, E &mdash; TWO LETTERS A&ndash;E</div><div class="answer-note">You need a surprise reaction from EACH speaker. Positive signals: &ldquo;had never occurred to me&rdquo;, &ldquo;Same here&rdquo;, &ldquo;I&rsquo;d never associated&rdquo;, &ldquo;I thought that too&rdquo;. Kill signals: &ldquo;pretty obvious&rdquo;, &ldquo;I&rsquo;d always assumed&rdquo;, &ldquo;I would have guessed&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q23 &amp; 24</span><div><div class="answer-val">A, C &mdash; TWO LETTERS A&ndash;E</div><div class="answer-note">Listen for easiness words: &ldquo;a really <em>simple</em> solution&rdquo;, &ldquo;one quite <em>simple</em> thing you can do&rdquo;. Reject anything with &ldquo;a lot of patience&rdquo; or &ldquo;not much you can do&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q25</span><div><div class="answer-val">C &mdash; LETTER A / B / C &mdash; an effect on the child</div><div class="answer-note">She gives one positive and one negative. The positive (less frustrating, more willing to have a go) is the answer; the negative is about <em>fluency</em>, which cancels option B.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q26</span><div><div class="answer-val">A &mdash; LETTER A / B / C &mdash; an opinion</div><div class="answer-note">Wait for &ldquo;especially for&hellip;&rdquo; &mdash; that is where the &lsquo;certain group of children&rsquo; appears. Anything about teachers describes a change, not a preference.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q27</span><div><div class="answer-val">A &mdash; LETTER A / B / C &mdash; a claim about results</div><div class="answer-note">Two voices back the same idea: &ldquo;research shows I was right to worry&rdquo; and &ldquo;marks are definitely affected&rdquo;. Nothing is said about answer length or speed in exams.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q28</span><div><div class="answer-val">B &mdash; LETTER A / B / C &mdash; a future statement</div><div class="answer-note">Only future or &lsquo;will continue&rsquo; ideas count. &ldquo;I can&rsquo;t see that changing much&hellip; teachers understand the value&hellip; a basic life skill.&rdquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q29</span><div><div class="answer-val">B &mdash; LETTER A / B / C &mdash; a personal weakness</div><div class="answer-note">Look for a first-person admission (&ldquo;my&hellip;&rdquo;). Anything solved by an app, or described as a general problem, is a decoy.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q30</span><div><div class="answer-val">C &mdash; LETTER A / B / C &mdash; a shared feeling</div><div class="answer-note">Listen to the last exchange only. Feeling words: &ldquo;I miss&hellip;&rdquo;, &ldquo;It&rsquo;s a shame&rdquo;, &ldquo;I feel the same way&rdquo;.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">children benefit in so many ways from learning to write</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">the physical act of writing helps children to remember letters</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">they have to sit still and focus on one thing</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">children with dyspraxia who have problems coordinating movement</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">one of those pens that lights up if you press too hard</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">developing fluency isn&rsquo;t any faster</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">marks are definitely affected if examiners can&rsquo;t read the script</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">I think you can put that down to lack of practice</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C. &lsquo;That seems pretty obvious when you think about it.&rsquo;</div><div class="answer-note">&lsquo;Obvious&rsquo; is a rejection signal. It is used about memory, which is why option B in the exam question is wrong.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Only the woman is surprised; the man says he would have guessed it.</div><div class="answer-note">The stem requires <em>both</em> students to be surprised. &lsquo;I would have guessed that would be the case&rsquo; cancels the option.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. Children have to space words correctly.</div><div class="answer-note">She corrects her earlier idea that spatial awareness is only about &lsquo;where you are in relation to objects or other people&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. confusing letter shapes</div><div class="answer-note">&lsquo;You need to play lots of games to help them distinguish letter shapes. It takes a lot of patience.&rsquo; Writing very slowly is also hard to fix.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. Spacing matters more than straightness, so the straight line is not the answer.</div><div class="answer-note">Comparative structures rank ideas. The thing on the &lsquo;more important&rsquo; side is the one the exam wants.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. They find it less frustrating and are more willing to try.</div><div class="answer-note">This is Q25 (C). Note that giving up is what happens with <em>handwriting</em>, not with the keyboard.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. It was the view in the past, but not any more.</div><div class="answer-note">&lsquo;In the past, cursive writing was certainly considered more stylish and educated, but not anymore.&rsquo; Tense is the trap in Q26 option C.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. Research confirms the man&rsquo;s worry, and marks suffer if examiners cannot read the script.</div><div class="answer-note">Two separate statements point the same way, which is why Q27 is A: there is evidence that grades are affected.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. It is still not taught in most schools, and may not need to be.</div><div class="answer-note">Option A of Q28 reverses this. His actual prediction is that children will go on learning to write by hand because it is &lsquo;a basic life skill&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. spelling and punctuation</div><div class="answer-note">Note-taking is dismissed (&lsquo;lots of apps for that&rsquo;) and historical documents are a general point. Her personal admission is the answer to Q29.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Her mother&rsquo;s comment is about her spelling, not her handwriting.</div><div class="answer-note">The comment exists, but it is attached to the wrong thing. Both students end by saying they <em>miss</em> writing by hand &mdash; that is regret, answer C.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Mark who each stem is about (man / woman / both) and reject options said by the wrong speaker or in a negative.</div><div class="answer-note">Nearly every option is spoken aloud somewhere. Speaker identity and negatives (&lsquo;isn&rsquo;t any faster&rsquo;, &lsquo;not anymore&rsquo;) are what separate the answer from the decoys.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

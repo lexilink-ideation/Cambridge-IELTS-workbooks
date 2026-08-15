@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Reading Passage 1</h1>
+    <h2>The kākāpō · True / False / Not Given + Note Completion (Q1–13)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage describes the <strong>kākāpō</strong>, the world&rsquo;s only flightless parrot, which lives in New Zealand and is critically endangered. The first half explains what the bird looks like, what it eats and how it breeds; the second half tells the story of its decline after humans arrived and of the long conservation effort to save it, from Richard Henry in 1894 to the Recovery Plan that still guides management today. It is a <strong>factual, chronological</strong> passage, so once you find the right decade you are almost always standing on the answer.</p></div><div class="card"><p><strong>What the passage argues:</strong> That the kākāpō was pushed to the edge of extinction by <em>introduced predators</em> rather than by anything wrong with the bird itself, and that recovery only became possible once those predators were removed and the remaining birds were intensively managed.</p><p><strong>段落结构 Structure:</strong> 第1&ndash;3段：外形、习性与繁殖（不会飞、独居、素食、雌鸟独自孵蛋）。第4段：人类到来后的衰退——波利尼西亚人、欧洲殖民者及其带来的狗、鼠、猫、鼬。第5&ndash;6段：保护尝试的时间线——1894年 Richard Henry、1949&ndash;73年考察、1977&ndash;80年 Rakiura 岛发现雌鸟。第7&ndash;8段：1980&ndash;97年迁往三个岛屿保护区、1996年恢复计划与成效。第9段：当前三大目标。</p><p><strong>Task type:</strong> <strong>Q1&ndash;6 True / False / Not Given</strong> (statements follow the order of the passage) and <strong>Q7&ndash;13 Note completion</strong> &mdash; <em>ONE WORD AND/OR A NUMBER</em> from the passage. Writing two words where one is asked for scores zero.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Two very different tasks sit on one passage. For <strong>True / False / Not Given</strong> (Q1&ndash;6) test the statement <em>word by word</em>: FALSE needs the passage to say the <em>opposite</em>; NOT GIVEN means the passage never makes that comparison or claim at all. For the <strong>note completion</strong> (Q7&ndash;13) first decide the word type each gap needs (a plant part? a place? a year? a group of people?), then use the headings <em>Arrival of Polynesian settlers / Arrival of European colonisers / Protecting kākāpō</em> as signposts &mdash; they follow the passage in order. Copy the word <strong>exactly</strong> as printed: one word and/or a number, no extra adjectives.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q1 &ldquo;other parrots&rdquo;</b> &mdash; the passage says the kākāpō is the world&rsquo;s <em>only</em> flightless parrot. &lsquo;Only&rsquo; is the single word that makes this FALSE, not NOT GIVEN.</li><li><b>Q4 is a comparison</b> &mdash; the passage says both the settlers and the Polynesian rat killed kākāpō, but it never says which was the <em>greater</em> threat. A comparison the writer never makes is always NOT GIVEN.</li><li><b>Q7 diet list</b> &mdash; the question already gives you &lsquo;fern fronds&rsquo; and &lsquo;various parts of a tree&rsquo; (leaves, roots, bark), so the only item left in the sentence is <em>bulbs</em>. Cross off what the question has already used.</li><li><b>Q11 has two dates close together</b> &mdash; males were spotted on Rakiura in <em>1977</em>, but females were confirmed in <em>1980</em>. The note says &lsquo;a definite sighting of <em>female</em> kākāpō&rsquo;.</li><li><b>Dates that are not answers</b> &mdash; 1894, 1949, 1973, 1974, 1980 (cats eradicated), 1986, 1995, 1996, 2000 and June 2020 all appear. Match the date to its <em>event</em>, never to the nearest number.</li><li><b>Plural discipline</b> &mdash; Q9 <em>feathers</em> and Q13 <em>stakeholders</em> are plural in the passage; copy the plural. Q8 <em>soil</em> is uncountable &mdash; do not add an &lsquo;s&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">nocturnal</span></td><td><span class="pos">adj.</span></td><td>active at night rather than during the day</td><td class="zh">夜行的；夜间活动的</td><td>&ldquo;The kākāpō is a <em>nocturnal</em>, flightless parrot.&rdquo;</td><td class="note">Opening line of the passage. Common IELTS animal word &mdash; paraphrased as &lsquo;active at night&rsquo;.</td></tr>
+<tr><td><span class="word">flightless</span></td><td><span class="pos">adj.</span></td><td>unable to fly</td><td class="zh">不会飞的</td><td>&ldquo;It is the world&rsquo;s only <em>flightless</em> parrot.&rdquo;</td><td class="note"><strong>Key to Q1.</strong> &lsquo;inability to fly&rsquo; in the question = &lsquo;flightless&rsquo; here; the trap word is &lsquo;only&rsquo;.</td></tr>
+<tr><td><span class="word">critically endangered</span></td><td><span class="pos">adj. phr.</span></td><td>at extremely high risk of dying out completely</td><td class="zh">极度濒危的</td><td>&ldquo;&hellip;a parrot that is <em>critically endangered</em>.&rdquo;</td><td class="note">The official conservation grade above &lsquo;endangered&rsquo;. Sets the topic of the whole passage.</td></tr>
+<tr><td><span class="word">solitary</span></td><td><span class="pos">adj.</span></td><td>living alone, not in a group</td><td class="zh">独居的</td><td>&ldquo;Kākāpō are <em>solitary</em> birds.&rdquo;</td><td class="note">Paraphrase family: alone / not social / independent. Contrast with &lsquo;colonial&rsquo; or &lsquo;flock&rsquo; species.</td></tr>
+<tr><td><span class="word">forage</span></td><td><span class="pos">v.</span></td><td>to search widely for food</td><td class="zh">觅食</td><td>&ldquo;They <em>forage</em> on the ground and climb high into trees.&rdquo;</td><td class="note">Note the preposition: forage <em>on/for</em>. Feeding behaviour is a classic sentence-completion target.</td></tr>
+<tr><td><span class="word">descent</span></td><td><span class="pos">n.</span></td><td>a movement downwards</td><td class="zh">下降；降落</td><td>&ldquo;&hellip;at best manage a controlled <em>descent</em> to the ground.&rdquo;</td><td class="note">A polite way of saying the bird cannot fly, only fall slowly &mdash; useful supporting evidence for Q1.</td></tr>
+<tr><td><span class="word">bulb</span></td><td><span class="pos">n.</span></td><td>the round underground part of some plants</td><td class="zh">（植物的）球茎</td><td>&ldquo;&hellip;as well as <em>bulbs</em>, and fern fronds.&rdquo;</td><td class="note"><strong>Answer to Q7.</strong> Not &lsquo;light bulb&rsquo; &mdash; here it is a plant part.</td></tr>
+<tr><td><span class="word">frond</span></td><td><span class="pos">n.</span></td><td>a long leaf of a fern or palm</td><td class="zh">（蕨类的）叶</td><td>&ldquo;&hellip;bulbs, and fern <em>fronds</em>.&rdquo;</td><td class="note">Already printed in the question, so it cannot be the answer &mdash; use it to locate the sentence.</td></tr>
+<tr><td><span class="word">incubation</span></td><td><span class="pos">n.</span></td><td>sitting on eggs to keep them warm until they hatch</td><td class="zh">孵化；孵卵</td><td>&ldquo;Males play no part in <em>incubation</em> or chick-rearing.&rdquo;</td><td class="note"><strong>Key to Q3.</strong> The verb is <em>incubate</em>; the passage adds &lsquo;females alone&rsquo;.</td></tr>
+<tr><td><span class="word">unattended</span></td><td><span class="pos">adj.</span></td><td>left alone, with nobody watching</td><td class="zh">无人看管的</td><td>&ldquo;&hellip;which leaves the <em>unattended</em> eggs and chicks particularly vulnerable.&rdquo;</td><td class="note">Prefix <em>un-</em> + attend. Explains <em>why</em> predators matter &mdash; the logical hinge of paragraph 3.</td></tr>
+<tr><td><span class="word">vulnerable</span></td><td><span class="pos">adj.</span></td><td>easily harmed or attacked</td><td class="zh">易受伤害的；脆弱的</td><td>&ldquo;&hellip;particularly <em>vulnerable</em> to predators.&rdquo;</td><td class="note">Collocation: vulnerable <em>to</em> + danger. Very high-frequency in environment passages.</td></tr>
+<tr><td><span class="word">prey</span></td><td><span class="pos">n. / v.</span></td><td>an animal hunted by another; (v.) to hunt and eat</td><td class="zh">猎物；捕食</td><td>&ldquo;For the early settlers, the flightless kākāpō was easy <em>prey</em>.&rdquo;</td><td class="note">Both forms appear: &lsquo;easy prey&rsquo; (noun) and &lsquo;preyed on kākāpō&rsquo; (verb + on).</td></tr>
+<tr><td><span class="word">settler</span></td><td><span class="pos">n.</span></td><td>a person who moves to live in a new area</td><td class="zh">定居者；移民</td><td>&ldquo;&hellip;the arrival of the first Polynesian <em>settlers</em> about 700 years ago.&rdquo;</td><td class="note">Q4 compares settlers with the Polynesian rat &mdash; a comparison the writer never actually makes.</td></tr>
+<tr><td><span class="word">coloniser</span></td><td><span class="pos">n.</span></td><td>a person from another country who takes control of a territory</td><td class="zh">殖民者</td><td>&ldquo;By the time European <em>colonisers</em> arrived in the early 1800s&hellip;&rdquo;</td><td class="note">British spelling with <em>-s-</em>; American English uses <em>colonizer</em>. Marks the second wave of decline.</td></tr>
+<tr><td><span class="word">confined to</span></td><td><span class="pos">v. phr.</span></td><td>limited to one area only</td><td class="zh">局限于；被限制在</td><td>&ldquo;&hellip;kākāpō had become <em>confined to</em> the central North Island&hellip;&rdquo;</td><td class="note">Signals a shrinking range. Paraphrase: &lsquo;found only in&rsquo; / &lsquo;restricted to&rsquo;.</td></tr>
+<tr><td><span class="word">accelerate</span></td><td><span class="pos">v.</span></td><td>to make something happen faster</td><td class="zh">加速；加剧</td><td>&ldquo;The fall in kākāpō numbers was <em>accelerated</em> by European colonisation.&rdquo;</td><td class="note">A cause-and-effect verb: the decline had already begun, colonisation sped it up.</td></tr>
+<tr><td><span class="word">habitat</span></td><td><span class="pos">n.</span></td><td>the natural home of a plant or animal</td><td class="zh">栖息地</td><td>&ldquo;A great deal of <em>habitat</em> was lost through forest clearance.&rdquo;</td><td class="note">Reappears in the final paragraph as a Recovery Plan goal &mdash; a useful scanning word.</td></tr>
+<tr><td><span class="word">deplete</span></td><td><span class="pos">v.</span></td><td>to reduce the amount of something until little is left</td><td class="zh">耗尽；使枯竭</td><td>&ldquo;&hellip;introduced species such as deer <em>depleted</em> the remaining forests of food.&rdquo;</td><td class="note"><strong>Key to Q10.</strong> The note says &lsquo;ate the kākāpō&rsquo;s food sources&rsquo; = depleted the forests of food.</td></tr>
+<tr><td><span class="word">relocate</span></td><td><span class="pos">v.</span></td><td>to move something or someone to a new place</td><td class="zh">迁移；重新安置</td><td>&ldquo;Richard Henry led an effort to <em>relocate</em> several hundred of the birds&hellip;&rdquo;</td><td class="note">Synonym family used across the passage: relocate / transfer / evacuate / move between islands.</td></tr>
+<tr><td><span class="word">expedition</span></td><td><span class="pos">n.</span></td><td>an organised journey made for a particular purpose</td><td class="zh">考察；远征</td><td>&ldquo;&hellip;made over 60 <em>expeditions</em> to find kākāpō&hellip;&rdquo;</td><td class="note">Shows scale of effort against tiny results (six birds, no females) &mdash; a contrast the writer builds.</td></tr>
+<tr><td><span class="word">captivity</span></td><td><span class="pos">n.</span></td><td>the state of being kept in a cage or enclosure</td><td class="zh">圈养；被囚禁</td><td>&ldquo;&hellip;all but one died within a few months of <em>captivity</em>.&rdquo;</td><td class="note">Note the phrase <em>all but one</em> = every one except one. Opposite: &lsquo;in the wild&rsquo;.</td></tr>
+<tr><td><span class="word">feral</span></td><td><span class="pos">adj.</span></td><td>living wild after having been domesticated</td><td class="zh">野化的；野生的（家养动物）</td><td>&ldquo;&hellip;predation by <em>feral</em> cats on Rakiura Island&hellip;&rdquo;</td><td class="note"><strong>Key to Q5.</strong> Feral cats are escaped pets gone wild &mdash; the reason the birds were evacuated.</td></tr>
+<tr><td><span class="word">offset</span></td><td><span class="pos">v.</span></td><td>to balance one thing against another so the effect is cancelled</td><td class="zh">抵消；弥补</td><td>&ldquo;&hellip;an insufficient number of chicks survived to <em>offset</em> adult mortality.&rdquo;</td><td class="note">Deaths of adults were not balanced by births &mdash; a numbers idea IELTS loves to paraphrase.</td></tr>
+<tr><td><span class="word">mortality</span></td><td><span class="pos">n.</span></td><td>the number of deaths in a group</td><td class="zh">死亡率</td><td>&ldquo;&hellip;to offset adult <em>mortality</em>.&rdquo;</td><td class="note">Formal noun from &lsquo;mortal&rsquo;. Pairs with &lsquo;breeding success&rsquo; in the same sentence.</td></tr>
+<tr><td><span class="word">eradicate</span></td><td><span class="pos">v.</span></td><td>to remove something completely</td><td class="zh">根除；彻底消灭</td><td>&ldquo;Cats were <em>eradicated</em> from Little Barrier Island in 1980.&rdquo;</td><td class="note">Stronger than &lsquo;reduce&rsquo;. Careful: 1980 here is about <em>cats</em>, not about females (Q11).</td></tr>
+<tr><td><span class="word">supplementary</span></td><td><span class="pos">adj.</span></td><td>added to something to improve or complete it</td><td class="zh">补充的；额外的</td><td>&ldquo;This involved&hellip; <em>supplementary</em> feeding of adults&hellip;&rdquo;</td><td class="note">Extra food given by humans. Part of the &lsquo;intensive management&rsquo; that finally worked.</td></tr>
+<tr><td><span class="word">stakeholder</span></td><td><span class="pos">n.</span></td><td>a person or group with an interest in a project</td><td class="zh">利益相关方</td><td>&ldquo;&hellip;ensure <em>stakeholders</em> continue to be fully engaged&hellip;&rdquo;</td><td class="note"><strong>Answer to Q13.</strong> &lsquo;fully engaged&rsquo; = &lsquo;maintain the involvement of&rsquo;. Keep the plural.</td></tr>
+<tr><td><span class="word">genetic diversity</span></td><td><span class="pos">n. phr.</span></td><td>the range of different genes within a population</td><td class="zh">遗传多样性</td><td>&ldquo;&hellip;minimise the loss of <em>genetic diversity</em>&hellip;&rdquo;</td><td class="note">With so few birds left, inbreeding is the long-term risk &mdash; hence goal number one.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">a forest-dwelling bird</span></td><td>a bird that lives in forests</td><td class="zh">森林栖息的鸟</td></tr>
+<tr><td><span class="phrase">up to 64 cm in length</span></td><td>a maximum measurement</td><td class="zh">体长可达64厘米</td></tr>
+<tr><td><span class="phrase">a reported lifespan of up to 100 years</span></td><td>the longest age people say it reaches</td><td class="zh">据报道寿命可达100年</td></tr>
+<tr><td><span class="phrase">occupy the same home range</span></td><td>stay in the same feeding territory</td><td class="zh">长期占据同一活动范围</td></tr>
+<tr><td><span class="phrase">a controlled descent</span></td><td>a slow, managed fall rather than flight</td><td class="zh">受控下落</td></tr>
+<tr><td><span class="phrase">entirely vegetarian</span></td><td>eating only plants</td><td class="zh">完全素食</td></tr>
+<tr><td><span class="phrase">only in years when food is plentiful</span></td><td>not every year &mdash; it depends on the food supply</td><td class="zh">只在食物充足的年份</td></tr>
+<tr><td><span class="phrase">play no part in</span></td><td>have no involvement in</td><td class="zh">完全不参与</td></tr>
+<tr><td><span class="phrase">incubation or chick-rearing</span></td><td>keeping eggs warm or raising the young</td><td class="zh">孵卵或育雏</td></tr>
+<tr><td><span class="phrase">particularly vulnerable to predators</span></td><td>very easily attacked by hunting animals</td><td class="zh">特别容易受到捕食者威胁</td></tr>
+<tr><td><span class="phrase">easy prey</span></td><td>an animal that is simple to catch</td><td class="zh">容易捕捉的猎物</td></tr>
+<tr><td><span class="phrase">preyed on</span></td><td>hunted and ate</td><td class="zh">捕食</td></tr>
+<tr><td><span class="phrase">become confined to</span></td><td>end up limited to one area</td><td class="zh">被局限于</td></tr>
+<tr><td><span class="phrase">through forest clearance</span></td><td>because trees were cut down</td><td class="zh">因森林砍伐</td></tr>
+<tr><td><span class="phrase">introduced species</span></td><td>animals or plants brought in from elsewhere</td><td class="zh">外来引入物种</td></tr>
+<tr><td><span class="phrase">in serious trouble</span></td><td>in a very dangerous situation</td><td class="zh">处境危急</td></tr>
+<tr><td><span class="phrase">launch an attempt</span></td><td>officially begin an effort</td><td class="zh">发起一次尝试</td></tr>
+<tr><td><span class="phrase">predator-free</span></td><td>having no hunting animals</td><td class="zh">无天敌的</td></tr>
+<tr><td><span class="phrase">clung to life</span></td><td>only just survived</td><td class="zh">勉强存活</td></tr>
+<tr><td><span class="phrase">a rapid decline in numbers</span></td><td>a fast fall in population</td><td class="zh">数量迅速下降</td></tr>
+<tr><td><span class="phrase">island sanctuaries</span></td><td>protected islands where wildlife is safe</td><td class="zh">岛屿保护区</td></tr>
+<tr><td><span class="phrase">breeding success</span></td><td>producing young that survive</td><td class="zh">繁殖成功率</td></tr>
+<tr><td><span class="phrase">offset adult mortality</span></td><td>balance out the deaths of adults</td><td class="zh">抵消成鸟死亡</td></tr>
+<tr><td><span class="phrase">prompted an urgent review</span></td><td>caused an immediate re-examination</td><td class="zh">促使紧急评估</td></tr>
+<tr><td><span class="phrase">renewed steps were taken</span></td><td>action was started again</td><td class="zh">重新采取措施</td></tr>
+<tr><td><span class="phrase">supplementary feeding</span></td><td>giving extra food to animals</td><td class="zh">补充喂食</td></tr>
+<tr><td><span class="phrase">hand-raising failing chicks</span></td><td>humans bringing up weak young birds</td><td class="zh">人工养育濒危雏鸟</td></tr>
+<tr><td><span class="phrase">the population was on target</span></td><td>numbers were rising as planned</td><td class="zh">种群数量达到预期目标</td></tr>
+<tr><td><span class="phrase">cautious optimism</span></td><td>careful hope, not certainty</td><td class="zh">谨慎乐观</td></tr>
+<tr><td><span class="phrase">minimise the loss of</span></td><td>reduce the amount lost as far as possible</td><td class="zh">尽量减少&hellip;的损失</td></tr>
+<tr><td><span class="phrase">accommodate the expected increase</span></td><td>have enough room for the predicted growth</td><td class="zh">容纳预期的增长</td></tr>
+<tr><td><span class="phrase">fully engaged in</span></td><td>completely involved in</td><td class="zh">全面参与</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;The female kākāpō has to spend long periods away from the nest searching for food, which leaves the unattended eggs and chicks particularly vulnerable to predators.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The female kākāpō has to spend long periods away from the nest.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;searching for food&rsquo; = a participle phrase of purpose; &lsquo;which leaves&hellip;&rsquo; = a non-defining relative clause commenting on the <em>whole</em> first idea.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A comma + <em>which</em> does not refer to one noun here &mdash; it refers to the entire situation (her being away). Notice the pattern <strong>leave + object + adjective</strong> (&lsquo;leaves the eggs vulnerable&rsquo;).</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Because the mother must leave the nest to find food, nothing protects the eggs and chicks from predators.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">雌性鸮鹦鹉必须长时间离巢觅食，这使得无人看护的鸟蛋和雏鸟特别容易遭到捕食者的攻击。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;By the time European colonisers arrived in the early 1800s, kākāpō had become confined to the central North Island and forested parts of the South Island.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Kākāpō had become confined to the central North Island and forested parts of the South Island.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;By the time European colonisers arrived in the early 1800s&rsquo; = a time clause fixing the deadline.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>By the time + past simple, + past perfect</strong>. The past perfect tells you the shrinking had <em>already</em> happened before the Europeans came &mdash; so the earlier damage was Polynesian.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Before Europeans even arrived, the birds were already limited to two regions.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">到19世纪初欧洲殖民者到达时，鸮鹦鹉已经被局限在北岛中部和南岛的森林地区。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;A great deal of habitat was lost through forest clearance, and introduced species such as deer depleted the remaining forests of food.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Two coordinated main clauses joined by &lsquo;and&rsquo;: habitat was lost&hellip; / introduced species&hellip; depleted&hellip;</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;such as deer&rsquo; = an exemplifying phrase inside the subject.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The first half is <strong>passive</strong> (was lost &mdash; the agent is unimportant), the second is <strong>active</strong> (deer did it). Pattern: <em>deplete something of something</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Trees were cut down, and animals brought in from elsewhere &mdash; deer, for example &mdash; ate the food that was left.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">大量栖息地因森林砍伐而丧失，而鹿等引入物种又把残存森林中的食物消耗殆尽。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Six were caught, but there were no females amongst them and all but one died within a few months of captivity.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Six were caught. / All but one died within a few months of captivity.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;but there were no females amongst them&rsquo; = a contrasting clause explaining why the capture was useless.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>all but one</strong> = every one except one, i.e. five of the six died. Learners often read this as &lsquo;all of them&rsquo; &mdash; it does not mean that.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">They caught six birds; none was female, and five of the six soon died in captivity.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">共捕获六只，但其中没有雌鸟，而且除一只外全都在被圈养的几个月内死亡。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Rats were found to be a major predator of kākāpō chicks and an insufficient number of chicks survived to offset adult mortality.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Rats were found to be a major predator&hellip; / An insufficient number of chicks survived&hellip;</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;to offset adult mortality&rsquo; = an infinitive of result attached to &lsquo;survived&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>be found to be</strong> = research showed that it was. &lsquo;Insufficient&rsquo; is a negative quantity word: too few chicks lived, so the population still fell.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Rats ate many chicks, and too few young birds survived to replace the adults that died.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">研究发现老鼠是鸮鹦鹉雏鸟的主要捕食者，存活的雏鸟数量不足以抵消成鸟的死亡。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;However, the population did not start to increase until rats were removed from all three islands, and the birds were more intensively managed.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The population did not start to increase.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;until rats were removed&hellip; and the birds were more intensively managed&rsquo; = two passive time clauses sharing one &lsquo;until&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>not&hellip;until</strong> marks a turning point: nothing improved <em>before</em> this moment. This structure is a favourite source of TRUE/FALSE items about causes.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Numbers only began to rise once rats had gone from all three islands and humans managed the birds much more closely.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而，直到三个岛屿上的老鼠被清除、并对这些鸟进行更为密集的管理之后，种群数量才开始回升。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q7&ndash;13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the seven gaps from the exam notes, rewritten as full sentences. Write <strong>ONE WORD AND/OR A NUMBER</strong> from the passage in each gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>As well as fern fronds and parts of trees, the kākāpō&rsquo;s diet includes <input type="text" class="blank" id="b1" data-answer="bulbs" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The eggs are laid in <input type="text" class="blank" id="b2" data-answer="soil" placeholder="______">, which the female turns over repeatedly.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Polynesian settlers used the kākāpō&rsquo;s <input type="text" class="blank" id="b3" data-answer="feathers" placeholder="______"> to make soft cloaks.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>European colonisers introduced <input type="text" class="blank" id="b4" data-answer="deer" placeholder="______">, which ate the food left in the forests.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Female kākāpō were confirmed to be present on Rakiura Island in <input type="text" class="blank" id="b5" data-answer="1980" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The 1996 Recovery Plan came with a specialist committee and a higher amount of <input type="text" class="blank" id="b6" data-answer="funding" placeholder="______">.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>A current goal is to keep <input type="text" class="blank" id="b7" data-answer="stakeholders" placeholder="______"> fully engaged in protecting the species.<span class="feedback" id="fb7"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>The kākāpō is <input type="text" class="blank" id="b8" data-answer="nocturnal" placeholder="______"> (= active at night rather than in the daytime).<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>These parrots are <input type="text" class="blank" id="b9" data-answer="solitary" placeholder="______"> (= they live alone rather than in groups).<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>They <input type="text" class="blank" id="b10" data-answer="forage" placeholder="______"> (= search for food) on the ground and climb into trees.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Unattended eggs are especially <input type="text" class="blank" id="b11" data-answer="vulnerable" placeholder="______"> (= easily harmed) to predators.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Cats were <input type="text" class="blank" id="b12" data-answer="eradicated" placeholder="______"> (= completely removed) from Little Barrier Island in 1980.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Too few chicks survived to <input type="text" class="blank" id="b13" data-answer="offset" placeholder="______"> (= balance out) the deaths of adult birds.<span class="feedback" id="fb13"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Academic Reading answers must fit the grammar of the sentence, not just the meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>Numbers fell rapidly because of <input type="text" class="blank" id="b14" data-answer="predation" placeholder="______"> (PREDATOR) by feral cats.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Males take no part in <input type="text" class="blank" id="b15" data-answer="incubation" placeholder="______"> (INCUBATE) of the eggs.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Kākāpō breed only in years when food is <input type="text" class="blank" id="b16" data-answer="plentiful" placeholder="______"> (PLENTY).<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Richard Henry was a <input type="text" class="blank" id="b17" data-answer="conservationist" placeholder="______"> (CONSERVE) who tried to save the species.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The first Polynesian <input type="text" class="blank" id="b18" data-answer="settlers" placeholder="______"> (SETTLE) arrived about 700 years ago.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Chick survival was too low to offset adult <input type="text" class="blank" id="b19" data-answer="mortality" placeholder="______"> (MORTAL).<span class="feedback" id="fb19"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never repeats the passage word for word. Read the question wording, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;the kākāpō&rsquo;s inability to fly&rdquo; &rarr; Passage: the only <input type="text" class="blank" id="b20" data-answer="flightless" placeholder="______"> parrot in the world.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;caring for struggling young birds&rdquo; &rarr; Passage: rescuing and hand-raising any <input type="text" class="blank" id="b21" data-answer="failing" placeholder="______"> chicks.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;they were at risk from feral cats&rdquo; &rarr; Passage: <input type="text" class="blank" id="b22" data-answer="predation" placeholder="______"> by feral cats led to a rapid decline.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;used to make clothes&rdquo; &rarr; Passage: used its feathers to make soft <input type="text" class="blank" id="b23" data-answer="cloaks" placeholder="______">.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;ate the kākāpō&rsquo;s food sources&rdquo; &rarr; Passage: deer <input type="text" class="blank" id="b24" data-answer="depleted" placeholder="______"> the remaining forests of food.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;a definite sighting was reported&rdquo; &rarr; Passage: in 1980 it was <input type="text" class="blank" id="b25" data-answer="confirmed" placeholder="______"> females were also present.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;an increase in funding&rdquo; &rarr; Passage: a <input type="text" class="blank" id="b26" data-answer="higher" placeholder="______"> amount of funding.<span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Clauses: Reducing, Joining and Signposting</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures the passage uses to stack ideas into long sentences.</p><div class="ex-item"><span class="ex-num">1.</span><label>The female leaves the nest for long periods, <input type="text" class="blank" id="b27" data-answer="which" placeholder="______"> makes the eggs vulnerable. (a relative pronoun referring to the whole idea)<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Kākāpō breed in summer and autumn, but only in years <input type="text" class="blank" id="b28" data-answer="when" placeholder="______"> food is plentiful. (a relative adverb of time)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&lsquo;the birds which were relocated to the island&rsquo; can be reduced to &lsquo;the birds <input type="text" class="blank" id="b29" data-answer="relocated" placeholder="______"> to the island&rsquo;. (past participle)<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>&lsquo;species which are introduced by humans&rsquo; can be reduced to &lsquo;<input type="text" class="blank" id="b30" data-answer="introduced" placeholder="______"> species&rsquo;. (participle used as an adjective)<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The population did not start to increase <input type="text" class="blank" id="b31" data-answer="until" placeholder="______"> rats were removed from all three islands. (turning-point conjunction)<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label><input type="text" class="blank" id="b32" data-answer="by" placeholder="______"> the time European colonisers arrived, the birds had already disappeared from most of the country. (time conjunction + past perfect)<span class="feedback" id="fb32"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all six come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>极度濒危 &rarr; critically <input type="text" class="blank" id="b33" data-answer="endangered" placeholder="______"><span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>栖息地丧失 &rarr; habitat <input type="text" class="blank" id="b34" data-answer="loss" placeholder="______"><span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>无天敌的岛屿 &rarr; a <input type="text" class="blank" id="b35" data-answer="predator" placeholder="______">-free island<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>补充喂食 &rarr; <input type="text" class="blank" id="b36" data-answer="supplementary" placeholder="______"> feeding<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>遗传多样性 &rarr; genetic <input type="text" class="blank" id="b37" data-answer="diversity" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>谨慎乐观 &rarr; cautious <input type="text" class="blank" id="b38" data-answer="optimism" placeholder="______"><span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; the chain that nearly ended the species</strong></p><p>Humans arrive &rarr; the flightless bird is &lsquo;easy prey&rsquo; &rarr; dogs and rats come with them &rarr; Europeans clear forest and bring deer, cats, stoats and more rats &rarr; numbers collapse. Notice the verb that carries the causation: &ldquo;The fall in kākāpō numbers was <em>accelerated</em> by European colonisation.&rdquo; The decline had already started; colonisation only sped it up &mdash; a distinction True/False items love to test.</p></div>
+<div class="card"><p><strong>Contrast &mdash; what &lsquo;However&rsquo; and &lsquo;Unfortunately&rsquo; are doing</strong></p><p>Every hopeful step in this passage is followed by a reversal word. Henry moves birds to a &lsquo;predator-free&rsquo; island &rarr; <em>Unfortunately</em>, stoats arrive within six years. Eighteen birds are found in Fiordland &rarr; <em>However</em>, there were still no females. When you see these signals, expect the next sentence to contain the problem, and often the answer.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the trap in Question 4</strong></p><p>The passage states that settlers ate kākāpō <em>and</em> that the Polynesian rat preyed on them. It never says which did more damage. A statement that ranks two things (&lsquo;a greater threat than&rsquo;, &lsquo;more important than&rsquo;) is <strong>NOT GIVEN</strong> unless the passage itself makes the comparison. Do not build the comparison yourself.</p></div>
+<div class="card"><p><strong>Examples &mdash; &lsquo;such as&rsquo; introduces a sample, not a complete list</strong></p><p>&ldquo;&hellip;introduced species <em>such as</em> deer depleted the remaining forests of food&rdquo; and &ldquo;Other predators <em>such as</em> cats, stoats and two more species of rat&hellip;&rdquo;. For Q10 the note asks for <em>an</em> animal which ate the birds&rsquo; food, and the only example given is <strong>deer</strong> &mdash; cats and stoats are hunters, not plant-eaters.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; information inside commas and dashes</strong></p><p>&ldquo;The kākāpō, <em>also known as the owl parrot</em>, is a large, forest-dwelling bird&rdquo; and &ldquo;Rakiura &mdash; <em>a large island free from stoats, ferrets and weasels</em>&rdquo;. Commas and dashes often carry a free definition. Reading them tells you what a strange name means without a dictionary.</p></div>
+<div class="card"><p><strong>Problem &rarr; solution &mdash; the shape of the second half</strong></p><p>Problem: rats eat chicks and too few survive. Solution: remove rats from all three islands, move birds between islands, feed adults, hand-raise weak chicks. Result: &ldquo;the population was on target&hellip; a total of 210 birds was recorded&rdquo;. Q6 sits exactly in the solution list, so scan for the <em>actions</em>, not for the word &lsquo;increase&rsquo;.</p></div>
+<div class="card"><p><strong>Chronology &mdash; dates are your fastest locating tool</strong></p><p>700 years ago (Polynesians) &rarr; early 1800s (Europeans) &rarr; 1894 (Henry, Resolution Island) &rarr; 1949&ndash;73 (60+ expeditions) &rarr; 1974&ndash;77 (18 birds, still no females) &rarr; 1977 (males on Rakiura) &rarr; <strong>1980 (females confirmed)</strong> &rarr; 1980&ndash;97 (evacuation to three islands) &rarr; 1995 (51 birds) &rarr; 1996 (Recovery Plan) &rarr; 2000 (62 birds) &rarr; June 2020 (210 birds). Question 11 needs the date attached to <em>females</em>, not to the first sighting.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; factual, but quietly hopeful</strong></p><p>The tone is neutral reporting until the end, when it becomes measured optimism: &ldquo;For the first time, there was <em>cautious</em> optimism for the future of kākāpō&rdquo;. The adjective <em>cautious</em> matters: the writer is not claiming the bird is safe. In a Yes/No/Not Given task, an option saying &lsquo;the species is now secure&rsquo; would be wrong for exactly this reason.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; TRUE / FALSE / NOT GIVEN (Q1&ndash;6)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Decide first, then read the reason. The golden rule: FALSE = the passage says the opposite; NOT GIVEN = the passage never says.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>1. Other parrots also cannot fly.</b> &rarr; <strong>FALSE</strong> &mdash; the passage says the kākāpō is the world&rsquo;s <em>only</em> flightless parrot, which directly contradicts the statement.</li><li><b>2. Adults produce chicks every year.</b> &rarr; <strong>FALSE</strong> &mdash; they breed &lsquo;only in years when food is plentiful&rsquo;. &lsquo;Only in years when&rsquo; is the opposite of &lsquo;every year&rsquo;.</li><li><b>3. Males bring food to nesting females.</b> &rarr; <strong>FALSE</strong> &mdash; &lsquo;Males play no part in incubation or chick-rearing&rsquo;; the female feeds the chicks alone and leaves the nest to find her own food.</li><li><b>4. The Polynesian rat was a greater threat than the settlers.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; both are mentioned as threats, but no comparison of size is ever made.</li><li><b>5. Birds were moved off Rakiura because of feral cats.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;predation by feral cats&hellip; led to a rapid decline&hellip; As a result&hellip; the surviving population was evacuated&rsquo;. &lsquo;As a result&rsquo; gives you the cause the statement claims.</li><li><b>6. Caring for struggling young birds helped numbers grow.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;rescuing and hand-raising any failing chicks&rsquo; is listed among the management steps that came before the population increase.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> underline the one word that carries the risk &mdash; <em>other, every, greater, because</em>. That word, not the topic, decides the answer.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Note Completion (Q7&ndash;13): obey the word limit</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD AND/OR A NUMBER. Every answer must be copied from the passage, spelled exactly, in the grammatical form the note needs.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q7 bulbs</b> &mdash; the note already lists fern fronds and &lsquo;various parts of a tree&rsquo;, so eliminate leaves, roots and bark. Only <em>bulbs</em> is left.</li><li><b>Q8 soil</b> &mdash; &lsquo;The 1&ndash;4 eggs are laid in soil&rsquo;. The note says &lsquo;nests are created in&hellip; where eggs are laid&rsquo;, so the gap needs a <em>material or place</em>.</li><li><b>Q9 feathers</b> &mdash; &lsquo;used its feathers to make soft cloaks&rsquo;. Cloaks = clothes; the gap needs the <em>body part</em>, and the verb &lsquo;were used&rsquo; tells you it is plural.</li><li><b>Q10 deer</b> &mdash; the note says &lsquo;an animal which they introduced that ate the kākāpō&rsquo;s food sources&rsquo;. Deer is the only plant-eater in the introduced list.</li><li><b>Q11 1980</b> &mdash; a number is expected after &lsquo;in the year&rsquo;. 1977 is the year males were spotted; 1980 is when females were <em>confirmed</em>.</li><li><b>Q12 funding</b> &mdash; &lsquo;an increase in&rsquo; needs an uncountable noun; the passage says &lsquo;a higher amount of funding&rsquo;.</li><li><b>Q13 stakeholders</b> &mdash; &lsquo;the involvement of&hellip;&rsquo; needs a group of people. Passage: &lsquo;ensure stakeholders continue to be fully engaged&rsquo;.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> read the completed note aloud. If it is not grammatical English, your word is in the wrong form.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? Train yourself to jump straight to the right block instead of re-reading from the top.</p><ul style="margin-left:18px;line-height:1.9;"><li>How long the bird can live &rarr; paragraph 1 (physical description, &lsquo;up to 100 years&rsquo;).</li><li>What the bird eats &rarr; paragraph 2 (&lsquo;entirely vegetarian&hellip;&rsquo;).</li><li>Who looks after the eggs &rarr; paragraph 3 (breeding).</li><li>The effect of dogs and rats &rarr; paragraph 4 (arrival of humans).</li><li>Resolution Island and stoats &rarr; paragraph 5 (1894, Richard Henry).</li><li>The first confirmed females &rarr; paragraph 6 (Rakiura, 1977&ndash;80).</li><li>Why breeding on the sanctuary islands failed &rarr; paragraph 7 (rats, chick survival).</li><li>The three current goals &rarr; the final paragraph.</li></ul><p style="margin-top:10px;"><b>Tip:</b> in a chronological passage, write the decade beside each paragraph as you skim. Dates are the cheapest index you will ever build.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Complete each sentence with NO MORE THAN TWO WORDS &mdash; then compare with the suggested answer.</p><ul style="margin-left:18px;line-height:1.9;"><li>When they jump from trees, kākāpō can only achieve a ______ to the ground. &rarr; <strong>controlled descent</strong></li><li>Richard Henry moved several hundred birds to ______ in Fiordland. &rarr; <strong>Resolution Island</strong></li><li>Between 1949 and 1973 the Wildlife Service made over ______ to find the birds. &rarr; <strong>60 expeditions</strong></li><li>By 1995 the kākāpō population had fallen to ______ birds. &rarr; <strong>51</strong></li><li>Possums were removed from Codfish Island by ______. &rarr; <strong>1986</strong></li><li>By June 2020 the recorded total had reached ______ birds. &rarr; <strong>210</strong></li></ul></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each paragraph of this passage to the heading that fits it best. Headings summarise the <em>whole</em> paragraph, never one detail.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Paragraph 3</b> (breeding) &rarr; <em>Raising young without help</em> &mdash; not &lsquo;A dangerous diet&rsquo;, which uses a detail from a different paragraph.</li><li><b>Paragraph 4</b> (humans arrive) &rarr; <em>How newcomers changed the bird&rsquo;s fortunes</em>.</li><li><b>Paragraph 5</b> (1894&ndash;mid 1900s) &rarr; <em>An early rescue attempt that failed</em>.</li><li><b>Paragraph 7</b> (1980&ndash;95) &rarr; <em>Safe islands, but still no recovery</em>.</li><li><b>Paragraph 8</b> (1996 onwards) &rarr; <em>A plan that finally worked</em>.</li></ul><p style="margin-top:10px;"><b>Watch out:</b> paragraphs 5 and 7 both describe moving birds to islands. The difference is the <em>outcome</em> &mdash; total failure in 1894, partial success after 1980. Headings are usually distinguished by result, not by topic.</p></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Yes / No / Not Given thinking (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These statements are about the writer&rsquo;s claims rather than plain facts. Decide before reading the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li>Removing rats alone was enough to make numbers rise. &rarr; <strong>NO</strong> &mdash; the passage pairs rat removal <em>with</em> more intensive management.</li><li>The kākāpō is now out of danger. &rarr; <strong>NO</strong> &mdash; the writer only reports &lsquo;cautious optimism&rsquo; and the bird is still described as critically endangered.</li><li>Kākāpō are easier to breed in captivity than in the wild. &rarr; <strong>NOT GIVEN</strong> &mdash; captivity is mentioned only as something the six caught birds did not survive.</li><li>Loss of genetic diversity is a concern for the future. &rarr; <strong>YES</strong> &mdash; it is the first goal listed in the final paragraph.</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What makes the kākāpō unique among parrots?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. It is the largest parrot in the world.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. It is the only parrot that cannot fly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. It is the only parrot that eats plants.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. It is the only parrot found in New Zealand.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why do kākāpō NOT breed every year?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Because males refuse to help.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Because predators destroy the nests.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Because they breed only when food is plentiful.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Because the females live too far apart.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does the passage say about the role of male kākāpō in raising young?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. They incubate the eggs while the female feeds.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. They guard the nest against rats.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. They bring food back to the nest.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. They take no part at all.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Question 4 asks whether the Polynesian rat was a greater threat than the settlers. Why is the answer NOT GIVEN?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. Because the passage never mentions the Polynesian rat.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. Because the passage says the settlers were the greater threat.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Because the passage mentions both but never compares them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Because rats arrived after the settlers had left.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which word in the passage means &lsquo;wild animals that were once domesticated&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. introduced</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. feral</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. solitary</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. nocturnal</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What was the answer to Question 7, and how do you find it?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. leaves &mdash; because leaves are listed first</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. bark &mdash; because it is the last item in the list</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. bulbs &mdash; because the note already covers fronds and tree parts</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. roots &mdash; because roots are underground</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why is <em>deer</em> the answer to Question 10 rather than <em>cats</em> or <em>stoats</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Because deer were introduced first.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Because the note asks for an animal that ate the birds&rsquo; food sources.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Because cats and stoats are not introduced species.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Because deer are mentioned twice.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Two years are given for Rakiura Island. Which one answers Question 11 and why?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. 1977, because that is when a large population was spotted.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. 1980, because that is when females were confirmed present.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. 1980, because that is when cats were eradicated from Little Barrier Island.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. 1974, because a new initiative was launched then.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What does &lsquo;all but one died within a few months of captivity&rsquo; mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. All six birds died.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Only one bird died.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Five of the six birds died.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. None of the birds died.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">According to the passage, when did the population finally begin to grow?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. As soon as the birds reached the three sanctuary islands.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. After cats were eradicated from Little Barrier Island in 1980.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Only after rats were removed from all three islands and management became more intensive.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Immediately after the 1996 Recovery Plan was announced.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which management action supports the TRUE answer to Question 6?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Moving birds to Resolution Island in 1894.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Rescuing and hand-raising failing chicks.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Counting the birds every June.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Removing deer from the South Island forests.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the writer&rsquo;s overall attitude at the end of the passage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Confident that the species is now safe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Critical of the New Zealand government.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Carefully hopeful, but still aware of the risks.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Uninterested in the outcome.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1–13</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 1: the kākāpō is described as the world&rsquo;s <em>only</em> flightless parrot, which directly contradicts &lsquo;other parrots that share&hellip; inability to fly&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 3: they breed &lsquo;only in years when food is plentiful&rsquo; &mdash; the opposite of every year.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 3: &lsquo;Males play no part in incubation or chick-rearing&rsquo;; the female alone feeds the chicks and must leave the nest to find food.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 4 says settlers ate the birds and that the Polynesian dog and rat also preyed on them, but it never compares the two threats.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 7: &lsquo;predation by feral cats on Rakiura Island led to a rapid decline&hellip; As a result&hellip; the surviving population was evacuated to three island sanctuaries.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 8 lists &lsquo;rescuing and hand-raising any failing chicks&rsquo; among the steps that preceded the rise in numbers &mdash; &lsquo;failing chicks&rsquo; = &lsquo;struggling young birds&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">bulbs</div><div class="answer-note">Paragraph 2: the diet includes &lsquo;the leaves, roots and bark of trees as well as bulbs, and fern fronds&rsquo;. The note already covers fronds and tree parts, so <em>bulbs</em> is the missing item.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">soil</div><div class="answer-note">Paragraph 3: &lsquo;The 1&ndash;4 eggs are laid in soil, which is repeatedly turned over&hellip;&rsquo; Uncountable &mdash; no plural &lsquo;s&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">feathers</div><div class="answer-note">Paragraph 4: the settlers &lsquo;ate its meat and used its feathers to make soft cloaks&rsquo;. Cloaks = clothes. Keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">deer</div><div class="answer-note">Paragraph 4: &lsquo;introduced species such as deer depleted the remaining forests of food&rsquo; = &lsquo;ate the kākāpō&rsquo;s food sources&rsquo;. Deer is the same in singular and plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">1980</div><div class="answer-note">Paragraph 6: males were spotted on Rakiura in 1977, and &lsquo;in 1980 it was confirmed females were also present&rsquo;. &lsquo;Confirmed&rsquo; = &lsquo;a definite sighting&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">funding</div><div class="answer-note">Paragraph 8: the 1996 Recovery Plan came &lsquo;together with a specialist advisory group&hellip; and a higher amount of funding&rsquo;. &lsquo;A higher amount of&rsquo; = &lsquo;an increase in&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">stakeholders</div><div class="answer-note">Final paragraph: a key goal is to &lsquo;ensure stakeholders continue to be fully engaged in the preservation of the species&rsquo;. &lsquo;Continue to be fully engaged&rsquo; = &lsquo;maintain the involvement of&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q7&ndash;13)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">bulbs</div><div class="answer-note">As well as fern fronds and parts of trees, the kākāpō&rsquo;s diet includes</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">soil</div><div class="answer-note">The eggs are laid in</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">feathers</div><div class="answer-note">Polynesian settlers used the kākāpō&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">deer</div><div class="answer-note">European colonisers introduced</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">1980</div><div class="answer-note">Female kākāpō were confirmed to be present on Rakiura Island in</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">funding</div><div class="answer-note">The 1996 Recovery Plan came with a specialist committee and a higher amount of</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">stakeholders</div><div class="answer-note">A current goal is to keep</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">nocturnal</div><div class="answer-note">The kākāpō is</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">solitary</div><div class="answer-note">These parrots are</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">forage</div><div class="answer-note">They</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">vulnerable</div><div class="answer-note">Unattended eggs are especially</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">eradicated</div><div class="answer-note">Cats were</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">offset</div><div class="answer-note">Too few chicks survived to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">predation</div><div class="answer-note">Numbers fell rapidly because of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">incubation</div><div class="answer-note">Males take no part in</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">plentiful</div><div class="answer-note">Kākāpō breed only in years when food is</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">conservationist</div><div class="answer-note">Richard Henry was a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">settlers</div><div class="answer-note">The first Polynesian</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">mortality</div><div class="answer-note">Chick survival was too low to offset adult</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">flightless</div><div class="answer-note">Question: &ldquo;the kākāpō&rsquo;s inability to fly&rdquo; &rarr; Passage: the only</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">failing</div><div class="answer-note">Question: &ldquo;caring for struggling young birds&rdquo; &rarr; Passage: rescuing and hand-raising any</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">predation</div><div class="answer-note">Question: &ldquo;they were at risk from feral cats&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">cloaks</div><div class="answer-note">Question: &ldquo;used to make clothes&rdquo; &rarr; Passage: used its feathers to make soft</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">depleted</div><div class="answer-note">Question: &ldquo;ate the kākāpō&rsquo;s food sources&rdquo; &rarr; Passage: deer</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">confirmed</div><div class="answer-note">Question: &ldquo;a definite sighting was reported&rdquo; &rarr; Passage: in 1980 it was</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">higher</div><div class="answer-note">Question: &ldquo;an increase in funding&rdquo; &rarr; Passage: a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Clauses: Reducing, Joining and Signposting</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">which</div><div class="answer-note">The female leaves the nest for long periods,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">when</div><div class="answer-note">Kākāpō breed in summer and autumn, but only in years</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">relocated</div><div class="answer-note">&lsquo;the birds which were relocated to the island&rsquo; can be reduced to &lsquo;the birds</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">introduced</div><div class="answer-note">&lsquo;species which are introduced by humans&rsquo; can be reduced to &lsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">until</div><div class="answer-note">The population did not start to increase</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">by</div><div class="answer-note">&mdash;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">endangered</div><div class="answer-note">极度濒危 &rarr; critically</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">loss</div><div class="answer-note">栖息地丧失 &rarr; habitat</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">predator</div><div class="answer-note">无天敌的岛屿 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">supplementary</div><div class="answer-note">补充喂食 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">diversity</div><div class="answer-note">遗传多样性 &rarr; genetic</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">optimism</div><div class="answer-note">谨慎乐观 &rarr; cautious</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. It is the only parrot that cannot fly.</div><div class="answer-note">&lsquo;It is the world&rsquo;s only flightless parrot.&rsquo; This single sentence answers Question 1 (FALSE).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. Because they breed only when food is plentiful.</div><div class="answer-note">&lsquo;Kākāpō breed in summer and autumn, but only in years when food is plentiful.&rsquo; This is why Question 2 is FALSE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">D. They take no part at all.</div><div class="answer-note">&lsquo;Males play no part in incubation or chick-rearing &mdash; females alone incubate eggs and feed the chicks.&rsquo; Question 3 is therefore FALSE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. Because the passage mentions both but never compares them.</div><div class="answer-note">Both threats appear in the same paragraph, but no ranking is given. A comparison the writer never makes is always NOT GIVEN.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. feral</div><div class="answer-note">&lsquo;Predation by feral cats on Rakiura Island led to a rapid decline&rsquo; &mdash; the cause behind the evacuation in Question 5.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. bulbs &mdash; because the note already covers fronds and tree parts</div><div class="answer-note">The note gives you &lsquo;fern fronds&rsquo; and &lsquo;various parts of a tree&rsquo; (leaves, roots, bark), so the only remaining food in the sentence is <strong>bulbs</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. Because the note asks for an animal that ate the birds&rsquo; food sources.</div><div class="answer-note">Deer &lsquo;depleted the remaining forests of food&rsquo;. Cats and stoats hunted the birds themselves, which is a different idea.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. 1980, because that is when females were confirmed present.</div><div class="answer-note">The note asks for a definite sighting of <em>female</em> kākāpō. 1977 refers to males; 1980 (Little Barrier cats) is a different island entirely.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. Five of the six birds died.</div><div class="answer-note">&lsquo;All but one&rsquo; = everyone except one. Six were caught, so five died and one survived.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C. Only after rats were removed from all three islands and management became more intensive.</div><div class="answer-note">The &lsquo;not&hellip;until&rsquo; structure marks the turning point: &lsquo;the population did not start to increase until rats were removed from all three islands, and the birds were more intensively managed.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Rescuing and hand-raising failing chicks.</div><div class="answer-note">&lsquo;Caring for struggling young birds&rsquo; in the question = &lsquo;rescuing and hand-raising any failing chicks&rsquo; in the passage.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. Carefully hopeful, but still aware of the risks.</div><div class="answer-note">The exact phrase is &lsquo;cautious optimism&rsquo;, and the final paragraph still lists three unfinished goals. Any option claiming the bird is now secure would be wrong.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

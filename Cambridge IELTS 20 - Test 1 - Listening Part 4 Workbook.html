@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Listening Part 4 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Listening Part 4</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 4</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Listening Part 4</h1>
+    <h2>Reclaiming Urban Rivers · Notes Completion (Q31–40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This is an academic lecture with <strong>one speaker</strong> and no interruptions. The talk explains how city rivers were once used for transport, fishing and pleasure, how industry and growing populations destroyed them, and how cities such as London, Los Angeles and Paris are now bringing their rivers back to life. It ends with a proposal to move passengers and, above all, <strong>parcel deliveries</strong> off the roads and back onto the water. You complete a set of notes with <strong>ONE WORD ONLY</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> A single lecturer giving a talk on urban planning and rivers. There is no second voice, so the only signposts you get are discourse markers: <em>For example&hellip;, In addition&hellip;, But in recent years&hellip;, Of course&hellip;</em></p><p><strong>The situation 情境:</strong> 一场关于「城市河流复兴」的讲座。结构完全按照题目上的三个小标题走：① 历史背景（河流原本用于交通、捕鱼、休闲；工业与人口增长带来污水和工厂污染，1957年泰晤士河被宣布「生物学意义上死亡」）；② 近期改善（海豹与鲸鱼回归、仓库改成餐厅与公寓、洛杉矶的河滨公园与艺术展示、巴黎夏季人造沙滩）；③ 交通设想（渡轮载客、货运驳船＋电动自行车、未来用无人机送货）。</p><p><strong>Task type:</strong> Notes completion with bullet points under three headings. Instruction: <strong>ONE WORD ONLY</strong> &mdash; not &lsquo;one word and/or a number&rsquo;, so no figures are needed and no two-word answer is accepted.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The notes have three printed headings &mdash; <em>Historical background</em>, <em>Recent improvements</em>, <em>Transport possibilities</em> &mdash; and the lecture follows them in that exact order. Use the headings as <strong>checkpoints</strong>: if you hear Paris and you are still looking for Q33, you have missed one, so jump forward immediately. Then use the bullet layout: each bullet is one idea, and the answer is almost always a <strong>concrete noun</strong> (a building, an animal, a vehicle, a place). Because the instruction is <strong>ONE WORD ONLY</strong>, an answer like &lsquo;cargo bikes&rsquo; or &lsquo;electric bikes&rsquo; scores zero &mdash; write <em>bikes</em>. Check the grammar of the printed line too: &lsquo;(37) <u>are</u> created&rsquo; demands a plural.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q31 &mdash; sewage vs factories.</b> The bullet directly above already says &lsquo;sewage from houses&rsquo;, so &lsquo;sewage&rsquo; cannot be the answer. The gap needs the <em>source</em> of the other pollution: <b>factories</b> built beside the river. &lsquo;Waste materials&rsquo; is what they discharge, not what stands on the bank.</li><li><b>Q32 &mdash; word class shift.</b> The speaker says &lsquo;the Thames was <em>dead</em> in biological <em>terms</em>&rsquo;; the notes print &lsquo;declared biologically ___&rsquo;. The adverb has moved, so you write the adjective <b>dead</b>, not &lsquo;biological&rsquo;.</li><li><b>Q33 &mdash; seals is already printed.</b> The line says &lsquo;Seals and even a (33)&hellip;&rsquo;, so writing &lsquo;seals&rsquo; scores zero. &lsquo;A&rsquo; also tells you the answer is a singular countable noun: <b>whale</b>. The fact that the rescue failed is irrelevant.</li><li><b>Q37 &mdash; the plural is forced by the verb.</b> &lsquo;(37) <u>are</u> created&rsquo; needs <b>beaches</b>, not &lsquo;beach&rsquo;. Deck chairs, palm trees and drinks are all mentioned in the same sentence as decoration.</li><li><b>Q38 &mdash; a lot of numbers around the answer.</b> &lsquo;2 billion&rsquo; is already printed; you need the vehicle. Istanbul, San Francisco and New York are examples, not answers. Write the singular <b>ferry</b> after &lsquo;travel by&rsquo;.</li><li><b>Q39&ndash;40 &mdash; ONE WORD ONLY.</b> The audio says &lsquo;cargo bikes, electric ones&rsquo; and &lsquo;carried out by drone&rsquo;. Since &lsquo;electric&rsquo; is printed, write <b>bikes</b>; and write <b>drone</b> even though the idea sounds plural.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">reclaim</span></td><td><span class="pos">v.</span></td><td>to get something back and put it to use again</td><td class="zh">收回；再利用</td><td>&ldquo;<em>Reclaiming</em> our streets from cars and lorries.&rdquo;</td><td class="note">The title word of the notes: <em>Reclaiming urban rivers</em> = bringing rivers back into use.</td></tr>
+<tr><td><span class="word">dweller</span></td><td><span class="pos">n.</span></td><td>a person who lives in a particular kind of place</td><td class="zh">居民</td><td>&ldquo;Rivers were traditionally used by city <em>dwellers</em>.&rdquo;</td><td class="note">On the question paper only. In the audio you hear <em>people</em> and <em>inhabitants</em> instead.</td></tr>
+<tr><td><span class="word">inhabitant</span></td><td><span class="pos">n.</span></td><td>a person who lives in a place</td><td class="zh">居民；住户</td><td>&ldquo;As cities grew to over a million <em>inhabitants</em>&hellip;&rdquo;</td><td class="note">Paraphrase family: inhabitants / dwellers / residents / population.</td></tr>
+<tr><td><span class="word">recreation</span></td><td><span class="pos">n.</span></td><td>activities done for enjoyment when you are not working</td><td class="zh">休闲；娱乐</td><td>&ldquo;Boat trips up and down the river just for pleasure.&rdquo;</td><td class="note">Printed on the paper; the audio says &lsquo;for pleasure&rsquo; and &lsquo;a relaxing escape&rsquo;.</td></tr>
+<tr><td><span class="word">bustle</span></td><td><span class="pos">n.</span></td><td>busy, noisy activity</td><td class="zh">喧嚣；熙攘</td><td>&ldquo;A relaxing escape from the noise and <em>bustle</em> of the city streets.&rdquo;</td><td class="note">Fixed phrase: <em>the hustle and bustle</em> of a city. Great Speaking Part 2 vocabulary.</td></tr>
+<tr><td><span class="word">sewage</span></td><td><span class="pos">n.</span></td><td>waste water and human waste carried away in drains</td><td class="zh">污水；下水道污物</td><td>&ldquo;A huge increase in the amount of <em>sewage</em> discharged into the rivers.&rdquo;</td><td class="note">Already printed on the notes above Q31, so it CANNOT be the answer. Do not confuse with <em>sewer</em> (the pipe).</td></tr>
+<tr><td><span class="word">discharge</span></td><td><span class="pos">v.</span></td><td>to release liquid or waste into a place</td><td class="zh">排放</td><td>&ldquo;Factories&hellip; <em>discharged</em> their waste materials into the water.&rdquo;</td><td class="note">Collocation: <em>discharge waste/sewage into</em> a river. Formal synonym of &lsquo;pour&rsquo; or &lsquo;release&rsquo;.</td></tr>
+<tr><td><span class="word">factory</span></td><td><span class="pos">n.</span></td><td>a building where goods are manufactured</td><td class="zh">工厂</td><td>&ldquo;Other types of pollution increased as <em>factories</em> were built beside the river.&rdquo;</td><td class="note"><strong>Answer to Q31.</strong> Plural is needed: &lsquo;pollution from ___ on the river bank&rsquo;. Spelling of the plural: factor-<b>ies</b>.</td></tr>
+<tr><td><span class="word">filthy</span></td><td><span class="pos">adj.</span></td><td>extremely dirty</td><td class="zh">肮脏的；污秽的</td><td>&ldquo;The water was too <em>filthy</em> to support any kind of life.&rdquo;</td><td class="note">Explains why the river was declared dead (Q32). Stronger than &lsquo;dirty&rsquo;.</td></tr>
+<tr><td><span class="word">declare</span></td><td><span class="pos">v.</span></td><td>to state something officially and publicly</td><td class="zh">宣布；宣告</td><td>&ldquo;Scientists&hellip; <em>declared</em> that the Thames was dead in biological terms.&rdquo;</td><td class="note">The word appears on both the paper and the audio &mdash; use it to locate Q32 exactly.</td></tr>
+<tr><td><span class="word">biologically</span></td><td><span class="pos">adv.</span></td><td>in terms of living things and their processes</td><td class="zh">在生物学意义上</td><td>&ldquo;Dead in <em>biological</em> terms.&rdquo;</td><td class="note"><strong>Q32 grammar trap.</strong> The paper uses the adverb, so the gap must hold an adjective: <em>dead</em>.</td></tr>
+<tr><td><span class="word">seal</span></td><td><span class="pos">n.</span></td><td>a sea mammal that swims and lives partly on land</td><td class="zh">海豹</td><td>&ldquo;You can see <em>seals</em> swimming in the water.&rdquo;</td><td class="note">Printed on the paper before Q33 &mdash; a &ldquo;given example&rdquo; that stops you writing it.</td></tr>
+<tr><td><span class="word">disorientation</span></td><td><span class="pos">n.</span></td><td>the state of being confused about where you are</td><td class="zh">迷失方向；晕头转向</td><td>&ldquo;The problem was <em>disorientation</em> rather than the quality of the water.&rdquo;</td><td class="note">A long word placed right after the Q33 answer &mdash; do not panic and stop listening.</td></tr>
+<tr><td><span class="word">warehouse</span></td><td><span class="pos">n.</span></td><td>a large building for storing goods</td><td class="zh">仓库</td><td>&ldquo;<em>Warehouses</em> that were once used for storing goods&hellip;&rdquo;</td><td class="note">Printed on the paper. It signals that the Q34 answer is about the NEW use of the buildings.</td></tr>
+<tr><td><span class="word">convert</span></td><td><span class="pos">v.</span></td><td>to change something so that it has a different use</td><td class="zh">改建；改造</td><td>&ldquo;Now being <em>converted</em> into expensive restaurants and also into apartments.&rdquo;</td><td class="note">Collocation: <em>convert A into B</em>. Restaurants is printed, so the answer is the second item.</td></tr>
+<tr><td><span class="word">apartment</span></td><td><span class="pos">n.</span></td><td>a set of rooms to live in, on one floor of a building</td><td class="zh">公寓</td><td>&ldquo;<em>Apartments</em> with river views which are in great demand.&rdquo;</td><td class="note"><strong>Answer to Q34.</strong> Plural to match &lsquo;restaurants and&hellip;&rsquo;. Spelling: one P, two Ts? No &mdash; a-p-a-r-t-m-e-n-t.</td></tr>
+<tr><td><span class="word">astronomical</span></td><td><span class="pos">adj.</span></td><td>extremely large (used about prices or amounts)</td><td class="zh">天文数字般的；极高的</td><td>&ldquo;Sell for <em>astronomical</em> prices.&rdquo;</td><td class="note">A vivid adjective worth stealing for Writing Task 2 about housing costs.</td></tr>
+<tr><td><span class="word">revitalize</span></td><td><span class="pos">v.</span></td><td>to give new life and energy to a place</td><td class="zh">振兴；使恢复活力</td><td>&ldquo;An architect has plans to <em>revitalise</em> the banks of the river.&rdquo;</td><td class="note">Same idea as the title verb <em>reclaim</em>. Introduces the Los Angeles section (Q35&ndash;36).</td></tr>
+<tr><td><span class="word">bank</span></td><td><span class="pos">n.</span></td><td>the land along the side of a river</td><td class="zh">河岸</td><td>&ldquo;The <em>banks</em> are transformed into beaches.&rdquo;</td><td class="note">Not the money meaning. Also appears as &lsquo;river bank&rsquo; in Q31 and &lsquo;riverside&rsquo; elsewhere.</td></tr>
+<tr><td><span class="word">facility</span></td><td><span class="pos">n.</span></td><td>a building, service or piece of equipment provided for a purpose</td><td class="zh">设施</td><td>&ldquo;A park&hellip; which can provide <em>facilities</em> for sports.&rdquo;</td><td class="note">The word around both Q35 and Q36 &mdash; useful, but never the answer itself.</td></tr>
+<tr><td><span class="word">ban</span></td><td><span class="pos">v.</span></td><td>to officially forbid something</td><td class="zh">禁止</td><td>&ldquo;All the traffic is <em>banned</em> from the roads by the sides of the river.&rdquo;</td><td class="note">Passive form: <em>be banned from</em>. Sets up the Paris beaches answer (Q37).</td></tr>
+<tr><td><span class="word">transform</span></td><td><span class="pos">v.</span></td><td>to change something completely, usually for the better</td><td class="zh">改造；彻底改变</td><td>&ldquo;The banks are <em>transformed</em> into beaches.&rdquo;</td><td class="note">&lsquo;Transformed into&rsquo; on the audio = &lsquo;are created&rsquo; on the paper (Q37).</td></tr>
+<tr><td><span class="word">sunbathe</span></td><td><span class="pos">v.</span></td><td>to sit or lie in the sun to make your skin browner</td><td class="zh">晒日光浴</td><td>&ldquo;Relax in deck chairs&hellip; <em>sunbathe</em>, or buy a drink.&rdquo;</td><td class="note">Part of the beach picture. All this detail exists to make the single answer harder to catch.</td></tr>
+<tr><td><span class="word">ferry</span></td><td><span class="pos">n.</span></td><td>a boat that carries people across water on a regular route</td><td class="zh">渡轮</td><td>&ldquo;More than 2 billion passengers use the <em>ferry</em> to travel in cities.&rdquo;</td><td class="note"><strong>Answer to Q38.</strong> The paper says &lsquo;travel by (38)&rsquo;, so the singular <em>ferry</em> is what fits.</td></tr>
+<tr><td><span class="word">delivery</span></td><td><span class="pos">n.</span></td><td>the act of taking goods to a customer</td><td class="zh">送货；投递</td><td>&ldquo;Another form of urban traffic just keeps on growing and that&rsquo;s <em>deliveries</em>.&rdquo;</td><td class="note">The link between &lsquo;changes in shopping habits&rsquo; on the paper and online shopping in the audio.</td></tr>
+<tr><td><span class="word">freight</span></td><td><span class="pos">n.</span></td><td>goods carried by ship, train or lorry</td><td class="zh">货运；货物</td><td>&ldquo;One <em>freight</em> barge can replace 44 large trucks.&rdquo;</td><td class="note">Pronounced /freIt/ &mdash; the &lsquo;eigh&rsquo; sounds like &lsquo;ate&rsquo;. Printed on the paper.</td></tr>
+<tr><td><span class="word">barge</span></td><td><span class="pos">n.</span></td><td>a long flat boat used for carrying goods on rivers and canals</td><td class="zh">驳船</td><td>&ldquo;When the <em>barge</em> docks at the riverside&hellip;&rdquo;</td><td class="note">Printed on the notes before Q39, which tells you the gap is the SECOND vehicle in the chain.</td></tr>
+<tr><td><span class="word">dock</span></td><td><span class="pos">v.</span></td><td>to arrive at and tie up at a landing place</td><td class="zh">靠岸；停靠</td><td>&ldquo;When the barge <em>docks</em> at the riverside&hellip;&rdquo;</td><td class="note">The verb that signals the last stage of the journey &mdash; the Q39 answer comes immediately after.</td></tr>
+<tr><td><span class="word">cargo</span></td><td><span class="pos">n.</span></td><td>goods carried by a vehicle</td><td class="zh">货物</td><td>&ldquo;Taken the last few kilometres&hellip; on <em>cargo</em> bikes, electric ones.&rdquo;</td><td class="note">ONE WORD ONLY: write <em>bikes</em>, not &lsquo;cargo bikes&rsquo; and not &lsquo;electric bikes&rsquo;.</td></tr>
+<tr><td><span class="word">drone</span></td><td><span class="pos">n.</span></td><td>a small flying machine with no pilot on board</td><td class="zh">无人机</td><td>&ldquo;In future, the final stage could even be carried out by <em>drone</em>.&rdquo;</td><td class="note"><strong>Answer to Q40.</strong> Note the closing warning: &lsquo;at present this isn&rsquo;t allowed&rsquo; &mdash; a future plan, exactly as the notes say.</td></tr>
+<tr><td><span class="word">immense</span></td><td><span class="pos">adj.</span></td><td>extremely large</td><td class="zh">巨大的</td><td>&ldquo;The <em>immense</em> capacity of shipping.&rdquo;</td><td class="note">Synonym family: immense / huge / vast / enormous. All useful in Writing.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">a river running through it</span></td><td>a river that passes through the middle of a place</td><td class="zh">一条穿城而过的河</td></tr>
+<tr><td><span class="phrase">be built on a river</span></td><td>be founded beside a river</td><td class="zh">依河而建</td></tr>
+<tr><td><span class="phrase">hundreds or even thousands of years ago</span></td><td>a very long time ago</td><td class="zh">几百甚至几千年前</td></tr>
+<tr><td><span class="phrase">a big part of people&rsquo;s lives</span></td><td>very important in daily life</td><td class="zh">生活中很重要的一部分</td></tr>
+<tr><td><span class="phrase">go on boat trips just for pleasure</span></td><td>take boat rides purely for enjoyment</td><td class="zh">纯粹为消遣去坐船游玩</td></tr>
+<tr><td><span class="phrase">a relaxing escape from&hellip;</span></td><td>a restful way of getting away from something</td><td class="zh">从……中放松逃离</td></tr>
+<tr><td><span class="phrase">the noise and bustle of the city streets</span></td><td>the loud, crowded activity of the city</td><td class="zh">城市街道的喧嚣</td></tr>
+<tr><td><span class="phrase">as industries developed and populations increased</span></td><td>while factories grew and more people arrived</td><td class="zh">随着工业发展和人口增长</td></tr>
+<tr><td><span class="phrase">discharge sewage into the river</span></td><td>release waste water into the river</td><td class="zh">把污水排入河中</td></tr>
+<tr><td><span class="phrase">the impact on the rivers became more serious</span></td><td>the damage to rivers grew worse</td><td class="zh">对河流的影响变得更严重</td></tr>
+<tr><td><span class="phrase">too filthy to support any kind of life</span></td><td>so dirty that nothing could live in it</td><td class="zh">脏到无法维持任何生命</td></tr>
+<tr><td><span class="phrase">dead in biological terms</span></td><td>containing no living organisms</td><td class="zh">生物学意义上的死亡</td></tr>
+<tr><td><span class="phrase">take steps to clean them up</span></td><td>take action to make them clean again</td><td class="zh">采取措施进行清理</td></tr>
+<tr><td><span class="phrase">cleaner than it&rsquo;s been for 150 years</span></td><td>the cleanest it has been in 150 years</td><td class="zh">150年来最干净</td></tr>
+<tr><td><span class="phrase">swim up the river by mistake</span></td><td>accidentally travel up the river</td><td class="zh">误游进河里</td></tr>
+<tr><td><span class="phrase">prime sites for development</span></td><td>the best locations for new building projects</td><td class="zh">开发的黄金地段</td></tr>
+<tr><td><span class="phrase">be converted into&hellip;</span></td><td>be changed so as to be used as&hellip;</td><td class="zh">被改建成……</td></tr>
+<tr><td><span class="phrase">in great demand</span></td><td>wanted by a lot of people</td><td class="zh">需求很大；很抢手</td></tr>
+<tr><td><span class="phrase">sell for astronomical prices</span></td><td>be sold at extremely high prices</td><td class="zh">卖出天价</td></tr>
+<tr><td><span class="phrase">revitalise the banks of the river</span></td><td>bring the riverside back to life</td><td class="zh">振兴河岸地区</td></tr>
+<tr><td><span class="phrase">it&rsquo;s been proposed that&hellip;</span></td><td>someone has suggested that&hellip;</td><td class="zh">有人提议……</td></tr>
+<tr><td><span class="phrase">traffic is banned from the roads</span></td><td>vehicles are not allowed on the roads</td><td class="zh">道路禁止车辆通行</td></tr>
+<tr><td><span class="phrase">be transformed into beaches</span></td><td>be completely changed into beaches</td><td class="zh">被改造成沙滩</td></tr>
+<tr><td><span class="phrase">make the most of&hellip;</span></td><td>use something as well as possible</td><td class="zh">充分利用……</td></tr>
+<tr><td><span class="phrase">regain their original purpose</span></td><td>return to what they were first used for</td><td class="zh">恢复原本的功能</td></tr>
+<tr><td><span class="phrase">a means of transport</span></td><td>a way of travelling or moving goods</td><td class="zh">一种交通方式</td></tr>
+<tr><td><span class="phrase">be set to rise further</span></td><td>be expected to increase even more</td><td class="zh">预计还会继续上升</td></tr>
+<tr><td><span class="phrase">stuck in traffic</span></td><td>unable to move because of the number of vehicles</td><td class="zh">堵在路上</td></tr>
+<tr><td><span class="phrase">drop off parcels</span></td><td>deliver packages</td><td class="zh">投递包裹</td></tr>
+<tr><td><span class="phrase">take trucks off the road</span></td><td>remove lorries from the road system</td><td class="zh">让卡车不再上路</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Notes Completion (the ten real answers)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the ten exam gaps rewritten as full sentences. Write <strong>ONE WORD ONLY</strong> in each gap, exactly as you would on the answer sheet.</p><div class="ex-item"><span class="ex-num">1.</span><label>As well as sewage from houses, rivers were polluted by <input type="text" class="blank" id="b1" data-answer="factories" placeholder="______"> built beside the water. (Q31)<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>In 1957 the River Thames in London was declared biologically <input type="text" class="blank" id="b2" data-answer="dead" placeholder="______">. (Q32)<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Seals and even a <input type="text" class="blank" id="b3" data-answer="whale" placeholder="______"> have been seen in the River Thames. (Q33)<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Riverside warehouses are being converted into restaurants and <input type="text" class="blank" id="b4" data-answer="apartments" placeholder="______">. (Q34)<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>In Los Angeles an architect wants to build a riverside <input type="text" class="blank" id="b5" data-answer="park" placeholder="______">. (Q35)<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The riverside could also be used to display <input type="text" class="blank" id="b6" data-answer="art" placeholder="______"> projects made by local people. (Q36)<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>In Paris, <input type="text" class="blank" id="b7" data-answer="beaches" placeholder="______"> are created on the sides of the river every summer. (Q37)<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Over two billion passengers already travel by <input type="text" class="blank" id="b8" data-answer="ferry" placeholder="______"> in cities around the world. (Q38)<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Parcels could be taken the last few kilometres on electric <input type="text" class="blank" id="b9" data-answer="bikes" placeholder="______">. (Q39)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>In future the final stage of delivery could be carried out by <input type="text" class="blank" id="b10" data-answer="drone" placeholder="______">. (Q40)<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Notes completion often changes the word class between the audio and the question paper. Write the correct form of the word in CAPITALS.</p><div class="ex-item"><span class="ex-num">1.</span><label>The scientists <input type="text" class="blank" id="b11" data-answer="declared" placeholder="______"> (DECLARATION) the river dead in 1957.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The water was too <input type="text" class="blank" id="b12" data-answer="filthy" placeholder="______"> (FILTH) to support any kind of life.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Warehouses are being <input type="text" class="blank" id="b13" data-answer="converted" placeholder="______"> (CONVERSION) into apartments.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>River-view flats are in great <input type="text" class="blank" id="b14" data-answer="demand" placeholder="______"> (DEMANDING).<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>An architect plans to <input type="text" class="blank" id="b15" data-answer="revitalise" placeholder="______"> (VITAL) the river banks.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>All traffic is <input type="text" class="blank" id="b16" data-answer="banned" placeholder="______"> (BAN) from the riverside roads in summer.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The banks are <input type="text" class="blank" id="b17" data-answer="transformed" placeholder="______"> (TRANSFORMATION) into beaches.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The problem for the whale was <input type="text" class="blank" id="b18" data-answer="disorientation" placeholder="______"> (DISORIENTATE), not dirty water.<span class="feedback" id="fb18"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word here appears in the lecture. A correct idea with a wrong spelling scores zero, so type the full spelling carefully.</p><div class="ex-item"><span class="ex-num">1.</span><label>s e w _ g e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="sewage" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>f a c t o r _ e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="factories" placeholder="______"> (plural)<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>a p _ r t m e n t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="apartments" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>w a r e h _ u s e s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="warehouses" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>f r e _ g h t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="freight" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>p a s s e n g _ r s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="passengers" placeholder="______"><span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>b i o l o g i c _ l l y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b25" data-answer="biologically" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>r e c r e _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b26" data-answer="recreation" placeholder="______"><span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Places &amp; Facts</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Part 4 lectures are full of figures that are NOT answers. Practise catching them anyway &mdash; write numbers in <strong>figures</strong>.</p><div class="ex-item"><span class="ex-num">1.</span><label>The Thames was declared biologically dead in <input type="text" class="blank" id="b27" data-answer="1957" placeholder="______">.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>In the <input type="text" class="blank" id="b28" data-answer="16th" placeholder="______"> century the quickest way across London was by river.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The Thames is now cleaner than it has been for <input type="text" class="blank" id="b29" data-answer="150" placeholder="______"> years.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>More than <input type="text" class="blank" id="b30" data-answer="2" placeholder="______"> billion passengers travel by ferry each year.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>One freight barge can replace <input type="text" class="blank" id="b31" data-answer="44" placeholder="______"> large trucks.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The problem started when cities grew to over a <input type="text" class="blank" id="b32" data-answer="million" placeholder="______"> inhabitants.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Paris creates its riverside beaches in July and <input type="text" class="blank" id="b33" data-answer="August" placeholder="______">.<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Electric cargo bikes are already used in the Dutch city of <input type="text" class="blank" id="b34" data-answer="Amsterdam" placeholder="______">.<span class="feedback" id="fb34"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the lecturer says; on the right is the wording printed in the notes. Write the missing word. This is the jump that decides your Part 4 score.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;factories were built <b>beside the river</b>&rdquo; &rarr; Notes: pollution from <input type="text" class="blank" id="b35" data-answer="factories" placeholder="______"> on the river bank. (Q31)<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;the Thames was <b>dead in biological terms</b>&rdquo; &rarr; Notes: declared biologically <input type="text" class="blank" id="b36" data-answer="dead" placeholder="______">. (Q32)<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;people had to try to <b>rescue a whale</b>&rdquo; &rarr; Notes: a <input type="text" class="blank" id="b37" data-answer="whale" placeholder="______"> has been seen in the river. (Q33)<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;converted into expensive restaurants and also into <b>apartments with river views</b>&rdquo; &rarr; Notes: converted to restaurants and <input type="text" class="blank" id="b38" data-answer="apartments" placeholder="______">. (Q34)<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;to <b>make a park there</b> which can provide facilities for sports&rdquo; &rarr; Notes: build a riverside <input type="text" class="blank" id="b39" data-answer="park" placeholder="______">. (Q35)<span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;displaying projects related to various kinds of <b>art</b>&rdquo; &rarr; Notes: display <input type="text" class="blank" id="b40" data-answer="art" placeholder="______"> projects. (Q36)<span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;the banks are <b>transformed into beaches</b>&rdquo; &rarr; Notes: <input type="text" class="blank" id="b41" data-answer="beaches" placeholder="______"> are created on the sides of the river. (Q37)<span class="feedback" id="fb41"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Audio: &ldquo;2 billion passengers <b>use the ferry</b>&rdquo; &rarr; Notes: travel by <input type="text" class="blank" id="b42" data-answer="ferry" placeholder="______">. (Q38)<span class="feedback" id="fb42"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Audio: &ldquo;on <b>cargo bikes, electric ones</b>&rdquo; &rarr; Notes: electric <input type="text" class="blank" id="b43" data-answer="bikes" placeholder="______">. (Q39)<span class="feedback" id="fb43"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Audio: &ldquo;the final stage could even be <b>carried out by drone</b>&rdquo; &rarr; Notes: in future, by <input type="text" class="blank" id="b44" data-answer="drone" placeholder="______">. (Q40)<span class="feedback" id="fb44"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q31</span></td><td>pollution from <b>(31)</b> on the river bank</td><td><b>PLURAL NOUN &mdash; a kind of building</b></td><td>&lsquo;Sewage from houses&rsquo; is the bullet above, so listen for a DIFFERENT source of pollution: &lsquo;other types of pollution increased as&hellip;&rsquo;</td><td class="note">factories</td></tr>
+<tr><td><span class="word">Q32</span></td><td>the River Thames was declared biologically <b>(32)</b></td><td><b>ADJECTIVE</b></td><td>The paper turns &lsquo;in biological terms&rsquo; into the adverb &lsquo;biologically&rsquo;, so you need the adjective that follows &lsquo;was&rsquo;.</td><td class="note">dead</td></tr>
+<tr><td><span class="word">Q33</span></td><td>Seals and even a <b>(33)</b> have been seen</td><td><b>SINGULAR NOUN &mdash; an animal</b></td><td>&lsquo;A&rsquo; forces a singular countable noun, and &lsquo;even&rsquo; means something more surprising than a seal.</td><td class="note">whale</td></tr>
+<tr><td><span class="word">Q34</span></td><td>warehouses are converted to restaurants and <b>(34)</b></td><td><b>PLURAL NOUN &mdash; a type of building</b></td><td>Restaurants is given, so listen for the second item in the list after &lsquo;converted into&hellip; and also into&hellip;&rsquo;</td><td class="note">apartments</td></tr>
+<tr><td><span class="word">Q35</span></td><td>build a riverside <b>(35)</b></td><td><b>NOUN &mdash; a public space</b></td><td>Los Angeles section. Listen for a verb of construction: &lsquo;plans to&hellip; make a&hellip;&rsquo;</td><td class="note">park</td></tr>
+<tr><td><span class="word">Q36</span></td><td>Display <b>(36)</b> projects</td><td><b>NOUN used as an adjective &mdash; a field or subject</b></td><td>&lsquo;Display&rsquo; = the audio&rsquo;s &lsquo;displaying projects related to various kinds of&hellip;&rsquo;</td><td class="note">art</td></tr>
+<tr><td><span class="word">Q37</span></td><td><b>(37)</b> are created on the sides of the river every summer</td><td><b>PLURAL NOUN &mdash; a place</b></td><td>The verb &lsquo;are&rsquo; proves it is plural. Paris + summer + &lsquo;transformed into&hellip;&rsquo;</td><td class="note">beaches</td></tr>
+<tr><td><span class="word">Q38</span></td><td>Over 2 billion passengers already travel by <b>(38)</b></td><td><b>SINGULAR NOUN &mdash; a means of transport</b></td><td>After &lsquo;travel by&rsquo; English drops the article: by car, by bus, by&hellip;</td><td class="note">ferry</td></tr>
+<tr><td><span class="word">Q39</span></td><td>goods could be transported by large freight barges and electric <b>(39)</b></td><td><b>PLURAL NOUN &mdash; a vehicle</b></td><td>The last few kilometres after the barge docks. &lsquo;Electric&rsquo; is already printed, so do not repeat it.</td><td class="note">bikes</td></tr>
+<tr><td><span class="word">Q40</span></td><td>or, in future, by <b>(40)</b></td><td><b>SINGULAR NOUN &mdash; a technology</b></td><td>&lsquo;In future&rsquo; matches &lsquo;in future, the final stage could even be&hellip;&rsquo;</td><td class="note">drone</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Pollution from <b>(31)</b> on the river bank&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;In addition, other types of pollution increased as <b>factories were built beside the river</b> and discharged their waste materials into the water.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">built beside the river = on the river bank. &lsquo;Other types of pollution&rsquo; tells you this is NOT the sewage already printed above.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence with &lsquo;discharge waste into&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Declared biologically <b>(32)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Scientists at London&rsquo;s Natural History Museum <b>declared that the Thames was dead in biological terms</b>, as the water was too filthy to support any kind of life.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">in biological terms &rarr; biologically; the gap takes the adjective <em>dead</em></span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;It was dead in economic terms&rsquo; using an adverb&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Seals and even a <b>(33)</b> have been seen&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;You can see seals swimming in the water. And recently, people had to try to <b>rescue a whale</b> which had got lost and swum up the river from the sea by mistake.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The notes report what has been SEEN; the audio tells a rescue story. The rescue failed, but the whale was still there.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe an animal you have seen unexpectedly, using &lsquo;by mistake&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Warehouses are converted to restaurants and <b>(34)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Warehouses that were once used for storing goods are now being <b>converted into expensive restaurants and also into apartments</b> with river views.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The paper compresses &lsquo;converted into&hellip; and also into&hellip;&rsquo; into &lsquo;restaurants and ___&rsquo;. Listen past the first item.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;be converted into&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Display <b>(36)</b> projects&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;It&rsquo;s been proposed that facilities could be provided for <b>displaying projects related to various kinds of art</b> that have been produced by local people.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The audio wraps the answer inside a long noun phrase; the notes strip it to two words. Hunt for the head noun.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Shorten &lsquo;projects related to various kinds of music&rsquo; into two words&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>(37)</b> are created on the sides of the river every summer&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;In Paris during the summer months of July and August&hellip; the banks are <b>transformed into beaches</b> where people can relax in deck chairs.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">the banks = the sides of the river; transformed into = are created. &lsquo;Are&rsquo; forces the plural <em>beaches</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;be transformed into&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;electric <b>(39)</b> or, in future, by <b>(40)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The parcels could be taken the last few kilometres to their final destination on <b>cargo bikes, electric ones</b>&hellip; and in future, the final stage could even be <b>carried out by drone</b>, although at present this isn&rsquo;t allowed.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">ONE WORD ONLY: <em>bikes</em> (electric is printed) and <em>drone</em> (singular after &lsquo;by&rsquo;)</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a two-stage delivery plan using &lsquo;the last few kilometres&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;they&rsquo;re nearly all built on rivers&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;a relaxing escape from the noise and bustle of the city streets&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;the amount of sewage discharged into the rivers&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;the water was too filthy to support any kind of life&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;apartments with river views which are in great demand&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;the banks are transformed into beaches&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;one freight barge can replace 44 large trucks&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;taken the last few kilometres to their final destination&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How was the River Thames used in 16th-century London?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. Only for fishing.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. As the quickest way to cross the city, and for fishing and pleasure trips.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. Mainly for carrying factory goods.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. It was already too dirty to use.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why was sewage not always a serious problem?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Rivers were cleaned regularly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It was discharged into the sea instead.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. The number of inhabitants used to be very small.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Factories treated it first.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why can &lsquo;sewage&rsquo; NOT be the answer to Q31?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. The speaker never says the word.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. It is already printed in the bullet point above the gap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. It is two words.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. It refers to Los Angeles, not London.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What did the scientists at the Natural History Museum say in 1957?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. That the Thames was dead in biological terms.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. That seals had returned to the Thames.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. That the Thames was the cleanest river in Europe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. That factories should be closed.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What happened to the whale in the Thames?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. It was successfully returned to the sea.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. The rescue failed, but the cause was disorientation, not pollution.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. It died because the water was too dirty.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. It is still living in the river.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why are riverside apartments described as selling for &lsquo;astronomical prices&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. They are very cheap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. They are extremely expensive because river views are in great demand.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. They include a restaurant.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. They are built inside old factories.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What will the planned Los Angeles park provide?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Only sports facilities.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Facilities for sports and a natural environment for relaxing.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Housing for local people.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. A new ferry terminal.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What happens on the Paris riverside in July and August?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Traffic is banned and the banks become beaches.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Warehouses are converted into restaurants.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Ferries stop running.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Local artists display their projects.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What does the speaker admit about ferry travel?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. It is expensive.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It is not fast &mdash; but neither is a car stuck in traffic.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It is only possible in three cities.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Passenger numbers are falling.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why is the number of deliveries growing?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. More people work from home.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Because of the huge rise in online shopping.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Because trucks are cheaper than barges.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Because roads have been widened.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is the stated advantage of one freight barge?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It can replace 44 large trucks and uses far less energy.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. It travels faster than a truck.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It needs no crew.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. It can carry passengers as well.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What does the speaker say about delivery by drone?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. It already happens in Amsterdam.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. It could be used for the final stage in future, but is not allowed at present.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. It is cheaper than cargo bikes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. It has been banned permanently.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 31–40</h3><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">factories</div><div class="answer-note">&lsquo;Other types of pollution increased as <em>factories were built beside the river</em> and discharged their waste materials into the water.&rsquo; &lsquo;Beside the river&rsquo; = &lsquo;on the river bank&rsquo;. Sewage is already printed on the line above.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">dead</div><div class="answer-note">&lsquo;Scientists at London&rsquo;s Natural History Museum declared that the Thames was <em>dead in biological terms</em>.&rsquo; The paper converts &lsquo;in biological terms&rsquo; to the adverb &lsquo;biologically&rsquo;, so the gap needs the adjective.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">whale</div><div class="answer-note">&lsquo;People had to try to rescue a <em>whale</em> which had got lost and swum up the river from the sea.&rsquo; Seals are given on the question paper, and &lsquo;a&rsquo; requires a singular noun.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">apartments</div><div class="answer-note">&lsquo;Warehouses&hellip; are now being converted into expensive restaurants and also into <em>apartments</em> with river views.&rsquo; Restaurants is printed, so take the second item.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">park</div><div class="answer-note">&lsquo;An architect has plans to revitalise the banks of the river and to make a <em>park</em> there.&rsquo; It will provide sports facilities and a natural place to relax.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">art</div><div class="answer-note">&lsquo;Facilities could be provided for displaying projects related to various kinds of <em>art</em> that have been produced by local people.&rsquo; ONE WORD ONLY, so not &lsquo;art projects&rsquo; or &lsquo;kinds of art&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">beaches</div><div class="answer-note">&lsquo;In Paris&hellip; the banks are transformed into <em>beaches</em> where people can relax in deck chairs.&rsquo; The notes say &lsquo;(37) <u>are</u> created&rsquo;, so the plural is required.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">ferry</div><div class="answer-note">&lsquo;More than 2 billion passengers use the <em>ferry</em> to travel in cities around the world like Istanbul, San Francisco and New York.&rsquo; After &lsquo;travel by&rsquo; use the singular with no article.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">bikes</div><div class="answer-note">&lsquo;The parcels could be taken the last few kilometres to their final destination on cargo <em>bikes</em>, electric ones.&rsquo; &lsquo;Electric&rsquo; is already printed, and ONE WORD ONLY rules out &lsquo;cargo bikes&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">drone</div><div class="answer-note">&lsquo;In future, the final stage could even be carried out by <em>drone</em>, although at present this isn&rsquo;t allowed.&rsquo; &lsquo;In future&rsquo; matches the notes exactly.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Notes Completion (the ten real answers)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">factories</div><div class="answer-note">As well as sewage from houses, rivers were polluted by</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">dead</div><div class="answer-note">In 1957 the River Thames in London was declared biologically</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">whale</div><div class="answer-note">Seals and even a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">apartments</div><div class="answer-note">Riverside warehouses are being converted into restaurants and</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">park</div><div class="answer-note">In Los Angeles an architect wants to build a riverside</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">art</div><div class="answer-note">The riverside could also be used to display</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">beaches</div><div class="answer-note">In Paris,</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">ferry</div><div class="answer-note">Over two billion passengers already travel by</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">bikes</div><div class="answer-note">Parcels could be taken the last few kilometres on electric</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">drone</div><div class="answer-note">In future the final stage of delivery could be carried out by</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">declared</div><div class="answer-note">The scientists</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">filthy</div><div class="answer-note">The water was too</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">converted</div><div class="answer-note">Warehouses are being</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">demand</div><div class="answer-note">River-view flats are in great</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">revitalise</div><div class="answer-note">An architect plans to</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">banned</div><div class="answer-note">All traffic is</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">transformed</div><div class="answer-note">The banks are</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">disorientation</div><div class="answer-note">The problem for the whale was</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">sewage</div><div class="answer-note">s e w _ g e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">factories</div><div class="answer-note">f a c t o r _ e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">apartments</div><div class="answer-note">a p _ r t m e n t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">warehouses</div><div class="answer-note">w a r e h _ u s e s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">freight</div><div class="answer-note">f r e _ g h t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">passengers</div><div class="answer-note">p a s s e n g _ r s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">biologically</div><div class="answer-note">b i o l o g i c _ l l y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">recreation</div><div class="answer-note">r e c r e _ t i o n  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Places &amp; Facts</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">1957</div><div class="answer-note">The Thames was declared biologically dead in</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">16th</div><div class="answer-note">In the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">150</div><div class="answer-note">The Thames is now cleaner than it has been for</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">2</div><div class="answer-note">More than</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">44</div><div class="answer-note">One freight barge can replace</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">million</div><div class="answer-note">The problem started when cities grew to over a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">August</div><div class="answer-note">Paris creates its riverside beaches in July and</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">Amsterdam</div><div class="answer-note">Electric cargo bikes are already used in the Dutch city of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">factories</div><div class="answer-note">Audio: &ldquo;factories were built beside the river&rdquo; &rarr; Notes: pollution from</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">dead</div><div class="answer-note">Audio: &ldquo;the Thames was dead in biological terms&rdquo; &rarr; Notes: declared biologically</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">whale</div><div class="answer-note">Audio: &ldquo;people had to try to rescue a whale&rdquo; &rarr; Notes: a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">apartments</div><div class="answer-note">Audio: &ldquo;converted into expensive restaurants and also into apartments with river views&rdquo; &rarr; Notes: converted to restaurants and</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">park</div><div class="answer-note">Audio: &ldquo;to make a park there which can provide facilities for sports&rdquo; &rarr; Notes: build a riverside</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">art</div><div class="answer-note">Audio: &ldquo;displaying projects related to various kinds of art&rdquo; &rarr; Notes: display</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">beaches</div><div class="answer-note">Audio: &ldquo;the banks are transformed into beaches&rdquo; &rarr; Notes:</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">ferry</div><div class="answer-note">Audio: &ldquo;2 billion passengers use the ferry&rdquo; &rarr; Notes: travel by</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">bikes</div><div class="answer-note">Audio: &ldquo;on cargo bikes, electric ones&rdquo; &rarr; Notes: electric</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">drone</div><div class="answer-note">Audio: &ldquo;the final stage could even be carried out by drone&rdquo; &rarr; Notes: in future, by</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q31</span><div><div class="answer-val">factories &mdash; PLURAL NOUN &mdash; a kind of building</div><div class="answer-note">&lsquo;Sewage from houses&rsquo; is the bullet above, so listen for a DIFFERENT source of pollution: &lsquo;other types of pollution increased as&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q32</span><div><div class="answer-val">dead &mdash; ADJECTIVE</div><div class="answer-note">The paper turns &lsquo;in biological terms&rsquo; into the adverb &lsquo;biologically&rsquo;, so you need the adjective that follows &lsquo;was&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q33</span><div><div class="answer-val">whale &mdash; SINGULAR NOUN &mdash; an animal</div><div class="answer-note">&lsquo;A&rsquo; forces a singular countable noun, and &lsquo;even&rsquo; means something more surprising than a seal.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q34</span><div><div class="answer-val">apartments &mdash; PLURAL NOUN &mdash; a type of building</div><div class="answer-note">Restaurants is given, so listen for the second item in the list after &lsquo;converted into&hellip; and also into&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q35</span><div><div class="answer-val">park &mdash; NOUN &mdash; a public space</div><div class="answer-note">Los Angeles section. Listen for a verb of construction: &lsquo;plans to&hellip; make a&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q36</span><div><div class="answer-val">art &mdash; NOUN used as an adjective &mdash; a field or subject</div><div class="answer-note">&lsquo;Display&rsquo; = the audio&rsquo;s &lsquo;displaying projects related to various kinds of&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q37</span><div><div class="answer-val">beaches &mdash; PLURAL NOUN &mdash; a place</div><div class="answer-note">The verb &lsquo;are&rsquo; proves it is plural. Paris + summer + &lsquo;transformed into&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q38</span><div><div class="answer-val">ferry &mdash; SINGULAR NOUN &mdash; a means of transport</div><div class="answer-note">After &lsquo;travel by&rsquo; English drops the article: by car, by bus, by&hellip;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q39</span><div><div class="answer-val">bikes &mdash; PLURAL NOUN &mdash; a vehicle</div><div class="answer-note">The last few kilometres after the barge docks. &lsquo;Electric&rsquo; is already printed, so do not repeat it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q40</span><div><div class="answer-val">drone &mdash; SINGULAR NOUN &mdash; a technology</div><div class="answer-note">&lsquo;In future&rsquo; matches &lsquo;in future, the final stage could even be&hellip;&rsquo;</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">they&rsquo;re nearly all built on rivers</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">a relaxing escape from the noise and bustle of the city streets</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">the amount of sewage discharged into the rivers</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">the water was too filthy to support any kind of life</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">apartments with river views which are in great demand</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">the banks are transformed into beaches</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">one freight barge can replace 44 large trucks</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">taken the last few kilometres to their final destination</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. As the quickest way to cross the city, and for fishing and pleasure trips.</div><div class="answer-note">Three uses match the printed note &lsquo;transport, fishing and recreation&rsquo;. &lsquo;Boat trips just for pleasure&rsquo; = recreation.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. The number of inhabitants used to be very small.</div><div class="answer-note">&lsquo;Rivers had always been used for this purpose, but when the number of inhabitants was so small, that wasn&rsquo;t such a problem.&rsquo; The change came when cities passed a million people.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. It is already printed in the bullet point above the gap.</div><div class="answer-note">Always read the lines <em>around</em> the gap. Information already given cannot be the answer &mdash; the gap needs the other source of pollution: <strong>factories</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A. That the Thames was dead in biological terms.</div><div class="answer-note">The water was &lsquo;too filthy to support any kind of life&rsquo;. On the paper this becomes &lsquo;declared biologically <strong>dead</strong>&rsquo; (Q32).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. The rescue failed, but the cause was disorientation, not pollution.</div><div class="answer-note">&lsquo;Unfortunately, they didn&rsquo;t succeed, but the problem was disorientation rather than the quality of the water.&rsquo; The answer to Q33 is still <strong>whale</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. They are extremely expensive because river views are in great demand.</div><div class="answer-note">&lsquo;Astronomical&rsquo; = extremely high. Note that the answer to Q34 is the plain word <em>apartments</em>, not the descriptive language around it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. Facilities for sports and a natural environment for relaxing.</div><div class="answer-note">The architect wants to &lsquo;revitalise the banks&hellip; and make a park there&rsquo; (Q35). The art displays (Q36) are a separate, additional proposal.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A. Traffic is banned and the banks become beaches.</div><div class="answer-note">Deck chairs, potted palm trees and sunbathing are decoration around the one-word answer <strong>beaches</strong> (Q37), which must be plural because the notes say &lsquo;are created&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. It is not fast &mdash; but neither is a car stuck in traffic.</div><div class="answer-note">&lsquo;Admittedly&rsquo; introduces a concession. Numbers are actually &lsquo;set to rise further&rsquo;, and Istanbul, San Francisco and New York are just examples.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Because of the huge rise in online shopping.</div><div class="answer-note">The notes say &lsquo;changes in shopping habits&rsquo; = online shopping. Working from home is mentioned as a reason PASSENGER traffic may fall &mdash; a neat distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">A. It can replace 44 large trucks and uses far less energy.</div><div class="answer-note">It &lsquo;uses far less energy and causes less pollution&rsquo;. 44 is a number you should catch even though it is not an answer.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. It could be used for the final stage in future, but is not allowed at present.</div><div class="answer-note">Amsterdam already uses <em>electric cargo bikes</em> (Q39). The drone is the future option (Q40) &mdash; do not swap the two cities or the two stages.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

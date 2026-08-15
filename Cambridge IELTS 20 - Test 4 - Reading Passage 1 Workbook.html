@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Reading Passage 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Reading Passage 1</h1>
+    <h2>Georgia O’Keeffe · Note Completion + True / False / Not Given (Q1–13)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>This passage is a <strong>biography of the American painter Georgia O&rsquo;Keeffe (1887&ndash;1986)</strong>. It follows her life in order: a farm childhood in Wisconsin, art training and years as a school teacher, the charcoal drawings that brought her to the attention of the photographer Alfred Stieglitz, fame in New York for her skyscrapers and her giant flowers, and finally four decades of painting the bones, cliffs and landscape of New Mexico. Because it is <strong>strictly chronological</strong>, the fastest way to find any answer is to find the right decade first.</p></div><div class="card"><p><strong>What the passage argues:</strong> That O&rsquo;Keeffe&rsquo;s importance comes from her <em>independence</em>: for seventy years she ignored passing art fashions and kept painting the same underlying idea &mdash; the essential, abstract shapes hidden inside natural things, whether a flower, a bone, a cliff or a cloud.</p><p><strong>段落结构 Structure:</strong> 第1段：总述——七十年艺术生涯，不随潮流，从自然中提炼抽象形态。第2段：出身与求学，1911&ndash;1918年在多州任美术教师。第3&ndash;4段：木炭抽象素描经朋友转交 Stieglitz，1916年在其画廊展出。第5段：1918年赴纽约，Stieglitz 举办22场个展，1924年结婚，1917&ndash;37年为她拍摄肖像。第6&ndash;7段：1920年代中期成名——摩天大楼与放大的花卉。第8段：1929年首赴新墨西哥，1949年定居。第9段：骨骼题材（牛头骨、骨盆系列）。第10段：真正长期吸引她的是新墨西哥的壮丽风景。第11段：Ghost Ranch 与 Abiquiu 两处住所，庭院黑门系列。第12段：1950&ndash;70年代旅行与航拍视角的河流与云天巨幅。第13段：晚年因病与失明创作减少，1986年去世，留下约900幅作品。</p><p><strong>Task type:</strong> <strong>Q1&ndash;7 Note completion</strong> &mdash; <em>ONE WORD ONLY from the passage</em> (writing two words scores zero). <strong>Q8&ndash;13 True / False / Not Given</strong> &mdash; statements about facts in the passage, not about the writer&rsquo;s opinion, so the labels are TRUE/FALSE/NOT GIVEN, never YES/NO.</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> Two task types sit on one passage and they run in <em>separate</em> passes. The seven notes (Q1&ndash;7) follow the passage from beginning to end, so treat them as a timeline: teacher &rarr; drawings &rarr; New York &rarr; flowers &rarr; New Mexico &rarr; landscape &rarr; late aerial paintings. Then start again at the top for <strong>True / False / Not Given</strong> (Q8&ndash;13), which also runs in order. For the notes the instruction is <strong>ONE WORD ONLY from the passage</strong>, so you may not join two words together (&lsquo;cow skull&rsquo;, &lsquo;abstract drawings&rsquo;) and you may not invent a synonym &mdash; copy the exact word, with the exact plural.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q1 needs the job, not the place.</b> The sentence lists Virginia, Texas and South Carolina, and the note already says &lsquo;in various places in the USA&rsquo;. The gap is the role: she &lsquo;became an art <em>teacher</em>&rsquo;. Do not write &lsquo;art teacher&rsquo; &mdash; that is two words.</li><li><b>Q2 asks what she drew <em>with</em>.</b> The passage says &lsquo;abstract compositions in <em>charcoal</em>&rsquo;. &lsquo;Abstract&rsquo; and &lsquo;drawings&rsquo; are both already in the note, so the only new word left is the material.</li><li><b>Q3 vs Q4 &mdash; two kinds of subject in the same paragraph.</b> She is &lsquo;widely known for the architectural pictures&hellip; soaring <em>skyscrapers</em>&rsquo; <b>but</b> &lsquo;most often, she painted botanical subjects&rsquo;. The word <em>but</em> separates the city answer from the flower answer.</li><li><b>Q5 is the material, not the animal.</b> What sparked her imagination in New Mexico was the &lsquo;sun-bleached <em>bones</em>&rsquo;. &lsquo;Cow skull&rsquo; and &lsquo;pelvis&rsquo; are the individual paintings that came afterwards, and both would break the one-word rule anyway.</li><li><b>Q6 &lsquo;for over forty years&rsquo; is the locator.</b> The passage says the landscape &lsquo;held the artist&rsquo;s imagination for <em>more than four decades</em>&rsquo;. Four decades = forty years. The word needed is <em>landscape</em>, singular.</li><li><b>Q7: clouds are already given.</b> The note says &lsquo;pictures of clouds and (7) seen from above&rsquo;, and the passage names two series: &lsquo;aerial views of <em>rivers</em>&rsquo; and paintings of the sky above clouds. Cross off what the note already uses.</li><li><b>Q10 is FALSE, not TRUE, because of one small detail.</b> She sent the drawings <em>to a friend</em>, and the friend showed them to Stieglitz. The statement says she sent them to his gallery. Same event, wrong route.</li><li><b>Q12 and Q13 are both NOT GIVEN.</b> The passage tells you how many patio pictures she made and that her last two decades were unproductive, but it never says which works were her <em>favourites</em> and never <em>compares</em> the output of the 1950s&ndash;70s with any other period. No opinion, no comparison &rarr; NOT GIVEN.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">remarkably</span></td><td><span class="pos">adv.</span></td><td>in a way that is surprising and worth noticing</td><td class="zh">值得注意地；引人瞩目地</td><td>&ldquo;<em>Remarkably</em>, she remained independent from shifting art trends.&rdquo;</td><td class="note">A signal that the writer is pointing at something unusual. It marks the sentence that decides Q8.</td></tr>
+<tr><td><span class="word">shifting</span></td><td><span class="pos">adj.</span></td><td>changing all the time</td><td class="zh">不断变化的</td><td>&ldquo;she remained independent from <em>shifting</em> art trends&rdquo;</td><td class="note">Q8 says her style was &lsquo;greatly influenced by the changing fashions in art&rsquo;. <em>shifting art trends</em> = <em>changing fashions</em> &mdash; and she was independent of them, so FALSE.</td></tr>
+<tr><td><span class="word">abstract</span></td><td><span class="pos">adj.</span></td><td>not showing things realistically; made of shapes and forms</td><td class="zh">抽象的</td><td>&ldquo;finding the essential, <em>abstract</em> forms in nature&rdquo;</td><td class="note">The central idea of her whole career. It comes back with the charcoal drawings, the giant flowers and the black-door patio.</td></tr>
+<tr><td><span class="word">nuance</span></td><td><span class="pos">n.</span></td><td>a very small difference in colour, meaning or feeling</td><td class="zh">细微差别</td><td>&ldquo;she recorded subtle <em>nuances</em> of colour, shape, and light&rdquo;</td><td class="note">Comes with the adjective <em>subtle</em>. Both words describe fine detail &mdash; useful for describing art or data in Writing Task 1.</td></tr>
+<tr><td><span class="word">finesse</span></td><td><span class="pos">n.</span></td><td>great skill and delicacy in doing something</td><td class="zh">精湛技巧；细腻手法</td><td>&ldquo;great <em>finesse</em> with a paintbrush&rdquo;</td><td class="note">Paired here with &lsquo;keen powers of observation&rsquo;: she both <em>saw</em> and <em>rendered</em> the detail. A high-band praise word.</td></tr>
+<tr><td><span class="word">determine</span></td><td><span class="pos">v.</span></td><td>to decide firmly</td><td class="zh">下定决心</td><td>&ldquo;she had <em>determined</em> to make her way as an artist&rdquo;</td><td class="note"><strong>Key to Q9.</strong> &lsquo;Had determined&rsquo; (past perfect) = the decision was already made <em>before</em> she graduated &rarr; TRUE.</td></tr>
+<tr><td><span class="word">sibling</span></td><td><span class="pos">n.</span></td><td>a brother or sister</td><td class="zh">兄弟姐妹</td><td>&ldquo;Georgia was raised on their farm along with her six <em>siblings</em>&rdquo;</td><td class="note">A neat academic replacement for &lsquo;brothers and sisters&rsquo;. Watch for it in family-topic passages.</td></tr>
+<tr><td><span class="word">charcoal</span></td><td><span class="pos">n.</span></td><td>burnt wood used as a black drawing material</td><td class="zh">木炭；炭笔</td><td>&ldquo;abstract compositions in <em>charcoal</em>&rdquo;</td><td class="note"><strong>Answer to Q2.</strong> Uncountable &mdash; do not add an &lsquo;s&rsquo;. &lsquo;In charcoal&rsquo; = &lsquo;using charcoal&rsquo;.</td></tr>
+<tr><td><span class="word">composition</span></td><td><span class="pos">n.</span></td><td>the way the parts of a picture are arranged; the picture itself</td><td class="zh">构图；作品</td><td>&ldquo;Such daring <em>compositions</em> helped establish O&rsquo;Keeffe&rsquo;s reputation&rdquo;</td><td class="note">In art passages this is a synonym for &lsquo;work&rsquo; or &lsquo;picture&rsquo;, not for &lsquo;essay&rsquo;.</td></tr>
+<tr><td><span class="word">innovative</span></td><td><span class="pos">adj.</span></td><td>new and original</td><td class="zh">创新的</td><td>&ldquo;produced a series of <em>innovative</em> drawings that led her art in a new direction&rdquo;</td><td class="note">The note for Q4 reuses this exact word, which is how you know you are looking for the magnified flower paintings and not the charcoal drawings.</td></tr>
+<tr><td><span class="word">avant-garde</span></td><td><span class="pos">adj.</span></td><td>experimental and ahead of its time</td><td class="zh">前卫的；先锋派的</td><td>&ldquo;where the works of many <em>avant-garde</em> artists&hellip; were introduced&rdquo;</td><td class="note">A French loan word. It tells you Stieglitz&rsquo;s gallery was the modern, experimental end of the art world.</td></tr>
+<tr><td><span class="word">vigorously</span></td><td><span class="pos">adv.</span></td><td>with a lot of energy and determination</td><td class="zh">大力地；积极地</td><td>&ldquo;Stieglitz <em>vigorously</em> promoted her work in twenty-two solo exhibitions&rdquo;</td><td class="note">Adverbs like this carry the writer&rsquo;s judgement. Compare &lsquo;quietly&rsquo;, &lsquo;reluctantly&rsquo;.</td></tr>
+<tr><td><span class="word">celebrated</span></td><td><span class="pos">adj.</span></td><td>famous and much admired</td><td class="zh">著名的；广受赞誉的</td><td>&ldquo;Stieglitz&rsquo;s <em>celebrated</em> black-and-white portraits of O&rsquo;Keeffe&rdquo;</td><td class="note">Nothing to do with a party. Supports Q11: those portraits were taken over twenty years, 1917&ndash;37.</td></tr>
+<tr><td><span class="word">depict</span></td><td><span class="pos">v.</span></td><td>to show something in a picture</td><td class="zh">描绘；描画</td><td>&ldquo;architectural pictures that dramatically <em>depict</em> the soaring skyscrapers of New York&rdquo;</td><td class="note">Paraphrase family: depict = portray = represent = show. The note for Q3 simply says &lsquo;paintings of&rsquo;.</td></tr>
+<tr><td><span class="word">soaring</span></td><td><span class="pos">adj.</span></td><td>rising very high</td><td class="zh">高耸的；直插云霄的</td><td>&ldquo;the <em>soaring</em> skyscrapers of New York&rdquo;</td><td class="note">A describing word placed right in front of the Q3 answer. Adjectives are often the last signpost before a gap.</td></tr>
+<tr><td><span class="word">botanical</span></td><td><span class="pos">adj.</span></td><td>relating to plants</td><td class="zh">植物的</td><td>&ldquo;most often, she painted <em>botanical</em> subjects&rdquo;</td><td class="note">Q4 needs ONE WORD from the passage. &lsquo;Botanical subjects&rsquo; is the category; the word actually required is the specific one used two lines later: <em>flowers</em>.</td></tr>
+<tr><td><span class="word">magnified</span></td><td><span class="pos">adj.</span></td><td>made to look much larger than in real life</td><td class="zh">被放大的</td><td>&ldquo;In her <em>magnified</em> images depicting flowers&hellip;&rdquo;</td><td class="note">This is the passage&rsquo;s way of saying &lsquo;close-up&rsquo;, which is the word used in the Q4 note.</td></tr>
+<tr><td><span class="word">solitude</span></td><td><span class="pos">n.</span></td><td>the state of being alone</td><td class="zh">独处；隐居</td><td>&ldquo;painting in relative <em>solitude</em>&rdquo;</td><td class="note">Neutral or positive &mdash; unlike <em>loneliness</em>, which is negative. A useful Writing Task 2 distinction.</td></tr>
+<tr><td><span class="word">terrain</span></td><td><span class="pos">n.</span></td><td>an area of land, considered by its natural features</td><td class="zh">地形；地带</td><td>&ldquo;the numerous sun-bleached bones she came across in the state&rsquo;s rugged <em>terrain</em>&rdquo;</td><td class="note">Comes with <em>rugged</em> = rough and rocky. Both belong to the same word family as the Q6 answer, <em>landscape</em>.</td></tr>
+<tr><td><span class="word">weathered</span></td><td><span class="pos">adj.</span></td><td>worn and changed by wind, sun and rain over time</td><td class="zh">风化的；饱经风霜的</td><td>&ldquo;exquisitely reproduce a cow skull&rsquo;s <em>weathered</em> surfaces&rdquo;</td><td class="note">Part of the trio <em>weathered / jagged / irregular</em> &mdash; a whole sentence of texture adjectives.</td></tr>
+<tr><td><span class="word">convex / concave</span></td><td><span class="pos">adj.</span></td><td>curving outwards / curving inwards</td><td class="zh">凸的／凹的</td><td>&ldquo;the contrasts between <em>convex and concave</em> surfaces, and solid and open spaces&rdquo;</td><td class="note">A pair of opposites. The sentence is built entirely on contrast, which is why it is a good Q&rsquo;s-worth of logic practice.</td></tr>
+<tr><td><span class="word">spectacular</span></td><td><span class="pos">adj.</span></td><td>extremely impressive to look at</td><td class="zh">壮观的；令人惊叹的</td><td>&ldquo;it was the region&rsquo;s <em>spectacular</em> landscape&hellip; that held the artist&rsquo;s imagination&rdquo;</td><td class="note">The note for Q6 says &lsquo;the dramatic ___&rsquo;. <em>Dramatic</em> = <em>spectacular</em>, so the gap is the noun that follows: <em>landscape</em>.</td></tr>
+<tr><td><span class="word">exotic</span></td><td><span class="pos">adj.</span></td><td>unusual and from a distant or foreign place</td><td class="zh">奇特的；异域的</td><td>&ldquo;vivid colours, clarity of light, and <em>exotic</em> vegetation&rdquo;</td><td class="note">One of the four features that together make up the landscape &mdash; the note calls them &lsquo;various features that together formed&rsquo;.</td></tr>
+<tr><td><span class="word">nestled</span></td><td><span class="pos">v.</span></td><td>positioned in a sheltered, protected place</td><td class="zh">坐落于；依偎在</td><td>&ldquo;her summer retreat at Ghost Ranch was <em>nestled</em> beneath 200-metre cliffs&rdquo;</td><td class="note">A quiet, picturesque verb. Compare <em>located</em> or <em>situated</em>, which are neutral.</td></tr>
+<tr><td><span class="word">reinvent</span></td><td><span class="pos">v.</span></td><td>to change something completely into a new form</td><td class="zh">重新塑造；改造</td><td>&ldquo;she <em>reinvented</em> the patio into an abstract arrangement of geometric shapes&rdquo;</td><td class="note">Q12 is about this sentence. The passage counts the pictures (more than thirty) but never says she <em>preferred</em> them &rarr; NOT GIVEN.</td></tr>
+<tr><td><span class="word">aerial</span></td><td><span class="pos">adj.</span></td><td>seen or taken from the air</td><td class="zh">空中的；航拍的</td><td>&ldquo;<em>aerial</em> views of rivers and expansive paintings of the sky&rdquo;</td><td class="note"><strong>Locates Q7.</strong> &lsquo;Aerial views&rsquo; = &lsquo;seen from above&rsquo; in the note; the missing subject is <em>rivers</em>.</td></tr>
+<tr><td><span class="word">monumental</span></td><td><span class="pos">adj.</span></td><td>extremely large and impressive</td><td class="zh">巨大的；纪念碑式的</td><td>&ldquo;she successfully translated one of her cloud motifs to a <em>monumental</em> canvas&rdquo;</td><td class="note">Matched by &lsquo;mural proportions&rsquo; earlier in the paragraph. Both mean wall-sized.</td></tr>
+<tr><td><span class="word">feat</span></td><td><span class="pos">n.</span></td><td>an impressive achievement requiring skill or courage</td><td class="zh">壮举；了不起的成就</td><td>&ldquo;it was an enormous challenge and a special <em>feat</em> for an artist nearing eighty&rdquo;</td><td class="note">Do not confuse with <em>feet</em>. The writer&rsquo;s admiration is clearest in this one sentence.</td></tr>
+<tr><td><span class="word">hinder</span></td><td><span class="pos">v.</span></td><td>to make something more difficult</td><td class="zh">阻碍；妨碍</td><td>&ldquo;ill health and blindness <em>hindered</em> her ability to work&rdquo;</td><td class="note">Explains &lsquo;relatively unproductive&rsquo;. Note that this is about the <em>last</em> two decades, which is why Q13&rsquo;s comparison is still NOT GIVEN.</td></tr>
+<tr><td><span class="word">legacy</span></td><td><span class="pos">n.</span></td><td>what someone leaves behind for later generations</td><td class="zh">遗产；传承</td><td>&ldquo;her rich <em>legacy</em> of some 900 paintings&rdquo;</td><td class="note">&lsquo;Some 900&rsquo; = approximately 900. Excellent Writing Task 2 vocabulary for culture and history topics.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">a major figure in American art</span></td><td>one of the most important people in that field</td><td class="zh">美国艺术界的重要人物</td></tr>
+<tr><td><span class="phrase">remain independent from</span></td><td>not be controlled or influenced by something</td><td class="zh">不受……影响；保持独立</td></tr>
+<tr><td><span class="phrase">stay true to one&rsquo;s own vision</span></td><td>keep following your own artistic ideas</td><td class="zh">忠于自己的艺术追求</td></tr>
+<tr><td><span class="phrase">keen powers of observation</span></td><td>a very sharp ability to notice detail</td><td class="zh">敏锐的观察力</td></tr>
+<tr><td><span class="phrase">subtle nuances of colour</span></td><td>very small differences in shade and tone</td><td class="zh">色彩的细微变化</td></tr>
+<tr><td><span class="phrase">attract a wide audience</span></td><td>become popular with many different people</td><td class="zh">吸引广泛的观众</td></tr>
+<tr><td><span class="phrase">make one&rsquo;s way as an artist</span></td><td>build a career and succeed as an artist</td><td class="zh">闯出一条艺术之路</td></tr>
+<tr><td><span class="phrase">experiment with</span></td><td>try new ways of doing something</td><td class="zh">尝试；试验</td></tr>
+<tr><td><span class="phrase">lead her art in a new direction</span></td><td>take her work towards a different style</td><td class="zh">把她的艺术引向新方向</td></tr>
+<tr><td><span class="phrase">with the promise of financial support</span></td><td>having been promised money to live on</td><td class="zh">在得到经济支持承诺的情况下</td></tr>
+<tr><td><span class="phrase">vigorously promote someone&rsquo;s work</span></td><td>actively push and publicise it</td><td class="zh">大力推广某人的作品</td></tr>
+<tr><td><span class="phrase">solo exhibition</span></td><td>a show devoted to one artist only</td><td class="zh">个人画展</td></tr>
+<tr><td><span class="phrase">the ups and downs of a relationship</span></td><td>the good times and the bad times</td><td class="zh">关系的起起伏伏</td></tr>
+<tr><td><span class="phrase">be recognized as</span></td><td>be generally accepted to be</td><td class="zh">被公认为</td></tr>
+<tr><td><span class="phrase">widely known for</span></td><td>famous among many people because of</td><td class="zh">因……而广为人知</td></tr>
+<tr><td><span class="phrase">bring the viewer right into the picture</span></td><td>make the viewer feel they are inside the scene</td><td class="zh">把观者带入画面之中</td></tr>
+<tr><td><span class="phrase">establish one&rsquo;s reputation</span></td><td>make people accept how good you are</td><td class="zh">确立声誉</td></tr>
+<tr><td><span class="phrase">have a lasting impact on</span></td><td>change something permanently</td><td class="zh">对……产生持久影响</td></tr>
+<tr><td><span class="phrase">an immediate effect on</span></td><td>a change that happens straight away</td><td class="zh">对……的直接影响</td></tr>
+<tr><td><span class="phrase">in relative solitude</span></td><td>mostly alone, away from other people</td><td class="zh">在相对独处的状态下</td></tr>
+<tr><td><span class="phrase">spark someone&rsquo;s imagination</span></td><td>suddenly make someone start imagining things</td><td class="zh">激发某人的想象力</td></tr>
+<tr><td><span class="phrase">hold someone&rsquo;s imagination</span></td><td>keep someone interested for a long time</td><td class="zh">长久吸引某人的想象</td></tr>
+<tr><td><span class="phrase">in striking close-up</span></td><td>shown very large and very near</td><td class="zh">以极具冲击力的特写呈现</td></tr>
+<tr><td><span class="phrase">provide a wealth of imagery</span></td><td>give a large supply of pictures and subjects</td><td class="zh">提供丰富的意象素材</td></tr>
+<tr><td><span class="phrase">to mural proportions</span></td><td>as large as a wall painting</td><td class="zh">达到壁画般的尺幅</td></tr>
+<tr><td><span class="phrase">a special feat for an artist</span></td><td>a remarkable achievement for an artist</td><td class="zh">对一位艺术家而言的非凡成就</td></tr>
+<tr><td><span class="phrase">hinder one&rsquo;s ability to work</span></td><td>make it hard for someone to keep working</td><td class="zh">妨碍某人的工作能力</td></tr>
+<tr><td><span class="phrase">derive inspiration from</span></td><td>get creative ideas from something</td><td class="zh">从……中汲取灵感</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;Remarkably, she remained independent from shifting art trends and her work stayed true to her own vision, which was based on finding the essential, abstract forms in nature.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">she <b>remained</b> independent from shifting art trends <b>and</b> her work <b>stayed</b> true to her own vision &mdash; two coordinated main clauses joined by <em>and</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>which was based on finding the essential, abstract forms in nature</em> &mdash; a non-defining relative clause describing <em>her own vision</em>, not the whole sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><em>remain</em> and <em>stay</em> are both linking verbs here, so they take adjectives (<em>independent</em>, <em>true</em>), not adverbs. The comment adverb <em>Remarkably</em> at the front tells you the writer finds this surprising.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Art fashions changed around her, but she ignored them and kept painting the abstract shapes she found in nature.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">值得注意的是，她始终不为艺术潮流所动，作品忠于自己的理念——从自然中提炼出本质的、抽象的形态。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;By the time she graduated from high school in 1905, she had determined to make her way as an artist.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">she <b>had determined</b> to make her way as an artist.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>By the time she graduated from high school in 1905</em> &mdash; an adverbial clause of time.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><em>By the time</em> + past simple in the clause, <b>past perfect</b> in the main clause. The past perfect proves the decision came <em>first</em> and the graduation second.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She had already decided to be an artist before she left school.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">到1905年高中毕业时，她已经下定决心要成为一名艺术家。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;She sent some of these drawings to a friend in New York, who showed them to art collector and photographer Alfred Stieglitz in January 1916.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">She <b>sent</b> some of these drawings <b>to a friend</b> in New York.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>who showed them to&hellip; Alfred Stieglitz in January 1916</em> &mdash; a non-defining relative clause whose subject <em>who</em> refers back to <b>the friend</b>, not to O&rsquo;Keeffe.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The whole of Q10 turns on the antecedent of <em>who</em>. Two people act in this sentence: O&rsquo;Keeffe sends, the friend shows. Track pronouns and you keep the chain of events straight.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She posted the drawings to a friend, and it was the friend who put them in front of Stieglitz.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">她把其中一些素描寄给了纽约的一位朋友，这位朋友于1916年1月把它们拿给艺术收藏家兼摄影师 Alfred Stieglitz 看。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;However, it was the region’s spectacular landscape, with its unusual geological formations, vivid colours, clarity of light, and exotic vegetation, that held the artist’s imagination for more than four decades.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value"><b>it was</b> the region&rsquo;s spectacular landscape <b>that held</b> the artist&rsquo;s imagination &mdash; an <em>it&hellip; that</em> cleft sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>with its unusual geological formations, vivid colours, clarity of light, and exotic vegetation</em> &mdash; a long <em>with</em>-phrase listing four features, dropped in between the subject and the verb.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The cleft structure exists to <b>emphasise</b>: not the bones, not the buildings &mdash; the <em>landscape</em>. Cross out everything between the commas and the sentence becomes short again.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">What really kept her interested for over forty years was the landscape itself, with its strange rocks, bright colours, clear light and unusual plants.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">然而，真正让这位艺术家着迷四十多年的，是该地区壮丽的风景——奇特的地质构造、浓烈的色彩、澄澈的光线以及奇异的植被。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;When in 1965 she successfully translated one of her cloud motifs to a monumental canvas measuring 6 metres in length, it was an enormous challenge and a special feat for an artist nearing eighty years of age.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value"><b>it was</b> an enormous challenge and a special feat for an artist.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>When in 1965 she successfully translated one of her cloud motifs to a monumental canvas</em> &mdash; a time clause; <em>measuring 6 metres in length</em> and <em>nearing eighty years of age</em> are reduced relative clauses (= which measured&hellip; / who was nearing&hellip;).</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Two <b>-ing reduced clauses</b> in one sentence. Expanding them back out (<em>which measured</em>, <em>who was nearing</em>) is the quickest way to unpack a dense Academic Reading sentence.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">In 1965, when she was almost eighty, she painted one of her cloud pictures on a six-metre canvas &mdash; a very hard thing to do.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">1965年，她成功地把一幅云的母题移到一块长达6米的巨幅画布上；对一位年近八十的艺术家来说，这既是巨大的挑战，也是非凡的成就。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;The last two decades of the artist’s life were relatively unproductive as ill health and blindness hindered her ability to work.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The last two decades&hellip; <b>were</b> relatively unproductive.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value"><em>as ill health and blindness hindered her ability to work</em> &mdash; a reason clause introduced by <em>as</em> (= because).</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><em>as</em> has three common jobs in Academic Reading: <em>because</em>, <em>while</em>, and <em>in the role of</em>. Here it is <b>because</b>. Note also the hedging adverb <em>relatively</em>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She produced much less in her final twenty years because she was ill and losing her sight.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这位艺术家生命的最后二十年产量相对较少，因为疾病与失明削弱了她的创作能力。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;7)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The seven exam notes, rewritten as full sentences. Write <strong>ONE WORD ONLY from the passage</strong> in each gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>After training as an artist she worked for seven years as a <input type="text" class="blank" id="b1" data-answer="teacher" placeholder="______"> in Virginia, Texas and South Carolina.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Her first abstract works were drawings made in <input type="text" class="blank" id="b2" data-answer="charcoal" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>In New York she first became famous for pictures of the city&rsquo;s <input type="text" class="blank" id="b3" data-answer="skyscrapers" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>From 1924 she painted a celebrated series of magnified close-ups of <input type="text" class="blank" id="b4" data-answer="flowers" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>What first inspired her in New Mexico were the sun-bleached <input type="text" class="blank" id="b5" data-answer="bones" placeholder="______"> lying in the desert.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>For more than forty years she went on painting the dramatic <input type="text" class="blank" id="b6" data-answer="landscape" placeholder="______"> of New Mexico.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Her last two series were painted from planes: the sky above the clouds, and aerial views of <input type="text" class="blank" id="b7" data-answer="rivers" placeholder="______">.<span class="feedback" id="fb7"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; True / False / Not Given in one word (Q8&ndash;13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type <strong>true</strong>, <strong>false</strong> or <strong>notgiven</strong> (one word, no space) for each statement. Decide first, then check the Answer Key for the reason.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q8 &mdash; Her style was greatly influenced by changing fashions in art. &rarr; <input type="text" class="blank" id="b8" data-answer="false" placeholder="______"><span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q9 &mdash; She had already chosen her career when she finished high school. &rarr; <input type="text" class="blank" id="b9" data-answer="true" placeholder="______"><span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q10 &mdash; Stieglitz discovered her work because she sent drawings to his gallery. &rarr; <input type="text" class="blank" id="b10" data-answer="false" placeholder="______"><span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q11 &mdash; She was the subject of Stieglitz&rsquo;s photographs for many years. &rarr; <input type="text" class="blank" id="b11" data-answer="true" placeholder="______"><span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q12 &mdash; The Abiquiu patio pictures were among her own favourite works. &rarr; <input type="text" class="blank" id="b12" data-answer="notgiven" placeholder="______"><span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q13 &mdash; She produced more work in the 1950s&ndash;1970s than at any other time. &rarr; <input type="text" class="blank" id="b13" data-answer="notgiven" placeholder="______"><span class="feedback" id="fb13"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Her powers of observation were exceptionally <input type="text" class="blank" id="b14" data-answer="keen" placeholder="______"> (= sharp and quick to notice detail).<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>She recorded subtle <input type="text" class="blank" id="b15" data-answer="nuances" placeholder="______"> (= very small differences) of colour, shape and light.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Stieglitz had her work shown in twenty-two <input type="text" class="blank" id="b16" data-answer="solo" placeholder="______"> (= devoted to one artist only) exhibitions.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The bones she found lay in the state&rsquo;s rugged <input type="text" class="blank" id="b17" data-answer="terrain" placeholder="______"> (= rough, rocky ground).<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Ill health and blindness <input type="text" class="blank" id="b18" data-answer="hindered" placeholder="______"> (= made more difficult) her ability to work.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Her rich <input type="text" class="blank" id="b19" data-answer="legacy" placeholder="______"> (= what she left behind) is about 900 paintings.<span class="feedback" id="fb19"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Academic Reading the answer must fit the grammar of the sentence, not only its meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>Her drawings were <input type="text" class="blank" id="b20" data-answer="innovative" placeholder="______"> (INNOVATE) and took her art in a new direction.<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Stieglitz <input type="text" class="blank" id="b21" data-answer="vigorously" placeholder="______"> (VIGOROUS) promoted her work for three decades.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The skyscraper pictures <input type="text" class="blank" id="b22" data-answer="dramatically" placeholder="______"> (DRAMATIC) depict the height of the city.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Enlarging tiny details made the shapes look <input type="text" class="blank" id="b23" data-answer="abstract" placeholder="______"> (ABSTRACTION).<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The New Mexico trip had a lasting <input type="text" class="blank" id="b24" data-answer="impact" placeholder="______"> (IMPACT) on her life and work.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The last twenty years of her life were relatively <input type="text" class="blank" id="b25" data-answer="unproductive" placeholder="______"> (PRODUCE, + un- and -ive).<span class="feedback" id="fb25"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The question paper never repeats the passage word for word. Read the question wording, then write the single word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Question: &ldquo;the changing fashions in art&rdquo; &rarr; Passage: <input type="text" class="blank" id="b26" data-answer="shifting" placeholder="______"> art trends.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Question: &ldquo;she had made her mind up&rdquo; &rarr; Passage: she had <input type="text" class="blank" id="b27" data-answer="determined" placeholder="______"> to make her way as an artist.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Question: &ldquo;close-up paintings&rdquo; &rarr; Passage: her <input type="text" class="blank" id="b28" data-answer="magnified" placeholder="______"> images depicting flowers.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Question: &ldquo;for over forty years&rdquo; &rarr; Passage: for more than four <input type="text" class="blank" id="b29" data-answer="decades" placeholder="______">.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Question: &ldquo;the dramatic scenery of New Mexico&rdquo; &rarr; Passage: the region&rsquo;s <input type="text" class="blank" id="b30" data-answer="spectacular" placeholder="______"> landscape.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Question: &ldquo;seen from above&rdquo; &rarr; Passage: <input type="text" class="blank" id="b31" data-answer="aerial" placeholder="______"> views of rivers.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Question: &ldquo;she was photographed by Stieglitz&rdquo; &rarr; Passage: his celebrated black-and-white <input type="text" class="blank" id="b32" data-answer="portraits" placeholder="______"> of O&rsquo;Keeffe.<span class="feedback" id="fb32"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Clauses: Joining, Reducing and Emphasising</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These are the exact structures this passage uses to pack several ideas into one sentence.</p><div class="ex-item"><span class="ex-num">1.</span><label>She sent the drawings to a friend, <input type="text" class="blank" id="b33" data-answer="who" placeholder="______"> showed them to Stieglitz. (relative pronoun for a person)<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>It was the spectacular landscape <input type="text" class="blank" id="b34" data-answer="that" placeholder="______"> held her imagination for four decades. (the cleft structure for emphasis)<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label><input type="text" class="blank" id="b35" data-answer="By" placeholder="______"> the time she left high school, she had decided to become an artist. (time + past perfect)<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The canvas <input type="text" class="blank" id="b36" data-answer="measuring" placeholder="______"> 6 metres in length = the canvas which measured 6 metres. (reduced relative, -ing form)<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Her last decades were unproductive <input type="text" class="blank" id="b37" data-answer="as" placeholder="______"> ill health hindered her work. (a one-word conjunction meaning &lsquo;because&rsquo;)<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>She was widely known for her skyscrapers, <input type="text" class="blank" id="b38" data-answer="but" placeholder="______"> most often she painted botanical subjects. (the contrast word that separates Q3 from Q4)<span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 7 &mdash; Translation Cues 中译英</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the English phrase that expresses the Chinese meaning. One word per gap &mdash; all seven come from this passage.</p><div class="ex-item"><span class="ex-num">1.</span><label>敏锐的观察力 &rarr; keen powers of <input type="text" class="blank" id="b39" data-answer="observation" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>个人画展 &rarr; a <input type="text" class="blank" id="b40" data-answer="solo" placeholder="______"> exhibition<span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>持久的影响 &rarr; a <input type="text" class="blank" id="b41" data-answer="lasting" placeholder="______"> impact<span class="feedback" id="fb41"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>独处 &rarr; relative <input type="text" class="blank" id="b42" data-answer="solitude" placeholder="______"><span class="feedback" id="fb42"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>激发想象力 &rarr; <input type="text" class="blank" id="b43" data-answer="spark" placeholder="______"> her imagination<span class="feedback" id="fb43"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>壁画般的尺幅 &rarr; mural <input type="text" class="blank" id="b44" data-answer="proportions" placeholder="______"><span class="feedback" id="fb44"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>汲取灵感 &rarr; <input type="text" class="blank" id="b45" data-answer="derive" placeholder="______"> inspiration from<span class="feedback" id="fb45"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; the chain that made her famous</strong></p><p>Charcoal drawings &rarr; sent to a friend &rarr; friend shows Stieglitz &rarr; Stieglitz exhibits them &rarr; Stieglitz offers &ldquo;encouragement and promise of financial support&rdquo; &rarr; she moves to New York in 1918 &rarr; twenty-two solo exhibitions. Notice how many links there are. Question 10 fails on the <em>second</em> link only: the drawings went to a friend, not to the gallery. In cause-and-effect chains, True/False items are almost always built by removing or swapping one step.</p></div>
+<div class="card"><p><strong>Contrast &mdash; what &lsquo;But&rsquo; and &lsquo;However&rsquo; are doing</strong></p><p>Two contrast words carry two answers in this passage. &ldquo;&hellip;widely known for the architectural pictures&hellip; <em>But</em> most often, she painted botanical subjects&rdquo; splits Q3 (<strong>skyscrapers</strong>) from Q4 (<strong>flowers</strong>). Later, &ldquo;<em>However</em>, it was the region&rsquo;s spectacular landscape&hellip;&rdquo; moves you off the bones (Q5) and onto the landscape (Q6). Train yourself to slow down, not speed up, at a contrast word.</p></div>
+<div class="card"><p><strong>Comparison &mdash; the trap in Question 13</strong></p><p>The passage says the last two decades were &ldquo;relatively unproductive&rdquo;. That is a comparison, but it is a comparison between her late years and her earlier years <em>in general</em>. Question 13 asks something much more specific: was the output of the 1950s&ndash;70s greater than in <em>any other</em> period? The passage never ranks the periods, so the answer is <strong>NOT GIVEN</strong>. Whenever a statement contains <em>more than</em>, <em>the most</em>, or <em>than at any other time</em>, look for the passage to make that exact comparison &mdash; and if it does not, stop.</p></div>
+<div class="card"><p><strong>Examples &mdash; the general word and the specific word</strong></p><p>The passage repeatedly gives you a category and then an example: &ldquo;botanical subjects&rdquo; &rarr; <em>flowers</em>; &ldquo;architectural pictures&rdquo; &rarr; <em>skyscrapers</em>; &ldquo;rocks, cliffs, and mountains&rdquo; &rarr; the <em>landscape</em> they belong to. For a one-word note gap, decide which level the note needs. Q3 and Q4 want the specific noun; Q6 wants the general one, because the note itself says &ldquo;various features that <em>together formed</em>&hellip;&rdquo;.</p></div>
+<div class="card"><p><strong>Definition &amp; apposition &mdash; free information inside commas and dashes</strong></p><p>&ldquo;art collector and photographer Alfred Stieglitz&rdquo; tells you who he is before you ever meet the name. &ldquo;O&rsquo;Keeffe eventually owned two homes in New Mexico &mdash; the first, her summer retreat at Ghost Ranch&hellip; while the second, used as her winter residence, was in&hellip; Abiquiu&rdquo;: the dash opens a two-part definition, and <em>the first / the second</em> keep the two houses apart. Reading the punctuation is faster than reading the words.</p></div>
+<div class="card"><p><strong>Problem &rarr; response &mdash; how she met physical limits</strong></p><p>Problem: a cloud picture six metres long is beyond one pair of hands. Response: &ldquo;with the help of assistants&rdquo;. Problem: ill health and blindness. Response: none &mdash; the output simply falls. The writer reports both without drama, which is why an option saying she &lsquo;overcame&rsquo; her illness would be wrong.</p></div>
+<div class="card"><p><strong>Chronology &mdash; dates are your fastest index</strong></p><p>1887 (born) &rarr; 1905 (high school; Art Institute of Chicago) &rarr; 1907&ndash;8 (Art Students League) &rarr; <strong>1911&ndash;18 (teaching &mdash; Q1)</strong> &rarr; Jan 1916 (Stieglitz sees the drawings) &rarr; 1918 (moves to New York) &rarr; 1917&ndash;37 (the portraits &mdash; Q11) &rarr; 1924 (marriage; first magnified flowers &mdash; Q4) &rarr; mid-1920s (skyscraper fame &mdash; Q3) &rarr; 1929 (first New Mexico trip) &rarr; 1946&ndash;60 (patio pictures &mdash; Q12) &rarr; 1949 (moves permanently) &rarr; 1950s&ndash;70s (travel; aerial series &mdash; Q7) &rarr; 1965 (6-metre canvas) &rarr; 1986 (dies, aged 98). Write the decade beside each paragraph as you skim and the whole passage becomes searchable.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; admiring, but reporting facts</strong></p><p>The praise is real but it is carried by single words, not by opinions: <em>Remarkably</em>, <em>exceptionally keen</em>, <em>great finesse</em>, <em>exquisitely</em>, <em>a special feat</em>, <em>rich legacy</em>. Everything else is dated fact. That is exactly why the task here is TRUE/FALSE/NOT GIVEN (facts) rather than YES/NO/NOT GIVEN (claims) &mdash; and why the two statements about her <em>favourites</em> and her <em>most productive period</em> have to be NOT GIVEN.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Note Completion (Q1&ndash;7): obey the word limit</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">ONE WORD ONLY from the passage. Every answer must be copied exactly, in the form the note needs.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Q1 teacher</b> &mdash; &lsquo;she became an art <em>teacher</em> and taught in elementary schools, high schools, and colleges in Virginia, Texas, and South Carolina&rsquo;. The note already supplies &lsquo;in various places in the USA&rsquo;, so the gap is the job. &lsquo;Art teacher&rsquo; = two words = 0 marks.</li><li><b>Q2 charcoal</b> &mdash; &lsquo;abstract compositions in <em>charcoal</em>&rsquo;. The note says &lsquo;created drawings using ___&rsquo;, so the gap is a material. Uncountable, no plural.</li><li><b>Q3 skyscrapers</b> &mdash; &lsquo;architectural pictures that dramatically depict the soaring <em>skyscrapers</em> of New York&rsquo;. The note says &lsquo;the city&rsquo;s ___&rsquo;, so keep the plural.</li><li><b>Q4 flowers</b> &mdash; &lsquo;In her magnified images depicting <em>flowers</em>, begun in 1924&rsquo;. &lsquo;Magnified&rsquo; = &lsquo;close-up&rsquo;. Not &lsquo;botanical subjects&rsquo;, which is two words.</li><li><b>Q5 bones</b> &mdash; &lsquo;it was the numerous sun-bleached <em>bones</em>&hellip; that sparked her imagination&rsquo;. &lsquo;Sparked her imagination&rsquo; = &lsquo;was initially inspired&rsquo;.</li><li><b>Q6 landscape</b> &mdash; &lsquo;it was the region&rsquo;s spectacular <em>landscape</em>&hellip; that held the artist&rsquo;s imagination for more than four decades&rsquo;. Singular.</li><li><b>Q7 rivers</b> &mdash; &lsquo;aerial views of <em>rivers</em> and expansive paintings of the sky viewed from just above clouds&rsquo;. The note already names the clouds, so take the other series.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> read the completed note aloud. If it is not grammatical English, or if it needs two words, your answer is wrong.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; TRUE / FALSE / NOT GIVEN (Q8&ndash;13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">FALSE = the passage says the opposite. NOT GIVEN = the passage never says. Decide first, then read the reason.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>8. Her style was greatly influenced by changing art fashions.</b> &rarr; <strong>FALSE</strong> &mdash; &lsquo;she remained <em>independent from</em> shifting art trends&rsquo;. Independent from = not influenced by. A direct contradiction.</li><li><b>9. She had already decided on her career when she left school.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;By the time she graduated from high school in 1905, she <em>had determined</em> to make her way as an artist.&rsquo; The past perfect does the work.</li><li><b>10. Stieglitz found her work because she sent drawings to his gallery.</b> &rarr; <strong>FALSE</strong> &mdash; she sent them &lsquo;to a <em>friend</em> in New York, who showed them to &hellip; Stieglitz&rsquo;. The route is wrong, so the statement is contradicted, not merely absent.</li><li><b>11. She was the subject of his photographs for many years.</b> &rarr; <strong>TRUE</strong> &mdash; &lsquo;Stieglitz&rsquo;s celebrated black-and-white <em>portraits of O&rsquo;Keeffe</em>, taken over the course of twenty years (1917&ndash;37)&rsquo;. Twenty years = many years.</li><li><b>12. The patio pictures were among her favourite works.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; we are told the patio was &lsquo;particularly inspirational&rsquo; and that she made more than thirty pictures of it, but never that <em>she</em> ranked them highest. Inspiration is not preference.</li><li><b>13. She produced more work in the 1950s&ndash;70s than at any other time.</b> &rarr; <strong>NOT GIVEN</strong> &mdash; the passage says only that her <em>last</em> two decades were relatively unproductive. It never compares the quantity produced in different periods.</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> underline the risky word in each statement &mdash; <em>greatly, already, his gallery, many years, favourite, than at any other time</em>. That word, not the topic, decides the answer.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea? Train yourself to jump to the right block instead of re-reading from the top.</p><ul style="margin-left:18px;line-height:1.9;"><li>Her independence from art fashions &rarr; paragraph 1 (the summary paragraph).</li><li>Where she trained and where she taught &rarr; paragraph 2 (1905&ndash;1918).</li><li>How Stieglitz first saw her work &rarr; paragraph 3 (the friend, January 1916).</li><li>The photographic portraits &rarr; paragraph 5 (1917&ndash;37, marriage 1924).</li><li>Skyscrapers and giant flowers &rarr; paragraphs 6&ndash;7 (mid-1920s).</li><li>Cow skulls and the Pelvis series &rarr; paragraph 9 (New Mexico, bones).</li><li>The two houses and the black door &rarr; paragraph 11 (Ghost Ranch and Abiquiu).</li><li>Painting from planes &rarr; paragraph 12 (1950s&ndash;70s).</li><li>Her death and her total output &rarr; the final paragraph (1986, some 900 paintings).</li></ul><p style="margin-top:10px;"><b>Tip:</b> in a biographical passage, one paragraph usually equals one phase of the life. Number the paragraphs with decades before you read a single question.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Matching headings practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This passage does not use headings in the exam, but practising them is the best test of whether you grasped each paragraph as a whole. Headings summarise a paragraph, never one detail.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Paragraph 2</b> &rarr; <em>Training, and years of earning a living</em> &mdash; not &lsquo;A childhood on a farm&rsquo;, which is only the first sentence.</li><li><b>Paragraph 3</b> &rarr; <em>A new direction, and a lucky introduction</em>.</li><li><b>Paragraph 6</b> &rarr; <em>Fame from two very different subjects</em> &mdash; the paragraph needs both the buildings and the plants.</li><li><b>Paragraph 8</b> &rarr; <em>A place that changed everything, twenty years before she settled there</em>.</li><li><b>Paragraph 9</b> &rarr; <em>Finding art in what the desert left behind</em>.</li><li><b>Paragraph 12</b> &rarr; <em>A wider world, and bigger canvases</em>.</li></ul><p style="margin-top:10px;"><b>Watch out:</b> paragraphs 9 and 10 both describe New Mexico subjects. The difference is what she painted &mdash; bones in one, the landscape itself in the other. Headings are usually separated by a single distinction like this.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Sentence completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Same passage, different task type. Complete each sentence with <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong>, then compare with the suggested answer.</p><ul style="margin-left:18px;line-height:1.9;"><li>O&rsquo;Keeffe grew up on a farm with her ______. &rarr; <strong>six siblings</strong></li><li>Stieglitz&rsquo;s gallery was on ______ in New York City. &rarr; <strong>Fifth Avenue</strong></li><li>Over three decades Stieglitz gave her ______ solo exhibitions. &rarr; <strong>twenty-two</strong></li><li>On her New Mexico trips she stayed for up to ______ at a time. &rarr; <strong>six months</strong></li><li>Her Ghost Ranch retreat stood beneath cliffs ______ high. &rarr; <strong>200 metres</strong></li><li>The cloud canvas of 1965 was ______ in length. &rarr; <strong>6 metres</strong></li><li>She left a legacy of about ______. &rarr; <strong>900 paintings</strong></li></ul></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Multiple choice practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">MCQ items on a biography almost always test a <em>reason</em> or a <em>result</em>, not a fact you can spot with your eyes. Choose, then check.</p><ul style="margin-left:18px;line-height:1.9;"><li>Why did enlarging tiny details make her flowers look abstract? &rarr; <strong>Because at that size the shapes and lines matter more than the object</strong> (&lsquo;Enlarging the tiniest details to fill an entire metre-wide canvas emphasized their shapes and lines and made them appear abstract&rsquo;).</li><li>What was the immediate result of her 1929 visit to New Mexico? &rarr; <strong>It changed what she painted straight away</strong> (&lsquo;a lasting impact on her life, and an <em>immediate</em> effect on her work&rsquo;).</li><li>Why did she return to New York every winter until 1949? &rarr; <strong>To exhibit her new work at Stieglitz&rsquo;s gallery.</strong></li><li>Why does the writer mention the artist&rsquo;s age in 1965? &rarr; <strong>To show how demanding the six-metre canvas was</strong> &mdash; &lsquo;a special feat for an artist nearing eighty years of age&rsquo;.</li></ul><p style="margin-top:10px;"><b>Habit:</b> for MCQ, find the sentence first and the option second. Options are written to sound like the passage; sentences are not.</p></div>
+<div class="exercise-block"><h3>Skill 7 &mdash; Yes / No / Not Given thinking (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Q8&ndash;13 are TRUE/FALSE/NOT GIVEN because they test facts. These four test the writer&rsquo;s claims instead &mdash; a useful contrast to feel the difference.</p><ul style="margin-left:18px;line-height:1.9;"><li>The writer admires O&rsquo;Keeffe&rsquo;s technical skill. &rarr; <strong>YES</strong> &mdash; &lsquo;exceptionally keen powers of observation and great finesse with a paintbrush&rsquo;.</li><li>The writer thinks Stieglitz was more important to her career than her own talent. &rarr; <strong>NOT GIVEN</strong> &mdash; his promotion is reported, never weighed against her ability.</li><li>The writer believes her late aerial paintings reflected a changed outlook. &rarr; <strong>YES</strong> &mdash; &lsquo;reflecting <em>perhaps</em> her newly expanded view of the world&rsquo;. The hedge <em>perhaps</em> makes it an opinion, not a fact.</li><li>The writer considers her influence on later artists to be over. &rarr; <strong>NO</strong> &mdash; her legacy &lsquo;<em>has continued</em> to attract subsequent generations&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">According to the first paragraph, what made O&rsquo;Keeffe unusual among artists of her time?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. She never sold her paintings.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. She stayed independent of changing art trends.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. She only painted in black and white.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. She refused to exhibit in New York.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What did O&rsquo;Keeffe do between 1911 and 1918?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. She studied at the Art Students League of New York.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. She lived at Ghost Ranch in New Mexico.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. She worked as an art teacher in several states.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. She exhibited at Stieglitz&rsquo;s gallery.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">The note for Q2 says &lsquo;created drawings using ___&rsquo;. Why is the answer <em>charcoal</em> and not <em>abstract</em>?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Because &lsquo;abstract&rsquo; is not in the passage.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Because the gap follows &lsquo;using&rsquo;, so it needs the material she drew with.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Because charcoal is the first word of the paragraph.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Because &lsquo;abstract&rsquo; has more than one meaning.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">How did Alfred Stieglitz first come to see O&rsquo;Keeffe&rsquo;s drawings?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. She posted them directly to his Fifth Avenue gallery.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. He visited the school where she was teaching.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. A friend she had sent them to showed them to him.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. They were published in a New York newspaper.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What does the passage say about Stieglitz&rsquo;s portraits of O&rsquo;Keeffe?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They were taken over a period of twenty years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They were all taken in New Mexico.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They were never exhibited publicly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They were taken after their marriage ended.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Which contrast word separates the answer to Q3 from the answer to Q4?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. However</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. But</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Although</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Whereas</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why did the magnified flower paintings look abstract?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Because she used only charcoal for them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Because she painted them from memory.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Because enlarging tiny details emphasised their shapes and lines.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. Because she left them unfinished.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What first inspired O&rsquo;Keeffe when she settled into working in New Mexico?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. The spectacular landscape.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. The sun-bleached bones she found there.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. The black door of her patio.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. The view from an aeroplane.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">For how long did the New Mexico landscape hold her imagination?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. For about ten years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Only until she moved there permanently in 1949.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. For more than four decades.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. For exactly twenty years.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why is Question 12 (the patio pictures were among her favourite works) NOT GIVEN?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Because the passage never mentions the patio.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Because the passage says she disliked them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Because the passage says the patio was inspirational but never says which works she preferred.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Because she painted the patio only once.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What inspired O&rsquo;Keeffe&rsquo;s last two major series of paintings?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Her illness and loss of sight.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Flying in planes on her later travels.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. The black door at Abiquiu.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Her return to New York each winter.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Why is Question 13 NOT GIVEN rather than FALSE?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Because the passage says she produced most of her work in the 1920s.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Because the passage never compares the output of different periods.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Because the 1950s to 1970s are not mentioned.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Because she stopped painting in 1965.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1–13</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">teacher</div><div class="answer-note">Paragraph 2: &lsquo;she became an art <em>teacher</em> and taught in elementary schools, high schools, and colleges in Virginia, Texas, and South Carolina from 1911 to 1918.&rsquo; The note supplies &lsquo;in various places in the USA&rsquo;, so only the job title is missing. ONE WORD ONLY &mdash; not &lsquo;art teacher&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">charcoal</div><div class="answer-note">Paragraph 3: &lsquo;O&rsquo;Keeffe began to experiment with creating abstract compositions in <em>charcoal</em>, and produced a series of innovative drawings&rsquo;, which Stieglitz then exhibited in New York. &lsquo;In charcoal&rsquo; = &lsquo;using charcoal&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">skyscrapers</div><div class="answer-note">Paragraph 6: she was &lsquo;widely known for the architectural pictures that dramatically depict the soaring <em>skyscrapers</em> of New York&rsquo;. The note says &lsquo;the city&rsquo;s ___&rsquo; &mdash; keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">flowers</div><div class="answer-note">Paragraph 6: &lsquo;In her magnified images depicting <em>flowers</em>, begun in 1924, O&rsquo;Keeffe brings the viewer right into the picture.&rsquo; &lsquo;Magnified&rsquo; = &lsquo;close-up&rsquo;; &lsquo;botanical subjects&rsquo; would be two words.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">bones</div><div class="answer-note">Paragraph 9: &lsquo;at first, it was the numerous sun-bleached <em>bones</em> she came across in the state&rsquo;s rugged terrain that sparked her imagination.&rsquo; &lsquo;Sparked her imagination&rsquo; = &lsquo;was initially inspired&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">landscape</div><div class="answer-note">Paragraph 10: &lsquo;it was the region&rsquo;s spectacular <em>landscape</em>, with its unusual geological formations, vivid colours, clarity of light, and exotic vegetation, that held the artist&rsquo;s imagination for more than four decades.&rsquo; The four features are the &lsquo;various features that together formed&rsquo; it.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">rivers</div><div class="answer-note">Paragraph 12: &lsquo;Flying in planes inspired her last two major series &ndash; aerial views of <em>rivers</em> and expansive paintings of the sky viewed from just above clouds.&rsquo; The note already names the clouds, so the missing series is the rivers.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 1: &lsquo;she remained <em>independent from</em> shifting art trends and her work stayed true to her own vision&rsquo;. &lsquo;Shifting art trends&rsquo; = &lsquo;changing fashions in art&rsquo;, and &lsquo;independent from&rsquo; is the opposite of &lsquo;greatly influenced by&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 2: &lsquo;By the time she graduated from high school in 1905, she <em>had determined</em> to make her way as an artist.&rsquo; The past perfect shows the decision was already made &mdash; &lsquo;had made her mind up&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">FALSE</div><div class="answer-note">Paragraph 3: &lsquo;She sent some of these drawings to a <em>friend</em> in New York, <em>who</em> showed them to&hellip; Alfred Stieglitz&rsquo;. The statement says she sent them to his gallery, so it contradicts the passage rather than simply going beyond it.</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">TRUE</div><div class="answer-note">Paragraph 5: &lsquo;recorded in Stieglitz&rsquo;s celebrated black-and-white <em>portraits of O&rsquo;Keeffe</em>, taken over the course of twenty years (1917&ndash;37)&rsquo;. Twenty years = &lsquo;many years&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Paragraph 11 says the walled patio with its black door was &lsquo;particularly inspirational&rsquo; and that she made more than thirty pictures of it between 1946 and 1960 &mdash; but the passage never reports which works <em>she</em> liked best. Inspiration is not the same as preference.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">The final paragraph says only that &lsquo;the last two decades of the artist&rsquo;s life were relatively unproductive&rsquo;. No comparison is made between the 1950s&ndash;70s and any other period, so the ranking in the statement cannot be checked.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps Q1&ndash;7)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">teacher</div><div class="answer-note">After training as an artist she worked for seven years as a</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">charcoal</div><div class="answer-note">Her first abstract works were drawings made in</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">skyscrapers</div><div class="answer-note">In New York she first became famous for pictures of the city&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">flowers</div><div class="answer-note">From 1924 she painted a celebrated series of magnified close-ups of</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">bones</div><div class="answer-note">What first inspired her in New Mexico were the sun-bleached</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">landscape</div><div class="answer-note">For more than forty years she went on painting the dramatic</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">rivers</div><div class="answer-note">Her last two series were painted from planes: the sky above the clouds, and aerial views of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; True / False / Not Given in one word (Q8&ndash;13)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">false</div><div class="answer-note">Q8 &mdash; Her style was greatly influenced by changing fashions in art. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">true</div><div class="answer-note">Q9 &mdash; She had already chosen her career when she finished high school. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">false</div><div class="answer-note">Q10 &mdash; Stieglitz discovered her work because she sent drawings to his gallery. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">true</div><div class="answer-note">Q11 &mdash; She was the subject of Stieglitz&rsquo;s photographs for many years. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">notgiven</div><div class="answer-note">Q12 &mdash; The Abiquiu patio pictures were among her own favourite works. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">notgiven</div><div class="answer-note">Q13 &mdash; She produced more work in the 1950s&ndash;1970s than at any other time. &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">keen</div><div class="answer-note">Her powers of observation were exceptionally</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">nuances</div><div class="answer-note">She recorded subtle</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">solo</div><div class="answer-note">Stieglitz had her work shown in twenty-two</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">terrain</div><div class="answer-note">The bones she found lay in the state&rsquo;s rugged</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">hindered</div><div class="answer-note">Ill health and blindness</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">legacy</div><div class="answer-note">Her rich</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">innovative</div><div class="answer-note">Her drawings were</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">vigorously</div><div class="answer-note">Stieglitz</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">dramatically</div><div class="answer-note">The skyscraper pictures</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">abstract</div><div class="answer-note">Enlarging tiny details made the shapes look</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">impact</div><div class="answer-note">The New Mexico trip had a lasting</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">unproductive</div><div class="answer-note">The last twenty years of her life were relatively</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching (question wording &rarr; passage wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">shifting</div><div class="answer-note">Question: &ldquo;the changing fashions in art&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">determined</div><div class="answer-note">Question: &ldquo;she had made her mind up&rdquo; &rarr; Passage: she had</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">magnified</div><div class="answer-note">Question: &ldquo;close-up paintings&rdquo; &rarr; Passage: her</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">decades</div><div class="answer-note">Question: &ldquo;for over forty years&rdquo; &rarr; Passage: for more than four</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">spectacular</div><div class="answer-note">Question: &ldquo;the dramatic scenery of New Mexico&rdquo; &rarr; Passage: the region&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">aerial</div><div class="answer-note">Question: &ldquo;seen from above&rdquo; &rarr; Passage:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">portraits</div><div class="answer-note">Question: &ldquo;she was photographed by Stieglitz&rdquo; &rarr; Passage: his celebrated black-and-white</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Clauses: Joining, Reducing and Emphasising</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">who</div><div class="answer-note">She sent the drawings to a friend,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">that</div><div class="answer-note">It was the spectacular landscape</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">By</div><div class="answer-note">&mdash;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">measuring</div><div class="answer-note">The canvas</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">as</div><div class="answer-note">Her last decades were unproductive</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">but</div><div class="answer-note">She was widely known for her skyscrapers,</div></div></div></div>
+<div class="answer-section"><h3>Exercise 7 &mdash; Translation Cues 中译英</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">observation</div><div class="answer-note">敏锐的观察力 &rarr; keen powers of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">solo</div><div class="answer-note">个人画展 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">lasting</div><div class="answer-note">持久的影响 &rarr; a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">solitude</div><div class="answer-note">独处 &rarr; relative</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">spark</div><div class="answer-note">激发想象力 &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">proportions</div><div class="answer-note">壁画般的尺幅 &rarr; mural</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">derive</div><div class="answer-note">汲取灵感 &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. She stayed independent of changing art trends.</div><div class="answer-note">&lsquo;<em>Remarkably</em>, she remained independent from shifting art trends&hellip;&rsquo; This single sentence makes Question 8 FALSE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. She worked as an art teacher in several states.</div><div class="answer-note">&lsquo;she became an art <em>teacher</em> and taught&hellip; in Virginia, Texas, and South Carolina from 1911 to 1918&rsquo; &mdash; Question 1. The League years were 1907&ndash;8.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. Because the gap follows &lsquo;using&rsquo;, so it needs the material she drew with.</div><div class="answer-note">Grammar decides it. &lsquo;Abstract compositions <em>in charcoal</em>&rsquo; &mdash; only the material can follow &lsquo;using&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. A friend she had sent them to showed them to him.</div><div class="answer-note">&lsquo;She sent some of these drawings to a <em>friend</em> in New York, <em>who</em> showed them to&hellip; Stieglitz in January 1916.&rsquo; This is exactly why Question 10 is FALSE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">A. They were taken over a period of twenty years.</div><div class="answer-note">&lsquo;celebrated black-and-white portraits of O&rsquo;Keeffe, taken over the course of twenty years (1917&ndash;37)&rsquo; &mdash; Question 11 is TRUE.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. But</div><div class="answer-note">&lsquo;widely known for the architectural pictures&hellip; <em>But</em> most often, she painted botanical subjects&rsquo;. Skyscrapers on one side, flowers on the other.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. Because enlarging tiny details emphasised their shapes and lines.</div><div class="answer-note">&lsquo;Enlarging the tiniest details to fill an entire metre-wide canvas emphasized their shapes and lines and made them appear abstract.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. The sun-bleached bones she found there.</div><div class="answer-note">&lsquo;<em>at first</em>, it was the numerous sun-bleached <em>bones</em>&hellip; that sparked her imagination&rsquo; (Q5). The landscape came later and is the answer to Q6.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. For more than four decades.</div><div class="answer-note">&lsquo;held the artist&rsquo;s imagination for more than <em>four decades</em>&rsquo; = &lsquo;over forty years&rsquo; in the note for Q6.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C. Because the passage says the patio was inspirational but never says which works she preferred.</div><div class="answer-note">Inspiration is not preference. The passage counts the pictures (more than thirty, 1946&ndash;60) but gives no opinion of hers about them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. Flying in planes on her later travels.</div><div class="answer-note">&lsquo;Flying in planes inspired her last two major series &mdash; aerial views of <em>rivers</em> and expansive paintings of the sky&rsquo; (Q7).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Because the passage never compares the output of different periods.</div><div class="answer-note">We know only that her <em>last</em> two decades were &lsquo;relatively unproductive&rsquo;. No ranking of periods is ever made, so the comparison cannot be confirmed or contradicted.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

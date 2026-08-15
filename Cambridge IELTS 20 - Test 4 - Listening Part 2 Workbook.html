@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Listening Part 2</h1>
+    <h2>Football Stadium Tour · Multiple Choice (two answers) + Matching (Q11&ndash;20)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A stadium guide is welcoming a group of visitors &mdash; many of them families with children &mdash; before taking them round a football stadium. In the first half he gives practical advice for parents (stairs, a dark players&rsquo; tunnel, photographs, the cafe, a drawing competition) and then lists the features of the tour, saying which ones are brand new. In the second half he tells the story of the club&rsquo;s site and of English football in the 1870s, giving one key event for each year. Questions 11&ndash;14 are <strong>pick TWO letters from A&ndash;E</strong>; questions 15&ndash;20 are <strong>matching</strong> six years to six events from a box of eight.</p></div><div class="card"><p><strong>Who is speaking?</strong> One speaker only: a stadium <b>guide</b> giving a welcome talk to visitors before a tour. Because it is a monologue there is no second voice to confirm anything &mdash; the guide corrects and qualifies himself (&ldquo;which has been very popular over the years&hellip; we&rsquo;ve only just introduced this&rdquo;), and those qualifications are where the answers hide.</p><p><strong>The situation 情境:</strong> 一位讲解员在带团参观足球场之前先做介绍：先是给带小孩的家长的注意事项（楼梯多、球员通道很暗、可以拍照、咖啡厅、儿童画画比赛），再介绍这次导览有哪些项目、其中哪两项是今年新推出的；最后讲这家俱乐部所在地的历史，以及1870&ndash;1880年间英国足球每一年发生的大事（Q15&ndash;20）。</p><p><strong>Task type:</strong> Q11&ndash;12 and Q13&ndash;14: <b>choose TWO letters, A&ndash;E</b>. The two letters score one mark each and may be written in either order. Q15&ndash;20: <b>matching</b> &mdash; choose six answers from a box of eight (A&ndash;H) and write one letter next to each year. Two letters are never used and no letter is used twice.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The two halves need two completely different techniques. For <strong>Q11&ndash;14</strong> the guide touches on <em>every</em> option, so you cannot choose an answer just because you heard the words. Tick an option only when you can point to the exact idea in the stem &mdash; &ldquo;a <em>competition</em>&rdquo;, &ldquo;<em>must</em> stay&rdquo;, &ldquo;<em>new this year</em>&rdquo;. For <strong>Q15&ndash;20</strong> write the six years down the side of your page before the audio starts, then track the years as he moves forward in time. He goes in date order (1870 &rarr; 1880) but he also mentions <em>extra</em> years that are not in the question list (1989, 1872, 1873), so keep your pen on the year you are waiting for and let the others pass. 配对题一定要按时间顺序跟读，多余年份直接跳过。</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q11&ndash;12, option A (photo with a player).</b> You really do hear &ldquo;take pictures&rdquo;, but what you photograph is &ldquo;your child <em>shooting a penalty</em>&rdquo; &mdash; no player is involved. Hearing the topic is not the same as matching the detail.</li><li><b>Q11&ndash;12, options D and E.</b> The guide says it is &ldquo;very hot and sunny&rdquo; and recommends the &ldquo;healthy lunch boxes&rdquo;, but he never says children <em>need</em> sunhats and drinks, and a recommendation is not a <em>special offer</em>. Watch out for stems that upgrade a comment into an instruction or a discount.</li><li><b>Q13&ndash;14, option B (360 cinema).</b> It is the very first feature mentioned, so it feels like the answer &mdash; but &ldquo;which has been <em>very popular over the years</em>&rdquo; tells you it is old. Option E (other languages) is only something they are &ldquo;<em>thinking of offering&hellip; in future</em>&rdquo;. The two new ones are both flagged with &ldquo;we&rsquo;ve <em>only just</em>&rdquo;.</li><li><b>New clubs are mentioned twice (1872&ndash;73 and 1877), but &ldquo;new clubs&rdquo; is not in the box.</b> 1872&ndash;73 is not even a question. For 1877 you must ignore the founding of clubs and wait for &ldquo;in the same year&hellip; a limit of 90 minutes&rdquo; (H).</li><li><b>1874 contains TWO rule changes.</b> Sending players off <em>and</em> swapping ends at half-time &mdash; that is why the answer is F (<em>two</em> changes to the rules), not a single-change option. Do not stop listening after the first fact.</li><li><b>Option A (pay for players) is actively denied.</b> In 1880 clubs began charging fans, &ldquo;even though players were <em>still amateurs</em>&rdquo;. A and E are the two letters you never use.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">stadium</span></td><td><span class="pos">n.</span></td><td>a large sports ground with seats all around it</td><td class="zh">体育场；球场</td><td>&ldquo;Information about your visit to the <em>stadium</em> today.&rdquo;</td><td class="note">Plural is <em>stadiums</em> (or <em>stadia</em>). Sets the topic for the whole of Part 2.</td></tr>
+<tr><td><span class="word">wander off</span></td><td><span class="pos">phr. v.</span></td><td>to walk away from a group without telling anyone</td><td class="zh">走开；走散</td><td>&ldquo;Please don&rsquo;t let your children <em>wander off</em> on their own.&rdquo;</td><td class="note"><strong>Key to Q11&ndash;12 option C.</strong> &lsquo;Don&rsquo;t let them wander off&rsquo; = parents must stay with them at all times.</td></tr>
+<tr><td><span class="word">tunnel</span></td><td><span class="pos">n.</span></td><td>an enclosed passage; here, the one players walk through onto the pitch</td><td class="zh">通道；隧道</td><td>&ldquo;The players <em>tunnel</em> is very dark.&rdquo;</td><td class="note">Part of the safety warning, not an answer. Notice how the warnings (stairs, dark tunnel) build up to the real point: stay with your child.</td></tr>
+<tr><td><span class="word">pitch</span></td><td><span class="pos">n.</span></td><td>the playing area of a football field (British English)</td><td class="zh">球场；场地</td><td>&ldquo;It&rsquo;s very hot and sunny out on the <em>pitch</em> today.&rdquo;</td><td class="note">British word. American English says <em>field</em>. Very common in IELTS sports topics.</td></tr>
+<tr><td><span class="word">permitted</span></td><td><span class="pos">adj./v.</span></td><td>allowed</td><td class="zh">被允许的</td><td>&ldquo;Cameras are <em>permitted</em> everywhere.&rdquo;</td><td class="note">Paraphrase family: allowed / you may / feel free to. Its opposite (<em>not permitted</em>) is a classic trap in rules-and-regulations talks.</td></tr>
+<tr><td><span class="word">penalty</span></td><td><span class="pos">n.</span></td><td>a free shot at goal awarded for a foul</td><td class="zh">点球；罚球</td><td>&ldquo;You can take pictures of your child <em>shooting a penalty</em>.&rdquo;</td><td class="note"><strong>Why option A is wrong.</strong> The photo is of your child kicking the ball &mdash; there is no football player in the picture.</td></tr>
+<tr><td><span class="word">queue</span></td><td><span class="pos">n./v.</span></td><td>a line of people waiting for something</td><td class="zh">队伍；排队</td><td>&ldquo;Hopefully the <em>queue</em> won&rsquo;t be too long.&rdquo;</td><td class="note">Spelling trap: q-u-e-u-e. British word; American English uses <em>line</em>.</td></tr>
+<tr><td><span class="word">assistant</span></td><td><span class="pos">n.</span></td><td>a member of staff who helps</td><td class="zh">助理；工作人员</td><td>&ldquo;<em>Assistants</em> are helping to organize this.&rdquo;</td><td class="note">Spelling: assist + <strong>ant</strong>, not &lsquo;-ent&rsquo;.</td></tr>
+<tr><td><span class="word">themed</span></td><td><span class="pos">adj.</span></td><td>based on one particular subject or idea</td><td class="zh">以……为主题的</td><td>&ldquo;Children are invited to do a football <em>themed</em> drawing.&rdquo;</td><td class="note">The drawing + &lsquo;we&rsquo;ll pick the best one&rsquo; + &lsquo;prize&rsquo; = a competition (Q11&ndash;12 option B).</td></tr>
+<tr><td><span class="word">prize</span></td><td><span class="pos">n.</span></td><td>something you win in a competition</td><td class="zh">奖品</td><td>&ldquo;We&rsquo;ll send your <em>prize</em>.&rdquo;</td><td class="note"><strong>The word that confirms option B.</strong> Where there is a prize and a winner, there is a competition. Do not confuse with <em>price</em>.</td></tr>
+<tr><td><span class="word">feature</span></td><td><span class="pos">n.</span></td><td>an important or interesting part of something</td><td class="zh">特色；功能</td><td>&ldquo;We&rsquo;ve only just introduced this <em>feature</em>.&rdquo;</td><td class="note">The question paper says &lsquo;features of the stadium tour&rsquo;, so every time you hear <em>feature</em> you are near Q13&ndash;14.</td></tr>
+<tr><td><span class="word">dressing room</span></td><td><span class="pos">n.</span></td><td>the room where players change clothes before a match</td><td class="zh">更衣室</td><td>&ldquo;I&rsquo;ll take you to the players&rsquo; <em>dressing rooms</em>.&rdquo;</td><td class="note">Option D. It is on the tour, but nothing marks it as new &mdash; being mentioned is not the same as being new.</td></tr>
+<tr><td><span class="word">self-guided</span></td><td><span class="pos">adj.</span></td><td>done on your own, without a guide</td><td class="zh">自助导览的</td><td>&ldquo;If you&rsquo;d prefer your visit to be <em>self-guided</em>&hellip;&rdquo;</td><td class="note">This whole sentence is the paraphrase of &lsquo;audio guide&rsquo; (Q13&ndash;14 option C). No one ever says the words &lsquo;audio guide&rsquo;.</td></tr>
+<tr><td><span class="word">pre-recorded</span></td><td><span class="pos">adj.</span></td><td>recorded in advance, not live</td><td class="zh">预先录制的</td><td>&ldquo;Listen to the <em>pre-recorded</em> information at your own speed.&rdquo;</td><td class="note">headphones + pre-recorded information = an audio guide. Build the answer from two clues, not one word.</td></tr>
+<tr><td><span class="word">feedback</span></td><td><span class="pos">n.</span></td><td>comments telling someone how good something is</td><td class="zh">反馈意见</td><td>&ldquo;We&rsquo;d appreciate your <em>feedback</em>.&rdquo;</td><td class="note">Uncountable &mdash; never write &lsquo;feedbacks&rsquo;. Asking for feedback is another hint that the thing is new.</td></tr>
+<tr><td><span class="word">redevelopment</span></td><td><span class="pos">n.</span></td><td>the rebuilding or improvement of an area</td><td class="zh">重建；改建</td><td>&ldquo;Built in 1989 as part of a three-year <em>redevelopment</em> project.&rdquo;</td><td class="note">1989 is a distractor date &mdash; it is not in the question list at all. Let it go past.</td></tr>
+<tr><td><span class="word">decade</span></td><td><span class="pos">n.</span></td><td>a period of ten years</td><td class="zh">十年</td><td>&ldquo;That was the start of a really important <em>decade</em>.&rdquo;</td><td class="note">Signal phrase: everything after this sentence belongs to Q15&ndash;20. Use it as your cue to switch tasks.</td></tr>
+<tr><td><span class="word">guard</span></td><td><span class="pos">v.</span></td><td>to protect something from attack</td><td class="zh">守卫；把守</td><td>&ldquo;A player whose role it was to <em>guard</em> the goal.&rdquo;</td><td class="note"><strong>Answer to Q15 (D).</strong> The box says &lsquo;goalkeepers&rsquo;; the audio describes the job instead of naming it.</td></tr>
+<tr><td><span class="word">referee</span></td><td><span class="pos">n.</span></td><td>the official who controls a football match</td><td class="zh">裁判</td><td>&ldquo;<em>Referees</em> were allowed to send players off.&rdquo;</td><td class="note">Spelling: r-e-f-e-r-<strong>ee</strong>. Referees appear in both 1874 (sending off) and 1878 (whistles) &mdash; the year decides the answer, not the word.</td></tr>
+<tr><td><span class="word">offence</span></td><td><span class="pos">n.</span></td><td>an action that breaks a rule or law</td><td class="zh">犯规；违例</td><td>&ldquo;If they committed certain <em>offences</em>.&rdquo;</td><td class="note">British spelling <em>offence</em>, American <em>offense</em> (the transcript uses the American form). Both are accepted in IELTS.</td></tr>
+<tr><td><span class="word">swap</span></td><td><span class="pos">v.</span></td><td>to exchange one thing for another</td><td class="zh">交换</td><td>&ldquo;Teams started having to <em>swap</em> ends at half-time.&rdquo;</td><td class="note">This is the SECOND rule change in 1874 &mdash; the one that makes the answer F (<em>two</em> changes) rather than a single change.</td></tr>
+<tr><td><span class="word">crossbar</span></td><td><span class="pos">n.</span></td><td>the horizontal bar across the top of a goal</td><td class="zh">球门横梁</td><td>&ldquo;That tape was replaced with the solid <em>crossbar</em>.&rdquo;</td><td class="note"><strong>Answer to Q17 (B).</strong> tape &rarr; solid crossbar = a change to the <em>design of the goal</em>.</td></tr>
+<tr><td><span class="word">founding</span></td><td><span class="pos">n.</span></td><td>the act of starting an organisation</td><td class="zh">创立；成立</td><td>&ldquo;1877 saw the <em>founding</em> of further new clubs.&rdquo;</td><td class="note">A deliberate distractor: new clubs are not in the box. Keep listening to the end of the 1877 sentence.</td></tr>
+<tr><td><span class="word">whistle</span></td><td><span class="pos">n.</span></td><td>a small instrument blown to make a loud sound</td><td class="zh">哨子</td><td>&ldquo;Referees started using <em>whistles</em>.&rdquo;</td><td class="note">Silent &lsquo;t&rsquo;: /&lsquo;wis&ndash;l/. Another 1878 fact that is not in the box &mdash; the box wants the lights.</td></tr>
+<tr><td><span class="word">install</span></td><td><span class="pos">v.</span></td><td>to put equipment somewhere so it can be used</td><td class="zh">安装</td><td>&ldquo;Electric lamps were <em>installed</em> on certain pitches.&rdquo;</td><td class="note"><strong>Answer to Q19 (C).</strong> electric lamps = lights; &lsquo;games could be played in the evenings&rsquo; confirms it.</td></tr>
+<tr><td><span class="word">admission</span></td><td><span class="pos">n.</span></td><td>the money you pay to enter a place</td><td class="zh">入场费；准入</td><td>&ldquo;Clubs began to charge fans for <em>admission</em> to games.&rdquo;</td><td class="note"><strong>Answer to Q20 (G).</strong> charge fans for admission = a fee for spectators.</td></tr>
+<tr><td><span class="word">amateur</span></td><td><span class="pos">n./adj.</span></td><td>doing something for pleasure, not for money</td><td class="zh">业余的；业余爱好者</td><td>&ldquo;Even though players were still <em>amateurs</em>.&rdquo;</td><td class="note">This one word kills option A (pay for players) for 1880. Spelling: a-m-a-t-e-u-r.</td></tr>
+<tr><td><span class="word">spectator</span></td><td><span class="pos">n.</span></td><td>someone who watches a sports event</td><td class="zh">观众</td><td>&ldquo;A fee for <em>spectators</em>&rdquo; (question paper) = &ldquo;charge fans&rdquo; (audio).</td><td class="note">fans / crowd / supporters / spectators are one paraphrase family. The paper uses the formal word, the audio the informal one.</td></tr>
+<tr><td><span class="word">significant</span></td><td><span class="pos">adj.</span></td><td>important; large enough to matter</td><td class="zh">重大的；显著的</td><td>&ldquo;This was a <em>significant</em> change as games could be played in the evenings.&rdquo;</td><td class="note">A strong evaluation word. When a speaker says something was significant, an answer is usually right there.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">let moms and dads know</span></td><td>tell the parents</td><td class="zh">告知家长</td></tr>
+<tr><td><span class="phrase">wander off on their own</span></td><td>walk away alone, away from the group</td><td class="zh">独自走开；走散</td></tr>
+<tr><td><span class="phrase">even for a minute</span></td><td>not even for a very short time</td><td class="zh">哪怕一分钟也不行</td></tr>
+<tr><td><span class="phrase">cameras are permitted</span></td><td>you are allowed to take photographs</td><td class="zh">可以拍照</td></tr>
+<tr><td><span class="phrase">shoot a penalty</span></td><td>kick a penalty at goal</td><td class="zh">罚点球</td></tr>
+<tr><td><span class="phrase">the queue won&rsquo;t be too long</span></td><td>you will not have to wait long</td><td class="zh">队伍不会太长</td></tr>
+<tr><td><span class="phrase">healthy lunch boxes</span></td><td>prepared lunches made with healthy food</td><td class="zh">健康午餐盒</td></tr>
+<tr><td><span class="phrase">a football themed drawing</span></td><td>a picture on the subject of football</td><td class="zh">以足球为主题的图画</td></tr>
+<tr><td><span class="phrase">we&rsquo;ll pick the best one</span></td><td>we will choose the winner</td><td class="zh">我们会选出最好的一幅</td></tr>
+<tr><td><span class="phrase">put your name and contact details on the back</span></td><td>write who you are and how to reach you on the reverse side</td><td class="zh">在背面写上姓名和联系方式</td></tr>
+<tr><td><span class="phrase">if you&rsquo;d prefer your visit to be self-guided</span></td><td>if you would rather go round on your own</td><td class="zh">如果你更想自助参观</td></tr>
+<tr><td><span class="phrase">at your own speed</span></td><td>as fast or as slowly as you like</td><td class="zh">按自己的节奏</td></tr>
+<tr><td><span class="phrase">we&rsquo;ve only just introduced this</span></td><td>we started offering it very recently</td><td class="zh">我们刚刚才推出这个</td></tr>
+<tr><td><span class="phrase">we&rsquo;d appreciate your feedback</span></td><td>we would be grateful for your comments</td><td class="zh">欢迎您提出意见</td></tr>
+<tr><td><span class="phrase">we&rsquo;re thinking of offering&hellip;</span></td><td>we are considering providing it (not yet)</td><td class="zh">我们正在考虑提供……</td></tr>
+<tr><td><span class="phrase">book one of our VIP tours</span></td><td>reserve a place on a special premium tour</td><td class="zh">预订我们的VIP导览</td></tr>
+<tr><td><span class="phrase">a three-year redevelopment project</span></td><td>a rebuilding programme lasting three years</td><td class="zh">为期三年的重建项目</td></tr>
+<tr><td><span class="phrase">play its matches at the ground of another club</span></td><td>use a different club&rsquo;s stadium for its games</td><td class="zh">在另一家俱乐部的球场比赛</td></tr>
+<tr><td><span class="phrase">on this site since 1870</span></td><td>in this same place since 1870</td><td class="zh">自1870年起就在这块场地上</td></tr>
+<tr><td><span class="phrase">guard the goal</span></td><td>protect the goal from the other team</td><td class="zh">把守球门</td></tr>
+<tr><td><span class="phrase">send players off</span></td><td>order a player to leave the field as a punishment</td><td class="zh">把球员罚下场</td></tr>
+<tr><td><span class="phrase">commit an offence</span></td><td>break a rule</td><td class="zh">犯规</td></tr>
+<tr><td><span class="phrase">swap ends at half-time</span></td><td>change sides of the pitch after 45 minutes</td><td class="zh">中场休息后交换场地</td></tr>
+<tr><td><span class="phrase">joined at the top with a piece of tape</span></td><td>connected at the top by a strip of material</td><td class="zh">顶端用一条布带连接</td></tr>
+<tr><td><span class="phrase">set a limit of 90 minutes</span></td><td>agree a maximum length of 90 minutes</td><td class="zh">规定90分钟的时限</td></tr>
+<tr><td><span class="phrase">a more casual arrangement</span></td><td>a less formal, less fixed system</td><td class="zh">比较随意的安排</td></tr>
+<tr><td><span class="phrase">charge fans for admission</span></td><td>make supporters pay to come in</td><td class="zh">向球迷收取入场费</td></tr>
+<tr><td><span class="phrase">earn significant sums of money</span></td><td>be paid a lot</td><td class="zh">赚取大笔金钱</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Key Facts from the Talk</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These sentences retell the information the exam questions are built on. Write <strong>ONE WORD</strong> in each gap. Every word is actually said in the recording.</p><div class="ex-item"><span class="ex-num">1.</span><label>The guide warns parents that the stadium has lots of <input type="text" class="blank" id="b1" data-answer="stairs" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The players&rsquo; <input type="text" class="blank" id="b2" data-answer="tunnel" placeholder="______"> is very dark.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Parents can photograph their child shooting a <input type="text" class="blank" id="b3" data-answer="penalty" placeholder="______">.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The guide recommends the healthy <input type="text" class="blank" id="b4" data-answer="lunch" placeholder="______"> boxes for children in the cafe.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Children who enter the drawing competition must write their name and contact <input type="text" class="blank" id="b5" data-answer="details" placeholder="______"> on the back.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>For a self-guided visit, collect <input type="text" class="blank" id="b6" data-answer="headphones" placeholder="______"> from the reception.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>VIP tours can be booked <input type="text" class="blank" id="b7" data-answer="online" placeholder="______">.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The present stadium was built in <input type="text" class="blank" id="b8" data-answer="1989" placeholder="______"> as part of a three-year redevelopment project.<span class="feedback" id="fb8"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Choose TWO Letters (Q11&ndash;14)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Type the correct letter for each slot. Before you type, say to yourself <em>why</em> each of the other three options is wrong &mdash; that is the habit that turns a 6.5 into a 8 in this task type.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q11 &amp; 12 &mdash; first answer (alphabetical order): there is a drawing competition with a prize &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b9" data-answer="B" placeholder="______"><span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q11 &amp; 12 &mdash; second answer: children must not be left alone, even for a minute &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b10" data-answer="C" placeholder="______"><span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q13 &amp; 14 &mdash; first answer: &ldquo;we&rsquo;ve only just started offering these and they can be booked online&rdquo; &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b11" data-answer="A" placeholder="______"><span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q13 &amp; 14 &mdash; second answer: headphones plus pre-recorded information, &ldquo;only just introduced&rdquo; &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b12" data-answer="C" placeholder="______"><span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Which Q11&ndash;12 option is wrong because you photograph your child, not a player? <input type="text" class="blank" id="b13" data-answer="A" placeholder="______"><span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Which Q13&ndash;14 option is wrong because it is only planned for the future? <input type="text" class="blank" id="b14" data-answer="E" placeholder="______"><span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Matching Years to Events (Q15&ndash;20)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the letter A&ndash;H from the box next to each year, then answer the two questions about the letters that are never used.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q15 &nbsp;1870 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b15" data-answer="D" placeholder="______"> (a player to guard the goal)<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q16 &nbsp;1874 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b16" data-answer="F" placeholder="______"> (sending off + swapping ends)<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q17 &nbsp;1875 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b17" data-answer="B" placeholder="______"> (tape replaced by a solid crossbar)<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q18 &nbsp;1877 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b18" data-answer="H" placeholder="______"> (a limit of 90 minutes per match)<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q19 &nbsp;1878 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b19" data-answer="C" placeholder="______"> (electric lamps on certain pitches)<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q20 &nbsp;1880 &nbsp;&rarr;&nbsp; <input type="text" class="blank" id="b20" data-answer="G" placeholder="______"> (clubs charge fans to come in)<span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>One unused letter is <input type="text" class="blank" id="b21" data-answer="A" placeholder="______"> &mdash; in 1880 players were still amateurs, so pay had NOT been introduced.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The other unused letter is <input type="text" class="blank" id="b22" data-answer="E" placeholder="______"> &mdash; no international match is ever mentioned in the talk.<span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS, or complete the spelling. Every word here comes from this recording and every one is regularly misspelled by candidates.</p><div class="ex-item"><span class="ex-num">1.</span><label>Cameras are <input type="text" class="blank" id="b23" data-answer="permitted" placeholder="______"> (PERMIT) everywhere in the stadium.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The stadium was rebuilt as part of a three-year <input type="text" class="blank" id="b24" data-answer="redevelopment" placeholder="______"> (REDEVELOP) project.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>1877 saw the <input type="text" class="blank" id="b25" data-answer="founding" placeholder="______"> (FOUND) of further new clubs.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Electric lamps were <input type="text" class="blank" id="b26" data-answer="installed" placeholder="______"> (INSTALL) on certain pitches.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Installing lights was a <input type="text" class="blank" id="b27" data-answer="significant" placeholder="______"> (SIGNIFY) change for the game.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>a m _ t e u r &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b28" data-answer="amateur" placeholder="______"><span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>c r o s s b _ r &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b29" data-answer="crossbar" placeholder="______"><span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>r e f e r _ e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b30" data-answer="referee" placeholder="______"><span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>q u _ u e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b31" data-answer="queue" placeholder="______"><span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">On the left is what the guide actually says; on the right is the wording printed on the question paper. Write the missing word.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;don&rsquo;t let your children wander off on their own&rdquo; &rarr; Paper: &ldquo;Parents must <input type="text" class="blank" id="b32" data-answer="stay" placeholder="______"> with their children at all times.&rdquo;<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;we&rsquo;ll pick the best one&hellip; we&rsquo;ll send your prize&rdquo; &rarr; Paper: &ldquo;There is a <input type="text" class="blank" id="b33" data-answer="competition" placeholder="______"> for children today.&rdquo;<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;collect headphones&hellip; listen to the pre-recorded information&rdquo; &rarr; Paper: &ldquo;audio <input type="text" class="blank" id="b34" data-answer="guide" placeholder="______">&rdquo;<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;a player whose role it was to guard the goal&rdquo; &rarr; Box: &ldquo;the introduction of <input type="text" class="blank" id="b35" data-answer="goalkeepers" placeholder="______">&rdquo;<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;that tape was replaced with the solid crossbar&rdquo; &rarr; Box: &ldquo;a change to the <input type="text" class="blank" id="b36" data-answer="design" placeholder="______"> of the goal&rdquo;<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;all the clubs decided to set a limit of 90 minutes&rdquo; &rarr; Box: &ldquo;an agreement on the <input type="text" class="blank" id="b37" data-answer="length" placeholder="______"> of a game&rdquo;<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;clubs began to charge fans for admission&rdquo; &rarr; Box: &ldquo;the introduction of a <input type="text" class="blank" id="b38" data-answer="fee" placeholder="______"> for spectators&rdquo;<span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q11 &amp; 12</span></td><td>Which TWO things does the speaker say about <b>visiting the stadium with children</b>?</td><td><b>TWO LETTERS A&ndash;E</b></td><td>All five topics (photos, a competition, supervision, sun, the cafe) are mentioned. Tick an option only when the exact idea in the stem is said: a <em>prize</em> and a <em>winner</em>, and a <em>must</em>-style instruction.</td><td class="note">B, C</td></tr>
+<tr><td><span class="word">Q13 &amp; 14</span></td><td>Which TWO features of the stadium tour are <b>new this year</b>?</td><td><b>TWO LETTERS A&ndash;E</b></td><td>Do not listen for the features &mdash; listen for the word <em>new</em>. The signal phrase is &ldquo;we&rsquo;ve <b>only just</b> introduced / started offering&rdquo;.</td><td class="note">A, C</td></tr>
+<tr><td><span class="word">Q15</span></td><td><b>1870</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>Two things happen in 1870: the club moved to this site, and a new playing position appeared. Listen for a job description, not a job title.</td><td class="note">D &mdash; the introduction of goalkeepers</td></tr>
+<tr><td><span class="word">Q16</span></td><td><b>1874</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>Count the changes. &ldquo;Referees were allowed to send players off&hellip; and <b>also in that year</b>, teams started having to swap ends.&rdquo; Two = F.</td><td class="note">F &mdash; two changes to the rules of the game</td></tr>
+<tr><td><span class="word">Q17</span></td><td><b>1875</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>The story starts earlier (flag posts, sticks, tape). Wait for the year, then for the word <em>replaced</em>.</td><td class="note">B &mdash; a change to the design of the goal</td></tr>
+<tr><td><span class="word">Q18</span></td><td><b>1877</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>The sentence opens with new clubs (not in the box). The answer comes after &ldquo;in the same year&rdquo; &mdash; a number plus the word <em>limit</em>.</td><td class="note">H &mdash; an agreement on the length of a game</td></tr>
+<tr><td><span class="word">Q19</span></td><td><b>1878</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>Three facts are given (more teams, whistles, lamps). Only one is in the box. &ldquo;Electric lamps&rdquo; = lights; the follow-up sentence about evening games confirms it.</td><td class="note">C &mdash; the first use of lights for matches</td></tr>
+<tr><td><span class="word">Q20</span></td><td><b>1880</b> &hellip;&hellip;</td><td><b>LETTER A&ndash;H &mdash; an event</b></td><td>Money is mentioned twice here: money coming IN from fans (the answer) and money NOT going out to players (&ldquo;still amateurs&rdquo;).</td><td class="note">G &mdash; the introduction of a fee for spectators</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>Parents must stay with their children</b> at all times.&rdquo; (option C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The stadium has lots of stairs and the players&rsquo; tunnel is very dark. Please <b>don&rsquo;t let your children wander off on their own, even for a minute</b>. We don&rsquo;t want any accidents.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a negative instruction (don&rsquo;t let them go off alone) = a positive obligation (parents must stay with them)</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;Don&rsquo;t leave your bag unattended&rsquo; as a &lsquo;must&rsquo; sentence&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;There is a <b>competition</b> for children today.&rdquo; (option B)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Children are invited to do a football themed drawing. <b>We&rsquo;ll pick the best one</b> at the end of the afternoon&hellip; we&rsquo;ll send your <b>prize</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">pick the best one + a prize = a competition. The word &lsquo;competition&rsquo; is never said.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a competition you have entered, without using the word &lsquo;competition&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Children can get their photo taken <b>with a football player</b>.&rdquo; (option A &mdash; WRONG)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Cameras are permitted everywhere and you can take pictures of <b>your child shooting a penalty</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The topic (photos) matches, but the detail (with a player) does not. Topic match &ne; answer.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence describing a photo, making clear WHO is in it&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>audio guide</b>&rdquo; &mdash; new this year (option C)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;If you&rsquo;d prefer your visit to be self-guided, please collect <b>headphones</b> from the reception, and then you can listen to the <b>pre-recorded information at your own speed</b>. We&rsquo;ve <b>only just introduced</b> this feature.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">headphones + pre-recorded information = audio guide; &lsquo;only just introduced&rsquo; = new this year</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Explain what an audio guide is in one sentence, without using the word &lsquo;audio&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>360 cinema experience</b>&rdquo; &mdash; new this year? (option B &mdash; WRONG)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;We&rsquo;ll start with the 360 cinema experience, <b>which has been very popular over the years</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">&lsquo;over the years&rsquo; = it has existed for a long time = NOT new. One relative clause cancels the whole option.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;which has been very popular over the years&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;the introduction of <b>goalkeepers</b>&rdquo; (Q15, letter D)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;1870 was also the year that football teams started to include <b>a player whose role it was to guard the goal</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The box names the job (goalkeeper); the audio describes the job (guard the goal).</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Define &lsquo;referee&rsquo; the same way &mdash; describe the role, not the name&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;the introduction of a <b>fee for spectators</b>&rdquo; (Q20, letter G)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;In 1880, clubs began to <b>charge fans for admission</b> to games, even though players were still <b>amateurs</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">charge = a fee; fans = spectators; admission = getting in. &lsquo;Still amateurs&rsquo; rules out option A (pay for players).</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;The museum charges visitors &pound;5&rsquo; using the word &lsquo;fee&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;please don&rsquo;t let your children wander off on their own&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;you can take pictures of your child shooting a penalty&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;don&rsquo;t forget to put your name and contact details on the back&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;we&rsquo;ve only just introduced this feature and would appreciate your feedback&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;the club has been here on this site since 1870&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;referees were allowed to send players off if they committed certain offences&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;that tape was replaced with the solid crossbar&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;clubs began to charge fans for admission to games&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why does the guide mention the stairs and the dark players&rsquo; tunnel?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. To explain why the tour is short.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. To explain why parents must stay with their children.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. To warn visitors not to take photographs.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. To advertise the VIP tour.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What can parents photograph, according to the guide?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Their child standing next to a football player.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Their child shooting a penalty.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. The players&rsquo; dressing rooms only.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Nothing &mdash; cameras are banned inside.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which detail proves that the drawing activity is a competition?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. It takes place in the cafe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. It has a football theme.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. The best one is chosen and a prize is sent.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. The drawings cannot be returned.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Why is option E (&lsquo;The cafe has a special offer on meals for children&rsquo;) wrong?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. The cafe is closed today.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. The guide only recommends the lunch boxes; he does not mention a discount.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. The lunch boxes are for adults.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. Food may not be taken into the stadium.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which phrase in the recording tells you that a tour feature is NEW?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. &lsquo;which has been very popular over the years&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. &lsquo;we&rsquo;ve only just introduced this&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. &lsquo;we&rsquo;re thinking of offering&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. &lsquo;I&rsquo;ll take you to&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why is the 360 cinema experience NOT an answer to Q13&ndash;14?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. It is not part of the tour.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. It has been popular for years, so it is not new.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. It costs extra.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. It is only available in other languages.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What does the guide say about tours in other languages?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They started this year.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. They are only for VIP visitors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. They are being considered for the future.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They were tried and then stopped.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">In 1874, what happened according to the guide?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Only one rule changed: players could be sent off.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Two rules changed: sending off, and swapping ends at half-time.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. The crossbar replaced the tape.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Clubs agreed on a 90-minute match.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What replaced the piece of tape joining the sticks?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. flag posts</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. a net</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. a solid crossbar</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. electric lamps</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Why did the clubs set a limit of 90 minutes in 1877?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Because matches were causing arguments and even fights about when to stop.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Because players were becoming professional.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Because there were no lights on the pitches.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Because referees had no whistles.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What made evening matches possible from 1878?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. the use of whistles</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. more teams in the football league</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. electric lamps installed on certain pitches</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. paid admission for fans</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which two letters from the box are never used?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. A and E</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. B and F</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. C and H</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. D and G</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 11–20</h3><div class="answer-item"><span class="answer-num">11 &amp; 12</span><div><div class="answer-val">B, C (in either order)</div><div class="answer-note"><b>B:</b> &lsquo;Children are invited to do a football themed drawing. We&rsquo;ll pick the best one &hellip; we&rsquo;ll send your <em>prize</em>.&rsquo; = a competition today. <b>C:</b> &lsquo;Please don&rsquo;t let your children wander off on their own, even for a minute.&rsquo; = parents must stay with them at all times. A is wrong (the photo is of your child shooting a penalty, not with a player); D is wrong (it is hot and sunny, but sunhats and drinks are never said to be needed); E is wrong (the lunch boxes are recommended, not on special offer).</div></div></div>
+<div class="answer-item"><span class="answer-num">13 &amp; 14</span><div><div class="answer-val">A, C (in either order)</div><div class="answer-note"><b>A:</b> &lsquo;You might like to book one of our VIP tours. We&rsquo;ve <em>only just started offering these</em>.&rsquo; <b>C:</b> &lsquo;Collect headphones&hellip; listen to the pre-recorded information at your own speed. We&rsquo;ve <em>only just introduced this feature</em>.&rsquo; = the audio guide. B is old (&lsquo;very popular over the years&rsquo;), D is simply part of the tour, and E is only being &lsquo;thought of&hellip; in future&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">D</div><div class="answer-note">1870: &lsquo;football teams started to include <em>a player whose role it was to guard the goal</em>&rsquo; = the introduction of goalkeepers. The other 1870 fact (the club moving to this site) is not in the box.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">F</div><div class="answer-note">1874: &lsquo;referees were allowed to <em>send players off</em>&hellip; And <em>also in that year</em>, teams started having to <em>swap ends at half-time</em>.&rsquo; Two rule changes = F.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">B</div><div class="answer-note">1875: the tape joining the sticks &lsquo;was replaced with the <em>solid crossbar</em>&rsquo; = a change to the design of the goal.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">H</div><div class="answer-note">1877: &lsquo;in the same year all the clubs decided to <em>set a limit of 90 minutes</em> for each match&rsquo; = an agreement on the length of a game. The founding of new clubs in the same sentence is a distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">C</div><div class="answer-note">1878: &lsquo;<em>electric lamps were installed</em> on certain pitches&hellip; games could then be played in the evenings&rsquo; = the first use of lights for matches. Whistles and extra teams are distractors.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">G</div><div class="answer-note">1880: &lsquo;clubs began to <em>charge fans for admission</em> to games&rsquo; = the introduction of a fee for spectators. The same sentence rules out A: &lsquo;players were <em>still amateurs</em>&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Key Facts from the Talk</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">stairs</div><div class="answer-note">The guide warns parents that the stadium has lots of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">tunnel</div><div class="answer-note">The players&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">penalty</div><div class="answer-note">Parents can photograph their child shooting a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">lunch</div><div class="answer-note">The guide recommends the healthy</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">details</div><div class="answer-note">Children who enter the drawing competition must write their name and contact</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">headphones</div><div class="answer-note">For a self-guided visit, collect</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">online</div><div class="answer-note">VIP tours can be booked</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">1989</div><div class="answer-note">The present stadium was built in</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Choose TWO Letters (Q11&ndash;14)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">B</div><div class="answer-note">Q11 &amp; 12 &mdash; first answer (alphabetical order): there is a drawing competition with a prize  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">C</div><div class="answer-note">Q11 &amp; 12 &mdash; second answer: children must not be left alone, even for a minute  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">A</div><div class="answer-note">Q13 &amp; 14 &mdash; first answer: &ldquo;we&rsquo;ve only just started offering these and they can be booked online&rdquo;  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">C</div><div class="answer-note">Q13 &amp; 14 &mdash; second answer: headphones plus pre-recorded information, &ldquo;only just introduced&rdquo;  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">A</div><div class="answer-note">Which Q11&ndash;12 option is wrong because you photograph your child, not a player?</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">E</div><div class="answer-note">Which Q13&ndash;14 option is wrong because it is only planned for the future?</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Matching Years to Events (Q15&ndash;20)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">D</div><div class="answer-note">Q15  1870  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">F</div><div class="answer-note">Q16  1874  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">B</div><div class="answer-note">Q17  1875  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">H</div><div class="answer-note">Q18  1877  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">C</div><div class="answer-note">Q19  1878  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">G</div><div class="answer-note">Q20  1880  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">A</div><div class="answer-note">One unused letter is</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">E</div><div class="answer-note">The other unused letter is</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form &amp; Spelling</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">permitted</div><div class="answer-note">Cameras are</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">redevelopment</div><div class="answer-note">The stadium was rebuilt as part of a three-year</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">founding</div><div class="answer-note">1877 saw the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">installed</div><div class="answer-note">Electric lamps were</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">significant</div><div class="answer-note">Installing lights was a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">amateur</div><div class="answer-note">a m _ t e u r  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">crossbar</div><div class="answer-note">c r o s s b _ r  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">referee</div><div class="answer-note">r e f e r _ e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">queue</div><div class="answer-note">q u _ u e  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">stay</div><div class="answer-note">Audio: &ldquo;don&rsquo;t let your children wander off on their own&rdquo; &rarr; Paper: &ldquo;Parents must</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">competition</div><div class="answer-note">Audio: &ldquo;we&rsquo;ll pick the best one&hellip; we&rsquo;ll send your prize&rdquo; &rarr; Paper: &ldquo;There is a</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">guide</div><div class="answer-note">Audio: &ldquo;collect headphones&hellip; listen to the pre-recorded information&rdquo; &rarr; Paper: &ldquo;audio</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">goalkeepers</div><div class="answer-note">Audio: &ldquo;a player whose role it was to guard the goal&rdquo; &rarr; Box: &ldquo;the introduction of</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">design</div><div class="answer-note">Audio: &ldquo;that tape was replaced with the solid crossbar&rdquo; &rarr; Box: &ldquo;a change to the</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">length</div><div class="answer-note">Audio: &ldquo;all the clubs decided to set a limit of 90 minutes&rdquo; &rarr; Box: &ldquo;an agreement on the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">fee</div><div class="answer-note">Audio: &ldquo;clubs began to charge fans for admission&rdquo; &rarr; Box: &ldquo;the introduction of a</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q11 &amp; 12</span><div><div class="answer-val">B, C &mdash; TWO LETTERS A&ndash;E</div><div class="answer-note">All five topics (photos, a competition, supervision, sun, the cafe) are mentioned. Tick an option only when the exact idea in the stem is said: a <em>prize</em> and a <em>winner</em>, and a <em>must</em>-style instruction.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q13 &amp; 14</span><div><div class="answer-val">A, C &mdash; TWO LETTERS A&ndash;E</div><div class="answer-note">Do not listen for the features &mdash; listen for the word <em>new</em>. The signal phrase is &ldquo;we&rsquo;ve <b>only just</b> introduced / started offering&rdquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q15</span><div><div class="answer-val">D &mdash; the introduction of goalkeepers &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">Two things happen in 1870: the club moved to this site, and a new playing position appeared. Listen for a job description, not a job title.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q16</span><div><div class="answer-val">F &mdash; two changes to the rules of the game &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">Count the changes. &ldquo;Referees were allowed to send players off&hellip; and <b>also in that year</b>, teams started having to swap ends.&rdquo; Two = F.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q17</span><div><div class="answer-val">B &mdash; a change to the design of the goal &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">The story starts earlier (flag posts, sticks, tape). Wait for the year, then for the word <em>replaced</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q18</span><div><div class="answer-val">H &mdash; an agreement on the length of a game &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">The sentence opens with new clubs (not in the box). The answer comes after &ldquo;in the same year&rdquo; &mdash; a number plus the word <em>limit</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q19</span><div><div class="answer-val">C &mdash; the first use of lights for matches &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">Three facts are given (more teams, whistles, lamps). Only one is in the box. &ldquo;Electric lamps&rdquo; = lights; the follow-up sentence about evening games confirms it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q20</span><div><div class="answer-val">G &mdash; the introduction of a fee for spectators &mdash; LETTER A&ndash;H &mdash; an event</div><div class="answer-note">Money is mentioned twice here: money coming IN from fans (the answer) and money NOT going out to players (&ldquo;still amateurs&rdquo;).</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">please don&rsquo;t let your children wander off on their own</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">you can take pictures of your child shooting a penalty</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">don&rsquo;t forget to put your name and contact details on the back</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">we&rsquo;ve only just introduced this feature and would appreciate your feedback</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">the club has been here on this site since 1870</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">referees were allowed to send players off if they committed certain offences</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">that tape was replaced with the solid crossbar</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">clubs began to charge fans for admission to games</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. To explain why parents must stay with their children.</div><div class="answer-note">The hazards lead straight into &lsquo;don&rsquo;t let your children wander off on their own&rsquo; &mdash; the clue for Q11&ndash;12 option C.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Their child shooting a penalty.</div><div class="answer-note">&lsquo;Cameras are permitted <em>everywhere</em>&rsquo; kills D, and the picture is of the child taking a penalty &mdash; that is why option A is a trap.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. The best one is chosen and a prize is sent.</div><div class="answer-note">Choosing a winner plus a prize = a competition. The word &lsquo;competition&rsquo; itself is never used in the recording.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. The guide only recommends the lunch boxes; he does not mention a discount.</div><div class="answer-note">A recommendation (&lsquo;I really recommend the healthy lunch boxes&rsquo;) is not a special offer. Watch for stems that add a price idea that was never said.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. &lsquo;we&rsquo;ve only just introduced this&rsquo;</div><div class="answer-note">&lsquo;Only just&rsquo; = very recently. A means it is old, and C means it does not exist yet.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. It has been popular for years, so it is not new.</div><div class="answer-note">It is the first feature mentioned, which makes it tempting &mdash; but the relative clause &lsquo;which has been very popular over the years&rsquo; rules it out.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. They are being considered for the future.</div><div class="answer-note">&lsquo;We&rsquo;re <em>thinking of</em> offering tours in other languages <em>in future</em>&rsquo; &mdash; a plan, not a new feature.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. Two rules changed: sending off, and swapping ends at half-time.</div><div class="answer-note">&lsquo;And <em>also in that year</em>, teams started having to swap ends at half-time.&rsquo; Two changes = letter F.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. a solid crossbar</div><div class="answer-note">The tape was replaced by the solid crossbar in 1875 &mdash; a change to the design of the goal (letter B).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. Because matches were causing arguments and even fights about when to stop.</div><div class="answer-note">Before the limit it was &lsquo;a more casual arrangement&rsquo; that &lsquo;sometimes caused huge arguments and sometimes fights&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. electric lamps installed on certain pitches</div><div class="answer-note">&lsquo;Electric lamps were installed&hellip; games could then be played in the evenings all year round.&rsquo; = the first use of lights (letter C).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A. A and E</div><div class="answer-note">A (pay for players) is contradicted &mdash; in 1880 players were &lsquo;still amateurs&rsquo;. E (the first international match) is never mentioned at all. In matching tasks, always check which options are left over.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

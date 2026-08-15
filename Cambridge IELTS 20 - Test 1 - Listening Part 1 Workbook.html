@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 1 — Listening Part 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 1</span>
+    <span class="sep">›</span>
+    <span>Listening Part 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 1</div>
+    <h1>Cambridge IELTS 20 — Test 1 — Listening Part 1</h1>
+    <h2>Restaurant Recommendations · Notes Completion (Q1–10)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>In this Part 1 conversation two friends are chatting informally. One woman needs to book a restaurant for her sister&rsquo;s 30th birthday, and her friend recommends three places: <strong>The Junction</strong>, <strong>Paloma</strong> and <strong>The Audley</strong>. As they talk about each one, they mention the location, why it is worth going to, and one or two drawbacks such as price, a deposit or a small choice of dishes. You must complete a three-column note table with <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two friends (both female), talking casually. There is no &ldquo;official&rdquo; speaker, so the language is relaxed and full of everyday expressions.</p><p><strong>The situation 情境:</strong> 一位女士要为姐姐的30岁生日订餐厅，朋友向她推荐了三家：The Junction、Paloma 和 The Audley。三家餐厅依次出现，答案也按这个顺序出现。</p><p><strong>Task type:</strong> Notes completion in a table &mdash; <em>Name of restaurant / Location / Reason for recommendation / Other comments</em>. Instruction: <strong>ONE WORD AND/OR A NUMBER</strong>. Writing two words = 0 marks.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The notes are organised as a <strong>table with three restaurants in rows</strong>. The speakers discuss the restaurants one after the other, so the answers come in order &mdash; but inside each restaurant the order of the columns is not guaranteed. Before the audio starts, read the column headings (<em>Location / Reason for recommendation / Other comments</em>) and decide what <strong>type</strong> of word each gap needs: a food type, a place, an adjective or a number. &ldquo;Reason for recommendation&rdquo; gaps almost always follow a <em>positive</em> word (amazing, best, excellent, famous); &ldquo;Other comments&rdquo; gaps often follow a <em>negative or limiting</em> word (only, limited, not cheap, you need to&hellip;).</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>50 vs 30</b> &mdash; &pound;50 appears twice (Paloma&rsquo;s deposit, evening price at The Audley) but the answer for Q9 is <b>30</b>.</li><li><b>30 appears twice</b> &mdash; the sister&rsquo;s <em>30th</em> birthday and the &pound;<em>30</em> set lunch.</li><li><b>tiny vs average</b> &mdash; the distractor is inside the question, the answer is in the reply.</li><li><b>reviews</b> must be plural; <b>Spanish</b> needs a capital letter.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">recommend</span></td><td><span class="pos">v.</span></td><td>to say that something is good and worth trying</td><td class="zh">推荐</td><td>&ldquo;I&rsquo;d definitely <em>recommend</em> that place for a special occasion.&rdquo;</td><td class="note">The whole table is built on &lsquo;Reason for recommendation&rsquo; &mdash; listen for <em>why</em>, not just <em>what</em>.</td></tr>
+<tr><td><span class="word">occasion</span></td><td><span class="pos">n.</span></td><td>a particular event, especially an important or special one</td><td class="zh">场合；特殊的日子</td><td>&ldquo;For a special <em>occasion</em>, I think the price is fine.&rdquo;</td><td class="note">&lsquo;Special occasion&rsquo; = birthday, wedding, anniversary. Sets the topic of the whole conversation.</td></tr>
+<tr><td><span class="word">keen on</span></td><td><span class="pos">phr.</span></td><td>very interested in something; enjoying it a lot</td><td class="zh">热衷于；很喜欢</td><td>&ldquo;It&rsquo;s good for people who are especially <em>keen on</em> fish.&rdquo;</td><td class="note">Q1 paraphrase: the question says &lsquo;keen on&rsquo;, the audio says &lsquo;If you like fish&hellip;&rsquo;.</td></tr>
+<tr><td><span class="word">fresh</span></td><td><span class="pos">adj.</span></td><td>recently caught, picked or made; not old</td><td class="zh">新鲜的</td><td>&ldquo;The fish is always really <em>fresh</em>.&rdquo;</td><td class="note">Very common food adjective. Do not confuse with &lsquo;flesh&rsquo; when you hear it quickly.</td></tr>
+<tr><td><span class="word">dish</span></td><td><span class="pos">n.</span></td><td>one prepared item of food on a menu</td><td class="zh">一道菜</td><td>&ldquo;There are lots of interesting <em>dishes</em> to choose from.&rdquo;</td><td class="note">In restaurant topics &lsquo;dish&rsquo; means the food, not the plate.</td></tr>
+<tr><td><span class="word">atmosphere</span></td><td><span class="pos">n.</span></td><td>the general feeling or mood of a place</td><td class="zh">氛围；气氛</td><td>&ldquo;It&rsquo;s got a great <em>atmosphere</em>.&rdquo;</td><td class="note">A praise word, but rarely the answer &mdash; it usually sits next to the real answer as a distractor.</td></tr>
+<tr><td><span class="word">roof</span></td><td><span class="pos">n.</span></td><td>the top outside surface of a building</td><td class="zh">屋顶；天台</td><td>&ldquo;You can go up on the <em>roof</em> and have a drink.&rdquo;</td><td class="note"><strong>Answer to Q2.</strong> Write <em>roof</em> &mdash; the audio does not say &lsquo;rooftop&rsquo; or &lsquo;terrace&rsquo;.</td></tr>
+<tr><td><span class="word">spectacular</span></td><td><span class="pos">adj.</span></td><td>extremely impressive to look at</td><td class="zh">壮观的；令人惊叹的</td><td>&ldquo;It&rsquo;s very popular because the views are <em>spectacular</em>.&rdquo;</td><td class="note">Synonym family: incredible / amazing / stunning. Praise words flag a &lsquo;reason&rsquo; answer nearby.</td></tr>
+<tr><td><span class="word">formal</span></td><td><span class="pos">adj.</span></td><td>following strict social rules; not relaxed</td><td class="zh">正式的</td><td>&ldquo;If you want somewhere a bit less <em>formal</em>, try Paloma.&rdquo;</td><td class="note">&lsquo;Less formal&rsquo; = more relaxed / more casual. Comparatives often signal a change of topic.</td></tr>
+<tr><td><span class="word">reputation</span></td><td><span class="pos">n.</span></td><td>the opinion that people generally have about something</td><td class="zh">名声；口碑</td><td>&ldquo;It&rsquo;s only been open a few months but it&rsquo;s got a great <em>reputation</em>.&rdquo;</td><td class="note">Frequently paraphrased as &lsquo;reviews&rsquo;, &lsquo;what people say&rsquo; or &lsquo;coverage in the press&rsquo;.</td></tr>
+<tr><td><span class="word">deposit</span></td><td><span class="pos">n.</span></td><td>money paid in advance to hold a booking</td><td class="zh">押金；订金</td><td>&ldquo;You need to pay a &pound;50 <em>deposit</em> to book a table.&rdquo;</td><td class="note">Money + booking = classic Part 1 detail. Note it belongs to &lsquo;Other comments&rsquo;, not to the reason.</td></tr>
+<tr><td><span class="word">vegetarian</span></td><td><span class="pos">adj./n.</span></td><td>not containing (or not eating) meat or fish</td><td class="zh">素食的；素食者</td><td>&ldquo;There is a limited selection of <em>vegetarian</em> food on the menu.&rdquo;</td><td class="note"><strong>Answer to Q4.</strong> Spelling trap: v-e-g-e-t-<strong>a</strong>-r-i-a-n.</td></tr>
+<tr><td><span class="word">limited</span></td><td><span class="pos">adj.</span></td><td>small in amount, number or choice</td><td class="zh">有限的；很少的</td><td>&ldquo;The selection of those would be quite <em>limited</em>.&rdquo;</td><td class="note">A negative signal word &mdash; it points to a drawback in the &lsquo;Other comments&rsquo; column.</td></tr>
+<tr><td><span class="word">selection</span></td><td><span class="pos">n.</span></td><td>a range of things available to choose from</td><td class="zh">选择范围；种类</td><td>&ldquo;A limited <em>selection</em> of dishes.&rdquo;</td><td class="note">Paraphrase family: choice / range / variety / options.</td></tr>
+<tr><td><span class="word">press</span></td><td><span class="pos">n.</span></td><td>newspapers and journalists as a group</td><td class="zh">媒体；新闻界</td><td>&ldquo;There&rsquo;s been a lot about it in the <em>press</em>.&rdquo;</td><td class="note">Connects directly to the answer &lsquo;reviews&rsquo; in Q7 &mdash; the press writes the reviews.</td></tr>
+<tr><td><span class="word">review</span></td><td><span class="pos">n.</span></td><td>a written opinion about a restaurant, film or book</td><td class="zh">评论；评价</td><td>&ldquo;It&rsquo;s had excellent <em>reviews</em> from all the newspapers.&rdquo;</td><td class="note"><strong>Answer to Q7.</strong> The note says &lsquo;All the ___ <u>are</u>&rsquo;, so you need the PLURAL <em>reviews</em>.</td></tr>
+<tr><td><span class="word">source</span></td><td><span class="pos">v.</span></td><td>to obtain something from a particular place or supplier</td><td class="zh">采购；获取（原料）</td><td>&ldquo;Everything has to be <em>sourced</em> within a short distance.&rdquo;</td><td class="note">The audio uses this verb instead of the word &lsquo;local&rsquo; &mdash; you must make the jump yourself (Q8).</td></tr>
+<tr><td><span class="word">local</span></td><td><span class="pos">adj.</span></td><td>from the nearby area, not from far away</td><td class="zh">本地的；当地的</td><td>&ldquo;She only likes cooking with <em>local</em> products.&rdquo;</td><td class="note"><strong>Answer to Q8.</strong> Clues: &lsquo;within a short distance&rsquo; + &lsquo;nothing flown in from abroad&rsquo;.</td></tr>
+<tr><td><span class="word">ingredient</span></td><td><span class="pos">n.</span></td><td>one of the foods used to make a dish</td><td class="zh">食材；原料</td><td>&ldquo;The restaurant only uses local <em>ingredients</em>.&rdquo;</td><td class="note">Spelling: in-gre-di-ent. Here it is printed on the question paper, so you only add the adjective.</td></tr>
+<tr><td><span class="word">portion</span></td><td><span class="pos">n.</span></td><td>the amount of food served to one person</td><td class="zh">份量；一份</td><td>&ldquo;It&rsquo;s not the kind of place you leave hungry, with tiny <em>portions</em>.&rdquo;</td><td class="note">Q10 asks about portion <em>size</em>, so the gap needs an ADJECTIVE, not a number.</td></tr>
+<tr><td><span class="word">average</span></td><td><span class="pos">adj.</span></td><td>normal or usual; neither large nor small</td><td class="zh">一般的；中等的</td><td>&ldquo;I imagine the portions would be <em>average</em>.&rdquo;</td><td class="note"><strong>Answer to Q10.</strong> It is the opposite of the distractor &lsquo;tiny&rsquo; used in the question before it.</td></tr>
+<tr><td><span class="word">reasonable</span></td><td><span class="pos">adj.</span></td><td>fair and not too expensive</td><td class="zh">合理的；价格公道的</td><td>&ldquo;That&rsquo;s quite <em>reasonable</em> for a top-class restaurant.&rdquo;</td><td class="note">Price adjectives usually sit right next to the number you need to write down.</td></tr>
+<tr><td><span class="word">set lunch</span></td><td><span class="pos">n.</span></td><td>a fixed-price lunch menu with limited choices</td><td class="zh">午市套餐</td><td>&ldquo;The <em>set lunch</em> costs &pound;30 per person.&rdquo;</td><td class="note">&lsquo;&pound;30 a head&rsquo; in the audio = &lsquo;&pound;30 per person&rsquo; on the question paper (Q9).</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">I&rsquo;ve been meaning to ask you&hellip;</span></td><td>I have wanted to ask you for some time</td><td class="zh">我一直想问你……</td></tr>
+<tr><td><span class="phrase">I liked the sound of that place</span></td><td>it sounded good to me from what I heard about it</td><td class="zh">我觉得那家店听起来不错</td></tr>
+<tr><td><span class="phrase">a special occasion</span></td><td>an important event that people celebrate</td><td class="zh">特殊的日子；重要场合</td></tr>
+<tr><td><span class="phrase">a two-minute walk from the station</span></td><td>very close to the station on foot</td><td class="zh">步行两分钟就到车站</td></tr>
+<tr><td><span class="phrase">It&rsquo;s certainly not cheap</span></td><td>a polite way of saying it is expensive</td><td class="zh">肯定不便宜</td></tr>
+<tr><td><span class="phrase">lots of&hellip; to choose from</span></td><td>there is a wide range available</td><td class="zh">有很多可供选择</td></tr>
+<tr><td><span class="phrase">It&rsquo;s got a great reputation</span></td><td>people generally speak well of it</td><td class="zh">口碑很好</td></tr>
+<tr><td><span class="phrase">worth thinking about</span></td><td>a good option that you should consider</td><td class="zh">值得考虑</td></tr>
+<tr><td><span class="phrase">pay a deposit</span></td><td>pay money in advance to secure a booking</td><td class="zh">付押金／订金</td></tr>
+<tr><td><span class="phrase">a limited selection of&hellip;</span></td><td>only a small choice of something</td><td class="zh">……的选择很少</td></tr>
+<tr><td><span class="phrase">sourced within a short distance</span></td><td>bought from producers who are nearby</td><td class="zh">就近采购</td></tr>
+<tr><td><span class="phrase">flown in from abroad</span></td><td>brought by plane from another country</td><td class="zh">从国外空运而来</td></tr>
+<tr><td><span class="phrase">&pound;30 a head</span></td><td>&pound;30 for each person</td><td class="zh">每人30英镑</td></tr>
+<tr><td><span class="phrase">I don&rsquo;t tend to pay much attention to&hellip;</span></td><td>I usually ignore / do not follow&hellip;</td><td class="zh">我一般不太留意……</td></tr>
+<tr><td><span class="phrase">close down</span></td><td>stop operating permanently (of a business)</td><td class="zh">倒闭；关门歇业</td></tr>
+<tr><td><span class="phrase">on the top floor</span></td><td>on the highest floor of a building</td><td class="zh">在顶楼</td></tr>
+<tr><td><span class="phrase">leave feeling hungry</span></td><td>still be hungry when you finish the meal</td><td class="zh">吃完还觉得饿</td></tr>
+<tr><td><span class="phrase">have excellent reviews</span></td><td>receive very positive written opinions</td><td class="zh">获得极好的评价</td></tr>
+<tr><td><span class="phrase">book a table</span></td><td>reserve a table in a restaurant in advance</td><td class="zh">订位；订桌</td></tr>
+<tr><td><span class="phrase">a judge on a TV cookery show</span></td><td>a person who decides the winner on a cooking programme</td><td class="zh">电视烹饪节目的评委</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the ten gaps from the Part 1 note table, rewritten as full sentences. Write <strong>ONE WORD AND/OR A NUMBER</strong> in each gap.</p><div class="ex-item"><span class="ex-num">1.</span><label>The Junction is especially good for people who are keen on <input type="text" class="blank" id="b1" data-answer="fish" placeholder="______">.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>At The Junction you can go up on the <input type="text" class="blank" id="b2" data-answer="roof" placeholder="______"> for a drink before dinner.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Paloma serves <input type="text" class="blank" id="b3" data-answer="Spanish" placeholder="______"> food, which is good for sharing.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Paloma has only a limited selection of <input type="text" class="blank" id="b4" data-answer="vegetarian" placeholder="______"> food on the menu.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The third restaurant the friend suggests is called The <input type="text" class="blank" id="b5" data-answer="Audley" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The Audley is at the top of a <input type="text" class="blank" id="b6" data-answer="hotel" placeholder="______"> near Baxter Bridge.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>All the <input type="text" class="blank" id="b7" data-answer="reviews" placeholder="______"> of The Audley are very good.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The chef at The Audley only uses <input type="text" class="blank" id="b8" data-answer="local" placeholder="______"> ingredients.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>The set lunch at The Audley costs &pound;<input type="text" class="blank" id="b9" data-answer="30" placeholder="______"> per person.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>The portions at The Audley are probably of <input type="text" class="blank" id="b10" data-answer="average" placeholder="______"> size.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Getting the word <em>form</em> wrong (singular / plural, noun / adjective) is one of the most common ways to lose marks in Listening.</p><div class="ex-item"><span class="ex-num">1.</span><label>The restaurant opened only a few months ago but it already has a great <input type="text" class="blank" id="b11" data-answer="reputation" placeholder="______"> (REPUTE).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The views from the roof are absolutely <input type="text" class="blank" id="b12" data-answer="spectacular" placeholder="______"> (SPECTACLE).<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>&pound;30 for a set lunch is quite <input type="text" class="blank" id="b13" data-answer="reasonable" placeholder="______"> (REASON) for a top-class restaurant.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Everything on the menu is <input type="text" class="blank" id="b14" data-answer="locally" placeholder="______"> (LOCAL) sourced.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>There is only a <input type="text" class="blank" id="b15" data-answer="limited" placeholder="______"> (LIMIT) choice of dishes without meat.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The note says &lsquo;All the ___ are very good&rsquo;, so the answer must be the plural noun <input type="text" class="blank" id="b16" data-answer="reviews" placeholder="______"> (REVIEW).<span class="feedback" id="fb16"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every one of these words appears in this recording and every one of them is regularly misspelled by candidates. Type the correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>r _ s t a u r a n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b17" data-answer="restaurant" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>v e g e t _ r i a n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="vegetarian" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>i n g r e d _ e n t s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="ingredients" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>a t m o s p h _ r e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="atmosphere" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>s p e c t a c _ l a r &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="spectacular" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The speaker spells the name out: A&ndash;U&ndash;D&ndash;L&ndash;E&ndash;Y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="Audley" placeholder="______"><span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Money</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write numbers in <strong>figures</strong>. Do not write the &pound; sign &mdash; it is already printed on the question paper.</p><div class="ex-item"><span class="ex-num">1.</span><label>The woman is booking a meal for her sister&rsquo;s <input type="text" class="blank" id="b23" data-answer="30th" placeholder="______"> birthday.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The Junction is about a <input type="text" class="blank" id="b24" data-answer="2" placeholder="______">-minute walk from the station. (figures)<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Paloma asks customers for a deposit of &pound;<input type="text" class="blank" id="b25" data-answer="50" placeholder="______">.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The set lunch at The Audley is &pound;<input type="text" class="blank" id="b26" data-answer="30" placeholder="______"> a head.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>An evening meal at The Audley is likely to cost around &pound;<input type="text" class="blank" id="b27" data-answer="50" placeholder="______">.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The famous chef was recently a judge on a TV <input type="text" class="blank" id="b28" data-answer="cookery" placeholder="______"> show.<span class="feedback" id="fb28"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read what the speakers actually say, then write the word that belongs in the note table.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;If you like fish, it&rsquo;s probably the best restaurant in town.&rdquo; &rarr; Note: keen on <input type="text" class="blank" id="b29" data-answer="fish" placeholder="______"><span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;You can go up on the ___ and have a drink.&rdquo; &rarr; Note: a good place for a drink = the <input type="text" class="blank" id="b30" data-answer="roof" placeholder="______"><span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;Everything has to be sourced within a short distance.&rdquo; &rarr; Note: only uses <input type="text" class="blank" id="b31" data-answer="local" placeholder="______"> ingredients.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;It&rsquo;s had excellent reviews from all the newspapers.&rdquo; &rarr; Note: all the <input type="text" class="blank" id="b32" data-answer="reviews" placeholder="______"> are very good.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;I imagine they&rsquo;d be average.&rdquo; &rarr; Note: portions probably of <input type="text" class="blank" id="b33" data-answer="average" placeholder="______"> size.<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;That&rsquo;s &pound;30 a head.&rdquo; &rarr; Note: set lunch costs &pound;<input type="text" class="blank" id="b34" data-answer="30" placeholder="______"> per person.<span class="feedback" id="fb34"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q1</span></td><td>&hellip;especially keen on <b>(1)</b></td><td><b>NOUN &mdash; a type of food</b></td><td>&lsquo;keen on&rsquo; + food topic. Listen for a positive word: <em>the best in town for&hellip;</em></td><td class="note">fish</td></tr>
+<tr><td><span class="word">Q2</span></td><td>The <b>(2)</b> is a good place for a drink</td><td><b>NOUN &mdash; a place in the building</b></td><td>&lsquo;a good place for a drink&rsquo; &rarr; listen for <em>go up on the&hellip;</em></td><td class="note">roof</td></tr>
+<tr><td><span class="word">Q3</span></td><td><b>(3)</b> Food, good for sharing</td><td><b>ADJECTIVE &mdash; a nationality</b></td><td>Capital letter needed. Clue: <em>small dishes to share</em> + the chef&rsquo;s old restaurant name.</td><td class="note">Spanish</td></tr>
+<tr><td><span class="word">Q4</span></td><td>A limited selection of <b>(4)</b> food</td><td><b>ADJECTIVE &mdash; a diet type</b></td><td>&lsquo;limited&rsquo; = a drawback. Clue: <em>friends have stopped eating meat</em>.</td><td class="note">vegetarian</td></tr>
+<tr><td><span class="word">Q5</span></td><td>The <b>(5)</b></td><td><b>PROPER NOUN &mdash; a restaurant name</b></td><td>Names are usually spelled out letter by letter. Write the letters down as you hear them.</td><td class="note">Audley</td></tr>
+<tr><td><span class="word">Q6</span></td><td>At the top of a <b>(6)</b></td><td><b>NOUN &mdash; a type of building</b></td><td>&lsquo;at the top of&rsquo; &rarr; listen for <em>on the top floor of&hellip;</em></td><td class="note">hotel</td></tr>
+<tr><td><span class="word">Q7</span></td><td>All the <b>(7)</b> are very good</td><td><b>PLURAL NOUN</b></td><td>&lsquo;are&rsquo; tells you the answer is plural. Clue: <em>a lot about it in the press</em>.</td><td class="note">reviews</td></tr>
+<tr><td><span class="word">Q8</span></td><td>Only uses <b>(8)</b> ingredients</td><td><b>ADJECTIVE</b></td><td>Clue: <em>sourced within a short distance / nothing flown in from abroad</em>.</td><td class="note">local</td></tr>
+<tr><td><span class="word">Q9</span></td><td>Set lunch costs <b>(9)</b> per person</td><td><b>NUMBER (money)</b></td><td>&lsquo;per person&rsquo; = <em>a head</em>. Two prices are mentioned &mdash; take the LUNCH one.</td><td class="note">30 / &pound;30</td></tr>
+<tr><td><span class="word">Q10</span></td><td>Portions probably of <b>(10)</b> size</td><td><b>ADJECTIVE</b></td><td>&lsquo;tiny&rsquo; is the distractor in the question; the reply gives the real answer.</td><td class="note">average</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Good for people who are especially <b>keen on</b> (1)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The food&rsquo;s amazing. If you <b>like</b> fish, it&rsquo;s probably the best restaurant in town for that.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">keen on = like / be very interested in / be a fan of</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence about yourself using &lsquo;keen on&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;The (2) is <b>a good place for a drink</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Before dinner, you can <b>go up on the roof and have a drink</b>. It&rsquo;s really nice up there.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a good place for a drink = it&rsquo;s really nice up there + you can have a drink</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;It&rsquo;s a good place to eat&rsquo; using &lsquo;you can&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;A <b>limited selection</b> of (4) food on the menu&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;I&rsquo;d say the <b>selection of those would be quite limited</b>&rdquo; &mdash; replying to a question about dishes for friends who <b>have stopped eating meat</b>.</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">people who have stopped eating meat = vegetarians &rarr; vegetarian food</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a menu you know using &lsquo;a limited selection of&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;All the (7) <b>are very good</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;There&rsquo;s been a lot about it <b>in the press</b>&hellip; it&rsquo;s had <b>excellent reviews from all the newspapers</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">very good = excellent; newspapers/press write &rarr; reviews (plural, because of &lsquo;are&rsquo;)</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;had excellent reviews&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Only uses (8) <b>ingredients</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;She only likes cooking with <b>local products</b>&hellip; everything has to be <b>sourced within a short distance</b> and absolutely <b>nothing flown in from abroad</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">sourced within a short distance / nothing from abroad = local</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Explain in one sentence why a restaurant might use local ingredients&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Set lunch costs (9) <b>per person</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;You could go for the set lunch&hellip; <b>&pound;30 a head</b>. In the evening, I think it would be more like &pound;50.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">per person = a head / each. Two figures are given &mdash; match the one to <em>lunch</em>.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a price sentence using &lsquo;a head&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;Portions probably of (10) <b>size</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Woman: &ldquo;It&rsquo;s not the kind of place you leave feeling hungry, though, is it? With <b>tiny</b> portions?&rdquo; Friend: &ldquo;No&hellip; I imagine they&rsquo;d be <b>average</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The question contains the distractor (<em>tiny</em>); the ANSWER is in the reply (<em>average</em>).</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence contrasting &lsquo;tiny&rsquo; and &lsquo;average&rsquo; portions&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;somewhere to celebrate my sister&rsquo;s 30th birthday&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;only about a two-minute walk from the station&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;there are lots of interesting dishes to choose from&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;you need to pay a &pound;50 deposit to book a table&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;it&rsquo;s in that hotel near Baxter Bridge, on the top floor&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;everything has to be sourced within a short distance&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;that&rsquo;s quite reasonable for a top-class restaurant&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;I imagine the portions would be average&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why does the woman need a restaurant recommendation?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. She is meeting a client for a business dinner.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. She is celebrating her sister&rsquo;s 30th birthday.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. She is organising her mother&rsquo;s 50th birthday.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. She has just moved to the town.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Which word in the audio matches &lsquo;keen on&rsquo; in the question paper?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. amazing</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. fresh</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. like</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. interesting</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Why is the roof at The Junction popular?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. The views from it are spectacular.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Drinks there are cheaper.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. It is the only place you can eat fish.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. It does not require a booking.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What does the friend say about Paloma&rsquo;s location?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It is near the station.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It is on the top floor of a hotel.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It is in an old building next to the cinema.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. It is a long walk from the town centre.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">The note says &lsquo;A limited selection of (4) food&rsquo;. Which clue leads to the answer?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. The chef used to work at Don Filipes.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. A couple of her friends have stopped eating meat.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. You can get lots of small dishes to share.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. You need to pay a &pound;50 deposit.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How is the third restaurant&rsquo;s name spelled in the recording?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. O-R-L-E-Y</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. A-U-D-L-E-Y</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. A-U-D-L-E-I</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. O-A-D-L-E-Y</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why does the woman say &lsquo;I don&rsquo;t tend to pay much attention to that kind of thing&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. She does not follow news and press coverage.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. She dislikes expensive restaurants.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. She never reads menus in advance.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. She does not trust her friend&rsquo;s advice.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does &lsquo;sourced within a short distance&rsquo; tell you about the ingredients?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. They are cheap.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. They are organic.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. They are local.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. They are imported.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The set lunch is described as &lsquo;quite reasonable&rsquo;. What does this mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. The price is fair, not too high.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. The food is only average.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. The portions are small.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. You must book well in advance.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Two prices are mentioned for The Audley. Which one is the answer for Q9?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. &pound;50, because that is the evening price.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. &pound;50, because that is the deposit.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. &pound;30, because the note asks about the set lunch.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. &pound;30, because it is the cheaper of the two.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which sentence contains the answer to Q10 (portion size)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. &lsquo;It&rsquo;s not the kind of place you leave feeling hungry, with tiny portions?&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. &lsquo;The reviews I&rsquo;ve read didn&rsquo;t mention that. I imagine they&rsquo;d be average.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. &lsquo;The food is supposed to be really special.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. &lsquo;Everyone would enjoy it.&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the best overall strategy for this note-completion table?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Write down every number you hear and choose later.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Predict the word type for each gap and follow the restaurants in order.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Only listen for the restaurant names.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Wait until the end and fill everything in from memory.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1–10</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">fish</div><div class="answer-note">&lsquo;If you <em>like</em> fish&hellip; probably the best restaurant in town for that.&rsquo; &lsquo;like&rsquo; = &lsquo;keen on&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">roof</div><div class="answer-note">&lsquo;You can go up on the <em>roof</em> and have a drink.&rsquo; Write the exact word &mdash; not &lsquo;rooftop&rsquo; or &lsquo;terrace&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">Spanish</div><div class="answer-note">The chef used to work at Don Filipes and serves &lsquo;small dishes to share&rsquo;; the woman asks &lsquo;is all the food they serve <em>Spanish</em>?&rsquo; &mdash; capital S.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">vegetarian</div><div class="answer-note">&lsquo;A couple of my friends have stopped eating meat&rsquo; &rarr; vegetarian; &lsquo;the selection of those would be quite limited&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">Audley</div><div class="answer-note">Spelled out in the audio: A-U-D-L-E-Y. The word &lsquo;The&rsquo; is already on the question paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">hotel</div><div class="answer-note">&lsquo;It&rsquo;s in that <em>hotel</em> near Baxter Bridge, on the top floor.&rsquo; &lsquo;top floor&rsquo; = &lsquo;at the top of&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">reviews</div><div class="answer-note">&lsquo;It&rsquo;s had excellent <em>reviews</em> from all the newspapers.&rsquo; PLURAL is required by &lsquo;are&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">local</div><div class="answer-note">&lsquo;Everything has to be sourced within a short distance&hellip; nothing flown in from abroad.&rsquo; = <em>local</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">30 / &pound;30</div><div class="answer-note">&lsquo;&pound;30 a head&rsquo; for the set lunch. &pound;50 is the evening estimate &mdash; a distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">average</div><div class="answer-note">The woman suggests &lsquo;tiny portions&rsquo;; the friend replies &lsquo;I imagine they&rsquo;d be <em>average</em>&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the real exam gaps)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">fish</div><div class="answer-note">The Junction is especially good for people who are keen on</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">roof</div><div class="answer-note">At The Junction you can go up on the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">Spanish</div><div class="answer-note">Paloma serves</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">vegetarian</div><div class="answer-note">Paloma has only a limited selection of</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">Audley</div><div class="answer-note">The third restaurant the friend suggests is called The</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">hotel</div><div class="answer-note">The Audley is at the top of a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">reviews</div><div class="answer-note">All the</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">local</div><div class="answer-note">The chef at The Audley only uses</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">30</div><div class="answer-note">The set lunch at The Audley costs &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">average</div><div class="answer-note">The portions at The Audley are probably of</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">reputation</div><div class="answer-note">The restaurant opened only a few months ago but it already has a great</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">spectacular</div><div class="answer-note">The views from the roof are absolutely</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">reasonable</div><div class="answer-note">&pound;30 for a set lunch is quite</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">locally</div><div class="answer-note">Everything on the menu is</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">limited</div><div class="answer-note">There is only a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">reviews</div><div class="answer-note">The note says &lsquo;All the ___ are very good&rsquo;, so the answer must be the plural noun</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">restaurant</div><div class="answer-note">r _ s t a u r a n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">vegetarian</div><div class="answer-note">v e g e t _ r i a n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">ingredients</div><div class="answer-note">i n g r e d _ e n t s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">atmosphere</div><div class="answer-note">a t m o s p h _ r e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">spectacular</div><div class="answer-note">s p e c t a c _ l a r  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">Audley</div><div class="answer-note">The speaker spells the name out: A&ndash;U&ndash;D&ndash;L&ndash;E&ndash;Y  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Money</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">30th</div><div class="answer-note">The woman is booking a meal for her sister&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">2</div><div class="answer-note">The Junction is about a</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">50</div><div class="answer-note">Paloma asks customers for a deposit of &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">30</div><div class="answer-note">The set lunch at The Audley is &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">50</div><div class="answer-note">An evening meal at The Audley is likely to cost around &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">cookery</div><div class="answer-note">The famous chef was recently a judge on a TV</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">fish</div><div class="answer-note">Audio: &ldquo;If you like fish, it&rsquo;s probably the best restaurant in town.&rdquo; &rarr; Note: keen on</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">roof</div><div class="answer-note">Audio: &ldquo;You can go up on the ___ and have a drink.&rdquo; &rarr; Note: a good place for a drink = the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">local</div><div class="answer-note">Audio: &ldquo;Everything has to be sourced within a short distance.&rdquo; &rarr; Note: only uses</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">reviews</div><div class="answer-note">Audio: &ldquo;It&rsquo;s had excellent reviews from all the newspapers.&rdquo; &rarr; Note: all the</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">average</div><div class="answer-note">Audio: &ldquo;I imagine they&rsquo;d be average.&rdquo; &rarr; Note: portions probably of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">30</div><div class="answer-note">Audio: &ldquo;That&rsquo;s &pound;30 a head.&rdquo; &rarr; Note: set lunch costs &pound;</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">fish &mdash; NOUN &mdash; a type of food</div><div class="answer-note">&lsquo;keen on&rsquo; + food topic. Listen for a positive word: <em>the best in town for&hellip;</em></div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">roof &mdash; NOUN &mdash; a place in the building</div><div class="answer-note">&lsquo;a good place for a drink&rsquo; &rarr; listen for <em>go up on the&hellip;</em></div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">Spanish &mdash; ADJECTIVE &mdash; a nationality</div><div class="answer-note">Capital letter needed. Clue: <em>small dishes to share</em> + the chef&rsquo;s old restaurant name.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">vegetarian &mdash; ADJECTIVE &mdash; a diet type</div><div class="answer-note">&lsquo;limited&rsquo; = a drawback. Clue: <em>friends have stopped eating meat</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">Audley &mdash; PROPER NOUN &mdash; a restaurant name</div><div class="answer-note">Names are usually spelled out letter by letter. Write the letters down as you hear them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">hotel &mdash; NOUN &mdash; a type of building</div><div class="answer-note">&lsquo;at the top of&rsquo; &rarr; listen for <em>on the top floor of&hellip;</em></div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">reviews &mdash; PLURAL NOUN</div><div class="answer-note">&lsquo;are&rsquo; tells you the answer is plural. Clue: <em>a lot about it in the press</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">local &mdash; ADJECTIVE</div><div class="answer-note">Clue: <em>sourced within a short distance / nothing flown in from abroad</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">30 / &pound;30 &mdash; NUMBER (money)</div><div class="answer-note">&lsquo;per person&rsquo; = <em>a head</em>. Two prices are mentioned &mdash; take the LUNCH one.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">average &mdash; ADJECTIVE</div><div class="answer-note">&lsquo;tiny&rsquo; is the distractor in the question; the reply gives the real answer.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">somewhere to celebrate my sister&rsquo;s 30th birthday</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">only about a two-minute walk from the station</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">there are lots of interesting dishes to choose from</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">you need to pay a &pound;50 deposit to book a table</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">it&rsquo;s in that hotel near Baxter Bridge, on the top floor</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">everything has to be sourced within a short distance</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">that&rsquo;s quite reasonable for a top-class restaurant</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">I imagine the portions would be average</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. She is celebrating her sister&rsquo;s 30th birthday.</div><div class="answer-note">The friend went to The Junction for her <em>own</em> mother&rsquo;s 50th &mdash; that is the distractor. The woman is booking for her sister&rsquo;s 30th.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. like</div><div class="answer-note">&lsquo;If you <em>like</em> fish&hellip;&rsquo; = &lsquo;people who are especially <em>keen on</em> fish&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">A. The views from it are spectacular.</div><div class="answer-note">&lsquo;It&rsquo;s very popular as the views are spectacular.&rsquo; Note the opposite of D: you actually <em>do</em> need to book.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. It is in an old building next to the cinema.</div><div class="answer-note">&lsquo;It&rsquo;s in a really beautiful old building on Bow Street&rsquo; &mdash; &lsquo;right beside the cinema&rsquo;. A describes The Junction; B describes The Audley.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. A couple of her friends have stopped eating meat.</div><div class="answer-note">&lsquo;Stopped eating meat&rsquo; = vegetarian. The friend then says the selection of <em>those</em> would be quite limited.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. A-U-D-L-E-Y</div><div class="answer-note">The speaker spells it out because the woman has not heard of it: A-U-D-L-E-Y &rarr; <strong>Audley</strong>. Always write the letters as you hear them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A. She does not follow news and press coverage.</div><div class="answer-note">The friend had just said there had been &lsquo;a lot about it in the press&rsquo;. This line sets up the later answer <em>reviews</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. They are local.</div><div class="answer-note">&lsquo;Within a short distance&rsquo; + &lsquo;nothing flown in from abroad&rsquo; = <strong>local</strong> (Q8). D is the exact opposite.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">A. The price is fair, not too high.</div><div class="answer-note">&lsquo;Reasonable&rsquo; describes price. It signals that the number you need (&pound;30) is about to be said.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C. &pound;30, because the note asks about the set lunch.</div><div class="answer-note">Match the number to its label. &pound;50 is the evening estimate (and also Paloma&rsquo;s deposit). The note specifically says <em>Set lunch</em>, so &pound;30 is correct.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. &lsquo;The reviews I&rsquo;ve read didn&rsquo;t mention that. I imagine they&rsquo;d be average.&rsquo;</div><div class="answer-note">A contains the distractor <em>tiny</em>, inside a question. In IELTS Listening the answer is almost always in the <em>reply</em>, not the question.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Predict the word type for each gap and follow the restaurants in order.</div><div class="answer-note">Answers follow the order of the three restaurants. Predicting NOUN / ADJECTIVE / NUMBER for each gap stops you writing a grammatically impossible word.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Listening Part 3</h1>
+    <h2>Choosing a Human Geography Topic · Matching Opinions + Multiple Choice (Q21&ndash;30)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two university students, <strong>Rosie</strong> and <strong>Colin</strong>, are trying to narrow down a topic for their human geography assignment. First they run through five aspects of the subject &mdash; population, health, economies, culture and poverty &mdash; and you must match each one to <strong>the opinion the two of them share</strong>. They then settle on urban issues and discuss problems in their own cities, new developments on the outskirts, disused industrial sites, Masdar City in Abu Dhabi and an English eco town, tested by five multiple-choice questions.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two undergraduates, Rosie and Colin, planning an assignment together. Neither is an expert; they think aloud, disagree politely and correct each other, which is exactly what creates the distractors.</p><p><strong>The situation 情境:</strong> 两名大学生 Rosie 和 Colin 要为"人文地理"（human geography）作业选题。他们先逐一评价五个分支领域——人口、健康、经济、文化、贫困，每个领域配一句共同看法（七选五，顺序不按题号）；随后把范围缩小到城市问题，讨论各自城市的主要问题、城郊新建设施、废弃工业用地再开发，以及阿布扎比的 Masdar City 和英国的 Greenhill Abbots 生态城，最后五题为单选。</p><p><strong>Task type:</strong> Q21&ndash;25 matching &mdash; choose FIVE opinions from a box of SEVEN (A&ndash;G), each used once. Q26&ndash;30 multiple choice, three options each. You write only letters, so accuracy of <em>understanding</em> is everything.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> This is the hardest matching format in the test: <strong>opinions</strong>, not facts. Seven options, five answers, and the answers do <em>not</em> follow the order printed in the box &mdash; they follow the order the students happen to raise the topics. So keep your eyes on the five <strong>aspects</strong> (population, health, economies, culture, poverty) and let the options come to you. Before you listen, translate each option into one short idea: A = too vague, B = not on our course, C = few statistics, D = easy to research, E = unreliable data, F = no research exists, G = interesting. Then listen for the students&rsquo; <em>reaction word</em>: &lsquo;lots of facts&rsquo;, &lsquo;too general&rsquo;, &lsquo;taken off the syllabus&rsquo;, &lsquo;deliberately manipulated&rsquo;. For the MCQs, remember that in a two-speaker discussion the answer is usually the point both students <strong>agree</strong> on, not the first idea either of them offers.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>The five aspects are NOT discussed in question order.</b> The box lists Population, Health, Economies, Culture, Poverty, but the students jump around. Tick each aspect off as it is named rather than waiting for the next number.</li><li><b>D (easy to find facts) vs C (only a small number of statistics)</b> &mdash; population brings &lsquo;lots of facts and statistics&rsquo;, which means D. C is the opposite and is never true of any topic here.</li><li><b>&ldquo;Maybe a bit boring&rdquo; is not an option.</b> Candidates hear a negative comment and reach for A or F. The examinable idea is the <em>availability of facts</em>, not the students&rsquo; enthusiasm.</li><li><b>A (too vague) belongs to culture</b> &mdash; the lecture was &lsquo;too general&rsquo; with &lsquo;no useful examples&rsquo;. It is easy to attach this to health, which they actually found interesting (G).</li><li><b>Q26: crime is stated first</b> (theft and robbery) and homelessness is stated last, but Rosie calls unemployment &lsquo;a more serious issue&rsquo; that is &lsquo;getting worse and worse&rsquo;, and says homelessness is &lsquo;not quite so bad as it was&rsquo;.</li><li><b>Q27: shopping centres are the loudest detail</b> &mdash; but they are followed by a complaint (city centre shops closing). Only the conference centres get a positive response from both students.</li><li><b>Q29: three green features of Masdar City</b> &mdash; recycling, pedestrianisation and renewable energy. The deciding line is &lsquo;let&rsquo;s stick to talking about power sources&rsquo;.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">human geography</span></td><td><span class="pos">n.</span></td><td>the study of people, societies and places rather than physical landforms</td><td class="zh">人文地理学</td><td>&ldquo;I&rsquo;m really struggling to think of a topic for our <em>human geography</em> assignment.&rdquo;</td><td class="note">The subject frame for Q21&ndash;25. Its branches (population, health, economies, culture, poverty) are the five question stems.</td></tr>
+<tr><td><span class="word">narrow down</span></td><td><span class="pos">phr. v.</span></td><td>to reduce a wide subject to a smaller, more manageable one</td><td class="zh">缩小（范围）</td><td>&ldquo;See if we can <em>narrow</em> the topic <em>down</em> a bit to help us decide.&rdquo;</td><td class="note">A study-skills phrase that appears constantly in Part 3 tutorials.</td></tr>
+<tr><td><span class="word">population density</span></td><td><span class="pos">n. phr.</span></td><td>the number of people living in each unit of area</td><td class="zh">人口密度</td><td>&ldquo;That would be all about <em>population density</em> and migration.&rdquo;</td><td class="note">Part of the &lsquo;lots of facts and statistics&rsquo; comment that gives Q21 the answer D.</td></tr>
+<tr><td><span class="word">migration</span></td><td><span class="pos">n.</span></td><td>the movement of people from one place to another to live</td><td class="zh">迁移；移民</td><td>&ldquo;Population density and <em>migration</em> and so on.&rdquo;</td><td class="note">Typical population-topic vocabulary. Do not confuse with &lsquo;immigration&rsquo;.</td></tr>
+<tr><td><span class="word">statistics</span></td><td><span class="pos">n. pl.</span></td><td>numerical facts collected and analysed</td><td class="zh">统计数据</td><td>&ldquo;Lots of facts and <em>statistics</em>. Maybe a bit boring.&rdquo;</td><td class="note"><strong>Q21 key.</strong> Plenty of statistics = &lsquo;easy to find facts about this&rsquo; (D), the opposite of option C.</td></tr>
+<tr><td><span class="word">syllabus</span></td><td><span class="pos">n.</span></td><td>the list of topics that a course covers</td><td class="zh">教学大纲；课程内容</td><td>&ldquo;I thought that had been taken off the <em>syllabus</em> for this year.&rdquo;</td><td class="note"><strong>Q23 key.</strong> Off the syllabus = &lsquo;may not be relevant to their course&rsquo; (B).</td></tr>
+<tr><td><span class="word">avoid</span></td><td><span class="pos">v.</span></td><td>to keep away from something; to choose not to do it</td><td class="zh">避免；避开</td><td>&ldquo;I&rsquo;m not sure, but it might be best to <em>avoid</em> it.&rdquo;</td><td class="note">The conclusion that confirms the topic is off-limits &mdash; a strong signal of option B.</td></tr>
+<tr><td><span class="word">general</span></td><td><span class="pos">adj.</span></td><td>not detailed or specific</td><td class="zh">笼统的；泛泛的</td><td>&ldquo;It was all too <em>general</em> and the lecturer didn&rsquo;t give any useful examples.&rdquo;</td><td class="note"><strong>Q24 key.</strong> too general = &lsquo;too vague&rsquo; (A). Notice the double proof: no useful examples.</td></tr>
+<tr><td><span class="word">get much out of something</span></td><td><span class="pos">phr.</span></td><td>to gain a lot of benefit from it</td><td class="zh">从中收获很多</td><td>&ldquo;I didn&rsquo;t <em>get much out of</em> that.&rdquo;</td><td class="note">A negative reaction to the culture lecture. Supports A rather than G.</td></tr>
+<tr><td><span class="word">figure</span></td><td><span class="pos">n.</span></td><td>a number representing an amount or quantity</td><td class="zh">数字；数据</td><td>&ldquo;You have to be careful with some of the <em>figures</em> relating to poverty.&rdquo;</td><td class="note"><strong>Q25 key.</strong> figures = data. &lsquo;Be careful with&rsquo; = they may not be reliable.</td></tr>
+<tr><td><span class="word">manipulate</span></td><td><span class="pos">v.</span></td><td>to change something dishonestly to get the result you want</td><td class="zh">操纵；篡改</td><td>&ldquo;They&rsquo;re sometimes deliberately <em>manipulated</em>.&rdquo;</td><td class="note">The clinching word for option E (unreliable). Deliberately manipulated data cannot be trusted.</td></tr>
+<tr><td><span class="word">theft</span></td><td><span class="pos">n.</span></td><td>the crime of stealing</td><td class="zh">偷窃；盗窃</td><td>&ldquo;Things like <em>theft</em> and robbery.&rdquo;</td><td class="note">Q26 distractor A (crime). It is mentioned first, but it is not what Rosie calls the main problem.</td></tr>
+<tr><td><span class="word">homeless</span></td><td><span class="pos">adj.</span></td><td>having nowhere to live</td><td class="zh">无家可归的</td><td>&ldquo;We still have quite a lot of people who are <em>homeless</em>, though that&rsquo;s not quite so bad as it was.&rdquo;</td><td class="note">Q26 distractor B (housing). &lsquo;Not quite so bad as it was&rsquo; = improving, so not the main problem.</td></tr>
+<tr><td><span class="word">unemployment</span></td><td><span class="pos">n.</span></td><td>the situation of not having a job</td><td class="zh">失业</td><td>&ldquo;A lot of people don&rsquo;t have jobs. That&rsquo;s getting worse and worse.&rdquo;</td><td class="note"><strong>Q26 answer (C).</strong> The word itself is never said &mdash; you must decode &lsquo;don&rsquo;t have jobs&rsquo;.</td></tr>
+<tr><td><span class="word">outskirts</span></td><td><span class="pos">n. pl.</span></td><td>the outer parts of a town or city</td><td class="zh">郊区；市郊</td><td>&ldquo;Some of the new developments on the <em>outskirts</em> of cities.&rdquo;</td><td class="note">Printed in Q27, so it tells you exactly where the recording is.</td></tr>
+<tr><td><span class="word">retail</span></td><td><span class="pos">adj./n.</span></td><td>connected with selling goods to the public</td><td class="zh">零售的；零售业</td><td>&ldquo;They&rsquo;ve opened some massive new shopping centres outside my city.&rdquo;</td><td class="note">Q27 distractor C. Shopping centre = retail centre, but the students are unhappy about the effect on the city centre.</td></tr>
+<tr><td><span class="word">conference</span></td><td><span class="pos">n.</span></td><td>a large formal meeting for discussion</td><td class="zh">会议；大会</td><td>&ldquo;The outskirts are ideal for buildings that need a lot of space, like for <em>conferences</em>.&rdquo;</td><td class="note"><strong>Q27 answer (A).</strong> Both students confirm they have some: &lsquo;They&rsquo;ve opened a couple of big ones&rsquo; / &lsquo;we&rsquo;ve got some, too&rsquo;.</td></tr>
+<tr><td><span class="word">facilities</span></td><td><span class="pos">n. pl.</span></td><td>buildings or equipment provided for a particular purpose</td><td class="zh">设施</td><td>&ldquo;It&rsquo;d be nicer to have more <em>facilities</em> for things like football.&rdquo;</td><td class="note">Q27 distractor B (sports centres) &mdash; a wish, not a real development: &lsquo;that&rsquo;s not happening where I live&rsquo;.</td></tr>
+<tr><td><span class="word">disused</span></td><td><span class="pos">adj.</span></td><td>no longer used</td><td class="zh">废弃的；停用的</td><td>&ldquo;Something about developing <em>disused</em> industrial sites.&rdquo;</td><td class="note">Printed in Q28. Synonyms you may meet: abandoned, derelict, brownfield.</td></tr>
+<tr><td><span class="word">significant</span></td><td><span class="pos">adj.</span></td><td>important enough to be worth noticing</td><td class="zh">重要的；有意义的</td><td>&ldquo;Aren&rsquo;t the buildings architecturally <em>significant</em>?&rdquo;</td><td class="note">Q28 distractor C (historical buildings). Colin answers &lsquo;Not really&rsquo; &mdash; a two-word rejection that is very easy to miss.</td></tr>
+<tr><td><span class="word">budget for</span></td><td><span class="pos">phr. v.</span></td><td>to include something in a financial plan</td><td class="zh">为……编列预算</td><td>&ldquo;That can&rsquo;t be cheap. And I bet it&rsquo;s often not <em>budgeted for</em>.&rdquo;</td><td class="note"><strong>Q28 answer (A).</strong> Not budgeted for = unexpected costs. Colin agrees: &lsquo;You&rsquo;re right.&rsquo;</td></tr>
+<tr><td><span class="word">renewable energy</span></td><td><span class="pos">n. phr.</span></td><td>power from sources that do not run out, such as sun or wind</td><td class="zh">可再生能源</td><td>&ldquo;A city which set out to depend entirely on <em>renewable energy</em>.&rdquo;</td><td class="note"><strong>Q29 answer (B).</strong> renewable energy = sustainable energy use.</td></tr>
+<tr><td><span class="word">pedestrianised</span></td><td><span class="pos">adj.</span></td><td>made into an area where only people on foot may go</td><td class="zh">步行化的；行人专用的</td><td>&ldquo;It was designed to be totally <em>pedestrianised</em> too, with the transport underground.&rdquo;</td><td class="note">Q29 distractor C. Underground transport is mentioned, but nobody says it is free.</td></tr>
+<tr><td><span class="word">waste</span></td><td><span class="pos">n.</span></td><td>material that is thrown away</td><td class="zh">废弃物；垃圾</td><td>&ldquo;They had big plans for recycling to reduce <em>waste</em> to the lowest possible level.&rdquo;</td><td class="note">Q29 distractor A. Recycling is real, but &lsquo;let&rsquo;s stick to talking about power sources&rsquo; rules it out; and &lsquo;daily collections&rsquo; is never said.</td></tr>
+<tr><td><span class="word">sustainability</span></td><td><span class="pos">n.</span></td><td>the ability to continue without damaging the environment</td><td class="zh">可持续性</td><td>&ldquo;It set out to conform to the usual principles, <em>sustainability</em> and so on.&rdquo;</td><td class="note">Q30 distractor A: the eco town&rsquo;s objectives ARE known, so that is not the uncertainty.</td></tr>
+<tr><td><span class="word">unrealistic</span></td><td><span class="pos">adj.</span></td><td>not sensible or possible in practice</td><td class="zh">不切实际的</td><td>&ldquo;A lot of people were against it at first. They said the plans were <em>unrealistic</em>.&rdquo;</td><td class="note">Q30 distractor B: the reason for the opposition IS given, so it is not what is uncertain.</td></tr>
+<tr><td><span class="word">how far they&rsquo;ve got with it</span></td><td><span class="pos">phr.</span></td><td>how much progress has been made</td><td class="zh">进展到什么程度了</td><td>&ldquo;I&rsquo;m not sure <em>how far they&rsquo;ve got with it</em>.&rdquo;</td><td class="note"><strong>Q30 answer (C).</strong> This is the only open question left about Greenhill Abbots.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">struggle to think of a topic</span></td><td>find it hard to come up with a subject</td><td class="zh">想不出题目，很纠结</td></tr>
+<tr><td><span class="phrase">narrow the topic down</span></td><td>make the subject smaller and more focused</td><td class="zh">把题目范围缩小</td></tr>
+<tr><td><span class="phrase">and so on</span></td><td>et cetera; and other similar things</td><td class="zh">等等</td></tr>
+<tr><td><span class="phrase">a bit boring</span></td><td>slightly uninteresting</td><td class="zh">有点无聊</td></tr>
+<tr><td><span class="phrase">take something off the syllabus</span></td><td>remove a topic from the course</td><td class="zh">把某内容从大纲中删掉</td></tr>
+<tr><td><span class="phrase">it might be best to avoid it</span></td><td>the safest choice is not to use it</td><td class="zh">最好还是避开它</td></tr>
+<tr><td><span class="phrase">I didn&rsquo;t get much out of that</span></td><td>it was not very useful to me</td><td class="zh">我没从中学到什么</td></tr>
+<tr><td><span class="phrase">too general</span></td><td>not specific or detailed enough</td><td class="zh">太笼统了</td></tr>
+<tr><td><span class="phrase">give useful examples</span></td><td>provide helpful illustrations of a point</td><td class="zh">举出有用的例子</td></tr>
+<tr><td><span class="phrase">a global problem</span></td><td>a difficulty affecting the whole world</td><td class="zh">全球性问题</td></tr>
+<tr><td><span class="phrase">be careful with the figures</span></td><td>treat the data with caution</td><td class="zh">对数据要谨慎</td></tr>
+<tr><td><span class="phrase">deliberately manipulated</span></td><td>changed on purpose to mislead</td><td class="zh">被故意操纵</td></tr>
+<tr><td><span class="phrase">where I come from</span></td><td>in the place I am from</td><td class="zh">在我老家</td></tr>
+<tr><td><span class="phrase">getting worse and worse</span></td><td>continuing to decline</td><td class="zh">越来越糟</td></tr>
+<tr><td><span class="phrase">not quite so bad as it was</span></td><td>somewhat better than before</td><td class="zh">不像以前那么严重了</td></tr>
+<tr><td><span class="phrase">on the outskirts of cities</span></td><td>in the areas around the edge of cities</td><td class="zh">在城市的郊区</td></tr>
+<tr><td><span class="phrase">closing down</span></td><td>shutting permanently</td><td class="zh">倒闭；关门</td></tr>
+<tr><td><span class="phrase">buildings that need a lot of space</span></td><td>structures requiring large sites</td><td class="zh">需要大片场地的建筑</td></tr>
+<tr><td><span class="phrase">do harm to the natural environment</span></td><td>damage nature</td><td class="zh">破坏自然环境</td></tr>
+<tr><td><span class="phrase">properly cleared away</span></td><td>completely removed</td><td class="zh">彻底清除干净</td></tr>
+<tr><td><span class="phrase">made safe</span></td><td>treated so that it is no longer dangerous</td><td class="zh">做安全处理</td></tr>
+<tr><td><span class="phrase">That can&rsquo;t be cheap</span></td><td>that must be expensive</td><td class="zh">那肯定不便宜</td></tr>
+<tr><td><span class="phrase">I bet it&rsquo;s often not budgeted for</span></td><td>I am sure it is usually left out of the financial plan</td><td class="zh">我敢说这笔钱常常没算进预算</td></tr>
+<tr><td><span class="phrase">set out to do something</span></td><td>begin with the aim of doing it</td><td class="zh">一开始就打算做某事</td></tr>
+<tr><td><span class="phrase">depend entirely on&hellip;</span></td><td>rely completely on something</td><td class="zh">完全依赖……</td></tr>
+<tr><td><span class="phrase">reduce waste to the lowest possible level</span></td><td>cut rubbish as far as it can go</td><td class="zh">把废弃物降到最低</td></tr>
+<tr><td><span class="phrase">stick to talking about&hellip;</span></td><td>keep to one subject only</td><td class="zh">只谈……不跑题</td></tr>
+<tr><td><span class="phrase">conform to the usual principles</span></td><td>follow the standard rules or ideas</td><td class="zh">遵循通行原则</td></tr>
+<tr><td><span class="phrase">be against something</span></td><td>oppose it</td><td class="zh">反对某事</td></tr>
+<tr><td><span class="phrase">how far they&rsquo;ve got with it</span></td><td>how much progress has been made</td><td class="zh">进展到哪一步了</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Matching &amp; Multiple Choice (the real exam answers)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct <strong>LETTER</strong> for each question. Q21&ndash;25 use the opinion box A&ndash;G; Q26&ndash;30 use A, B or C.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q21 &mdash; Population: <input type="text" class="blank" id="b1" data-answer="D" placeholder="______"> (it will be easy to find facts about this)<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q22 &mdash; Health: <input type="text" class="blank" id="b2" data-answer="G" placeholder="______"> (the information provided about this was interesting)<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q23 &mdash; Economies: <input type="text" class="blank" id="b3" data-answer="B" placeholder="______"> (this may not be relevant to their course)<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q24 &mdash; Culture: <input type="text" class="blank" id="b4" data-answer="A" placeholder="______"> (the information given about this was too vague)<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q25 &mdash; Poverty: <input type="text" class="blank" id="b5" data-answer="E" placeholder="______"> (the facts about this may not be reliable)<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q26 &mdash; the main problem in Rosie&rsquo;s own city: <input type="text" class="blank" id="b6" data-answer="C" placeholder="______"> (unemployment)<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q27 &mdash; the new additions to the outskirts both students like: <input type="text" class="blank" id="b7" data-answer="A" placeholder="______"> (conference centres)<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q28 &mdash; developing disused industrial sites may: <input type="text" class="blank" id="b8" data-answer="A" placeholder="______"> (have unexpected costs)<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Q29 &mdash; Masdar City will be used as an example of: <input type="text" class="blank" id="b9" data-answer="B" placeholder="______"> (sustainable energy use)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Q30 &mdash; about Greenhill Abbots, Colin is uncertain about: <input type="text" class="blank" id="b10" data-answer="C" placeholder="______"> (how much has actually been built)<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Key Words from the Discussion</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with <strong>ONE WORD</strong> used by Rosie or Colin. These are the words that decide the answers.</p><div class="ex-item"><span class="ex-num">1.</span><label>Population would mean population density, <input type="text" class="blank" id="b11" data-answer="migration" placeholder="______"> and lots of statistics.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Colin thinks one aspect has been taken off the <input type="text" class="blank" id="b12" data-answer="syllabus" placeholder="______"> for this year.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The lecture on culture was too <input type="text" class="blank" id="b13" data-answer="general" placeholder="______"> and had no useful examples.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Dr Lee warned that some poverty figures are deliberately <input type="text" class="blank" id="b14" data-answer="manipulated" placeholder="______">.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>In Rosie&rsquo;s city, a lot of people do not have <input type="text" class="blank" id="b15" data-answer="jobs" placeholder="______">.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>New developments are appearing on the <input type="text" class="blank" id="b16" data-answer="outskirts" placeholder="______"> of both cities.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>The outskirts are ideal for buildings used for <input type="text" class="blank" id="b17" data-answer="conferences" placeholder="______">.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Old industrial sites often contain dangerous <input type="text" class="blank" id="b18" data-answer="chemicals" placeholder="______"> that must be removed.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Masdar City was designed to depend entirely on <input type="text" class="blank" id="b19" data-answer="renewable" placeholder="______"> energy.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Opponents of the eco town said the plans were <input type="text" class="blank" id="b20" data-answer="unrealistic" placeholder="______">.<span class="feedback" id="fb20"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Academic words from this discussion that candidates regularly misspell. Type the full correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>g e o g r _ p h y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="geography" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>s t a t i s t _ c s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="statistics" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>s y l l _ b u s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="syllabus" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>s u s t a i n a b _ l i t y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="sustainability" placeholder="______"><span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>e n v i r _ n m e n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b25" data-answer="environment" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>u n e m p l _ y m e n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b26" data-answer="unemployment" placeholder="______"><span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>a r c h i t e c t u r _ l l y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b27" data-answer="architecturally" placeholder="______"><span class="feedback" id="fb27"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Every root below comes from this recording.</p><div class="ex-item"><span class="ex-num">1.</span><label>The students want to <input type="text" class="blank" id="b28" data-answer="narrow" placeholder="______"> (NARROWER) the topic down.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The lecturer failed to give any <input type="text" class="blank" id="b29" data-answer="useful" placeholder="______"> (USE) examples.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Some poverty figures may not be <input type="text" class="blank" id="b30" data-answer="reliable" placeholder="______"> (RELY).<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Colin says the buildings are not <input type="text" class="blank" id="b31" data-answer="architecturally" placeholder="______"> (ARCHITECTURE) significant.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The city was designed to run on <input type="text" class="blank" id="b32" data-answer="renewable" placeholder="______"> (RENEW) energy.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>The eco town was meant to follow the principle of <input type="text" class="blank" id="b33" data-answer="sustainability" placeholder="______"> (SUSTAIN).<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>People opposed the plan because they thought it was <input type="text" class="blank" id="b34" data-answer="unrealistic" placeholder="______"> (REALISTIC).<span class="feedback" id="fb34"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Distractor Elimination</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Each pair contains one correct option and one that the recording deliberately mentions. Write the letter of the <strong>correct</strong> one.</p><div class="ex-item"><span class="ex-num">1.</span><label>Population: D (easy to find facts) or C (only a small number of statistics)? <input type="text" class="blank" id="b35" data-answer="D" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Culture: A (too vague) or G (interesting)? <input type="text" class="blank" id="b36" data-answer="A" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Poverty: E (may not be reliable) or F (no useful research has been done)? <input type="text" class="blank" id="b37" data-answer="E" placeholder="______"><span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q26: A (crime) or C (unemployment)? <input type="text" class="blank" id="b38" data-answer="C" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q27: C (retail centres) or A (conference centres)? <input type="text" class="blank" id="b39" data-answer="A" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q28: C (destroy valuable historical buildings) or A (have unexpected costs)? <input type="text" class="blank" id="b40" data-answer="A" placeholder="______"><span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q29: A (daily collections for waste recycling) or B (sustainable energy use)? <input type="text" class="blank" id="b41" data-answer="B" placeholder="______"><span class="feedback" id="fb41"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q30: A (what its objectives were) or C (how much has actually been built)? <input type="text" class="blank" id="b42" data-answer="C" placeholder="______"><span class="feedback" id="fb42"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q21</span></td><td>Population</td><td><b>MATCHING &mdash; an OPINION about availability of material</b></td><td>Listen for whether data is plentiful, scarce or untrustworthy.</td><td class="note">D</td></tr>
+<tr><td><span class="word">Q22</span></td><td>Health</td><td><b>MATCHING &mdash; an OPINION about the material they were given</b></td><td>Listen for a positive reaction word. Only one option in the box is positive.</td><td class="note">G</td></tr>
+<tr><td><span class="word">Q23</span></td><td>Economies</td><td><b>MATCHING &mdash; an OPINION about suitability for the course</b></td><td>Listen for course-related language: syllabus, module, this year, avoid it.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q24</span></td><td>Culture</td><td><b>MATCHING &mdash; an OPINION about the quality of a lecture</b></td><td>Listen for &lsquo;general&rsquo;, &lsquo;no examples&rsquo;, &lsquo;didn&rsquo;t get much out of it&rsquo;.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q25</span></td><td>Poverty</td><td><b>MATCHING &mdash; an OPINION about the trustworthiness of data</b></td><td>Listen for warnings: be careful with, manipulated, misleading.</td><td class="note">E</td></tr>
+<tr><td><span class="word">Q26</span></td><td>In Rosie&rsquo;s own city the main problem is&hellip;</td><td><b>MCQ &mdash; a RANKING of three urban problems</b></td><td>All three are mentioned. Listen for &lsquo;more serious&rsquo; and &lsquo;getting worse&rsquo; versus &lsquo;not so bad as it was&rsquo;.</td><td class="note">C</td></tr>
+<tr><td><span class="word">Q27</span></td><td>recent additions to the outskirts both students are happy about</td><td><b>MCQ &mdash; a POINT OF AGREEMENT, plus a positive attitude</b></td><td>You need two things at once: it must exist in both cities AND both must like it.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q28</span></td><td>developing disused industrial sites may&hellip;</td><td><b>MCQ &mdash; a shared CONCLUSION about a drawback</b></td><td>The answer comes at the end of the exchange, after the two objections have been dismissed.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q29</span></td><td>Masdar City as an example of an attempt to achieve&hellip;</td><td><b>MCQ &mdash; which of three green features they will actually USE</b></td><td>All three features are described. Listen for the sentence that limits their essay to one of them.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q30</span></td><td>about Greenhill Abbots, Colin is uncertain about&hellip;</td><td><b>MCQ &mdash; which piece of information is MISSING</b></td><td>Two of the three are stated as facts. Eliminate what is known; what is left is the uncertainty.</td><td class="note">C</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>D &mdash; It will be easy to find facts about this</b> (Q21, Population)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;That would be all about population density and migration and so on. <b>Lots of facts and statistics.</b> Maybe a bit boring.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">lots of facts and statistics = easy to find facts. &lsquo;A bit boring&rsquo; is a feeling, not one of the seven options &mdash; ignore it.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence about a topic where data is easy to find&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>B &mdash; This may not be relevant to their course</b> (Q23, Economies)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;I thought that had been <b>taken off the syllabus</b> for this year&hellip; I&rsquo;m not sure, but it <b>might be best to avoid it</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">off the syllabus = not part of the course = may not be relevant. Note the hedging (&lsquo;I thought&rsquo;, &lsquo;I&rsquo;m not sure&rsquo;) &mdash; that is why the option says <em>may</em> not.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;This is not on our course&rsquo; using &lsquo;syllabus&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>A &mdash; The information given about this was too vague</b> (Q24, Culture)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;We had that lecture about culture and geography last week. I didn&rsquo;t get much out of that. It was <b>all too general</b> and the lecturer <b>didn&rsquo;t give any useful examples</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">too general + no examples = too vague. Colin confirms: &lsquo;I hardly took any notes.&rsquo;</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a lesson that was too general, using &lsquo;vague&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>E &mdash; The facts about this may not be reliable</b> (Q25, Poverty)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Dr Lee was saying that you have to <b>be careful with some of the figures</b> relating to poverty. They&rsquo;re sometimes <b>deliberately manipulated</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">figures = facts/data; deliberately manipulated = not reliable. Nobody says &lsquo;no research has been done&rsquo;, so F is wrong.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence warning someone that statistics can be unreliable&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q26 &mdash; the main problem in Rosie&rsquo;s city</b></span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Colin: &ldquo;Things like theft and robbery.&rdquo; Rosie: &ldquo;Yes, but where I come from, that's linked to <b>another more serious issue</b>, which is that <b>a lot of people don't have jobs</b>. That&rsquo;s <b>getting worse and worse</b>&hellip; people who are homeless, though <b>that&rsquo;s not quite so bad as it was</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">unemployment is never named: &lsquo;don&rsquo;t have jobs&rsquo; is the paraphrase. &lsquo;More serious&rsquo; ranks it above crime; &lsquo;not so bad as it was&rsquo; downgrades housing.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rank two problems in your own city using &lsquo;a more serious issue&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q28 &mdash; the drawback of developing disused industrial sites</b></span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Rosie: &ldquo;aren&rsquo;t the buildings architecturally significant?&rdquo; Colin: &ldquo;Not really. And&hellip; they often used quite <b>dangerous materials, chemicals</b>&hellip; the whole site <b>has to be made safe</b>.&rdquo; Rosie: &ldquo;<b>That can&rsquo;t be cheap. And I bet it&rsquo;s often not budgeted for.</b>&rdquo; Colin: &ldquo;You&rsquo;re right.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">not budgeted for = unexpected. The two other options are explicitly rejected: &lsquo;not really&rsquo; (historic buildings) and &lsquo;not doing any harm to the natural environment&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence about a cost that was not budgeted for&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q29 &mdash; what Masdar City will illustrate</b></span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;a city which <b>set out to depend entirely on renewable energy</b>&hellip; totally pedestrianised too&hellip; big plans for recycling&hellip; But <b>let&rsquo;s stick to talking about power sources</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">renewable energy = sustainable energy use; &lsquo;power sources&rsquo; confirms which of the three green features they will actually write about.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;set out to&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;let&rsquo;s think about the different aspects of human geography&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;see if we can narrow the topic down a bit&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;I thought that had been taken off the syllabus for this year&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;the lecturer didn&rsquo;t give any useful examples&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;you have to be careful with some of the figures relating to poverty&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;the outskirts are ideal for buildings that need a lot of space&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;the whole site has to be made safe&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;a city which set out to depend entirely on renewable energy&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What are Rosie and Colin actually trying to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. revise for a human geography exam</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. choose and narrow down a topic for an assignment</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. write up notes from a lecture</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. plan a field trip to a city</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why is option C (only a small number of statistics) wrong for population?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Population is not mentioned at all.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Rosie says population involves lots of facts and statistics.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. The statistics are unreliable.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. The topic is off the syllabus.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does &lsquo;taken off the syllabus&rsquo; mean?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. The topic has been made compulsory.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. The topic is no longer part of the course.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. The topic has been moved to next term.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. No research exists on the topic.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Which two comments together prove the culture lecture was &lsquo;too vague&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It was too general / no useful examples were given.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It was last week / it was about geography.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. Colin took notes / Rosie did not.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. The figures were manipulated / the data was old.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Why should the poverty figures be treated with caution?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They are collected only every ten years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They are sometimes deliberately manipulated.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. Nobody has researched them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They come from a single country.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">How does Rosie rank the problems in her own city?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Crime is worst, then homelessness.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Lack of jobs is the most serious and is getting worse; homelessness has improved.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Housing is the biggest issue.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. All three are equally serious.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why are the new shopping centres NOT the answer to Q27?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. They are in the city centre, not the outskirts.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Only Rosie&rsquo;s city has them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Colin points out they have caused city-centre shops to close down.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. They were built a long time ago.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does Rosie say about sports facilities on the outskirts?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Several new ones have opened.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. She would like more, but they are not being built where she lives.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. They are too expensive to use.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. They have replaced the conference centres.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why does Colin say developing disused industrial sites seems like a good idea at first?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. The land is free.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. The buildings are historically valuable.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It does no harm to the natural environment.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The sites are already safe.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What makes clearing an old industrial site expensive?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. The historical buildings must be preserved.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Dangerous chemicals were left behind and the site must be made safe.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. New roads have to be built.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. The land must be bought from several owners.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which sentence decides the answer to Q29?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. &lsquo;It was designed to be a green city, wasn&rsquo;t it?&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. &lsquo;It was designed to be totally pedestrianised too.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. &lsquo;They had big plans for recycling.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. &lsquo;But let&rsquo;s stick to talking about power sources.&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">About Greenhill Abbots, which piece of information is NOT given?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. its aims &mdash; sustainability and the usual eco-town principles</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. why people opposed it &mdash; they thought the plans were unrealistic</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. how much of it has been built</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. the country it is in</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 21&ndash;30</h3><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">D</div><div class="answer-note">Population &lsquo;would be all about population density and migration&hellip; <em>lots of facts and statistics</em>&rsquo;. Plenty of data = it will be easy to find facts. &lsquo;A bit boring&rsquo; is not one of the options.</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">G</div><div class="answer-note">Health is the one aspect the students react to <em>positively</em> &mdash; the material they were given on it was interesting. G is the only positive option in the box, and every other option is used elsewhere: D (population), B (economies), A (culture), E (poverty).</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;I thought that had been <em>taken off the syllabus for this year</em>&hellip; I&rsquo;m not sure, but it might be best to avoid it.&rsquo; Off the syllabus = may not be relevant to their course. The hedging matches the word <em>may</em> in the option.</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;I didn&rsquo;t get much out of that. It was all <em>too general</em> and the lecturer <em>didn&rsquo;t give any useful examples</em>.&rsquo; too general + no examples = too vague. Colin agrees: &lsquo;I hardly took any notes.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">E</div><div class="answer-note">&lsquo;Dr Lee was saying that you have to be careful with some of the <em>figures</em> relating to poverty. They&rsquo;re sometimes <em>deliberately manipulated</em>.&rsquo; = the facts may not be reliable.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">C</div><div class="answer-note">Colin mentions &lsquo;theft and robbery&rsquo; (crime); Rosie replies that this is linked to &lsquo;another <em>more serious</em> issue, which is that a lot of people <em>don&rsquo;t have jobs</em>. That&rsquo;s getting worse and worse.&rsquo; Homelessness is &lsquo;not quite so bad as it was&rsquo;, so B is ruled out.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;The outskirts are ideal for buildings that need a lot of space, like for <em>conferences</em>. They&rsquo;ve opened a couple of big ones.&rsquo; &mdash; &lsquo;Yes, we&rsquo;ve got some, too.&rsquo; The shopping centres are criticised (city-centre shops closing) and the sports facilities do not exist in either city.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">Old sites &lsquo;often used quite dangerous materials, chemicals&hellip; the whole site has to be made safe&rsquo;, and Rosie adds &lsquo;That can&rsquo;t be cheap. And I bet it&rsquo;s often <em>not budgeted for</em>&rsquo; &mdash; Colin: &lsquo;You&rsquo;re right.&rsquo; The buildings are &lsquo;not really&rsquo; significant (rules out C) and the projects do &lsquo;no harm to the natural environment&rsquo; (rules out B).</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">Masdar City &lsquo;set out to depend entirely on <em>renewable energy</em>&rsquo;. Pedestrianisation and recycling are also described, but the students decide: &lsquo;let&rsquo;s stick to talking about <em>power sources</em>&rsquo;. Note that &lsquo;free transport&rsquo; and &lsquo;daily collections&rsquo; are never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">C</div><div class="answer-note">The eco town&rsquo;s objectives are known (&lsquo;the usual principles, sustainability and so on&rsquo;) and so is the reason for the opposition (&lsquo;they said the plans were unrealistic&rsquo;). The only open point is progress: &lsquo;<em>I&rsquo;m not sure how far they&rsquo;ve got with it.</em>&rsquo;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Matching &amp; Multiple Choice (the real exam answers)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">D</div><div class="answer-note">Q21 &mdash; Population:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">G</div><div class="answer-note">Q22 &mdash; Health:</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">B</div><div class="answer-note">Q23 &mdash; Economies:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">A</div><div class="answer-note">Q24 &mdash; Culture:</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">E</div><div class="answer-note">Q25 &mdash; Poverty:</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">C</div><div class="answer-note">Q26 &mdash; the main problem in Rosie&rsquo;s own city:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">A</div><div class="answer-note">Q27 &mdash; the new additions to the outskirts both students like:</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">A</div><div class="answer-note">Q28 &mdash; developing disused industrial sites may:</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">B</div><div class="answer-note">Q29 &mdash; Masdar City will be used as an example of:</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">C</div><div class="answer-note">Q30 &mdash; about Greenhill Abbots, Colin is uncertain about:</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Key Words from the Discussion</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">migration</div><div class="answer-note">Population would mean population density,</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">syllabus</div><div class="answer-note">Colin thinks one aspect has been taken off the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">general</div><div class="answer-note">The lecture on culture was too</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">manipulated</div><div class="answer-note">Dr Lee warned that some poverty figures are deliberately</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">jobs</div><div class="answer-note">In Rosie&rsquo;s city, a lot of people do not have</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">outskirts</div><div class="answer-note">New developments are appearing on the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">conferences</div><div class="answer-note">The outskirts are ideal for buildings used for</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">chemicals</div><div class="answer-note">Old industrial sites often contain dangerous</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">renewable</div><div class="answer-note">Masdar City was designed to depend entirely on</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">unrealistic</div><div class="answer-note">Opponents of the eco town said the plans were</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">geography</div><div class="answer-note">g e o g r _ p h y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">statistics</div><div class="answer-note">s t a t i s t _ c s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">syllabus</div><div class="answer-note">s y l l _ b u s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">sustainability</div><div class="answer-note">s u s t a i n a b _ l i t y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">environment</div><div class="answer-note">e n v i r _ n m e n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">unemployment</div><div class="answer-note">u n e m p l _ y m e n t  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">architecturally</div><div class="answer-note">a r c h i t e c t u r _ l l y  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">narrow</div><div class="answer-note">The students want to</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">useful</div><div class="answer-note">The lecturer failed to give any</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">reliable</div><div class="answer-note">Some poverty figures may not be</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">architecturally</div><div class="answer-note">Colin says the buildings are not</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">renewable</div><div class="answer-note">The city was designed to run on</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">sustainability</div><div class="answer-note">The eco town was meant to follow the principle of</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">unrealistic</div><div class="answer-note">People opposed the plan because they thought it was</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Distractor Elimination</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">D</div><div class="answer-note">Population: D (easy to find facts) or C (only a small number of statistics)?</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">A</div><div class="answer-note">Culture: A (too vague) or G (interesting)?</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">E</div><div class="answer-note">Poverty: E (may not be reliable) or F (no useful research has been done)?</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">C</div><div class="answer-note">Q26: A (crime) or C (unemployment)?</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">A</div><div class="answer-note">Q27: C (retail centres) or A (conference centres)?</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">A</div><div class="answer-note">Q28: C (destroy valuable historical buildings) or A (have unexpected costs)?</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">B</div><div class="answer-note">Q29: A (daily collections for waste recycling) or B (sustainable energy use)?</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">C</div><div class="answer-note">Q30: A (what its objectives were) or C (how much has actually been built)?</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q21</span><div><div class="answer-val">D &mdash; MATCHING &mdash; an OPINION about availability of material</div><div class="answer-note">Listen for whether data is plentiful, scarce or untrustworthy.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q22</span><div><div class="answer-val">G &mdash; MATCHING &mdash; an OPINION about the material they were given</div><div class="answer-note">Listen for a positive reaction word. Only one option in the box is positive.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q23</span><div><div class="answer-val">B &mdash; MATCHING &mdash; an OPINION about suitability for the course</div><div class="answer-note">Listen for course-related language: syllabus, module, this year, avoid it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q24</span><div><div class="answer-val">A &mdash; MATCHING &mdash; an OPINION about the quality of a lecture</div><div class="answer-note">Listen for &lsquo;general&rsquo;, &lsquo;no examples&rsquo;, &lsquo;didn&rsquo;t get much out of it&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q25</span><div><div class="answer-val">E &mdash; MATCHING &mdash; an OPINION about the trustworthiness of data</div><div class="answer-note">Listen for warnings: be careful with, manipulated, misleading.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q26</span><div><div class="answer-val">C &mdash; MCQ &mdash; a RANKING of three urban problems</div><div class="answer-note">All three are mentioned. Listen for &lsquo;more serious&rsquo; and &lsquo;getting worse&rsquo; versus &lsquo;not so bad as it was&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q27</span><div><div class="answer-val">A &mdash; MCQ &mdash; a POINT OF AGREEMENT, plus a positive attitude</div><div class="answer-note">You need two things at once: it must exist in both cities AND both must like it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q28</span><div><div class="answer-val">A &mdash; MCQ &mdash; a shared CONCLUSION about a drawback</div><div class="answer-note">The answer comes at the end of the exchange, after the two objections have been dismissed.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q29</span><div><div class="answer-val">B &mdash; MCQ &mdash; which of three green features they will actually USE</div><div class="answer-note">All three features are described. Listen for the sentence that limits their essay to one of them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q30</span><div><div class="answer-val">C &mdash; MCQ &mdash; which piece of information is MISSING</div><div class="answer-note">Two of the three are stated as facts. Eliminate what is known; what is left is the uncertainty.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">let&rsquo;s think about the different aspects of human geography</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">see if we can narrow the topic down a bit</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">I thought that had been taken off the syllabus for this year</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">the lecturer didn&rsquo;t give any useful examples</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">you have to be careful with some of the figures relating to poverty</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">the outskirts are ideal for buildings that need a lot of space</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">the whole site has to be made safe</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">a city which set out to depend entirely on renewable energy</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. choose and narrow down a topic for an assignment</div><div class="answer-note">&lsquo;Let&rsquo;s think about the different aspects of human geography and see if we can narrow the topic down a bit to help us decide.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Rosie says population involves lots of facts and statistics.</div><div class="answer-note">C is the exact opposite of what she says. &lsquo;Lots of facts and statistics&rsquo; gives you D, easy to find facts.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. The topic is no longer part of the course.</div><div class="answer-note">This is the paraphrase behind option B, &lsquo;may not be relevant to their course&rsquo;. The hedged follow-up, &lsquo;it might be best to avoid it&rsquo;, confirms it.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A. It was too general / no useful examples were given.</div><div class="answer-note">Vague = general + unsupported by examples. Both students react the same way, which is why it can be a shared opinion.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. They are sometimes deliberately manipulated.</div><div class="answer-note">Dr Lee&rsquo;s warning is the source of option E. Note that C would be option F, which is never said about any topic.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. Lack of jobs is the most serious and is getting worse; homelessness has improved.</div><div class="answer-note">She calls it &lsquo;another more serious issue&rsquo; and says it is &lsquo;getting worse and worse&rsquo;, while homelessness is &lsquo;not quite so bad as it was&rsquo;. Hence C, unemployment.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">C. Colin points out they have caused city-centre shops to close down.</div><div class="answer-note">The question asks what the students are <em>happy</em> about. The shopping centres come with a complaint attached, so they fail the attitude test.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">B. She would like more, but they are not being built where she lives.</div><div class="answer-note">&lsquo;It&rsquo;d be nicer to have more facilities for things like football, too, but that&rsquo;s not happening where I live.&rsquo; Colin adds &lsquo;Same in my area&rsquo; &mdash; so B is impossible.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. It does no harm to the natural environment.</div><div class="answer-note">This is why option B in Q28 (damage the urban environment) is wrong &mdash; the environmental point is made in the <em>opposite</em> direction.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. Dangerous chemicals were left behind and the site must be made safe.</div><div class="answer-note">Rosie&rsquo;s reply &mdash; &lsquo;That can&rsquo;t be cheap. And I bet it&rsquo;s often not budgeted for&rsquo; &mdash; turns this into option A of Q28, unexpected costs.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">D. &lsquo;But let&rsquo;s stick to talking about power sources.&rsquo;</div><div class="answer-note">All three green features are described; only this sentence tells you which one the students will use. Power sources = renewable / sustainable energy.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. how much of it has been built</div><div class="answer-note">The objectives and the opposition are both stated. Only progress is left open: &lsquo;I&rsquo;m not sure how far they&rsquo;ve got with it&hellip; I&rsquo;ll check.&rsquo; That is Q30 = C.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

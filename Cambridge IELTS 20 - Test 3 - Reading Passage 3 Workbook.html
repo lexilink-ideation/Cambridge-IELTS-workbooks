@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 3 — Reading Passage 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 3</div>
+    <h1>Cambridge IELTS 20 — Test 3 — Reading Passage 3</h1>
+    <h2>Robots and Us &middot; Matching Features + Matching Sentence Endings + Multiple Choice (Q27&ndash;40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('sentences', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('logic', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('skills', this)" role="tab">🎯 Skills</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p>Three specialists &mdash; the cosmologist <strong>Martin Rees</strong>, the engineer <strong>Daniel Wolpert</strong> and the anthropologist <strong>Kathleen Richardson</strong> &mdash; answer the same four questions about robots: should we use them to colonise other planets, when will machines outthink us, should we be frightened of artificial intelligence, and what can science fiction teach us? The passage is a <strong>panel of opinions</strong>, not an argument, so the whole task is keeping three voices apart.</p></div><div class="card"><p><strong>What the passage argues:</strong> Nothing single &mdash; it deliberately sets three positions side by side. Rees is the cautious futurist who sees real moral risk; Wolpert is the practical engineer who thinks the benefits will outweigh the harm and that human-level creativity is still decades away; Richardson is the anthropologist who argues the problem lies in <em>us</em>, in our habit of seeing ourselves in the machines we build.</p><p><strong>段落结构 Structure:</strong> 文章按&ldquo;四个问题 &times; 三位专家&rdquo;排列。问题一（机器人殖民其他行星）：Rees——小行星采矿比&ldquo;地球化改造&rdquo;更现实温和，被殖民行星应享有类似南极的地位；Wolpert——除非能把资源带回地球，否则不必殖民，机器人在地球上用处更大；Richardson——&ldquo;殖民&rdquo;在道德上可疑。问题二（机器智能何时超越人类）：Rees——下棋已赢人，但感知环境仍不如小孩，未来将引发道德问题；Wolpert——某些方面已超越，但创造性智能50年内难以实现；Richardson——恐惧源于人类把物体拟人化。问题三（是否该害怕人工智能）：Rees——担心&ldquo;奇点&rdquo;与计算机网络形成自主&ldquo;大脑&rdquo;；Wolpert——病毒的危害来自恶意设计者，收益仍大于损害；Richardson——机器从未真正挑战人类，许多人欢迎机器智能。问题四（科幻的意义）：Rees——一流科幻胜过二流科学；Wolpert——科幻预测力惊人，几乎没有无机器人的未来；Richardson——现实与虚构的界线是人为划出的，应重新整合。</p><p><strong>Task type:</strong> <strong>Q27&ndash;33 Matching Features</strong> (match each statement to expert A Rees, B Wolpert or C Richardson; letters may be used more than once), <strong>Q34&ndash;36 Matching Sentence Endings</strong> (choose the correct ending A&ndash;D; one ending is never used) and <strong>Q37&ndash;40 Multiple Choice</strong> (four options, one answer).</p></div><div class="highlight">💡 <strong>Reading strategy tip:</strong> This is an <strong>opinion-attribution</strong> passage, and almost every mark depends on <em>who</em> said something rather than <em>what</em> was said. Before you look at Q27, draw a 3&times;4 grid: three experts down the side, four questions across the top, and write two or three words in each cell as you read. Then <strong>Q27&ndash;33 (matching features)</strong> becomes a lookup, not a search &mdash; and remember the instruction <em>NB You may use any letter more than once</em>: Rees answers three of them, Richardson two, Wolpert two. For <strong>Q34&ndash;36</strong> you need the <em>topic</em> two experts share, so read the endings A&ndash;D first. <strong>Q37&ndash;40</strong> then run in passage order through the last three paragraphs.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Three experts, one topic</b> &mdash; every one of them speaks about colonisation, about machine intelligence and about fear. Finding the <em>topic</em> is never enough; you must find the person whose wording matches the statement. Always check all three answers to a question before you commit.</li><li><b>Q28 vs Q33</b> &mdash; both belong to Richardson, and students who assume &lsquo;one letter per statement&rsquo; force one of them onto Wolpert. The rubric says <em>NB You may use any letter more than once</em>: A appears three times, C twice, B twice.</li><li><b>Q29 &lsquo;many decades&rsquo;</b> &mdash; only Wolpert attaches a time span to creative intelligence (&lsquo;within the next 50 years would be highly ambitious&rsquo;). Rees also talks about &lsquo;later this century&rsquo;, but about <em>sensing the environment</em>, not about imagination.</li><li><b>Q34 asks about ethics, not about space</b> &mdash; ending A (&lsquo;robots to explore outer space&rsquo;) is the obvious-looking choice because all three discuss space. But Rees and Richardson agree specifically on the <em>ethical</em> problem of changing or colonising planets, which is ending C.</li><li><b>Q36 is a disagreement, not an agreement</b> &mdash; Wolpert says AI has <em>already</em> caused damage (computer viruses); Richardson says nothing has ever risen up against us. Read the stem verb: &lsquo;disagrees&rsquo;.</li><li><b>Q38 &lsquo;a mind of its own&rsquo;</b> &mdash; Rees mentions several worries. The one the question wants is computer networks behaving &lsquo;like a single <em>brain</em> with a mind of its own&rsquo; = artificial intelligence developing independent thought. Option B (abilities humans do not have) is something Rees accepts calmly, not a cause for concern.</li><li><b>Q40 &lsquo;What is Richardson doing?&rsquo;</b> &mdash; this is a <em>function</em> question, not a content question. She is not warning or explaining; she is recommending: &lsquo;we need to bring these different understandings together&rsquo;.</li><li><b>Footnotes are free vocabulary</b> &mdash; <em>terraforming</em> and <em>singularity</em> are both defined at the bottom of the passage. Students who skip the asterisks lose time guessing.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Reading Note</th></tr></thead><tbody><tr><td><span class="word">cosmology</span></td><td><span class="pos">n.</span></td><td>the science of the origin and structure of the universe</td><td class="zh">宇宙学</td><td>&ldquo;&hellip;<em>cosmology</em> and astrophysics Professor Martin Rees&hellip;&rdquo;</td><td class="note">Identifies expert A. Knowing each expert&rsquo;s field helps you predict the angle each will take.</td></tr>
+<tr><td><span class="word">fabrication</span></td><td><span class="pos">n.</span></td><td>the making or building of something</td><td class="zh">制造；建造</td><td>&ldquo;&hellip;enabling <em>fabrication</em> of large structures in space&hellip;&rdquo;</td><td class="note">Verb: fabricate. Careful &mdash; in other contexts it can mean &lsquo;inventing a lie&rsquo;.</td></tr>
+<tr><td><span class="word">raw materials</span></td><td><span class="pos">n. phr.</span></td><td>basic substances used to make things</td><td class="zh">原材料</td><td>&ldquo;&hellip;without having to bring all the <em>raw materials</em> from Earth.&rdquo;</td><td class="note">This is why Rees likes asteroid mining: you build in space instead of launching everything.</td></tr>
+<tr><td><span class="word">benign</span></td><td><span class="pos">adj.</span></td><td>gentle and not harmful</td><td class="zh">良性的；无害的</td><td>&ldquo;I think this is more realistic and <em>benign</em> than the&hellip; terraforming of planets.&rdquo;</td><td class="note"><strong>Key to Q34.</strong> &lsquo;More benign than terraforming&rsquo; is a moral judgement about changing a planet.</td></tr>
+<tr><td><span class="word">terraforming</span></td><td><span class="pos">n.</span></td><td>changing a planet&rsquo;s atmosphere so humans can live there</td><td class="zh">行星地球化改造</td><td>&ldquo;&hellip;more realistic and benign than the &hellip; <em>terraforming</em> of planets.&rdquo;</td><td class="note">Defined in the first footnote. This is the &lsquo;changes made to other planets for our own benefit&rsquo; of ending C.</td></tr>
+<tr><td><span class="word">analogous</span></td><td><span class="pos">adj.</span></td><td>similar in a way that allows comparison</td><td class="zh">类似的；可类比的</td><td>&ldquo;&hellip;a status that is <em>analogous</em> to Antarctica here on Earth.&rdquo;</td><td class="note">Antarctica is protected by treaty from exploitation &mdash; so Rees wants planets protected too. Ethical, not technical.</td></tr>
+<tr><td><span class="word">pressing</span></td><td><span class="pos">adj.</span></td><td>urgent; needing attention now</td><td class="zh">紧迫的</td><td>&ldquo;I don&rsquo;t see a <em>pressing</em> need to colonise other planets&hellip;&rdquo;</td><td class="note">Collocation: a pressing need / a pressing issue. Wolpert&rsquo;s practical objection &mdash; the source of Q31.</td></tr>
+<tr><td><span class="word">inaccessible</span></td><td><span class="pos">adj.</span></td><td>impossible or very difficult to reach</td><td class="zh">难以到达的</td><td>&ldquo;The vast majority of Earth is currently <em>inaccessible</em> to us.&rdquo;</td><td class="note"><strong>Key to Q31.</strong> If most of Earth is out of reach, robots are more useful here than in space.</td></tr>
+<tr><td><span class="word">dubious</span></td><td><span class="pos">adj.</span></td><td>doubtful; probably not right</td><td class="zh">可疑的；靠不住的</td><td>&ldquo;&hellip;the idea of colonisation of other planets seemed morally <em>dubious</em>&hellip;&rdquo;</td><td class="note">Richardson&rsquo;s position &mdash; the second half of the Q34 pair with Rees.</td></tr>
+<tr><td><span class="word">impose</span></td><td><span class="pos">v.</span></td><td>to force something on other people</td><td class="zh">强加</td><td>&ldquo;&hellip;not to <em>impose</em> a particular model, but to meet &lsquo;the Other&rsquo;.&rdquo;</td><td class="note">Collocation: impose something <em>on</em> someone. Central to the anthropologist&rsquo;s ethics.</td></tr>
+<tr><td><span class="word">outstrip</span></td><td><span class="pos">v.</span></td><td>to become greater than; to go far beyond</td><td class="zh">超过；胜过</td><td>&ldquo;How soon will machine intelligence <em>outstrip</em> human intelligence?&rdquo;</td><td class="note">Wolpert answers &lsquo;in a limited sense it already has&rsquo; &mdash; the basis of Q35.</td></tr>
+<tr><td><span class="word">adeptly</span></td><td><span class="pos">adv.</span></td><td>skilfully</td><td class="zh">熟练地</td><td>&ldquo;&hellip;may relate to their surroundings, and to people, as <em>adeptly</em> as we do.&rdquo;</td><td class="note">Adjective: adept. Rees puts this in the future (&lsquo;later this century&rsquo;), which Q29 does not want.</td></tr>
+<tr><td><span class="word">fret</span></td><td><span class="pos">v.</span></td><td>to worry continuously about something</td><td class="zh">烦恼；忧虑</td><td>&ldquo;Should we <em>fret</em> if they are underemployed, frustrated, or bored?&rdquo;</td><td class="note"><strong>Key to Q30.</strong> Worrying whether robots are bored = considering whether we treat them fairly.</td></tr>
+<tr><td><span class="word">underemployed</span></td><td><span class="pos">adj.</span></td><td>not given enough work to do</td><td class="zh">未被充分利用的；就业不足的</td><td>&ldquo;Should we fret if they are <em>underemployed</em>, frustrated, or bored?&rdquo;</td><td class="note">Note the prefix <em>under-</em>. Rees uses human employment words for machines &mdash; deliberately.</td></tr>
+<tr><td><span class="word">reliability</span></td><td><span class="pos">n.</span></td><td>the quality of working correctly every time</td><td class="zh">可靠性</td><td>&ldquo;&hellip;identify visual objects or speech with the <em>reliability</em> and flexibility of humans.&rdquo;</td><td class="note">Wolpert&rsquo;s limit on machine ability &mdash; part of the shared view tested by Q35.</td></tr>
+<tr><td><span class="word">intrinsic</span></td><td><span class="pos">adj.</span></td><td>belonging naturally to something; part of its basic nature</td><td class="zh">固有的；内在的</td><td>&ldquo;&hellip;more to do with human nature than anything <em>intrinsic</em> to the machines themselves.&rdquo;</td><td class="note"><strong>Key to Q37.</strong> The fear is in us, not in the machines.</td></tr>
+<tr><td><span class="word">personify</span></td><td><span class="pos">v.</span></td><td>to treat an object or idea as if it were a person</td><td class="zh">拟人化</td><td>&ldquo;&hellip;it stems from humans&rsquo; tendency to <em>personify</em> inanimate objects.&rdquo;</td><td class="note"><strong>Answer to Q37 (B).</strong> &lsquo;attribute human characteristics to non-human entities&rsquo; is the paraphrase.</td></tr>
+<tr><td><span class="word">inanimate</span></td><td><span class="pos">adj.</span></td><td>not alive</td><td class="zh">无生命的</td><td>&ldquo;&hellip;the tendency to personify <em>inanimate</em> objects&hellip;&rdquo;</td><td class="note">Opposite: animate. In Q37 it becomes &lsquo;non-human entities&rsquo;.</td></tr>
+<tr><td><span class="word">autonomous</span></td><td><span class="pos">adj.</span></td><td>able to act independently</td><td class="zh">自主的</td><td>&ldquo;&hellip;and therefore see them as an <em>autonomous</em> threat.&rdquo;</td><td class="note">Related to Q38&rsquo;s &lsquo;independent thought&rsquo;, but there the speaker is Rees, not Richardson.</td></tr>
+<tr><td><span class="word">singularity</span></td><td><span class="pos">n.</span></td><td>the point at which robots begin creating better versions of themselves</td><td class="zh">奇点</td><td>&ldquo;&hellip;the futurologists who believe in the so-called <em>singularity</em>.&rdquo;</td><td class="note">Defined in the second footnote. Always read the asterisked notes before the questions.</td></tr>
+<tr><td><span class="word">welfare</span></td><td><span class="pos">n.</span></td><td>the health and happiness of people</td><td class="zh">福祉</td><td>&ldquo;&hellip;goals that may be contrary to human <em>welfare</em>.&rdquo;</td><td class="note">Collocation: contrary to / in the interests of human welfare.</td></tr>
+<tr><td><span class="word">outwit</span></td><td><span class="pos">v.</span></td><td>to defeat someone by being cleverer than them</td><td class="zh">智胜；以智取胜</td><td>&ldquo;&hellip;lacking the capacity to <em>outwit</em> us&hellip;&rdquo;</td><td class="note"><strong>Key to Q27.</strong> Making sure robots cannot outwit us = restricting their abilities for our safety.</td></tr>
+<tr><td><span class="word">surpass</span></td><td><span class="pos">v.</span></td><td>to be greater or better than</td><td class="zh">超越</td><td>&ldquo;&hellip;even though they may greatly <em>surpass</em> us in the ability to calculate&hellip;&rdquo;</td><td class="note">Rees accepts machines beating us at calculation &mdash; that is why Q38 is not option B.</td></tr>
+<tr><td><span class="word">malicious</span></td><td><span class="pos">adj.</span></td><td>intending to cause harm</td><td class="zh">恶意的</td><td>&ldquo;&hellip;the real intelligence is the <em>malicious</em> designer.&rdquo;</td><td class="note">Wolpert&rsquo;s point: the danger is the human, not the software. Q36 turns on this.</td></tr>
+<tr><td><span class="word">outweigh</span></td><td><span class="pos">v.</span></td><td>to be greater or more important than</td><td class="zh">超过；胜过（重要性）</td><td>&ldquo;&hellip;the benefits of computers <em>outweigh</em> the damage that computer viruses cause.&rdquo;</td><td class="note">A balance verb, very useful in Writing Task 2: the advantages outweigh the disadvantages.</td></tr>
+<tr><td><span class="word">supremacy</span></td><td><span class="pos">n.</span></td><td>the position of being the most powerful</td><td class="zh">至高地位；霸权</td><td>&ldquo;&hellip;none have in fact risen up and challenged human <em>supremacy</em>.&rdquo;</td><td class="note">Richardson&rsquo;s evidence for Q28: no machine has ever actually threatened us.</td></tr>
+<tr><td><span class="word">persist</span></td><td><span class="pos">v.</span></td><td>to continue to exist</td><td class="zh">持续存在</td><td>&ldquo;We need to ask why fears of artificial intelligence and robots <em>persist</em>&hellip;&rdquo;</td><td class="note">Adjective: persistent. Note that she asks <em>why</em> the fear survives, not whether it is justified.</td></tr>
+<tr><td><span class="word">dystopian</span></td><td><span class="pos">adj.</span></td><td>describing an imagined future society that is frightening or unpleasant</td><td class="zh">反乌托邦的</td><td>&ldquo;&hellip;from cute and helpful robots to <em>dystopian</em> robotic societies.&rdquo;</td><td class="note">Opposite: utopian. It is one end of Wolpert&rsquo;s &lsquo;spectrum&rsquo; of fictional futures.</td></tr>
+<tr><td><span class="word">envisage</span></td><td><span class="pos">v.</span></td><td>to imagine something as a future possibility</td><td class="zh">设想；展望</td><td>&ldquo;&hellip;almost no science fiction <em>envisages</em> a future without robots.&rdquo;</td><td class="note"><strong>Key to Q39.</strong> This sentence shows how central robots are to the genre.</td></tr>
+<tr><td><span class="word">carve out</span></td><td><span class="pos">phr. v.</span></td><td>to create a space or role for yourself by effort</td><td class="zh">开辟；划出（属于自己的领域）</td><td>&ldquo;&hellip;because they wanted to <em>carve out</em> the sphere of their work.&rdquo;</td><td class="note">Richardson&rsquo;s explanation of <em>why</em> the reality/fantasy divide was invented.</td></tr>
+<tr><td><span class="word">clear cut</span></td><td><span class="pos">adj.</span></td><td>obvious and definite</td><td class="zh">界限分明的</td><td>&ldquo;But the divide is not so <em>clear cut</em>&hellip;&rdquo;</td><td class="note">Leads straight into her recommendation, which is what Q40 tests.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">leaders in their fields</span></td><td>the most respected experts in their subjects</td><td class="zh">各自领域的领军人物</td></tr>
+<tr><td><span class="phrase">the next step would be</span></td><td>the following stage would be</td><td class="zh">下一步将是</td></tr>
+<tr><td><span class="phrase">mining of asteroids</span></td><td>extracting minerals from small rocky bodies in space</td><td class="zh">小行星采矿</td></tr>
+<tr><td><span class="phrase">more realistic and benign</span></td><td>more practical and less harmful</td><td class="zh">更现实、更无害</td></tr>
+<tr><td><span class="phrase">analogous to Antarctica</span></td><td>similar in status to Antarctica</td><td class="zh">类似于南极洲的地位</td></tr>
+<tr><td><span class="phrase">exploit mineral resources</span></td><td>use up or make profit from minerals</td><td class="zh">开采矿产资源</td></tr>
+<tr><td><span class="phrase">a pressing need</span></td><td>an urgent requirement</td><td class="zh">迫切的需要</td></tr>
+<tr><td><span class="phrase">the vast majority of</span></td><td>almost all of</td><td class="zh">绝大多数</td></tr>
+<tr><td><span class="phrase">a better use of our robotic tools</span></td><td>a more sensible way to employ robots</td><td class="zh">更好地利用机器人工具</td></tr>
+<tr><td><span class="phrase">morally dubious</span></td><td>ethically questionable</td><td class="zh">道德上可疑</td></tr>
+<tr><td><span class="phrase">in the spirit of</span></td><td>with the attitude of</td><td class="zh">本着&hellip;的精神</td></tr>
+<tr><td><span class="phrase">impose a particular model</span></td><td>force one way of doing things on others</td><td class="zh">强加某一特定模式</td></tr>
+<tr><td><span class="phrase">outstrip human intelligence</span></td><td>go far beyond what people can do</td><td class="zh">超越人类智能</td></tr>
+<tr><td><span class="phrase">sense their environment</span></td><td>detect what is around them</td><td class="zh">感知周围环境</td></tr>
+<tr><td><span class="phrase">moral questions arise</span></td><td>ethical problems appear</td><td class="zh">道德问题随之出现</td></tr>
+<tr><td><span class="phrase">in a limited sense</span></td><td>only in certain ways</td><td class="zh">在有限的意义上</td></tr>
+<tr><td><span class="phrase">reliability and flexibility</span></td><td>consistency and adaptability</td><td class="zh">可靠性与灵活性</td></tr>
+<tr><td><span class="phrase">highly ambitious</span></td><td>expecting a great deal, perhaps too much</td><td class="zh">期望极高的；雄心勃勃的</td></tr>
+<tr><td><span class="phrase">has more to do with</span></td><td>is more closely connected to</td><td class="zh">与&hellip;关系更大</td></tr>
+<tr><td><span class="phrase">stem from</span></td><td>come from; be caused by</td><td class="zh">源于</td></tr>
+<tr><td><span class="phrase">an autonomous threat</span></td><td>a danger that acts on its own</td><td class="zh">自主的威胁</td></tr>
+<tr><td><span class="phrase">contrary to human welfare</span></td><td>against what is good for people</td><td class="zh">有悖于人类福祉</td></tr>
+<tr><td><span class="phrase">the capacity to outwit us</span></td><td>the ability to be cleverer than us</td><td class="zh">智胜我们的能力</td></tr>
+<tr><td><span class="phrase">process information</span></td><td>deal with and use data</td><td class="zh">处理信息</td></tr>
+<tr><td><span class="phrase">the damaging effects of</span></td><td>the harm caused by</td><td class="zh">&hellip;的破坏性影响</td></tr>
+<tr><td><span class="phrase">the benefits outweigh the damage</span></td><td>the good is greater than the harm</td><td class="zh">收益大于损害</td></tr>
+<tr><td><span class="phrase">risen up and challenged</span></td><td>rebelled against and confronted</td><td class="zh">起而挑战</td></tr>
+<tr><td><span class="phrase">a vivid spectrum of possible futures</span></td><td>a wide, colourful range of imagined futures</td><td class="zh">生动多样的未来图景</td></tr>
+<tr><td><span class="phrase">remarkable at predicting</span></td><td>surprisingly good at forecasting</td><td class="zh">在预测方面出色</td></tr>
+<tr><td><span class="phrase">get a whole perspective</span></td><td>see the complete picture</td><td class="zh">获得全面的视角</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-sentences"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="highlight">Academic Reading sentences are long because they <strong>stack clauses</strong>, not because the words are hard. Find the main verb first, then peel off the extra layers. 先找主句谓语动词，再逐层剥离修饰成分。</div><div class="sentence-card"><div class="sentence-original">&ldquo;The next step would be mining of asteroids, enabling fabrication of large structures in space without having to bring all the raw materials from Earth.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The next step would be mining of asteroids.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;enabling fabrication&hellip;&rsquo; = a present-participle clause of result; &lsquo;without having to bring&hellip;&rsquo; = a prepositional phrase with a gerund.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>would</strong> here is prediction, not past tense. The <em>-ing</em> clause explains the consequence of the main idea, and <strong>without having to + verb</strong> means &lsquo;and you would not need to&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">After mapping the solar system, robots could mine asteroids, so big structures could be built in space without shipping materials up from Earth.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">下一步将是开采小行星，从而可以在太空中制造大型结构，而不必把所有原材料从地球运上去。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Robots are still limited in their ability to sense their environment: they can&rsquo;t yet recognise and move the pieces on a real chessboard as cleverly as a child can.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Robots are still limited in their ability to sense their environment.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">The colon introduces an example that proves the main statement; &lsquo;as cleverly as a child can&rsquo; = a clause of comparison.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A <strong>colon</strong> in academic writing means &lsquo;here is the evidence for what I just said&rsquo;. Note <em>still</em> and <em>yet</em>: both mark a limit that has not gone away.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Robots can beat us at chess but cannot pick up the pieces as well as a small child can.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">机器人感知环境的能力仍然有限：它们还无法像小孩那样灵巧地识别并移动真实棋盘上的棋子。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Richardson believes that our fear of machines becoming too advanced has more to do with human nature than anything intrinsic to the machines themselves.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Richardson believes that our fear&hellip; has more to do with human nature.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;of machines becoming too advanced&rsquo; = a prepositional phrase with a gerund subject; &lsquo;than anything intrinsic to the machines themselves&rsquo; = the second half of a comparison.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>have more to do with X than Y</strong> is a ranking structure: X is the real cause, Y is not. This single sentence is the whole answer to <strong>Q37</strong>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Richardson thinks our fear of clever machines says more about us than about the machines.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">理查森认为，我们对机器变得过于先进的恐惧，更多源于人性本身，而非机器固有的任何特质。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;I think we should ensure that robots remain as no more than &lsquo;idiot savants&rsquo; lacking the capacity to outwit us, even though they may greatly surpass us in the ability to calculate and process information.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We should ensure that robots remain as no more than &lsquo;idiot savants&rsquo;.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;lacking the capacity to outwit us&rsquo; = a reduced relative clause (= which lack&hellip;); &lsquo;even though they may greatly surpass us&hellip;&rsquo; = a concession clause.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value"><strong>no more than</strong> sets a ceiling, and <strong>even though</strong> concedes what machines <em>can</em> do. Rees is not denying machine power; he wants a limit on it &mdash; which is exactly <strong>Q27</strong>.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Rees wants robots to stay very good at narrow tasks but never clever enough to outsmart people, even if they calculate far faster than we do.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">我认为我们应确保机器人始终不过是&ldquo;白痴天才&rdquo;，不具备智胜我们的能力，尽管它们在计算和处理信息方面可能远超我们。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;Critically, the benefits of computers outweigh the damage that computer viruses cause.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The benefits of computers outweigh the damage.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">&lsquo;that computer viruses cause&rsquo; = a defining relative clause identifying the damage.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The sentence adverb <strong>Critically</strong> means &lsquo;this is the decisive point&rsquo;, not &lsquo;in a critical way&rsquo;. Compare <em>Interestingly</em>, <em>Similarly</em>, <em>Unfortunately</em> &mdash; all used the same way in this passage.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Computers do far more good than viruses do harm.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">关键在于，计算机带来的益处大于计算机病毒造成的损害。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">&ldquo;She then explained that the division did not always exist, and that scientists and technologists made this separation because they wanted to carve out the sphere of their work.&rdquo;</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">She then explained that the division did not always exist and that&hellip; they made this separation.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Two <em>that</em>-clauses share the verb &lsquo;explained&rsquo;; &lsquo;because they wanted to carve out&hellip;&rsquo; = a reason clause.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Repeating <strong>that</strong> before the second clause keeps a long sentence clear. Notice this is <em>reported</em> speech &mdash; the passage constantly alternates between quoting the experts and reporting them, and both count as their opinions.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">She said the split between fact and fiction is not natural: scientists created it to mark out their own territory.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">她接着解释说，这种划分并非一直存在，科学家和技术人员之所以作出这种区分，是因为他们想为自己的工作划出专属领域。</span></div></div></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">✏️ Sentence Drills</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Matching Features (the real exam statements Q27&ndash;33)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the surname of the expert who expressed each view: <strong>Rees</strong>, <strong>Wolpert</strong> or <strong>Richardson</strong>. Remember that a name can be used more than once.</p><div class="ex-item"><span class="ex-num">1.</span><label>For our own safety, humans will need to restrict the abilities of robots. &rarr; <input type="text" class="blank" id="b1" data-answer="Rees" placeholder="______"><span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The risk of robots harming us is less serious than humans believe it to be. &rarr; <input type="text" class="blank" id="b2" data-answer="Richardson" placeholder="______"><span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>It will take many decades for robot intelligence to be as imaginative as human intelligence. &rarr; <input type="text" class="blank" id="b3" data-answer="Wolpert" placeholder="______"><span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>We may have to start considering whether we are treating robots fairly. &rarr; <input type="text" class="blank" id="b4" data-answer="Rees" placeholder="______"><span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Robots are probably of more help to us on Earth than in space. &rarr; <input type="text" class="blank" id="b5" data-answer="Wolpert" placeholder="______"><span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>High-quality science fiction may be no less accurate than mediocre science. &rarr; <input type="text" class="blank" id="b6" data-answer="Rees" placeholder="______"><span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>There are those who look forward to robots developing greater intelligence. &rarr; <input type="text" class="blank" id="b7" data-answer="Richardson" placeholder="______"><span class="feedback" id="fb7"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Sentence Completion from the passage</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write <strong>ONE WORD ONLY</strong> from the passage in each gap. All seven come from the experts&rsquo; own answers.</p><div class="ex-item"><span class="ex-num">1.</span><label>Rees expects the solar system to be mapped by <input type="text" class="blank" id="b8" data-answer="robotic" placeholder="______"> craft by the end of the century.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Mining asteroids would enable the <input type="text" class="blank" id="b9" data-answer="fabrication" placeholder="______"> of large structures in space.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Rees says colonised planets should have a status <input type="text" class="blank" id="b10" data-answer="analogous" placeholder="______"> to that of Antarctica.<span class="feedback" id="fb10"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Wolpert points out that most of Earth is currently <input type="text" class="blank" id="b11" data-answer="inaccessible" placeholder="______"> to us.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Rees wants robots to remain no more than idiot <input type="text" class="blank" id="b12" data-answer="savants" placeholder="______">.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Wolpert argues that the benefits of computers <input type="text" class="blank" id="b13" data-answer="outweigh" placeholder="______"> the damage viruses cause.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Richardson notes that no machine has ever challenged human <input type="text" class="blank" id="b14" data-answer="supremacy" placeholder="______">.<span class="feedback" id="fb14"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Vocabulary in Context</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with a word used in the passage. The meaning is given in brackets.</p><div class="ex-item"><span class="ex-num">1.</span><label>Rees finds asteroid mining more <input type="text" class="blank" id="b15" data-answer="benign" placeholder="______"> (= harmless) than terraforming.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Richardson finds the idea of colonisation morally <input type="text" class="blank" id="b16" data-answer="dubious" placeholder="______"> (= questionable).<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Machines already <input type="text" class="blank" id="b17" data-answer="outstrip" placeholder="______"> (= go far beyond) humans at navigating and searching.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>People tend to <input type="text" class="blank" id="b18" data-answer="personify" placeholder="______"> (= treat as human) objects that are not alive.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>A computer virus is really the work of a <input type="text" class="blank" id="b19" data-answer="malicious" placeholder="______"> (= deliberately harmful) designer.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Almost no science fiction <input type="text" class="blank" id="b20" data-answer="envisages" placeholder="______"> (= imagines) a future without robots.<span class="feedback" id="fb20"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. The grammar of the sentence, not just the meaning, decides the form.</p><div class="ex-item"><span class="ex-num">1.</span><label>We are increasingly <input type="text" class="blank" id="b21" data-answer="dependent" placeholder="______"> (DEPEND) on computer networks.<span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Later this century robots may relate to people as <input type="text" class="blank" id="b22" data-answer="adeptly" placeholder="______"> (ADEPT) as we do.<span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>No machine matches the <input type="text" class="blank" id="b23" data-answer="reliability" placeholder="______"> (RELIABLE) of human vision.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Expecting creative machines within 50 years would be highly <input type="text" class="blank" id="b24" data-answer="ambitious" placeholder="______"> (AMBITION).<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Richardson questions the <input type="text" class="blank" id="b25" data-answer="morality" placeholder="______"> (MORAL) of colonising other planets.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Fears of artificial intelligence continue to <input type="text" class="blank" id="b26" data-answer="persist" placeholder="______"> (PERSISTENT).<span class="feedback" id="fb26"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching (statement wording &rarr; the expert&rsquo;s words)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Matching Features is won by spotting paraphrase. Read the statement from the question paper, then write the word the <em>passage</em> uses.</p><div class="ex-item"><span class="ex-num">1.</span><label>Statement: &ldquo;restrict the abilities of robots&rdquo; &rarr; Rees: robots should lack the capacity to <input type="text" class="blank" id="b27" data-answer="outwit" placeholder="______"> us.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Statement: &ldquo;as imaginative as human intelligence&rdquo; &rarr; Wolpert: close to the <input type="text" class="blank" id="b28" data-answer="creative" placeholder="______"> intelligence of a human.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Statement: &ldquo;whether we are treating robots fairly&rdquo; &rarr; Rees: should we feel <input type="text" class="blank" id="b29" data-answer="guilty" placeholder="______"> about exploiting them?<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Statement: &ldquo;more help to us on Earth than in space&rdquo; &rarr; Wolpert: gather resources <input type="text" class="blank" id="b30" data-answer="nearer" placeholder="______"> to home.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Statement: &ldquo;the work of mediocre scientists&rdquo; &rarr; Rees: second-<input type="text" class="blank" id="b31" data-answer="rate" placeholder="______"> science.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Statement: &ldquo;look forward to robots developing greater intelligence&rdquo; &rarr; Richardson: many people <input type="text" class="blank" id="b32" data-answer="welcome" placeholder="______"> machine intelligence.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Statement: &ldquo;attribute human characteristics to non-human entities&rdquo; &rarr; Richardson: the tendency to personify <input type="text" class="blank" id="b33" data-answer="inanimate" placeholder="______"> objects.<span class="feedback" id="fb33"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 6 &mdash; Reporting, Linking and Clause Reduction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">One word per gap. These structures are how an interview passage turns speech into academic prose.</p><div class="ex-item"><span class="ex-num">1.</span><label>Rees said he believed the solar system <input type="text" class="blank" id="b34" data-answer="would" placeholder="______"> be mapped by robotic craft. (reported speech: will &rarr; ?)<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>&lsquo;I don&rsquo;t see a pressing need to colonise other planets <input type="text" class="blank" id="b35" data-answer="unless" placeholder="______"> we can bring resources back to Earth.&rsquo; (negative condition)<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Machines already outstrip us at searching; <input type="text" class="blank" id="b36" data-answer="however" placeholder="______">, none can identify objects as reliably as we do. (contrast)<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Our fear of machines <input type="text" class="blank" id="b37" data-answer="stems" placeholder="______"> from a tendency to personify objects. (verb + from = originates in)<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Robots have never threatened us, <input type="text" class="blank" id="b38" data-answer="so" placeholder="______"> Richardson thinks it unlikely that they ever will. (result)<span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>&lsquo;machines which are based on representations of ourselves&rsquo; can be reduced to &lsquo;machines <input type="text" class="blank" id="b39" data-answer="based" placeholder="______"> on representations of ourselves&rsquo;. (past participle)<span class="feedback" id="fb39"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div></section>
+<section class="tab-panel" id="tab-logic"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="highlight">IELTS Reading tests whether you follow the <strong>relationship between ideas</strong>: cause, contrast, example, definition, sequence and the writer&rsquo;s own attitude. 抓住句子之间的逻辑关系，比逐词翻译更重要。</div><div class="card"><p><strong>Cause &amp; effect &mdash; Richardson&rsquo;s self-fulfilling loop</strong></p><p>Her argument is a chain: we build machines in our own image &rarr; we assume they think as we do &rarr; we see them as an autonomous threat &rarr; &lsquo;we tend to imagine they are greater and more powerful than they really are and <em>subsequently they become so</em>&rsquo;. That last clause is the sting: the fear helps create the thing feared. Track the arrows and Q37 answers itself.</p></div>
+<div class="card"><p><strong>Contrast &mdash; agreement and disagreement between the same three people</strong></p><p>Q34&ndash;36 exist because the experts sometimes converge and sometimes clash. Rees and Richardson <em>agree</em> that changing other planets is ethically wrong (benign / analogous to Antarctica vs morally dubious). Rees and Wolpert <em>agree</em> on how far machine intelligence has actually got. Wolpert and Richardson <em>disagree</em> about whether AI has already done harm. Same panel, three different pairings.</p></div>
+<div class="card"><p><strong>Comparison &mdash; measuring machines against people</strong></p><p>The comparisons are everywhere and each one is limited: robots beat humans at chess but cannot move the pieces &lsquo;as cleverly as a child can&rsquo;; machines navigate and search with an ability that &lsquo;far outstrips humans&rsquo; but cannot see or hear &lsquo;with the reliability and flexibility of humans&rsquo;. Notice the pattern: <em>superior at calculation, inferior at perception</em>. That is the shared view behind Q35.</p></div>
+<div class="card"><p><strong>Examples &mdash; the concrete case that carries the argument</strong></p><p>Wolpert does not argue about AI danger in the abstract; he gives one example, the computer virus, and then generalises from it: &lsquo;<em>Similarly</em>, while there may be misuses of robotics in the near future, the benefits&hellip; are likely to outweigh these negative aspects.&rsquo; The word <em>Similarly</em> tells you the example was a model for a wider claim.</p></div>
+<div class="card"><p><strong>Definitions &mdash; use the footnotes and the quotation marks</strong></p><p><em>Terraforming</em> and <em>singularity</em> are both defined in footnotes, and &lsquo;idiot savants&rsquo; is explained by the words around it (&lsquo;lacking the capacity to outwit us, even though they may greatly surpass us in the ability to calculate&rsquo;). Quotation marks in this passage often signal a term the writer expects you not to know &mdash; the explanation is always nearby.</p></div>
+<div class="card"><p><strong>Problem &rarr; response &mdash; three different prescriptions</strong></p><p>Same problem, three answers. Rees: build a ceiling into the technology (&lsquo;ensure that robots remain as no more than idiot savants&rsquo;). Wolpert: accept the trade-off, because benefits outweigh harm. Richardson: change how we think, and &lsquo;bring these different understandings together&rsquo;. Q40 tests whether you noticed that the third one is a <em>recommendation</em>.</p></div>
+<div class="card"><p><strong>Structure &amp; sequence &mdash; four questions, always in the same order of speakers</strong></p><p>Rees &rarr; Wolpert &rarr; Richardson, four times over. Once you see the pattern you can predict where any expert&rsquo;s view on any topic sits, which turns Q27&ndash;33 from a search into a lookup. Marking &lsquo;Q1&rsquo;&ndash;&lsquo;Q4&rsquo; in the margin beside each block of three is worth two minutes later.</p></div>
+<div class="card"><p><strong>The writer&rsquo;s attitude &mdash; and where hedging hides the answers</strong></p><p>The writer is invisible here; the opinions belong to the three experts, and the writer only reports them. Watch the hedges inside their answers: &lsquo;<em>may</em> relate&rsquo;, &lsquo;<em>would be highly ambitious</em>&rsquo;, &lsquo;<em>seems unlikely</em>&rsquo;, &lsquo;are <em>likely to</em> outweigh&rsquo;. Q29 depends entirely on one of these hedges, so never treat a cautious prediction as a flat statement.</p></div></section>
+<section class="tab-panel" id="tab-skills"><h2 class="section-title">🎯 Question-Type Skill Practice</h2><div class="exercise-block"><h3>Skill 1 &mdash; Matching Features (Q27&ndash;33): who said what</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">A = Martin Rees, B = Daniel Wolpert, C = Kathleen Richardson. Letters may be used more than once. Decide first, then read the evidence.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>27. For our own safety, humans will need to restrict the abilities of robots.</b> &rarr; <strong>A</strong> &mdash; &lsquo;we should ensure that robots remain as no more than &ldquo;idiot savants&rdquo; <em>lacking the capacity to outwit us</em>&rsquo;.</li><li><b>28. The risk of robots harming us is less serious than humans believe.</b> &rarr; <strong>C</strong> &mdash; &lsquo;we tend to imagine they are greater and more powerful than they really are&rsquo;; &lsquo;none have in fact risen up and challenged human supremacy&rsquo;.</li><li><b>29. It will take many decades for robot intelligence to be as imaginative as ours.</b> &rarr; <strong>B</strong> &mdash; &lsquo;Expecting a machine close to the <em>creative</em> intelligence of a human within the next 50 years would be highly ambitious.&rsquo;</li><li><b>30. We may have to start considering whether we are treating robots fairly.</b> &rarr; <strong>A</strong> &mdash; &lsquo;Should we feel guilty about exploiting [sophisticated robots]? Should we fret if they are underemployed, frustrated, or bored?&rsquo;</li><li><b>31. Robots are probably of more help to us on Earth than in space.</b> &rarr; <strong>B</strong> &mdash; &lsquo;Using robots to gather resources <em>nearer to home</em> would seem to be a better use of our robotic tools.&rsquo;</li><li><b>32. High-quality science fiction may be as accurate as mediocre science.</b> &rarr; <strong>A</strong> &mdash; &lsquo;better to read <em>first-rate</em> science fiction than <em>second-rate</em> science &mdash; more stimulating, and perhaps no more likely to be wrong&rsquo;.</li><li><b>33. There are those who look forward to robots developing greater intelligence.</b> &rarr; <strong>C</strong> &mdash; &lsquo;Not all fear [robots]; many people <em>welcome</em> machine intelligence.&rsquo;</li></ul><p style="margin-top:10px;"><b>Habit to build:</b> the statements are <em>not</em> in passage order in a matching-features task. Work expert by expert instead: read everything Rees says, tick off the statements that fit, then move on.</p></div>
+<div class="exercise-block"><h3>Skill 2 &mdash; Matching Sentence Endings (Q34&ndash;36): find the shared topic</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Each stem names two experts and a relationship (similar views / share an opinion / disagrees). You are matching <em>topics</em>, so read the four endings before you go back to the text.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>34. Richardson and Rees express similar views regarding the ethical aspect of&hellip;</b> &rarr; <strong>C &mdash; changes made to other planets for our own benefit.</strong> Rees calls terraforming less &lsquo;benign&rsquo; and wants planets protected like Antarctica; Richardson calls colonisation &lsquo;morally dubious&rsquo;. Both are talking about <em>ethics</em>, which rules out ending A.</li><li><b>35. Rees and Wolpert share an opinion about the extent of&hellip;</b> &rarr; <strong>B &mdash; advances made in machine intelligence so far.</strong> Rees: machines win at chess but cannot move the pieces. Wolpert: &lsquo;in a limited sense it already has&rsquo;, but no machine sees or hears reliably. Same verdict &mdash; impressive but narrow.</li><li><b>36. Wolpert disagrees with Richardson on the question of&hellip;</b> &rarr; <strong>D &mdash; the harm already done by artificial intelligence.</strong> Wolpert: &lsquo;we have already seen the damaging effects of artificial intelligence in the form of computer viruses&rsquo;. Richardson: &lsquo;none have in fact risen up and challenged human supremacy&rsquo;.</li><li><b>Never used: A &mdash; robots to explore outer space.</b> All three discuss space, but no <em>pair</em> is described as agreeing or disagreeing about exploration itself.</li></ul><p style="margin-top:10px;"><b>Check before you move on:</b> the completed sentence must be grammatical. Read &lsquo;the extent of advances made in machine intelligence so far&rsquo; aloud &mdash; it fits. &lsquo;The extent of robots to explore outer space&rsquo; does not.</p></div>
+<div class="exercise-block"><h3>Skill 3 &mdash; Multiple Choice (Q37&ndash;40): answer the question that was asked</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These four run in passage order through Richardson&rsquo;s and Rees&rsquo;s later answers. Two of them ask about <em>content</em>, two about what the speaker is <em>doing</em>.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>37. Richardson on fear of machines</b> &rarr; <strong>B</strong>. &lsquo;it stems from humans&rsquo; tendency to <em>personify inanimate objects</em>&rsquo; = attributing human characteristics to non-human entities. A is wrong because she links fear to human nature, not to how advanced robots have become.</li><li><b>38. Rees&rsquo;s cause for concern</b> &rarr; <strong>C</strong>. &lsquo;computer networks&hellip; could behave like a single &ldquo;brain&rdquo; <em>with a mind of its own</em>, and with goals that may be contrary to human welfare&rsquo; = independent thought. B is wrong: he openly accepts that machines may &lsquo;greatly surpass us in the ability to calculate&rsquo; without worrying about it.</li><li><b>39. Wolpert on science fiction</b> &rarr; <strong>B</strong>. His final sentence is the emphasis: &lsquo;Interestingly, <em>almost no science fiction envisages a future without robots</em>&rsquo; &mdash; robots are fundamental to the genre. C describes the &lsquo;spectrum&rsquo; sentence, but that is about variety, not change over time.</li><li><b>40. Richardson on reality and fantasy</b> &rarr; <strong>C</strong>. &lsquo;we need to bring these different understandings together to get a whole perspective&rsquo; = recommending a change of approach. D is a true detail (scientists made the separation) but it is not what she is <em>doing</em> overall.</li></ul><p style="margin-top:10px;"><b>Technique for &lsquo;What is X doing?&rsquo; questions:</b> ignore the topic and look at the verbs &mdash; <em>we need to</em>, <em>perhaps then</em>, <em>should</em> all point to a recommendation; <em>because</em>, <em>this is why</em> point to an explanation.</p></div>
+<div class="exercise-block"><h3>Skill 4 &mdash; Building the grid before you answer</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The single highest-value habit for this passage. Three experts &times; four questions = twelve cells. Fill them in as you skim, in two or three words each.</p><ul style="margin-left:18px;line-height:1.9;"><li><b>Colonising planets</b> &mdash; Rees: map by robots, mine asteroids, protect like Antarctica. Wolpert: no pressing need, use robots on Earth. Richardson: morally dubious, meet &lsquo;the Other&rsquo;.</li><li><b>Machine vs human intelligence</b> &mdash; Rees: wins at chess, poor at sensing; moral questions later. Wolpert: already ahead in search and memory, 50 years from creativity. Richardson: the fear is about us, not them.</li><li><b>Should we be scared?</b> &mdash; Rees: singularity, networks with a mind of their own. Wolpert: viruses come from malicious designers; benefits outweigh harm. Richardson: nothing has ever challenged us; many people welcome AI.</li><li><b>Science fiction</b> &mdash; Rees: first-rate fiction beats second-rate science. Wolpert: remarkable at predicting; no future without robots. Richardson: the fact/fiction divide is artificial and should be closed.</li></ul><p style="margin-top:10px;"><b>Tip:</b> with this grid finished, Q27&ndash;33 takes about three minutes and you never re-read a paragraph twice.</p></div>
+<div class="exercise-block"><h3>Skill 5 &mdash; Yes / No / Not Given thinking (extra practice)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This passage has no Y/N/NG task, but opinion passages are where the skill matters most. Decide, then check.</p><ul style="margin-left:18px;line-height:1.9;"><li>Rees expects robotic craft to have mapped the solar system by 2100. &rarr; <strong>YES</strong> &mdash; &lsquo;the solar system would be mapped by robotic craft by the end of the century&rsquo;.</li><li>Wolpert believes colonising other planets is immoral. &rarr; <strong>NOT GIVEN</strong> &mdash; his objection is practical (&lsquo;no pressing need&rsquo;), not ethical. The moral objection is Richardson&rsquo;s.</li><li>Rees thinks robots may one day deserve moral consideration. &rarr; <strong>YES</strong> &mdash; &lsquo;Should we feel guilty about exploiting them? Should we fret if they are&hellip; bored?&rsquo;</li><li>Wolpert thinks computer viruses show that machines have become intelligent. &rarr; <strong>NO</strong> &mdash; &lsquo;the real intelligence is the malicious designer&rsquo;.</li><li>Richardson claims that robots will never become dangerous. &rarr; <strong>NO</strong> &mdash; she says it &lsquo;seems unlikely&rsquo;, a hedge, and she also warns that imagining machines as powerful helps make them so.</li><li>Science fiction writers have influenced real robot design. &rarr; <strong>NOT GIVEN</strong> &mdash; Wolpert says fiction predicts the future well, which is not the same as shaping it.</li></ul></div>
+<div class="exercise-block"><h3>Skill 6 &mdash; Summary completion practice (extra)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Cover the passage and read this summary of the three positions. Every bold word is a single word taken straight from the text &mdash; exactly what a summary task would ask for.</p><p style="line-height:2;">Rees believes robotic craft will soon map the solar system and that mining <strong>asteroids</strong> would allow structures to be built in space; he calls this more <strong>benign</strong> than terraforming and wants colonised planets given a status <strong>analogous</strong> to Antarctica. Wolpert sees no <strong>pressing</strong> need to leave Earth, most of which is still <strong>inaccessible</strong>, and thinks the benefits of technology <strong>outweigh</strong> its harms. Richardson argues that fear <strong>stems</strong> from our tendency to <strong>personify</strong> inanimate objects, notes that no machine has challenged human <strong>supremacy</strong>, and recommends bringing reality and fantasy back together to gain a whole <strong>perspective</strong>.</p><p style="margin-top:10px;"><b>How to use this:</b> cover the bold words, predict the part of speech each gap needs, then uncover. Predicting word type before searching is what separates band 7 from band 6.</p></div>
+<div class="exercise-block"><h3>Skill 7 &mdash; Locating information fast</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Where would you scan for each idea? In a twelve-paragraph interview, going to the right block first time is the whole game.</p><ul style="margin-left:18px;line-height:1.9;"><li>A comparison with Antarctica &rarr; Rees, first question.</li><li>How much of Earth we still cannot reach &rarr; Wolpert, first question.</li><li>Meeting &lsquo;the Other&rsquo; &rarr; Richardson, first question.</li><li>A child moving chess pieces &rarr; Rees, second question.</li><li>A 50-year estimate &rarr; Wolpert, second question (the answer to Q29).</li><li>Machines becoming as powerful as we imagine them &rarr; Richardson, second question (Q28 and Q37).</li><li>The &lsquo;singularity&rsquo; and networks with their own goals &rarr; Rees, third question (Q38).</li><li>Computer viruses and malicious designers &rarr; Wolpert, third question (Q36).</li><li>A future without robots &rarr; Wolpert, fourth question (Q39).</li><li>Carving out the sphere of scientific work &rarr; Richardson, fourth question (Q40).</li></ul></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What does Rees think should happen to planets that are colonised?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. They should be fully terraformed for human settlement.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. They should be given a protected status like Antarctica.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. They should be mined for raw materials as quickly as possible.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. They should be left completely untouched by robots.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why does Wolpert see no pressing need to colonise other planets?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Because space travel is too dangerous for robots.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Because he believes colonisation is morally wrong.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Because most of Earth itself is still inaccessible to us.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Because asteroids contain no useful minerals.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Whose objection to colonisation is a moral one?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Rees only</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Wolpert only</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Richardson</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. None of them</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What example does Rees use to show that robots still cannot sense their environment well?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. They cannot drive a car in traffic.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. They cannot recognise and move real chess pieces as cleverly as a child.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. They cannot recognise human faces.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. They cannot survive outside a laboratory.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">According to Wolpert, how long before machines approach human creative intelligence?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. It has already happened.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. Within ten years.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. More than 50 years &mdash; expecting it sooner would be highly ambitious.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. It will never happen.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">According to Richardson, where does our fear of advanced machines come from?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. from real incidents in which robots have harmed people</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. from our tendency to treat lifeless objects as if they were human</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. from science fiction films of the last century</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. from a misunderstanding of how computers are programmed</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What worries Rees about our growing dependence on computer networks?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. that networks could act like a single brain with goals of their own</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. that networks will make human workers unnecessary</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. that networks calculate faster than people can</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. that networks are easy for criminals to attack</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What does the phrase &lsquo;idiot savants&rsquo; tell you about the limits Rees wants?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. Robots should be brilliant at narrow tasks but unable to outwit us.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. Robots should be prevented from doing any calculation.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. Robots should be as intelligent as humans in every way.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. Robots should be given human rights.</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Where does Wolpert locate the real intelligence behind a computer virus?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. in the virus itself</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. in the network that spreads it</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. in the malicious human designer</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. in the security software that fights it</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which statement best represents Richardson&rsquo;s view of the danger from robots?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. The danger is greater than most people realise.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. The danger is smaller than people imagine, since no machine has ever challenged us.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. The danger will only appear after the singularity.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. The danger comes mainly from military robots.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What does Wolpert emphasise about science fiction?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. that it changes how the public feels about robots</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. that robots are fundamental to the genre &mdash; almost no story imagines a future without them</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. that its portrayal of robots has grown darker over time</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. that readers react to the same robot stories in different ways</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is Richardson doing when she talks about reality and fantasy?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. warning people not to confuse the two</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. describing how one has affected the other</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. recommending that people change how they view the two</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. explaining why scientists see them differently from everyone else</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 27&ndash;40</h3><div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">A</div><div class="answer-note">Rees, third question: &lsquo;I think we should ensure that robots remain as no more than &ldquo;idiot savants&rdquo; <em>lacking the capacity to outwit us</em>&rsquo;. Limiting what robots can do, for our own protection.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">C</div><div class="answer-note">Richardson: &lsquo;we tend to imagine they are greater and more powerful than they really are&rsquo; and &lsquo;none have in fact risen up and challenged human supremacy&hellip; it seems unlikely that they ever will&rsquo;. The fear is bigger than the risk.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">Wolpert: &lsquo;Expecting a machine close to the <em>creative</em> intelligence of a human within the next 50 years would be highly ambitious.&rsquo; &lsquo;Creative&rsquo; = imaginative; 50 years = many decades.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">A</div><div class="answer-note">Rees: &lsquo;Moral questions then arise&hellip; Should we feel guilty about exploiting [sophisticated robots]? Should we fret if they are underemployed, frustrated, or bored?&rsquo; = whether we treat robots fairly.</div></div></div>
+<div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">B</div><div class="answer-note">Wolpert: &lsquo;Using robots to gather resources <em>nearer to home</em> would seem to be a better use of our robotic tools.&rsquo; Nearer to home = on Earth rather than in space.</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">A</div><div class="answer-note">Rees, fourth question: &lsquo;it&rsquo;s better to read <em>first-rate</em> science fiction than <em>second-rate</em> science &mdash; more stimulating, and perhaps <em>no more likely to be wrong</em>&rsquo;. Second-rate science = the work of mediocre scientists.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">C</div><div class="answer-note">Richardson: &lsquo;Not all fear [robots]; many people <em>welcome</em> machine intelligence.&rsquo; Welcoming it = looking forward to it.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">C</div><div class="answer-note">The shared ground is ethics about other planets: Rees says asteroid mining is &lsquo;more realistic and <em>benign</em> than&hellip; terraforming&rsquo; and that colonised planets should be protected like Antarctica; Richardson finds colonisation &lsquo;morally dubious&rsquo;. Ending A is a trap because all three discuss space, but only these two make it an ethical question.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">B</div><div class="answer-note">Both give the same verdict on how far machine intelligence has actually come: Rees &mdash; robots beat us at chess but &lsquo;can&rsquo;t yet recognise and move the pieces&hellip; as cleverly as a child&rsquo;; Wolpert &mdash; &lsquo;in a limited sense it already has&rsquo;, yet no machine matches human &lsquo;reliability and flexibility&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">D</div><div class="answer-note">Wolpert: &lsquo;we have <em>already</em> seen the damaging effects of artificial intelligence in the form of computer viruses&rsquo;. Richardson: &lsquo;none have in fact risen up and challenged human supremacy&rsquo;. They disagree about harm that has <em>already</em> been done.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">B</div><div class="answer-note">Richardson, second question: fear &lsquo;stems from humans&rsquo; tendency to <em>personify inanimate objects</em>&rsquo; &mdash; we give human characteristics to things that are not human. Option A is wrong because she ties the fear to human nature, not to advances in robotics.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">C</div><div class="answer-note">Rees, third question: computer networks &lsquo;could behave like a single &ldquo;brain&rdquo; <em>with a mind of its own</em>, and with goals that may be contrary to human welfare&rsquo; = AI developing independent thought. He explicitly accepts that machines may surpass us at calculation, so option B is not a worry for him.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">B</div><div class="answer-note">Wolpert ends with the emphasis: &lsquo;Interestingly, <em>almost no science fiction envisages a future without robots</em>&rsquo; &mdash; robots are fundamental to the genre. The &lsquo;vivid spectrum&rsquo; sentence describes variety, not change over time, so C is wrong.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">C</div><div class="answer-note">Richardson, fourth question: &lsquo;In some cases, <em>we need to bring these different understandings together</em> to get a whole perspective&rsquo; &mdash; she is recommending a different approach. D repeats a true detail (scientists created the divide) but is not what she is doing overall.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Matching Features (the real exam statements Q27&ndash;33)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Rees</div><div class="answer-note">For our own safety, humans will need to restrict the abilities of robots. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">Richardson</div><div class="answer-note">The risk of robots harming us is less serious than humans believe it to be. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">Wolpert</div><div class="answer-note">It will take many decades for robot intelligence to be as imaginative as human intelligence. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">Rees</div><div class="answer-note">We may have to start considering whether we are treating robots fairly. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">Wolpert</div><div class="answer-note">Robots are probably of more help to us on Earth than in space. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">Rees</div><div class="answer-note">High-quality science fiction may be no less accurate than mediocre science. &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">Richardson</div><div class="answer-note">There are those who look forward to robots developing greater intelligence. &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Sentence Completion from the passage</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">robotic</div><div class="answer-note">Rees expects the solar system to be mapped by</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">fabrication</div><div class="answer-note">Mining asteroids would enable the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">analogous</div><div class="answer-note">Rees says colonised planets should have a status</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">inaccessible</div><div class="answer-note">Wolpert points out that most of Earth is currently</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">savants</div><div class="answer-note">Rees wants robots to remain no more than idiot</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">outweigh</div><div class="answer-note">Wolpert argues that the benefits of computers</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">supremacy</div><div class="answer-note">Richardson notes that no machine has ever challenged human</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Vocabulary in Context</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">benign</div><div class="answer-note">Rees finds asteroid mining more</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">dubious</div><div class="answer-note">Richardson finds the idea of colonisation morally</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">outstrip</div><div class="answer-note">Machines already</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">personify</div><div class="answer-note">People tend to</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">malicious</div><div class="answer-note">A computer virus is really the work of a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">envisages</div><div class="answer-note">Almost no science fiction</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">dependent</div><div class="answer-note">We are increasingly</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">adeptly</div><div class="answer-note">Later this century robots may relate to people as</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">reliability</div><div class="answer-note">No machine matches the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">ambitious</div><div class="answer-note">Expecting creative machines within 50 years would be highly</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">morality</div><div class="answer-note">Richardson questions the</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">persist</div><div class="answer-note">Fears of artificial intelligence continue to</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching (statement wording &rarr; the expert&rsquo;s words)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">outwit</div><div class="answer-note">Statement: &ldquo;restrict the abilities of robots&rdquo; &rarr; Rees: robots should lack the capacity to</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">creative</div><div class="answer-note">Statement: &ldquo;as imaginative as human intelligence&rdquo; &rarr; Wolpert: close to the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">guilty</div><div class="answer-note">Statement: &ldquo;whether we are treating robots fairly&rdquo; &rarr; Rees: should we feel</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">nearer</div><div class="answer-note">Statement: &ldquo;more help to us on Earth than in space&rdquo; &rarr; Wolpert: gather resources</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">rate</div><div class="answer-note">Statement: &ldquo;the work of mediocre scientists&rdquo; &rarr; Rees: second-</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">welcome</div><div class="answer-note">Statement: &ldquo;look forward to robots developing greater intelligence&rdquo; &rarr; Richardson: many people</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">inanimate</div><div class="answer-note">Statement: &ldquo;attribute human characteristics to non-human entities&rdquo; &rarr; Richardson: the tendency to personify</div></div></div></div>
+<div class="answer-section"><h3>Exercise 6 &mdash; Reporting, Linking and Clause Reduction</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">would</div><div class="answer-note">Rees said he believed the solar system</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">unless</div><div class="answer-note">&lsquo;I don&rsquo;t see a pressing need to colonise other planets</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">however</div><div class="answer-note">Machines already outstrip us at searching;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">stems</div><div class="answer-note">Our fear of machines</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">so</div><div class="answer-note">Robots have never threatened us,</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">based</div><div class="answer-note">&lsquo;machines which are based on representations of ourselves&rsquo; can be reduced to &lsquo;machines</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. They should be given a protected status like Antarctica.</div><div class="answer-note">&lsquo;Colonised planets should be preserved with a status that is analogous to Antarctica here on Earth.&rsquo; This ethical position is half of the Q34 pair.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">C. Because most of Earth itself is still inaccessible to us.</div><div class="answer-note">&lsquo;The vast majority of Earth is currently inaccessible to us. Using robots to gather resources nearer to home would seem to be a better use of our robotic tools.&rsquo; This is the answer to Q31 &mdash; and note that his objection is <em>practical</em>, not ethical.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. Richardson</div><div class="answer-note">&lsquo;the idea of colonisation of other planets seemed morally dubious&rsquo;. Rees also raises an ethical point about terraforming, which is why Q34 pairs Rees with Richardson.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. They cannot recognise and move real chess pieces as cleverly as a child.</div><div class="answer-note">The colon in that sentence introduces evidence for the claim. Superior at calculation, inferior at perception &mdash; the shared view that makes Q35 answer B.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. More than 50 years &mdash; expecting it sooner would be highly ambitious.</div><div class="answer-note"><strong>Answer to Q29.</strong> &lsquo;Expecting a machine close to the creative intelligence of a human within the next 50 years would be highly ambitious.&rsquo; Note the hedge &mdash; he does not say it is impossible.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. from our tendency to treat lifeless objects as if they were human</div><div class="answer-note"><strong>Answer to Q37 (B).</strong> &lsquo;it stems from humans&rsquo; tendency to personify inanimate objects&rsquo; = attributing human characteristics to non-human entities.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">A. that networks could act like a single brain with goals of their own</div><div class="answer-note"><strong>Answer to Q38 (C in the exam).</strong> &lsquo;these could behave like a single &ldquo;brain&rdquo; with a mind of its own, and with goals that may be contrary to human welfare&rsquo; = artificial intelligence developing independent thought.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A. Robots should be brilliant at narrow tasks but unable to outwit us.</div><div class="answer-note">&lsquo;no more than &ldquo;idiot savants&rdquo; lacking the capacity to outwit us, even though they may greatly surpass us in the ability to calculate&rsquo;. This is Q27.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C. in the malicious human designer</div><div class="answer-note">&lsquo;But in this case, the real intelligence is the malicious designer.&rsquo; He still counts viruses as damage AI has <em>already</em> caused &mdash; which is why he disagrees with Richardson in Q36.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B. The danger is smaller than people imagine, since no machine has ever challenged us.</div><div class="answer-note"><strong>Answer to Q28.</strong> &lsquo;none have in fact risen up and challenged human supremacy&rsquo;, and &lsquo;we tend to imagine they are greater and more powerful than they really are&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. that robots are fundamental to the genre &mdash; almost no story imagines a future without them</div><div class="answer-note"><strong>Answer to Q39.</strong> &lsquo;Interestingly, almost no science fiction envisages a future without robots.&rsquo; The &lsquo;spectrum&rsquo; sentence is about variety, not change over time.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. recommending that people change how they view the two</div><div class="answer-note"><strong>Answer to Q40.</strong> &lsquo;we need to bring these different understandings together to get a whole perspective&rsquo;. Option D is a true detail, but it is not the function of her comment as a whole.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

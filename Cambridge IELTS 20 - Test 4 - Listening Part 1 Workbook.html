@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Listening Part 1 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Listening Part 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 1</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Listening Part 1</h1>
+    <h2>Advice on a Family Visit &middot; Notes Completion (Q1&ndash;10)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A man is expecting his cousin and her two children to visit next month, and because he has no children of his own he asks his colleague <strong>Sandra</strong> for advice. Sandra has just had her own brother&rsquo;s family to stay, so she recommends a hotel, two trips, a museum day, a market, a cheap-ticket website and two free things to do. You must complete a set of notes under six headings with <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p></div><div class="card"><p><strong>Who is speaking?</strong> Two colleagues or friends: a <b>man</b> who is asking for help, and <b>Sandra</b>, a woman who has recent experience of hosting visiting family. Sandra gives almost all of the answers; the man mostly asks questions and reacts (&ldquo;Sounds good&rdquo;, &ldquo;That&rsquo;s a shame&rdquo;).</p><p><strong>The situation 情境:</strong> 男士的表姐一家（带两个孩子，12岁和9岁）下个月要来玩，他自己没有孩子，不知道该带他们去哪里，于是向同事 Sandra 请教。Sandra 依次给出建议：住哪家酒店、家庭房多少钱、市中心怎么逛、去古堡的交通方式、科学博物馆哪天去、哪个展览快开幕、去哪儿吃饭、几点前吃午饭、剧院票怎么打折、有哪些免费活动。答案顺序与笔记标题顺序完全一致。</p><p><strong>Task type:</strong> Notes completion under six headings. Instruction: <strong>ONE WORD AND/OR A NUMBER</strong> for each answer. That means <em>walking</em> is fine but <em>a walking</em> is not, and <em>2.30</em> counts as a number, not as two words. The &pound; sign and the % sign are already printed, so do not write them.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> The notes are printed under <strong>six bold headings</strong> &mdash; Accommodation, Recommended trips, Science Museum, Food, Theatre tickets, Free activities. Those headings are your map: the speakers move through them in exactly that order, so the moment you hear a new topic word you know which gap you are on. Use the 30 seconds of preparation time to decide the <strong>word type</strong> of each gap (name / number / adjective / noun) and to notice the words already printed next to the gap &mdash; <em>Hotel</em>, <em>tour</em>, <em>p.m.</em>, <em>%</em>. Those printed words stop you writing a two-word answer. Above all, this recording works by <strong>rejection</strong>: the man suggests something, Sandra says &ldquo;I think it&rsquo;s better to&hellip;&rdquo; and gives the real answer. 第一个被提到的选项几乎从来不是答案&mdash;&mdash;要等对方修正之后再写。</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q2 &mdash; two prices, one gap.</b> Sandra gives <b>&pound;125</b> for a <em>family room</em> and &pound;95 for <em>each of two double rooms</em>. The note says &ldquo;cost of <em>family room</em> per night&rdquo;, so <b>125</b> is the answer and 95 is the distractor. Match the number to its label, not to its position.</li><li><b>Q3 &mdash; the man&rsquo;s idea is wrong.</b> He says &ldquo;I was thinking of doing a <em>bus</em> tour&rdquo;. Sandra replies &ldquo;those bus tours are quite expensive&hellip; it&rsquo;s better to do a <b>walking</b> tour&rdquo;. The word printed on the paper (<em>tour</em>) appears with both options.</li><li><b>Q5 &mdash; three days are named.</b> Monday (the museum is <em>closed</em>), Saturday (they arrive, and it is <em>terrible</em> / far too crowded) and <b>Tuesday</b> (&ldquo;Tuesday would be best&rdquo;). Only one of the three is a recommendation.</li><li><b>Q6 &mdash; two exhibitions.</b> The old-computers exhibition is <em>finished</em>; the note says &ldquo;which <b>opens soon</b>&rdquo;, so the answer is the new one on <b>space</b>. Watch the tense: <em>was</em> / <em>it&rsquo;s finished</em> vs <em>starting soon</em>.</li><li><b>Q8 &mdash; 2.30, not 2.</b> &ldquo;Most of the stalls stop serving lunch at <b>two thirty</b>&rdquo;. Write <b>2.30</b>; <em>p.m.</em> is already printed, so adding it changes nothing but writing &ldquo;half past two&rdquo; risks the word limit.</li><li><b>Q10 &mdash; view of <em>what</em>?</b> Sandra never says the word &ldquo;view&rdquo; here. She says &ldquo;you&rsquo;ll be able to <em>look right down on</em> the <b>port</b>&rdquo;. The word &ldquo;views&rdquo; comes one line later, from the man, after the answer has gone.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">accommodation</span></td><td><span class="pos">n.</span></td><td>a place for someone to live or stay</td><td class="zh">住宿；住处</td><td>&ldquo;What about <em>accommodation</em>? Are they going to stay with you?&rdquo;</td><td class="note">The first note heading. Spelling trap: double <b>c</b>, double <b>m</b> &mdash; a-c-c-o-m-m-o-d-a-t-i-o-n.</td></tr>
+<tr><td><span class="word">recommend</span></td><td><span class="pos">v.</span></td><td>to say that something is good and worth choosing</td><td class="zh">推荐</td><td>&ldquo;I always <em>recommend</em> people stay at the King&rsquo;s Hotel.&rdquo;</td><td class="note">The signal verb for Q1. When Sandra says &lsquo;I recommend&rsquo;, the very next noun is usually the answer.</td></tr>
+<tr><td><span class="word">central</span></td><td><span class="pos">adj.</span></td><td>in or near the middle of a town or city</td><td class="zh">市中心的；位置居中的</td><td>&ldquo;It&rsquo;s about five minutes&rsquo; walk from Murray Station, so nice and <em>central</em>.&rdquo;</td><td class="note">Praise word for a location. It confirms the hotel is the recommended one, but it is not itself an answer.</td></tr>
+<tr><td><span class="word">budget</span></td><td><span class="pos">n.</span></td><td>the amount of money you have available to spend</td><td class="zh">预算</td><td>&ldquo;I think they&rsquo;re on quite a tight <em>budget</em>.&rdquo;</td><td class="note">&lsquo;A tight budget&rsquo; warns you that a <b>price</b> is coming next &mdash; get ready for Q2.</td></tr>
+<tr><td><span class="word">roughly</span></td><td><span class="pos">adv.</span></td><td>approximately; not exactly</td><td class="zh">大约；大概</td><td>&ldquo;How much <em>roughly</em> is it to stay there?&rdquo;</td><td class="note">Matches &lsquo;<em>approx.</em>&rsquo; printed next to Q2. Paraphrase family: about / around / approximately / more or less.</td></tr>
+<tr><td><span class="word">per night</span></td><td><span class="pos">phr.</span></td><td>for each night of a stay</td><td class="zh">每晚</td><td>&ldquo;If you book a family room, it&rsquo;s about &pound;125 <em>per night</em>.&rdquo;</td><td class="note">The note also says &lsquo;per night&rsquo;, so the number attached to those words is the one you want.</td></tr>
+<tr><td><span class="word">family room</span></td><td><span class="pos">n.</span></td><td>a hotel room big enough for parents and children</td><td class="zh">家庭房</td><td>&ldquo;If you book a <em>family room</em>, it&rsquo;s about &pound;125.&rdquo;</td><td class="note"><strong>Key to Q2.</strong> The other price (&pound;95) belongs to a <em>double</em> room &mdash; a different label.</td></tr>
+<tr><td><span class="word">tour</span></td><td><span class="pos">n.</span></td><td>an organised trip around a place with a guide or route</td><td class="zh">游览；参观</td><td>&ldquo;I was thinking of doing a bus <em>tour</em> of the city centre.&rdquo;</td><td class="note">Printed on the question paper, so your answer is only the word <em>in front of</em> it: <b>walking</b>.</td></tr>
+<tr><td><span class="word">walking tour</span></td><td><span class="pos">n.</span></td><td>a guided trip around a city on foot</td><td class="zh">徒步游览</td><td>&ldquo;I think it&rsquo;s better to do a <em>walking tour</em>.&rdquo;</td><td class="note"><strong>Answer to Q3 = walking.</strong> Do not write &lsquo;walking tour&rsquo; &mdash; that is two words and <em>tour</em> is already printed.</td></tr>
+<tr><td><span class="word">fort</span></td><td><span class="pos">n.</span></td><td>a strong building made to defend a place</td><td class="zh">要塞；堡垒</td><td>&ldquo;One thing you could do is visit the old <em>fort</em>.&rdquo;</td><td class="note">The gap for Q4 asks how you get <em>there</em>, so listen for a means of transport right after this word.</td></tr>
+<tr><td><span class="word">exhibition</span></td><td><span class="pos">n.</span></td><td>a public display of objects in a museum or gallery</td><td class="zh">展览</td><td>&ldquo;I took my kids to the <em>exhibition</em> on old computers.&rdquo;</td><td class="note">Two exhibitions are mentioned. Q6 asks for the one that <em>opens soon</em>, not the one that has finished.</td></tr>
+<tr><td><span class="word">crowded</span></td><td><span class="pos">adj.</span></td><td>full of people; with too many people in one place</td><td class="zh">拥挤的</td><td>&ldquo;It was far too <em>crowded</em>&hellip; and it won&rsquo;t be so <em>crowded</em> then.&rdquo;</td><td class="note">A negative word about Saturdays &mdash; it is the reason Tuesday wins in Q5.</td></tr>
+<tr><td><span class="word">stall</span></td><td><span class="pos">n.</span></td><td>a small open shop or table in a market</td><td class="zh">摊位；货摊</td><td>&ldquo;I really like all the food <em>stalls</em> at Clacton Market.&rdquo;</td><td class="note">Market vocabulary. &lsquo;Most of the stalls stop serving lunch at&hellip;&rsquo; introduces Q8.</td></tr>
+<tr><td><span class="word">vegetarian</span></td><td><span class="pos">adj./n.</span></td><td>not eating (or not containing) meat or fish</td><td class="zh">素食的；素食者</td><td>&ldquo;My cousin&rsquo;s <em>vegetarian</em>&hellip; it&rsquo;s one of the best places for that kind of food.&rdquo;</td><td class="note"><strong>Answer to Q7.</strong> You hear it as a <em>noun</em> about a person, but you write it as an <em>adjective</em> before &lsquo;food&rsquo;. Spelling: v-e-g-e-t-<b>a</b>-r-i-a-n.</td></tr>
+<tr><td><span class="word">serve</span></td><td><span class="pos">v.</span></td><td>to give food or drink to customers</td><td class="zh">供应（食物）；上菜</td><td>&ldquo;Most of the stalls stop <em>serving</em> lunch at 2.30.&rdquo;</td><td class="note">&lsquo;Stop serving lunch at 2.30&rsquo; = &lsquo;you need to have lunch <em>before</em> 2.30&rsquo; (Q8). A classic before/after flip.</td></tr>
+<tr><td><span class="word">deal</span></td><td><span class="pos">n.</span></td><td>a price or arrangement that is good value</td><td class="zh">优惠；划算的交易</td><td>&ldquo;You can get some good <em>deals</em> if you book online.&rdquo;</td><td class="note">Signals that a discount figure is coming. Paraphrase family: bargain / offer / discount / saving.</td></tr>
+<tr><td><span class="word">discount</span></td><td><span class="pos">n.</span></td><td>money taken off the normal price</td><td class="zh">折扣</td><td>&ldquo;On some seats, there&rsquo;s a 75% <em>discount</em>.&rdquo;</td><td class="note"><strong>Key to Q9.</strong> &lsquo;A 75% discount&rsquo; = &lsquo;<em>save up to</em> 75%&rsquo;. The % sign is printed, so write only <b>75</b>.</td></tr>
+<tr><td><span class="word">bargain</span></td><td><span class="pos">n.</span></td><td>something bought for less than its usual price</td><td class="zh">便宜货；特价</td><td>The website in the notes is called <em>bargain</em>tickets.com.</td><td class="note">Recognising the word inside a website name helps you keep up when web addresses are read aloud quickly.</td></tr>
+<tr><td><span class="word">entry charge</span></td><td><span class="pos">n.</span></td><td>money you pay to go into an event or place</td><td class="zh">入场费</td><td>&ldquo;It&rsquo;s always a family-friendly event and there&rsquo;s no <em>entry charge</em>.&rdquo;</td><td class="note">Confirms the heading &lsquo;Free activities&rsquo;. &lsquo;No entry charge&rsquo; = free = &lsquo;no need to spend a fortune&rsquo;.</td></tr>
+<tr><td><span class="word">fortune</span></td><td><span class="pos">n.</span></td><td>a very large amount of money</td><td class="zh">一大笔钱</td><td>&ldquo;No need to spend a <em>fortune</em>.&rdquo;</td><td class="note">Idiomatic. It tells you the topic has switched to <b>free</b> things &mdash; the last note heading.</td></tr>
+<tr><td><span class="word">festival</span></td><td><span class="pos">n.</span></td><td>a series of performances or events held regularly</td><td class="zh">节日；音乐节</td><td>&ldquo;Check and see if it&rsquo;s the same weekend as the Roots Music <em>Festival</em>.&rdquo;</td><td class="note">Already printed in the notes, so it is context, not an answer &mdash; use it to confirm you are in the right place for Q10.</td></tr>
+<tr><td><span class="word">port</span></td><td><span class="pos">n.</span></td><td>a place on the coast where ships load and unload</td><td class="zh">港口</td><td>&ldquo;You&rsquo;ll be able to look right down on the <em>port</em>.&rdquo;</td><td class="note"><strong>Answer to Q10.</strong> Not &lsquo;harbour&rsquo;, not &lsquo;sea&rsquo; &mdash; write the word you actually hear.</td></tr>
+<tr><td><span class="word">impressed</span></td><td><span class="pos">adj.</span></td><td>feeling admiration for something you see</td><td class="zh">印象深刻的；赞叹的</td><td>&ldquo;Everyone&rsquo;s always really <em>impressed</em> because it&rsquo;s so huge.&rdquo;</td><td class="note">Comes <em>after</em> the answer. If you are still waiting for the answer when you hear this, you have missed it &mdash; move on to the next gap.</td></tr>
+<tr><td><span class="word">effort</span></td><td><span class="pos">n.</span></td><td>the physical or mental energy needed to do something</td><td class="zh">努力；力气</td><td>&ldquo;Yeah, it&rsquo;s really worth the <em>effort</em>.&rdquo;</td><td class="note">&lsquo;Worth the effort&rsquo; = the climb is tiring but the view repays it. Useful Speaking phrase too.</td></tr>
+<tr><td><span class="word">roughly / approximately</span></td><td><span class="pos">adv.</span></td><td>about; near to but not exactly</td><td class="zh">大约</td><td>&ldquo;How much <em>roughly</em>&hellip;&rdquo; &rarr; the notes say &lsquo;(approx.)&rsquo;.</td><td class="note">Whenever the question paper says <em>approx.</em>, expect a hedging word in the audio: about / around / roughly / something like.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">I wanted to ask your advice</span></td><td>I would like you to tell me what to do</td><td class="zh">我想请教你一下</td></tr>
+<tr><td><span class="phrase">I&rsquo;d have no idea where to take them</span></td><td>I would not know where to go with them</td><td class="zh">我完全不知道该带他们去哪儿</td></tr>
+<tr><td><span class="phrase">there wouldn&rsquo;t be room</span></td><td>there is not enough space</td><td class="zh">住不下；地方不够</td></tr>
+<tr><td><span class="phrase">nice and central</span></td><td>conveniently close to the middle of the city</td><td class="zh">位置很方便，靠市中心</td></tr>
+<tr><td><span class="phrase">five minutes&rsquo; walk from&hellip;</span></td><td>a short distance on foot from</td><td class="zh">步行五分钟就到……</td></tr>
+<tr><td><span class="phrase">on quite a tight budget</span></td><td>not able to spend much money</td><td class="zh">预算很紧</td></tr>
+<tr><td><span class="phrase">how much roughly is it&hellip;?</span></td><td>approximately what does it cost?</td><td class="zh">大概要多少钱？</td></tr>
+<tr><td><span class="phrase">per night</span></td><td>for each night</td><td class="zh">每晚</td></tr>
+<tr><td><span class="phrase">in the end</span></td><td>finally, after considering other options</td><td class="zh">最后；结果</td></tr>
+<tr><td><span class="phrase">that&rsquo;s not too bad</span></td><td>that price is acceptable</td><td class="zh">还不算太贵</td></tr>
+<tr><td><span class="phrase">organise some trips</span></td><td>plan some short journeys or outings</td><td class="zh">安排一些出游</td></tr>
+<tr><td><span class="phrase">none of them have been here before</span></td><td>this is everyone&rsquo;s first visit</td><td class="zh">他们都没来过</td></tr>
+<tr><td><span class="phrase">it gives you a much better feel for the city</span></td><td>you understand what the city is really like</td><td class="zh">能让你更好地感受这座城市</td></tr>
+<tr><td><span class="phrase">it doesn&rsquo;t cost that much</span></td><td>it is not expensive</td><td class="zh">花不了多少钱</td></tr>
+<tr><td><span class="phrase">I&rsquo;ll look that up</span></td><td>I will find that information online</td><td class="zh">我去查一下</td></tr>
+<tr><td><span class="phrase">if the weather&rsquo;s nice / bad</span></td><td>depending on the weather</td><td class="zh">如果天气好／不好</td></tr>
+<tr><td><span class="phrase">the whole trip takes half a day</span></td><td>the complete journey lasts about four hours</td><td class="zh">整趟行程要半天</td></tr>
+<tr><td><span class="phrase">it&rsquo;s closed on Mondays</span></td><td>it does not open on Mondays</td><td class="zh">周一闭馆</td></tr>
+<tr><td><span class="phrase">far too crowded</span></td><td>much busier than is comfortable</td><td class="zh">太挤了</td></tr>
+<tr><td><span class="phrase">that&rsquo;s a shame</span></td><td>that is disappointing</td><td class="zh">真可惜</td></tr>
+<tr><td><span class="phrase">food stalls</span></td><td>small market stands selling cooked food</td><td class="zh">小吃摊</td></tr>
+<tr><td><span class="phrase">one of the best places for that kind of food</span></td><td>among the best options for that type of cooking</td><td class="zh">是吃那类食物最好的地方之一</td></tr>
+<tr><td><span class="phrase">loads of choice</span></td><td>a very wide selection</td><td class="zh">选择超多</td></tr>
+<tr><td><span class="phrase">you need to get there quite early</span></td><td>arrive well before the busy time</td><td class="zh">要早点到</td></tr>
+<tr><td><span class="phrase">stop serving lunch at&hellip;</span></td><td>no longer sell lunch after a certain time</td><td class="zh">……点以后就不供应午餐了</td></tr>
+<tr><td><span class="phrase">get some good deals</span></td><td>find cheap prices</td><td class="zh">买到划算的价格</td></tr>
+<tr><td><span class="phrase">book online for the following day</span></td><td>reserve on the internet for the next day</td><td class="zh">在网上订第二天的票</td></tr>
+<tr><td><span class="phrase">a 75% discount</span></td><td>the price reduced by three quarters</td><td class="zh">七五折优惠（减75%）</td></tr>
+<tr><td><span class="phrase">no need to spend a fortune</span></td><td>you do not have to spend a lot of money</td><td class="zh">不用花很多钱</td></tr>
+<tr><td><span class="phrase">a family-friendly event</span></td><td>an event suitable for parents and children</td><td class="zh">适合全家参加的活动</td></tr>
+<tr><td><span class="phrase">there&rsquo;s no entry charge</span></td><td>it is free to go in</td><td class="zh">不收门票</td></tr>
+<tr><td><span class="phrase">look right down on&hellip;</span></td><td>have a view from directly above</td><td class="zh">居高临下俯瞰……</td></tr>
+<tr><td><span class="phrase">I&rsquo;ve been meaning to do that for ages</span></td><td>I have wanted to do it for a long time</td><td class="zh">我早就想去了</td></tr>
+<tr><td><span class="phrase">it&rsquo;s really worth the effort</span></td><td>the result repays the hard work</td><td class="zh">很值得爬上去</td></tr>
+<tr><td><span class="phrase">that&rsquo;s given me loads of ideas</span></td><td>you have suggested many useful things</td><td class="zh">给了我很多灵感</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Note Completion (the ten real exam gaps)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These are the ten gaps from the Part 1 notes, rewritten as full sentences. Write <strong>ONE WORD AND/OR A NUMBER</strong> in each gap. Do not write the &pound; sign or the % sign &mdash; they are already printed on the question paper.</p><div class="ex-item"><span class="ex-num">1.</span><label>Sandra recommends the <input type="text" class="blank" id="b1" data-answer="Kings" placeholder="______"> Hotel on George Street. (also accepted: King&rsquo;s)<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>A family room there costs about &pound;<input type="text" class="blank" id="b2" data-answer="125" placeholder="______"> per night.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Instead of a bus tour, Sandra suggests a <input type="text" class="blank" id="b3" data-answer="walking" placeholder="______"> tour of the city centre, starting in Carlton Square.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>You can travel to the old fort by <input type="text" class="blank" id="b4" data-answer="boat" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The best day to visit the Science Museum is <input type="text" class="blank" id="b5" data-answer="Tuesday" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>An exhibition about <input type="text" class="blank" id="b6" data-answer="space" placeholder="______"> opens at the museum soon.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Clacton Market is especially good for <input type="text" class="blank" id="b7" data-answer="vegetarian" placeholder="______"> food.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>At the weekend you need to have lunch before 2.<input type="text" class="blank" id="b8" data-answer="30" placeholder="______"> p.m. (the full answer is written 2.30)<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>At bargaintickets.com you can save up to <input type="text" class="blank" id="b9" data-answer="75" placeholder="______"> % on ticket prices.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>From the top of Telegraph Hill you get a view of the <input type="text" class="blank" id="b10" data-answer="port" placeholder="______">.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. Word-form mistakes (noun instead of adjective, singular instead of plural) throw away marks even when you heard the right idea.</p><div class="ex-item"><span class="ex-num">1.</span><label>The hotel is only five minutes from the station, so it is nice and <input type="text" class="blank" id="b11" data-answer="central" placeholder="______"> (CENTRE).<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The Roots Music Festival is a family-<input type="text" class="blank" id="b12" data-answer="friendly" placeholder="______"> (FRIEND) event.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>On Saturdays the museum is far too <input type="text" class="blank" id="b13" data-answer="crowded" placeholder="______"> (CROWD).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The man wants to <input type="text" class="blank" id="b14" data-answer="organise" placeholder="______"> (ORGANISATION) some trips for his visitors.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Everyone is really <input type="text" class="blank" id="b15" data-answer="impressed" placeholder="______"> (IMPRESS) by the size of the port.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>You can book <input type="text" class="blank" id="b16" data-answer="online" placeholder="______"> (LINE) for the following day and pay much less.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Sandra recommends walking because it is <input type="text" class="blank" id="b17" data-answer="cheaper" placeholder="______"> (CHEAP) than a bus tour.<span class="feedback" id="fb17"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word below is said in this recording, and every one of them is regularly misspelled by candidates. Type the whole word correctly.</p><div class="ex-item"><span class="ex-num">1.</span><label>a c c o m m _ d a t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="accommodation" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>v e g e t _ r i a n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="vegetarian" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>e x h i b _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="exhibition" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>m u s _ u m &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="museum" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>T u _ s d a y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="Tuesday" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>d i s c _ u n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="discount" placeholder="______"><span class="feedback" id="fb23"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Days</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write numbers in <strong>figures</strong> unless the sentence asks for a word. Notice how many numbers this short conversation contains &mdash; only two of them are answers.</p><div class="ex-item"><span class="ex-num">1.</span><label>A family room at the hotel costs about &pound;<input type="text" class="blank" id="b24" data-answer="125" placeholder="______"> a night.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Sandra&rsquo;s brother paid about &pound;<input type="text" class="blank" id="b25" data-answer="95" placeholder="______"> for each double room.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The hotel is about a <input type="text" class="blank" id="b26" data-answer="5" placeholder="______">-minute walk from Murray Station. (figures)<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The cousin&rsquo;s children are <input type="text" class="blank" id="b27" data-answer="12" placeholder="______"> and nine years old.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The family are staying for <input type="text" class="blank" id="b28" data-answer="four" placeholder="______"> nights, arriving on Saturday. (word)<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Some theatre seats have a <input type="text" class="blank" id="b29" data-answer="75" placeholder="______"> % discount.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Most market stalls stop serving lunch at 2.<input type="text" class="blank" id="b30" data-answer="30" placeholder="______"> p.m.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The walking tour starts from <input type="text" class="blank" id="b31" data-answer="Carlton" placeholder="______"> Square.<span class="feedback" id="fb31"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read what the speakers actually say, then write the word that belongs in the notes. This is the jump you have to make in real time in the exam.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;I always recommend people stay at the King&rsquo;s Hotel&hellip; it&rsquo;s actually on George Street.&rdquo; &rarr; Notes: the <input type="text" class="blank" id="b32" data-answer="Kings" placeholder="______"> Hotel on George Street<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;Those bus tours are quite expensive. I think it&rsquo;s better to do&hellip;&rdquo; &rarr; Notes: a <input type="text" class="blank" id="b33" data-answer="walking" placeholder="______"> tour of the city centre<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;You could visit the old fort, but you could get there by&hellip;&rdquo; &rarr; Notes: a trip by <input type="text" class="blank" id="b34" data-answer="boat" placeholder="______"> to the old fort<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;Don&rsquo;t forget it&rsquo;s closed on Mondays&hellip; so ___ would be best.&rdquo; &rarr; Notes: best day to visit: <input type="text" class="blank" id="b35" data-answer="Tuesday" placeholder="______"><span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;There&rsquo;s another one starting soon on ___, which looks really good.&rdquo; &rarr; Notes: exhibition which opens soon = about <input type="text" class="blank" id="b36" data-answer="space" placeholder="______"><span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;My cousin&rsquo;s vegetarian. It&rsquo;s one of the best places for that kind of food.&rdquo; &rarr; Notes: good for <input type="text" class="blank" id="b37" data-answer="vegetarian" placeholder="______"> food<span class="feedback" id="fb37"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;You&rsquo;ll be able to look right down on the ___.&rdquo; &rarr; Notes: a view of the <input type="text" class="blank" id="b38" data-answer="port" placeholder="______"><span class="feedback" id="fb38"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q1</span></td><td><b>(1)</b> Hotel on George Street</td><td><b>PROPER NOUN &mdash; a hotel name</b></td><td>The word <em>Hotel</em> is printed, so you need only the name in front of it. Listen for &lsquo;I always recommend people stay at&hellip;&rsquo;</td><td class="note">Kings / King&rsquo;s</td></tr>
+<tr><td><span class="word">Q2</span></td><td>cost of family room per night: &pound; <b>(2)</b> (approx.)</td><td><b>NUMBER &mdash; money</b></td><td>&lsquo;approx.&rsquo; &rarr; listen for <em>about / roughly / around</em>. Two prices are said; take the one labelled <em>family room</em>.</td><td class="note">125</td></tr>
+<tr><td><span class="word">Q3</span></td><td>a <b>(3)</b> tour of the city centre (starts in Carlton Square)</td><td><b>ADJECTIVE or &ndash;ING WORD &mdash; a type of tour</b></td><td>The man proposes one type, Sandra rejects it and proposes another. Write the <em>second</em> one.</td><td class="note">walking</td></tr>
+<tr><td><span class="word">Q4</span></td><td>a trip by <b>(4)</b> to the old fort</td><td><b>NOUN &mdash; means of transport</b></td><td>&lsquo;by&rsquo; + transport, no article. Listen for &lsquo;you could get there by&hellip;&rsquo;</td><td class="note">boat</td></tr>
+<tr><td><span class="word">Q5</span></td><td>best day to visit: <b>(5)</b></td><td><b>DAY OF THE WEEK &mdash; capital letter</b></td><td>Several days will be named. You need the one attached to a positive word: <em>best / would be best / won&rsquo;t be so crowded</em>.</td><td class="note">Tuesday</td></tr>
+<tr><td><span class="word">Q6</span></td><td>see the exhibition about <b>(6)</b>, which opens soon</td><td><b>NOUN &mdash; a topic</b></td><td>&lsquo;opens soon&rsquo; is the filter. One exhibition has finished; listen for <em>starting soon</em>.</td><td class="note">space</td></tr>
+<tr><td><span class="word">Q7</span></td><td>good for <b>(7)</b> food</td><td><b>ADJECTIVE &mdash; a type of food or diet</b></td><td>You will hear the word as a noun describing a person. Convert it into the adjective before &lsquo;food&rsquo;.</td><td class="note">vegetarian</td></tr>
+<tr><td><span class="word">Q8</span></td><td>need to have lunch before <b>(8)</b> p.m.</td><td><b>NUMBER &mdash; a clock time</b></td><td>&lsquo;p.m.&rsquo; is printed. &lsquo;Have lunch <em>before</em>&rsquo; = &lsquo;they <em>stop serving</em> lunch at&hellip;&rsquo;</td><td class="note">2.30</td></tr>
+<tr><td><span class="word">Q9</span></td><td>save up to <b>(9)</b> % on ticket prices</td><td><b>NUMBER &mdash; a percentage</b></td><td>The % sign is printed, so write digits only. &lsquo;Save up to&rsquo; = &lsquo;there&rsquo;s a&hellip; <em>discount</em>&rsquo;.</td><td class="note">75</td></tr>
+<tr><td><span class="word">Q10</span></td><td>climb Telegraph Hill to see a view of the <b>(10)</b></td><td><b>NOUN &mdash; a feature of the landscape</b></td><td>The word &lsquo;view&rsquo; will NOT be used at the key moment. Listen for &lsquo;look right down on the&hellip;&rsquo;</td><td class="note">port</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;<b>(1)</b> Hotel on George Street&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;I always <b>recommend</b> people stay at the <b>King&rsquo;s Hotel</b>&hellip; It&rsquo;s about five minutes&rsquo; walk from Murray Station, so nice and central. It&rsquo;s actually <b>on George Street</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The street name comes <em>after</em> the hotel name, and it confirms you wrote the right one. Street names are the exam&rsquo;s way of saying &ldquo;yes, this one&rdquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence recommending a hotel, giving its name and its street&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;cost of family room per night: &pound;<b>(2)</b> (<em>approx.</em>)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;If you book a <b>family room</b>, it&rsquo;s <b>about &pound;125 per night</b>. My brother paid for two double rooms in the end, and I think that was around &pound;95 for each room.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">approx. = about / around / roughly. Both prices are hedged, so hedging alone does not identify the answer &mdash; the <em>label</em> (family room) does.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence giving an approximate price using &lsquo;roughly&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;a <b>(3)</b> tour of the city centre&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">Man: &ldquo;I was thinking of doing a <b>bus</b> tour&hellip;&rdquo; Sandra: &ldquo;Those bus tours are quite expensive. I think it&rsquo;s <b>better to do a walking tour</b>. It gives you a much better feel for the city.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">Suggestion &rarr; objection &rarr; better idea. In Part 1 the answer is almost always the <em>better idea</em>, not the first suggestion.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Reject an idea politely and suggest a better one, using &lsquo;I think it&rsquo;s better to&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;best day to visit: <b>(5)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Don&rsquo;t forget it&rsquo;s <b>closed on Mondays</b>.&rdquo; &ndash; &ldquo;They&rsquo;re here from Saturday for four nights, so <b>Tuesday would be best</b>.&rdquo; &ndash; &ldquo;And it won&rsquo;t be so crowded then.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">best = <em>would be best</em> + a supporting reason (<em>won&rsquo;t be so crowded</em>). Closed / terrible / too crowded are all rejection signals.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write two sentences: one day you should avoid, and the day that is best, with a reason&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;the exhibition about <b>(6)</b>, which <b>opens soon</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;I took my kids to the exhibition <b>on old computers</b>&hellip; I wanted to go back, but <b>it&rsquo;s finished now</b>.&rdquo; &ndash; &ldquo;There&rsquo;s another one <b>starting soon on space</b>, which looks really good.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">opens soon = starting soon. The tense does the work: <em>it&rsquo;s finished</em> eliminates the first exhibition completely.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe an exhibition you would like to see, using &lsquo;starting soon&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;need to have lunch <b>before (8)</b> p.m.&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;You need to get there quite early, though. At the weekend, most of the stalls <b>stop serving lunch at 2.30</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">have lunch <em>before</em> X = they <em>stop serving</em> lunch <em>at</em> X. Before/after and start/stop flips are everywhere in Listening.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;The caf&eacute; stops serving breakfast at 11&rsquo; using &lsquo;before&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;a view of the <b>(10)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;If you&rsquo;re in Blakewell Gardens, climb Telegraph Hill. You&rsquo;ll be able to <b>look right down on the port</b>. Everyone&rsquo;s always really impressed because it&rsquo;s so huge.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a view of X = you can look (right) down on X. The word &lsquo;views&rsquo; is said later, but by then the answer has already passed.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe a view from a high place using &lsquo;look right down on&hellip;&rsquo;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;I&rsquo;ve got my cousin and her family visiting next month&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;about five minutes&rsquo; walk from Murray Station, so nice and central&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;if you book a family room, it&rsquo;s about &pound;125 per night&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;it gives you a much better feel for the city&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;don&rsquo;t forget it&rsquo;s closed on Mondays&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;most of the stalls stop serving lunch at half past two&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;on some seats, there&rsquo;s a seventy-five per cent discount&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;you&rsquo;ll be able to look right down on the port&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why does the man ask Sandra for advice?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. He is planning a holiday abroad with his own children.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. His cousin and her family are visiting and he has no children himself.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. His brother&rsquo;s family stayed with him a couple of months ago.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. He has just moved to the city and knows nobody.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why does the man say his visitors will not stay in his flat?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. The flat is being repaired.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. There would not be enough room.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. His cousin prefers hotels in the city centre.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. He will be at work all week.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Two prices are mentioned for the hotel. Which is the answer to Q2 and why?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. &pound;95, because it is the cheaper price.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. &pound;95, because two rooms cost less than one.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. &pound;125, because the notes say &lsquo;family room&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. &pound;125, because it is the price Sandra&rsquo;s brother paid.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'C')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What does Sandra say about bus tours?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. They are quite expensive.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. They do not go to the city centre.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. They take a couple of hours.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. They start from Carlton Square.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">How does Sandra suggest getting to the old fort?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. by bus</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. on foot</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. by boat</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. by train</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Which day is NOT a possible day for the museum visit, according to Sandra?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Monday</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Tuesday</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Thursday</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. Sunday</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'A')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why is the old-computers exhibition NOT the answer to Q6?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Sandra did not enjoy it.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It has already finished.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It is only for adults.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. It is at a different museum.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Which clue tells you the answer to Q7 is &lsquo;vegetarian&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. &lsquo;There&rsquo;ll be loads of choice for the kids, too.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. &lsquo;I really like all the food stalls at Clacton Market.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. &lsquo;My cousin&rsquo;s vegetarian&hellip; it&rsquo;s one of the best places for that kind of food.&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. &lsquo;You need to get there quite early.&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">The notes say &lsquo;need to have lunch <em>before</em> (8) p.m.&rsquo; What do you actually hear?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Lunch starts at 2.30.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Most stalls stop serving lunch at 2.30.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. The market closes at 2.30.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. Lunch is served until 3.30.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What must you do to get the cheap theatre tickets?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Book online for the following day.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Buy at the theatre box office on the day.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Book at least a month in advance.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Buy tickets for a group of four or more.</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why is Blakewell Gardens mentioned under &lsquo;Free activities&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. The music festival there has no entry charge.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Tickets for the festival are half price.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It is the only park in the city.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. The museum runs free tours there.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the safest overall technique for this notes-completion task?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Write down every number and name you hear, then choose at the end.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Use the six printed headings to track your position, and wait for Sandra&rsquo;s correction before writing.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Listen only for the man&rsquo;s suggestions, since he is planning the trip.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Translate each sentence into your own language as you listen.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 1&ndash;10</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">Kings / King&rsquo;s</div><div class="answer-note">&lsquo;I always recommend people stay at the <em>King&rsquo;s Hotel</em>&hellip; It&rsquo;s actually on George Street.&rsquo; The street name confirms it. Both <em>Kings</em> and <em>King&rsquo;s</em> are accepted.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">125</div><div class="answer-note">&lsquo;If you book a <em>family room</em>, it&rsquo;s about &pound;125 per night.&rsquo; &pound;95 is the price of <em>each of two double rooms</em> &mdash; a distractor. Do not write the &pound; sign.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">walking</div><div class="answer-note">The man suggests a <em>bus</em> tour; Sandra replies &lsquo;those bus tours are quite expensive &hellip; it&rsquo;s better to do a <em>walking</em> tour&rsquo;, and adds that it starts from Carlton Square, exactly as printed on the paper.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">boat</div><div class="answer-note">&lsquo;One thing you could do is visit the old fort, but you could get there <em>by boat</em>.&rsquo; The whole trip takes half a day.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">Tuesday</div><div class="answer-note">&lsquo;Don&rsquo;t forget it&rsquo;s closed on Mondays.&rsquo; &rarr; &lsquo;They&rsquo;re here from Saturday for four nights, so <em>Tuesday</em> would be best.&rsquo; &rarr; &lsquo;And it won&rsquo;t be so crowded then.&rsquo; Capital T.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">space</div><div class="answer-note">The old-computers exhibition &lsquo;is finished now&rsquo;. &lsquo;There&rsquo;s another one starting soon on <em>space</em>&rsquo; matches &lsquo;which opens soon&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">vegetarian</div><div class="answer-note">&lsquo;I really like all the food stalls at Clacton Market. My cousin&rsquo;s <em>vegetarian</em>. I know it&rsquo;s one of the best places for that kind of food.&rsquo; Spelling: v-e-g-e-t-a-r-i-a-n.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">2.30 / two thirty</div><div class="answer-note">&lsquo;At the weekend, most of the stalls <em>stop serving lunch at 2.30</em>.&rsquo; The notes say &lsquo;have lunch <em>before</em>&hellip; p.m.&rsquo;, so p.m. is already printed.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">75 / seventy-five</div><div class="answer-note">&lsquo;You can get some good deals if you book online&hellip; On some seats, there&rsquo;s a <em>75%</em> discount.&rsquo; &lsquo;Save up to&rsquo; = &lsquo;discount&rsquo;. The % sign is printed.</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">port</div><div class="answer-note">&lsquo;Climb Telegraph Hill. You&rsquo;ll be able to <em>look right down on the port</em>. Everyone&rsquo;s always really impressed because it&rsquo;s so huge.&rsquo; &lsquo;Look down on&rsquo; = &lsquo;a view of&rsquo;.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Note Completion (the ten real exam gaps)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Kings</div><div class="answer-note">Sandra recommends the</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">125</div><div class="answer-note">A family room there costs about &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">walking</div><div class="answer-note">Instead of a bus tour, Sandra suggests a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">boat</div><div class="answer-note">You can travel to the old fort by</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">Tuesday</div><div class="answer-note">The best day to visit the Science Museum is</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">space</div><div class="answer-note">An exhibition about</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">vegetarian</div><div class="answer-note">Clacton Market is especially good for</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">30</div><div class="answer-note">At the weekend you need to have lunch before 2.</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">75</div><div class="answer-note">At bargaintickets.com you can save up to</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">port</div><div class="answer-note">From the top of Telegraph Hill you get a view of the</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">central</div><div class="answer-note">The hotel is only five minutes from the station, so it is nice and</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">friendly</div><div class="answer-note">The Roots Music Festival is a family-</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">crowded</div><div class="answer-note">On Saturdays the museum is far too</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">organise</div><div class="answer-note">The man wants to</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">impressed</div><div class="answer-note">Everyone is really</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">online</div><div class="answer-note">You can book</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">cheaper</div><div class="answer-note">Sandra recommends walking because it is</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">accommodation</div><div class="answer-note">a c c o m m _ d a t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">vegetarian</div><div class="answer-note">v e g e t _ r i a n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">exhibition</div><div class="answer-note">e x h i b _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">museum</div><div class="answer-note">m u s _ u m  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">Tuesday</div><div class="answer-note">T u _ s d a y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">discount</div><div class="answer-note">d i s c _ u n t  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Days</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">125</div><div class="answer-note">A family room at the hotel costs about &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">95</div><div class="answer-note">Sandra&rsquo;s brother paid about &pound;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">5</div><div class="answer-note">The hotel is about a</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">12</div><div class="answer-note">The cousin&rsquo;s children are</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">four</div><div class="answer-note">The family are staying for</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">75</div><div class="answer-note">Some theatre seats have a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">30</div><div class="answer-note">Most market stalls stop serving lunch at 2.</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">Carlton</div><div class="answer-note">The walking tour starts from</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Kings</div><div class="answer-note">Audio: &ldquo;I always recommend people stay at the King&rsquo;s Hotel&hellip; it&rsquo;s actually on George Street.&rdquo; &rarr; Notes: the</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">walking</div><div class="answer-note">Audio: &ldquo;Those bus tours are quite expensive. I think it&rsquo;s better to do&hellip;&rdquo; &rarr; Notes: a</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">boat</div><div class="answer-note">Audio: &ldquo;You could visit the old fort, but you could get there by&hellip;&rdquo; &rarr; Notes: a trip by</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">Tuesday</div><div class="answer-note">Audio: &ldquo;Don&rsquo;t forget it&rsquo;s closed on Mondays&hellip; so ___ would be best.&rdquo; &rarr; Notes: best day to visit:</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">space</div><div class="answer-note">Audio: &ldquo;There&rsquo;s another one starting soon on ___, which looks really good.&rdquo; &rarr; Notes: exhibition which opens soon = about</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">vegetarian</div><div class="answer-note">Audio: &ldquo;My cousin&rsquo;s vegetarian. It&rsquo;s one of the best places for that kind of food.&rdquo; &rarr; Notes: good for</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">port</div><div class="answer-note">Audio: &ldquo;You&rsquo;ll be able to look right down on the ___.&rdquo; &rarr; Notes: a view of the</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">Kings / King&rsquo;s &mdash; PROPER NOUN &mdash; a hotel name</div><div class="answer-note">The word <em>Hotel</em> is printed, so you need only the name in front of it. Listen for &lsquo;I always recommend people stay at&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">125 &mdash; NUMBER &mdash; money</div><div class="answer-note">&lsquo;approx.&rsquo; &rarr; listen for <em>about / roughly / around</em>. Two prices are said; take the one labelled <em>family room</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">walking &mdash; ADJECTIVE or &ndash;ING WORD &mdash; a type of tour</div><div class="answer-note">The man proposes one type, Sandra rejects it and proposes another. Write the <em>second</em> one.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">boat &mdash; NOUN &mdash; means of transport</div><div class="answer-note">&lsquo;by&rsquo; + transport, no article. Listen for &lsquo;you could get there by&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">Tuesday &mdash; DAY OF THE WEEK &mdash; capital letter</div><div class="answer-note">Several days will be named. You need the one attached to a positive word: <em>best / would be best / won&rsquo;t be so crowded</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">space &mdash; NOUN &mdash; a topic</div><div class="answer-note">&lsquo;opens soon&rsquo; is the filter. One exhibition has finished; listen for <em>starting soon</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">vegetarian &mdash; ADJECTIVE &mdash; a type of food or diet</div><div class="answer-note">You will hear the word as a noun describing a person. Convert it into the adjective before &lsquo;food&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">2.30 &mdash; NUMBER &mdash; a clock time</div><div class="answer-note">&lsquo;p.m.&rsquo; is printed. &lsquo;Have lunch <em>before</em>&rsquo; = &lsquo;they <em>stop serving</em> lunch at&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">75 &mdash; NUMBER &mdash; a percentage</div><div class="answer-note">The % sign is printed, so write digits only. &lsquo;Save up to&rsquo; = &lsquo;there&rsquo;s a&hellip; <em>discount</em>&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">port &mdash; NOUN &mdash; a feature of the landscape</div><div class="answer-note">The word &lsquo;view&rsquo; will NOT be used at the key moment. Listen for &lsquo;look right down on the&hellip;&rsquo;</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">I&rsquo;ve got my cousin and her family visiting next month</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">about five minutes&rsquo; walk from Murray Station, so nice and central</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">if you book a family room, it&rsquo;s about &pound;125 per night</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">it gives you a much better feel for the city</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">don&rsquo;t forget it&rsquo;s closed on Mondays</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">most of the stalls stop serving lunch at half past two</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">on some seats, there&rsquo;s a seventy-five per cent discount</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">you&rsquo;ll be able to look right down on the port</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. His cousin and her family are visiting and he has no children himself.</div><div class="answer-note">&lsquo;I&rsquo;ve got my cousin and her family visiting next month. And as I don&rsquo;t have kids, I&rsquo;d have no idea where to take them.&rsquo; C describes <em>Sandra&rsquo;s</em> brother, not his.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. There would not be enough room.</div><div class="answer-note">&lsquo;Thankfully, there wouldn&rsquo;t be room.&rsquo; &lsquo;Room&rsquo; here means space, not a bedroom &mdash; a nice double meaning just before the Accommodation answers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">C. &pound;125, because the notes say &lsquo;family room&rsquo;.</div><div class="answer-note">Match each number to its label: &pound;125 = family room; &pound;95 = each of two double rooms, which is what her brother actually chose.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A. They are quite expensive.</div><div class="answer-note">&lsquo;Those bus tours are quite expensive.&rsquo; C and D describe the <em>walking</em> tour, which is the answer to Q3.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. by boat</div><div class="answer-note">&lsquo;You could visit the old fort, but you could get there <em>by boat</em>. The whole trip takes half a day.&rsquo; Note the condition: only if the weather is nice.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">A. Monday</div><div class="answer-note">&lsquo;Don&rsquo;t forget it&rsquo;s closed on Mondays.&rsquo; The family arrive on Saturday for four nights, so Tuesday is chosen &mdash; and it is quieter then.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. It has already finished.</div><div class="answer-note">The notes say &lsquo;which <em>opens soon</em>&rsquo;. Sandra says &lsquo;I wanted to go back, but it&rsquo;s finished now&rsquo;; the new one &lsquo;starting soon&rsquo; is on <strong>space</strong>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. &lsquo;My cousin&rsquo;s vegetarian&hellip; it&rsquo;s one of the best places for that kind of food.&rsquo;</div><div class="answer-note">&lsquo;That kind of food&rsquo; points back to the word <em>vegetarian</em>. You hear a noun about a person and must write the adjective before &lsquo;food&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. Most stalls stop serving lunch at 2.30.</div><div class="answer-note">&lsquo;At the weekend, most of the stalls <em>stop serving lunch at 2.30</em>.&rsquo; &lsquo;Stop serving at X&rsquo; = &lsquo;have lunch before X&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. Book online for the following day.</div><div class="answer-note">&lsquo;You can get some good deals if you book online with bargaintickets.com <em>for the following day</em>. On some seats, there&rsquo;s a 75% discount.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">A. The music festival there has no entry charge.</div><div class="answer-note">&lsquo;It&rsquo;s always a family-friendly event and there&rsquo;s <em>no entry charge</em>&rsquo; &mdash; and just before that, &lsquo;no need to spend a fortune&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Use the six printed headings to track your position, and wait for Sandra&rsquo;s correction before writing.</div><div class="answer-note">The headings run in the same order as the audio, and the pattern &lsquo;he suggests &rarr; she corrects&rsquo; produces Q3, Q5 and Q6. The man&rsquo;s first idea is usually the distractor.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

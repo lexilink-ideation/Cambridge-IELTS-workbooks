@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 4 — Listening Part 4 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Listening Part 4</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 4</div>
+    <h1>Cambridge IELTS 20 — Test 4 — Listening Part 4</h1>
+    <h2>Birds of Prey near the Chembe Bird Sanctuary · Notes Completion (Q31–40)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>This is a university lecture about <strong>conflict between wildlife and people</strong> at the edges of protected areas. The speaker describes research carried out in <strong>Zambia</strong>, around the <strong>Chembe Bird Sanctuary</strong>, and explains why birds of prey (eagles, hawks and owls) matter to local small-scale farmers, why their numbers are falling, and what farmers do to keep their chickens safe. You complete a set of notes with <strong>ONE WORD ONLY</strong> for each of the ten gaps.</p></div><div class="card"><p><strong>Who is speaking?</strong> One lecturer, speaking continuously in an academic style. There are no questions and no second voice, so you cannot rely on a change of speaker to tell you a new answer is coming &mdash; you have to follow the signposting language instead (<em>For example&hellip; However&hellip; Another possibility would be&hellip;</em>).</p><p><strong>The situation 情境:</strong> 一位讲师介绍他在赞比亚 Chembe 鸟类保护区周边所做的研究。当地居民多为小农户，猛禽（鹰、隼、猫头鹰）为他们捕杀鼠类和蛇，还带来旅游收入；但猛禽数量正在下降——被车撞、被电线电死，也会被农民非法射杀或毒杀。最后讲师列举农民保护鸡群的几种办法及其效果。</p><p><strong>Task type:</strong> <strong>Notes completion, Q31&ndash;40</strong>, with three sub-headings and bullet points. Instruction: <strong>ONE WORD ONLY</strong> &mdash; no numbers are needed anywhere in this set, and every answer is a single common noun or verb that you already know.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> Part 4 notes have <strong>bold headings</strong>, and in this recording the three headings (<em>importance &rarr; falling numbers &rarr; protecting chickens</em>) are announced almost word for word by the lecturer: &ldquo;these birds of prey provide important social and ecological benefits&rdquo;, &ldquo;their numbers are falling&rdquo;, &ldquo;so how else can farmers protect their chickens?&rdquo;. Use those three sentences as checkpoints &mdash; if you hear one of them and you still have a blank above it, let that answer go and move on. The instruction is <strong>ONE WORD ONLY</strong>, so a two-word answer such as &lsquo;heavy rain&rsquo; or &lsquo;guard dog&rsquo; scores zero, even though it is what the audio says.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>Q31 &lsquo;rodents&rsquo; is already printed.</b> The note reads &lsquo;They destroy (31) <em>and other rodents</em>&rsquo;, and the audio says &lsquo;rodents <em>such as</em> rats&rsquo;. The word you hear first (<em>rodents</em>) is the one you must NOT write &mdash; the answer is the example, <b>rats</b>.</li><li><b>Q32 must be plural.</b> The audio says &lsquo;a major danger to rural workers is <em>snakes</em> whose <em>bite</em> may be dangerous&rsquo;. The noun <em>bite</em> is right next to the answer and is already on the question paper as &lsquo;bitten by&rsquo;. Write <b>snakes</b>, not &lsquo;snake&rsquo; and not &lsquo;bite&rsquo;.</li><li><b>Q33: tourism, not tourists.</b> The note says &lsquo;encouraging (33) in the area&rsquo;, and the sentence is about the <em>economy</em> and <em>revenue</em> &mdash; both of those words are distractors printed on the paper or spoken beside the answer. The gap needs the uncountable activity noun <b>tourism</b>.</li><li><b>Q34: the killer is the traffic, not the road.</b> You hear &lsquo;birds&hellip; on <em>roads</em>&hellip; are hit by fast-moving <em>traffic</em>&rsquo;, and then &lsquo;<em>drivers</em> in Zambia have to take special care at night&rsquo;. Three tempting nouns; only <b>traffic</b> fits &lsquo;killed by&rsquo;.</li><li><b>Q35: one word only.</b> The audio says &lsquo;the <em>heavy rain</em> which can occur&hellip; in the months from December to April&rsquo;. Writing &lsquo;heavy rain&rsquo; is two words = 0 marks; writing &lsquo;December&rsquo; matches the wrong idea. The answer is <b>rain</b>.</li><li><b>Q36 needs a base verb.</b> The note reads &lsquo;may illegally shoot them or (36) them&rsquo;, so the gap must be a bare infinitive to match <em>shoot</em>. The audio says &lsquo;or they may <em>poison</em> the birds&rsquo; &mdash; write <b>poison</b>, never &lsquo;poisoning&rsquo; or &lsquo;poisoned&rsquo;.</li><li><b>Q38 is singular.</b> &lsquo;Most of the farmers had <em>at least one dog</em>&rsquo;, and the note says &lsquo;keeping <b>a</b> (38)&rsquo;. The article <em>a</em> on the question paper is your instruction: write <b>dog</b>, not &lsquo;dogs&rsquo;.</li><li><b>Q39: the result, not the object.</b> The audio describes children hitting <em>pans</em> with a metal <em>spoon</em>; &lsquo;metal objects&rsquo; is already printed under the gap. What you write is the <em>outcome</em> of the hitting &mdash; the resulting <b>noise</b>.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">sanctuary</span></td><td><span class="pos">n.</span></td><td>a protected area where wild animals are safe from hunting</td><td class="zh">（野生动物）保护区</td><td>&ldquo;research&hellip; in the area around the Chembe bird <em>sanctuary</em>&rdquo;</td><td class="note">Key topic word. Spelling: s-a-n-c-t-u-a-r-y. Often paraphrased as &lsquo;protected area&rsquo; or &lsquo;reserve&rsquo;.</td></tr>
+<tr><td><span class="word">bird of prey</span></td><td><span class="pos">n. phr.</span></td><td>a bird that hunts and eats other animals</td><td class="zh">猛禽</td><td>&ldquo;<em>birds of prey</em> such as eagles, hawks and owls&rdquo;</td><td class="note">The whole lecture is about this one group. In the audio it alternates with <em>predator</em> and <em>predatory birds</em>.</td></tr>
+<tr><td><span class="word">rodent</span></td><td><span class="pos">n.</span></td><td>a small gnawing mammal such as a rat or mouse</td><td class="zh">啮齿动物</td><td>&ldquo;damage&hellip; caused&hellip; by <em>rodents</em> such as rats&rdquo;</td><td class="note"><strong>Distractor for Q31.</strong> The word is already printed on the question paper, so the answer must be the example that follows it: <em>rats</em>.</td></tr>
+<tr><td><span class="word">rat</span></td><td><span class="pos">n.</span></td><td>a large rodent that eats stored and growing crops</td><td class="zh">老鼠</td><td>&ldquo;rodents such as <em>rats</em>, which would consume the crops&rdquo;</td><td class="note"><strong>Answer to Q31.</strong> Plural, because the note says &lsquo;They destroy ___ and other rodents&rsquo;.</td></tr>
+<tr><td><span class="word">snake</span></td><td><span class="pos">n.</span></td><td>a long legless reptile, sometimes venomous</td><td class="zh">蛇</td><td>&ldquo;a major danger to rural workers is <em>snakes</em> whose bite may be&hellip; fatal&rdquo;</td><td class="note"><strong>Answer to Q32.</strong> Keep the plural &mdash; the audio and the general statement are both plural.</td></tr>
+<tr><td><span class="word">fatal</span></td><td><span class="pos">adj.</span></td><td>causing death</td><td class="zh">致命的</td><td>&ldquo;whose bite may be dangerous or even <em>fatal</em>&rdquo;</td><td class="note">Related noun <em>fatality</em> appears later about the birds. Both signal death without the word &lsquo;die&rsquo;.</td></tr>
+<tr><td><span class="word">crop</span></td><td><span class="pos">n.</span></td><td>a plant grown by farmers for food or sale</td><td class="zh">农作物</td><td>&ldquo;a lot of damage can be caused to farmers&rsquo; <em>crops</em>&rdquo;</td><td class="note">Very common in rural-development lectures. Collocations: <em>grow / damage / harvest</em> crops.</td></tr>
+<tr><td><span class="word">harvest</span></td><td><span class="pos">v./n.</span></td><td>to gather in a crop when it is ready</td><td class="zh">收割；收获</td><td>&ldquo;as they grow in the fields as well as after <em>harvesting</em>&rdquo;</td><td class="note">Shows the rats attack the crop twice &mdash; before and after harvest. A good detail for a comprehension question.</td></tr>
+<tr><td><span class="word">predatory</span></td><td><span class="pos">adj.</span></td><td>living by hunting and killing other animals</td><td class="zh">掠食性的</td><td>&ldquo;the <em>predatory</em> habits of these birds also protect farmers&rdquo;</td><td class="note">Adjective form of <em>predator</em>. The lecturer swaps between the two constantly &mdash; do not lose the thread.</td></tr>
+<tr><td><span class="word">revenue</span></td><td><span class="pos">n.</span></td><td>money that comes in to a business or a community</td><td class="zh">收入；收益</td><td>&ldquo;tourism has become an important source of <em>revenue</em> for them&rdquo;</td><td class="note">Sits immediately beside the Q33 answer. It matches &lsquo;support the economy&rsquo; on the question paper, so it is a signpost, not the answer.</td></tr>
+<tr><td><span class="word">tourism</span></td><td><span class="pos">n.</span></td><td>the business of people travelling to visit places</td><td class="zh">旅游业</td><td>&ldquo;<em>tourism</em> has become an important source of revenue&rdquo;</td><td class="note"><strong>Answer to Q33.</strong> Uncountable &mdash; no &lsquo;s&rsquo;. Do not write &lsquo;tourists&rsquo;, which would not fit &lsquo;encouraging ___ in the area&rsquo; as neatly.</td></tr>
+<tr><td><span class="word">fatality</span></td><td><span class="pos">n.</span></td><td>a death caused by an accident</td><td class="zh">死亡（事故致死）</td><td>&ldquo;<em>Fatalities</em> occur when birds&hellip; are hit by fast-moving traffic&rdquo;</td><td class="note">The academic word that replaces &lsquo;deaths&rsquo;. Hearing it tells you the Q34 answer is one sentence away.</td></tr>
+<tr><td><span class="word">traffic</span></td><td><span class="pos">n.</span></td><td>the vehicles moving along a road</td><td class="zh">车流；交通</td><td>&ldquo;are hit by fast-moving <em>traffic</em>&rdquo;</td><td class="note"><strong>Answer to Q34.</strong> Uncountable &mdash; never &lsquo;traffics&rsquo;. Distractors nearby: <em>roads</em>, <em>drivers</em>.</td></tr>
+<tr><td><span class="word">electrocute</span></td><td><span class="pos">v.</span></td><td>to kill or injure with a strong electric current</td><td class="zh">使触电身亡</td><td>&ldquo;if these birds fly close to high-voltage power lines&hellip; they may be <em>electrocuted</em>&rdquo;</td><td class="note">The question paper prints &lsquo;electrocution&rsquo;, the audio uses the passive verb. Recognising the noun&ndash;verb pair is the whole skill here.</td></tr>
+<tr><td><span class="word">power line</span></td><td><span class="pos">n. phr.</span></td><td>a cable that carries electricity across country</td><td class="zh">输电线；电力线</td><td>&ldquo;these birds fly close to high-voltage <em>power lines</em>&rdquo;</td><td class="note">Printed on the question paper, so it is a locator: the Q35 answer comes right after it.</td></tr>
+<tr><td><span class="word">rain</span></td><td><span class="pos">n.</span></td><td>water falling from the sky</td><td class="zh">雨；降雨</td><td>&ldquo;a particular danger in the heavy <em>rain</em> which can occur in the region&rdquo;</td><td class="note"><strong>Answer to Q35.</strong> ONE WORD ONLY, so drop the adjective <em>heavy</em>.</td></tr>
+<tr><td><span class="word">poison</span></td><td><span class="pos">v.</span></td><td>to kill or harm by giving a harmful substance</td><td class="zh">毒杀；下毒</td><td>&ldquo;they may <em>poison</em> the birds, which again is illegal&rdquo;</td><td class="note"><strong>Answer to Q36.</strong> The note pairs it with <em>shoot</em>, so keep the plain base form.</td></tr>
+<tr><td><span class="word">illegal</span></td><td><span class="pos">adj.</span></td><td>against the law</td><td class="zh">非法的</td><td>&ldquo;farmers may shoot these birds, which is <em>illegal</em> but understandable&rdquo;</td><td class="note">The word is printed in the note (&lsquo;illegally shoot&rsquo;), which is how you know you are in the right sentence for Q36.</td></tr>
+<tr><td><span class="word">ecosystem</span></td><td><span class="pos">n.</span></td><td>all the living things in an area and how they interact</td><td class="zh">生态系统</td><td>&ldquo;can have negative effects on the <em>ecosystem</em>&rdquo;</td><td class="note">Poisoning does not only kill the target bird &mdash; a good idea to reuse in Speaking Part 3 about the environment.</td></tr>
+<tr><td><span class="word">vegetation</span></td><td><span class="pos">n.</span></td><td>plants growing in a particular area</td><td class="zh">植被</td><td>&ldquo;it&rsquo;s best to keep this area free from <em>vegetation</em>&rdquo;</td><td class="note">Printed on the question paper next to &lsquo;(unhelpful)&rsquo;. It is the method that does NOT work &mdash; never an answer.</td></tr>
+<tr><td><span class="word">counterproductive</span></td><td><span class="pos">adj.</span></td><td>having the opposite effect to the one you want</td><td class="zh">适得其反的</td><td>&ldquo;in fact, this is <em>counterproductive</em>&rdquo;</td><td class="note">The single word that justifies the label &lsquo;(unhelpful)&rsquo; on the question paper. Learn it &mdash; it appears constantly in Part 4.</td></tr>
+<tr><td><span class="word">cover</span></td><td><span class="pos">n.</span></td><td>somewhere to hide from view</td><td class="zh">掩护；藏身处</td><td>&ldquo;the chickens have no <em>cover</em> to hide in&rdquo;</td><td class="note">Here it is a noun, not a verb. Clearing vegetation removes the chickens&rsquo; cover &mdash; that is why it backfires.</td></tr>
+<tr><td><span class="word">building</span></td><td><span class="pos">n.</span></td><td>a structure with walls and a roof</td><td class="zh">建筑物；棚舍</td><td>&ldquo;keep them safe from predators inside a <em>building</em>&rdquo;</td><td class="note"><strong>Answer to Q37.</strong> The paper says &lsquo;(expensive)&rsquo;; the audio says &lsquo;this would cost far too much&rsquo;. Same idea, different words.</td></tr>
+<tr><td><span class="word">rear</span></td><td><span class="pos">v.</span></td><td>to keep and raise animals</td><td class="zh">饲养</td><td>&ldquo;small-scale farmers in the area also <em>rear</em> chickens&rdquo;</td><td class="note">Synonyms: <em>raise, keep, breed</em>. Do not confuse with the adjective <em>rear</em> = back.</td></tr>
+<tr><td><span class="word">vulnerable</span></td><td><span class="pos">adj.</span></td><td>easily harmed or attacked</td><td class="zh">易受伤害的；脆弱的</td><td>&ldquo;during the breeding season when the chickens were particularly <em>vulnerable</em>&rdquo;</td><td class="note">Spelling: v-u-l-n-e-r-a-b-l-e. A high-frequency Part 4 word for anything at risk.</td></tr>
+<tr><td><span class="word">seize</span></td><td><span class="pos">v.</span></td><td>to grab something quickly and forcefully</td><td class="zh">抓住；攫取</td><td>&ldquo;driving away birds that were trying to <em>seize</em> the young chicks&rdquo;</td><td class="note">Spelling trap: <em>ei</em>, not <em>ie</em>. Paraphrase of &lsquo;catch and carry off&rsquo;.</td></tr>
+<tr><td><span class="word">noise</span></td><td><span class="pos">n.</span></td><td>a loud or unpleasant sound</td><td class="zh">噪音；响声</td><td>&ldquo;the resulting <em>noise</em> would succeed in driving away birds&rdquo;</td><td class="note"><strong>Answer to Q39.</strong> You must write the <em>result</em> of hitting the pans, not the pans or the spoon.</td></tr>
+<tr><td><span class="word">combination</span></td><td><span class="pos">n.</span></td><td>two or more things used together</td><td class="zh">组合；结合</td><td>&ldquo;they were forced to use a <em>combination</em>&rdquo;</td><td class="note"><strong>Answer to Q40.</strong> Spelling: com-bi-na-tion. Signalled by &lsquo;rather than just using one method&rsquo;.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">at the boundaries of protected areas</span></td><td>at the edges of national parks and reserves</td><td class="zh">在保护区的边界地带</td></tr>
+<tr><td><span class="phrase">birds of prey</span></td><td>hunting birds such as eagles, hawks and owls</td><td class="zh">猛禽</td></tr>
+<tr><td><span class="phrase">small-scale farmers</span></td><td>farmers who work only a small piece of land</td><td class="zh">小农户；小规模农户</td></tr>
+<tr><td><span class="phrase">social and ecological benefits</span></td><td>advantages both for people and for nature</td><td class="zh">社会与生态效益</td></tr>
+<tr><td><span class="phrase">keep their populations under control</span></td><td>stop the numbers of something growing too large</td><td class="zh">控制其种群数量</td></tr>
+<tr><td><span class="phrase">play a key role in</span></td><td>be very important in something</td><td class="zh">在……中起关键作用</td></tr>
+<tr><td><span class="phrase">an important source of revenue</span></td><td>something that brings in a lot of money</td><td class="zh">重要的收入来源</td></tr>
+<tr><td><span class="phrase">after a relatively slow start</span></td><td>having begun slowly before improving</td><td class="zh">在起步较慢之后</td></tr>
+<tr><td><span class="phrase">their numbers are falling</span></td><td>the population is decreasing</td><td class="zh">它们的数量正在下降</td></tr>
+<tr><td><span class="phrase">accidental deaths</span></td><td>deaths that nobody intended</td><td class="zh">意外死亡</td></tr>
+<tr><td><span class="phrase">fast-moving traffic</span></td><td>vehicles travelling at speed</td><td class="zh">快速行驶的车流</td></tr>
+<tr><td><span class="phrase">take special care</span></td><td>be extra careful</td><td class="zh">格外小心</td></tr>
+<tr><td><span class="phrase">high-voltage power lines</span></td><td>cables carrying very strong electric current</td><td class="zh">高压输电线</td></tr>
+<tr><td><span class="phrase">pose a threat to</span></td><td>be dangerous for something</td><td class="zh">对……构成威胁</td></tr>
+<tr><td><span class="phrase">an easy target for</span></td><td>something that is simple to attack or catch</td><td class="zh">很容易被……盯上</td></tr>
+<tr><td><span class="phrase">a source of income</span></td><td>something that earns money regularly</td><td class="zh">收入来源</td></tr>
+<tr><td><span class="phrase">have negative effects on</span></td><td>damage or harm something</td><td class="zh">对……产生负面影响</td></tr>
+<tr><td><span class="phrase">free from vegetation</span></td><td>with all the plants cleared away</td><td class="zh">没有植被的</td></tr>
+<tr><td><span class="phrase">a practical solution</span></td><td>an answer that can actually be used in real life</td><td class="zh">切实可行的解决办法</td></tr>
+<tr><td><span class="phrase">scare away / frighten off</span></td><td>make an animal go away by frightening it</td><td class="zh">把……吓跑</td></tr>
+<tr><td><span class="phrase">the breeding season</span></td><td>the time of year when animals produce young</td><td class="zh">繁殖季节</td></tr>
+<tr><td><span class="phrase">watch over</span></td><td>guard and look after</td><td class="zh">看守；照看</td></tr>
+<tr><td><span class="phrase">drive away</span></td><td>force something to leave</td><td class="zh">驱赶</td></tr>
+<tr><td><span class="phrase">considerable economic loss</span></td><td>a large amount of money lost</td><td class="zh">相当大的经济损失</td></tr>
+<tr><td><span class="phrase">a longer-term solution</span></td><td>an answer that works far into the future</td><td class="zh">更长远的解决方案</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Notes Completion (the ten real exam gaps Q31&ndash;40)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The ten exam gaps, rewritten as full sentences. Write <strong>ONE WORD ONLY</strong> in each gap, exactly as the recording says it.</p><div class="ex-item"><span class="ex-num">1.</span><label>Birds of prey protect the harvest because they destroy <input type="text" class="blank" id="b1" data-answer="rats" placeholder="______"> and other rodents.<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>They also help to stop farmers being bitten by <input type="text" class="blank" id="b2" data-answer="snakes" placeholder="______">.<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The sanctuary now supports the local economy by encouraging <input type="text" class="blank" id="b3" data-answer="tourism" placeholder="______"> in the area.<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Birds that hunt or sleep on the roads are often killed by <input type="text" class="blank" id="b4" data-answer="traffic" placeholder="______">.<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Electrocution on power lines is most likely when there is a lot of <input type="text" class="blank" id="b5" data-answer="rain" placeholder="______">.<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Some farmers illegally shoot the birds, and others <input type="text" class="blank" id="b6" data-answer="poison" placeholder="______"> them.<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Keeping chickens inside a <input type="text" class="blank" id="b7" data-answer="building" placeholder="______"> would work, but it costs far too much.<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Almost every farmer keeps a <input type="text" class="blank" id="b8" data-answer="dog" placeholder="______"> to scare the predators away.<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Children hit metal pans so that the <input type="text" class="blank" id="b9" data-answer="noise" placeholder="______"> drives the birds off.<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>In the end the villagers have to use a <input type="text" class="blank" id="b10" data-answer="combination" placeholder="______"> of different methods.<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Word Form</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct form of the word in CAPITALS. In Listening the gap must fit the grammar printed on the question paper, not just the meaning.</p><div class="ex-item"><span class="ex-num">1.</span><label>The birds may be <input type="text" class="blank" id="b11" data-answer="accidentally" placeholder="______"> (ACCIDENT) killed on the roads at night.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Contact with power lines causes death by <input type="text" class="blank" id="b12" data-answer="electrocution" placeholder="______"> (ELECTROCUTE).<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Clearing the vegetation is actually <input type="text" class="blank" id="b13" data-answer="counterproductive" placeholder="______"> (PRODUCE, + counter-).<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The <input type="text" class="blank" id="b14" data-answer="predatory" placeholder="______"> (PREDATOR) habits of these birds also protect rural workers.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>A snake bite may be dangerous or even <input type="text" class="blank" id="b15" data-answer="fatal" placeholder="______"> (FATALITY).<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Shooting the birds is understandable but completely <input type="text" class="blank" id="b16" data-answer="illegal" placeholder="______"> (LEGAL).<span class="feedback" id="fb16"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Every word below is spoken in this lecture and every one of them is regularly misspelled in the exam. Type the full correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>s a n c t _ a r y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b17" data-answer="sanctuary" placeholder="______"><span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>c o m b i n _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b18" data-answer="combination" placeholder="______"><span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>e l e c t r o c _ t e d &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b19" data-answer="electrocuted" placeholder="______"><span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>v _ l n e r a b l e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b20" data-answer="vulnerable" placeholder="______"><span class="feedback" id="fb20"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>v e g e t _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="vegetation" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>e c o s _ s t e m &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="ecosystem" placeholder="______"><span class="feedback" id="fb22"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Dates</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">None of these is an exam answer here, but Part 4 lectures are full of them and they anchor you in the recording. Write figures as figures.</p><div class="ex-item"><span class="ex-num">1.</span><label>The research was carried out in the central African country of <input type="text" class="blank" id="b23" data-answer="Zambia" placeholder="______">.<span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The bird sanctuary in the lecture is called the <input type="text" class="blank" id="b24" data-answer="Chembe" placeholder="______"> Bird Sanctuary.<span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The sanctuary contains over <input type="text" class="blank" id="b25" data-answer="300" placeholder="______"> of the listed bird species of Zambia.<span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The sanctuary was opened in the year <input type="text" class="blank" id="b26" data-answer="1973" placeholder="______">.<span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Heavy rain occurs in the region in the months from <input type="text" class="blank" id="b27" data-answer="December" placeholder="______"> to April.<span class="feedback" id="fb27"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>None of the methods used by the farmers was <input type="text" class="blank" id="b28" data-answer="100" placeholder="______"> per cent effective.<span class="feedback" id="fb28"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Paraphrase Matching (audio wording &rarr; note wording)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Read what the lecturer actually says, then write the single word that belongs in the notes.</p><div class="ex-item"><span class="ex-num">1.</span><label>Audio: &ldquo;rodents such as ___, which would consume the crops&rdquo; &rarr; Note: they destroy <input type="text" class="blank" id="b29" data-answer="rats" placeholder="______"> and other rodents.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Audio: &ldquo;___ whose bite may be dangerous or even fatal&rdquo; &rarr; Note: prevent farmers from being bitten by <input type="text" class="blank" id="b30" data-answer="snakes" placeholder="______"><span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Audio: &ldquo;___ has become an important source of revenue&rdquo; &rarr; Note: support the economy by encouraging <input type="text" class="blank" id="b31" data-answer="tourism" placeholder="______"><span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Audio: &ldquo;are hit by fast-moving ___&rdquo; &rarr; Note: killed by <input type="text" class="blank" id="b32" data-answer="traffic" placeholder="______"> when hunting or sleeping.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Audio: &ldquo;keep them safe from predators inside a ___&hellip; would cost far too much&rdquo; &rarr; Note: providing a <input type="text" class="blank" id="b33" data-answer="building" placeholder="______"> (expensive).<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Audio: &ldquo;hit pans with a metal spoon so that the resulting ___&hellip;&rdquo; &rarr; Note: making a <input type="text" class="blank" id="b34" data-answer="noise" placeholder="______"> e.g. with metal objects.<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Audio: &ldquo;rather than just using one method, they were forced to use a ___&rdquo; &rarr; Note: a <input type="text" class="blank" id="b35" data-answer="combination" placeholder="______"> of methods.<span class="feedback" id="fb35"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q31</span></td><td>They destroy <b>(31)</b> and other rodents.</td><td><b>PLURAL NOUN &mdash; an animal</b></td><td>&lsquo;and other rodents&rsquo; means the answer is itself a rodent. Listen for &lsquo;rodents such as&hellip;&rsquo;</td><td class="note">rats</td></tr>
+<tr><td><span class="word">Q32</span></td><td>help to prevent farmers from being bitten by <b>(32)</b></td><td><b>PLURAL NOUN &mdash; an animal that bites</b></td><td>&lsquo;bitten by&rsquo; &rarr; listen for <em>bite</em>, <em>venom</em>, <em>fatal</em>.</td><td class="note">snakes</td></tr>
+<tr><td><span class="word">Q33</span></td><td>support the economy by encouraging <b>(33)</b> in the area</td><td><b>UNCOUNTABLE NOUN &mdash; an activity</b></td><td>&lsquo;economy&rsquo; &rarr; listen for <em>money, income, revenue, visitors</em>.</td><td class="note">tourism</td></tr>
+<tr><td><span class="word">Q34</span></td><td>killed by <b>(34)</b> when they are hunting or sleeping</td><td><b>NOUN &mdash; a cause of accidental death</b></td><td>The birds are on the ground. Listen for <em>roads, hit, vehicles</em>. Beware &lsquo;drivers&rsquo;.</td><td class="note">traffic</td></tr>
+<tr><td><span class="word">Q35</span></td><td>especially at times when there is a lot of <b>(35)</b></td><td><b>UNCOUNTABLE NOUN &mdash; weather</b></td><td>&lsquo;a lot of&rsquo; tells you the word is uncountable. Listen after &lsquo;power lines&rsquo;.</td><td class="note">rain</td></tr>
+<tr><td><span class="word">Q36</span></td><td>may illegally shoot them or <b>(36)</b> them</td><td><b>BASE VERB</b></td><td>It must be a second illegal way of killing a bird, in the same form as <em>shoot</em>.</td><td class="note">poison</td></tr>
+<tr><td><span class="word">Q37</span></td><td>providing a <b>(37)</b> for chickens (expensive)</td><td><b>COUNTABLE NOUN &mdash; a structure</b></td><td>&lsquo;(expensive)&rsquo; &rarr; listen for <em>cost, too much, not practical</em>.</td><td class="note">building</td></tr>
+<tr><td><span class="word">Q38</span></td><td>frightening birds of prey by keeping a <b>(38)</b></td><td><b>SINGULAR NOUN &mdash; an animal</b></td><td>The article &lsquo;a&rsquo; forces the singular. Listen for <em>scaring away the predators</em>.</td><td class="note">dog</td></tr>
+<tr><td><span class="word">Q39</span></td><td>making a <b>(39)</b> &mdash; e.g. with metal objects</td><td><b>NOUN &mdash; something you can &lsquo;make&rsquo;</b></td><td>&lsquo;metal objects&rsquo; = pans and spoons. You need the <em>result</em> of hitting them.</td><td class="note">noise</td></tr>
+<tr><td><span class="word">Q40</span></td><td>A <b>(40)</b> of methods is usually most effective.</td><td><b>NOUN + &lsquo;of&rsquo;</b></td><td>Listen for &lsquo;rather than just using one method&hellip;&rsquo;</td><td class="note">combination</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;They <b>destroy</b> (31) and other rodents.&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;a lot of damage can be caused to farmers&rsquo; crops by <b>rodents such as rats</b>, which would consume the crops&hellip; if they weren&rsquo;t <b>hunted and killed</b> by the birds.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">destroy = hunt and kill; &lsquo;such as&rsquo; introduces the example you must write (rats), not the category (rodents)</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write your own sentence using &lsquo;such as&rsquo; to give an example&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;prevent farmers from being <b>bitten by</b> (32)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;a major danger to rural workers is <b>snakes whose bite may be dangerous or even fatal</b>. And birds of prey have a major role in keeping their populations under control.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">prevent farmers from being bitten = keep their populations under control; &lsquo;rural workers&rsquo; = &lsquo;farmers&rsquo;</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;The birds eat the snakes&rsquo; using &lsquo;keep&hellip; under control&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;They now <b>support the economy</b> by encouraging (33)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;the sanctuary and its birds have also become increasingly important to the community in <b>economic terms</b> because at present, after a relatively slow start, <b>tourism has become an important source of revenue</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">support the economy = important in economic terms / a source of revenue &rarr; the activity itself is <em>tourism</em></span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe one way tourism helps a place you know&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;killed by (34) when they are <b>hunting or sleeping</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Fatalities occur when birds <b>alight on roads to catch and eat their prey</b> and are <b>hit by fast-moving traffic</b>. Drivers&hellip; have to take special care at night as birds may regard the quieter roads as <b>safe places to sleep</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">hunting = catch and eat their prey; sleeping = regard the roads as safe places to sleep; the killer is the <em>traffic</em></span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;fatalities occur when&hellip;&rsquo;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;electrocution&hellip; especially at times when there is <b>a lot of</b> (35)&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Accidental deaths may also occur if these birds fly close to high-voltage power lines, as they may be <b>electrocuted</b>. This is a particular danger in the <b>heavy rain</b> which can occur in the region in the months from December to April.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">a lot of ___ = heavy ___; the instruction ONE WORD ONLY forces you to drop &lsquo;heavy&rsquo;</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Turn &lsquo;heavy snow&rsquo; and &lsquo;strong wind&rsquo; into &lsquo;a lot of&hellip;&rsquo; phrases&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;providing a (37) for chickens <b>(expensive)</b>&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Another possibility would be to prevent the chickens from going outside at all and to keep them safe from predators <b>inside a building</b>, but this would <b>cost far too much</b> to be a practical solution.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">(expensive) on the question paper = &lsquo;would cost far too much to be a practical solution&rsquo;</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;would cost far too much to be practical&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">&ldquo;A (40) of methods is usually <b>most effective</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>None of these methods was 100 per cent effective.</b> So, as a result, the village people told us that <b>rather than just using one method</b>, they were forced to use a <b>combination</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">most effective = the best of several imperfect options; &lsquo;rather than just one&rsquo; &rarr; a <em>combination</em></span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence contrasting &lsquo;one method&rsquo; with &lsquo;a combination of methods&rsquo;&hellip;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;birds of prey such as eagles, hawks and owls&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;damage can be caused to farmers&rsquo; crops by rodents such as rats&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;snakes whose bite may be dangerous or even fatal&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;tourism has become an important source of revenue&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;they are hit by fast-moving traffic&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;a particular danger in the heavy rain&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;most of the farmers had at least one dog&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;rather than just using one method, they were forced to use a combination&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Where was the research described in this lecture carried out?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. In a national park in South Africa.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. Around a bird sanctuary in Zambia.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. On a commercial chicken farm in Kenya.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. In a university laboratory in Europe.</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">The note for Q31 says &lsquo;They destroy ___ and other rodents.&rsquo; Why is the answer NOT &lsquo;rodents&rsquo;?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Because the audio never says the word &lsquo;rodents&rsquo;.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Because &lsquo;rodents&rsquo; is already printed in the note, so the gap needs the example.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. Because rodents do not damage crops.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Because the answer must be a verb.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">According to the lecturer, how do birds of prey protect rural workers directly?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. By warning them when strangers approach.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. By keeping snake populations under control.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. By eating insects that spread disease.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. By guarding their chickens at night.</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What does the lecturer say about the economic importance of the birds?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. It has always been the main reason for protecting them.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. It only became significant recently, after a slow start with tourism.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. It comes mainly from selling feathers to collectors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. It has fallen since the sanctuary opened in 1973.</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Three nouns appear in the sentences about road deaths. Which one answers Q34?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. roads</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. drivers</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. traffic</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. prey</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why do birds sometimes sit on roads at night, according to the lecturer?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. The tarmac stays warm after sunset.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. They think the quieter roads are safe places to sleep.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. They are attracted by the headlights.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. They cannot see the power lines in the dark.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Q35 asks about the conditions in which electrocution is most likely. What is the correct one-word answer?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. heavy rain</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. rain</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. December</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. storms</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Which form of the word must you write for Q36 (&lsquo;shoot them or ___ them&rsquo;)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. poisoning</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. poisoned</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. poison</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. poisonous</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why does the lecturer say that clearing vegetation around the chickens does not work?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. It is too expensive for small-scale farmers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. It leaves the chickens with no cover, so the birds see them more easily.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. It attracts rats and snakes instead.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The government does not allow it.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What does &lsquo;(expensive)&rsquo; next to Q37 correspond to in the recording?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. &lsquo;this would cost far too much to be a practical solution&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. &lsquo;an important source of income&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. &lsquo;considerable economic loss&rsquo;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. &lsquo;a longer-term solution&rsquo;</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">For Q39 the note says &lsquo;making a ___ &mdash; e.g. with metal objects&rsquo;. What must you write?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. pans</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. spoon</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. noise</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. children</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What conclusion do the village people reach about protecting their chickens?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. One well-chosen method is enough if it is used properly.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Only shooting the birds really works.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. No single method works, so several must be used together.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. The problem has now been completely solved.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'C')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 31–40</h3><div class="answer-item"><span class="answer-num">31</span><div><div class="answer-val">rats</div><div class="answer-note">&lsquo;a lot of damage can be caused to farmers&rsquo; crops by <em>rodents such as rats</em>, which would consume the crops&hellip; if they weren&rsquo;t hunted and killed by the birds.&rsquo; &lsquo;Rodents&rsquo; is printed in the note, so the answer is the example: <strong>rats</strong> (plural).</div></div></div>
+<div class="answer-item"><span class="answer-num">32</span><div><div class="answer-val">snakes</div><div class="answer-note">&lsquo;a major danger to rural workers is <em>snakes</em> whose bite may be dangerous or even fatal. And birds of prey have a major role in keeping their populations under control.&rsquo; &lsquo;Rural workers&rsquo; = &lsquo;farmers&rsquo;; keep the plural.</div></div></div>
+<div class="answer-item"><span class="answer-num">33</span><div><div class="answer-val">tourism</div><div class="answer-note">&lsquo;the sanctuary&hellip; become increasingly important to the community in economic terms because&hellip; <em>tourism</em> has become an important source of revenue.&rsquo; &lsquo;Support the economy&rsquo; = &lsquo;important in economic terms / a source of revenue&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">34</span><div><div class="answer-val">traffic</div><div class="answer-note">&lsquo;Fatalities occur when birds alight on roads to catch and eat their prey and are hit by fast-moving <em>traffic</em>&hellip; birds may regard the quieter roads as safe places to sleep.&rsquo; The road and the drivers are distractors.</div></div></div>
+<div class="answer-item"><span class="answer-num">35</span><div><div class="answer-val">rain</div><div class="answer-note">&lsquo;if these birds fly close to high-voltage power lines&hellip; they may be electrocuted. This is a particular danger in the heavy <em>rain</em> which can occur&hellip; from December to April.&rsquo; ONE WORD ONLY, so &lsquo;heavy rain&rsquo; is not accepted.</div></div></div>
+<div class="answer-item"><span class="answer-num">36</span><div><div class="answer-val">poison</div><div class="answer-note">&lsquo;farmers may shoot these birds, which is illegal but understandable. Or they may <em>poison</em> the birds, which again is illegal.&rsquo; The base form matches &lsquo;shoot&rsquo; in the note.</div></div></div>
+<div class="answer-item"><span class="answer-num">37</span><div><div class="answer-val">building</div><div class="answer-note">&lsquo;to prevent the chickens from going outside at all and to keep them safe from predators inside a <em>building</em>, but this would cost far too much to be a practical solution.&rsquo; = &lsquo;(expensive)&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">38</span><div><div class="answer-val">dog</div><div class="answer-note">&lsquo;Most of the farmers had at least one <em>dog</em> and said this was a big help at scaring away the predators.&rsquo; The note says &lsquo;keeping <em>a</em> ___&rsquo;, so the answer is singular.</div></div></div>
+<div class="answer-item"><span class="answer-num">39</span><div><div class="answer-val">noise</div><div class="answer-note">&lsquo;they encouraged their children&hellip; to hit pans with a metal spoon so that the resulting <em>noise</em> would succeed in driving away birds.&rsquo; &lsquo;Metal objects&rsquo; on the paper = the pans and spoon; you write the result.</div></div></div>
+<div class="answer-item"><span class="answer-num">40</span><div><div class="answer-val">combination</div><div class="answer-note">&lsquo;None of these methods was 100 per cent effective. So&hellip; rather than just using one method, they were forced to use a <em>combination</em>.&rsquo; &lsquo;Most effective&rsquo; = the best available option.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Notes Completion (the ten real exam gaps Q31&ndash;40)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">rats</div><div class="answer-note">Birds of prey protect the harvest because they destroy</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">snakes</div><div class="answer-note">They also help to stop farmers being bitten by</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">tourism</div><div class="answer-note">The sanctuary now supports the local economy by encouraging</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">traffic</div><div class="answer-note">Birds that hunt or sleep on the roads are often killed by</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">rain</div><div class="answer-note">Electrocution on power lines is most likely when there is a lot of</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">poison</div><div class="answer-note">Some farmers illegally shoot the birds, and others</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">building</div><div class="answer-note">Keeping chickens inside a</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">dog</div><div class="answer-note">Almost every farmer keeps a</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">noise</div><div class="answer-note">Children hit metal pans so that the</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">combination</div><div class="answer-note">In the end the villagers have to use a</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Word Form</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">accidentally</div><div class="answer-note">The birds may be</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">electrocution</div><div class="answer-note">Contact with power lines causes death by</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">counterproductive</div><div class="answer-note">Clearing the vegetation is actually</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">predatory</div><div class="answer-note">The</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">fatal</div><div class="answer-note">A snake bite may be dangerous or even</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">illegal</div><div class="answer-note">Shooting the birds is understandable but completely</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">sanctuary</div><div class="answer-note">s a n c t _ a r y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">combination</div><div class="answer-note">c o m b i n _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">electrocuted</div><div class="answer-note">e l e c t r o c _ t e d  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">vulnerable</div><div class="answer-note">v _ l n e r a b l e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">vegetation</div><div class="answer-note">v e g e t _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">ecosystem</div><div class="answer-note">e c o s _ s t e m  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Dates</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Zambia</div><div class="answer-note">The research was carried out in the central African country of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">Chembe</div><div class="answer-note">The bird sanctuary in the lecture is called the</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">300</div><div class="answer-note">The sanctuary contains over</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">1973</div><div class="answer-note">The sanctuary was opened in the year</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">December</div><div class="answer-note">Heavy rain occurs in the region in the months from</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">100</div><div class="answer-note">None of the methods used by the farmers was</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Paraphrase Matching (audio wording &rarr; note wording)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">rats</div><div class="answer-note">Audio: &ldquo;rodents such as ___, which would consume the crops&rdquo; &rarr; Note: they destroy</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">snakes</div><div class="answer-note">Audio: &ldquo;___ whose bite may be dangerous or even fatal&rdquo; &rarr; Note: prevent farmers from being bitten by</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">tourism</div><div class="answer-note">Audio: &ldquo;___ has become an important source of revenue&rdquo; &rarr; Note: support the economy by encouraging</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">traffic</div><div class="answer-note">Audio: &ldquo;are hit by fast-moving ___&rdquo; &rarr; Note: killed by</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">building</div><div class="answer-note">Audio: &ldquo;keep them safe from predators inside a ___&hellip; would cost far too much&rdquo; &rarr; Note: providing a</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">noise</div><div class="answer-note">Audio: &ldquo;hit pans with a metal spoon so that the resulting ___&hellip;&rdquo; &rarr; Note: making a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">combination</div><div class="answer-note">Audio: &ldquo;rather than just using one method, they were forced to use a ___&rdquo; &rarr; Note: a</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q31</span><div><div class="answer-val">rats &mdash; PLURAL NOUN &mdash; an animal</div><div class="answer-note">&lsquo;and other rodents&rsquo; means the answer is itself a rodent. Listen for &lsquo;rodents such as&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q32</span><div><div class="answer-val">snakes &mdash; PLURAL NOUN &mdash; an animal that bites</div><div class="answer-note">&lsquo;bitten by&rsquo; &rarr; listen for <em>bite</em>, <em>venom</em>, <em>fatal</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q33</span><div><div class="answer-val">tourism &mdash; UNCOUNTABLE NOUN &mdash; an activity</div><div class="answer-note">&lsquo;economy&rsquo; &rarr; listen for <em>money, income, revenue, visitors</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q34</span><div><div class="answer-val">traffic &mdash; NOUN &mdash; a cause of accidental death</div><div class="answer-note">The birds are on the ground. Listen for <em>roads, hit, vehicles</em>. Beware &lsquo;drivers&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q35</span><div><div class="answer-val">rain &mdash; UNCOUNTABLE NOUN &mdash; weather</div><div class="answer-note">&lsquo;a lot of&rsquo; tells you the word is uncountable. Listen after &lsquo;power lines&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q36</span><div><div class="answer-val">poison &mdash; BASE VERB</div><div class="answer-note">It must be a second illegal way of killing a bird, in the same form as <em>shoot</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q37</span><div><div class="answer-val">building &mdash; COUNTABLE NOUN &mdash; a structure</div><div class="answer-note">&lsquo;(expensive)&rsquo; &rarr; listen for <em>cost, too much, not practical</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q38</span><div><div class="answer-val">dog &mdash; SINGULAR NOUN &mdash; an animal</div><div class="answer-note">The article &lsquo;a&rsquo; forces the singular. Listen for <em>scaring away the predators</em>.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q39</span><div><div class="answer-val">noise &mdash; NOUN &mdash; something you can &lsquo;make&rsquo;</div><div class="answer-note">&lsquo;metal objects&rsquo; = pans and spoons. You need the <em>result</em> of hitting them.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q40</span><div><div class="answer-val">combination &mdash; NOUN + &lsquo;of&rsquo;</div><div class="answer-note">Listen for &lsquo;rather than just using one method&hellip;&rsquo;</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">birds of prey such as eagles, hawks and owls</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">damage can be caused to farmers&rsquo; crops by rodents such as rats</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">snakes whose bite may be dangerous or even fatal</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">tourism has become an important source of revenue</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">they are hit by fast-moving traffic</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">a particular danger in the heavy rain</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">most of the farmers had at least one dog</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">rather than just using one method, they were forced to use a combination</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. Around a bird sanctuary in Zambia.</div><div class="answer-note">&lsquo;research that I&rsquo;ve been involved in recently in the central African country of Zambia in the area around the Chembe bird sanctuary&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Because &lsquo;rodents&rsquo; is already printed in the note, so the gap needs the example.</div><div class="answer-note">Whenever a word is already on the question paper it cannot be the answer. &lsquo;Rodents such as <em>rats</em>&rsquo; gives you the missing example.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. By keeping snake populations under control.</div><div class="answer-note">&lsquo;a major danger to rural workers is snakes&hellip; birds of prey have a major role in keeping their populations under control.&rsquo; That is Q32.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">B. It only became significant recently, after a slow start with tourism.</div><div class="answer-note">&lsquo;<em>more recently</em>&hellip; after a relatively slow start, tourism has become an important source of revenue&rsquo;. 1973 is the year the sanctuary opened &mdash; a date distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C. traffic</div><div class="answer-note">The note says the birds are <em>killed by</em> ___. Only &lsquo;fast-moving traffic&rsquo; does the killing; the road is the place and the drivers are told to take care.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B. They think the quieter roads are safe places to sleep.</div><div class="answer-note">&lsquo;birds may regard the quieter roads as safe places to sleep&rsquo; &mdash; this is the &lsquo;sleeping&rsquo; half of the Q34 note.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. rain</div><div class="answer-note">The audio says &lsquo;heavy rain&rsquo;, but the instruction is <strong>ONE WORD ONLY</strong>, so &lsquo;heavy rain&rsquo; would score zero. December is when the rain starts, not what the gap asks for.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. poison</div><div class="answer-note">The gap is parallel with the bare verb <em>shoot</em> after &lsquo;may illegally&rsquo;, so only the base form fits: &lsquo;they may <em>poison</em> the birds&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. It leaves the chickens with no cover, so the birds see them more easily.</div><div class="answer-note">&lsquo;this is <em>counterproductive</em> as it means the chickens have no cover to hide in and they&rsquo;ll be easier for the birds to see&rsquo;. That is why the paper labels it &lsquo;(unhelpful)&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">A. &lsquo;this would cost far too much to be a practical solution&rsquo;</div><div class="answer-note">The bracketed comments on a Part 4 note are always paraphrased in the audio. Here it points you to &lsquo;keep them safe&hellip; inside a <strong>building</strong>&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">C. noise</div><div class="answer-note">The metal objects (pans and a spoon) are the <em>tool</em>; you make the <em>result</em>: &lsquo;the resulting <strong>noise</strong> would succeed in driving away birds&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">C. No single method works, so several must be used together.</div><div class="answer-note">&lsquo;None of these methods was 100 per cent effective&hellip; rather than just using one method, they were forced to use a <strong>combination</strong>&rsquo; (Q40). The birds &lsquo;remain a major threat&rsquo;, so D is wrong.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>

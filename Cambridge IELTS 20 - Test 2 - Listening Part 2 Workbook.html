@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 20 — Test 2 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 20</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 20 — Test 2 — Listening Part 2</h1>
+    <h2>Town Volunteer Scheme · Matching + Multiple Choice (Q11&ndash;20)</h2>
+  </header>
+
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Steve, who organises the volunteer scheme for <strong>Elmley Town Council</strong>, is welcoming a group of new volunteers. In the first half he describes six activities volunteers carry out &mdash; street patrols, concerts, community groups, the town magazine, lunches for retired people and the website &mdash; and you must match each one to the volunteer&rsquo;s <strong>role</strong> from a box of nine options. In the second half he turns to practical matters: the three town festivals, the qualities volunteers need, the September start dates and the annual thank-you event, tested by four multiple-choice questions.</p></div><div class="card"><p><strong>Who is speaking?</strong> One speaker only &mdash; Steve, the organiser of the volunteer scheme at Elmley Town Council, giving an induction talk to a group of people who have just signed up. Semi-formal monologue.</p><p><strong>The situation 情境:</strong> 英国小镇 Elmley 的镇议会（Town Council）有一个志愿者计划。负责人 Steve 在新志愿者见面会上介绍：前半段讲六项志愿活动，要求把每项活动与志愿者的"具体职责"配对（九选六，多出三个干扰项）；后半段讲三个节庆活动、志愿者需要具备的素质、九月的培训与上岗时间，以及每年答谢志愿者的活动，共四道单选题。</p><p><strong>Task type:</strong> Q11&ndash;16 matching &mdash; choose SIX answers from a box of NINE (A&ndash;I), each option used once. Q17&ndash;20 multiple choice with three options (A, B or C). No spelling risk at all here &mdash; you only write letters, so the whole battle is comprehension.</p></div><div class="highlight">💡 <strong>Listening strategy tip:</strong> For <strong>matching from a box (Q11&ndash;16)</strong> there are nine options but only six answers, so three options are pure distractors and every one of them <em>will</em> be mentioned somewhere in the recording. Use the 45 seconds of reading time to group the options by idea: A/G are both about performing at an event, F/I are both about tickets and seats, B/C are both about businesses/publicity. Then, while you listen, follow the six <strong>activities</strong> (which come strictly in order) rather than hunting for the options. Ask one question each time: <em>what does the volunteer actually DO here?</em> For the <strong>MCQs (Q17&ndash;20)</strong> all three options are always mentioned; listen for the <em>comparison</em> or the <em>correction</em> that separates them.</div><div class="highlight">⚠️ <strong>Traps in this section 本节陷阱:</strong><ul style="margin:8px 0 0 18px;"><li><b>F (selling tickets) vs I (helping people find their seats)</b> at the concerts &mdash; the audio does mention tickets (&lsquo;people buy tickets then don&rsquo;t check them&rsquo;), but the volunteers&rsquo; job is to get the audience &lsquo;to the right place&rsquo;, so the answer is <b>I</b>.</li><li><b>C (contacting local businesses)</b> is said clearly during the magazine section &mdash; but the talk states that advertising is &lsquo;the responsibility of the council&rsquo;s advertising department&rsquo;, NOT the volunteers. The volunteers collect feedback (<b>E</b>).</li><li><b>G (introducing guest speakers) vs A (providing entertainment)</b> at the retired people&rsquo;s lunches &mdash; there are no guest speakers; the volunteers themselves &lsquo;put on a show&hellip; songs and short plays&rsquo;, so <b>A</b>.</li><li><b>Festival sizes (Q17)</b> &mdash; the biggest clue is length, and it points the WRONG way. The science festival is only two days but needs the most volunteers because it uses many venues.</li><li><b>Q18: three qualities are all mentioned</b> &mdash; personal interest, flexibility AND getting on with people. Only the last is marked with &lsquo;What&rsquo;s <em>essential</em> though&rsquo;.</li><li><b>Three September dates (Q19)</b> &mdash; the 2nd is training, the 9th is when duties begin, the 23rd is a review chat. The question asks when they <em>start working</em>.</li><li><b>Q20: party and barbecue are both real</b> &mdash; but they happened in previous years. &lsquo;Forthcoming&rsquo; signals the NEXT one: a canal trip.</li></ul></div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>Type</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Listening Note</th></tr></thead><tbody><tr><td><span class="word">volunteer</span></td><td><span class="pos">n./v.</span></td><td>a person who works without being paid; to offer to do this</td><td class="zh">志愿者；志愿服务</td><td>&ldquo;I organise the town&rsquo;s <em>volunteer</em> scheme.&rdquo;</td><td class="note">The topic word of the whole section. Notice it is used as an adjective too: &lsquo;volunteer t-shirt&rsquo;.</td></tr>
+<tr><td><span class="word">scheme</span></td><td><span class="pos">n.</span></td><td>an official plan or system organised by a group</td><td class="zh">计划；方案</td><td>&ldquo;I&rsquo;m delighted you&rsquo;re all interested in joining the <em>scheme</em>.&rdquo;</td><td class="note">British English. In US English you would hear &lsquo;program&rsquo;. Never negative in British usage here.</td></tr>
+<tr><td><span class="word">sense of community</span></td><td><span class="pos">n. phr.</span></td><td>the feeling that local people belong together</td><td class="zh">社区归属感</td><td>&ldquo;Our volunteers help to create a <em>sense of community</em>.&rdquo;</td><td class="note">The purpose statement of the talk. Understanding it makes options H and B much easier to place.</td></tr>
+<tr><td><span class="word">resident</span></td><td><span class="pos">n.</span></td><td>a person who lives in a particular place</td><td class="zh">居民</td><td>&ldquo;Make <em>residents</em> and visitors feel welcome at local events.&rdquo;</td><td class="note">Contrast with <em>visitors</em>/<em>tourists</em>. Q11 is about visitors (D); Q16 is about residents (B).</td></tr>
+<tr><td><span class="word">recommendation</span></td><td><span class="pos">n.</span></td><td>a suggestion about something good to do or see</td><td class="zh">推荐；建议</td><td>&ldquo;They might be grateful for <em>recommendations</em> about what to visit.&rdquo;</td><td class="note"><strong>Q11 clue.</strong> Recommendations + directions to tourists = &lsquo;giving advice to visitors&rsquo; (D).</td></tr>
+<tr><td><span class="word">audience</span></td><td><span class="pos">n.</span></td><td>the people watching or listening to a performance</td><td class="zh">观众；听众</td><td>&ldquo;Get everyone in the <em>audience</em> to the right place.&rdquo;</td><td class="note"><strong>Q12 clue.</strong> &lsquo;The right place&rsquo; in a hall = their seats (I).</td></tr>
+<tr><td><span class="word">venue</span></td><td><span class="pos">n.</span></td><td>the place where an event happens</td><td class="zh">场馆；举办地点</td><td>&ldquo;The book festival&hellip; uses several <em>venues</em> which all need volunteers.&rdquo;</td><td class="note"><strong>Q17 clue.</strong> Number of venues, not number of days, decides how many volunteers are needed.</td></tr>
+<tr><td><span class="word">association</span></td><td><span class="pos">n.</span></td><td>an organised group of people with a shared interest</td><td class="zh">协会；社团</td><td>&ldquo;Community groups such as sports clubs or gardeners&rsquo; <em>associations</em>.&rdquo;</td><td class="note">Paraphrase family for option H: groups / clubs / associations / local organisations.</td></tr>
+<tr><td><span class="word">coach</span></td><td><span class="pos">n.</span></td><td>a comfortable bus used for long journeys</td><td class="zh">长途大巴</td><td>&ldquo;Another club has a <em>coach</em> they could travel in.&rdquo;</td><td class="note">Not &lsquo;trainer&rsquo; here. This example shows one group helping another &rarr; cooperation (H).</td></tr>
+<tr><td><span class="word">article</span></td><td><span class="pos">n.</span></td><td>a piece of writing in a newspaper or magazine</td><td class="zh">文章；稿件</td><td>&ldquo;Anyone who lives in the town can send in <em>articles</em>.&rdquo;</td><td class="note">Sent in by residents, not written by volunteers &mdash; a quiet distractor for Q14.</td></tr>
+<tr><td><span class="word">advertising</span></td><td><span class="pos">n.</span></td><td>the business of making products or services known publicly</td><td class="zh">广告；广告业务</td><td>&ldquo;That&rsquo;s the responsibility of the council&rsquo;s <em>advertising</em> department.&rdquo;</td><td class="note"><strong>Key Q14 trap.</strong> This sentence explicitly removes option C from the volunteers.</td></tr>
+<tr><td><span class="word">feedback</span></td><td><span class="pos">n.</span></td><td>comments about how good or useful something was</td><td class="zh">反馈意见</td><td>&ldquo;We depend on volunteers to find out what people think of events they&rsquo;ve attended.&rdquo;</td><td class="note"><strong>Q14 answer (E).</strong> &lsquo;What people think&rsquo; + &lsquo;suggestions&rsquo; = collecting feedback.</td></tr>
+<tr><td><span class="word">summary</span></td><td><span class="pos">n.</span></td><td>a short account giving the main points</td><td class="zh">摘要；总结</td><td>&ldquo;The volunteers then send a <em>summary</em> to the editors.&rdquo;</td><td class="note">Confirms the volunteers gather opinions and pass them on &mdash; they do not write the magazine.</td></tr>
+<tr><td><span class="word">retired</span></td><td><span class="pos">adj.</span></td><td>having stopped working because of age</td><td class="zh">退休的</td><td>&ldquo;There are a number of clubs for <em>retired</em> people.&rdquo;</td><td class="note">Printed on the question paper for Q15, so it is your landmark for that gap.</td></tr>
+<tr><td><span class="word">put on a show</span></td><td><span class="pos">phr.</span></td><td>to perform something for an audience</td><td class="zh">举办演出；表演节目</td><td>&ldquo;Some volunteers <em>put on a show</em>, usually around half an hour of songs and short plays.&rdquo;</td><td class="note"><strong>Q15 answer (A).</strong> Songs + short plays = entertainment. No guest speakers are mentioned, so G is wrong.</td></tr>
+<tr><td><span class="word">update</span></td><td><span class="pos">v.</span></td><td>to add the newest information to something</td><td class="zh">更新</td><td>&ldquo;It&rsquo;s <em>updated</em> every day with information about future activities.&rdquo;</td><td class="note">Describes the website; the volunteers do not update it, they publicise it (B).</td></tr>
+<tr><td><span class="word">publicity</span></td><td><span class="pos">n.</span></td><td>the activity of making the public aware of something</td><td class="zh">宣传；公开推广</td><td>&ldquo;Volunteers are asked to help by making sure residents know about it.&rdquo;</td><td class="note"><strong>Q16 answer (B).</strong> &lsquo;Making sure residents know about it&rsquo; IS publicity.</td></tr>
+<tr><td><span class="word">festival</span></td><td><span class="pos">n.</span></td><td>a series of performances or events held regularly</td><td class="zh">节；艺术节</td><td>&ldquo;The town arranges three major <em>festivals</em> every year.&rdquo;</td><td class="note">The word that moves the talk from matching (Q11&ndash;16) to multiple choice (Q17&ndash;20).</td></tr>
+<tr><td><span class="word">flexible</span></td><td><span class="pos">adj.</span></td><td>able to change plans easily when things change</td><td class="zh">灵活的；能随机应变的</td><td>&ldquo;We try to use volunteers who are <em>flexible</em>.&rdquo;</td><td class="note"><strong>Q18 distractor (C).</strong> &lsquo;We try to&rsquo; is much weaker than &lsquo;essential&rsquo;.</td></tr>
+<tr><td><span class="word">essential</span></td><td><span class="pos">adj.</span></td><td>completely necessary</td><td class="zh">必不可少的；至关重要的</td><td>&ldquo;What&rsquo;s <em>essential</em> though is being able to get on well with other people.&rdquo;</td><td class="note"><strong>Q18 answer signal.</strong> In MCQs, superlative-strength words (essential, most important, above all) mark the answer.</td></tr>
+<tr><td><span class="word">at short notice</span></td><td><span class="pos">phr.</span></td><td>with very little warning before something happens</td><td class="zh">临时通知；仓促之间</td><td>&ldquo;So there can be changes <em>at short notice</em>.&rdquo;</td><td class="note">Explains why flexibility is mentioned &mdash; useful context, but not the answer to Q18.</td></tr>
+<tr><td><span class="word">timetable</span></td><td><span class="pos">v.</span></td><td>to arrange for something to happen at a particular time</td><td class="zh">排班；安排时间表</td><td>&ldquo;We&rsquo;ll be <em>timetabling</em> you for duties the following week from the 9th.&rdquo;</td><td class="note"><strong>Q19 answer signal.</strong> &lsquo;Timetabled for duties&rsquo; = starting work.</td></tr>
+<tr><td><span class="word">duty</span></td><td><span class="pos">n.</span></td><td>a task that is part of your job or role</td><td class="zh">职责；值班任务</td><td>&ldquo;Timetabling you for <em>duties</em> the following week.&rdquo;</td><td class="note">Q19 asks when volunteers &lsquo;start working&rsquo; &mdash; that is duties, not training.</td></tr>
+<tr><td><span class="word">annual</span></td><td><span class="pos">adj.</span></td><td>happening once every year</td><td class="zh">一年一度的</td><td>&ldquo;As a thank you to the volunteers we arrange an <em>annual</em> event.&rdquo;</td><td class="note">Printed in Q20. Do not confuse with &lsquo;in recent years&rsquo;, which introduces the past events.</td></tr>
+<tr><td><span class="word">forthcoming</span></td><td><span class="pos">adj.</span></td><td>happening or coming soon</td><td class="zh">即将到来的</td><td>&ldquo;Our <em>forthcoming</em> event is a trip along the canal.&rdquo;</td><td class="note"><strong>Q20 answer signal.</strong> Forthcoming = next. The party and barbecue are past events.</td></tr>
+<tr><td><span class="word">sign up</span></td><td><span class="pos">phr. v.</span></td><td>to put your name on a list to join something</td><td class="zh">报名；登记参加</td><td>&ldquo;If you&rsquo;d like to attend, you can <em>sign up</em> once you start work.&rdquo;</td><td class="note">A very common phrasal verb in Part 2 talks about clubs, courses and events.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Useful Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">organise a volunteer scheme</span></td><td>run an official programme of unpaid helpers</td><td class="zh">组织志愿者计划</td></tr>
+<tr><td><span class="phrase">create a sense of community</span></td><td>make local people feel they belong together</td><td class="zh">营造社区归属感</td></tr>
+<tr><td><span class="phrase">make people feel welcome</span></td><td>behave so that visitors feel comfortable</td><td class="zh">让人感到宾至如归</td></tr>
+<tr><td><span class="phrase">carry out an activity</span></td><td>perform or do an activity</td><td class="zh">开展一项活动</td></tr>
+<tr><td><span class="phrase">ask how to get to&hellip;</span></td><td>ask for directions to a place</td><td class="zh">问怎么去某地</td></tr>
+<tr><td><span class="phrase">be grateful for recommendations</span></td><td>be pleased to receive suggestions</td><td class="zh">很乐意得到推荐</td></tr>
+<tr><td><span class="phrase">as smoothly as possible</span></td><td>with as few problems as possible</td><td class="zh">尽可能顺利地</td></tr>
+<tr><td><span class="phrase">head for the wrong section</span></td><td>go towards the wrong part of a building</td><td class="zh">走错区域</td></tr>
+<tr><td><span class="phrase">get involved with&hellip;</span></td><td>start taking part in something</td><td class="zh">参与到……当中</td></tr>
+<tr><td><span class="phrase">help each other</span></td><td>give assistance to one another</td><td class="zh">互相帮助</td></tr>
+<tr><td><span class="phrase">send in articles</span></td><td>submit written pieces for publication</td><td class="zh">投稿</td></tr>
+<tr><td><span class="phrase">it&rsquo;s free to residents</span></td><td>local people do not have to pay for it</td><td class="zh">对居民免费</td></tr>
+<tr><td><span class="phrase">paid for by local businesses</span></td><td>funded by companies in the area</td><td class="zh">由本地企业出资</td></tr>
+<tr><td><span class="phrase">find out what people think</span></td><td>discover people&rsquo;s opinions</td><td class="zh">了解人们的看法</td></tr>
+<tr><td><span class="phrase">put on a show</span></td><td>perform songs, plays or other entertainment</td><td class="zh">办一场演出</td></tr>
+<tr><td><span class="phrase">welcome the guests</span></td><td>greet the people who arrive</td><td class="zh">迎接来宾</td></tr>
+<tr><td><span class="phrase">the chance to chat</span></td><td>the opportunity for informal conversation</td><td class="zh">闲聊的机会</td></tr>
+<tr><td><span class="phrase">depend on a large number of volunteers</span></td><td>need many unpaid helpers to work</td><td class="zh">依靠大量志愿者</td></tr>
+<tr><td><span class="phrase">attend most of the events for free</span></td><td>go to nearly all of them without paying</td><td class="zh">免费参加大部分活动</td></tr>
+<tr><td><span class="phrase">changes at short notice</span></td><td>alterations announced only just before</td><td class="zh">临时变动</td></tr>
+<tr><td><span class="phrase">get on well with other people</span></td><td>have good relationships with others</td><td class="zh">与人相处融洽</td></tr>
+<tr><td><span class="phrase">deal with someone behaving badly</span></td><td>handle a person who is causing trouble</td><td class="zh">应对行为不当的人</td></tr>
+<tr><td><span class="phrase">the week beginning September 23rd</span></td><td>the week that starts on 23 September</td><td class="zh">9月23日那一周</td></tr>
+<tr><td><span class="phrase">as a thank you to&hellip;</span></td><td>in order to show gratitude to someone</td><td class="zh">作为对……的答谢</td></tr>
+<tr><td><span class="phrase">sign up for an event</span></td><td>register to take part in it</td><td class="zh">报名参加活动</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>Exercise 1 &mdash; Matching &amp; Multiple Choice (the real exam answers)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Write the correct <strong>LETTER</strong> for each question. Q11&ndash;16 use the box A&ndash;I; Q17&ndash;20 use A, B or C. Capital or small letters are both accepted.</p><div class="ex-item"><span class="ex-num">1.</span><label>Q11 &mdash; walking around the town centre: <input type="text" class="blank" id="b1" data-answer="D" placeholder="______"> (giving advice to visitors)<span class="feedback" id="fb1"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Q12 &mdash; helping at concerts: <input type="text" class="blank" id="b2" data-answer="I" placeholder="______"> (helping people find their seats)<span class="feedback" id="fb2"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Q13 &mdash; getting involved with community groups: <input type="text" class="blank" id="b3" data-answer="H" placeholder="______"> (encouraging cooperation between local organisations)<span class="feedback" id="fb3"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Q14 &mdash; helping with a magazine: <input type="text" class="blank" id="b4" data-answer="E" placeholder="______"> (collecting feedback on events)<span class="feedback" id="fb4"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Q15 &mdash; participating at lunches for retired people: <input type="text" class="blank" id="b5" data-answer="A" placeholder="______"> (providing entertainment)<span class="feedback" id="fb5"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Q16 &mdash; helping with the website: <input type="text" class="blank" id="b6" data-answer="B" placeholder="______"> (providing publicity about a council service)<span class="feedback" id="fb6"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q17 &mdash; the event requiring the largest number of volunteers: <input type="text" class="blank" id="b7" data-answer="B" placeholder="______"> (the science festival)<span class="feedback" id="fb7"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q18 &mdash; the most important requirement for festival volunteers: <input type="text" class="blank" id="b8" data-answer="A" placeholder="______"> (interpersonal skills)<span class="feedback" id="fb8"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>Q19 &mdash; new volunteers start working in the week beginning: <input type="text" class="blank" id="b9" data-answer="B" placeholder="______"> (9 September)<span class="feedback" id="fb9"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Q20 &mdash; the next annual event for volunteers: <input type="text" class="blank" id="b10" data-answer="A" placeholder="______"> (a boat trip)<span class="feedback" id="fb10"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 2 &mdash; Key Words from the Talk</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete each sentence with <strong>ONE WORD</strong> that Steve actually uses. These are the words that carry the answers.</p><div class="ex-item"><span class="ex-num">1.</span><label>Volunteers help to create a sense of <input type="text" class="blank" id="b11" data-answer="community" placeholder="______"> among local people.<span class="feedback" id="fb11"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Tourists are grateful for <input type="text" class="blank" id="b12" data-answer="recommendations" placeholder="______"> about what to visit.<span class="feedback" id="fb12"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>At concerts, volunteers get everyone in the <input type="text" class="blank" id="b13" data-answer="audience" placeholder="______"> to the right place.<span class="feedback" id="fb13"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>A writing group might not know that another club has a <input type="text" class="blank" id="b14" data-answer="coach" placeholder="______"> they could travel in.<span class="feedback" id="fb14"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The magazine is paid for by local businesses through the council&rsquo;s <input type="text" class="blank" id="b15" data-answer="advertising" placeholder="______"> department.<span class="feedback" id="fb15"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Volunteers send a <input type="text" class="blank" id="b16" data-answer="summary" placeholder="______"> of people&rsquo;s comments to the editors.<span class="feedback" id="fb16"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>At the lunches, some volunteers put on a <input type="text" class="blank" id="b17" data-answer="show" placeholder="______"> of songs and short plays.<span class="feedback" id="fb17"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The science festival involves quite a lot of <input type="text" class="blank" id="b18" data-answer="venues" placeholder="______">.<span class="feedback" id="fb18"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>What is <input type="text" class="blank" id="b19" data-answer="essential" placeholder="______"> is being able to get on well with other people.<span class="feedback" id="fb19"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>Our <input type="text" class="blank" id="b20" data-answer="forthcoming" placeholder="______"> event is a trip along the canal.<span class="feedback" id="fb20"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 3 &mdash; Spelling Challenge</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Even in a letter-answer section, these words must be understood instantly when you hear them. Type the correct spelling.</p><div class="ex-item"><span class="ex-num">1.</span><label>v o l u n t _ e r &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b21" data-answer="volunteer" placeholder="______"><span class="feedback" id="fb21"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>c o m m _ n i t y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b22" data-answer="community" placeholder="______"><span class="feedback" id="fb22"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>a s s o c i _ t i o n s &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b23" data-answer="associations" placeholder="______"><span class="feedback" id="fb23"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>p u b l i c _ t y &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b24" data-answer="publicity" placeholder="______"><span class="feedback" id="fb24"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>a u d i _ n c e &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b25" data-answer="audience" placeholder="______"><span class="feedback" id="fb25"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>c o o p e r _ t i o n &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b26" data-answer="cooperation" placeholder="______"><span class="feedback" id="fb26"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>e n t e r t a _ n m e n t &nbsp;&rarr;&nbsp;<input type="text" class="blank" id="b27" data-answer="entertainment" placeholder="______"><span class="feedback" id="fb27"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 4 &mdash; Numbers, Names &amp; Dates</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">The second half of the talk is full of figures and dates. Write numbers in <strong>figures</strong>.</p><div class="ex-item"><span class="ex-num">1.</span><label>The town of <input type="text" class="blank" id="b28" data-answer="Elmley" placeholder="______"> is described as historic.<span class="feedback" id="fb28"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>The town magazine comes out once a <input type="text" class="blank" id="b29" data-answer="month" placeholder="______">.<span class="feedback" id="fb29"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>The town arranges <input type="text" class="blank" id="b30" data-answer="3" placeholder="______"> major festivals every year.<span class="feedback" id="fb30"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>The book festival lasts <input type="text" class="blank" id="b31" data-answer="3" placeholder="______"> days.<span class="feedback" id="fb31"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>The science festival lasts only <input type="text" class="blank" id="b32" data-answer="2" placeholder="______"> days.<span class="feedback" id="fb32"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Training starts on September the <input type="text" class="blank" id="b33" data-answer="2nd" placeholder="______">.<span class="feedback" id="fb33"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Duties begin in the week beginning September the <input type="text" class="blank" id="b34" data-answer="9th" placeholder="______">.<span class="feedback" id="fb34"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>The individual chats take place in the week beginning September <input type="text" class="blank" id="b35" data-answer="23rd" placeholder="______">.<span class="feedback" id="fb35"></span></label></div>
+<div class="ex-item"><span class="ex-num">9.</span><label>The canal trip goes from Elmley to <input type="text" class="blank" id="b36" data-answer="Duehurst" placeholder="______"> and back.<span class="feedback" id="fb36"></span></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>The show at the lunches lasts about half an <input type="text" class="blank" id="b37" data-answer="hour" placeholder="______">.<span class="feedback" id="fb37"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div>
+<div class="exercise-block"><h3>Exercise 5 &mdash; Distractor Elimination</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">For each pair, write the letter of the option that is <strong>correct</strong>. The other one is the distractor the recording deliberately mentions.</p><div class="ex-item"><span class="ex-num">1.</span><label>Concerts: F (selling tickets) or I (helping people find their seats)? <input type="text" class="blank" id="b38" data-answer="I" placeholder="______"><span class="feedback" id="fb38"></span></label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>Magazine: C (contacting local businesses) or E (collecting feedback)? <input type="text" class="blank" id="b39" data-answer="E" placeholder="______"><span class="feedback" id="fb39"></span></label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Lunches: G (introducing guest speakers) or A (providing entertainment)? <input type="text" class="blank" id="b40" data-answer="A" placeholder="______"><span class="feedback" id="fb40"></span></label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Town centre: D (giving advice to visitors) or B (publicity about a council service)? <input type="text" class="blank" id="b41" data-answer="D" placeholder="______"><span class="feedback" id="fb41"></span></label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Website: B (publicity about a council service) or E (collecting feedback)? <input type="text" class="blank" id="b42" data-answer="B" placeholder="______"><span class="feedback" id="fb42"></span></label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Festivals: is the longest festival also the one needing most volunteers? Write the answer letter for Q17: <input type="text" class="blank" id="b43" data-answer="B" placeholder="______"><span class="feedback" id="fb43"></span></label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Q18: is &lsquo;flexible&rsquo; (C) or &lsquo;get on well with other people&rsquo; (A) called essential? <input type="text" class="blank" id="b44" data-answer="A" placeholder="______"><span class="feedback" id="fb44"></span></label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Q20: was the barbecue last year (B) or is the canal trip next (A)? <input type="text" class="blank" id="b45" data-answer="A" placeholder="______"><span class="feedback" id="fb45"></span></label></div><button class="btn-check" onclick="checkAllBlanks()">Check All Answers</button><button class="btn-check secondary" onclick="resetBlanks()" style="margin-left:8px;">Reset</button></div><div class="exercise-block"><h3>Question Prediction</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Before you press play, decide what KIND of word each gap needs. In the real exam you get about 30 seconds for this &mdash; it is the single highest-value habit in Listening.</p><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Gap</th><th>Wording on the question paper</th><th>Word type needed</th><th>What to listen for</th><th>Answer</th></tr></thead><tbody><tr><td><span class="word">Q11</span></td><td>walking around the town centre</td><td><b>MATCHING &mdash; a ROLE, not a fact</b></td><td>Who do volunteers meet on the street? Listen for tourists / directions / suggestions.</td><td class="note">D</td></tr>
+<tr><td><span class="word">Q12</span></td><td>helping at concerts</td><td><b>MATCHING &mdash; a ROLE at a performance</b></td><td>Two option families are possible: tickets (F) or seating (I). Listen for what volunteers DO with the audience.</td><td class="note">I</td></tr>
+<tr><td><span class="word">Q13</span></td><td>getting involved with community groups</td><td><b>MATCHING &mdash; a ROLE with organisations</b></td><td>Listen for whether volunteers advise, publicise, or connect groups to each other.</td><td class="note">H</td></tr>
+<tr><td><span class="word">Q14</span></td><td>helping with a magazine</td><td><b>MATCHING &mdash; a ROLE in publishing</b></td><td>Watch for who does the advertising. The volunteers&rsquo; job comes after the word &lsquo;though&rsquo;.</td><td class="note">E</td></tr>
+<tr><td><span class="word">Q15</span></td><td>participating at lunches for retired people</td><td><b>MATCHING &mdash; a ROLE at a social event</b></td><td>Listen for performing words: show, songs, plays, speakers.</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q16</span></td><td>helping with the website</td><td><b>MATCHING &mdash; a ROLE with online information</b></td><td>Do volunteers write it, update it, or tell people about it?</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q17</span></td><td>Which event requires the largest number of volunteers?</td><td><b>MCQ &mdash; a COMPARISON of three festivals</b></td><td>Comparative language: more&hellip; even more&hellip;. Do not be misled by length in days.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q18</span></td><td>the most important requirement for volunteers at the festivals</td><td><b>MCQ &mdash; a SUPERLATIVE judgement</b></td><td>All three qualities are named. Listen for &lsquo;What&rsquo;s essential though&hellip;&rsquo;</td><td class="note">A</td></tr>
+<tr><td><span class="word">Q19</span></td><td>New volunteers will start working in the week beginning&hellip;</td><td><b>MCQ &mdash; a DATE among three</b></td><td>Match each date to its purpose: 2nd = training, 9th = duties, 23rd = review chats.</td><td class="note">B</td></tr>
+<tr><td><span class="word">Q20</span></td><td>the next annual event for volunteers</td><td><b>MCQ &mdash; a FUTURE event among three</b></td><td>Time markers: &lsquo;in recent years&rsquo; and &lsquo;last year&rsquo; = past; &lsquo;forthcoming&rsquo; = next.</td><td class="note">A</td></tr></tbody></table></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In IELTS Listening the audio <strong>never</strong> uses the exact words printed on the question paper. Recognising paraphrase is the whole skill. 雅思听力中，录音几乎不会重复题干原词——识别同义替换才是关键。</div><div class="para-card"><div class="para-card-header">Paraphrase Example 1</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>D &mdash; giving advice to visitors</b> (Q11)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;<b>Tourists often ask how to get to</b> a particular shop and they might also be grateful for <b>recommendations about what to visit</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">visitors = tourists; advice = directions + recommendations. Nobody says the word &lsquo;advice&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write one sentence giving a visitor advice about your home town&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 2</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>I &mdash; helping people find their seats</b> (Q12)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;Part of the volunteers&rsquo; role is to <b>get everyone in the audience to the right place</b>&hellip; people buy tickets then don&rsquo;t check them and <b>head for the wrong section of the hall</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">the right place in a hall = their seats. Tickets are mentioned only to explain the problem &mdash; volunteers do not sell them (F).</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Describe what an usher does, without using the word &lsquo;seat&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 3</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>H &mdash; encouraging cooperation between local organisations</b> (Q13)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The volunteers talk about <b>how groups can help each other</b>. For instance, a writing group might want to travel&hellip; but may not know that <b>another club has a coach</b> they could travel in.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">groups helping each other = cooperation between local organisations. The coach example is the proof.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Give your own example of two clubs helping each other&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 4</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>E &mdash; collecting feedback on events</b> (Q14)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;That&rsquo;s the responsibility of the council&rsquo;s advertising department. We depend on volunteers <b>though</b> to <b>find out what people think of events</b> they&rsquo;ve attended and any <b>suggestions</b> they have.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">The word <em>though</em> is the switch: everything before it is somebody else&rsquo;s job. What people think + suggestions = feedback.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Rewrite &lsquo;We asked the audience for their opinions&rsquo; using &lsquo;feedback&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 5</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>A &mdash; providing entertainment</b> (Q15)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The volunteers welcome the guests and&hellip; some volunteers <b>put on a show</b>, usually around half an hour of <b>songs and short plays</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">songs + short plays = entertainment. &lsquo;Welcome the guests&rsquo; is a real duty but it is not one of the nine options.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence with &lsquo;put on a show&rsquo;&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 6</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value">Option <b>B &mdash; providing publicity about a council service</b> (Q16)</span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;The town council has a website&hellip; and volunteers are asked to help by <b>making sure residents know about it</b>&hellip; we want as many people as possible to use it.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">making sure people know about something = publicity; the council website = a council service.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Explain in one sentence how you would publicise a new library service&hellip;"></textarea></span></div></div>
+<div class="para-card"><div class="para-card-header">Paraphrase Example 7</div><div class="para-row"><span class="para-label">Question wording</span><span class="para-value"><b>Q18 &mdash; the most important requirement</b></span></div><div class="para-row"><span class="para-label">What you hear</span><span class="para-value">&ldquo;It&rsquo;s a good idea to help at the festival <b>you&rsquo;re most interested in</b>&hellip; We <b>try to</b> use volunteers who are <b>flexible</b> though&hellip; What&rsquo;s <b>essential</b> though is <b>being able to get on well with other people</b>.&rdquo;</span></div><div class="para-row"><span class="para-label">Key paraphrase</span><span class="para-value highlight-key">get on well with other people = interpersonal skills. Rank the language: &lsquo;a good idea&rsquo; &lt; &lsquo;we try to&rsquo; &lt; &lsquo;what&rsquo;s essential&rsquo;.</span></div><div class="para-row"><span class="para-label">Your practice</span><span class="para-value"><textarea placeholder="Write a sentence using &lsquo;What&rsquo;s essential is&hellip;&rsquo;"></textarea></span></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><p class="card" style="color:var(--muted);font-size:.88rem;">Read each chunk aloud once, cover it, then type it from memory. Check your spelling, your plurals and your numbers. 先朗读一遍，遮住原文，再凭记忆打出来。</p><div class="dictation-item"><span class="di-num">1.</span><em>Read aloud, then type from memory: &ldquo;our volunteers help to create a sense of community&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">2.</span><em>Read aloud, then type from memory: &ldquo;they might also be grateful for recommendations about what to visit&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">3.</span><em>Read aloud, then type from memory: &ldquo;get everyone in the audience to the right place as smoothly as possible&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">4.</span><em>Read aloud, then type from memory: &ldquo;the volunteers talk about how groups can help each other&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">5.</span><em>Read aloud, then type from memory: &ldquo;we depend on volunteers to find out what people think of events&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">6.</span><em>Read aloud, then type from memory: &ldquo;even more help is required for the science festival&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">7.</span><em>Read aloud, then type from memory: &ldquo;what&rsquo;s essential is being able to get on well with other people&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div>
+<div class="dictation-item"><span class="di-num">8.</span><em>Read aloud, then type from memory: &ldquo;our forthcoming event is a trip along the canal&rdquo;</em><input type="text" placeholder="Type the phrase here&hellip;"></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer for each question, then click <strong>Check</strong>.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What is the overall purpose of the Elmley volunteer scheme?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. to raise money for the town council</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. to create a sense of community and make people feel welcome</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. to replace paid council staff</label>
+<label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. to attract new businesses to the town</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Why is F (selling tickets) wrong for Q12?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. Tickets are never mentioned.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. Tickets are mentioned only to explain why people go to the wrong section.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. The concerts are free.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. Volunteers sell tickets only at festivals.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What does the coach example illustrate?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. that volunteers drive groups to other towns</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. that one local group can help another</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. that the council pays for transport</label>
+<label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. that writing groups need more members</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'B')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Who is responsible for the advertising in the town magazine?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. the volunteers</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. the editors</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. the council&rsquo;s advertising department</label>
+<label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. the local businesses themselves</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'C')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What do the volunteers do with the opinions they collect about events?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. They publish them on the website.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. They send a summary to the editors.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. They report them to local businesses.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. They discuss them at the lunches.</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Which detail proves the answer to Q15 is A (providing entertainment)?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. The volunteers welcome the guests.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. The club members chat to the volunteers.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. The volunteers put on half an hour of songs and short plays.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. The council arranges the lunch every year.</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Why does the science festival need the most volunteers?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. It lasts a whole week.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. It uses quite a lot of venues although it is only two days long.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. It is the most popular with tourists.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. It is held outdoors.</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'B')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">Which phrase marks the answer to Q18?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. It&rsquo;s a good idea to&hellip;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. We try to use volunteers who&hellip;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. What&rsquo;s essential though is&hellip;</label>
+<label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. As you probably know&hellip;</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'C')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What happens in the week beginning 2 September?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. Volunteers start their duties.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. Volunteers have a week of training.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. Volunteers have individual chats with Steve.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. The canal trip takes place.</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What is the purpose of the meetings in the week beginning 23 September?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. to sign volunteers up for the canal trip</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. to hand out volunteer t-shirts</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. to find out how volunteers feel and what support they need</label>
+<label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. to allocate festival duties</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Why is &lsquo;a barbecue&rsquo; wrong for Q20?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. It never happened.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. It happened last year.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. It was cancelled because of the weather.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Only festival volunteers were invited.</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'B')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the safest technique for a nine-option matching task?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Read all nine options during the talk.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Group similar options in advance, then follow the six activities in order.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Choose the option containing a word you hear.</label>
+<label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Leave the hardest ones until the end of the section.</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Test Answers Questions 11&ndash;20</h3><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">D</div><div class="answer-note">&lsquo;Tourists often ask how to get to a particular shop and they might also be grateful for <em>recommendations about what to visit</em>.&rsquo; visitors = tourists; advice = directions and recommendations.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">I</div><div class="answer-note">&lsquo;Part of the volunteers&rsquo; role is to get everyone in the audience <em>to the right place</em>&hellip; they head for the wrong section of the hall.&rsquo; The right place = their seats, so I, not F.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">H</div><div class="answer-note">&lsquo;Here the volunteers talk about <em>how groups can help each other</em>&rsquo; &mdash; illustrated by the writing group that could borrow another club&rsquo;s coach.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">E</div><div class="answer-note">Advertising is &lsquo;the responsibility of the council&rsquo;s advertising department&rsquo;; the volunteers &lsquo;find out <em>what people think of events</em> they&rsquo;ve attended and any <em>suggestions</em>&rsquo; = collecting feedback. C is directly ruled out.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;Some volunteers <em>put on a show</em>, usually around half an hour of songs and short plays.&rsquo; No guest speakers are mentioned, so G is wrong.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;Volunteers are asked to help by <em>making sure residents know about it</em>&hellip; we want as many people as possible to use it.&rsquo; The council website is a council service; telling people about it is publicity.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;More are needed for the music festival&hellip; and <em>even more help is required for the science festival</em> even though it&rsquo;s only 2 days long. It involves quite a lot of venues though.&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;<em>What&rsquo;s essential though is being able to get on well with other people</em> and also to deal with someone who&rsquo;s behaving badly.&rsquo; = interpersonal skills. Personal interest is only &lsquo;a good idea&rsquo; and flexibility is only what they &lsquo;try to&rsquo; use.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">B</div><div class="answer-note">&lsquo;A week&rsquo;s training starting on the 2nd. So we&rsquo;ll be timetabling you for duties <em>the following week from the 9th onward</em>.&rsquo; The 23rd is the week of the review chats.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">A</div><div class="answer-note">&lsquo;In recent years we&rsquo;ve had a party in the town hall and last year a barbecue&hellip; Our <em>forthcoming event is a trip along the canal</em> from here to Duehurst and back.&rsquo; A canal trip = a boat trip.</div></div></div></div>
+<div class="answer-section"><h3>Exercise 1 &mdash; Matching &amp; Multiple Choice (the real exam answers)</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">D</div><div class="answer-note">Q11 &mdash; walking around the town centre:</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">I</div><div class="answer-note">Q12 &mdash; helping at concerts:</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">H</div><div class="answer-note">Q13 &mdash; getting involved with community groups:</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">E</div><div class="answer-note">Q14 &mdash; helping with a magazine:</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">A</div><div class="answer-note">Q15 &mdash; participating at lunches for retired people:</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">B</div><div class="answer-note">Q16 &mdash; helping with the website:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">B</div><div class="answer-note">Q17 &mdash; the event requiring the largest number of volunteers:</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">A</div><div class="answer-note">Q18 &mdash; the most important requirement for festival volunteers:</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">B</div><div class="answer-note">Q19 &mdash; new volunteers start working in the week beginning:</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">A</div><div class="answer-note">Q20 &mdash; the next annual event for volunteers:</div></div></div></div>
+<div class="answer-section"><h3>Exercise 2 &mdash; Key Words from the Talk</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">community</div><div class="answer-note">Volunteers help to create a sense of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">recommendations</div><div class="answer-note">Tourists are grateful for</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">audience</div><div class="answer-note">At concerts, volunteers get everyone in the</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">coach</div><div class="answer-note">A writing group might not know that another club has a</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">advertising</div><div class="answer-note">The magazine is paid for by local businesses through the council&rsquo;s</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">summary</div><div class="answer-note">Volunteers send a</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">show</div><div class="answer-note">At the lunches, some volunteers put on a</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">venues</div><div class="answer-note">The science festival involves quite a lot of</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">essential</div><div class="answer-note">What is</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">forthcoming</div><div class="answer-note">Our</div></div></div></div>
+<div class="answer-section"><h3>Exercise 3 &mdash; Spelling Challenge</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">volunteer</div><div class="answer-note">v o l u n t _ e r  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">community</div><div class="answer-note">c o m m _ n i t y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">associations</div><div class="answer-note">a s s o c i _ t i o n s  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">publicity</div><div class="answer-note">p u b l i c _ t y  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">audience</div><div class="answer-note">a u d i _ n c e  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">cooperation</div><div class="answer-note">c o o p e r _ t i o n  &rarr;</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">entertainment</div><div class="answer-note">e n t e r t a _ n m e n t  &rarr;</div></div></div></div>
+<div class="answer-section"><h3>Exercise 4 &mdash; Numbers, Names &amp; Dates</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">Elmley</div><div class="answer-note">The town of</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">month</div><div class="answer-note">The town magazine comes out once a</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">3</div><div class="answer-note">The town arranges</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">3</div><div class="answer-note">The book festival lasts</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">2</div><div class="answer-note">The science festival lasts only</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">2nd</div><div class="answer-note">Training starts on September the</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">9th</div><div class="answer-note">Duties begin in the week beginning September the</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">23rd</div><div class="answer-note">The individual chats take place in the week beginning September</div></div></div>
+<div class="answer-item"><span class="answer-num">9.</span><div><div class="answer-val">Duehurst</div><div class="answer-note">The canal trip goes from Elmley to</div></div></div>
+<div class="answer-item"><span class="answer-num">10.</span><div><div class="answer-val">hour</div><div class="answer-note">The show at the lunches lasts about half an</div></div></div></div>
+<div class="answer-section"><h3>Exercise 5 &mdash; Distractor Elimination</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">I</div><div class="answer-note">Concerts: F (selling tickets) or I (helping people find their seats)?</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">E</div><div class="answer-note">Magazine: C (contacting local businesses) or E (collecting feedback)?</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">A</div><div class="answer-note">Lunches: G (introducing guest speakers) or A (providing entertainment)?</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">D</div><div class="answer-note">Town centre: D (giving advice to visitors) or B (publicity about a council service)?</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">B</div><div class="answer-note">Website: B (publicity about a council service) or E (collecting feedback)?</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">B</div><div class="answer-note">Festivals: is the longest festival also the one needing most volunteers? Write the answer letter for Q17:</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">A</div><div class="answer-note">Q18: is &lsquo;flexible&rsquo; (C) or &lsquo;get on well with other people&rsquo; (A) called essential?</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">A</div><div class="answer-note">Q20: was the barbecue last year (B) or is the canal trip next (A)?</div></div></div></div>
+<div class="answer-section"><h3>Question Prediction</h3><div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">D &mdash; MATCHING &mdash; a ROLE, not a fact</div><div class="answer-note">Who do volunteers meet on the street? Listen for tourists / directions / suggestions.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">I &mdash; MATCHING &mdash; a ROLE at a performance</div><div class="answer-note">Two option families are possible: tickets (F) or seating (I). Listen for what volunteers DO with the audience.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q13</span><div><div class="answer-val">H &mdash; MATCHING &mdash; a ROLE with organisations</div><div class="answer-note">Listen for whether volunteers advise, publicise, or connect groups to each other.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q14</span><div><div class="answer-val">E &mdash; MATCHING &mdash; a ROLE in publishing</div><div class="answer-note">Watch for who does the advertising. The volunteers&rsquo; job comes after the word &lsquo;though&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q15</span><div><div class="answer-val">A &mdash; MATCHING &mdash; a ROLE at a social event</div><div class="answer-note">Listen for performing words: show, songs, plays, speakers.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q16</span><div><div class="answer-val">B &mdash; MATCHING &mdash; a ROLE with online information</div><div class="answer-note">Do volunteers write it, update it, or tell people about it?</div></div></div>
+<div class="answer-item"><span class="answer-num">Q17</span><div><div class="answer-val">B &mdash; MCQ &mdash; a COMPARISON of three festivals</div><div class="answer-note">Comparative language: more&hellip; even more&hellip;. Do not be misled by length in days.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q18</span><div><div class="answer-val">A &mdash; MCQ &mdash; a SUPERLATIVE judgement</div><div class="answer-note">All three qualities are named. Listen for &lsquo;What&rsquo;s essential though&hellip;&rsquo;</div></div></div>
+<div class="answer-item"><span class="answer-num">Q19</span><div><div class="answer-val">B &mdash; MCQ &mdash; a DATE among three</div><div class="answer-note">Match each date to its purpose: 2nd = training, 9th = duties, 23rd = review chats.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q20</span><div><div class="answer-val">A &mdash; MCQ &mdash; a FUTURE event among three</div><div class="answer-note">Time markers: &lsquo;in recent years&rsquo; and &lsquo;last year&rsquo; = past; &lsquo;forthcoming&rsquo; = next.</div></div></div></div>
+<div class="answer-section"><h3>Mini Dictation</h3><div class="answer-item"><span class="answer-num">1.</span><div><div class="answer-val">our volunteers help to create a sense of community</div></div></div>
+<div class="answer-item"><span class="answer-num">2.</span><div><div class="answer-val">they might also be grateful for recommendations about what to visit</div></div></div>
+<div class="answer-item"><span class="answer-num">3.</span><div><div class="answer-val">get everyone in the audience to the right place as smoothly as possible</div></div></div>
+<div class="answer-item"><span class="answer-num">4.</span><div><div class="answer-val">the volunteers talk about how groups can help each other</div></div></div>
+<div class="answer-item"><span class="answer-num">5.</span><div><div class="answer-val">we depend on volunteers to find out what people think of events</div></div></div>
+<div class="answer-item"><span class="answer-num">6.</span><div><div class="answer-val">even more help is required for the science festival</div></div></div>
+<div class="answer-item"><span class="answer-num">7.</span><div><div class="answer-val">what&rsquo;s essential is being able to get on well with other people</div></div></div>
+<div class="answer-item"><span class="answer-num">8.</span><div><div class="answer-val">our forthcoming event is a trip along the canal</div></div></div></div>
+<div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">B. to create a sense of community and make people feel welcome</div><div class="answer-note">Steve states this in his opening: volunteers &lsquo;help to create a sense of community&hellip; and make residents and visitors feel welcome at local events&rsquo;.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B. Tickets are mentioned only to explain why people go to the wrong section.</div><div class="answer-note">The audience &lsquo;buy tickets then don&rsquo;t check them&rsquo; &mdash; that is the problem the volunteers solve by guiding people to the right place (I).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">B. that one local group can help another</div><div class="answer-note">A writing group wants to travel; another club already owns a coach. Volunteers make the connection &mdash; option H, cooperation between local organisations.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">C. the council&rsquo;s advertising department</div><div class="answer-note">Said explicitly. This single sentence is what removes option C (contacting local businesses) from the volunteers&rsquo; role in Q14.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">B. They send a summary to the editors.</div><div class="answer-note">&lsquo;The volunteers then send a summary to the editors.&rsquo; This confirms their role is collecting feedback (E), not writing content.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">C. The volunteers put on half an hour of songs and short plays.</div><div class="answer-note">Songs and short plays = entertainment. A and B are true but are not among the nine options, and no guest speakers appear, so G is impossible.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">B. It uses quite a lot of venues although it is only two days long.</div><div class="answer-note">The comparison ladder is book (3 days) &rarr; more for music (a week) &rarr; &lsquo;even more&rsquo; for science. Length is the distractor; venues are the reason.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">C. What&rsquo;s essential though is&hellip;</div><div class="answer-note">In MCQ tasks, strength of language decides. &lsquo;Essential&rsquo; outranks &lsquo;a good idea&rsquo; (personal interest) and &lsquo;we try to&rsquo; (flexibility).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">B. Volunteers have a week of training.</div><div class="answer-note">&lsquo;A week&rsquo;s training starting on the 2nd&hellip; we&rsquo;ll be timetabling you for duties the following week from the 9th.&rsquo; Q19 asks about starting <em>work</em> = the 9th.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">C. to find out how volunteers feel and what support they need</div><div class="answer-note">Steve says they &lsquo;have a chat with each of you to find out how you feel about being a volunteer and what extra support you need&rsquo;. This third date is a classic Q19 distractor.</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">B. It happened last year.</div><div class="answer-note">&lsquo;In recent years we&rsquo;ve had a party&hellip; and last year a barbecue.&rsquo; The <em>forthcoming</em> event is the canal trip &mdash; a boat trip (A).</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">B. Group similar options in advance, then follow the six activities in order.</div><div class="answer-note">Word matching (C) is exactly how the distractors catch you &mdash; tickets, businesses and speakers are all audible. The activities, unlike the options, come in a fixed order.</div></div></div></div></div></section>
+  </main>
+
+  <script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+</body>
+</html>
