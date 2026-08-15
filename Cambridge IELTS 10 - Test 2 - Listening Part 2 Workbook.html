@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 10 — Test 2 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 10</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 10 — Test 2 — Listening Part 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A public talk about <strong>two new city developments</strong>: the <strong>Brackenside Open-Air Swimming Pool</strong> and the <strong>Central Park Adventure Playground</strong>. The second half describes how the playground is divided into <strong>six areas of the world</strong>, each with a representative feature.</p><p>这是“市政项目介绍”讲话。后半段是<strong>配对题</strong>:六大洲 ↔ 六个游乐特色,信息密集,必须提前熟悉选项。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> For the matching task (Q15–20) you have <strong>nine</strong> options but only <strong>six</strong> areas. Read all nine options during the pause and turn them into <em>pictures</em> in your head. The speaker mentions several rejected ideas ('we couldn't run to an ice rink', 'the contribution of cinema and jazz was considered') — these match the unused options C and G.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">consultation exercise</span></td><td><span class="pos">n. phr.</span></td><td>a process of asking the public for their views</td><td class="zh">公众咨询</td><td>'the extensive <em>consultation exercise</em> which the City Council conducted last year'</td><td class="note">Q11 — the idea came from the public, not the Council itself.</td></tr>
+<tr><td><span class="word">initiative</span></td><td><span class="pos">n.</span></td><td>a new plan to solve a problem</td><td class="zh">倡议;新举措</td><td>'the idea for these <em>initiatives</em> came from you, the public'</td><td class="note">Formal synonym of 'project' / 'scheme'.</td></tr>
+<tr><td><span class="word">realise</span></td><td><span class="pos">v.</span></td><td>to make something happen</td><td class="zh">实现;落实</td><td>'they have been <em>realised</em> using money from the SWRDC'</td><td class="note">Not 'to understand' — context changes the meaning.</td></tr>
+<tr><td><span class="word">sea front</span></td><td><span class="pos">n. phr.</span></td><td>the part of a town next to the sea</td><td class="zh">海滨;海边</td><td>'a wonderful open-air pool on the <em>sea front</em> 30 years ago'</td><td class="note">Background information about the old pool.</td></tr>
+<tr><td><span class="word">renowned</span></td><td><span class="pos">adj.</span></td><td>famous and respected</td><td class="zh">著名的</td><td>'internationally <em>renowned</em> architect Ellen Wendon'</td><td class="note">Positive evaluation of the designer.</td></tr>
+<tr><td><span class="word">up-to-the-minute</span></td><td><span class="pos">adj.</span></td><td>the very latest</td><td class="zh">最新的</td><td>'<em>up-to-the-minute</em> features such as a recycling system'</td><td class="note">Contrasts with the '1930s design'.</td></tr>
+<tr><td><span class="word">recycling system</span></td><td><span class="pos">n. phr.</span></td><td>a system that reuses material</td><td class="zh">循环利用系统</td><td>'a <em>recycling system</em> — the only one of its kind in the world — which enables seawater to be used'</td><td class="note">Q12 — this is the water-treatment method.</td></tr>
+<tr><td><span class="word">deceptive</span></td><td><span class="pos">adj.</span></td><td>making you believe something that is not true</td><td class="zh">有欺骗性的;不像表面那样</td><td>'the design is <em>deceptive</em>'</td><td class="note">It looks small but is not — answers the capacity worry.</td></tr>
+<tr><td><span class="word">rigorous</span></td><td><span class="pos">adj.</span></td><td>careful and thorough</td><td class="zh">严格的;严谨的</td><td>'there have been <em>rigorous</em> checks about capacity'</td><td class="note">Reassurance following the newspaper criticism.</td></tr>
+<tr><td><span class="word">capacity</span></td><td><span class="pos">n.</span></td><td>the number of people a place can hold</td><td class="zh">容量;容纳人数</td><td>'rigorous checks about <em>capacity</em>'</td><td class="note">Q13 — the press worried about the <em>size</em> of the facilities.</td></tr>
+<tr><td><span class="word">on schedule</span></td><td><span class="pos">adv. phr.</span></td><td>happening at the planned time</td><td class="zh">按计划;不延期</td><td>'we're <em>on schedule</em> for a June 15th opening date'</td><td class="note">Rules out option A (late opening) in Q13.</td></tr>
+<tr><td><span class="word">within budget</span></td><td><span class="pos">adv. phr.</span></td><td>not costing more than planned</td><td class="zh">不超预算</td><td>'and well <em>within budget</em>'</td><td class="note">Rules out option B (cost) in Q13.</td></tr>
+<tr><td><span class="word">testimony to</span></td><td><span class="pos">n. phr.</span></td><td>proof of</td><td class="zh">是……的证明</td><td>'a <em>testimony to</em> the excellent work of local contractors'</td><td class="note">Formal praise phrase.</td></tr>
+<tr><td><span class="word">declare something open</span></td><td><span class="pos">v. phr.</span></td><td>to officially open a building</td><td class="zh">宣布……开幕</td><td>'award-winning actress Coral White to <em>declare the pool open</em>'</td><td class="note">This is already decided — so it is NOT the Q14 answer.</td></tr>
+<tr><td><span class="word">sculpture</span></td><td><span class="pos">n.</span></td><td>a work of art made of stone, metal or wood</td><td class="zh">雕塑</td><td>'the <em>sculpture</em> we plan to have at the entrance'</td><td class="note">Q14 — the public will vote on which historical figure.</td></tr>
+<tr><td><span class="word">fauna</span></td><td><span class="pos">n.</span></td><td>the animals of a particular area</td><td class="zh">动物群</td><td>'tigers and so on — <em>fauna</em> native to the forests of the region'</td><td class="note">Asia = local animals (E).</td></tr>
+<tr><td><span class="word">glacier</span></td><td><span class="pos">n.</span></td><td>a large slow-moving mass of ice</td><td class="zh">冰川</td><td>'I thought they could have had slides for the <em>glaciers</em>'</td><td class="note">Antarctica — but the built feature is mountains (F).</td></tr>
+<tr><td><span class="word">literal</span></td><td><span class="pos">adj.</span></td><td>exactly as described, not imaginative</td><td class="zh">字面的;过于写实的</td><td>'the designers did want to avoid being too <em>literal</em>'</td><td class="note">Explains why there is no ice rink.</td></tr>
+<tr><td><span class="word">replicate</span></td><td><span class="pos">v.</span></td><td>to copy exactly</td><td class="zh">复制;仿制</td><td>'games <em>replicating</em> the search for mines full of precious stones'</td><td class="note">South America = El Dorado = jewels (D).</td></tr>
+<tr><td><span class="word">fortification</span></td><td><span class="pos">n.</span></td><td>a wall or tower built to defend a place</td><td class="zh">防御工事</td><td>'medieval castles and other <em>fortifications</em>'</td><td class="note">Europe = ancient forts (A).</td></tr>
+<tr><td><span class="word">mosaic</span></td><td><span class="pos">n.</span></td><td>a picture made of small coloured pieces</td><td class="zh">马赛克;镶嵌画</td><td>'a whole set of wonderful <em>mosaics</em> and trails to represent the great rivers'</td><td class="note">Africa = waterways (B).</td></tr>
+<tr><td><span class="word">amenity</span></td><td><span class="pos">n.</span></td><td>a useful or pleasant facility</td><td class="zh">便利设施</td><td>'come and see this magnificent, original new <em>amenity</em>'</td><td class="note">Closing word — synonym of 'facility'.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">moving on to</span></td><td>changing to the next topic</td><td class="zh">接下来谈</td></tr>
+<tr><td><span class="phrase">first of all</span></td><td>the first point</td><td class="zh">首先</td></tr>
+<tr><td><span class="phrase">as many of you may know</span></td><td>you probably already know</td><td class="zh">你们许多人可能已经知道</td></tr>
+<tr><td><span class="phrase">secure the talents of</span></td><td>succeed in employing (a talented person)</td><td class="zh">请到(有才华的人)</td></tr>
+<tr><td><span class="phrase">fit in well with</span></td><td>suit; match</td><td class="zh">与……很协调</td></tr>
+<tr><td><span class="phrase">the only one of its kind</span></td><td>unique</td><td class="zh">独一无二的</td></tr>
+<tr><td><span class="phrase">quite a bit of discussion</span></td><td>a lot of debate</td><td class="zh">不少讨论</td></tr>
+<tr><td><span class="phrase">just in case you were wondering</span></td><td>in case you want to know</td><td class="zh">以防你们想知道</td></tr>
+<tr><td><span class="phrase">we couldn't run to</span></td><td>we could not afford / manage</td><td class="zh">我们负担不起;做不到</td></tr>
+<tr><td><span class="phrase">opt for</span></td><td>choose</td><td class="zh">选择</td></tr>
+<tr><td><span class="phrase">last, but not least</span></td><td>the final point, which is also important</td><td class="zh">最后但同样重要的是</td></tr>
+<tr><td><span class="phrase">make a date</span></td><td>arrange to come</td><td class="zh">定个日子;记下日期</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Multiple choice: the pool (Q11–Q14)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">For each item, note the exact words that prove the answer AND the words that kill the other options.</p><div class="ex-item"><span class="ex-num">11.</span><label>The idea came from → <strong>A: local people</strong>. 'the idea for these initiatives came from you, the public, in the extensive consultation exercise which the City Council conducted'. The Council <em>conducted</em> the exercise; the SWRDC gave the <em>money</em>.</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>Unusual about Brackenside pool → <strong>C: its method of water treatment</strong>. 'a recycling system — the only one of its kind in the world — which enables seawater to be used in the pool'. The 1930s style is charming but not unique; heating is mentioned only as 'this new heated pool'.</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Newspapers worried about → <strong>C: the size of the facilities</strong>. 'whether there would be enough room for the number of visitors'. A is wrong ('on schedule'); B is wrong ('well within budget').</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>Not yet decided → <strong>A: whose statue will be at the door</strong>. 'a competition for the public to decide on the sculpture … which famous historical figure'. B and C are already fixed (June 15th; Coral White).</label></div></div>
+<div class="exercise-block"><h3>B — Matching: areas of the world (Q15–Q20)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Six areas, nine options. Write the letter, then check.</p><div class="ex-item"><span class="ex-num">15.</span><label>Asia → <strong>E (local animals)</strong>: 'rides and equipment in the shape of snakes, orang-utans, tigers … fauna native to the forests of the region'.</label></div>
+<div class="ex-item"><span class="ex-num">16.</span><label>Antarctica → <strong>F (mountains)</strong>: 'we couldn't run to an ice rink … opted instead for climbing blocks in the shape of mountains'.</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>South America → <strong>D (jewels)</strong>: 'the theme is El Dorado — games replicating the search for mines full of precious stones'.</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>North America → <strong>H (space travel)</strong>: 'the designers finally opted for rockets and the International Space Station'.</label></div>
+<div class="ex-item"><span class="ex-num">19.</span><label>Europe → <strong>A (ancient forts)</strong>: 'medieval castles and other fortifications'.</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>Africa → <strong>B (waterways)</strong>: 'mosaics and trails to represent the great rivers of this fascinating and varied continent'.</label></div></div>
+<div class="exercise-block"><h3>C — The three unused options</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Knowing WHY an option is not used is as valuable as knowing the answer.</p><div class="ex-item"><span class="ex-num">C</span><label>ice and snow → rejected for Antarctica: 'we couldn't run to an ice rink I'm afraid'. The glacier slides were only imagined by the speaker.</label></div>
+<div class="ex-item"><span class="ex-num">G</span><label>music and film → considered for North America ('the contribution of cinema and jazz was considered') but rejected.</label></div>
+<div class="ex-item"><span class="ex-num">I</span><label>volcanoes → never mentioned at all. Beware: 'mines' and 'mountains' may make you think of them.</label></div>
+<div class="ex-item"><span class="ex-num">Tip</span><label>In matching tasks, listen for <em>considered but rejected</em> language: 'we couldn't run to', 'was considered but', 'I thought they could have had … but'.</label></div></div>
+<div class="exercise-block"><h3>D — Date &amp; name drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Names and dates in this talk are potential distractors. Match each to what it belongs to.</p><div class="ex-item"><span class="ex-num">21.</span><label>30 years ago → when the <strong>old</strong> open-air pool closed.</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>1930s → the <strong>design style</strong> of the new pool.</label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>June 15th → the <strong>pool</strong> opening date.</label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>10th July → the <strong>playground</strong> opening date.</label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>Ellen Wendon → the <strong>architect</strong>; Coral White → the <strong>actress</strong>; Hickman's → the <strong>contractors</strong>; Douglas Award → for <strong>safety</strong>.</label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">Options in a multiple-choice question never repeat the speaker's words exactly. Study these five rewrites and you will start hearing the answer instead of hunting for it. 选项永远是改写,不是原词。</div><div class="para-card"><div class="para-card-header">Q11 — 'The idea came from'</div><div class="para-row"><div class="para-label">Option A</div><div class="para-value">local people</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'the idea for these initiatives came from <em>you, the public</em>, in the extensive consultation exercise'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">local people = you, the public</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">The City Council <em>conducted</em> the exercise and the SWRDC <em>funded</em> it — neither had the idea.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q12 — 'unusual'</div><div class="para-row"><div class="para-label">Question wording</div><div class="para-value">What is <em>unusual</em> about Brackenside pool?</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'a recycling system — <em>the only one of its kind in the world</em> — which enables seawater to be used'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">unusual = the only one of its kind in the world</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">The 1930s design 'fits in so well with many of the other buildings' — i.e. it is typical, not unusual.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q13 — 'raised worries'</div><div class="para-row"><div class="para-label">Question wording</div><div class="para-value">Local newspapers have raised worries about…</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'quite a bit of <em>discussion in the local press</em> about whether there would be <em>enough room</em> for the number of visitors'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">size of the facilities = enough room for visitors; raised worries = discussion in the press</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Cost and opening date are both mentioned — but as reassurances, not worries.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q14 — 'has not yet been made'</div><div class="para-row"><div class="para-label">Question wording</div><div class="para-value">What decision has <em>not yet</em> been made?</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'There'll also be a <em>competition for the public to decide</em> on the sculpture … you will decide which famous historical figure'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">statue = sculpture; not yet decided = the public will decide</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Future tense ('you will decide') marks the undecided item; past/present ('we have engaged Coral White') marks the decided ones.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q15 — Asia</div><div class="para-row"><div class="para-label">Option E</div><div class="para-value">local animals</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'rides and equipment in the shape of snakes, orang-utans, tigers and so on — <em>fauna native to the forests of the region</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">local animals = fauna native to the region</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">If you do not know 'fauna', the list of animals still gives it away — listen for examples.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write out each chunk. These are the exact sentences that carry the matching answers. 写下整句。</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">The idea for these initiatives came from you, the public.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">A recycling system, the only one of its kind in the world, enables seawater to be used in the pool.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">There has been quite a bit of discussion in the local press about whether there would be enough room.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">You will decide which famous historical figure from the city we should have.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">There is a section on Asia, represented by rides and equipment in the shape of snakes and tigers.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">We couldn't run to an ice rink, so we opted instead for climbing blocks in the shape of mountains.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">Games replicating the search for mines full of precious stones.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">Mosaics and trails to represent the great rivers of this fascinating and varied continent.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Who provided the money for the two developments?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. local people</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the City Council</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. the SWRDC</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. a private company</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What happened to the old open-air pool?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. It was demolished for housing.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. It closed because it was judged unsafe.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. It became an indoor pool.</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. It is still open.</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Who designed the new pool?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. Ellen Wendon</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. Coral White</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. Hickman's</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. Douglas</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What water does the new pool use?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. rainwater</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. river water</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. mineral water</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. seawater</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What is the opening date of the pool?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. 10th July</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. 15th June</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. 5th June</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. 10th June</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Who will officially open the pool?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. the mayor</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Ellen Wendon</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Coral White</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. a member of the public</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What award has the playground just won?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. the Douglas Award for safety</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. a design prize</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. an environmental award</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. a children's choice award</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How many areas of the world are represented in the playground?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. four</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. five</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. nine</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. six</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What was rejected as too difficult for the Antarctic area?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. a snow machine</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. an ice rink</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. a penguin sculpture</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. a cold-water pool</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which theme was considered but NOT chosen for North America?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. volcanoes</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. ancient forts</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. cinema and jazz</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. waterways</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which area is described as 'perhaps the most traditional choice'?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Europe</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Asia</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Africa</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. South America</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">When does the playground open?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. 15th June</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. 1st July</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. 30th June</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. 10th July</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 2 — Answers (Q11–Q20)</h3><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div><div class="answer-note">'the idea for these initiatives came from you, the public'.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">C</div><div class="answer-note">'a recycling system — the only one of its kind in the world — which enables seawater to be used'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">C</div><div class="answer-note">'discussion in the local press about whether there would be enough room for the number of visitors'.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">A</div><div class="answer-note">'a competition for the public to decide on the sculpture … which famous historical figure'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">E</div><div class="answer-note">Asia — 'snakes, orang-utans, tigers … fauna native to the forests of the region'.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">F</div><div class="answer-note">Antarctica — 'climbing blocks in the shape of mountains'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">D</div><div class="answer-note">South America — 'El Dorado … mines full of precious stones'.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">H</div><div class="answer-note">North America — 'rockets and the International Space Station'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">A</div><div class="answer-note">Europe — 'medieval castles and other fortifications'.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">B</div><div class="answer-note">Africa — 'mosaics and trails to represent the great rivers'.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

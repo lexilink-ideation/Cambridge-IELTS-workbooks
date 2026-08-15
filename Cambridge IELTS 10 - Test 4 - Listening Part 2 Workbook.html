@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 10 — Test 4 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 10</span>
+    <span class="sep">›</span>
+    <span>Test 4</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 10 — Test 4 — Listening Part 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A visitor talk about <strong>Manham Port</strong>, a historic port with a thousand years of history. The first half traces the port's rise (tin, then the Industrial Revolution), its <strong>decline</strong>, and the work of the <strong>Manham Trust</strong>. The second half recommends three attractions: the <strong>copper mine</strong>, the <strong>village school</strong> and the old sailing ship <strong>'The George'</strong>.</p><p>这是“旅游景点介绍”类讲话。前半段考<strong>历史因果</strong>(选择题),后半段考<strong>景点特色与建议</strong>(表格题)。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> Q11–15 are cause-and-effect questions ('Why did…?', 'What caused…?'). The answer is almost always in a <em>because</em>, <em>so</em>, or <em>proved a handy place to</em> clause. Q16–20 allow NO MORE THAN TWO WORDS, so 'guided tour' is acceptable for Q19.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">navigable</span></td><td><span class="pos">adj.</span></td><td>that boats can travel along</td><td class="zh">可通航的</td><td>'the highest <em>navigable</em> point of the Avon'</td><td class="note">Q11 — the reason the port developed here.</td></tr>
+<tr><td><span class="word">cargo</span></td><td><span class="pos">n.</span></td><td>goods carried by ship</td><td class="zh">货物</td><td>'a handy place to load and unload <em>cargo</em>'</td><td class="note">Confirms river transport (option B).</td></tr>
+<tr><td><span class="word">handy</span></td><td><span class="pos">adj.</span></td><td>convenient and useful</td><td class="zh">方便的</td><td>'proved a <em>handy</em> place to load and unload cargo'</td><td class="note">'Handy' = convenient — matches option B exactly.</td></tr>
+<tr><td><span class="word">tin</span></td><td><span class="pos">n.</span></td><td>a soft silvery-white metal</td><td class="zh">锡</td><td>'about 900 years ago, <em>tin</em> was discovered nearby'</td><td class="note">Trap for Q12 — tin came BEFORE the expansion.</td></tr>
+<tr><td><span class="word">tremendous</span></td><td><span class="pos">adj.</span></td><td>very great</td><td class="zh">巨大的</td><td>'a <em>tremendous</em> need for metals of all kinds developed'</td><td class="note">Q12 — the cause of the expansion.</td></tr>
+<tr><td><span class="word">prospector</span></td><td><span class="pos">n.</span></td><td>a person searching for minerals</td><td class="zh">勘探者;探矿者</td><td>'<em>prospectors</em> began to look for other minerals'</td><td class="note">Led to lead, copper, manganese and arsenic.</td></tr>
+<tr><td><span class="word">smelt</span></td><td><span class="pos">v.</span></td><td>to melt ore to extract metal</td><td class="zh">冶炼</td><td>'the ores had been <em>smelted</em> — or processed — in the same area they were mined'</td><td class="note">Defined in place by dashes.</td></tr>
+<tr><td><span class="word">furnace</span></td><td><span class="pos">n.</span></td><td>a very hot enclosed fire</td><td class="zh">熔炉</td><td>'huge factory <em>furnaces</em> or fires to melt the metal'</td><td class="note">The process that needed coal.</td></tr>
+<tr><td><span class="word">decline</span></td><td><span class="pos">v.</span></td><td>to become weaker or less successful</td><td class="zh">衰落</td><td>'the great port of Manham <em>declined</em>'</td><td class="note">Q14 — what happened next.</td></tr>
+<tr><td><span class="word">emigrate</span></td><td><span class="pos">v.</span></td><td>to leave your country to live elsewhere</td><td class="zh">移居国外</td><td>'thousands of workers were forced to <em>emigrate</em> out of the area'</td><td class="note">Q14 — 'The workers went away.'</td></tr>
+<tr><td><span class="word">fall into disrepair</span></td><td><span class="pos">v. phr.</span></td><td>to become damaged through neglect</td><td class="zh">年久失修</td><td>'The building at the port <em>fell into disrepair</em>'</td><td class="note">Vivid decline vocabulary.</td></tr>
+<tr><td><span class="word">conserve</span></td><td><span class="pos">v.</span></td><td>to protect from harm or loss</td><td class="zh">保护;保存</td><td>'the Manham Trust was formed to <em>conserve</em> the historical resources'</td><td class="note">The Trust's purpose.</td></tr>
+<tr><td><span class="word">undergrowth</span></td><td><span class="pos">n.</span></td><td>dense low plants under trees</td><td class="zh">灌木丛;林下植被</td><td>'remove <em>undergrowth</em> to find the original outlines'</td><td class="note">The volunteers' job.</td></tr>
+<tr><td><span class="word">installation</span></td><td><span class="pos">n.</span></td><td>a piece of equipment or structure</td><td class="zh">装置;设施</td><td>'match <em>installations</em> with maps of the original port complex'</td><td class="note">The professionals' job.</td></tr>
+<tr><td><span class="word">set about doing</span></td><td><span class="pos">v. phr.</span></td><td>to begin doing something</td><td class="zh">着手做</td><td>'and <em>set about reconstructing</em> it'</td><td class="note">Q15 — the Trust hoped to rebuild the port complex.</td></tr>
+<tr><td><span class="word">restoration</span></td><td><span class="pos">n.</span></td><td>the work of returning something to its original state</td><td class="zh">修复</td><td>'this ambitious programme of <em>restoration</em>'</td><td class="note">Also 'restore', 'restored'.</td></tr>
+<tr><td><span class="word">at its peak</span></td><td><span class="pos">adv. phr.</span></td><td>at its highest or best point</td><td class="zh">在鼎盛时期</td><td>'the condition it reached <em>at its peak</em>'</td><td class="note">'The greatest copper port in the country'.</td></tr>
+<tr><td><span class="word">converted</span></td><td><span class="pos">adj.</span></td><td>changed for a new use</td><td class="zh">改装的</td><td>'travel on <em>converted</em> mining trains'</td><td class="note">Q16 — 'specially adapted miners' trains'.</td></tr>
+<tr><td><span class="word">seam</span></td><td><span class="pos">n.</span></td><td>a layer of coal or ore in the ground</td><td class="zh">矿层;矿脉</td><td>'along <em>seams</em> once worked by hundreds of miners'</td><td class="note">Mining vocabulary.</td></tr>
+<tr><td><span class="word">rid something of</span></td><td><span class="pos">v. phr.</span></td><td>to remove something unwanted</td><td class="zh">清除;排除</td><td>'the great pumping machines which <em>rid</em> the mine <em>of</em> water'</td><td class="note">A feature to watch out for.</td></tr>
+<tr><td><span class="word">enclosed</span></td><td><span class="pos">adj.</span></td><td>surrounded on all sides</td><td class="zh">封闭的</td><td>'ours is very dark and <em>closed in</em>'</td><td class="note">Q17 — the answer word is 'dark' (enclosed is already printed).</td></tr>
+<tr><td><span class="word">coincide with</span></td><td><span class="pos">v. phr.</span></td><td>to happen at the same time as</td><td class="zh">与……同时</td><td>'time your visit to <em>coincide with</em> a guided tour'</td><td class="note">Q19 — a guided tour is recommended.</td></tr>
+<tr><td><span class="word">ketch</span></td><td><span class="pos">n.</span></td><td>a small two-masted sailing boat</td><td class="zh">双桅帆船</td><td>'the beautiful old sailing <em>ketch</em> called 'The George''</td><td class="note">Type of vessel; you do not need to know it.</td></tr>
+<tr><td><span class="word">board</span></td><td><span class="pos">v.</span></td><td>to get on a ship, plane or train</td><td class="zh">登上(船/机)</td><td>'You are welcome to <em>board</em> the boat'</td><td class="note">Verb use.</td></tr>
+<tr><td><span class="word">dredge out of</span></td><td><span class="pos">v. phr.</span></td><td>to bring up from under water or mud</td><td class="zh">打捞出</td><td>'<em>dredged out of</em> the silt by a local fisherman'</td><td class="note">How the ship's wheel was found.</td></tr>
+<tr><td><span class="word">silt</span></td><td><span class="pos">n.</span></td><td>fine mud carried by water</td><td class="zh">淤泥</td><td>'dredged out of the <em>silt</em>'</td><td class="note">Where the wheel lay hidden.</td></tr>
+<tr><td><span class="word">ladder</span></td><td><span class="pos">n.</span></td><td>a set of steps for climbing</td><td class="zh">梯子</td><td>'take care going down the <em>ladders</em>'</td><td class="note">Q20 — children should not use them.</td></tr>
+<tr><td><span class="word">lower deck</span></td><td><span class="pos">n. phr.</span></td><td>the floor below on a ship</td><td class="zh">下层甲板</td><td>'if you wish to visit the <em>lower deck</em>'</td><td class="note">Where the ladders lead.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">are brought to life</span></td><td>are made vivid and real</td><td class="zh">被生动地再现</td></tr>
+<tr><td><span class="phrase">at first hand</span></td><td>directly; personally</td><td class="zh">亲身;第一手地</td></tr>
+<tr><td><span class="phrase">it wasn't until X that Y</span></td><td>Y only happened after X</td><td class="zh">直到X,Y才发生</td></tr>
+<tr><td><span class="phrase">be added to</span></td><td>be included in as well</td><td class="zh">被加入</td></tr>
+<tr><td><span class="phrase">as demand grew</span></td><td>when more was wanted</td><td class="zh">随着需求增长</td></tr>
+<tr><td><span class="phrase">be forced to</span></td><td>have no choice but to</td><td class="zh">被迫</td></tr>
+<tr><td><span class="phrase">organise scores of volunteers</span></td><td>arrange many volunteers</td><td class="zh">组织大批志愿者</td></tr>
+<tr><td><span class="phrase">bring in paid professionals</span></td><td>employ trained specialists</td><td class="zh">请来付费的专业人员</td></tr>
+<tr><td><span class="phrase">this will be realised</span></td><td>this will be achieved</td><td class="zh">这将得以实现</td></tr>
+<tr><td><span class="phrase">we suggest you start with</span></td><td>we recommend beginning with</td><td class="zh">我们建议您先……</td></tr>
+<tr><td><span class="phrase">watch out especially for</span></td><td>pay particular attention to</td><td class="zh">请特别留意</td></tr>
+<tr><td><span class="phrase">please be warned that</span></td><td>a safety warning follows</td><td class="zh">请注意</td></tr>
+<tr><td><span class="phrase">it's recommended that you…</span></td><td>advice follows</td><td class="zh">建议您……</td></tr>
+<tr><td><span class="phrase">look out for</span></td><td>try to notice</td><td class="zh">留心寻找</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Why the port developed and expanded (Q11–Q13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Three cause-and-effect questions. Note the exact causal wording.</p><div class="ex-item"><span class="ex-num">11.</span><label>Why did a port originally develop at Manham? → <strong>B: It was convenient for river transport</strong>. 'it's the highest navigable point of the Avon … and proved a handy place to load and unload cargo'. C fails: the sea is 'over 23 miles away'.</label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>What caused the sudden expansion during the Industrial Revolution? → <strong>B: the increase in demand for metals</strong>. 'it wasn't until the Industrial Revolution, when a tremendous need for metals of all kinds developed, that Manham expanded'. C fails: tin was discovered 900 years ago, long before.</label></div>
+<div class="ex-item"><span class="ex-num">13.</span><label>Why were rocks sent away to be processed? → <strong>A: shortage of fuel</strong>. 'there was not enough coal in the local area, so the rocks … had to be shipped long distances'.</label></div></div>
+<div class="exercise-block"><h3>B — Decline and the Trust (Q14–Q15)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Two more multiple-choice items.</p><div class="ex-item"><span class="ex-num">14.</span><label>What happened when the port declined? → <strong>A: The workers went away</strong>. 'thousands of workers were forced to emigrate out of the area'. C fails: the buildings 'fell into disrepair', they were not reused.</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>What did the Manham Trust hope to do? → <strong>C: rebuild the port complex</strong>. 'match installations with maps of the original port complex and to set about reconstructing it'. A is only the first step (removing undergrowth to find outlines).</label></div></div>
+<div class="exercise-block"><h3>C — The three attractions (Q16–Q20)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">NO MORE THAN TWO WORDS. Check whether the printed words already fill part of the idea.</p><div class="ex-item"><span class="ex-num">16.</span><label>copper mine — specially adapted miners' ___ take visitors into the mountain → <strong>trains</strong> ('Travel on converted mining trains')</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>the mine is ___ and enclosed → <strong>dark</strong> ('ours is very dark and closed in')</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>village school — classrooms and a special exhibition of ___ → <strong>games</strong> ('take a special look at our display of games')</label></div>
+<div class="ex-item"><span class="ex-num">19.</span><label>a ___ is recommended → <strong>guided tour</strong> ('it's recommended that you time your visit to coincide with a guided tour')</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>'The George' — children shouldn't use the ___ → <strong>ladders</strong> ('take care going down the ladders … we don't recommend you allow young children to use them')</label></div></div>
+<div class="exercise-block"><h3>D — Date &amp; number drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each figure to what it describes. Several are deliberate distractors.</p><div class="ex-item"><span class="ex-num">21.</span><label>a thousand years of history → the port overall.</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>about 900 years ago → when <strong>tin</strong> was discovered nearby.</label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>over 23 miles → the distance to the <strong>sea</strong> (why option C in Q11 is wrong).</label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>end of the nineteenth century → when lead, copper, manganese and arsenic were added.</label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>twentieth century → when the port <strong>declined</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>under five → the age of children who should NOT go into the mine.</label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label>five years ago → when the ship's wheel was dredged out of the silt.</label></div></div>
+<div class="exercise-block"><h3>E — Warning-and-advice drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Section 2 talks are full of advice verbs. Find the advice in each line.</p><div class="ex-item"><span class="ex-num">28.</span><label>'We <strong>suggest</strong> you start with the visit to the copper mine.'</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>'<strong>Watch out especially for</strong> the great pumping machines which rid the mine of water.'</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>'Please <strong>be warned</strong> that … ours is very dark and closed in.'</label></div>
+<div class="ex-item"><span class="ex-num">31.</span><label>'It's <strong>recommended</strong> that you time your visit to coincide with a guided tour.'</label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>'Please <strong>take care</strong> going down the ladders … we <strong>don't recommend</strong> you allow young children to use them.'</label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">Tour talks describe things; exam options label them. Practise turning a description into a label — that is the whole skill. 导览讲话给的是描述,选项给的是标签。</div><div class="para-card"><div class="para-card-header">Q11 — 'convenient for river transport'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">It was convenient for river transport.</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'the highest <em>navigable</em> point of the Avon — boats can go no higher up this river — and proved a <em>handy place to load and unload cargo</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">convenient = handy; river transport = boats / loading cargo</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'on a bend in the great River Avon' and 'the sea … is over 23 miles away' both distract towards option C.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q12 — 'increase in demand for metals'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">the increase in demand for metals</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'when a <em>tremendous need for metals of all kinds developed</em>, that Manham expanded'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">increase in demand = a tremendous need … developed</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Tin (option C) is mentioned in the same sentence, but 900 years ago — 'it wasn't until the Industrial Revolution … that'.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q13 — 'shortage of fuel'</div><div class="para-row"><div class="para-label">Option A</div><div class="para-value">shortage of fuel</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'there was <em>not enough coal</em> in the local area, so the rocks containing minerals had to be shipped long distances'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">shortage of fuel = not enough coal</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'shipped long distances' may suggest option B (poor transport) — but the shipping is the <em>result</em>, not the cause.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q15 — 'rebuild the port complex'</div><div class="para-row"><div class="para-label">Option C</div><div class="para-value">rebuild the port complex</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'to match installations with maps of the original port complex and to <em>set about reconstructing</em> it'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">rebuild = reconstruct</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'remove undergrowth to find the original outlines' matches option A — but that is only the preliminary step.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q16 — 'specially adapted miners' trains'</div><div class="para-row"><div class="para-label">Table wording</div><div class="para-value">specially adapted miners' ___ take visitors into the mountain</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'Travel on <em>converted mining trains</em> and journey into the depths of the mountain'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">specially adapted = converted; miners' trains = mining trains</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'pumping machines' comes next and is a strong distractor.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write out each chunk. Industrial and heritage vocabulary appears often in Section 2. 注意工业与遗产类词汇。</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">It's the highest navigable point of the Avon; boats can go no higher up this river.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">It wasn't until the Industrial Revolution that Manham expanded.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">There was not enough coal in the local area, so the rocks had to be shipped long distances.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">Thousands of workers were forced to emigrate out of the area.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">It organised scores of local volunteers to remove undergrowth.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">Travel on converted mining trains and journey into the depths of the mountain.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">Time your visit to coincide with a guided tour.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">Please take care going down the ladders if you wish to visit the lower deck.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How far is Manham Port from the sea?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. 2 miles</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. 13 miles</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. over 23 miles</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. on the coast</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What was discovered near Manham about 900 years ago?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. tin</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. copper</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. coal</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. arsenic</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'A')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which metals were added to Manham's cargos by the end of the 19th century?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. gold and silver</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. iron and steel</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. coal and tin</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. lead, copper, manganese and arsenic</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Where were ores originally smelted?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. at the port</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. in the same area they were mined</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. abroad</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. in London</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'B')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What happened to the port buildings in the twentieth century?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. they fell into disrepair</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. they became houses</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. they were demolished</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. they became a museum immediately</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'A')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">What did local volunteers do for the Manham Trust?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. raised money</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. drew maps</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. removed undergrowth to find the original outlines</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. guided visitors</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What title does Manham hope to regain?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. the oldest port in Britain</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. the busiest river port</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. the finest heritage site</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. the greatest copper port in the country</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What should visitors watch out for in the mine?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. low ceilings</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. the great pumping machines that rid the mine of water</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. original tools</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. bats</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'B')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Who should NOT go into the mine?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. children under five and dogs</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. anyone over sixty</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. people without helmets</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. large groups</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'A')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">What is special about the school's display of games?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. the games can be played</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. they are all handmade</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. it is one of the largest in the world</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. it is free</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How was the ship's wheel recovered?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. it was bought at auction</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. it was rebuilt from photographs</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. it was donated by a museum</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. a local fisherman dredged it out of the silt</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What kind of boat is 'The George'?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. a steam tug</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. an old sailing ketch</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. a fishing trawler</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. a cargo barge</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'B')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 2 — Answers (Q11–Q20)</h3><div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">B</div><div class="answer-note">'the highest navigable point of the Avon … a handy place to load and unload cargo'.</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">B</div><div class="answer-note">'when a tremendous need for metals of all kinds developed, that Manham expanded'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">A</div><div class="answer-note">'there was not enough coal in the local area'.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">A</div><div class="answer-note">'thousands of workers were forced to emigrate out of the area'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">C</div><div class="answer-note">'set about reconstructing it' — the original port complex.</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">trains</div><div class="answer-note">'Travel on converted mining trains'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">dark</div><div class="answer-note">'ours is very dark and closed in'.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">games</div><div class="answer-note">'take a special look at our display of games'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">guided tour</div><div class="answer-note">'time your visit to coincide with a guided tour'.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">ladders</div><div class="answer-note">'take care going down the ladders … we don't recommend you allow young children to use them'.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">B</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 10 — Test 3 — Listening Part 2 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 10</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 2</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 2</div>
+    <h1>Cambridge IELTS 10 — Test 3 — Listening Part 2</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>A radio interview with <strong>Alice Bussell</strong> from the <strong>Dolphin Conservation Trust</strong>. She explains what the charity does, why oil exploration in eastern Scotland threatens dolphins, how she became interested, and then describes four dolphins in the <strong>'Adopt a Dolphin'</strong> scheme.</p><p>这是一段“电台采访 + 慈善机构介绍”。最后一部分是<strong>四只海豚的配对题</strong>,信息密集且顺序打乱,必须记住每只海豚的“人设”。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> In Q16–20 the same letter can be used more than once — and here <strong>D (Samson) is the answer twice</strong>. Never assume each option is used only once unless the instructions say so. Build a quick profile for each dolphin as you listen: Moondancer = elegant, large fin; Echo = unseen, noisy; Kiwi = youngest, photogenic, noisy; Samson = energetic, newest.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">conservation</span></td><td><span class="pos">n.</span></td><td>protection of the natural world</td><td class="zh">保护;保育</td><td>'the Dolphin <em>Conservation</em> Trust'</td><td class="note">Topic word; also 'conservationist'.</td></tr>
+<tr><td><span class="word">raise awareness</span></td><td><span class="pos">v. phr.</span></td><td>to make people more conscious of an issue</td><td class="zh">提高意识</td><td>'It tries to <em>raise people's awareness</em> of the problems'</td><td class="note">Very useful for Writing Task 2.</td></tr>
+<tr><td><span class="word">marine</span></td><td><span class="pos">adj.</span></td><td>relating to the sea</td><td class="zh">海洋的</td><td>'these <em>marine</em> creatures'</td><td class="note">Cluster: marine life, marine biologist.</td></tr>
+<tr><td><span class="word">charity</span></td><td><span class="pos">n.</span></td><td>an organisation that helps people or causes</td><td class="zh">慈善机构</td><td>'one of the fastest growing animal <em>charities</em> in the country'</td><td class="note">Note: NOT the largest — this kills one option.</td></tr>
+<tr><td><span class="word">the big players</span></td><td><span class="pos">n. phr.</span></td><td>the most powerful organisations</td><td class="zh">行业巨头</td><td>'still fairly small compared with <em>the big players</em>'</td><td class="note">Directly contradicts 'country's largest organisation'.</td></tr>
+<tr><td><span class="word">campaign</span></td><td><span class="pos">n.</span></td><td>an organised effort to achieve a goal</td><td class="zh">运动;活动</td><td>'The charity uses its money to support <em>campaigns</em> … for changes in fishing policy'</td><td class="note">Q11/12 — one of the two answers.</td></tr>
+<tr><td><span class="word">full-time</span></td><td><span class="pos">adj.</span></td><td>working the whole working week</td><td class="zh">全职的</td><td>'It <em>hopes soon</em> to be able to employ its first full-time biologist'</td><td class="note">'Hopes soon' means it does NOT yet employ one.</td></tr>
+<tr><td><span class="word">on a voluntary basis</span></td><td><span class="pos">adv. phr.</span></td><td>without being paid</td><td class="zh">以志愿方式</td><td>'many people give their services <em>on a voluntary basis</em>'</td><td class="note">Q11/12 — the second answer.</td></tr>
+<tr><td><span class="word">publicise</span></td><td><span class="pos">v.</span></td><td>to make something widely known</td><td class="zh">宣传;使公众知晓</td><td>'it has made our activities even more widely <em>publicised</em> and understood'</td><td class="note">Q13 — the award made the work better known.</td></tr>
+<tr><td><span class="word">in the long term</span></td><td><span class="pos">adv. phr.</span></td><td>over a long period in the future</td><td class="zh">从长远看</td><td>'<em>In the long term</em> it may not bring in extra members'</td><td class="note">Rules out the 'more members' option.</td></tr>
+<tr><td><span class="word">haven</span></td><td><span class="pos">n.</span></td><td>a safe place</td><td class="zh">避风港;栖息地</td><td>'This has long been a <em>haven</em> for dolphins'</td><td class="note">Eastern Scotland, because of little shipping.</td></tr>
+<tr><td><span class="word">shipping</span></td><td><span class="pos">n.</span></td><td>ships as a group; sea transport</td><td class="zh">航运;船只</td><td>'it has very little <em>shipping</em>'</td><td class="note">Why the area is currently safe.</td></tr>
+<tr><td><span class="word">exploration</span></td><td><span class="pos">n.</span></td><td>searching an area for oil, gas etc.</td><td class="zh">勘探</td><td>'oil companies want to increase <em>exploration</em> there'</td><td class="note">Q14 — it creates underwater noise.</td></tr>
+<tr><td><span class="word">socialise</span></td><td><span class="pos">v.</span></td><td>to spend time with others</td><td class="zh">社交;交往</td><td>'the dolphins can't rest and <em>socialise</em>'</td><td class="note">The effect of noise.</td></tr>
+<tr><td><span class="word">come across</span></td><td><span class="pos">v. phr.</span></td><td>to find or meet by chance</td><td class="zh">偶然发现</td><td>'Then I <em>came across</em> this story'</td><td class="note">Q15 — she read a book.</td></tr>
+<tr><td><span class="word">be hooked</span></td><td><span class="pos">v. phr.</span></td><td>to become fascinated by something</td><td class="zh">入迷;上瘾</td><td>'I couldn't put the book down — I was <em>hooked</em>'</td><td class="note">Confirms the book answer.</td></tr>
+<tr><td><span class="word">sponsor</span></td><td><span class="pos">v.</span></td><td>to give money to support someone or something</td><td class="zh">资助;赞助</td><td>'People can choose one of our dolphins to <em>sponsor</em>'</td><td class="note">The 'Adopt a Dolphin' scheme.</td></tr>
+<tr><td><span class="word">elusive</span></td><td><span class="pos">adj.</span></td><td>difficult to find or catch</td><td class="zh">难以找到的;行踪不定的</td><td>'Echo is being rather <em>elusive</em> this year'</td><td class="note">Q16 — has not been seen.</td></tr>
+<tr><td><span class="word">sight</span></td><td><span class="pos">v.</span></td><td>to see something, especially briefly</td><td class="zh">目击;看见</td><td>'hasn't yet been <em>sighted</em> by our observers'</td><td class="note">Passive; paraphrases 'has not been seen'.</td></tr>
+<tr><td><span class="word">out in force</span></td><td><span class="pos">adv. phr.</span></td><td>present in large numbers</td><td class="zh">大量出现</td><td>'All the others have been <em>out in force</em>'</td><td class="note">Contrast with the elusive Echo.</td></tr>
+<tr><td><span class="word">come up close</span></td><td><span class="pos">v. phr.</span></td><td>to approach nearby</td><td class="zh">靠近</td><td>'she seems to love <em>coming up close</em> for the cameras'</td><td class="note">Kiwi — Q17.</td></tr>
+<tr><td><span class="word">vigour</span></td><td><span class="pos">n.</span></td><td>strength and energy</td><td class="zh">活力;精力</td><td>'always leaping out of the water with great <em>vigour</em>'</td><td class="note">Samson — Q18.</td></tr>
+<tr><td><span class="word">fin</span></td><td><span class="pos">n.</span></td><td>the flat part on a fish or dolphin's body</td><td class="zh">鳍</td><td>'she has a particularly large <em>fin</em> on her back'</td><td class="note">Moondancer — Q20 ('an unusual shape').</td></tr>
+<tr><td><span class="word">pick somebody out</span></td><td><span class="pos">v. phr.</span></td><td>to identify or recognise</td><td class="zh">辨认出</td><td>'Kiwi makes a lot of noise so we can often <em>pick her out</em> straightaway'</td><td class="note">Distractor for Q20 — noise, not shape.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">Tell us about…</span></td><td>interview prompt</td><td class="zh">给我们讲讲……</td></tr>
+<tr><td><span class="phrase">obviously its purpose is to…</span></td><td>clearly its aim is to…</td><td class="zh">显然它的宗旨是……</td></tr>
+<tr><td><span class="phrase">compared with</span></td><td>in comparison to</td><td class="zh">与……相比</td></tr>
+<tr><td><span class="phrase">we are particularly proud of</span></td><td>we are especially pleased about</td><td class="zh">我们特别自豪的是</td></tr>
+<tr><td><span class="phrase">in fact</span></td><td>actually — often introduces a statistic</td><td class="zh">事实上</td></tr>
+<tr><td><span class="phrase">and so forth</span></td><td>and so on</td><td class="zh">等等</td></tr>
+<tr><td><span class="phrase">it's not meant an enormous amount of money</span></td><td>it has not brought much money</td><td class="zh">它并没有带来很多钱</td></tr>
+<tr><td><span class="phrase">bring in extra members</span></td><td>attract more members</td><td class="zh">吸引更多会员</td></tr>
+<tr><td><span class="phrase">this may be about to change</span></td><td>this could soon change</td><td class="zh">这可能即将改变</td></tr>
+<tr><td><span class="phrase">in the first place</span></td><td>originally; at the beginning</td><td class="zh">最初;起初</td></tr>
+<tr><td><span class="phrase">I couldn't put the book down</span></td><td>the book was gripping</td><td class="zh">我手不释卷</td></tr>
+<tr><td><span class="phrase">we remain optimistic</span></td><td>we are still hopeful</td><td class="zh">我们仍然乐观</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Which TWO things about the Trust? (Q11–Q12)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Check each option against what Alice actually says.</p><div class="ex-item"><span class="ex-num">A</span><label>Children make up most of the membership → 'about <strong>thirty-five per cent</strong> of our members are children' — that is not <em>most</em>. ❌</label></div>
+<div class="ex-item"><span class="ex-num">B</span><label>It's the country's largest conservation organisation → 'one of the fastest <strong>growing</strong> animal charities … still fairly <strong>small</strong> compared with the big players'. ❌</label></div>
+<div class="ex-item"><span class="ex-num">C</span><label>It helps finance campaigns for changes in fishing practices → 'The charity <strong>uses its money to support campaigns</strong> — for example, for changes in fishing policy'. ✅ <strong>ANSWER</strong></label></div>
+<div class="ex-item"><span class="ex-num">D</span><label>It employs several dolphin experts full-time → 'It <strong>hopes soon</strong> to be able to employ its <strong>first</strong> full-time biologist'. ❌</label></div>
+<div class="ex-item"><span class="ex-num">E</span><label>Volunteers help in various ways → 'many people give their services on a voluntary basis and we now have <strong>volunteers working in observation, office work and other things</strong>'. ✅ <strong>ANSWER</strong></label></div></div>
+<div class="exercise-block"><h3>B — Multiple choice (Q13–Q15)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Three items, each with a clear rejection of the other options.</p><div class="ex-item"><span class="ex-num">13.</span><label>Why pleased about the award → <strong>B: it made the work of the trust better known</strong>. 'Although it's not meant an enormous amount of money for us, it has made our activities even more widely publicised and understood.' (A rejected; C is only a hope for the long term.)</label></div>
+<div class="ex-item"><span class="ex-num">14.</span><label>Oil exploration causes problems because of → <strong>A: noise</strong>. 'although there'll be <em>little pollution from oil</em>, exploration creates a lot of underwater noise'.</label></div>
+<div class="ex-item"><span class="ex-num">15.</span><label>Alice became interested when → <strong>C: she read a book about them</strong>. 'I came across this story about a family of dolphins … I couldn't put the book down.' (She had never seen one and 'hadn't been particularly interested in them at school'.)</label></div></div>
+<div class="exercise-block"><h3>C — Matching the four dolphins (Q16–Q20)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Note that D is used TWICE. Build a profile for each dolphin first.</p><div class="ex-item"><span class="ex-num">16.</span><label>It has not been seen this year → <strong>B (Echo)</strong>: 'rather elusive this year and hasn't yet been sighted by our observers'.</label></div>
+<div class="ex-item"><span class="ex-num">17.</span><label>It is photographed more than the others → <strong>C (Kiwi)</strong>: 'she seems to love coming up close for the cameras and we've captured her on film hundreds of times'.</label></div>
+<div class="ex-item"><span class="ex-num">18.</span><label>It is always very energetic → <strong>D (Samson)</strong>: 'Samson has a lot of energy — he's always leaping out of the water with great vigour'.</label></div>
+<div class="ex-item"><span class="ex-num">19.</span><label>It is the newest one in the scheme → <strong>D (Samson)</strong>: 'Samson's the latest of our dolphins to be chosen for the scheme'.</label></div>
+<div class="ex-item"><span class="ex-num">20.</span><label>It has an unusual shape → <strong>A (Moondancer)</strong>: 'she has a particularly large fin on her back, which makes her easy to identify'.</label></div></div>
+<div class="exercise-block"><h3>D — Dolphin profile drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Complete the profile of each dolphin from memory, then check.</p><div class="ex-item"><span class="ex-num">21.</span><label><strong>Moondancer</strong> — elegant; 'curves out and into the water very smoothly'; noisy; particularly large fin.</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label><strong>Echo</strong> — elusive this year; not yet sighted; noisy.</label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label><strong>Kiwi</strong> — the real 'character'; comes close to cameras; photographed hundreds of times; the <em>youngest</em>; makes a lot of noise.</label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label><strong>Samson</strong> — lots of energy; leaps with vigour; often photographed with Moondancer; the <em>newest</em> in the scheme (but not the youngest).</label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>Trap check: <strong>youngest ≠ newest</strong>. Kiwi is the youngest dolphin; Samson is the newest addition to the scheme.</label></div></div>
+<div class="exercise-block"><h3>E — Number &amp; fact drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Match each number or name to what it refers to.</p><div class="ex-item"><span class="ex-num">26.</span><label>ten years → how long ago the Trust started.</label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label>five to eighteen → the ages of the children the Trust talks to in schools.</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>thirty-five per cent → the proportion of members who are children.</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>the Charity Commission → who gave the award, for work in <strong>education</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>the Moray Firth → the place in the book where the family of dolphins had to leave.</label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">Radio interviews are full of hedged and negative statements. The exam options are always positive and simple, so you must convert. 采访中的说法往往含蓄或否定,而选项总是简单肯定,必须转换。</div><div class="para-card"><div class="para-card-header">Q11/12 — 'helps finance campaigns'</div><div class="para-row"><div class="para-label">Option C</div><div class="para-value">It helps finance campaigns for changes in fishing practices</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'The charity <em>uses its money to support campaigns</em> — for example, for changes in <em>fishing policy</em> and so forth'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">finance = uses its money to support; practices = policy</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'employs its first full-time biologist' is only a hope ('hopes soon to be able to').</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q13 — 'better known'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">It made the work of the trust better known</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'it has made our activities even more <em>widely publicised and understood</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">better known = more widely publicised and understood</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'it's not meant an enormous amount of money' rules out A; 'In the long term it may not bring in extra members' rules out C.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q14 — 'noise'</div><div class="para-row"><div class="para-label">Option A</div><div class="para-value">noise</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'although there'll be little pollution from oil, exploration creates a lot of <em>underwater noise</em>. It means the dolphins can't rest and socialise.'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">the effect is stated straight after the cause</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Oil leaks (B) and ships (C) are both mentioned in the same passage — but as things that are NOT the problem.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q16 — 'has not been seen'</div><div class="para-row"><div class="para-label">Comment</div><div class="para-value">It has not been seen this year.</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'Echo is being rather <em>elusive</em> this year and <em>hasn't yet been sighted</em> by our observers'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">not been seen = elusive / not been sighted</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'we remain optimistic that he'll be out there soon' — do not let the optimism confuse you.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q20 — 'an unusual shape'</div><div class="para-row"><div class="para-label">Comment</div><div class="para-value">It has an unusual shape.</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'Moondancer's easy to find because she has a <em>particularly large fin on her back</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">unusual shape = a particularly large fin</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Kiwi is also 'easy to pick out' — but by <em>noise</em>, not shape.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write out each chunk. Charity and conservation vocabulary is very useful for Writing Task 2. 这些词汇在写作中也很有用。</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">It tries to raise people's awareness of the problems these marine creatures are suffering.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">It's still fairly small compared with the big players in animal protection.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">The charity uses its money to support campaigns for changes in fishing policy.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">It has made our activities even more widely publicised and understood.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">Although there'll be little pollution from oil, exploration creates a lot of underwater noise.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">I came across this story about a family of dolphins and I couldn't put the book down.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">Echo is being rather elusive this year and hasn't yet been sighted by our observers.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">She has a particularly large fin on her back, which makes her easy to identify.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">How long ago was the Dolphin Conservation Trust started?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. five years ago</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. ten years ago</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. twenty years ago</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. last year</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">What proportion of members are children?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. about 15%</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. about 25%</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. about 35%</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. more than half</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">What ages of children does the Trust talk to in schools?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. 5 to 18</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. 3 to 11</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. 7 to 16</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. 11 to 18</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What kind of expert does the Trust hope to employ?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. a lawyer</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. a fundraiser</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. a teacher</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. a full-time biologist with dolphin expertise</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What was the Charity Commission award for?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. fundraising</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. work in education</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. research</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. volunteering</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Why has eastern Scotland long been a haven for dolphins?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. warm water</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. plentiful fish</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. very little shipping</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. a marine reserve</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What is the effect of underwater noise on dolphins?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. they cannot rest and socialise</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. they lose their sense of direction</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. they migrate south</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. they stop feeding</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How had Alice felt about dolphins at school?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. fascinated</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. frightened</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. she had swum with one</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. not particularly interested</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What do sponsors of a dolphin receive?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. a free boat trip</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. a picture of it and news updates</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. a certificate and a badge</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. a monthly magazine</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Which dolphin is described as very elegant?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Moondancer</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Echo</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Kiwi</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Samson</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'A')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">Which dolphin is the youngest?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. Moondancer</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. Echo</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. Kiwi</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. Samson</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'C')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">Which dolphins are often photographed together?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. Kiwi and Echo</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. Echo and Moondancer</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. Kiwi and Samson</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. Samson and Moondancer</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 2 — Answers (Q11–Q20)</h3><div class="answer-item"><span class="answer-num">11 & 12</span><div><div class="answer-val">C, E (in either order)</div><div class="answer-note">C = 'uses its money to support campaigns … for changes in fishing policy'; E = 'volunteers working in observation, office work and other things'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">B</div><div class="answer-note">'it has made our activities even more widely publicised and understood'.</div></div></div>
+<div class="answer-item"><span class="answer-num">14</span><div><div class="answer-val">A</div><div class="answer-note">'exploration creates a lot of underwater noise'.</div></div></div>
+<div class="answer-item"><span class="answer-num">15</span><div><div class="answer-val">C</div><div class="answer-note">'I came across this story … I couldn't put the book down.'</div></div></div>
+<div class="answer-item"><span class="answer-num">16</span><div><div class="answer-val">B</div><div class="answer-note">Echo — 'rather elusive this year and hasn't yet been sighted'.</div></div></div>
+<div class="answer-item"><span class="answer-num">17</span><div><div class="answer-val">C</div><div class="answer-note">Kiwi — 'we've captured her on film hundreds of times'.</div></div></div>
+<div class="answer-item"><span class="answer-num">18</span><div><div class="answer-val">D</div><div class="answer-note">Samson — 'always leaping out of the water with great vigour'.</div></div></div>
+<div class="answer-item"><span class="answer-num">19</span><div><div class="answer-val">D</div><div class="answer-note">Samson — 'the latest of our dolphins to be chosen for the scheme'.</div></div></div>
+<div class="answer-item"><span class="answer-num">20</span><div><div class="answer-val">A</div><div class="answer-note">Moondancer — 'a particularly large fin on her back'.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

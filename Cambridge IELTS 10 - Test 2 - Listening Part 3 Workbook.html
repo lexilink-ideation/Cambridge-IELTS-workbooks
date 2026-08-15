@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 10 — Test 2 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 10</span>
+    <span class="sep">›</span>
+    <span>Test 2</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 10 — Test 2 — Listening Part 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two students, <strong>Victor</strong> and <strong>Olivia</strong>, plan a presentation about the Norwegian explorer <strong>Thor Heyerdahl</strong>. Victor will cover his early life; Olivia will cover his adult life, including the famous <strong>raft journey</strong> across the Pacific and his work on <strong>Easter Island</strong>.</p><p>这是“两人合作准备presentation”的经典场景。注意:两人会互相<strong>纠正</strong>,被纠正的那个说法就是干扰项。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> Q21–24 are two <em>choose TWO</em> questions. In these, one speaker often names a wrong item and the other corrects it — 'No, it was climbing that he spent his time on as a young man.' Cross out an option the moment you hear 'No,' or 'Actually,'.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">passion for</span></td><td><span class="pos">n. phr.</span></td><td>a very strong interest in something</td><td class="zh">对……的强烈爱好</td><td>'especially his <em>passion for</em> collecting things'</td><td class="note">Q21/22 — collecting is one answer.</td></tr>
+<tr><td><span class="word">hunting</span></td><td><span class="pos">n.</span></td><td>chasing and killing wild animals</td><td class="zh">打猎</td><td>'Heyerdahl wouldn't go <em>hunting</em> with his dad'</td><td class="note">Distractor — he refused to do it.</td></tr>
+<tr><td><span class="word">harsh</span></td><td><span class="pos">adj.</span></td><td>severe and difficult to live in</td><td class="zh">严酷的</td><td>'to find out how <em>harsh</em> weather conditions shaped people's lifestyles'</td><td class="note">Q23/24 — the extreme-environment reason.</td></tr>
+<tr><td><span class="word">shape</span></td><td><span class="pos">v.</span></td><td>to influence how something develops</td><td class="zh">塑造;影响</td><td>'how harsh weather conditions <em>shaped</em> people's lifestyles'</td><td class="note">'Impact of an extreme environment' = this idea.</td></tr>
+<tr><td><span class="word">shelter</span></td><td><span class="pos">n.</span></td><td>a structure that protects you from weather</td><td class="zh">庇护所</td><td>'basic survival skills like building a <em>shelter</em>'</td><td class="note">A preparation, not a reason for going — so NOT an answer.</td></tr>
+<tr><td><span class="word">remote</span></td><td><span class="pos">adj.</span></td><td>far from other places</td><td class="zh">偏远的</td><td>'to live wild in a <em>remote</em> location with few inhabitants'</td><td class="note">'Isolated place' = remote, few inhabitants, cut off by the sea.</td></tr>
+<tr><td><span class="word">cut off</span></td><td><span class="pos">adj. phr.</span></td><td>separated from other places</td><td class="zh">与外界隔绝</td><td>'few inhabitants, <em>cut off</em> by the sea'</td><td class="note">Reinforces 'isolated'.</td></tr>
+<tr><td><span class="word">carving</span></td><td><span class="pos">n.</span></td><td>a shape cut into stone or wood</td><td class="zh">雕刻</td><td>'mysterious ancient <em>carvings</em> that he happened to find'</td><td class="note">He found them by chance — so 'to examine carvings' is not a reason for going.</td></tr>
+<tr><td><span class="word">migration</span></td><td><span class="pos">n.</span></td><td>movement of people to a new area</td><td class="zh">迁徙;移民</td><td>'the theory he had about Polynesian <em>migration</em>'</td><td class="note">The central academic question of the talk.</td></tr>
+<tr><td><span class="word">stretch (of ocean)</span></td><td><span class="pos">n.</span></td><td>a continuous area</td><td class="zh">一片(海域)</td><td>'the huge, empty <em>stretch</em> of ocean that lies between the islands'</td><td class="note">Q25 — distance is the reason academics thought it impossible.</td></tr>
+<tr><td><span class="word">currents</span></td><td><span class="pos">n. pl.</span></td><td>continuous movements of water</td><td class="zh">洋流</td><td>'studying the cloud movements, ocean <em>currents</em> and wind patterns'</td><td class="note">Heyerdahl's research — but not the academics' objection.</td></tr>
+<tr><td><span class="word">raft</span></td><td><span class="pos">n.</span></td><td>a flat floating structure</td><td class="zh">筏子;木筏</td><td>'sailing on <em>rafts</em>, as was shown by the long voyage'</td><td class="note">The Kon-Tiki journey; 97 days.</td></tr>
+<tr><td><span class="word">undertake</span></td><td><span class="pos">v.</span></td><td>to begin and do (a task or journey)</td><td class="zh">着手;进行</td><td>'an incredibly risky journey to <em>undertake</em>'</td><td class="note">Formal verb.</td></tr>
+<tr><td><span class="word">epic</span></td><td><span class="pos">adj.</span></td><td>very long and impressive</td><td class="zh">史诗般的;宏大的</td><td>'When he got started again and planned his <em>epic</em> voyage'</td><td class="note">Evaluative adjective.</td></tr>
+<tr><td><span class="word">authentic</span></td><td><span class="pos">adj.</span></td><td>genuine; true to the original</td><td class="zh">真实的;正宗的</td><td>'he use only <em>ancient</em> techniques and local materials'</td><td class="note">Q27 — 'authentic construction methods'.</td></tr>
+<tr><td><span class="word">reeds</span></td><td><span class="pos">n. pl.</span></td><td>tall water plants used for building</td><td class="zh">芦苇</td><td>'a boat made out of <em>reeds</em>'</td><td class="note">Trap: the reed boat was in Egypt, LATER — not Easter Island.</td></tr>
+<tr><td><span class="word">disprove</span></td><td><span class="pos">v.</span></td><td>to show that something is false</td><td class="zh">证伪;驳倒</td><td>'many of his theories have been <em>disproven</em>'</td><td class="note">Sets up Q29 — his legacy is method, not theory.</td></tr>
+<tr><td><span class="word">discredit</span></td><td><span class="pos">v.</span></td><td>to make people stop believing something</td><td class="zh">使不可信;推翻</td><td>'his ideas about where Polynesians originated from have been completely <em>discredited</em>'</td><td class="note">Kills option A in Q29.</td></tr>
+<tr><td><span class="word">practical archaeology</span></td><td><span class="pos">n. phr.</span></td><td>recreating the past by doing it</td><td class="zh">实验考古学</td><td>'the first person to establish what modern academics call <em>practical archaeology</em>'</td><td class="note">Q29 — this is methodology (option B).</td></tr>
+<tr><td><span class="word">sound</span></td><td><span class="pos">adj.</span></td><td>reliable and sensible</td><td class="zh">可靠的;严谨的</td><td>'the research methods he used were very <em>sound</em>'</td><td class="note">Positive — so methodology is NOT the criticism.</td></tr>
+<tr><td><span class="word">tone</span></td><td><span class="pos">n.</span></td><td>the general style or manner of writing</td><td class="zh">语气;文风</td><td>'I found the overall <em>tone</em> somewhat old-fashioned'</td><td class="note">Q30 — style is out of date (option A).</td></tr>
+<tr><td><span class="word">revised edition</span></td><td><span class="pos">n. phr.</span></td><td>a new, corrected version of a book</td><td class="zh">修订版</td><td>'I think they need to do a new, <em>revised edition</em>'</td><td class="note">Confirms the book feels dated.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">shall I start with…?</span></td><td>suggesting who goes first</td><td class="zh">我先讲……好吗?</td></tr>
+<tr><td><span class="phrase">Why don't you begin with…</span></td><td>a suggestion</td><td class="zh">你不如从……开始</td></tr>
+<tr><td><span class="phrase">join in somebody's hobbies</span></td><td>take part in the same hobbies</td><td class="zh">参与某人的爱好</td></tr>
+<tr><td><span class="phrase">as part of their preparation</span></td><td>while getting ready</td><td class="zh">作为准备的一部分</td></tr>
+<tr><td><span class="phrase">aim to do something</span></td><td>intend to do</td><td class="zh">打算做某事</td></tr>
+<tr><td><span class="phrase">up until that time</span></td><td>before then</td><td class="zh">在那之前</td></tr>
+<tr><td><span class="phrase">spend ages doing something</span></td><td>spend a very long time</td><td class="zh">花很长时间做某事</td></tr>
+<tr><td><span class="phrase">a matter of</span></td><td>a question of</td><td class="zh">是……的问题</td></tr>
+<tr><td><span class="phrase">try out an idea</span></td><td>test an idea</td><td class="zh">尝试一个想法</td></tr>
+<tr><td><span class="phrase">leave a lasting impression on</span></td><td>have a permanent effect on</td><td class="zh">对……产生持久影响</td></tr>
+<tr><td><span class="phrase">to my mind</span></td><td>in my opinion</td><td class="zh">在我看来</td></tr>
+<tr><td><span class="phrase">acknowledge our sources</span></td><td>state where information came from</td><td class="zh">注明资料来源</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Two hobbies as a youth (Q21–Q22)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Five options, two answers. Track who says what.</p><div class="ex-item"><span class="ex-num">A</span><label>camping → Olivia: 'That came from his camping trips he went on in Norway I think…' — but Victor corrects her. ❌</label></div>
+<div class="ex-item"><span class="ex-num">B</span><label>climbing → Victor: 'No, it was <strong>climbing</strong> that he spent his time on as a young man.' ✅ <strong>ANSWER</strong></label></div>
+<div class="ex-item"><span class="ex-num">C</span><label>collecting → Olivia: 'especially his passion for <strong>collecting</strong> things'; Victor: 'he had his own little museum'. ✅ <strong>ANSWER</strong></label></div>
+<div class="ex-item"><span class="ex-num">D</span><label>hunting → 'Heyerdahl <em>wouldn't</em> go hunting with his dad'. ❌</label></div>
+<div class="ex-item"><span class="ex-num">E</span><label>reading → 'he preferred to learn about nature by listening to his <em>mother read to him</em>' — she read, not him. ❌</label></div></div>
+<div class="exercise-block"><h3>B — Two reasons for living on an island (Q23–Q24)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Again five options, two answers. Beware of things that were <em>preparation</em> or <em>chance discoveries</em>.</p><div class="ex-item"><span class="ex-num">A</span><label>to examine ancient carvings → he 'happened to find' them once there — not a reason for going. ❌</label></div>
+<div class="ex-item"><span class="ex-num">B</span><label>to experience an isolated place → 'to live wild in a remote location with few inhabitants, cut off by the sea, which is what they were aiming to do'. ✅ <strong>ANSWER</strong></label></div>
+<div class="ex-item"><span class="ex-num">C</span><label>to formulate a new theory → the theory came <em>from</em> the carvings he found later. ❌</label></div>
+<div class="ex-item"><span class="ex-num">D</span><label>to learn survival skills → 'As part of their preparation <em>before they left home</em>, they learnt basic survival skills'. ❌</label></div>
+<div class="ex-item"><span class="ex-num">E</span><label>to study the impact of an extreme environment → 'to find out how harsh weather conditions shaped people's lifestyles'. ✅ <strong>ANSWER</strong></label></div></div>
+<div class="exercise-block"><h3>C — Multiple choice: later life (Q25–Q30)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Note the exact proof for each answer.</p><div class="ex-item"><span class="ex-num">25.</span><label>Migration from the east thought impossible due to → <strong>A: the fact that Eastern countries were far away</strong>. 'the huge, empty stretch of ocean that lies between the islands and the nearest inhabited land'.</label></div>
+<div class="ex-item"><span class="ex-num">26.</span><label>Main reason for the raft journey → <strong>C: to test a new theory</strong>. Olivia: 'it was more a matter of simply trying out his idea, to see if migration from the east was possible'; Victor agrees.</label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label>Most important about the journey → <strong>C: the use of authentic construction methods</strong>. 'the most important factor seems to have been that he use only ancient techniques and local materials'.</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>Why he went to Easter Island → <strong>A: to build a stone statue</strong>. 'talk to the local people about their old stone carvings and then make one himself'.</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>His greatest influence → <strong>B: the development of archaeological methodology</strong>. 'the first person to establish what modern academics call practical archaeology'.</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>Criticism of Oliver's textbook → <strong>A: its style is out of date</strong>. 'I found the overall tone somewhat old-fashioned … they need to do a new, revised edition'.</label></div></div>
+<div class="exercise-block"><h3>D — Correction-signal drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Part 3 is full of one speaker correcting the other. Find the correction and the corrected fact.</p><div class="ex-item"><span class="ex-num">31.</span><label>OLIVIA: 'That came from his camping trips…' → VICTOR: '<strong>No, it was climbing</strong> that he spent his time on as a young man.'</label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>OLIVIA: 'I think he sailed there in a boat made out of reeds.' → VICTOR: '<strong>No, that was later on in Egypt</strong>, Olivia.'</label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>VICTOR: 'sometimes I wonder if he did that trip for private reasons…' → OLIVIA: '<strong>Well, I think it was more a matter of</strong> simply trying out his idea.' → VICTOR: 'Yes, that's probably it.'</label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>OLIVIA: 'do you think it was important to him that he achieve it before anyone else did?' → VICTOR: '<strong>Um, I haven't read anywhere that that was his motivation.</strong>'</label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>VICTOR: 'the research methods he used were very sound, <strong>although</strong> I must say I found the overall tone somewhat old-fashioned.'</label></div></div>
+<div class="exercise-block"><h3>E — Fact check</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Quick recall of the concrete details in the conversation.</p><div class="ex-item"><span class="ex-num">36.</span><label>How long did the raft journey take? → <strong>97 days</strong>, from South America to the Pacific Islands.</label></div>
+<div class="ex-item"><span class="ex-num">37.</span><label>What stopped his work for some years? → <strong>the war</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>What did he study to test whether the voyage was possible? → <strong>cloud movements, ocean currents and wind patterns</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>What was the counter-argument about boats? → <strong>no tradition of large ship-building</strong> east of Polynesia — but they made coastal voyages in locally built canoes.</label></div>
+<div class="ex-item"><span class="ex-num">40.</span><label>Who wrote the textbook? → <strong>William Oliver</strong>, <em>The Life and Work of Thor Heyerdahl</em>.</label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">Multiple-choice options are always rewritten. Notice especially how a <em>concrete</em> detail in the audio becomes an <em>abstract</em> option on the page. 录音里是具体细节,选项里是抽象概括。</div><div class="para-card"><div class="para-card-header">Q23/24 — 'an isolated place'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">to experience an isolated place</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'to live wild in a <em>remote location with few inhabitants, cut off by the sea</em>, which is what they were aiming to do'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">isolated = remote + few inhabitants + cut off</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'learn survival skills' happened <em>before they left home</em>, so it is preparation, not purpose.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q25 — why migration was thought impossible</div><div class="para-row"><div class="para-label">Option A</div><div class="para-value">the fact that Eastern countries were far away</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'because of the <em>huge, empty stretch of ocean</em> that lies between the islands and the nearest inhabited land'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">far away = a huge empty stretch of ocean between them</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Winds and currents (option C) are what <em>Heyerdahl</em> studied, not the academics' objection.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q26 — the main reason for the voyage</div><div class="para-row"><div class="para-label">Option C</div><div class="para-value">to test a new theory</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'it was more a matter of <em>simply trying out his idea, to see if migration from the east was possible</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">test a theory = try out his idea to see if it was possible</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Victor first suggests 'private reasons … to show others that he could have spectacular adventures' (option B) — then agrees with Olivia.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q27 — 'authentic construction methods'</div><div class="para-row"><div class="para-label">Option C</div><div class="para-value">the use of authentic construction methods</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'he use only <em>ancient techniques and local materials</em> to build his raft'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">authentic construction methods = ancient techniques + local materials</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Speed (97 days) is mentioned right afterwards, and 'first person' is explicitly denied.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q29 — 'greatest influence'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">the development of archaeological methodology</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'he was the first person to establish what modern academics call <em>practical archaeology</em>. I mean, that they try to recreate something from the past today'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">methodology = practical archaeology = recreating the past</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Option A is directly contradicted: his Polynesian-origin ideas 'have been completely discredited'.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write out each chunk. These lines contain the answers and the corrections. 注意听纠正的信号词。</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">Why don't you begin with describing the type of boy he was?</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">No, it was climbing that he spent his time on as a young man.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">They decided to experience living on a small island, to find out how harsh weather conditions shaped people's lifestyles.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">They needed that knowledge in order to live wild in a remote location with few inhabitants, cut off by the sea.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">They thought that travel from the east was impossible, because of the huge, empty stretch of ocean.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">It was more a matter of simply trying out his idea, to see if migration from the east was possible.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">He used only ancient techniques and local materials to build his raft.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">I found the overall tone somewhat old-fashioned.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What did the young Heyerdahl create at home?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. a laboratory</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. his own little museum</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. a garden</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. a boat</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">How did he learn about nature as a child?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. by reading books himself</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. by hunting with his father</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. by listening to his mother read to him</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. at school</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Who did Heyerdahl go to live on the island with?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. a university classmate he married</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. his father</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. a research team</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. alone</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What did they learn before leaving home?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. the local language</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. navigation</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. stone carving</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. basic survival skills such as building a shelter</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What gave Heyerdahl his radical theory?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. a book he read</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. mysterious ancient carvings he found on the island</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. a conversation with academics</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. the ocean currents</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Where did academics believe Polynesians came from?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. the east</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Antarctica</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Asia, in the west</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. South America</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did Heyerdahl study to test the possibility of the voyage?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. cloud movements, ocean currents and wind patterns</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. ancient maps</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. language similarities</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. fish migration</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'A')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">How long did the raft voyage take?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. 47 days</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. 67 days</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. 87 days</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. 97 days</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'D')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">What interrupted Heyerdahl's work for some years?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. illness</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. the war</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. lack of funding</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. a shipwreck</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'B')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">Where did Heyerdahl sail a reed boat?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. Easter Island</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. Norway</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. Egypt</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. Peru</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'C')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">What is 'practical archaeology'?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. recreating something from the past today</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. excavating with modern tools</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. dating objects chemically</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. teaching archaeology in schools</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What do the students think William Oliver's book needs?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. better research</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. more illustrations</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. a shorter length</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. a new, revised edition</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 3 — Answers (Q21–Q30)</h3><div class="answer-item"><span class="answer-num">21 & 22</span><div><div class="answer-val">B, C (in either order)</div><div class="answer-note">B = climbing ('it was climbing that he spent his time on as a young man'); C = collecting ('his passion for collecting things … his own little museum').</div></div></div>
+<div class="answer-item"><span class="answer-num">23 & 24</span><div><div class="answer-val">B, E (in either order)</div><div class="answer-note">B = to experience an isolated place ('a remote location with few inhabitants, cut off by the sea'); E = to study the impact of an extreme environment ('how harsh weather conditions shaped people's lifestyles').</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">A</div><div class="answer-note">'the huge, empty stretch of ocean that lies between the islands and the nearest inhabited land'.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">C</div><div class="answer-note">'it was more a matter of simply trying out his idea, to see if migration from the east was possible'.</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">C</div><div class="answer-note">'he use only ancient techniques and local materials to build his raft'.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">'talk to the local people about their old stone carvings and then make one himself'.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">B</div><div class="answer-note">'the first person to establish what modern academics call practical archaeology'.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">A</div><div class="answer-note">'I found the overall tone somewhat old-fashioned … they need to do a new, revised edition'.</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>

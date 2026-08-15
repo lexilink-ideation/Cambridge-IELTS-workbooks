@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 10 — Test 3 — Listening Part 3 | Practice Workbook</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+</head>
+<body class="listening">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 10</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Listening Part 3</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Listening Part 3</div>
+    <h1>Cambridge IELTS 10 — Test 3 — Listening Part 3</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Detail</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Paraphrase</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Dictation</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Quick Review</h2><div class="card"><p>Two <strong>Theatre Studies</strong> students, <strong>Rob</strong> and <strong>Mia</strong>, talk after a student production. The first half is about the report Rob must write on the play; the second half is Mia's advice on applying for the <strong>year abroad</strong> option.</p><p>这是“学生互相讨论课程”的场景。前半段是<strong>多选题</strong>(表演与报告),后半段是<strong>配对题</strong>(留学申请的五个阶段)。</p></div><div class="highlight">💡 <strong>Listening tip:</strong> In Q26–30 you match five <em>stages</em> to five <em>actions</em> from a box of seven. The stages follow the conversation in strict order, so if you miss one, jump forward — do not go back. Two options (B: get a letter of recommendation; F: make travel arrangements) are never mentioned at all.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">in-depth</span></td><td><span class="pos">adj.</span></td><td>very thorough and detailed</td><td class="zh">深入的</td><td>'we have to write a report on the whole thing, an <em>in-depth</em> analysis'</td><td class="note">The task Rob is dreading.</td></tr>
+<tr><td><span class="word">develop a character</span></td><td><span class="pos">v. phr.</span></td><td>to build up how you play a role</td><td class="zh">塑造角色</td><td>'how I <em>developed the character</em>'</td><td class="note">Theatre studies vocabulary.</td></tr>
+<tr><td><span class="word">base something on</span></td><td><span class="pos">v. phr.</span></td><td>to use something as a model</td><td class="zh">以……为原型</td><td>'I just <em>based it on</em> him'</td><td class="note">Rob's grandfather is the model.</td></tr>
+<tr><td><span class="word">authority</span></td><td><span class="pos">n.</span></td><td>the natural power to command respect</td><td class="zh">威严;权威</td><td>'He has a sort of <em>authority</em> though'</td><td class="note">What Rob wanted to capture.</td></tr>
+<tr><td><span class="word">visualise</span></td><td><span class="pos">v.</span></td><td>to form a picture in your mind</td><td class="zh">想象;设想</td><td>'I'd <em>visualise</em> what he must have been like in the past'</td><td class="note">Q21 — the answer is C: how he imagined him.</td></tr>
+<tr><td><span class="word">consulting room</span></td><td><span class="pos">n. phr.</span></td><td>the room where a doctor sees patients</td><td class="zh">诊室</td><td>'sitting in his <em>consulting room</em> listening to his patients'</td><td class="note">Part of the visualisation.</td></tr>
+<tr><td><span class="word">atmosphere</span></td><td><span class="pos">n.</span></td><td>the mood or feeling of a place</td><td class="zh">气氛</td><td>'then there's the issue of <em>atmosphere</em>'</td><td class="note">Introduces Q22.</td></tr>
+<tr><td><span class="word">curtain went up</span></td><td><span class="pos">v. phr.</span></td><td>the play began</td><td class="zh">大幕拉开</td><td>'when the <em>curtain went up</em> on the first scene'</td><td class="note">Theatre idiom.</td></tr>
+<tr><td><span class="word">over and over</span></td><td><span class="pos">adv. phr.</span></td><td>repeatedly</td><td class="zh">一遍又一遍</td><td>'people kept saying the same thing <em>over and over</em>'</td><td class="note">Q22 — repetition of words and phrases.</td></tr>
+<tr><td><span class="word">frustrated</span></td><td><span class="pos">adj.</span></td><td>annoyed because you cannot achieve something</td><td class="zh">沮丧的;受挫的</td><td>'I was so <em>frustrated</em> at times, when we couldn't agree'</td><td class="note">Sets up Q23.</td></tr>
+<tr><td><span class="word">emerge as</span></td><td><span class="pos">v. phr.</span></td><td>to become recognised as</td><td class="zh">成为;显现为</td><td>'did one person <em>emerge as</em> the leader?'</td><td class="note">Sophia did.</td></tr>
+<tr><td><span class="word">work out</span></td><td><span class="pos">v. phr.</span></td><td>to decide or figure out</td><td class="zh">想出;弄清楚</td><td>'she helped us <em>work out</em> exactly what to do'</td><td class="note">Q23 — Rob likes clear guidelines.</td></tr>
+<tr><td><span class="word">shift</span></td><td><span class="pos">v.</span></td><td>to change gradually</td><td class="zh">转变</td><td>'relationships … were <em>shifting</em>'</td><td class="note">Q24 — changing social attitudes.</td></tr>
+<tr><td><span class="word">rehearsal</span></td><td><span class="pos">n.</span></td><td>a practice performance</td><td class="zh">排练</td><td>'in the final <em>rehearsal</em> everything was going fine'</td><td class="note">Introduces Q25.</td></tr>
+<tr><td><span class="word">spotlight</span></td><td><span class="pos">n.</span></td><td>a strong beam of light on a stage</td><td class="zh">聚光灯</td><td>'the stage all dark except for one <em>spotlight</em>'</td><td class="note">Q25 — it stuck: an equipment failure.</td></tr>
+<tr><td><span class="word">competitive</span></td><td><span class="pos">adj.</span></td><td>involving people trying to win over others</td><td class="zh">竞争激烈的</td><td>'it looks very <em>competitive</em> — there's only a limited number of places'</td><td class="note">The year-abroad option.</td></tr>
+<tr><td><span class="word">module</span></td><td><span class="pos">n.</span></td><td>a separate unit of a university course</td><td class="zh">课程模块;单元</td><td>'work really hard in all your theatre studies <em>modules</em>'</td><td class="note">Q26 — show ability in Theatre Studies.</td></tr>
+<tr><td><span class="word">fit in with</span></td><td><span class="pos">v. phr.</span></td><td>to suit or match</td><td class="zh">与……相符</td><td>'a programme that would <em>fit in with</em> what I wanted to do after I graduate'</td><td class="note">Q27 — the institution's focus must be relevant.</td></tr>
+<tr><td><span class="word">emphasis on</span></td><td><span class="pos">n. phr.</span></td><td>special importance given to something</td><td class="zh">侧重于</td><td>'a university with <em>emphasis on</em> acting rather than directing'</td><td class="note">The relevance criterion.</td></tr>
+<tr><td><span class="word">coordinator</span></td><td><span class="pos">n.</span></td><td>the person who organises a scheme</td><td class="zh">协调人;负责人</td><td>'email the scheme <em>coordinator</em> with your top three choices'</td><td class="note">Q28 context.</td></tr>
+<tr><td><span class="word">deadline</span></td><td><span class="pos">n.</span></td><td>the latest time something can be done</td><td class="zh">截止日期</td><td>'I had a friend who missed the <em>deadline</em>'</td><td class="note">Q28 — be on time.</td></tr>
+<tr><td><span class="word">get a move on</span></td><td><span class="pos">v. phr.</span></td><td>to hurry up</td><td class="zh">抓紧;赶快</td><td>'you do need to <em>get a move on</em> at that stage'</td><td class="note">Reinforces Q28.</td></tr>
+<tr><td><span class="word">personal statement</span></td><td><span class="pos">n. phr.</span></td><td>a written account of yourself for an application</td><td class="zh">个人陈述</td><td>'don't you have to write a <em>personal statement</em>?'</td><td class="note">Q29 — ask others for help/tips.</td></tr>
+<tr><td><span class="word">stay in touch</span></td><td><span class="pos">v. phr.</span></td><td>to keep communicating</td><td class="zh">保持联系</td><td>'Make sure you <em>stay in touch</em> so they know your choices'</td><td class="note">Q30 — plan for the final year.</td></tr>
+<tr><td><span class="word">optional module</span></td><td><span class="pos">n. phr.</span></td><td>a course unit you can choose</td><td class="zh">选修模块</td><td>'your choices for the <em>optional modules</em>'</td><td class="note">What you must not forget while abroad.</td></tr>
+<tr><td><span class="word">specialism</span></td><td><span class="pos">n.</span></td><td>a subject you specialise in</td><td class="zh">专业方向</td><td>'You don't want to miss out doing your preferred <em>specialisms</em>'</td><td class="note">BrE academic word.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Phrase &amp; Collocation Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">How's the course going?</span></td><td>how is the course?</td><td class="zh">课程进展如何?</td></tr>
+<tr><td><span class="phrase">I don't know where to start</span></td><td>I feel overwhelmed</td><td class="zh">我不知道从哪儿下手</td></tr>
+<tr><td><span class="phrase">What was your starting point?</span></td><td>how did you begin?</td><td class="zh">你的出发点是什么?</td></tr>
+<tr><td><span class="phrase">How did you manage to capture that?</span></td><td>how did you convey that?</td><td class="zh">你是怎么把那点表现出来的?</td></tr>
+<tr><td><span class="phrase">thank goodness</span></td><td>expressing relief</td><td class="zh">谢天谢地</td></tr>
+<tr><td><span class="phrase">Would you recommend doing that?</span></td><td>do you advise it?</td><td class="zh">你会推荐这么做吗?</td></tr>
+<tr><td><span class="phrase">It depends on you</span></td><td>it varies from person to person</td><td class="zh">这取决于你自己</td></tr>
+<tr><td><span class="phrase">give me some tips</span></td><td>give me advice</td><td class="zh">给我一些建议</td></tr>
+<tr><td><span class="phrase">I don't mind showing you</span></td><td>I am happy to show you</td><td class="zh">我不介意给你看</td></tr>
+<tr><td><span class="phrase">don't make the mistake I made</span></td><td>learn from my error</td><td class="zh">别犯我犯过的错</td></tr>
+<tr><td><span class="phrase">get so involved (that)</span></td><td>become so absorbed</td><td class="zh">太投入以至于</td></tr>
+<tr><td><span class="phrase">miss out (on)</span></td><td>fail to get or do</td><td class="zh">错过</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Listening Detail Practice</h2><div class="exercise-block"><h3>A — Multiple choice: the production (Q21–Q25)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Note the exact proof AND why the other options fail.</p><div class="ex-item"><span class="ex-num">21.</span><label>What helped Rob prepare → <strong>C: the way he imagined his grandfather at work</strong>. 'I'd visualise what he must have been like in the past, when he was sitting in his consulting room'. A fails: 'he never says much about his work'.</label></div>
+<div class="ex-item"><span class="ex-num">22.</span><label>Boredom was suggested by → <strong>A: repetition of words and phrases</strong>. 'people kept saying the same thing over and over, like 'Cold, isn't it?''. C (long pauses) and B (grey and brown clothing, not scenery) are near-misses.</label></div>
+<div class="ex-item"><span class="ex-num">23.</span><label>What Rob learned about himself → <strong>A: He likes to have clear guidelines</strong>. 'Sophia … helped us work out exactly what to do for the production. And that made me feel better.' C fails — Sophia was the leader, not Rob.</label></div>
+<div class="ex-item"><span class="ex-num">24.</span><label>Research material described → <strong>B: changing social attitudes</strong>. 'articles from the 1950s about how relationships between children and their parents, or between the public and people like bank managers or the police were shifting'.</label></div>
+<div class="ex-item"><span class="ex-num">25.</span><label>Problem in the final rehearsal → <strong>B: an equipment failure</strong>. 'that [spotlight] stuck somehow so it was shining on the wrong side of the stage'.</label></div></div>
+<div class="exercise-block"><h3>B — Matching: stages of the year abroad (Q26–Q30)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Five stages, seven actions. They occur in order.</p><div class="ex-item"><span class="ex-num">26.</span><label>in the second year of the course → <strong>E: show ability in Theatre Studies</strong>. 'you need to work really hard in all your theatre studies modules. Only students with good marks get places.'</label></div>
+<div class="ex-item"><span class="ex-num">27.</span><label>when first choosing where to go → <strong>D: make sure the institution's focus is relevant</strong>. 'a programme that would fit in with what I wanted to do after I graduate … emphasis on acting rather than directing'.</label></div>
+<div class="ex-item"><span class="ex-num">28.</span><label>when sending in your choices → <strong>A: be on time</strong>. 'I had a friend who missed the deadline … you do need to get a move on at that stage.'</label></div>
+<div class="ex-item"><span class="ex-num">29.</span><label>when writing your personal statement → <strong>G: ask for help</strong>. 'I'll get some of the final year students to give me some tips' — 'I think that's a very good idea.'</label></div>
+<div class="ex-item"><span class="ex-num">30.</span><label>when doing the year abroad → <strong>C: plan for the final year</strong>. 'I forgot all about making arrangements for when I came back here for the final year.'</label></div></div>
+<div class="exercise-block"><h3>C — The two unused options</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Knowing which options are never mentioned saves time and prevents panic.</p><div class="ex-item"><span class="ex-num">B</span><label>get a letter of recommendation → never mentioned. (A 'personal statement' is written by <em>you</em>, not a referee.)</label></div>
+<div class="ex-item"><span class="ex-num">F</span><label>make travel arrangements and bookings → never mentioned. The 'arrangements' Mia forgot were about <em>modules for the final year</em>, not travel.</label></div>
+<div class="ex-item"><span class="ex-num">Tip</span><label>In matching tasks, quickly read all options in the pause and mentally cross out any that sound too obvious — obvious options are often distractors.</label></div></div>
+<div class="exercise-block"><h3>D — Detail check</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Quick recall of the concrete facts in this conversation.</p><div class="ex-item"><span class="ex-num">31.</span><label>What role did Rob play? → <strong>the doctor</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">32.</span><label>When and where is the play set? → <strong>a village in the 1950s</strong>.</label></div>
+<div class="ex-item"><span class="ex-num">33.</span><label>Who emerged as the group leader? → <strong>Sophia</strong>, who also did the research.</label></div>
+<div class="ex-item"><span class="ex-num">34.</span><label>What was the first scene's setting? → <strong>the waiting room</strong>, with a long silence before anyone spoke.</label></div>
+<div class="ex-item"><span class="ex-num">35.</span><label>How many choices do you email the coordinator? → <strong>your top three</strong>, about six months before you go.</label></div></div>
+<div class="exercise-block"><h3>E — 'Near-miss' option drill</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Part 3 options are often <em>almost</em> right. Explain the small difference.</p><div class="ex-item"><span class="ex-num">36.</span><label>Q21 B: 'the times when he watched his grandfather working' — Rob never watched him; he <em>imagined</em> him.</label></div>
+<div class="ex-item"><span class="ex-num">37.</span><label>Q22 B: 'scenery painted in dull colours' — the <em>costumes</em> were grey and brown, not the scenery.</label></div>
+<div class="ex-item"><span class="ex-num">38.</span><label>Q22 C: 'long pauses within conversations' — there was one long silence <em>before</em> anyone spoke, but the marked answer is the repetition.</label></div>
+<div class="ex-item"><span class="ex-num">39.</span><label>Q23 C: 'He thinks he is a good leader' — Sophia was the leader; Rob felt better once <em>she</em> gave direction.</label></div>
+<div class="ex-item"><span class="ex-num">40.</span><label>Q25 C: 'the injury of one character' — a character appears <em>in a wheelchair</em>, but that is the play, not an injury.</label></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Paraphrase Training</h2><div class="highlight">In Part 3, the correct option is a short abstract summary of a long concrete story. Practise compressing what the speakers say into one abstract phrase. 把具体叙述压缩成抽象短语,就是正确选项。</div><div class="para-card"><div class="para-card-header">Q21 — 'the way he imagined his grandfather'</div><div class="para-row"><div class="para-label">Option C</div><div class="para-value">the way he imagined his grandfather at work</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'I'd <em>visualise what he must have been like in the past</em>, when he was sitting in his consulting room listening to his patients'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">imagined = visualise what he must have been like</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'He must have all sorts of stories, but he never says much about his work' explicitly kills option A.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q23 — 'clear guidelines'</div><div class="para-row"><div class="para-label">Option A</div><div class="para-value">He likes to have clear guidelines.</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'Sophia did. That was OK — she helped us <em>work out exactly what to do</em> for the production. And that <em>made me feel better</em>.'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">clear guidelines = knowing exactly what to do</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">Mia's follow-up ('When you understood what needed doing?') confirms it — listen for the echo question.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q24 — 'changing social attitudes'</div><div class="para-row"><div class="para-label">Option B</div><div class="para-value">changing social attitudes</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'how <em>relationships</em> between children and their parents, or between the public and people like bank managers or the police <em>were shifting</em>'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">changing social attitudes = relationships between social groups were shifting</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'bank managers' may make you think of economics; 'the police' may make you think of politics.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q26 — 'show ability in Theatre Studies'</div><div class="para-row"><div class="para-label">Action E</div><div class="para-value">show ability in Theatre Studies</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'you need to <em>work really hard in all your theatre studies modules</em>. Only students with <em>good marks</em> get places — you have to prove that you know your subject really well.'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">show ability = get good marks / prove you know your subject</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'competitive' and 'limited number of places' come first — they describe the situation, not the action.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div>
+<div class="para-card"><div class="para-card-header">Q30 — 'plan for the final year'</div><div class="para-row"><div class="para-label">Action C</div><div class="para-value">plan for the final year</div></div><div class="para-row"><div class="para-label">Audio wording</div><div class="para-value">'I got so involved I <em>forgot all about making arrangements for when I came back here for the final year</em>. Make sure you stay in touch so they know your choices for the optional modules.'</div></div><div class="para-row"><div class="para-label">Key paraphrase</div><div class="para-value highlight-key">plan for the final year = arrange your optional-module choices in advance</div></div><div class="para-row"><div class="para-label">Trap</div><div class="para-value">'make travel arrangements' (option F) sounds plausible because of 'arrangements' — but the arrangements are academic.</div></div><div class="para-row"><div class="para-label">Your turn</div><div class="para-value"><textarea placeholder="Write your own paraphrase…"></textarea></div></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Mini Dictation</h2><div class="highlight">Write out each chunk. Note the informal spoken features ('like', 'sort of', 'I suppose'). 注意口语中的填充词。</div><div class="card"><div class="dictation-item"><span class="di-num">1.</span><span style="color:var(--muted);font-size:.85rem;">Now we have to write a report on the whole thing, an in-depth analysis.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">2.</span><span style="color:var(--muted);font-size:.85rem;">I'd visualise what he must have been like in the past.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">3.</span><span style="color:var(--muted);font-size:.85rem;">People kept saying the same thing over and over, like 'Cold, isn't it?'</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">4.</span><span style="color:var(--muted);font-size:.85rem;">She helped us work out exactly what to do for the production.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">5.</span><span style="color:var(--muted);font-size:.85rem;">Relationships between children and their parents were shifting.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">6.</span><span style="color:var(--muted);font-size:.85rem;">The spotlight stuck somehow so it was shining on the wrong side of the stage.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">7.</span><span style="color:var(--muted);font-size:.85rem;">Only students with good marks get places.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div>
+<div class="dictation-item"><span class="di-num">8.</span><span style="color:var(--muted);font-size:.85rem;">Make sure you stay in touch so they know your choices for the optional modules.</span><input type="text" placeholder="Type what you hear / the missing chunk…"></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">What character did Rob play?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. a patient</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. a doctor</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. a bank manager</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. a police officer</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'B')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">Who was Rob's model for the character?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. a famous actor</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. his tutor</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. his grandfather</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. his father</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'C')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">When and where is the play set?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. a village in the 1950s</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. a city in the 1930s</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. a hospital today</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. a village in the 1970s</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'A')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">What was the setting of the first scene?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. a street</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. a kitchen</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. a consulting room</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. a waiting room</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'D')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">What did the actors wear in the first scene?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. bright colours</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. grey and brown</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. uniforms</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. black</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'B')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">Who emerged as the group leader?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. Rob</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. Mia</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. Sophia</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. no one</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'C')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">Who did the research for the production?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. Rob</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. Mia</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. Sophia</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. the tutor</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'C')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">What went wrong in the final rehearsal?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. a spotlight stuck and shone on the wrong side</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. an actor forgot lines</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. the curtain jammed</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. a wheelchair broke</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Why is the year abroad option hard to get?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. it is expensive</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. it requires a language test</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. few universities take part</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. there is only a limited number of places</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'D')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">How did Mia choose where to go?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. by cost</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. by whether the programme fitted her plans after graduating</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. by climate</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. by her friends' choices</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How many choices do you send the scheme coordinator?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. three</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. two</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. five</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. one</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'A')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What mistake did Mia make while abroad?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. she missed the deadline</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. she chose the wrong university</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. she failed a module</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. she forgot to arrange her final-year module choices</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'D')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Part 3 — Answers (Q21–Q30)</h3><div class="answer-item"><span class="answer-num">21</span><div><div class="answer-val">C</div><div class="answer-note">'I'd visualise what he must have been like in the past.'</div></div></div>
+<div class="answer-item"><span class="answer-num">22</span><div><div class="answer-val">A</div><div class="answer-note">'people kept saying the same thing over and over, like 'Cold, isn't it?''</div></div></div>
+<div class="answer-item"><span class="answer-num">23</span><div><div class="answer-val">A</div><div class="answer-note">'she helped us work out exactly what to do … And that made me feel better.'</div></div></div>
+<div class="answer-item"><span class="answer-num">24</span><div><div class="answer-val">B</div><div class="answer-note">'relationships between children and their parents … were shifting'.</div></div></div>
+<div class="answer-item"><span class="answer-num">25</span><div><div class="answer-val">B</div><div class="answer-note">the spotlight 'stuck somehow so it was shining on the wrong side of the stage'.</div></div></div>
+<div class="answer-item"><span class="answer-num">26</span><div><div class="answer-val">E</div><div class="answer-note">'work really hard in all your theatre studies modules. Only students with good marks get places.'</div></div></div>
+<div class="answer-item"><span class="answer-num">27</span><div><div class="answer-val">D</div><div class="answer-note">'a programme that would fit in with what I wanted to do after I graduate'.</div></div></div>
+<div class="answer-item"><span class="answer-num">28</span><div><div class="answer-val">A</div><div class="answer-note">'I had a friend who missed the deadline … you do need to get a move on'.</div></div></div>
+<div class="answer-item"><span class="answer-num">29</span><div><div class="answer-val">G</div><div class="answer-note">'I'll get some of the final year students to give me some tips' — 'a very good idea'.</div></div></div>
+<div class="answer-item"><span class="answer-num">30</span><div><div class="answer-val">C</div><div class="answer-note">'I forgot all about making arrangements for when I came back here for the final year.'</div></div></div></div><div class="answer-section"><h3>Quiz — Answers</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">C</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">D</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">B</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">D</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+</body>
+</html>
