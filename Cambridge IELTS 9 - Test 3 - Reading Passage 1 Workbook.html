@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge IELTS 9 — Test 3 — Reading Passage 1 | Practice Workbook</title>
+    <style>
+    /* ═══════════════════════════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --blue:        #1A6BC4;
+      --blue-light:  #EBF3FC;
+      --blue-dark:   #0F3460;
+      --green:       #16A34A;
+      --green-light: #ECFDF5;
+      --green-dark:  #14532D;
+      --amber:       #D97706;
+      --amber-light: #FFFBEB;
+      --red:         #DC2626;
+      --red-light:   #FEF2F2;
+      --bg:          #F0F4F8;
+      --card:        #FFFFFF;
+      --text:        #1E293B;
+      --muted:       #64748B;
+      --border:      #E2E8F0;
+      --radius:      10px;
+      --shadow:      0 1px 4px rgba(0,0,0,.08);
+      /* Switch --accent and --accent-light based on unit type */
+      --accent:      var(--blue);
+      --accent-light:var(--blue-light);
+    }
+
+    /* ── Listening pages use blue, Reading pages use green ── */
+    body.reading {
+      --accent:       var(--green);
+      --accent-light: var(--green-light);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOP NAV (breadcrumb)
+    ═══════════════════════════════════════════════════════════ */
+    .top-nav {
+      background: var(--blue-dark);
+      color: rgba(255,255,255,.75);
+      font-size: .8rem;
+      padding: 0 20px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .sep { opacity: .4; }
+
+    /* ═══════════════════════════════════════════════════════════
+       UNIT HEADER
+    ═══════════════════════════════════════════════════════════ */
+    .unit-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--accent) 100%);
+      color: #fff;
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+    .unit-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .unit-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .unit-header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: .85;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TAB NAVIGATION
+    ═══════════════════════════════════════════════════════════ */
+    .tab-nav-wrap {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 40px;
+      z-index: 90;
+      overflow-x: auto;
+    }
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      min-width: max-content;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 13px 16px;
+      font-size: .83rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+    }
+    .tab-btn:hover { color: var(--accent); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 16px 80px;
+    }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section heading */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card p + p { margin-top: 10px; }
+
+    /* Highlight box */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: .92rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VOCABULARY TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .vocab-table th {
+      background: var(--accent);
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .vocab-table th:first-child { border-radius: var(--radius) 0 0 0; }
+    .vocab-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    .vocab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .vocab-table tr:nth-child(even) td { background: #F8FAFC; }
+    .vocab-table tr:last-child td { border-bottom: none; }
+    .vocab-table .word {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .vocab-table .zh { color: var(--muted); font-size: .82rem; }
+    .vocab-table .pos {
+      font-size: .75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .vocab-table .note {
+      font-size: .8rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       PHRASE TABLE
+    ═══════════════════════════════════════════════════════════ */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .86rem;
+    }
+    .phrase-table th {
+      background: #334155;
+      color: #fff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 600;
+    }
+    .phrase-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .phrase-table tr:nth-child(even) td { background: #F8FAFC; }
+    .phrase-table tr:last-child td { border-bottom: none; }
+    .phrase-table .phrase { font-weight: 700; }
+
+    /* ═══════════════════════════════════════════════════════════
+       EXERCISES
+    ═══════════════════════════════════════════════════════════ */
+    .exercise-block {
+      margin-bottom: 24px;
+    }
+    .exercise-block h3 {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .ex-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+    }
+    .ex-num {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 22px;
+      flex-shrink: 0;
+    }
+    .ex-item label { flex: 1; }
+
+    /* Fill-in-blank input */
+    .blank {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      background: transparent;
+      font-size: .9rem;
+      font-family: inherit;
+      color: var(--text);
+      padding: 2px 4px;
+      width: 120px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .blank:focus { border-bottom-color: var(--blue-dark); }
+    .blank.correct { border-bottom-color: var(--green); color: var(--green); }
+    .blank.wrong   { border-bottom-color: var(--red);   color: var(--red); }
+
+    /* Check button */
+    .btn-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity .15s;
+    }
+    .btn-check:hover { opacity: .85; }
+    .btn-check.secondary {
+      background: #334155;
+    }
+
+    /* Feedback badge */
+    .feedback {
+      display: none;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+    }
+    .feedback.correct { display: inline-block; background: var(--green-light); color: var(--green); }
+    .feedback.wrong   { display: inline-block; background: var(--red-light);   color: var(--red); }
+
+    /* ── Paraphrase cards ── */
+    .para-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .para-card-header {
+      background: #334155;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .para-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .para-row:last-child { border-bottom: none; }
+    .para-label {
+      min-width: 160px;
+      padding: 12px 16px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: #F8FAFC;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .para-value {
+      padding: 12px 16px;
+      font-size: .88rem;
+      flex: 1;
+    }
+    .para-value.highlight-key {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .para-value textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: .88rem;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .para-value textarea:focus { border-color: var(--accent); }
+
+    /* ── Sentence analysis (Reading) ── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sentence-original {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      font-style: italic;
+      font-size: .92rem;
+    }
+    .sentence-breakdown {
+      display: table;
+      width: 100%;
+    }
+    .sb-row {
+      display: table-row;
+    }
+    .sb-row:nth-child(even) .sb-label,
+    .sb-row:nth-child(even) .sb-value { background: #F8FAFC; }
+    .sb-label {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      width: 160px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .sb-value {
+      display: table-cell;
+      padding: 10px 14px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    /* ── Dictation ── */
+    .dictation-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .dictation-item .di-num {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .dictation-item input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: .9rem;
+      margin-top: 8px;
+      outline: none;
+    }
+    .dictation-item input:focus { border-color: var(--accent); }
+
+    /* ═══════════════════════════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════════════════════════ */
+    .quiz-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+    .quiz-item .q-label {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .quiz-item .q-text {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .q-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .1s, border-color .1s;
+      font-size: .9rem;
+    }
+    .q-option:hover { background: var(--accent-light); border-color: var(--accent); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .q-option.selected { background: var(--accent-light); border-color: var(--accent); }
+    .q-option.correct  { background: var(--green-light); border-color: var(--green); }
+    .q-option.wrong    { background: var(--red-light);   border-color: var(--red); }
+    .q-result {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .q-result.correct { display: block; background: var(--green-light); color: var(--green); }
+    .q-result.wrong   { display: block; background: var(--red-light);   color: var(--red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       ANSWER KEY
+    ═══════════════════════════════════════════════════════════ */
+    .answer-section {
+      margin-bottom: 22px;
+    }
+    .answer-section h3 {
+      font-weight: 700;
+      color: var(--muted);
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+    .answer-item {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .9rem;
+    }
+    .answer-item:last-child { border-bottom: none; }
+    .answer-num {
+      min-width: 24px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .answer-val { font-weight: 600; }
+    .answer-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════════════════════════
+       PRINT STYLES
+    ═══════════════════════════════════════════════════════════ */
+    @media print {
+      .top-nav, .tab-nav-wrap, .btn-check, .q-options input { display: none; }
+      .tab-panel { display: block !important; }
+      .section-title { page-break-after: avoid; }
+      .card, .quiz-item, .para-card { page-break-inside: avoid; }
+      body { font-size: 12px; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .para-row { flex-direction: column; }
+      .para-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+      .sentence-breakdown { display: block; }
+      .sb-row { display: block; }
+      .sb-label { display: block; width: 100%; border-bottom: none; }
+      .sb-value { display: block; border-left: none; }
+      .vocab-table, .phrase-table { font-size: .78rem; }
+    }
+  </style>
+
+</head>
+<body class="reading">
+
+  <nav class="top-nav">
+    <a href="https://lexilink-ideation.github.io/Cambridge-IELTS-workbooks/">🏠 Home</a>
+    <span class="sep">›</span>
+    <span>Cambridge IELTS 9</span>
+    <span class="sep">›</span>
+    <span>Test 3</span>
+    <span class="sep">›</span>
+    <span>Reading Passage 1</span>
+  </nav>
+
+  <header class="unit-header">
+    <div class="unit-badge">Reading Passage 1</div>
+    <h1>Cambridge IELTS 9 — Test 3 — Reading Passage 1</h1>
+    <h2>Practice Workbook</h2>
+  </header>
+  <div class="tab-nav-wrap">
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showTab('overview', this)" role="tab">📋 Overview</button><button class="tab-btn" onclick="showTab('vocab', this)" role="tab">📚 Vocabulary</button><button class="tab-btn" onclick="showTab('phrases', this)" role="tab">💬 Phrases</button><button class="tab-btn" onclick="showTab('practice', this)" role="tab">🔍 Sentences</button><button class="tab-btn" onclick="showTab('paraphrase', this)" role="tab">✏️ Drills</button><button class="tab-btn" onclick="showTab('dictation', this)" role="tab">🧠 Logic</button><button class="tab-btn" onclick="showTab('quiz', this)" role="tab">📝 Quiz</button><button class="tab-btn" onclick="showTab('answers', this)" role="tab">✅ Answers</button>
+    </nav>
+  </div>
+
+  <main class="main-content">
+<section class="tab-panel active" id="tab-overview"><h2 class="section-title">📋 Passage Overview</h2><div class="card"><p><strong>Attitudes to language.</strong> The passage explains why language arguments become heated, then contrasts two opposed schools: <strong>prescriptivism</strong> (one variety is inherently better and should be imposed) and <strong>descriptivism</strong> (the grammarian's job is to record usage, not judge it). It traces 18th-century grammar writing, quotes Joseph Priestley as an early descriptivist, and notes that today both sides caricature each other. Question types: <strong>Yes/No/Not Given</strong> (Q1–8), <strong>summary completion from a word list</strong> (Q9–12) and <strong>purpose multiple choice</strong> (Q13).</p></div><div class="highlight">💡 <strong>Reading tip:</strong> This is a two-camp passage, so build a two-column table as you read: <em>prescriptivists = rules, correct/incorrect, impose a standard</em> versus <em>descriptivists = describe, record diversity, custom of speaking</em>. Q9–12 then fills itself in. Note Q7 carefully: descriptivism is dated to 'the second half of the 18th century', so the claim that it appeared only <em>after</em> that century is NO.</div></section>
+<section class="tab-panel" id="tab-vocab"><h2 class="section-title">📚 Vocabulary Review</h2><div class="card" style="padding:0;overflow:hidden;"><table class="vocab-table"><thead><tr><th>Word / Phrase</th><th>POS</th><th>Simple Meaning</th><th>中文</th><th>Example Sentence</th><th>IELTS Note</th></tr></thead><tbody><tr><td><span class="word">systematic</span></td><td><span class="pos">adj.</span></td><td>done according to a fixed plan or method</td><td class="zh">系统的</td><td>'It is not easy to be <em>systematic</em> and objective about language study'</td><td class="note">Opening claim — links to Q1.</td></tr>
+<tr><td><span class="word">invective</span></td><td><span class="pos">n.</span></td><td>abusive, insulting language</td><td class="zh">谩骂 / 抨击</td><td>'debate regularly deteriorates into <em>invective</em> and polemic'</td><td class="note">Strong noun showing how bad debate gets.</td></tr>
+<tr><td><span class="word">polemic</span></td><td><span class="pos">n.</span></td><td>a strong verbal attack on a view</td><td class="zh">论战 / 抨击文章</td><td>'deteriorates into invective and <em>polemic</em>'</td><td class="note">Pairs with 'invective'.</td></tr>
+<tr><td><span class="word">deteriorate</span></td><td><span class="pos">v.</span></td><td>to become worse</td><td class="zh">恶化</td><td>'Popular linguistic debate regularly <em>deteriorates</em> into invective'</td><td class="note">Negative process verb.</td></tr>
+<tr><td><span class="word">usage</span></td><td><span class="pos">n.</span></td><td>the way words are actually used</td><td class="zh">用法 / 使用习惯</td><td>'minor points of <em>usage</em>'</td><td class="note">Central technical noun in this passage.</td></tr>
+<tr><td><span class="word">exempt</span></td><td><span class="pos">adj.</span></td><td>free from a rule or effect</td><td class="zh">豁免的 / 不受影响的</td><td>'No part of society or social behaviour is <em>exempt</em>'</td><td class="note">Emphasises language's reach.</td></tr>
+<tr><td><span class="word">aptitude</span></td><td><span class="pos">n.</span></td><td>natural ability for something</td><td class="zh">天赋 / 才能</td><td>'job <em>aptitude</em>'</td><td class="note">In the list of things language judgements affect (Q3).</td></tr>
+<tr><td><span class="word">unfeelingly</span></td><td><span class="pos">adv.</span></td><td>without concern for others' feelings</td><td class="zh">无情地</td><td>'when language use is <em>unfeelingly</em> attacked'</td><td class="note">Explains the emotional stakes.</td></tr>
+<tr><td><span class="word">prescriptivism</span></td><td><span class="pos">n.</span></td><td>the view that one language variety is correct</td><td class="zh">规定主义 / 规范主义</td><td>'<em>prescriptivism</em> is the view that one variety has an inherently higher value'</td><td class="note">Defined for you — Q9's answer.</td></tr>
+<tr><td><span class="word">inherently</span></td><td><span class="pos">adv.</span></td><td>in its essential nature</td><td class="zh">本质上 / 固有地</td><td>'an <em>inherently</em> higher value than others'</td><td class="note">Key to the prescriptivist claim.</td></tr>
+<tr><td><span class="word">impose</span></td><td><span class="pos">v.</span></td><td>to force something on people</td><td class="zh">强加</td><td>'this ought to be <em>imposed</em> on the whole of the speech community'</td><td class="note">The authoritarian element.</td></tr>
+<tr><td><span class="word">propound</span></td><td><span class="pos">v.</span></td><td>to put forward an idea for consideration</td><td class="zh">提出 / 阐述</td><td>'The view is <em>propounded</em> especially in relation to grammar'</td><td class="note">Formal academic verb.</td></tr>
+<tr><td><span class="word">adherent</span></td><td><span class="pos">n.</span></td><td>a supporter of a view or belief</td><td class="zh">拥护者 / 信奉者</td><td>'<em>Adherents</em> to this variety are said to speak correctly'</td><td class="note">Reused later: 'blind adherents'.</td></tr>
+<tr><td><span class="word">deviation</span></td><td><span class="pos">n.</span></td><td>a departure from what is standard</td><td class="zh">偏离 / 偏差</td><td>'<em>deviations</em> from it are said to be incorrect'</td><td class="note">Prescriptivist judgement language.</td></tr>
+<tr><td><span class="word">codify</span></td><td><span class="pos">v.</span></td><td>to arrange rules into a system</td><td class="zh">编纂 / 系统化</td><td>'they wanted to <em>codify</em> the principles of their languages'</td><td class="note">First aim of 18th-century grammarians.</td></tr>
+<tr><td><span class="word">prescribe</span></td><td><span class="pos">v.</span></td><td>to state officially what should be done</td><td class="zh">规定 / 指定</td><td>'Some usages are <em>prescribed</em>, to be learnt and followed'</td><td class="note">Contrast with 'proscribe'.</td></tr>
+<tr><td><span class="word">proscribe</span></td><td><span class="pos">v.</span></td><td>to forbid officially</td><td class="zh">禁止</td><td>'others are <em>proscribed</em>, to be avoided'</td><td class="note">Easily confused with 'prescribe' — note the opposite meaning.</td></tr>
+<tr><td><span class="word">authoritarian</span></td><td><span class="pos">adj.</span></td><td>demanding strict obedience</td><td class="zh">专断的 / 权威主义的</td><td>'The <em>authoritarian</em> nature of the approach'</td><td class="note">The writer's characterisation.</td></tr>
+<tr><td><span class="word">half-measures</span></td><td><span class="pos">n. pl.</span></td><td>incomplete or compromise actions</td><td class="zh">折中办法 / 半吊子措施</td><td>'there were no <em>half-measures</em>: usage was either right or wrong'</td><td class="note">Emphasises 18th-century rigidity.</td></tr>
+<tr><td><span class="word">pronounce judgement</span></td><td><span class="pos">v. phr.</span></td><td>to declare a formal opinion</td><td class="zh">作出评判</td><td>'not simply to record alternatives, but to <em>pronounce judgement</em> upon them'</td><td class="note">Prescriptivist role.</td></tr>
+<tr><td><span class="word">tenet</span></td><td><span class="pos">n.</span></td><td>a central principle of a belief system</td><td class="zh">信条 / 原则</td><td>'this view has become the <em>tenet</em> of the modern linguistic approach'</td><td class="note">Descriptivism today.</td></tr>
+<tr><td><span class="word">quasi-political</span></td><td><span class="pos">adj.</span></td><td>seemingly political; political-like</td><td class="zh">准政治的 / 类政治的</td><td>'presented in <em>quasi-political</em> terms'</td><td class="note">Final sentence — the extreme framing.</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-phrases"><h2 class="section-title">💬 Academic Phrases &amp; Collocations</h2><div class="card" style="padding:0;overflow:hidden;"><table class="phrase-table"><thead><tr><th>Phrase / Expression</th><th>Meaning / Usage</th><th>中文</th></tr></thead><tbody><tr><td><span class="phrase">run high</span></td><td>become intense (of emotions)</td><td class="zh">（情绪）高涨</td></tr>
+<tr><td><span class="phrase">hold an opinion about</span></td><td>have a view on</td><td class="zh">对……持有看法</td></tr>
+<tr><td><span class="phrase">as easily over X as over Y</span></td><td>equally readily about both</td><td class="zh">对 X 和 Y 同样容易</td></tr>
+<tr><td><span class="phrase">in its most general sense</span></td><td>broadly speaking</td><td class="zh">从最广泛的意义上说</td></tr>
+<tr><td><span class="phrase">with reference to</span></td><td>concerning</td><td class="zh">关于</td></tr>
+<tr><td><span class="phrase">in this account</span></td><td>according to this view</td><td class="zh">按照这种说法</td></tr>
+<tr><td><span class="phrase">the aims were threefold</span></td><td>there were three aims</td><td class="zh">目标有三</td></tr>
+<tr><td><span class="phrase">settle a dispute</span></td><td>resolve an argument</td><td class="zh">解决争端</td></tr>
+<tr><td><span class="phrase">point out</span></td><td>identify and mention</td><td class="zh">指出</td></tr>
+<tr><td><span class="phrase">be characterised by</span></td><td>have as a defining feature</td><td class="zh">以……为特征</td></tr>
+<tr><td><span class="phrase">reliance on</span></td><td>dependence on</td><td class="zh">依赖于</td></tr>
+<tr><td><span class="phrase">be concerned with</span></td><td>deal with; care about</td><td class="zh">关注 / 涉及</td></tr>
+<tr><td><span class="phrase">halt language change</span></td><td>stop language from changing</td><td class="zh">阻止语言变化</td></tr>
+<tr><td><span class="phrase">advocates of this view</span></td><td>supporters of this position</td><td class="zh">这一观点的支持者</td></tr>
+<tr><td><span class="phrase">paint unreal pictures of</span></td><td>describe inaccurately</td><td class="zh">歪曲描绘</td></tr></tbody></table></div></section>
+<section class="tab-panel" id="tab-practice"><h2 class="section-title">🔍 Complex Sentence Analysis</h2><div class="sentence-card"><div class="sentence-original">Arguments can start as easily over minor points of usage as over major policies of linguistic education.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Arguments can start as easily over minor points of usage as over major policies.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'as easily… as…' = comparative structure of equality.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'as + adv + as' says two very different things produce the same result — the small and the large matter equally.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">People argue just as fiercely about tiny usage details as about big education policies.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">人们对细微用法问题的争论，可能与对重大语言教育政策的争论同样容易爆发。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">No part of society or social behaviour is exempt: linguistic factors influence how we judge personality, intelligence, social status, educational standards, job aptitude, and many other areas of identity and social survival.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Linguistic factors influence how we judge personality, intelligence, social status…</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'No part of society or social behaviour is exempt' = an independent claim before the colon; the colon introduces the evidence list.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A colon links a general statement to its supporting detail. This sentence supplies Q3's answer directly.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Language affects everything — how we judge someone's character, intelligence, class, education and job suitability.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">社会或社会行为的任何部分都不能幸免：语言因素影响着我们对人格、智力、社会地位、教育水平、工作能力以及身份与社会生存等诸多方面的判断。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">In its most general sense, prescriptivism is the view that one variety of language has an inherently higher value than others, and that this ought to be imposed on the whole of the speech community.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">Prescriptivism is the view that…</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">Two coordinated that-clauses: 'that one variety… has a higher value' and 'that this ought to be imposed…'.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">A definition sentence with two parallel that-clauses — the belief plus the action it demands. Q9 rests on this.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Prescriptivism believes one form of a language is naturally better and that everyone should be made to use it.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">从最广泛的意义上说，规定主义认为某一语言变体本身就比其他变体更有价值，并且应当把它强加于整个语言社群。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">The authoritarian nature of the approach is best characterised by its reliance on 'rules' of grammar.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">The authoritarian nature of the approach is best characterised by its reliance on 'rules' of grammar.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">No subordinate clause — a compact passive statement.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">Passive 'is characterised by' presents the writer's analysis as neutral description. The quotation marks around 'rules' signal mild scepticism. Q10's answer is here.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">What makes this approach authoritarian is that it depends on grammatical 'rules'.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这种做法的专断性质，最能体现在它对语法「规则」的依赖上。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">This approach is summarised in the statement that it is the task of the grammarian to describe, not prescribe - to record the facts of linguistic diversity, and not to attempt the impossible tasks of evaluating language variation or halting language change.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">This approach is summarised in the statement that…</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'that it is the task of the grammarian to describe, not prescribe' (that-clause) + the dash introduces a restating apposition.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">The dash expands 'describe, not prescribe' into a fuller contrast. 'the impossible tasks of' is the writer reporting the descriptivist view — key to Q6.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Descriptivists say a grammarian should describe language, not lay down rules — record variety, not judge it or try to stop change.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">这一取向可概括为：语法学家的任务是描写而非规定——记录语言多样性的事实，而不是去尝试评价语言变异或阻止语言变化这些不可能完成的任务。</span></div></div></div>
+<div class="sentence-card"><div class="sentence-original">In the second half of the 18th century, we already find advocates of this view, such as Joseph Priestley, whose Rudiments of English Grammar (1761) insists that 'the custom of speaking is the original and only just standard of any language'.</div><div class="sentence-breakdown"><div class="sb-row"><span class="sb-label">Main Clause</span><span class="sb-value">We already find advocates of this view.</span></div>
+<div class="sb-row"><span class="sb-label">Subordinate / Relative</span><span class="sb-value">'such as Joseph Priestley' (exemplification) + 'whose Rudiments of English Grammar insists that…' (relative clause with 'whose') + the quoted that-clause.</span></div>
+<div class="sb-row"><span class="sb-label">Grammar Note</span><span class="sb-value">'already' is doing heavy work: it tells you descriptivism existed <em>within</em> the 18th century, which makes Q7 NO.</span></div>
+<div class="sb-row"><span class="sb-label">Simple Meaning</span><span class="sb-value">Descriptivist ideas already existed in the later 1700s — Joseph Priestley argued that how people actually speak is the only real standard.</span></div>
+<div class="sb-row"><span class="sb-label">中文</span><span class="sb-value">早在 18 世纪下半叶，我们就已能找到这一观点的支持者，例如约瑟夫·普利斯特里，他在《英语语法要义》（1761）中坚持认为「说话的习惯是任何语言唯一正当的原始标准」。</span></div></div></div></section>
+<section class="tab-panel" id="tab-paraphrase"><h2 class="section-title">✏️ Sentence Drills</h2><div class="highlight">These drills target the definitions and contrasts on which the summary task depends.</div><div class="exercise-block"><h3>1 — Identify the structure</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Name the underlined element.</p><div class="ex-item"><span class="ex-num">a.</span><label>'prescriptivism is the view <u>that one variety has an inherently higher value</u>' → <em>appositive that-clause (definition)</em></label></div>
+<div class="ex-item"><span class="ex-num">b.</span><label>'Joseph Priestley, <u>whose Rudiments of English Grammar insists that…</u>' → <em>relative clause with 'whose'</em></label></div>
+<div class="ex-item"><span class="ex-num">c.</span><label>'No part of society is exempt<u>:</u> linguistic factors influence…' → <em>colon introducing supporting evidence</em></label></div>
+<div class="ex-item"><span class="ex-num">d.</span><label>'to describe, not prescribe <u>- to record the facts of linguistic diversity…</u>' → <em>dash introducing an apposition/restatement</em></label></div></div>
+<div class="exercise-block"><h3>2 — Build the two-camp table</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">This IS the summary task (Q9–12).</p><div class="ex-item"><span class="ex-num">Prescriptivists</span><label>→ <em>one variety is inherently better; impose it; rely on 'rules'; usage is right or wrong; pronounce judgement</em></label></div>
+<div class="ex-item"><span class="ex-num">Descriptivists</span><label>→ <em>describe not prescribe; record linguistic diversity; base grammar on the custom of speaking (popular speech); refuse to evaluate or halt change</em></label></div>
+<div class="ex-item"><span class="ex-num">Key names</span><label>→ <em>Joseph Priestley = descriptivist (1761)</em></label></div></div>
+<div class="exercise-block"><h3>3 — Prescribe vs proscribe</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These two look alike but are opposites. Complete each.</p><div class="ex-item"><span class="ex-num">a.</span><label>Usages that must be learnt and followed are → <em>prescribed</em></label></div>
+<div class="ex-item"><span class="ex-num">b.</span><label>Usages that must be avoided are → <em>proscribed</em></label></div>
+<div class="ex-item"><span class="ex-num">c.</span><label>A doctor who tells you to take medicine → <em>prescribes</em> it; a government that bans a book → <em>proscribes</em> it.</label></div></div>
+<div class="exercise-block"><h3>4 — Yes / No / Not Given practice</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Say why each answer is what it is.</p><div class="ex-item"><span class="ex-num">a.</span><label>'People feel more strongly about language education than about small differences in usage.' → <em>NO — the passage says arguments start 'as easily' over both.</em></label></div>
+<div class="ex-item"><span class="ex-num">b.</span><label>'Prescriptive grammar books cost a lot of money in the 18th century.' → <em>NOT GIVEN — prices are never mentioned.</em></label></div>
+<div class="ex-item"><span class="ex-num">c.</span><label>'Descriptivism only appeared after the 18th century.' → <em>NO — advocates are found 'in the second half of the 18th century'.</em></label></div></div>
+<div class="exercise-block"><h3>5 — Translate (中译英)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Translate, then compare with the key.</p><div class="ex-item"><span class="ex-num">a.</span><label>语言属于每个人，所以大多数人都觉得自己有权对它发表意见。 → <em>Language belongs to everyone, so most people feel they have a right to hold an opinion about it.</em></label></div>
+<div class="ex-item"><span class="ex-num">b.</span><label>语法学家的任务是描写，而不是规定。 → <em>It is the task of the grammarian to describe, not prescribe.</em></label></div>
+<div class="ex-item"><span class="ex-num">c.</span><label>如今，双方常常把对方描绘成不真实的样子。 → <em>In our own time, both sides have often painted unreal pictures of the other.</em></label></div></div></section>
+<section class="tab-panel" id="tab-dictation"><h2 class="section-title">🧠 Reading Logic Training</h2><div class="card"><p><strong>Problem → two responses → present-day conflict:</strong> the passage opens with why language debate is heated, presents prescriptivism, then descriptivism as its opposite, and closes with how each side now caricatures the other. Q13 (purpose) follows directly from this shape: the writer <em>presents a historical account of differing views</em>.</p>
+<p><strong>Definition:</strong> 'In its most general sense, prescriptivism is the view that…' — a textbook definition sentence. Whenever a passage formally defines a term, expect at least one question anchored there (here, Q9).</p>
+<p><strong>Enumeration:</strong> 'The aims of these early grammarians were threefold: (a) they wanted to codify… (b) they wanted a means of settling disputes… (c) they wanted to point out common errors…' Numbered aims are easy to locate and easy to test.</p>
+<p><strong>Contrast pairs:</strong> prescribed vs proscribed; describe vs prescribe; right vs wrong; radical liberalism vs elitist conservatism. The whole passage is built on binary oppositions — track them and the summary answers become obvious.</p>
+<p><strong>Concession:</strong> 'These attitudes are still with us… <em>Nevertheless</em>, there is an alternative point of view.' 'Nevertheless' marks the pivot from camp one to camp two — the structural hinge of the passage.</p>
+<p><strong>Cause &amp; effect:</strong> language is public behaviour (cause) → usages are noticed and criticised (effect) → it is easy to hurt and be hurt (effect). Q1 sits at the top of this chain.</p>
+<p><strong>Author's attitude — neutral historian, mildly critical of extremes:</strong> the writer uses scare quotes around 'rules', 'correctly' and 'improve', and calls both modern camps guilty of 'painting unreal pictures'. He takes no side, which is why Q13's answer is B and not A or D.</p></div><div class="exercise-block"><h3>YES / NO / NOT GIVEN focus (Q1–8)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">These test the WRITER'S CLAIMS. Match the exact wording.</p><div class="ex-item"><span class="ex-num">1.</span><label>There are understandable reasons why arguments occur about language. → <strong>YES</strong> ('Language belongs to everyone, so most people feel they have a right to hold an opinion')</label></div>
+<div class="ex-item"><span class="ex-num">2.</span><label>People feel more strongly about language education than about small usage differences. → <strong>NO</strong> ('as easily over minor points of usage as over major policies')</label></div>
+<div class="ex-item"><span class="ex-num">3.</span><label>Our assessment of intelligence is affected by language use. → <strong>YES</strong> ('linguistic factors influence how we judge… intelligence')</label></div>
+<div class="ex-item"><span class="ex-num">4.</span><label>Prescriptive grammar books cost a lot in the 18th century. → <strong>NOT GIVEN</strong> (no mention of price)</label></div>
+<div class="ex-item"><span class="ex-num">5.</span><label>Prescriptivism still exists today. → <strong>YES</strong> ('These attitudes are still with us')</label></div>
+<div class="ex-item"><span class="ex-num">6.</span><label>Descriptivists think it is pointless to try to stop language change. → <strong>YES</strong> ('the impossible tasks of… halting language change')</label></div>
+<div class="ex-item"><span class="ex-num">7.</span><label>Descriptivism only appeared after the 18th century. → <strong>NO</strong> ('In the second half of the 18th century, we <em>already</em> find advocates')</label></div>
+<div class="ex-item"><span class="ex-num">8.</span><label>Both camps have been misrepresented. → <strong>YES</strong> ('both sides painting unreal pictures of the other')</label></div></div>
+<div class="exercise-block"><h3>Summary completion from a list (Q9–12)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Words A–I; several are not used.</p><div class="ex-item"><span class="ex-num">9.</span><label>According to ______, there is only one correct form of language. → <strong>H (prescriptivists)</strong></label></div>
+<div class="ex-item"><span class="ex-num">10.</span><label>They place great importance on grammatical ______. → <strong>F (rules)</strong></label></div>
+<div class="ex-item"><span class="ex-num">11.</span><label>Conversely, the view of ______, such as Joseph Priestley… → <strong>A (descriptivists)</strong></label></div>
+<div class="ex-item"><span class="ex-num">12.</span><label>…is that grammar should be based on ______. → <strong>C (popular speech)</strong> ('the custom of speaking')</label></div>
+<div class="ex-item"><span class="ex-num">✗ B, D, E, G, I</span><label>'language experts', 'formal language', 'evaluation', 'modern linguists' and 'change' all appear plausible but do not fit the exact slots.</label></div></div>
+<div class="exercise-block"><h3>Purpose question (Q13)</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Judge the passage as a whole.</p><div class="ex-item"><span class="ex-num">13.</span><label>The writer's purpose → <strong>B (to present a historical account of differing views of language)</strong></label></div>
+<div class="ex-item"><span class="ex-num">✗ A</span><label>He does not argue in favour of one approach — he stays neutral and criticises both extremes.</label></div>
+<div class="ex-item"><span class="ex-num">✗ C</span><label>Spoken vs written language is mentioned only in passing, never as the focus.</label></div>
+<div class="ex-item"><span class="ex-num">✗ D</span><label>Neither view is shown to be discredited; both survive today.</label></div></div>
+<div class="exercise-block"><h3>Locating information quickly</h3><p style="color:var(--muted);font-size:.85rem;margin-bottom:12px;">Which paragraph would you scan for each idea?</p><div class="ex-item"><span class="ex-num">a.</span><label>The three aims of early grammarians → the paragraph beginning 'All the main languages have been studied prescriptively…'</label></div>
+<div class="ex-item"><span class="ex-num">b.</span><label>Joseph Priestley's quotation → the paragraph beginning 'These attitudes are still with us…'</label></div>
+<div class="ex-item"><span class="ex-num">c.</span><label>The list of things language judgements affect → paragraph 2 ('Language, moreover, is a very public behaviour')</label></div>
+<div class="ex-item"><span class="ex-num">d.</span><label>The radical liberalism / elitist conservatism comparison → the final paragraph.</label></div></div></section>
+<section class="tab-panel" id="tab-quiz"><h2 class="section-title">📝 Review Quiz</h2><p style="color:var(--muted);font-size:.88rem;margin-bottom:20px;">Choose the best answer, then click <strong>Check</strong> for instant colour feedback.</p><div class="quiz-item" id="qi-1"><div class="q-label">Question 1</div><p class="q-text">Why do people feel entitled to opinions about language?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="A"> A. they study it at school</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="B"> B. the government regulates it</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="C"> C. language belongs to everyone</label><label class="q-option" onclick="selectOption(this, 'qi-1')"><input type="radio" name="qi-1" value="D"> D. dictionaries invite comment</label></div><button class="btn-check" onclick="checkQuiz('qi-1', 'C')">Check</button><div class="q-result" id="qi-1-result"></div></div>
+<div class="quiz-item" id="qi-2"><div class="q-label">Question 2</div><p class="q-text">According to the passage, arguments about minor usage points are…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="A"> A. rarer than policy arguments</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="B"> B. as easy to start as policy arguments</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="C"> C. always settled quickly</label><label class="q-option" onclick="selectOption(this, 'qi-2')"><input type="radio" name="qi-2" value="D"> D. limited to academics</label></div><button class="btn-check" onclick="checkQuiz('qi-2', 'B')">Check</button><div class="q-result" id="qi-2-result"></div></div>
+<div class="quiz-item" id="qi-3"><div class="q-label">Question 3</div><p class="q-text">Which of these does the writer say language influences?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="A"> A. physical health</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="B"> B. musical ability</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="C"> C. weather perception</label><label class="q-option" onclick="selectOption(this, 'qi-3')"><input type="radio" name="qi-3" value="D"> D. judgements of intelligence and social status</label></div><button class="btn-check" onclick="checkQuiz('qi-3', 'D')">Check</button><div class="q-result" id="qi-3-result"></div></div>
+<div class="quiz-item" id="qi-4"><div class="q-label">Question 4</div><p class="q-text">Prescriptivism is the view that one variety of language…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="A"> A. has an inherently higher value and should be imposed</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="B"> B. changes fastest</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="C"> C. is easiest to learn</label><label class="q-option" onclick="selectOption(this, 'qi-4')"><input type="radio" name="qi-4" value="D"> D. should be recorded neutrally</label></div><button class="btn-check" onclick="checkQuiz('qi-4', 'A')">Check</button><div class="q-result" id="qi-4-result"></div></div>
+<div class="quiz-item" id="qi-5"><div class="q-label">Question 5</div><p class="q-text">Which variety do prescriptivists usually favour?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="A"> A. regional dialects</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="B"> B. children's speech</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="C"> C. the 'standard' written language</label><label class="q-option" onclick="selectOption(this, 'qi-5')"><input type="radio" name="qi-5" value="D"> D. spoken slang</label></div><button class="btn-check" onclick="checkQuiz('qi-5', 'C')">Check</button><div class="q-result" id="qi-5-result"></div></div>
+<div class="quiz-item" id="qi-6"><div class="q-label">Question 6</div><p class="q-text">A usage that must be avoided is said to be…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="A"> A. prescribed</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="B"> B. proscribed</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="C"> C. codified</label><label class="q-option" onclick="selectOption(this, 'qi-6')"><input type="radio" name="qi-6" value="D"> D. propounded</label></div><button class="btn-check" onclick="checkQuiz('qi-6', 'B')">Check</button><div class="q-result" id="qi-6-result"></div></div>
+<div class="quiz-item" id="qi-7"><div class="q-label">Question 7</div><p class="q-text">What did 18th-century grammarians NOT aim to do?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="A"> A. codify language principles</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="B"> B. settle disputes over usage</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="C"> C. point out common errors</label><label class="q-option" onclick="selectOption(this, 'qi-7')"><input type="radio" name="qi-7" value="D"> D. record all regional dialects equally</label></div><button class="btn-check" onclick="checkQuiz('qi-7', 'D')">Check</button><div class="q-result" id="qi-7-result"></div></div>
+<div class="quiz-item" id="qi-8"><div class="q-label">Question 8</div><p class="q-text">The descriptivist position is that the grammarian should…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="A"> A. describe, not prescribe</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="B"> B. judge every alternative</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="C"> C. halt language change</label><label class="q-option" onclick="selectOption(this, 'qi-8')"><input type="radio" name="qi-8" value="D"> D. teach the standard variety</label></div><button class="btn-check" onclick="checkQuiz('qi-8', 'A')">Check</button><div class="q-result" id="qi-8-result"></div></div>
+<div class="quiz-item" id="qi-9"><div class="q-label">Question 9</div><p class="q-text">Joseph Priestley argued that the only just standard of a language is…</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="A"> A. the written form</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="B"> B. logic</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="C"> C. the custom of speaking</label><label class="q-option" onclick="selectOption(this, 'qi-9')"><input type="radio" name="qi-9" value="D"> D. legislation</label></div><button class="btn-check" onclick="checkQuiz('qi-9', 'C')">Check</button><div class="q-result" id="qi-9-result"></div></div>
+<div class="quiz-item" id="qi-10"><div class="q-label">Question 10</div><p class="q-text">In what year was Priestley's 'Rudiments of English Grammar' published?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="A"> A. 1671</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="B"> B. 1761</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="C"> C. 1861</label><label class="q-option" onclick="selectOption(this, 'qi-10')"><input type="radio" name="qi-10" value="D"> D. 1961</label></div><button class="btn-check" onclick="checkQuiz('qi-10', 'B')">Check</button><div class="q-result" id="qi-10-result"></div></div>
+<div class="quiz-item" id="qi-11"><div class="q-label">Question 11</div><p class="q-text">How has the modern opposition sometimes been presented?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="A"> A. as a scientific debate</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="B"> B. as a legal dispute</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="C"> C. as a generational conflict</label><label class="q-option" onclick="selectOption(this, 'qi-11')"><input type="radio" name="qi-11" value="D"> D. in quasi-political terms</label></div><button class="btn-check" onclick="checkQuiz('qi-11', 'D')">Check</button><div class="q-result" id="qi-11-result"></div></div>
+<div class="quiz-item" id="qi-12"><div class="q-label">Question 12</div><p class="q-text">What is the writer's overall purpose?</p><div class="q-options"><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="A"> A. to present a historical account of differing views</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="B"> B. to argue for prescriptivism</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="C"> C. to compare speech and writing</label><label class="q-option" onclick="selectOption(this, 'qi-12')"><input type="radio" name="qi-12" value="D"> D. to discredit descriptivism</label></div><button class="btn-check" onclick="checkQuiz('qi-12', 'A')">Check</button><div class="q-result" id="qi-12-result"></div></div></section>
+<section class="tab-panel" id="tab-answers"><h2 class="section-title">✅ Answer Key</h2><div class="card"><div class="answer-section"><h3>Official Answer Key — Passage 1 (Q1–13)</h3><div class="answer-item"><span class="answer-num">1</span><div><div class="answer-val">YES</div><div class="answer-note">Language belongs to everyone, so opinions and emotions run high.</div></div></div>
+<div class="answer-item"><span class="answer-num">2</span><div><div class="answer-val">NO</div><div class="answer-note">Arguments start 'as easily' over minor usage as over major policy.</div></div></div>
+<div class="answer-item"><span class="answer-num">3</span><div><div class="answer-val">YES</div><div class="answer-note">'linguistic factors influence how we judge… intelligence'.</div></div></div>
+<div class="answer-item"><span class="answer-num">4</span><div><div class="answer-val">NOT GIVEN</div><div class="answer-note">Cost of grammar books is never mentioned.</div></div></div>
+<div class="answer-item"><span class="answer-num">5</span><div><div class="answer-val">YES</div><div class="answer-note">'These attitudes are still with us'.</div></div></div>
+<div class="answer-item"><span class="answer-num">6</span><div><div class="answer-val">YES</div><div class="answer-note">'the impossible tasks of… halting language change'.</div></div></div>
+<div class="answer-item"><span class="answer-num">7</span><div><div class="answer-val">NO</div><div class="answer-note">Advocates appear 'in the second half of the 18th century'.</div></div></div>
+<div class="answer-item"><span class="answer-num">8</span><div><div class="answer-val">YES</div><div class="answer-note">'both sides painting unreal pictures of the other'.</div></div></div>
+<div class="answer-item"><span class="answer-num">9</span><div><div class="answer-val">H</div><div class="answer-note">prescriptivists</div></div></div>
+<div class="answer-item"><span class="answer-num">10</span><div><div class="answer-val">F</div><div class="answer-note">rules</div></div></div>
+<div class="answer-item"><span class="answer-num">11</span><div><div class="answer-val">A</div><div class="answer-note">descriptivists</div></div></div>
+<div class="answer-item"><span class="answer-num">12</span><div><div class="answer-val">C</div><div class="answer-note">popular speech — 'the custom of speaking'.</div></div></div>
+<div class="answer-item"><span class="answer-num">13</span><div><div class="answer-val">B</div><div class="answer-note">A historical account of differing views of language.</div></div></div></div><div class="answer-section"><h3>Review Quiz</h3><div class="answer-item"><span class="answer-num">Q1</span><div><div class="answer-val">C — language belongs to everyone</div></div></div>
+<div class="answer-item"><span class="answer-num">Q2</span><div><div class="answer-val">B — as easy to start</div></div></div>
+<div class="answer-item"><span class="answer-num">Q3</span><div><div class="answer-val">D — intelligence and social status</div></div></div>
+<div class="answer-item"><span class="answer-num">Q4</span><div><div class="answer-val">A — higher value, imposed</div></div></div>
+<div class="answer-item"><span class="answer-num">Q5</span><div><div class="answer-val">C — standard written language</div></div></div>
+<div class="answer-item"><span class="answer-num">Q6</span><div><div class="answer-val">B — proscribed</div></div></div>
+<div class="answer-item"><span class="answer-num">Q7</span><div><div class="answer-val">D — record all dialects equally</div></div></div>
+<div class="answer-item"><span class="answer-num">Q8</span><div><div class="answer-val">A — describe, not prescribe</div></div></div>
+<div class="answer-item"><span class="answer-num">Q9</span><div><div class="answer-val">C — the custom of speaking</div></div></div>
+<div class="answer-item"><span class="answer-num">Q10</span><div><div class="answer-val">B — 1761</div></div></div>
+<div class="answer-item"><span class="answer-num">Q11</span><div><div class="answer-val">D — quasi-political terms</div></div></div>
+<div class="answer-item"><span class="answer-num">Q12</span><div><div class="answer-val">A — historical account</div></div></div></div></div></section>
+  </main>
+
+<script>
+    // ── Tab switching ──────────────────────────────────
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ── Fill-in-blank checking ─────────────────────────
+    function checkAllBlanks() {
+      document.querySelectorAll('.blank').forEach((input, idx) => {
+        const correct = input.dataset.answer.toLowerCase().trim();
+        const given   = input.value.toLowerCase().trim();
+        const fbId    = 'fb' + (idx + 1);
+        const fb      = document.getElementById(fbId);
+        input.classList.remove('correct', 'wrong');
+        if (!fb) return;
+        fb.classList.remove('correct', 'wrong');
+        if (given === '') return;
+        if (given === correct) {
+          input.classList.add('correct');
+          fb.textContent = '✓ Correct';
+          fb.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+          fb.textContent = '✗ ' + input.dataset.answer;
+          fb.classList.add('wrong');
+        }
+      });
+    }
+
+    function resetBlanks() {
+      document.querySelectorAll('.blank').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelectorAll('.feedback').forEach(fb => {
+        fb.classList.remove('correct', 'wrong');
+        fb.textContent = '';
+      });
+    }
+
+    // ── Quiz option selection ──────────────────────────
+    function selectOption(label, qid) {
+      document.querySelectorAll(`#${qid} .q-option`).forEach(o => o.classList.remove('selected'));
+      label.classList.add('selected');
+    }
+
+    // ── Quiz answer checking ───────────────────────────
+    function checkQuiz(qid, correctVal) {
+      const selected = document.querySelector(`#${qid} input[type="radio"]:checked`);
+      const resultEl = document.getElementById(qid + '-result');
+      if (!selected) {
+        resultEl.textContent = 'Please select an answer first.';
+        resultEl.className = 'q-result wrong';
+        return;
+      }
+      const given = selected.value;
+      document.querySelectorAll(`#${qid} .q-option`).forEach(opt => {
+        const val = opt.querySelector('input').value;
+        opt.classList.remove('correct', 'wrong');
+        if (val === correctVal) opt.classList.add('correct');
+        else if (val === given && given !== correctVal) opt.classList.add('wrong');
+      });
+      if (given === correctVal) {
+        resultEl.textContent = '✓ Correct!';
+        resultEl.className = 'q-result correct';
+      } else {
+        resultEl.textContent = `✗ The correct answer is ${correctVal}.`;
+        resultEl.className = 'q-result wrong';
+      }
+    }
+  </script>
+
+
+</body>
+</html>
